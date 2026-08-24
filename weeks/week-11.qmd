@@ -1,0 +1,17 @@
+---
+title: "Week 11"
+subtitle: "Building a Shiny app"
+format: html
+---
+
+```{r}
+#| label: setup
+#| include: false
+source("../helper.R")
+```
+
+We start building interactive Shiny apps: the user interface, the server, and reactivity.
+
+## Assignments
+
+| 📘 Weekly quiz, in class

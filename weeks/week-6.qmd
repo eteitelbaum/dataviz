@@ -1,4 +1,29 @@
 ---
-title: Week 6
-subtitle: Final Project
+title: "Week 6"
+subtitle: "Choropleth maps"
+format: html
 ---
+
+```{r}
+#| label: setup
+#| include: false
+source("../helper.R")
+```
+
+We map data with static choropleth maps and learn to wrap our map code in a reusable function.
+
+## Readings
+
+| 📖 [Healy, ch. 7: Draw Maps](https://socviz.co/07-maps.html)
+| 📖 [Ross, *The Oil Curse*, ch. 3](https://www-jstor-org.proxygw.wrlc.org/stable/j.ctt7s3wz.10)
+| 📖 [r4ds, ch. 25 (functions)](https://r4ds.hadley.nz/functions)
+
+## Videos
+
+| 🖥️ [Choropleth maps](https://youtu.be/HB3PMF93hzs)
+| 🖥️ [Map World Bank data](https://youtu.be/5RnnGov3Iw4)
+| 🖥️ [Turn your map into a function](https://youtu.be/m42vrbEEHT4)
+
+## Assignments
+
+| 📘 Weekly quiz, in class

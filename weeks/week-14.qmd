@@ -1,0 +1,15 @@
+---
+title: "Week 14"
+subtitle: "Thanksgiving break"
+format: html
+---
+
+```{r}
+#| label: setup
+#| include: false
+source("../helper.R")
+```
+
+::: {.callout-important}
+**No class this week** — Thanksgiving break. 🦃
+:::

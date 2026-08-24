@@ -11,3 +11,11 @@
 
 # Local working notes / execution plans — not part of the published course
 /notes/
+
+# single-file quarto render byproducts
+/site_libs/
+/*_files/
+weeks/*_files/
+assignments/*_files/
+project/*_files/
+modules/*_files/

@@ -1,14 +1,30 @@
 ---
 title: "Week 1"
-subtitle: "Getting Started, Part 1"
+subtitle: "Getting Started"
 format: html
 ---
 
+```{r}
+#| label: setup
+#| include: false
+source("../helper.R")
+```
+
+This week we get our tools set up and look at what data visualization can do. Session 1 is course overview and environment setup; session 2 shows off some inspiring examples.
+
 ## Readings
 
-| 📖 Review the [course syllabus](/course-syllabus.html) and \[support resources\](/course-support.html)
-| 📖 Read [this blog](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/) about a project-oriented workflow in R.
+| 📖 [Healy, ch. 2: Get Started](https://socviz.co/02-intro.html)
+| 📖 [Healy, ch. 1: Look at Data](https://socviz.co/01-look-at-data.html)
+| 📖 [A project-oriented workflow](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/)
+| 📖 [Happy Git with R, chs 4, 6, 7, 9 & 12](https://happygitwithr.com/)
 
 ## Videos
 
-| 🖥️ [R and RStudio](https://www.youtube.com/watch?v=gssjyyl7vxI)
+| 🖥️ [R and RStudio](https://youtu.be/gssjyyl7vxI)
+| 🖥️ [Quarto](https://youtu.be/c654j7aQjcg)
+| 🖥️ [Getting started with GitHub](https://youtu.be/ApvMnAfQe8A)
+
+## Assignments
+
+| 📘 Weekly quiz, in class (see [Quizzes](/quiz.qmd))

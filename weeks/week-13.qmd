@@ -1,0 +1,13 @@
+---
+title: "Week 13"
+subtitle: "Project studio"
+format: html
+---
+
+```{r}
+#| label: setup
+#| include: false
+source("../helper.R")
+```
+
+In-class studio time to build and troubleshoot your final project app, with help from your classmates and me.

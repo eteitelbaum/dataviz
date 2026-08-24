@@ -1,21 +1,37 @@
 ---
 title: "Week 3"
-subtitle: "Working with Flat Files"
+subtitle: "Color, themes & annotations"
+format: html
 ---
+
+```{r}
+#| label: setup
+#| include: false
+source("../helper.R")
+```
+
+::: {.callout-important}
+**Lab 1 (Plotting)** due by 11:59 p.m. on `r advdate2(mon, 3)`.
+:::
+
+We make our plots readable and beautiful: color schemes, themes, annotations, and interactivity.
 
 ## Readings
 
-| 📖 [r4ds, chs 8.1 & 8.2](https://r4ds.hadley.nz/data-import.html#introduction)
-| 📖 [r4ds, chs 6.1 & 6.3](https://r4ds.hadley.nz/data-tidy.html)
+| 📖 [Healy, ch. 8: Refine Your Plots](https://socviz.co/08-polishing.html)
+| 📖 [Healy, ch. 5: Graph Tables, Add Labels, Make Notes](https://socviz.co/05-more-on-geoms.html)
+| 📖 [Lipset, "Some Social Requisites of Democracy"](https://www-jstor-org.proxygw.wrlc.org/stable/1951731?seq=8)
+| 📖 [r4ds, 12.4](https://r4ds.hadley.nz/communication.html#scales)
+| 📖 [r4ds, 12.3 & 12.5](https://r4ds.hadley.nz/communication.html#annotations)
 
 ## Videos
 
-| 🖥️ [Retrieve Some Messy WB Data](https://youtu.be/YLOaKB8dfF4)
-| 🖥️ [Reading Data into R](https://youtu.be/i5galFqlj8c)
-| 🖥️ [Reshaping Data with pivot_longer](https://youtu.be/yhFUUblhTNA)
-| 🖥️ [Truncating Strings and Changing Variable Types](https://youtu.be/-JT8JSR1z5A)
-| 🖥️ [Cleaning Variable Names with the janitor Package](https://youtu.be/7bgoebbzfKQ)
+| 🖥️ [Color schemes](https://youtu.be/fBCtSjg_-Ik)
+| 🖥️ [Themes](https://youtu.be/Le0OJXdsy3o)
+| 🖥️ [Annotations](https://youtu.be/uEpBMgWilXc)
+| 🖥️ [Interactivity](https://youtu.be/T-7jtbcwaJ0)
 
 ## Assignments
 
-| 📘 [Module 1.1 Quiz](https://blackboard.gwu.edu/ultra/courses/_394195_1/outline)
+| 🧪 [Lab 1: Plotting](/assignments/lab-1.qmd)
+| 📘 Weekly quiz, in class

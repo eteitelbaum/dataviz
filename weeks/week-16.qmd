@@ -1,0 +1,21 @@
+---
+title: "Week 16"
+subtitle: "Final presentations"
+format: html
+---
+
+```{r}
+#| label: setup
+#| include: false
+source("../helper.R")
+```
+
+::: {.callout-important}
+**Final project** due — present your app in class on `r advdate2(tue, 15)`.
+:::
+
+We wrap up the term with lightning-talk presentations of everyone's Shiny apps.
+
+## Assignments
+
+| ✍️ [Final Project](/project/project-assignment-2.qmd)

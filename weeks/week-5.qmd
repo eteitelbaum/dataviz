@@ -1,4 +1,36 @@
 ---
-title: Week 5
-subtitle: Interactive Apps
+title: "Week 5"
+subtitle: "Importing & merging data"
+format: html
 ---
+
+```{r}
+#| label: setup
+#| include: false
+source("../helper.R")
+```
+
+::: {.callout-important}
+**Lab 2 (Wrangling)** due by 11:59 p.m. on `r advdate2(mon, 5)`.
+:::
+
+We pull data straight from APIs and merge sources into a single tidy data frame.
+
+## Readings
+
+| 📖 [Norris, "Electoral Reform and Women's Representation"](https://link.springer.com/article/10.1057/palgrave.ap.5500151)
+| 📖 [r4ds, 20.3](https://r4ds.hadley.nz/joins.html#sec-mutating-joins)
+| 📖 [r4ds, 4.5](https://r4ds.hadley.nz/data-transform.html#groups)
+
+## Videos
+
+| 🖥️ [Download data from the World Bank](https://youtu.be/cBRTP2imt_o)
+| 🖥️ [Filter data and select variables](https://youtu.be/7CvYTeMP_PU)
+| 🖥️ [Add country codes](https://youtu.be/ZGD0kO_iwAM)
+| 🖥️ [Merge two data frames](https://youtu.be/wNF3ZPneHWw)
+| 🖥️ [Group, summarize and arrange](https://youtu.be/2nX9p6arQjg)
+
+## Assignments
+
+| 🧪 [Lab 2: Wrangling](/assignments/lab-2.qmd)
+| 📘 Weekly quiz, in class

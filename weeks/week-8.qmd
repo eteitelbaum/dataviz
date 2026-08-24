@@ -1,0 +1,21 @@
+---
+title: "Week 8"
+subtitle: "Fall break & project ideation"
+format: html
+---
+
+```{r}
+#| label: setup
+#| include: false
+source("../helper.R")
+```
+
+::: {.callout-important}
+**No class Tuesday** (fall break). **Project proposal** due by 11:59 p.m. on `r advdate2(mon, 8)`.
+:::
+
+Thursday is a flex session: we step back to talk about what makes good data visualization and brainstorm ideas for your final project.
+
+## Assignments
+
+| ✍️ [Project Proposal](/project/project-assignment-1.qmd)

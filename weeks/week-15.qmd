@@ -1,0 +1,13 @@
+---
+title: "Week 15"
+subtitle: "Project studio"
+format: html
+---
+
+```{r}
+#| label: setup
+#| include: false
+source("../helper.R")
+```
+
+More in-class studio time: peer feedback and dry-run presentations to get your app ready for the final session.

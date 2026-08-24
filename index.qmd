@@ -7,16 +7,7 @@ editor: visual
 ```{r}
 #| label: setup
 #| include: false
-library(lubridate)
-
-tue <- as_date("2026-08-25")
-thu <- tue + days(2)
-
-advdate <- function(day, week) {
-  date <- (day + weeks(week))
-  dm <- paste(month(date, label = TRUE)," ", day(date))
-  return(dm)
-}
+source("helper.R")
 ```
 
 This page displays an outline of the topics, content, and assignments for the term. Our class meets **Tuesdays and Thursdays, 11:10 a.m.--12:25 p.m., in the Hall of Government, Room 102.** Each topic spans one week (Tuesday and Thursday). **Note that all of your coding and project assignments are due on the Monday after they are assigned at 11:59 p.m.**

@@ -1,0 +1,21 @@
+---
+title: "Week 12"
+subtitle: "Extending & deploying your app"
+format: html
+---
+
+```{r}
+#| label: setup
+#| include: false
+source("../helper.R")
+```
+
+We add more inputs, build a time-series app, and deploy and share our apps on shinyapps.io.
+
+## Readings
+
+| 📖 [Huntington, "Democracy's Third Wave"](https://muse-jhu-edu.proxygw.wrlc.org/article/225602)
+
+## Assignments
+
+| 📘 Weekly quiz, in class

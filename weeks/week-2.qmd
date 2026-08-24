@@ -1,21 +1,32 @@
 ---
 title: "Week 2"
-subtitle: "Getting Started, Part 2"
+subtitle: "Charting with ggplot2"
 format: html
 ---
 
-::: callout-important
-## No Class
+```{r}
+#| label: setup
+#| include: false
+source("../helper.R")
+```
 
-September 4 is Labor Day!
-:::
+We start making plots right away with `ggplot2`, using clean data so we can focus on the visualization.
 
 ## Readings
 
-| 📖 [Happy Git and Github for the R useR](https://happygitwithr.com/), chaps 4,6,9,11 & 12
+| 📖 [Healy, ch. 3: Make a Plot](https://socviz.co/03-ggplot-basics.html)
+| 📖 [Healy, ch. 4: Show the Right Numbers](https://socviz.co/04-group-facet-transform.html)
+| 📖 [r4ds, ch. 2](https://r4ds.hadley.nz/data-visualize.html)
+| 📖 [r4ds, 10.1-10.4](https://r4ds.hadley.nz/layers.html)
+| 📖 [r4ds, 12.2](https://r4ds.hadley.nz/communication.html#labels)
 
 ## Videos
 
-| 🖥[Getting Started With Quarto](https://www.youtube.com/watch?v=c654j7aQjcg)
-| 🖥[Getting Started With GitHub](https://www.youtube.com/watch?v=ApvMnAfQe8A)
+| 🖥️ [Bar charts](https://youtu.be/hl02sVTyCRA)
+| 🖥️ [Histograms](https://youtu.be/LuNDAIQXx9w)
+| 🖥️ [Line charts](https://youtu.be/cHos9y261SQ)
+| 🖥️ [Scatter plots](https://youtu.be/Cvme3C268wE)
 
+## Assignments
+
+| 📘 Weekly quiz, in class

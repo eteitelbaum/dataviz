@@ -1,0 +1,24 @@
+---
+title: "Week 9"
+subtitle: "Tables"
+format: html
+---
+
+```{r}
+#| label: setup
+#| include: false
+source("../helper.R")
+```
+
+We build polished tables of data with `kableExtra` and `gt`, and add confidence intervals.
+
+## Videos
+
+| 🖥️ [Working with tidycensus](https://www.youtube.com/embed/wo9vZccmqwc)
+| 🖥️ [Explore data with kableExtra](https://www.youtube.com/embed/wo9vZccmqwc)
+| 🖥️ [Make a gt table](https://www.youtube.com/embed/wo9vZccmqwc)
+| 🖥️ [Make a coefficient plot](https://www.youtube.com/embed/wo9vZccmqwc)
+
+## Assignments
+
+| 📘 Weekly quiz, in class

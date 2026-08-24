@@ -1,0 +1,28 @@
+---
+title: "Week 7"
+subtitle: "Interactive maps"
+format: html
+---
+
+```{r}
+#| label: setup
+#| include: false
+source("../helper.R")
+```
+
+::: {.callout-important}
+**Lab 3 (Maps)** due by 11:59 p.m. on `r advdate2(mon, 7)` (or as announced given fall break).
+:::
+
+We build interactive maps with `leaflet` and customize them with markers, popups, and basemaps.
+
+## Videos
+
+| 🖥️ [Upload UCDP data](https://youtu.be/If2PwFv90iI)
+| 🖥️ [Make a leaflet map](https://youtu.be/hHUPqgHRqYU)
+| 🖥️ [Customize your map](https://youtu.be/qLYeSsoDvgs)
+
+## Assignments
+
+| 🧪 [Lab 3: Maps](/assignments/lab-3.qmd)
+| 📘 Weekly quiz, in class
