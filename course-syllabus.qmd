@@ -4,9 +4,9 @@ title: "Course Syllabus"
 
 ## Course Information
 
-Location: Gelman Library, Rm 642
+Location: Hall of Government, Rm 102
 
-Time: 11:10 -12:25
+Meeting times: Tuesdays and Thursdays, 11:10 a.m. -- 12:25 p.m.
 
 | Instructor: Prof. Emmanuel Teitelbaum
 | Email: [ejt\@gwu.edu](mailto:ejt@gwu.edu)
@@ -39,19 +39,29 @@ I care about your learning and also about this subject matter, and I am here to 
 
 ## Policy on AI Tools
 
-**Overview:**
+### Why this policy
 
-The use of ChatGPT can be a valuable tool for students in this course, but it is important to use it ethically and appropriately. By following the guidelines and expectations outlined in this syllabus policy, students can maximize the benefits of using ChatGPT while also demonstrating their own critical thinking, research, and programming skills.
+This course exists so that *you* develop genuine skill in R and data visualization. AI coding assistants---such as ChatGPT, Claude, Gemini, Copilot, and IDE-integrated tools like Cursor---are now a real part of data-science practice, and you are welcome to use them. But *how* and *when* you use them determines whether you actually learn. There is an important distinction between using AI as a learning support and using it to replace learning entirely. Submitting AI-generated work as your own defeats the purpose of the course.
 
-As part of this course, students will have the option to use ChatGPT, a large language model trained by OpenAI, to assist in the writing of their R scripts for specific course assignments. ChatGPT can provide students with a starting point for their code but often the code is incomplete or error-prone. It is important to recognize that ChatGPT is a tool and not a substitute for critical thinking, research, or programming skills. Therefore, this syllabus policy outlines the guidelines and expectations for using ChatGPT in this course.
+### The four principles
 
-**Guidelines:**
+Follow these principles whenever you use AI tools:
 
-Use ChatGPT ethically and honestly. Do not use ChatGPT to plagiarize or take credit for work that is not your own. Any use of ChatGPT must be properly cited and referenced in accordance with the university's code of academic integrity.
+-   **Try first**: Before turning to an AI tool, consult the course materials, lecture videos, and readings. For labs, work through the guided hints before seeking AI assistance. For homework, it is appropriate to consult AI if you are genuinely stuck.
 
-Recognize the limitations of ChatGPT. ChatGPT is a machine learning model and may not always provide the most accurate or relevant information. Therefore, it is important to critically evaluate the information and verify it with other sources.
+-   **Use AI as a consultant, not a ghostwriter**: Asking an AI tool to explain how a function works, debug code that isn't running, or decipher an error message is a legitimate use. Asking it to complete your assignments for you is not.
 
-Use ChatGPT appropriately. ChatGPT should only be used to assist in writing boilerplate syntax for this course. It's a starting point. It should not be used to attempt to complete other assignments or assessments in this course or in other courses.
+-   **Think critically**: AI tools make mistakes. They hallucinate functions, write syntactically incorrect code, and sometimes give confidently wrong answers. You are responsible for understanding and verifying any code you submit.
+
+-   **Acknowledge your use**: If you use an AI tool in completing an assignment, note this in your submission and confirm that the tool was used in an advisory capacity rather than to generate your final product.
+
+### What this means by assessment type
+
+-   **Module quizzes**: No AI. These check your own understanding, and you should complete them on your own.
+
+-   **Coding assignments**: AI is welcome as a *consultant* once you have tried the course materials and are genuinely stuck. You must understand and be able to explain every line you submit. Include a one-line note describing what tool you used and how.
+
+-   **Final project**: AI is encouraged as a real-world tool for debugging and boilerplate. The design, data choices, analysis, and interpretation, however, must be your own---that is the work the project is meant to demonstrate.
 
 ## Office Hours
 
@@ -109,7 +119,7 @@ You will need to download RStudio, Git and the Discord desktop application. You 
 
 ## Course Credit Hour Policy
 
-Summer courses are more than twice as intensive as those held during the academic year. Over 6 weeks, students will spend approximately 18.75 hours per week doing independent learning, including, but not limited to, readings, quizzes, assignments and a final project. This amounts to 36 hours of direct-instruction and 76.5 hours independent coursework.
+This is a 3-credit course. Following the university credit-hour policy, over the roughly 15-week semester you should expect approximately 2.5 hours of direct instruction per week (our Tuesday and Thursday class meetings) and a minimum of 5 hours per week of independent work---including readings, quizzes, coding assignments, and your final project. Over the term this amounts to about 37.5 hours of direct instruction and 75 hours of independent coursework.
 
 ### How this applies to you
 
