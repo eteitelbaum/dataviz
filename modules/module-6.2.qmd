@@ -1,5 +1,5 @@
 ---
-title: "Module 6.2"
+title: "Deploying & sharing your app"
 subtitle: "Sharing Your App"
 format: 
   html:

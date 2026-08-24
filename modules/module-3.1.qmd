@@ -1,5 +1,5 @@
 ---
-title: "Module 3.1"
+title: "Choropleth maps"
 subtitle: "Choropleth Maps"
 format: 
   html:

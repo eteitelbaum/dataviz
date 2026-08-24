@@ -1,5 +1,5 @@
 ---
-title: "Module 6.1"
+title: "Project studio"
 subtitle: "Building Your App"
 format: 
   html:

@@ -1,5 +1,5 @@
 ---
-title: "Module 2.1"
+title: "Charting with ggplot2"
 subtitle: "Visualizing Data With ggplot2"
 format: 
   html:

@@ -1,5 +1,5 @@
 ---
-title: "Module 5.2"
+title: "Extending your app"
 subtitle: "Exploring Reactivity"
 format: 
   html:

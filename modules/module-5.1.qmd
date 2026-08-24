@@ -1,5 +1,5 @@
 ---
-title: "Module 5.1"
+title: "Building a Shiny app"
 subtitle: "Your First Shiny App"
 format: 
   html:

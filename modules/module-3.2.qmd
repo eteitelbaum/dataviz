@@ -1,5 +1,5 @@
 ---
-title: "Module 3.2"
+title: "Interactive maps"
 subtitle: "Leaflet Maps"
 format: 
   html:
