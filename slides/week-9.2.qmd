@@ -1,0 +1,204 @@
+---
+title: "Advanced Table Skills"
+date: today
+date-format: long
+footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
+logo: images/dataviz-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    multiplex: true
+    chalkboard: true
+execute:
+  echo: true
+  message: false
+  warning: false
+  freeze: auto
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(stringr)
+library(dplyr)
+library(gt)
+library(tidycensus)
+
+my_api_key = Sys.getenv("census_api_key")
+census_api_key(my_api_key)
+```
+
+
+# gtExtras
+
+## The `gtExtras` package
+
+- By now we know the difference between a graph and a table
+  - **Tables** are good for comparing individual values
+  - **Graphs** are for visualizing a whole bunch of values
+- Usually we keep our graphs and tables separate
+- But are there times when we might want to combine them?
+- `gtExtras` lets us include sparklines, histograms, etc. in our tables
+
+## Democracy Example
+
+<br>
+
+```{r}
+library(vdemlite)
+
+# Grab the polyarchy scores for the United States between 2000 and 2020
+brics_dem <- fetchdem(indicators = "v2x_polyarchy",
+                         start_year = 2000, end_year = 2020,
+                         countries = c("BRA", "RUS", "IND", "CHN", "ZAF"))
+```
+
+## Democracy Example
+
+<br>
+
+```{r}
+library(dplyr)
+
+dem_summary <- brics_dem|>
+  group_by(country_id) |>
+  summarize(
+    max = max(v2x_polyarchy, na.rm = TRUE),
+    mean = mean(v2x_polyarchy, na.rm = TRUE),
+    sd = sd(v2x_polyarchy, na.rm = TRUE),
+    dem_data = list(v2x_polyarchy),
+    .groups = "drop"
+  )
+```
+
+## Democracy Example
+
+<br>
+
+```{r}
+library(gtExtras)
+
+dem_summary |>
+  gt() |>
+  gt_plt_sparkline(dem_data) #from gtExtras
+```
+
+## Your Turn!
+
+<br>
+
+- Download democracy data for one year
+- Indicator is your choice
+- Add region codes
+- Group and summarize by region
+- Add an appropriate inline plot to your table
+
+```{r}
+#| echo: false
+
+library(countdown)
+countdown(minutes = 15, 
+          bottom = "10%", 
+          right = "10%",
+          color_border = "#fff",
+          color_text = "#fff",
+          color_running_background = "#42affa",
+          color_running_text = "black",
+          color_finished_background = "#E5D19D",
+          color_finished_text = "#00264A")
+```
+
+
+# When Not to Use a Table
+
+## Not a Good Table {.scrollable}
+
+```{r}
+#| echo: false
+
+library(janitor)
+
+mass_med_inc <- get_acs(
+  geography = "county", 
+  variables = c(median_income = "B06011_001"), 
+  state = "MA", 
+  year = 2021
+  ) |>
+  mutate(
+    lower_90 = estimate - moe,
+    upper_90 = estimate + moe 
+  ) |>
+  clean_names() |>
+  mutate(name = str_replace_all(name, " County, Massachusetts", "")) |>
+  select(name, estimate, lower_90, upper_90)
+
+kableExtra::kable(mass_med_inc)
+```
+
+## Use Confidence Intervals Instead
+
+```{r}
+#| echo: false
+
+library(ggplot2)
+
+mass_med_inc |>
+  ggplot(aes(x = estimate, y = reorder(name, estimate))) +
+  geom_errorbar(aes(xmin = lower_90, xmax = upper_90)) +
+  geom_point(color = "red", size = 2) +
+  labs(title = "Household income by county in Massachusetts",
+       subtitle = "2017-2021 American Community Survey",
+       y = "",
+       x = "Median Income", 
+       caption = "ACS estimate (bars represent 90% confidence intervals)") +
+  theme_minimal()
+```
+
+## Use Confidence Intervals Instead
+
+<br>
+
+```{r}
+#| output: false
+
+library(ggplot2)
+
+mass_med_inc |>
+  ggplot(aes(x = estimate, y = reorder(name, estimate))) +
+  geom_errorbar(aes(xmin = lower_90, xmax = upper_90)) +
+  geom_point(color = "red", size = 2) +
+  labs(title = "Household income by county in Massachusetts",
+       subtitle = "2017-2021 American Community Survey",
+       y = "",
+       x = "Median Income", 
+       caption = "ACS estimate (bars represent 90% confidence intervals)") +
+  theme_minimal()
+```
+
+## Your Turn!
+
+<br>
+
+- Download data on median income for another state
+- Plot the income estimates for that state
+
+```{r}
+#| echo: false
+countdown(minutes = 15, 
+          bottom = "10%", 
+          right = "10%")
+```
+
+# Time Permitting
+
+## `reactable`
+
+<br>
+
+- `reactable` is an [R package](https://glin.github.io/reactable/index.html) that lets you create interactive tables
+- You can sort, filter, and search the table
+- Based on the [React Table](https://github.com/tanstack/table/tree/v7?tab=readme-ov-file) library
+- Let's explore it together!

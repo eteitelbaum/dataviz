@@ -1,0 +1,306 @@
+---
+title: "Make a Map Function"
+date: today
+date-format: long
+footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
+logo: images/dataviz-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    #multiplex: true
+    chalkboard: true
+execute:
+  echo: true
+  message: false
+  warning: false
+  freeze: auto
+---
+
+# Make a Map Function
+
+## What is a Function
+
+- A reusable piece of code that takes some inputs, performs some operations and returns an output
+- Elements
+  - Inputs (arguments)
+  - Operations (code block)
+  - Output (return value)
+- Like cooking (to produce a dish, you have a recipe and ingredients)
+- Don't repeat yourself (DRY)
+
+## Simple Example
+
+<br>
+
+```{r}
+# Define the function
+square_number <- function(x) {
+  result <- x^2
+  return(result)
+}
+
+# Use the function
+square_number(55)
+```
+
+## Tidy Evaluation
+
+<br>
+
+In the Tidyverse, ridy evaluation allows you to reference a column without using quotes or referencing the data frame
+
+<br>
+
+```{r}
+#| eval: false
+#| code-line-numbers: false
+democracy |> filter(polyarchy > .5)
+```
+vs. 
+```{r}
+#| eval: false
+#| code-line-numbers: false
+democracy[democracy$polyarchy > .5, ]
+```
+or
+```{r}
+#| eval: false
+#| code-line-numbers: false
+democracy[democracy[["polyarchy"]] > .5, ]
+```
+
+## Tidy Evaluation
+
+- Tidy evaluation lets us refer to **column names** without quotes, which is great for interactive use.
+- But it can be **tricky** for programming because `dplyr` and `ggplot2` assume that any argument passed to them is already a column name.
+- When we pass a **variable** containing a column name (e.g., a string), R doesn't automatically evaluate the variable to find the column name.
+- We need to explicitly tell R to look inside the variable and treat it as a column.
+
+## Tidy Evaluation
+
+<br> 
+
+- To do this we use `{{}}` in functions
+- For Shiny apps and strings we will use `.data[[]]`
+- Can also use `!!sym()` in some contexts
+- Depricated or less preferred methods include `get()`, `eval(parse())`,`aes_string()` and `!!enquo()`
+
+
+## Map Function
+
+```{r}
+#| label: map-function0
+#| echo: false
+
+source("functions/wb-maps.R", local = knitr::knit_global())
+
+create_map(var_id = "SL.TLF.CACT.FE.ZS", 
+           title= "Female Labor Force Participation", 
+           legend_title = "FLFP %", 
+           theme = "inferno", 
+           direction = -1)
+```
+
+## Map Function
+
+<br>
+
+```{r}
+#| label: map-function0.1
+#| eval: false
+
+source("functions/wb-maps.R", local = knitr::knit_global())
+
+create_map(var_id = "SL.TLF.CACT.FE.ZS", 
+           title= "Female Labor Force Participation", 
+           legend_title = "FLFP %", 
+           theme = "inferno", 
+           direction = -1)
+```
+
+## Map Function
+
+```{r}
+#| lable: map-function1
+#| echo: true
+#| output: false 
+#| code-line-numbers: "|7,11,16,18-19,27-28"
+
+library(rnaturalearth)
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+library(wbstats)
+
+create_map <- function(var_id, title, legend_title, theme, direction){
+
+ne_countries(scale = "medium", returnclass = "sf") |> 
+  left_join(
+    wb_data(var_id, mrnev = 1), 
+    join_by(iso_a3 == iso3c)
+  ) |> 
+  filter(name != "Antarctica") |>  
+  ggplot() + 
+  geom_sf(aes(fill = .data[[var_id]])) + 
+  labs(
+    title =  title, 
+    fill = legend_title, 
+    caption = "Source: World Bank Development Indicators"
+    ) +
+  theme_map() +
+  theme(
+    plot.title = element_text(face = "bold"),
+  ) +
+  scale_fill_viridis_c( 
+    option = theme, 
+    direction = direction 
+    )
+}
+```
+
+## Map Function
+
+<br>
+
+Save the source code in a folder... 
+
+<br>
+
+```{r}
+#| label: map-function7
+#| echo: true
+#| output: false
+
+source("functions/wb-maps.R", local = knitr::knit_global())
+```
+
+<br> 
+
+and call in your document...<br>
+
+```{r}
+#| label: map-function8
+#| output: false
+
+create_map(var_id = "SL.TLF.CACT.FE.ZS", 
+           title= "Female Labor Force Participation", 
+           legend_title = "FLFP %", 
+           theme = "inferno", 
+           direction = -1)
+```
+
+## Your Turn{.smaller}
+
+<br>
+
+- Take the code from module 3.1, paste in an R script and save in a folder
+- Call `source()` and then the function in your Quarto document
+- Change the values for the five parameters 
+- Go back to the code and add a new parameter (like subtitle)
+- Try calling the function again
+- Write something about your map and render the Quarto document
+
+```{r}
+#| label: exercise5_timer
+#| echo: false
+
+library(countdown)
+
+countdown(minutes = 10)
+```
+
+## Democracy Function{.smaller}
+
+<br>
+
+- Can you make a map function for a democracy indicator?
+- Come up with a plan
+  - What will the name of the function be?
+  - What will the parameters be?
+  - What would the
+- Take democracy code from last class and implement
+- Add more parameters if desired
+
+```{r}
+#| label: exercise6_timer
+#| echo: false
+
+countdown(minutes = 10, 
+          bottom = "10%", 
+          right = "10%"
+          )
+```
+
+## Other Functions
+
+<br>
+
+- What other visualizations could you "functionize"?
+- Line charts?
+- Bar charts? 
+- Scatter plots? 
+- Try one!
+
+## Group and Summarize
+
+<br>
+
+```{r}
+#| eval: false
+
+# var_id = any World Bank indicator
+# mrv = number of most recent values
+# group_var = column to group by (country or date)
+
+mean_wb_data <- function(var_id, mrv, group_var){
+  wb_data(var_id, mrv = mrv) |> 
+    group_by( {{ group_var }}) |> 
+    summarize(mean_value = mean(.data[[var_id]], na.rm = TRUE))
+}
+
+# Example call
+mean_wb_data("SL.TLF.CACT.FE.ZS", 3, date)
+```
+
+## Line Chart
+
+<br>
+
+```{r}
+#| eval: false
+
+create_line_chart <- function(data, x_var, y_var, color_var, title, x_label,
+                              y_label, legend_title, color_palette = "turbo",
+                              palette_end = 0.8) {
+  
+  ggplot(data, aes(x = {{ x_var }}, y = {{ y_var }}, color = {{ color_var }})) +
+    geom_line() +
+    labs(
+      title = title,
+      x = x_label,
+      y = y_label
+    ) +
+    scale_color_viridis_d(
+      name = legend_title,  
+      option = color_palette, 
+      end = palette_end
+    ) +
+    theme_minimal()
+}
+
+# Example call
+create_line_chart(
+  data = brics_dem, 
+  x_var = year, 
+  y_var = v2x_polyarchy, 
+  color_var = country_name, 
+  title = "Democracy in the BRICS Nations", 
+  x_label = "Year", 
+  y_label = "Polyarchy Score",
+  legend_title = "Index"
+)
+```
+
+
