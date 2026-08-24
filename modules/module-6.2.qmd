@@ -11,6 +11,11 @@ execute:
   warning: false
 ---
 
+::: {.callout-note}
+## Packages in this module
+**Packages:** `shiny`, `rsconnect`
+:::
+
 :::{.callout-tip}
 ## Prework
 - Sign up for a free account on [ShinyApps.io](https://www.shinyapps.io/)

@@ -11,6 +11,13 @@ execute:
   warning: false
 ---
 
+::: {.callout-note}
+## Packages & functions in this module
+**Packages:** `readr`, `dplyr`, `tidyr`
+
+**Functions:** `read_csv()`, `glimpse()`, `pivot_longer()`, `mutate()`, `mutate_at()`, `substring()`
+:::
+
 ::: {.callout-tip}
 ## Prework
 

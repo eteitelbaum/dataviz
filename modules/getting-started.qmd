@@ -7,6 +7,11 @@ execute:
   warning: false
 ---
 
+::: {.callout-note}
+## Packages in this module
+**Packages:** `tidyverse`, `quarto`
+:::
+
 ## R and RStudio {#sec-rstudio-setup}
 
 {{< video https://youtu.be/eimM6pNkYjE title='Getting Started with R and R Studio' >}}

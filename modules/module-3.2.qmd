@@ -11,6 +11,13 @@ execute:
   warning: false
 ---
 
+::: {.callout-note}
+## Packages & functions in this module
+**Packages:** `sf`, `leaflet`, `htmltools`
+
+**Functions:** `leaflet()`, `st_as_sf()`, `addTiles()`, `addMarkers()`, `addProviderTiles()`, `setView()`, `addLegend()`
+:::
+
 ::: {.callout-tip}
 ## Prework
 

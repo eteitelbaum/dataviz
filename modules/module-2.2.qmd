@@ -11,6 +11,13 @@ execute:
   warning: false
 ---
 
+::: {.callout-note}
+## Packages & functions in this module
+**Packages:** `tidyr`, `colorBlindness`, `dplyr`, `viridis`, `RColorBrewer`, `ggplot2`, `plotly`
+
+**Functions:** `drop_na()`, `cvdPlot()`, `scale_fill_manual()`, `scale_fill_viridis_d()`, `scale_fill_brewer()`, `scale_color_manual()`, `scale_color_viridis_d()`, `scale_color_brewer()`, `theme_minimal()`, `annotate()`, `geom_hline()`, `geom_vline()`, `ggplotly()`, `layout()`
+:::
+
 ::: {.callout-tip}
 ## Prework
 

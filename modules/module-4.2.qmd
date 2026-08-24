@@ -11,6 +11,13 @@ execute:
   warning: false
 ---
 
+::: {.callout-note}
+## Packages & functions in this module
+**Packages:** `peacesciencer`, `broom`, `dplyr`, `modelsummary`
+
+**Functions:** `create_stateyears()`, `add_ucdp_acd()`, `add_democracy()`, `tidy()`, `mutate_if()`, `glm()`, `binomial()`, `list()`, `modelsummary()`, `modelplot()`, `rev()`
+:::
+
 ::: callout-tip
 ## Prework
 

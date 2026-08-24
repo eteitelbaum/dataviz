@@ -11,6 +11,13 @@ execute:
   warning: false
 ---
 
+::: {.callout-note}
+## Packages & functions in this module
+**Packages:** `dplyr`, `shiny`
+
+**Functions:** `fluidPage()`, `titlePanel()`, `sidebarLayout()`, `sidebarPanel()`, `selectInput()`, `mainPanel()`, `plotOutput()`, `renderPlot()`, `reactive()`, `shinyApp()`
+:::
+
 :::{.callout-tip}
 ## Prework
 - Install Shiny (`install.packages("shiny")`)

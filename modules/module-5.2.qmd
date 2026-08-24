@@ -11,6 +11,13 @@ execute:
   warning: false
 ---
 
+::: {.callout-note}
+## Packages & functions in this module
+**Packages:** `fredr`, `shiny`
+
+**Functions:** `fredr_set_key()`, `reactive()`, `sliderInput()`, `fredr()`, `fred_indicator()`
+:::
+
 :::{.callout-tip}
 ## Prework
 - Get a [FRED API key](https://fred.stlouisfed.org/docs/api/api_key.html)

@@ -11,6 +11,13 @@ execute:
   warning: false
 ---
 
+::: {.callout-note}
+## Packages & functions in this module
+**Packages:** `wbstats`, `vdemdata`, `dplyr`, `janitor`, `countrycode`, `readr`
+
+**Functions:** `wb_data()`, `vdem`, `select()`, `filter()`, `case_match()`, `round_to_fraction()`, `countrycode()`, `left_join()`, `write_csv()`, `group_by()`, `summarize()`, `arrange()`
+:::
+
 ::: {.callout-tip}
 ## Prework
 

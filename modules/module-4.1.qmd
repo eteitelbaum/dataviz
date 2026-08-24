@@ -11,6 +11,13 @@ execute:
   warning: false
 ---
 
+::: {.callout-note}
+## Packages & functions in this module
+**Packages:** `tidycensus`, `dplyr`, `stringr`, `kableExtra`, `gt`, `ggplot2`
+
+**Functions:** `census_api_key()`, `load_variables()`, `get_acs()`, `rename()`, `str_remove()`, `kable()`, `slice_max()`, `slice_min()`, `bind_rows()`, `gt()`, `tab_header()`, `cols_label()`, `fmt_currency()`, `tab_source_note()`, `cols_align()`, `gtsave()`, `geom_errorbar()`
+:::
+
 ```{r}
 #| label: real_setup
 #| include: false

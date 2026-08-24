@@ -13,6 +13,13 @@ execute:
   warning: false
 ---
 
+::: {.callout-note}
+## Packages & functions in this module
+**Packages:** `ggplot2`, `scales`
+
+**Functions:** `ggplot()`, `geom_col()`, `geom_histogram()`, `aes()`, `labs()`, `geom_line()`, `geom_point()`, `geom_smooth()`, `scale_x_log10()`, `label_number()`, `geom_text()`
+:::
+
 ::: {.callout-tip}
 ## Prework
 

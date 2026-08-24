@@ -11,6 +11,13 @@ execute:
   warning: false
 ---
 
+::: {.callout-note}
+## Packages & functions in this module
+**Packages:** `rnaturalearth`, `ggplot2`, `ggthemes`, `viridis`
+
+**Functions:** `ne_countries()`, `geom_sf()`, `theme_map()`, `theme()`, `scale_fill_viridis_c()`, `source()`, `function()`
+:::
+
 ::: {.callout-tip}
 ## Prework
 
