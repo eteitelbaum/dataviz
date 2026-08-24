@@ -46,4 +46,4 @@ There are two parts to this assignment. In Part I, you will use `tidycensus` and
 
 ## Submission
 
-*After rendering your document, export your project folder and submit it on Blackboard. You will find the link to the Coding Assignment one submission portal under the Assignments link. There is a screen capture video in the Discord server that will help you understand how to do this.*
+*After rendering your document, compress (zip) your project folder and submit it on Blackboard. You will find the link to the Coding Assignment one submission portal under the Assignments link. There is a screen capture video in the Discord server that will help you understand how to do this.*

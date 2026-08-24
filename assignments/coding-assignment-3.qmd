@@ -9,7 +9,7 @@ execute:
 
 For this assignment, we are going to be evaluating Michael Ross's influential book [The Oil Curse](https://www-jstor-org.proxygw.wrlc.org/stable/j.ctt7s3wz.10).  According to Michael Ross, oil undermines democracy in a number of ways. We will map some data in order to evaluate different aspects of his argument.
 
-**Submission note**: After rendering your document, export your project folder and submit it on Blackboard, as with previous assignments.
+**Submission note**: After rendering your document, compress (zip) your project folder and submit it on Blackboard, as with previous assignments.
 
 ## Step 1: Create a data frame with country shapes (25 pts)
 
@@ -84,4 +84,4 @@ For this assignment, we are going to be evaluating Michael Ross's influential bo
 
 ## Submission
 
-*After rendering your document, export your project folder and submit it on Blackboard. You will find the link to the Coding Assignment one submission portal under the Assignments link. There is a screen capture video in the Discord server that will help you understand how to do this.*
+*After rendering your document, compress (zip) your project folder and submit it on Blackboard. You will find the link to the Coding Assignment one submission portal under the Assignments link. There is a screen capture video in the Discord server that will help you understand how to do this.*
