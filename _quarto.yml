@@ -3,11 +3,11 @@ project:
 
 website:
   page-navigation: true
-  title: "PSC/DATS 2102--Fall Schedule"
+  title: "PSC/DATS 2102--Course Schedule"
   description: "Homepage for PSC/DATS 2102, George Washington University."
-  
+
   site-url: "https://dataviz-gwu.rocks"
-  repo-url: "https://github.com/eteitelbaum/dataviz-summer-2023"
+  repo-url: "https://github.com/eteitelbaum/dataviz"
   repo-actions: [edit, issue]
   
   open-graph: true
@@ -17,7 +17,7 @@ website:
   
   page-footer:
     right: "This page is built with [Quarto](https://quarto.org/). 👷🛠️"
-    left: "&copy; Copyright 2023, [Emmanuel Teitelbaum](https://emmanuel.teitelbaum.com)"
+    left: "&copy; Copyright 2026, [Emmanuel Teitelbaum](https://emmanuel.teitelbaum.com)"
     background: "#1F45FC"
   
   sidebar:
