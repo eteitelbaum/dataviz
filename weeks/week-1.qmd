@@ -21,8 +21,8 @@ This week we get our tools set up and look at what data visualization can do. Se
 
 ## Videos
 
-| 🖥️ [R and RStudio](https://youtu.be/gssjyyl7vxI)
-| 🖥️ [Quarto](https://youtu.be/c654j7aQjcg)
+| 🖥️ [Getting Started with R and RStudio](https://youtu.be/eimM6pNkYjE)
+| 🖥️ [Your First Quarto Document](https://youtu.be/6QN9ZYURDFg)
 | 🖥️ [Getting started with GitHub](https://youtu.be/ApvMnAfQe8A)
 
 ## Assignments

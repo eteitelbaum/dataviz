@@ -19,11 +19,9 @@ Now that we can plot, we learn to get data into R and shape it into tidy form.
 
 ## Videos
 
-| 🖥️ [Downloading World Bank data](https://youtu.be/YLOaKB8dfF4)
-| 🖥️ [Reading data from a flat file](https://youtu.be/XOGXn8IiHK8)
-| 🖥️ [Reshaping data](https://youtu.be/ud36szsO9a4)
-| 🖥️ [Strings & variable types](https://youtu.be/-JT8JSR1z5A)
-| 🖥️ [Cleaning variable names](https://youtu.be/7bgoebbzfKQ)
+| 🖥️ [Reading data into R](https://youtu.be/ZwJsSjJRuMU)
+| 🖥️ [Reshaping data](https://youtu.be/u4AXi8A1Bqo)
+| 🖥️ [Cleaning data in R](https://youtu.be/xa0tYCfHHTI)
 
 ## Assignments
 

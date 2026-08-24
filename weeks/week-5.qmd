@@ -24,11 +24,11 @@ We pull data straight from APIs and merge sources into a single tidy data frame.
 
 ## Videos
 
-| 🖥️ [Download data from the World Bank](https://youtu.be/cBRTP2imt_o)
-| 🖥️ [Filter data and select variables](https://youtu.be/7CvYTeMP_PU)
+| 🖥️ [Download data from the World Bank](https://youtu.be/Z_jEYnRBv4M)
+| 🖥️ [Download data from V-Dem](https://youtu.be/ScQD47eJeAE)
 | 🖥️ [Add country codes](https://youtu.be/ZGD0kO_iwAM)
 | 🖥️ [Merge two data frames](https://youtu.be/wNF3ZPneHWw)
-| 🖥️ [Group, summarize and arrange](https://youtu.be/2nX9p6arQjg)
+| 🖥️ [Group, summarize and arrange](https://youtu.be/mgBwVzMV-v8)
 
 ## Assignments
 
