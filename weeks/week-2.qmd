@@ -17,5 +17,5 @@ September 4 is Labor Day!
 ## Videos
 
 | 🖥[Getting Started With Quarto](https://www.youtube.com/watch?v=c654j7aQjcg)
-| 🖥[Git and Github Classroom](https://www.youtube.com/watch?v=ApvMnAfQe8A)
+| 🖥[Getting Started With GitHub](https://www.youtube.com/watch?v=ApvMnAfQe8A)
 

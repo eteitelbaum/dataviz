@@ -72,7 +72,8 @@ Now, let's make our first choropleth map with the data. Let's map World Bank inc
 
 ```{r}
 #| label: first_map
-#| crop: true 
+#| crop: true
+#| out-width: "100%"
 
 library(ggplot2)
 
@@ -89,6 +90,7 @@ The default ggplot settings are pretty good for a preview, but we could make it 
 ```{r}
 #| label: beautify_map
 #| crop: true
+#| out-width: "100%"
 
 library(ggthemes)
 
@@ -131,7 +133,8 @@ Now we can map these data. Everything here is pretty much the same as before, ex
 
 ```{r}
 #| label: oil_rents
-#| crop: true 
+#| crop: true
+#| out-width: "100%"
 
 ggplot(data = rents_map_df) +
   geom_sf(aes(fill = oil_rents_gdp)) + # shade based on oil rents
@@ -220,6 +223,7 @@ Now let's call our `create_map()` function that we just made using female labor 
 ```{r}
 #| label: use_function
 #| crop: true
+#| out-width: "100%"
 create_map(var_id = "SL.TLF.CACT.FE.ZS", 
            title= "Female Labor Force Participation", 
            legend_title = "FLFP %", 
@@ -238,7 +242,8 @@ Now let's take that info. and use it to make a plot of GDP per capita.
 
 ```{r}
 #| label: deploy_function
-#| crop: true 
+#| crop: true
+#| out-width: "100%" 
 
 create_map(var_id = "NY.GDP.PCAP.PP.KD", 
            title= "GDP per capita (constant 2017 internatioal $)", 

@@ -30,8 +30,8 @@ website:
         text: "Blackboard"
         href: https://blackboard.gwu.edu
       - icon: github
-        href: https://classroom.github.com
-        text: "Github Classroom"
+        href: https://github.com
+        text: "GitHub"
       - icon: r-project # bootstrap-reboot
         href: https://posit.co/download/rstudio-desktop
         text: "RStudio Desktop"
@@ -127,7 +127,9 @@ website:
               - href: modules/module-5.1.qmd
                 text: "Building a Shiny app"
               - href: modules/module-5.2.qmd
-                text: "Extending & deploying your app"
+                text: "Extending your app"
+              - href: modules/module-6.2.qmd
+                text: "Deploying & sharing your app"
               - href: modules/module-6.1.qmd
                 text: "Project studio"
 format:
