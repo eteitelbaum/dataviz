@@ -78,10 +78,6 @@ website:
             text: "Coding Assignment 2"
           - href: assignments/coding-assignment-3.qmd
             text: "Coding Assignment 3"
-          - href: assignments/coding-assignment-4.qmd
-            text: "Coding Assignment 4"
-          - href: assignments/coding-assignment-5.qmd
-            text: "Coding Assignment 5"
       - section: "Project"
         contents:
           # - href: project/project-description.qmd

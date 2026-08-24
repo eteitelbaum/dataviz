@@ -1,63 +1,73 @@
 ---
 title: "Coding Assignment 1"
+execute:
+  echo: true
+  message: false
+  warning: false
 ---
 
 ## Overview
 
-For this assignment, you are going to download some variables using the `wbstats` and `vdemlite` packages. Then you are going to wrangle these data and merge the two data sets into one and analyze how they relate to women's representation in national parliaments. Do your work for each step in the code chunks provided. 
+In this assignment you will pull together everything from the first part of the course: you will **download** data from two sources, **wrangle and merge** it, and then **visualize** it to evaluate a classic question in comparative politics---the relationship between economic development and democracy famously argued by Seymour Martin Lipset in ["Some Social Requisites of Democracy."](https://www-jstor-org.proxygw.wrlc.org/stable/1951731?seq=8)
 
-Here is a setup code chunk. You can load all of your packages here or as you go along in the code chunks below using the `library()` function. However, note that you really only need to load a library once per document. 
+You will retrieve a measure of democracy from V-Dem and a measure of economic development, wrangle them into a single tidy data set, and then make a couple of charts to explore whether wealthier countries tend to be more democratic. Do your work in the code chunks provided, and write all interpretation as markdown text (not inside code chunks).
+
+Here is a setup chunk. Load your packages here or as you go along.
 
 ```{r}
+#| label: setup
 
 ```
 
 :::{.callout-warning}
-Please refrain from *installing* any packages in your code chunks because this will also install them every time the code chunk is run or your document is rendered. This may not be desirable for you or whoever is looking at or running your code (e.g. me).
+Please refrain from *installing* packages in your code chunks---installation should happen once in the console, not every time the document renders.
 :::
 
-## Step 1: Download data from V-Dem (20pts)
+## Step 1: Download and merge your data (30 pts)
 
-*Use the V-Dem [codebook](https://www.v-dem.net/data/reference-documents/) or the `searchdem()` function in `vdemlite` to identify one measures of democracy and one indicator related to women's empowerment. Now use `fetchdem()` to download the most recent 25 years or so of data for your analysis for all countries in the dataset. Make sure to load the packages that you need and `glimpse()` the data or `View()` it to make sure that it downloaded properly.* 
+*Choose one measure of democracy from V-Dem---for example liberal democracy (`v2x_libdem`), participatory democracy (`v2x_partipdem`), deliberative democracy (`v2x_delibdem`), or egalitarian democracy (`v2x_egaldem`)---and use `fetchdem()` from `vdemlite` to download it along with GDP per capita (`e_gdppc`) and region codes (`e_regionpol_6C`) for all countries from roughly 1990 onward.*
 
-```{r}
-
-```
-
-## Step 2: Download data from the World Bank (20 pts)
-
-*Next, download the variable on women's represenation that we used in Module 1.2 ("SG.GEN.PARL.ZS") and at least one additional measure related to women's empowerment. Go to the [WDI](https://databank.worldbank.org/source/world-development-indicators) site the wb_search() function to identify relevant variables. Download data for the same time period as you did for the V-Dem data for all countries.* 
-
-::: {.callout-important}
-Try to make sure you download indicators with enough data to conduct your analysis. You won't get great results if there are too many NAs. 
-:::
+*If you would like an extra challenge, you may instead pull GDP per capita from the World Bank with `wbstats`, add country codes with the `countrycode` package, and merge it to your V-Dem data with `left_join()`. Either way, `glimpse()` the result to confirm everything came through.*
 
 ```{r}
 
 ```
 
-## Step 3: Merge the data (20 pts)
+## Step 2: Summarize your data (20 pts)
 
-*Now add country codes using the `countrycode` package and merge the data using `left_join()`.* 
-
-```{r}
-
-```
-
-## Step 4: Summarize your combined data set (20 pts)
-
-*Use `group_by()`, `summarize()` and `arrange()` to glean insights about your data. For example, how do regions compare on mean values of women's representation and how do these values relate to the values of other variables in your data set? Which countries stand out in terms of women's representation? Etc.* 
+*Use a `group_by()`, `summarize()`, `arrange()` sequence to glean some insight from your data. For example, how do world regions compare on average democracy and average GDP per capita? Which countries stand out? Write a sentence or two below the chunk describing what you find.*
 
 ```{r}
 
 ```
 
-## Step 5: Interpret your data (20 pts)
+## Step 3: Line chart of democracy over time (20 pts)
 
-*Write a paragraph or so relating your insights to the Norris reading about electoral reform and women's representation. Picking a handful of country cases from your data, how does your summary of gender and democracy variables relate to the level of female representation in a country? How would you relate these findings to Norris's argument about the importance of an inclusive democracy?* 
+*Pick five countries from different regions and make a line chart of your democracy measure from 1990 onward using `ggplot2` and `geom_line()`. Map country to `color`, add clear axis labels, a title, and a caption, apply a colorblind-friendly palette and an attractive theme, and add one annotation (for example a vertical line marking an important date). Then interpret the chart in a few sentences of markdown text.*
 
-::: {.callout-warning}
-Don't write your paragraphs or any interpretation or analysis in a code chunk. Use markdown text. Quarto is designed to be a literate programming tool, so you can write your analysis in markdown text and include code chunks when necessary to support your argument.
-:::
+```{r}
+
+```
+
+## Step 4: Scatter plot of development vs. democracy (20 pts)
+
+*Using one year of your data, make a scatter plot with GDP per capita on the x-axis and your democracy measure on the y-axis, coloring the points by region. Put the x-axis on a log scale, use the `scales` package to format it as dollars, apply a `viridis` color map and a theme, and add a linear trend line with `geom_smooth(method = "lm")`. Add appropriate labels.*
+
+```{r}
+
+```
+
+## Step 5: Interpretation (10 pts)
+
+*Bring your charts together. Does the evidence support Lipset's claim that economic development and democracy go together? Note any interesting exceptions---countries that are wealthier than their level of democracy would predict, or vice versa---and say what they might tell us.*
+
+
+## Extra Credit (3 pts)
+
+*Make your scatter plot interactive with `ggplotly()`, making sure the tooltip shows the country name and the values you care about.*
+
+```{r}
+
+```
 
 **Submission:** After rendering your document, compress (zip) your project folder and submit it on Blackboard. You will find the submission portal under the Assignments link. There is a screen capture video in the Discord server that will help you understand how to do this.
