@@ -2,3 +2,32 @@
 title: "Project Description"
 editor: visual
 ---
+
+## Overview
+
+The capstone of this course is a **Shiny app** of your own design---an interactive tool that lets a user explore a data set and come away having learned something. You will pull together the whole arc of the course: getting and wrangling data, visualizing it well, and wrapping it in an interactive interface. Much of the work happens **in class** during the project studio sessions in the second half of the term, so you will not be building it alone.
+
+## Working in groups
+
+You may complete the project **on your own or in a group of up to three students**. Groups are optional, but if you form one:
+
+-   **Keep it to three students maximum.**
+-   **Divide the work clearly.** In your proposal and again with your final submission, include a short statement of who is responsible for what (for example: data wrangling, UI design, server logic, write-up). Every member should contribute meaningfully to the code.
+-   You will submit **one app per group**, and all members share the grade. Because of the group element, the project is weighted so that it is a meaningful---but not dominant---part of your grade.
+
+## What makes a good project
+
+-   A clear question or theme a user can explore.
+-   A data set that is comprehensive and convenient to work with (course data or another source---there is no time for original data collection).
+-   At least one well-crafted, labeled visualization that responds to user input.
+-   A thoughtful interface: the controls should change the output in a way that teaches the user something.
+
+## Deliverables and timeline
+
+| When | Deliverable |
+|------|-------------|
+| **Week 8** (flex session) | **Project proposal** --- commit to an idea, layout, data, and the interaction you envision. See [Project Proposal](/project/project-assignment-1.qmd). |
+| **Weeks 13, 15** | **Project studios** --- build and troubleshoot your app in class, with optional check-in meetings. |
+| **Week 16** | **Final app + live presentation** --- deploy your app and demo it for the class. See [Final Project](/project/project-assignment-2.qmd). |
+
+For ideas about data to work with, see the [Datasets](/project/project-datasets.qmd) page.

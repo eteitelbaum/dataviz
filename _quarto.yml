@@ -80,14 +80,12 @@ website:
             text: "Coding Assignment 3"
       - section: "Project"
         contents:
-          # - href: project/project-description.qmd
-          #   text: "Description"
+          - href: project/project-description.qmd
+            text: "Description"
           - href: project/project-assignment-1.qmd
-            text: "Project Assignment 1"
+            text: "Project Proposal"
           - href: project/project-assignment-2.qmd
-            text: "Project Assignment 2"
-          - href: project/project-assignment-3.qmd
-            text: "Project Assignment 3"
+            text: "Final Project"
           - href: project/project-datasets.qmd
             text: "Datasets"
       - section: "Course Topics"

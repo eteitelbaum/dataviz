@@ -1,37 +1,41 @@
 ---
-title: "Project Assignment 2"
+title: "Final Project"
 ---
 
-## Overview 
+## Overview
 
-For the first project assignment, you thought about some rough content for your app and how the user would produce some sort of visualization with it. For this assignment, we will take the next step and think about how we will generate that output on the server side. For this, we need to think concretely about what kind of setup or prework we need to do in the app.R file. Then we need to think about reactivity and how user input will change the output rendered by the app. We also want to think about any helper functions and externally sourced code that we want to include (although this is not imperative in every case).
+Now that you have a clear sense of where you are going with your app, it is time to build it. Much of this work happens during the project studio sessions in class, so lean on your classmates and on me. This is the hard part and you will likely have to invest significant time in wrangling your data and debugging the app. Be patient! It will turn out great and you will have a nice project to show for it.
 
-## Step 1: What packages you will need for your app?
+::: {.callout-note}
+If you are working in a group (up to three students), submit **one app** and include a short note on who was responsible for what. See the [Project Description](/project/project-description.qmd) for the group policy.
+:::
 
-*Starting with `shiny` you will need to load packages in the `app.R`. Likely you will also include `ggplot2`. What other packages are you going to need? Will you need `dplyr` to wrangle some data? `readr` to read in a .csv file? You may find you need other packages as you go along, but list the ones you know about now.*
+## Step 1: Setup
 
-
-## Step 2: How will you wrangle or load data? 
-
-*What indicators, countries, regions, etc. will the user get to select and how will you wrangle the data so that it is available to them? How will you get your data into the app? Will you wrangle it ahead of time and store it in a .csv file? Or will your app include an API call? If you have an API call, how will you keep it from overwhelming the resources of your server (for example, Shiny.io only allows 1GB of RAM for the free version of its hosting service)?*
-
-## Step 3: What kinds of lists will you need?
-
-*What kinds of lists will you need for your dropdown menus or other input? How will you `filter()`, `select()` and `pull()` from your data frame to create these lists?*
+*Start a new Shiny app in R Studio. In your app.R file, begin by loading your packages, loading and/or wrangling your data, and creating lists for your inputs.*
 
 
-## Step 4: What is the rough structure of your ui? 
+## Step 2: Define the ui
 
-*What is the rough structure of your ui? For example, how many columns will be occupied by user input fields versus how many columns will be occupied by your visualization? And, crucially, what input functions will you include?*
+*Starting with `ui <- fluidPage()`, start building your UI. Add a `titlePanel()`, a `fluidRow()` and then add the various columnar elements that you want to include such as inputs, text and the plot output. Try running your app just with the ui set up and see how it looks.*
 
+## Step 3: Define the server logic
 
-## Step 5: What is the rough structure for your server? 
+*Build your reactive function(s) and specify how the data and output will change based on user input(s). This is a process that is very specific to each project, so it is hard to say anything general here. But when in the process of building your server function, it often helps to look back at examples we have done in class or those that you might find helpful in the Shiny [gallery](https://shiny.posit.co/r/gallery/).*
 
-*What are the reactive functions of your server? Will you have just one reactive function for your plot call? Or will you need multiple reactive functions in order to coordinate different inputs, like dropdown menus that select a country case and a slider that selects a range of years?*
+## Step 4: Debug your app
 
+*Are you having issues with your code? See [this post](https://shiny.posit.co/r/articles/improve/debugging/) and reach out for help on Discord.*
 
-## Step 6: How will you call your data for your visualization? 
+## Step 5: Post your app to shinyapps.io
 
-*What will be the basic variables that you will call in `aes()`? How specifically do you anticipate grabbing the data in a reactive context?*
+*Sign up for a free account at https://www.shinyapps.io/. When you are ready, hit the little blue icon at the top of your app.R window to publish it.*
 
+## Step 6: Present your app in class
+
+*During our final session you will give a short live demo of your app to the class. Walk us through the main features: what data users can explore, how the controls work, and---most importantly---what patterns emerge and what we learn from the visualization that we might not have seen otherwise. If you are in a group, decide in advance who will present which part.*
+
+## Step 7: Submit your app
+
+*Submit your project on Blackboard: include a link to your published app on shinyapps.io along with a compressed (zipped) copy of your project folder (your `app.R` and any supporting data or scripts). Groups submit once; include your division-of-work note.*
 
