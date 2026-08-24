@@ -1,0 +1,48 @@
+---
+title: "Lab 2: Wrangling"
+execute:
+  echo: true
+  message: false
+  warning: false
+---
+
+::: {.callout-tip}
+## How labs work
+Labs are done **with your group during class** and are meant to be mostly finished in the class period. You may use AI to **ask questions or debug**, but not to write your code for you. At the end, add a one-line note saying whether and how you used AI.
+:::
+
+## Overview
+
+In Lab 1 we handed you clean data. Now you will build a tidy data set yourself---the skill that makes every later visualization possible. You will pull a democracy measure from V-Dem and a development or empowerment indicator from the World Bank, wrangle them, and merge them into one data frame.
+
+```{r}
+#| label: setup
+
+```
+
+## Step 1: Download your data (30 pts)
+
+*Use `fetchdem()` from `vdemlite` to download a democracy measure of your choice for all countries from roughly 1990 onward. Then use `wb_data()` from `wbstats` to download GDP per capita (or another development or women's-empowerment indicator) for the same period. `glimpse()` each to confirm they came through.*
+
+```{r}
+
+```
+
+## Step 2: Clean and merge (40 pts)
+
+*Get both data frames into a compatible shape (rename or reshape as needed). Add country codes with the `countrycode` package, then join the two sources into a single data frame with `left_join()`. `glimpse()` the result and check for excessive `NA`s.*
+
+```{r}
+
+```
+
+## Step 3: Summarize (30 pts)
+
+*Use a `group_by()`, `summarize()`, `arrange()` sequence to pull one insight from your merged data---for example, how regions compare on average democracy and development, or which countries stand out. Write a sentence or two below the chunk describing what you find.*
+
+```{r}
+
+```
+
+
+*AI note: _(one line on whether/how your group used AI)_*

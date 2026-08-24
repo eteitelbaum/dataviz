@@ -1,0 +1,11 @@
+---
+title: "Quizzes"
+---
+
+Short quizzes are given **in class**, usually at the start of the session, and cover the week's readings and core concepts. They are administered and graded through the course learning management system (Blackboard)---please log in to the course site to take the quiz for the current week.
+
+A few things to keep in mind:
+
+-   Quizzes are completed **individually and without AI**. They are a check on your own understanding (see the [AI policy](/course-syllabus.qmd#policy-on-ai-tools)).
+-   Because they are given in class, you generally need to **be present** to take them.
+-   I will drop your **two lowest** quiz scores, so there is no need to email me about an occasional missed quiz.

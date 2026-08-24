@@ -57,11 +57,11 @@ Follow these principles whenever you use AI tools:
 
 ### What this means by assessment type
 
--   **Module quizzes**: No AI. These check your own understanding, and you should complete them on your own.
+-   **Quizzes**: No AI. Quizzes check your own understanding, and you complete them on your own during class.
 
--   **Coding assignments**: AI is welcome as a *consultant* once you have tried the course materials and are genuinely stuck. You must understand and be able to explain every line you submit. Include a one-line note describing what tool you used and how.
+-   **In-class labs**: You work in groups during class. You may use AI to **ask conceptual questions or to help debug**, but **not to write your code for you**---the goal is for your group to reason through the problem together. Add a one-line note to each lab saying whether and how you used AI.
 
--   **Final project**: AI is encouraged as a real-world tool for debugging and boilerplate. The design, data choices, analysis, and interpretation, however, must be your own---that is the work the project is meant to demonstrate.
+-   **Final project**: A full, modern AI-assisted workflow is encouraged---AI is a real tool that data scientists use every day. The design, data choices, analysis, and interpretation must still be your own, and you should be able to explain and defend everything in your app.
 
 ## Office Hours
 
@@ -119,7 +119,7 @@ You will need to download RStudio, Git and the Discord desktop application. You 
 
 ## Course Credit Hour Policy
 
-This is a 3-credit course. Following the university credit-hour policy, over the roughly 15-week semester you should expect approximately 2.5 hours of direct instruction per week (our Tuesday and Thursday class meetings) and a minimum of 5 hours per week of independent work---including readings, quizzes, coding assignments, and your final project. Over the term this amounts to about 37.5 hours of direct instruction and 75 hours of independent coursework.
+This is a 3-credit course. Following the university credit-hour policy, over the roughly 15-week semester you should expect approximately 2.5 hours of direct instruction per week (our Tuesday and Thursday class meetings) and a minimum of 5 hours per week of independent work---including readings, quizzes, lab preparation, and your final project. Over the term this amounts to about 37.5 hours of direct instruction and 75 hours of independent coursework.
 
 ### How this applies to you
 
@@ -145,13 +145,11 @@ The following assessments help you gauge and demonstrate your progress in the co
 
 -   **Discord:** We will discuss course topics further through the Discord. Please post your questions and help other students with their questions when you can.
 
--   **Assignments**: You will develop various skills through regular assignments. You are expected to one coding assignment per week. Thoughtfully completing weekly assignments helps you meet course objectives.
+-   **In-class labs:** Most weeks you will work through a hands-on lab with your group during class. Labs let you apply new skills to real data while you have your classmates and me on hand to help.
 
--   **Final Project:** You will develop your own interactive data visualization application as your final project during Week 6/Module
+-   **Quizzes:** Short in-class quizzes give you---and me---a quick read on how well the week's material and readings are landing. They provide immediate feedback and support ongoing learning.
 
-6.  
-
--   **Quizzes:** In this course, you will have opportunities to assess your own knowledge. You are expected to complete in class quizzes that provide immediate feedback and support ongoing learning.
+-   **Final Project:** You will design and build your own interactive data visualization application (a Shiny app) as your final project, developed over the second half of the semester and presented in class during our final session.
 
 You'll find support for Blackboard and other tools used for course activities and assignments under the **Technology Support** link in the left navigation menu in our course on Blackboard.
 
@@ -169,25 +167,23 @@ Academic dishonesty is defined as cheating of any kind, including misrepresentin
 
 ## Assignments
 
-1.  Quizzes (20%)
-2.  Coding assignments (40%)
-3.  Final project (40% of final grade)
-    a.  Assignment 1 (10%)
-    b.  Assignment 2 (10%)
-    c.  Assignment 3 (10%)
-    d.  Lightning Talk (10%)
+1.  In-class labs (50%)
+2.  Quizzes (20%)
+3.  Final project (30%)
+
+Because your labs and quizzes are completed in class, a large share of your grade rewards showing up and engaging with the material in person.
+
+### In-class labs
+
+You will complete four hands-on labs---on **plotting**, **wrangling**, **maps**, and **tables and models**---worked through with your group during class and meant to be mostly finished in the class period. Labs are where you apply new skills to real data. See the [Policy on AI Tools](#policy-on-ai-tools) for how AI may be used in labs.
 
 ### Quizzes
 
-Students will complete approximately ten graded quizzes. These exercises will be oriented towards strengthening the student's ability to manipulate, visualize and communicate data with R and Quarto. I will drop your lowest two quiz scores. Please do not email me about missed quizzes.
-
-### Coding Assignments
-
-Students will complete five weekly coding assignments. These assignments are designed to provide students with the opportunity to apply their newly-acquired skills to real world data.
+You will complete short in-class quizzes on the week's readings and core concepts. Because they check your own understanding, quizzes are completed individually and without AI. I will drop your two lowest quiz scores; please do not email me about missed quizzes.
 
 ### Final Project
 
-Each student will complete a final project that will be developed throughout the semester. Students will work in groups to complete the project. The ultimate objective of this project is for the student to design and program an R Shiny App. Details regarding the specifics of the project will be provided through the course of the semester. 
+You will design and build an interactive R Shiny app, developed over the second half of the semester during our in-class project studios and presented to the class at the end of the term. You may work on your own or in a **group of up to three**, with a clear division of responsibilities. Full details, including the group policy, are on the [Project Description](/project/project-description.qmd) page.
 
 ## Course Grading
 

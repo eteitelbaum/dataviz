@@ -54,6 +54,8 @@ website:
             text: Schedule
           - href: course-links.qmd
             text: Useful links
+          - href: quiz.qmd
+            text: Quizzes
           # - href: faq.qmd
           #   text: FAQ
       - section: "Weekly Materials"
@@ -70,14 +72,16 @@ website:
           #   text: "Week 5"
           # - href: weeks/week-6.qmd
           #   text: "Week 6"
-      - section: "Coding Assignments"
+      - section: "Labs"
         contents:
-          - href: assignments/coding-assignment-1.qmd
-            text: "Coding Assignment 1"
-          - href: assignments/coding-assignment-2.qmd
-            text: "Coding Assignment 2"
-          - href: assignments/coding-assignment-3.qmd
-            text: "Coding Assignment 3"
+          - href: assignments/lab-1.qmd
+            text: "Lab 1: Plotting"
+          - href: assignments/lab-2.qmd
+            text: "Lab 2: Wrangling"
+          - href: assignments/lab-3.qmd
+            text: "Lab 3: Maps"
+          - href: assignments/lab-4.qmd
+            text: "Lab 4: Tables & coefficient plots"
       - section: "Project"
         contents:
           - href: project/project-description.qmd
