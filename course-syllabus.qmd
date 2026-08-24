@@ -117,6 +117,11 @@ If you need assistance with technology tools we'll use in this course, please vi
 
 You will need to download RStudio, Git and the Discord desktop application. You can find our weekly assigned readings through GW libraries. You must use your GW credentials to access these readings. Other course materials will be provided in our Blackboard course modules.
 
+We draw on two excellent, freely available online books. There is nothing to purchase.
+
+-   **Kieran Healy, [*Data Visualization: A Practical Introduction*](https://socviz.co/)** --- our main text for the visualization side of the course. Chapter readings are listed on the [course schedule](/index.qmd).
+-   **Wickham, Çetinkaya-Rundel & Grolemund, [*R for Data Science* (2nd ed.)](https://r4ds.hadley.nz/)** --- our reference for importing, tidying, and transforming data.
+
 ## Course Credit Hour Policy
 
 This is a 3-credit course. Following the university credit-hour policy, over the roughly 15-week semester you should expect approximately 2.5 hours of direct instruction per week (our Tuesday and Thursday class meetings) and a minimum of 5 hours per week of independent work---including readings, quizzes, lab preparation, and your final project. Over the term this amounts to about 37.5 hours of direct instruction and 75 hours of independent coursework.
