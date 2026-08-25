@@ -10,8 +10,6 @@ editor: visual
 source("helper.R")
 ```
 
-This page displays an outline of the topics, content, and assignments for the term. Our class meets **Tuesdays and Thursdays, 11:10 a.m.--12:25 p.m., in the Hall of Government, Room 102.** Each topic spans one week (Tuesday and Thursday). **Note that all of your coding and project assignments are due on the Monday after they are assigned at 11:59 p.m.**
-
 ::: column-screen-inset-right
 | Topic | Date | Skills | Readings | Reference | Slides | Videos | Assignments |
 |:-------:|---------|---------|:-------:|:-------:|:-------:|:-------:|:-------:|
