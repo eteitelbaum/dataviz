@@ -1,0 +1,15 @@
+{
+  "hash": "3d9eae708f572cbee21a3f68d54d6475",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Lab 3: Maps\"\nexecute:\n  echo: true\n  message: false\n  warning: false\n---\n\n::: {.callout-tip}\n## How labs work\nLabs are done **with your group during class** and are meant to be mostly finished in the class period. You may use AI to **ask questions or debug**, but not to write your code for you. At the end, add a one-line note saying whether and how you used AI.\n:::\n\n## Overview\n\nIn this lab you will make two kinds of maps: a static **choropleth** with `ggplot2` and `sf`, and an interactive **leaflet** map. We will map data relevant to Michael Ross's argument in [The Oil Curse](https://www-jstor-org.proxygw.wrlc.org/stable/j.ctt7s3wz.10) that oil wealth undermines democracy.\n\n\n::: {.cell}\n\n:::\n\n\n## Step 1: A choropleth map (50 pts)\n\n*Use `rnaturalearth` to get country shapes (filter out Antarctica). Choose a variable relevant to Ross's argument---a democracy measure, oil rents (`NY.GDP.PETR.RT.ZS`), or taxes as a share of revenue---and join it to the shapes by ISO3C code. Then map it with `ggplot()` and `geom_sf()`, using `theme_map()` from `ggthemes` and a `viridis` color scale. Give the map clear labels. Below the map, say in a sentence or two what pattern you see.*\n\n\n::: {.cell}\n\n:::\n\n\n## Step 2: A leaflet map of conflict (50 pts)\n\n*Pick an oil-rich country that has experienced internal conflict (e.g., Iraq, Nigeria, Syria). Following the approach from the Interactive Maps topic, filter a few months of UCDP GED conflict data for your country and convert the coordinates to simple features with `st_as_sf()`. Then build a `leaflet` map with markers for the conflict events: show the location name on hover and the number of deaths and date on click. Use \"OpenTopoMap\" as your basemap.*\n\n\n::: {.cell}\n\n:::\n\n\n\n*AI note: _(one line on whether/how your group used AI)_*\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

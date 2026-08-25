@@ -1,0 +1,17 @@
+{
+  "hash": "5bffebb4dd58cae56a3068801297f582",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 12\"\nsubtitle: \"Extending & Deploying Your App\"\nformat: html\n---\n\n\n\nWe add more inputs, build a time-series app, and deploy and share our apps on shinyapps.io.\n\n## Readings\n\n| 📖 [Huntington, \"Democracy's Third Wave\"](https://muse-jhu-edu.proxygw.wrlc.org/article/225602)\n\n## Assignments\n\n| 📘 Weekly quiz, in class\n",
+    "supporting": [
+      "week-12_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

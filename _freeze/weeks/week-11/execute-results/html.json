@@ -1,0 +1,17 @@
+{
+  "hash": "ac1e52e35f415cac2f2924c7589848ab",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 11\"\nsubtitle: \"Building a Shiny App\"\nformat: html\n---\n\n\n\nWe start building interactive Shiny apps: the user interface, the server, and reactivity.\n\n## Assignments\n\n| 📘 Weekly quiz, in class\n",
+    "supporting": [
+      "week-11_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

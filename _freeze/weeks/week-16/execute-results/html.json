@@ -1,0 +1,15 @@
+{
+  "hash": "443997f9fd9ba33b0c2a593ad6962f89",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 16\"\nsubtitle: \"Final presentations\"\nformat: html\n---\n\n\n\n::: {.callout-important}\n**Final project** due — present your app in class on Tuesday, December 8.\n:::\n\nWe wrap up the term with lightning-talk presentations of everyone's Shiny apps.\n\n## Assignments\n\n| ✍️ [Final Project](/project/project-assignment-2.qmd)\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

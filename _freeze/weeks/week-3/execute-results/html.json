@@ -1,0 +1,17 @@
+{
+  "hash": "5ac7ce76fe71321022b19a9f221324e9",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 3\"\nsubtitle: \"Color, Themes & Annotations\"\nformat: html\n---\n\n\n\n::: {.callout-important}\n**Lab 1 (Plotting)** due by 11:59 p.m. on Monday, September 14.\n:::\n\nWe make our plots readable and beautiful: color schemes, themes, annotations, and interactivity.\n\n## Readings\n\n| 📖 [Healy, ch. 8: Refine Your Plots](https://socviz.co/08-polishing.html)\n| 📖 [Healy, ch. 5: Graph Tables, Add Labels, Make Notes](https://socviz.co/05-more-on-geoms.html)\n| 📖 [Lipset, \"Some Social Requisites of Democracy\"](https://www-jstor-org.proxygw.wrlc.org/stable/1951731?seq=8)\n| 📖 [r4ds, 12.4](https://r4ds.hadley.nz/communication.html#scales)\n| 📖 [r4ds, 12.3 & 12.5](https://r4ds.hadley.nz/communication.html#annotations)\n\n## Videos\n\n| 🖥️ [Color schemes](https://youtu.be/fBCtSjg_-Ik)\n| 🖥️ [Themes](https://youtu.be/Le0OJXdsy3o)\n| 🖥️ [Annotations](https://youtu.be/uEpBMgWilXc)\n| 🖥️ [Interactivity](https://youtu.be/T-7jtbcwaJ0)\n\n## Assignments\n\n| 🧪 [Lab 1: Plotting](/assignments/lab-1.qmd)\n| 📘 Weekly quiz, in class\n",
+    "supporting": [
+      "week-3_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

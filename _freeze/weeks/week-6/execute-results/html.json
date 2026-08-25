@@ -1,0 +1,17 @@
+{
+  "hash": "d31c71cf3975a2feef85d7908c1654b7",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 6\"\nsubtitle: \"Choropleth Maps\"\nformat: html\n---\n\n\n\nWe map data with static choropleth maps and learn to wrap our map code in a reusable function.\n\n## Readings\n\n| 📖 [Healy, ch. 7: Draw Maps](https://socviz.co/07-maps.html)\n| 📖 [Ross, *The Oil Curse*, ch. 3](https://www-jstor-org.proxygw.wrlc.org/stable/j.ctt7s3wz.10)\n| 📖 [r4ds, ch. 25 (functions)](https://r4ds.hadley.nz/functions)\n\n## Videos\n\n| 🖥️ [Choropleth maps](https://youtu.be/HB3PMF93hzs)\n| 🖥️ [Map World Bank data](https://youtu.be/5RnnGov3Iw4)\n| 🖥️ [Turn your map into a function](https://youtu.be/m42vrbEEHT4)\n\n## Assignments\n\n| 📘 Weekly quiz, in class\n",
+    "supporting": [
+      "week-6_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

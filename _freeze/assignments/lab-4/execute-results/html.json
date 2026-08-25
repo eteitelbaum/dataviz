@@ -1,0 +1,15 @@
+{
+  "hash": "b6b6b039c26cf132ab3bd89dfebe3cd3",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Lab 4: Tables & coefficient plots\"\nexecute:\n  echo: true\n  message: false\n  warning: false\n---\n\n::: {.callout-tip}\n## How labs work\nLabs are done **with your group during class** and are meant to be mostly finished in the class period. You may use AI to **ask questions or debug**, but not to write your code for you. At the end, add a one-line note saying whether and how you used AI.\n:::\n\n## Overview\n\nIn this lab you will present data two ways: as a polished **table** with `gt`, and as a **regression table plus coefficient plot** with `modelsummary`. For Part II we approximate Fearon and Laitin's [Ethnicity, Insurgency, and Civil War](https://www.jstor.org/stable/3118222), whose provocative claim is that ethnic diversity per se does not predict civil conflict.\n\n\n::: {.cell}\n\n:::\n\n\n## Part I: A `gt` table (40 pts)\n\n*Choose a state and use `tidycensus` to download county-level data on income quintiles (`geography = \"county\"`). Clean the variable names and use `mutate(name = str_replace_all(...))` so only the county name shows. Then make a polished `gt` table: add a title and subtitle, relabel the columns, format the numbers as dollars, and add a source note. Below the table, note in a sentence which counties stand out.*\n\n\n::: {.cell}\n\n:::\n\n\n## Part II: Regression table and coefficient plot (60 pts)\n\n*Use `create_stateyears()` and the `peacesciencer` \"add\" functions to build a state-year data frame for analyzing conflict onset (`ucdponset`), filtered to 1946--2019. Fit two or three model specifications---varying, say, ethnic fractionalization vs. polarization, the democracy measure, or the terrain measure---and present them side by side in a `modelsummary` table. Then use `modelplot()` to show one model as a coefficient plot with confidence intervals. In a sentence or two, compare your results to Fearon and Laitin's and note what the coefficient plot makes easier to see than the table.*\n\n\n::: {.cell}\n\n:::\n\n\n\n*AI note: _(one line on whether/how your group used AI)_*\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

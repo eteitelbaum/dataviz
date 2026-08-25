@@ -1,0 +1,15 @@
+{
+  "hash": "fc15ab4a9e263a56e48ed9ffd324d2fa",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 9\"\nsubtitle: \"Tables\"\nformat: html\n---\n\n\n\nWe build polished tables of data with `kableExtra` and `gt`, and add confidence intervals.\n\n## Assignments\n\n| 📘 Weekly quiz, in class\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

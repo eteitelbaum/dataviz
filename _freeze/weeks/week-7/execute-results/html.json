@@ -1,0 +1,17 @@
+{
+  "hash": "9a3e80ebc1da7ee054a47d49b2e60d4d",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 7\"\nsubtitle: \"Interactive Maps\"\nformat: html\n---\n\n\n\n::: {.callout-important}\n**Lab 3 (Maps)** due by 11:59 p.m. on Monday, October 12 (or as announced given fall break).\n:::\n\nWe build interactive maps with `leaflet` and customize them with markers, popups, and basemaps.\n\n## Videos\n\n| 🖥️ [Upload UCDP data](https://youtu.be/If2PwFv90iI)\n| 🖥️ [Make a leaflet map](https://youtu.be/hHUPqgHRqYU)\n| 🖥️ [Customize your map](https://youtu.be/qLYeSsoDvgs)\n\n## Assignments\n\n| 🧪 [Lab 3: Maps](/assignments/lab-3.qmd)\n| 📘 Weekly quiz, in class\n",
+    "supporting": [
+      "week-7_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

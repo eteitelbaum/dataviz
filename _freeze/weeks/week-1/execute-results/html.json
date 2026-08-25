@@ -1,0 +1,15 @@
+{
+  "hash": "43ac36bb997d8aa4232e5c7626dfc199",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 1\"\nsubtitle: \"Getting Started\"\nformat: html\n---\n\n\n\nThis week we get our tools set up and look at what data visualization can do. Session 1 is course overview and environment setup; session 2 shows off some inspiring examples.\n\n## Readings\n\n| 📖 [Healy, ch. 2: Get Started](https://socviz.co/02-intro.html)\n| 📖 [Healy, ch. 1: Look at Data](https://socviz.co/01-look-at-data.html)\n| 📖 [A project-oriented workflow](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/)\n| 📖 [Happy Git with R, chs 4, 6, 7, 9 & 12](https://happygitwithr.com/)\n\n## Videos\n\n| 🖥️ [Getting Started with R and RStudio](https://youtu.be/eimM6pNkYjE)\n| 🖥️ [Your First Quarto Document](https://youtu.be/6QN9ZYURDFg)\n| 🖥️ [Getting started with GitHub](https://youtu.be/ApvMnAfQe8A)\n\n## Assignments\n\n| 📘 Weekly quiz, in class (see [Quizzes](/quiz.qmd))\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

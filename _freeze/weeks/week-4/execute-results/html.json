@@ -1,0 +1,17 @@
+{
+  "hash": "eea1180298dbe587e04cd4659a7bcc01",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 4\"\nsubtitle: \"Reading & Reshaping Data\"\nformat: html\n---\n\n\n\nNow that we can plot, we learn to get data into R and shape it into tidy form.\n\n## Readings\n\n| 📖 [r4ds, 8.1 & 8.2](https://r4ds.hadley.nz/data-import.html#introduction)\n| 📖 [r4ds, 6.1 & 6.3](https://r4ds.hadley.nz/data-tidy.html)\n\n## Videos\n\n| 🖥️ [Reading data into R](https://youtu.be/ZwJsSjJRuMU)\n| 🖥️ [Reshaping data](https://youtu.be/u4AXi8A1Bqo)\n| 🖥️ [Cleaning data in R](https://youtu.be/xa0tYCfHHTI)\n\n## Assignments\n\n| 📘 Weekly quiz, in class\n",
+    "supporting": [
+      "week-4_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "hash": "47cef58754be2e4bf9603089c59a60f2",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 15\"\nsubtitle: \"Project Studio\"\nformat: html\n---\n\n\n\nMore in-class studio time: peer feedback and dry-run presentations to get your app ready for the final session.\n",
+    "supporting": [
+      "week-15_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

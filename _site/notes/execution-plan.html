@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>execution-plan – PSC/DATS 2102--Course Schedule</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/dataviz-logo.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f7a9d044f8a96ce2fd6b062468a135ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-f77540120a66c362cb7a9d774880e664.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f7a9d044f8a96ce2fd6b062468a135ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<meta property="og:title" content="PSC/DATS 2102–Course Schedule">
+<meta property="og:description" content="Homepage for PSC/DATS 2102, George Washington University.">
+<meta property="og:site_name" content="PSC/DATS 2102--Course Schedule">
+<meta name="twitter:title" content="PSC/DATS 2102–Course Schedule">
+<meta name="twitter:description" content="Homepage for PSC/DATS 2102, George Washington University.">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/dataviz-logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://blackboard.gwu.edu" title="Blackboard" class="quarto-navigation-tool px-1" aria-label="Blackboard"><i class="bi bi-mortarboard-fill"></i></a>
+    <a href="https://github.com" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://posit.co/download/rstudio-desktop" title="RStudio Desktop" class="quarto-navigation-tool px-1" aria-label="RStudio Desktop"><i class="bi bi-r-project"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Course information</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-support.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Support</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../instructor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Instructor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-links.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Useful links</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../quiz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quizzes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Weekly Materials</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 5</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 6</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 7</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 8</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 9</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 10</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 11</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 12</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 13</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 14</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-15.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 15</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/week-16.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 16</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Labs</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignments/lab-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 1: Plotting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignments/lab-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 2: Wrangling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignments/lab-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 3: Maps</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignments/lab-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 4: Tables &amp; coefficient plots</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Project</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project/project-description.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Description</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project/project-assignment-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Proposal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project/project-assignment-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Final Project</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project/project-datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Datasets</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Course Topics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/getting-started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">I — Working With Data</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module-1.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reading &amp; Reshaping Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module-1.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Importing &amp; Merging Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">II — Visualizing Data</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module-2.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Charting With ggplot2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module-2.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Color, Themes &amp; Annotations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">III — Maps</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module-3.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Choropleth Maps</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module-3.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Interactive Maps</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">IV — Tables &amp; Models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module-4.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module-4.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Models &amp; Coefficient Plots</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">V — Interactive Apps (Shiny)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module-5.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Building a Shiny App</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module-5.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extending Your App</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module-6.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deploying &amp; Sharing Your App</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module-6.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Studio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#dataviz-revamp-execution-plan" id="toc-dataviz-revamp-execution-plan" class="nav-link active" data-scroll-target="#dataviz-revamp-execution-plan">Dataviz Revamp — Execution Plan</a>
+  <ul class="collapse">
+  <li><a href="#goal" id="toc-goal" class="nav-link" data-scroll-target="#goal">Goal</a></li>
+  <li><a href="#repo-strategy-decided" id="toc-repo-strategy-decided" class="nav-link" data-scroll-target="#repo-strategy-decided">Repo strategy (decided)</a></li>
+  <li><a href="#source-of-content-map" id="toc-source-of-content-map" class="nav-link" data-scroll-target="#source-of-content-map">Source-of-content map</a></li>
+  <li><a href="#checklist" id="toc-checklist" class="nav-link" data-scroll-target="#checklist">Checklist</a>
+  <ul class="collapse">
+  <li><a href="#repo-setup" id="toc-repo-setup" class="nav-link" data-scroll-target="#repo-setup">0. Repo setup</a></li>
+  <li><a href="#naming-structure-decision-2026-08-24" id="toc-naming-structure-decision-2026-08-24" class="nav-link" data-scroll-target="#naming-structure-decision-2026-08-24">NAMING / STRUCTURE DECISION (2026-08-24)</a></li>
+  <li><a href="#schedule-structure-tuethu-fall-2026-finalized-arc" id="toc-schedule-structure-tuethu-fall-2026-finalized-arc" class="nav-link" data-scroll-target="#schedule-structure-tuethu-fall-2026-finalized-arc">Schedule structure (Tue/Thu, Fall 2026) — FINALIZED ARC</a></li>
+  <li><a href="#assessment-redesign-2026-08-24-ai-era-in-person-course" id="toc-assessment-redesign-2026-08-24-ai-era-in-person-course" class="nav-link" data-scroll-target="#assessment-redesign-2026-08-24-ai-era-in-person-course">ASSESSMENT REDESIGN (2026-08-24) — AI-era, in-person course</a></li>
+  <li><a href="#ide-decision-2026-08-24-rstudio-now-positron-for-the-project-phase" id="toc-ide-decision-2026-08-24-rstudio-now-positron-for-the-project-phase" class="nav-link" data-scroll-target="#ide-decision-2026-08-24-rstudio-now-positron-for-the-project-phase">IDE DECISION (2026-08-24): RStudio now, Positron for the project phase</a></li>
+  <li><a href="#de-fall-specific-ify-make-it-an-academic-year-template" id="toc-de-fall-specific-ify-make-it-an-academic-year-template" class="nav-link" data-scroll-target="#de-fall-specific-ify-make-it-an-academic-year-template">1. De-fall-specific-ify (make it an academic-year template)</a></li>
+  <li><a href="#port-summer-2026-content" id="toc-port-summer-2026-content" class="nav-link" data-scroll-target="#port-summer-2026-content">2. Port summer 2026 content</a></li>
+  <li><a href="#integrate-healy-option-3-full-integration" id="toc-integrate-healy-option-3-full-integration" class="nav-link" data-scroll-target="#integrate-healy-option-3-full-integration">3. Integrate Healy — OPTION 3 (full integration)</a></li>
+  <li><a href="#cleanup" id="toc-cleanup" class="nav-link" data-scroll-target="#cleanup">4. Cleanup</a></li>
+  <li><a href="#go-live" id="toc-go-live" class="nav-link" data-scroll-target="#go-live">5. Go live</a></li>
+  </ul></li>
+  <li><a href="#open-questions-decisions-parked" id="toc-open-questions-decisions-parked" class="nav-link" data-scroll-target="#open-questions-decisions-parked">Open questions / decisions parked</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/dataviz/edit/main/notes/execution-plan.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/dataviz/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+
+<section id="dataviz-revamp-execution-plan" class="level1">
+<h1>Dataviz Revamp — Execution Plan</h1>
+<p><strong>Working notes for building the new <code>dataviz</code> academic-year repo. This folder is gitignored (see <code>.gitignore</code> → <code>/notes/</code>) so it never publishes.</strong></p>
+<p>Last updated: 2026-08-24</p>
+<hr>
+<section id="goal" class="level2">
+<h2 class="anchored" data-anchor-id="goal">Goal</h2>
+<p>Turn the frozen <code>dataviz-fall-2024</code> course into a reusable <strong>academic-year</strong> template (<code>dataviz</code>, covers fall AND spring), refreshed with the latest <strong>summer 2026</strong> content, and with <strong>Kieran Healy’s <em>Data Visualization</em> (2nd ed., socviz.co)</strong> integrated as the assigned text for the visualization modules.</p>
+</section>
+<section id="repo-strategy-decided" class="level2">
+<h2 class="anchored" data-anchor-id="repo-strategy-decided">Repo strategy (decided)</h2>
+<ul>
+<li><strong><code>dataviz</code></strong> — this repo. Academic year = fall + spring. Fall and spring never overlap, so we just re-date the schedule each term (no branches).</li>
+<li><strong><code>dataviz-summer</code></strong> — stays separate (online async, 6-week, quizzes, different cadence).</li>
+<li><strong><code>dataviz-fall-2024</code></strong> — frozen archive, do not edit.</li>
+</ul>
+</section>
+<section id="source-of-content-map" class="level2">
+<h2 class="anchored" data-anchor-id="source-of-content-map">Source-of-content map</h2>
+<ul>
+<li>Freshest <strong>content</strong> (modules, syllabus policies, quizzes, videos, assignments) → <code>../dataviz-summer</code> (refreshed May 2026).</li>
+<li><strong>Slides</strong> + 14-week semester schedule → this repo (copied from fall-2024). Summer has no slides.</li>
+<li>Same 12 modules in both: <code>module-1.1</code> … <code>module-6.2</code>.</li>
+</ul>
+<hr>
+</section>
+<section id="checklist" class="level2">
+<h2 class="anchored" data-anchor-id="checklist">Checklist</h2>
+<section id="repo-setup" class="level3">
+<h3 class="anchored" data-anchor-id="repo-setup">0. Repo setup</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Copy <code>dataviz-fall-2024</code> → <code>dataviz</code> (excluded <code>.git</code>, <code>.quarto</code>, <code>.Rproj.user</code>, <code>_site</code>; kept <code>_freeze</code>)</label></li>
+<li><label><input type="checkbox" checked="">Rename <code>dataviz-fall-2024.Rproj</code> → <code>dataviz.Rproj</code></label></li>
+<li><label><input type="checkbox" checked=""><code>git init</code> (branch <code>main</code>)</label></li>
+<li><label><input type="checkbox" checked="">Add <code>/notes/</code> to <code>.gitignore</code>; write this plan</label></li>
+<li><label><input type="checkbox" checked="">First commit of the baseline copy (<code>aa5522f</code>)</label></li>
+<li><label><input type="checkbox" checked="">Create GitHub repo <code>eteitelbaum/dataviz</code> (public) and push — https://github.com/eteitelbaum/dataviz</label></li>
+</ul>
+</section>
+<section id="naming-structure-decision-2026-08-24" class="level3">
+<h3 class="anchored" data-anchor-id="naming-structure-decision-2026-08-24">NAMING / STRUCTURE DECISION (2026-08-24)</h3>
+<p>Drop “Modules” and the X.Y numbers. Content is <strong>Topics</strong> (one per week) grouped into <strong>Parts</strong>, with <strong>Getting Started</strong> standalone at the front. Same content order as 2024 (do NOT reorder to Healy’s chapter order — the course climaxes in a Shiny app, which Healy doesn’t cover). Parts map to the reading strategy: Part I → r4ds; Parts II–IV → Healy; Part V → Shiny.</p>
+<ul>
+<li><strong>Getting Started</strong> (standalone, Week 1) — R, RStudio, Quarto, GitHub</li>
+<li><strong>Part I — Working with data:</strong> Reading &amp; reshaping data · Importing &amp; merging data</li>
+<li><strong>Part II — Visualizing data:</strong> Charting with ggplot2 · Color, themes &amp; annotations</li>
+<li><strong>Part III — Maps:</strong> Choropleth maps · Interactive maps</li>
+<li><strong>Part IV — Tables &amp; models:</strong> Tables · Models &amp; coefficient plots</li>
+<li><strong>Part V — Interactive apps (Shiny):</strong> Building a scatter app · Building a time-series app · Assembling your app · Sharing &amp; deploying your app</li>
+</ul>
+<p>Filenames: keep <code>module-X.Y.qmd</code> for now (Quarto display title ≠ filename → low churn); optional slug-rename later. Sidebar section “Course Modules” → grouped Parts with topic titles.</p>
+<p>Healy chapter order (2e): 1 Look at Data · 2 Get Started · 3 Make a Plot · 4 Show the Right Numbers · 5 Graph Tables/Add Labels/Make Notes · 6 Work with Models · 7 Draw Maps · 8 Refine Your Plots (color/themes LAST). Assign per topic, not in book order.</p>
+</section>
+<section id="schedule-structure-tuethu-fall-2026-finalized-arc" class="level3">
+<h3 class="anchored" data-anchor-id="schedule-structure-tuethu-fall-2026-finalized-arc">Schedule structure (Tue/Thu, Fall 2026) — FINALIZED ARC</h3>
+<p>Class meets <strong>Tue/Thu 11:10–12:25, Hall of Government Rm 102</strong>, first class <strong>Tue Aug 25, 2026</strong>. <strong>One topic per week</strong> (Tue + Thu = its two sessions). Calendar: Fall break knocks out <strong>Tue Oct 13</strong> only (Thu Oct 15 meets → flex session); <strong>Thanksgiving Nov 24 &amp; 26 fully off</strong>; last class <strong>Tue Dec 8</strong> (Thu Dec 10 reading day).</p>
+<p><strong>Big pedagogical move: PLOT FIRST, wrangle later</strong> (Healy-style). Charts with clean data in Wk2–3 (hook + confidence), then source/shape data in Wk4–5 (now motivated). Wk1 intro demos = low-pressure instructor-led SHOW, not a coding gauntlet (the old “monster first session” overwhelmed people). The 3 demos (make a map, V-Dem democracy-over-time w/ <code>vdemlite</code>, UN voting trends) currently live in <code>slides/week-2.2.qmd</code> “Three Examples” — pull them forward.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Wk</th>
+<th>Dates</th>
+<th>Topic (old module)</th>
+<th>Assign</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Aug 25/27</td>
+<td>Getting Started — Tue: overview + 3 demos; Thu: R/RStudio/Quarto/GitHub (getting-started)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Sep 1/3</td>
+<td>Charting with ggplot2 (2.1)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Sep 8/10</td>
+<td>Color, themes &amp; annotations (2.2)</td>
+<td>CA1 plotting</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Sep 15/17</td>
+<td>Reading &amp; reshaping data (1.1)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Sep 22/24</td>
+<td>Importing &amp; merging data (1.2)</td>
+<td>CA2 get+plot</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Sep 29/Oct 1</td>
+<td>Choropleth maps (3.1)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Oct 6/8</td>
+<td>Interactive maps (3.2)</td>
+<td>CA3 maps</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>Oct 13 break / Oct 15</td>
+<td>FLEX (Thu): good dataviz + project brainstorm</td>
+<td>Proj 1 proposal</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>Oct 20/22</td>
+<td>Tables (4.1) — own week</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>Oct 27/29</td>
+<td>Models &amp; coefficient plots (4.2) — own week</td>
+<td>CA4</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>Nov 3/5</td>
+<td>Building a Shiny app (5.1)</td>
+<td>Proj 2 prototype</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>Nov 10/12</td>
+<td>Extending &amp; deploying your app (5.2 + 6.2)</td>
+<td>CA5</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>Nov 17/19</td>
+<td>Project studio (6.1 resources)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>Nov 24/26</td>
+<td>Thanksgiving — off</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>Dec 1/3</td>
+<td>Project studio</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>Dec 8 (Tue)</td>
+<td>Final presentations / lightning talks</td>
+<td>Proj 3 final</td>
+</tr>
+</tbody>
+</table>
+<p>Shiny compressed from 4 wks → 2 (Wk11–12); everything after Thanksgiving = projects. 5 coding assignments + 3 project assignments preserved.</p>
+<p><strong>CONTENT TODOs this creates (step 2):</strong> provide clean starter CSVs for Wk2–3 plot-first (or use gapminder/socviz); consolidate old Shiny modules 5.1/5.2/6.1/6.2 into 2 weeks + studios; author the Wk8 flex session + Wk13/15 studio + Wk16 presentations; <strong>slides are still numbered by OLD scheme (week-2.1…13.2) — they now mismatch topic order; renumber/rename to topics as a cleanup pass.</strong></p>
+</section>
+<section id="assessment-redesign-2026-08-24-ai-era-in-person-course" class="level3">
+<h3 class="anchored" data-anchor-id="assessment-redesign-2026-08-24-ai-era-in-person-course">ASSESSMENT REDESIGN (2026-08-24) — AI-era, in-person course</h3>
+<p>Core principle: move the graded center of gravity INTO THE ROOM (attendance incentive + AI-proof), demote take-home coding to low-stakes practice. Enabled by this being an in-person Tue/Thu course (summer is async, couldn’t do this).</p>
+<p><strong>FINAL grade weights (EJT approved; participation dropped — labs+quizzes are in-class so attendance already rewarded):</strong> - In-class labs (4, group, mostly done in class): <strong>50%</strong> - Quizzes (in-class, individual, no AI): <strong>20%</strong> - Final project (optional groups <strong>≤3</strong>; proposal + app + live demo): <strong>30%</strong></p>
+<p><strong>Labs = coding assignments merged into 4 in-class group labs</strong> (EJT’s refinement): Lab 1 Plotting (Wk3, uses provided <code>dem_women.csv</code> so it works pre-wrangling), Lab 2 Wrangling (Wk5), Lab 3 Maps (Wk7), Lab 4 Tables &amp; coefficient plots (Wk10). Files <code>lab-1..4.qmd</code>; sidebar section “Labs”. ✅ DONE commit <code>1434ed3</code>.</p>
+<p><strong>Graduated AI policy (in syllabus):</strong> quizzes AI-free; labs = AI for Q&amp;A/debug only + declare use + group accountability; final project = full modern AI workflow. ✅ DONE.</p>
+<p><strong>Syllabus grading section</strong> rewritten (labs 50 / quizzes 20 / project 30), assessment bullets fixed (removed leftover summer “Week 6/Module 6” text), quiz.qmd pointer page added. ✅ DONE.</p>
+<p>Superseded note: the earlier “5→3 coding assignments” step was replaced by this 4-labs model.</p>
+<p><strong>Coding assignments: 5 → 3.</strong> ✅ DONE (commit <code>896f7bf</code>) — files consolidated, schedule + sidebar updated. - <strong>CA1</strong> = COMBINE old CA1 (download/wrangle/merge, women’s rep/Norris) + old CA2 (Lipset modernization viz: line/scatter), <strong>shortened</strong>. Framed on development–democracy. Due <strong>Wk5</strong> (needs both plotting Wk2–3 AND merging Wk4–5). - <strong>CA2</strong> = old CA3 (maps, Oil Curse/Ross). Due Wk7. - <strong>CA3</strong> = old CA4 (tables + models), <strong>shortened</strong>. Due Wk10. - DROP old CA5 (Shiny — covered by the project). Old CA1 wrangling practice → moves to an in-class lab.</p>
+<p><strong>Project:</strong> ✅ DONE (commit <code>f89342e</code>). Dropped <code>alternative-assignment.qmd</code>. Slimmed to Proposal (project-assignment-1, Wk8) + Final Project (project-assignment-2, Wk16 live demo + Blackboard); retired the middle scaffold. Populated <code>project-description.qmd</code> (overview + group policy ≤3 + timeline). Quizzes are in-class (in-person), NOT summer’s Blackboard take-home model.</p>
+<p><strong>Quizzes cadence/timing:</strong> reframed as IN-CLASS (not settled on exact count; leaning ~weekly reading/concept checks at start of class). Blackboard used for delivery/auto-grading in the room.</p>
+</section>
+<section id="ide-decision-2026-08-24-rstudio-now-positron-for-the-project-phase" class="level3">
+<h3 class="anchored" data-anchor-id="ide-decision-2026-08-24-rstudio-now-positron-for-the-project-phase">IDE DECISION (2026-08-24): RStudio now, Positron for the project phase</h3>
+<p>Verified (Aug 2026): Positron’s inline <code>.qmd</code> output shipped April 2026 (was the last blocker) and Positron Assistant supports Claude/Copilot — BUT both are still <strong>preview/experimental</strong> (inline output can break <code>.R</code> execution + base-R layers; Assistant “not recommended for production”). <strong>Decision:</strong> Do NOT switch the whole course this offering. Use <strong>RStudio for the learning weeks (1–10)</strong> — all setup videos/screenshots/<code>getting-started</code> are RStudio-specific and shipping now matters. <strong>Introduce Positron in the project phase (Wk11+)</strong> as the professional, AI-integrated environment. This mirrors the graduated AI policy (RStudio + limited AI for labs → Positron + full AI for the capstone). Transition to a fully-Positron course in a later offering once Posit works the bugs out (features hit GA). <strong>Content TODO (future, not blocking ship):</strong> author a short “intro to Positron + Positron Assistant” for a Wk13 studio session; eventually a Positron setup path.</p>
+</section>
+<section id="de-fall-specific-ify-make-it-an-academic-year-template" class="level3">
+<h3 class="anchored" data-anchor-id="de-fall-specific-ify-make-it-an-academic-year-template">1. De-fall-specific-ify (make it an academic-year template)</h3>
+<ul>
+<li><label><input type="checkbox" checked=""><code>_quarto.yml</code>: title → <code>"PSC/DATS 2102--Course Schedule"</code>; <code>repo-url</code> → <code>.../dataviz</code>; footer copyright → 2026 (commit <code>329242e</code>)</label></li>
+<li><label><input type="checkbox" checked=""><code>index.qmd</code>: fully rebuilt for Fall 2026 — Tue/Thu (<code>tue &lt;- as_date("2026-08-25")</code>), one topic per week, plot-first arc, topic titles, break rows per GW calendar. Dates verified in R; renders clean (commit <code>d2c49fb</code>).</label></li>
+<li><label><input type="checkbox" checked=""><code>_quarto.yml</code> sidebar: “Course Modules” → “Course Topics” grouped into Parts I–V with descriptive titles. <strong>Note: <code>module-6.2.qmd</code> dropped from sidebar — its sharing/shinylive content folds into “Extending &amp; deploying” (module-5.2). Merge in step 2, then delete or repurpose module-6.2.</strong></label></li>
+<li><label><input type="checkbox" checked="">README already term-neutral; <code>index.qmd</code> title neutral (“Course Schedule”).</label></li>
+<li>NOTE for spring reuse: change <code>tue</code> start date + the fall-break/Thanksgiving rows only.</li>
+</ul>
+</section>
+<section id="port-summer-2026-content" class="level3">
+<h3 class="anchored" data-anchor-id="port-summer-2026-content">2. Port summer 2026 content</h3>
+<p>Modules that DIFFER (summer newer — copy over): <code>getting-started</code>, <code>module-1.1</code>, <code>module-1.2</code>, <code>module-3.1</code>, <code>module-4.1</code>, <code>module-5.1</code>, <code>module-6.2</code>. (Identical, skip: <code>module-2.1</code>, <code>2.2</code>, <code>3.2</code>, <code>4.2</code>, <code>5.2</code>, <code>6.1</code>.) - [x] Ported the 7 updated modules from <code>../dataviz-summer/modules/</code> (commit <code>0967a7f</code>). - [x] <strong>Dropped GitHub Classroom</strong> (EJT: not used in the semester course, phasing out of summer too). Stripped Classroom section from getting-started; repointed sidebar tool to github.com; fixed video/link labels; aligned coding-assignment-3 + module-6.2 to <strong>Blackboard submission</strong> (EJT confirmed Blackboard for all submission). - [x] <strong>Posit Cloud dropped</strong> (EJT: not using it this semester). All coding assignments standardized on “compress (zip) your project folder → submit on Blackboard” (commit <code>4857e85</code>). - NOTE: ported modules’ <code>_freeze</code> cache is now stale (content changed) — full re-render needed on a machine with the packages/API keys to refresh outputs. - [x] Syllabus <strong>AI policy</strong> rewritten (commit <code>027121d</code>): rationale + four principles + assessment-specific (quizzes AI-free / assignments consultant / project encouraged). EJT approved the enhanced assessment-type version. - [x] Syllabus <strong>Course Information</strong> fixed: Hall of Government Rm 102, Tue/Thu meeting days. - [x] Syllabus <strong>credit-hour paragraph</strong> rewritten for 3-credit semester (was summer 6-week text) using standard GW math (2.5h instruction + 5h independent/wk × 15 = 37.5 / 75). <strong>EJT: verify against GW’s official credit-hour boilerplate.</strong> - [ ] <strong>EJT to confirm/adjust:</strong> Office Hours still say “Mondays 3–5 p.m.” (calendly) — set Fall 2026 hours. “log in daily” phrasing is a carryover from the online course; fine to leave for in-person. - [ ] Bring over <strong>module quizzes</strong>: <code>quiz.qmd</code> + wire quiz links (<code>📘</code>) into the schedule where appropriate - [ ] Update <strong>YouTube video IDs</strong> to summer’s re-recorded versions (compare index.qmd Videos columns) - [ ] Assignments: scaffolded starter code in <code>coding-assignment-1</code> &amp; <code>-2</code>, <code>eval: false</code> global there; updated <strong>app.R template</strong> for assignment 5; group-project policy in project assignments - [ ] NSE approach update already in ported <code>module-5.1</code></p>
+</section>
+<section id="integrate-healy-option-3-full-integration" class="level3">
+<h3 class="anchored" data-anchor-id="integrate-healy-option-3-full-integration">3. Integrate Healy — OPTION 3 (full integration)</h3>
+<p>Healy = assigned spine for VIZ modules (2–4); r4ds = primary assigned text for WRANGLING (module 1 + Getting Started); Shiny (5–6) unchanged (not in Healy).</p>
+<p>Add to the schedule “Readings”/“Reference” column, chapter per module:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Module</th>
+<th>Skills</th>
+<th>Healy chapter (assigned)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GS / intro</td>
+<td>course intro, principles</td>
+<td><strong>Ch.1 Look at Data</strong></td>
+<td>NEW assigned reading — fills the missing viz-principles gap (perception, chart choice, honesty)</td>
+</tr>
+<tr class="even">
+<td>2.1</td>
+<td>bars, histograms, line, scatter</td>
+<td><strong>Ch.2 Get Started + Ch.3 Make a Plot</strong></td>
+<td>ggplot grammar / aesthetics / geoms</td>
+</tr>
+<tr class="odd">
+<td>2.1 (cont.)</td>
+<td>grouping, facets</td>
+<td><strong>Ch.4 Show the Right Numbers</strong></td>
+<td>facets, stat transforms, pipelines</td>
+</tr>
+<tr class="even">
+<td>2.1 / 2.2</td>
+<td>labels, annotations</td>
+<td><strong>Ch.5 Graph Tables, Add Labels, Make Notes</strong></td>
+<td>geom_text, ggrepel, annotate</td>
+</tr>
+<tr class="odd">
+<td>2.2</td>
+<td>color, themes</td>
+<td><strong>Ch.8 Refine Your Plots</strong></td>
+<td>themes, scales, color (strong fit)</td>
+</tr>
+<tr class="even">
+<td>3.1</td>
+<td>choropleth maps</td>
+<td><strong>Ch.7 Draw Maps</strong></td>
+<td>sf, geom_sf</td>
+</tr>
+<tr class="odd">
+<td>4.2</td>
+<td>regression tables, coef plots</td>
+<td><strong>Ch.6 Work with Models</strong></td>
+<td>broom, marginaleffects, modelplot</td>
+</tr>
+</tbody>
+</table>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">✅ DONE (commit <code>a5edd40</code>): all 8 Healy 2e chapters added to the schedule Readings column (📗) across viz weeks; wrangling weeks keep r4ds; both free texts listed in syllabus materials. Healy 2e chapter URLs: 01-look-at-data, 02-intro, 03-ggplot-basics, 04-group-facet-transform, 05-more-on-geoms, 06-modeling, 07-maps, 08-polishing (all at socviz.co/).</label></li>
+<li><label><input type="checkbox" checked="">r4ds links kept on module 1 / GS + as Reference; Healy is the assigned 📗 in Readings.</label></li>
+<li><label><input type="checkbox">Add Healy to <code>course-links.qmd</code> / any “useful links” or textbook list</label></li>
+<li><label><input type="checkbox">Add socviz.co + <code>socviz</code> package to any setup/getting-started install list if we assign exercises from it</label></li>
+</ul>
+</section>
+<section id="cleanup" class="level3">
+<h3 class="anchored" data-anchor-id="cleanup">4. Cleanup</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Fix stale hardcoded raw URLs pointing to old repos:</label>
+<ul>
+<li><code>slides/week-6.1.qmd</code> (×2) + <code>slides/week-6.1-speaker.html</code> → <code>dataviz-fall-2023</code></li>
+<li><code>exercises/exercise-1.2*</code> → <code>dataviz-summer-2023</code></li>
+<li>Point these at the new <code>dataviz</code> repo (or a stable data host)</li>
+</ul></li>
+<li><label><input type="checkbox"><code>_publish.yml</code> — check it targets the right site</label></li>
+<li><label><input type="checkbox">Render locally (<code>quarto render</code>) and fix any errors</label></li>
+</ul>
+</section>
+<section id="go-live" class="level3">
+<h3 class="anchored" data-anchor-id="go-live">5. Go live</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Point <code>dataviz-gwu.rocks</code> publish at the new <code>dataviz</code> repo</label></li>
+<li><label><input type="checkbox">Final commit + push</label></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="open-questions-decisions-parked" class="level2">
+<h2 class="anchored" data-anchor-id="open-questions-decisions-parked">Open questions / decisions parked</h2>
+<ul>
+<li>Local folder is <code>teaching/dataviz/dataviz/</code> (doubled name) — accepted for now; GitHub repo is just <code>dataviz</code>.</li>
+<li>Exact Fall 2026 start date for <code>index.qmd</code> — need from EJT.</li>
+<li>Whether to keep the substantive poli-sci readings (Norris, Lipset, Ross, Fearon &amp; Laitin, Huntington) alongside Healy or thin them.</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/dataviz-gwu\.rocks");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2026, <a href="https://emmanuel.teitelbaum.com">Emmanuel Teitelbaum</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/eteitelbaum/dataviz/edit/main/notes/execution-plan.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/dataviz/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This page is built with <a href="https://quarto.org/">Quarto</a>. 👷🛠️</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

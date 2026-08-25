@@ -1,0 +1,15 @@
+{
+  "hash": "7aa9028eba02e67ecefadcbbabc3d017",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 8\"\nsubtitle: \"Fall break & project ideation\"\nformat: html\n---\n\n\n\n::: {.callout-important}\n**No class Tuesday** (fall break). **Project proposal** due by 11:59 p.m. on Monday, October 19.\n:::\n\nThursday is a flex session: we step back to talk about what makes good data visualization and brainstorm ideas for your final project.\n\n## Assignments\n\n| ✍️ [Project Proposal](/project/project-assignment-1.qmd)\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

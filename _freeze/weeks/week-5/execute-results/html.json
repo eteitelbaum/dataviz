@@ -1,0 +1,17 @@
+{
+  "hash": "b2ad2fb7aa5b268fa5eb3e65a23b7bc9",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 5\"\nsubtitle: \"Importing & Merging Data\"\nformat: html\n---\n\n\n\n::: {.callout-important}\n**Lab 2 (Wrangling)** due by 11:59 p.m. on Monday, September 28.\n:::\n\nWe pull data straight from APIs and merge sources into a single tidy data frame.\n\n## Readings\n\n| 📖 [Norris, \"Electoral Reform and Women's Representation\"](https://link.springer.com/article/10.1057/palgrave.ap.5500151)\n| 📖 [r4ds, 20.3](https://r4ds.hadley.nz/joins.html#sec-mutating-joins)\n| 📖 [r4ds, 4.5](https://r4ds.hadley.nz/data-transform.html#groups)\n\n## Videos\n\n| 🖥️ [Download data from the World Bank](https://youtu.be/Z_jEYnRBv4M)\n| 🖥️ [Download data from V-Dem](https://youtu.be/ScQD47eJeAE)\n| 🖥️ [Add country codes](https://youtu.be/ZGD0kO_iwAM)\n| 🖥️ [Merge two data frames](https://youtu.be/wNF3ZPneHWw)\n| 🖥️ [Group, summarize and arrange](https://youtu.be/mgBwVzMV-v8)\n\n## Assignments\n\n| 🧪 [Lab 2: Wrangling](/assignments/lab-2.qmd)\n| 📘 Weekly quiz, in class\n",
+    "supporting": [
+      "week-5_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

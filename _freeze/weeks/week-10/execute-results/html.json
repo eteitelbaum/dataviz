@@ -1,0 +1,17 @@
+{
+  "hash": "b959eeaabb8c7cfc7e487fd8b54fc680",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 10\"\nsubtitle: \"Models & Coefficient Plots\"\nformat: html\n---\n\n\n\n::: {.callout-important}\n**Lab 4 (Tables & coefficient plots)** due by 11:59 p.m. on Monday, November 2.\n:::\n\nWe fit models, present them as regression tables with `modelsummary`, and visualize them as coefficient plots.\n\n## Readings\n\n| 📖 [Healy, ch. 6: Work with Models](https://socviz.co/06-modeling.html)\n| 📖 [Fearon & Laitin, \"Ethnicity, Insurgency, and Civil War\"](https://www.jstor.org/stable/3118222)\n\n## Assignments\n\n| 🧪 [Lab 4: Tables & coefficient plots](/assignments/lab-4.qmd)\n| 📘 Weekly quiz, in class\n",
+    "supporting": [
+      "week-10_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

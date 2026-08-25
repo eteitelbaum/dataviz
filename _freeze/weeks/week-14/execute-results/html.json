@@ -1,0 +1,15 @@
+{
+  "hash": "8e4d5634801266e73021aa22b11a406a",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 14\"\nsubtitle: \"Thanksgiving break\"\nformat: html\n---\n\n\n\n::: {.callout-important}\n**No class this week** — Thanksgiving break. 🦃\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
