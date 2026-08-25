@@ -1,5 +1,5 @@
 ---
-title: "Extending your app"
+title: "Extending Your App"
 subtitle: "Exploring Reactivity"
 format: 
   html:

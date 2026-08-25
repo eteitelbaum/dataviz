@@ -1,6 +1,6 @@
 ---
 title: "Week 2"
-subtitle: "Charting with ggplot2"
+subtitle: "Charting With ggplot2"
 format: html
 ---
 

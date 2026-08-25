@@ -1,6 +1,6 @@
 ---
 title: "Week 4"
-subtitle: "Reading & reshaping data"
+subtitle: "Reading & Reshaping Data"
 format: html
 ---
 

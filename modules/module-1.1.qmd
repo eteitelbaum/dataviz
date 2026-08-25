@@ -1,6 +1,6 @@
 ---
-title: "Reading & reshaping data"
-subtitle: "Working with Flat Files"
+title: "Reading & Reshaping Data"
+subtitle: "Working With Flat Files"
 format: 
   html:
     code-link: true

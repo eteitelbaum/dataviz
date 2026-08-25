@@ -1,6 +1,6 @@
 ---
 title: "Week 10"
-subtitle: "Models & coefficient plots"
+subtitle: "Models & Coefficient Plots"
 format: html
 ---
 

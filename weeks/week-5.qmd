@@ -1,6 +1,6 @@
 ---
 title: "Week 5"
-subtitle: "Importing & merging data"
+subtitle: "Importing & Merging Data"
 format: html
 ---
 

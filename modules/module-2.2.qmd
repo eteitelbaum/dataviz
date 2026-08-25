@@ -1,5 +1,5 @@
 ---
-title: "Color, themes & annotations"
+title: "Color, Themes & Annotations"
 subtitle: "Accessibility, Clarity and Interactivity"
 format: 
   html:

@@ -1,5 +1,5 @@
 ---
-title: "Models & coefficient plots"
+title: "Models & Coefficient Plots"
 subtitle: "Regression Tables and Coefficient Plots"
 format: 
   html:

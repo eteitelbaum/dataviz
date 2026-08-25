@@ -1,5 +1,5 @@
 ---
-title: "Choropleth maps"
+title: "Choropleth Maps"
 subtitle: "Choropleth Maps"
 format: 
   html:

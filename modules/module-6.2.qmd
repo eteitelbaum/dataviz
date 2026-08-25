@@ -1,5 +1,5 @@
 ---
-title: "Deploying & sharing your app"
+title: "Deploying & Sharing Your App"
 subtitle: "Sharing Your App"
 format: 
   html:

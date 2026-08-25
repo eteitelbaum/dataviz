@@ -1,6 +1,6 @@
 ---
 title: "Week 12"
-subtitle: "Extending & deploying your app"
+subtitle: "Extending & Deploying Your App"
 format: html
 ---
 

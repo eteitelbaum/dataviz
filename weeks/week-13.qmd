@@ -1,6 +1,6 @@
 ---
 title: "Week 13"
-subtitle: "Project studio"
+subtitle: "Project Studio"
 format: html
 ---
 

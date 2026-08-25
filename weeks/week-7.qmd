@@ -1,6 +1,6 @@
 ---
 title: "Week 7"
-subtitle: "Interactive maps"
+subtitle: "Interactive Maps"
 format: html
 ---
 

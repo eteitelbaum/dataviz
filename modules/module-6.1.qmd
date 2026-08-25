@@ -1,5 +1,5 @@
 ---
-title: "Project studio"
+title: "Project Studio"
 subtitle: "Building Your App"
 format: 
   html:

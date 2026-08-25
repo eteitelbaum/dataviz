@@ -1,6 +1,6 @@
 ---
 title: "Week 3"
-subtitle: "Color, themes & annotations"
+subtitle: "Color, Themes & Annotations"
 format: html
 ---
 

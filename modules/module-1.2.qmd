@@ -1,6 +1,6 @@
 ---
-title: "Importing & merging data"
-subtitle: "Working with APIs"
+title: "Importing & Merging Data"
+subtitle: "Working With APIs"
 format: 
   html:
     code-link: true

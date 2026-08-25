@@ -1,5 +1,5 @@
 ---
-title: "Charting with ggplot2"
+title: "Charting With ggplot2"
 subtitle: "Visualizing Data With ggplot2"
 format: 
   html:

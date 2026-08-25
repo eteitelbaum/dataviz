@@ -116,40 +116,40 @@ website:
         contents:
           - href: modules/getting-started.qmd
             text: "Getting Started"
-          - section: "I — Working with data"
+          - section: "I — Working With Data"
             contents:
               - href: modules/module-1.1.qmd
-                text: "Reading & reshaping data"
+                text: "Reading & Reshaping Data"
               - href: modules/module-1.2.qmd
-                text: "Importing & merging data"
-          - section: "II — Visualizing data"
+                text: "Importing & Merging Data"
+          - section: "II — Visualizing Data"
             contents:
               - href: modules/module-2.1.qmd
-                text: "Charting with ggplot2"
+                text: "Charting With ggplot2"
               - href: modules/module-2.2.qmd
-                text: "Color, themes & annotations"
+                text: "Color, Themes & Annotations"
           - section: "III — Maps"
             contents:
               - href: modules/module-3.1.qmd
-                text: "Choropleth maps"
+                text: "Choropleth Maps"
               - href: modules/module-3.2.qmd
-                text: "Interactive maps"
-          - section: "IV — Tables & models"
+                text: "Interactive Maps"
+          - section: "IV — Tables & Models"
             contents:
               - href: modules/module-4.1.qmd
                 text: "Tables"
               - href: modules/module-4.2.qmd
-                text: "Models & coefficient plots"
-          - section: "V — Interactive apps (Shiny)"
+                text: "Models & Coefficient Plots"
+          - section: "V — Interactive Apps (Shiny)"
             contents:
               - href: modules/module-5.1.qmd
-                text: "Building a Shiny app"
+                text: "Building a Shiny App"
               - href: modules/module-5.2.qmd
-                text: "Extending your app"
+                text: "Extending Your App"
               - href: modules/module-6.2.qmd
-                text: "Deploying & sharing your app"
+                text: "Deploying & Sharing Your App"
               - href: modules/module-6.1.qmd
-                text: "Project studio"
+                text: "Project Studio"
 format:
   html:
     theme:

@@ -1,5 +1,5 @@
 ---
-title: "Building a Shiny app"
+title: "Building a Shiny App"
 subtitle: "Your First Shiny App"
 format: 
   html:
