@@ -3906,7 +3906,7 @@
     "href": "slides/week-2.1.html#lets-try-quarto",
     "title": "Getting Started, Part I",
     "section": "Let’s Try Quarto!",
-    "text": "Let’s Try Quarto!\n\nCreate a new Quarto document\n\nFile&gt;New File&gt;Quarto Document\n\nSave the document in your project folder\nRender it\n\nClick on the Render button\nOr keyboard shortcut (Cmd/Ctr + Shift + K)\n\nTry out the visual editor\n\n\n\n\n−+\n02:00"
+    "text": "Let’s Try Quarto!\n\nCreate a new Quarto document\n\nFile&gt;New File&gt;Quarto Document\n\nSave the document in your project folder\nRender it\n\nClick on the Render button\nOr keyboard shortcut (Cmd/Ctr + Shift + K)\n\nTry out the visual editor"
   },
   {
     "objectID": "slides/week-2.1.html#document-elements",
@@ -3927,7 +3927,7 @@
     "href": "slides/week-2.1.html#yaml-header-1",
     "title": "Getting Started, Part I",
     "section": "YAML Header",
-    "text": "YAML Header\n---\ntitle: \"My Documnet\"\nauthor: \"Your Name\"\ndate: today\ndate-format: long\nformat: html\nexecute:\n  echo: false\n  message: false\n---\n\nTry adding some of these options in your document\nThen render it again\nLook in the Quarto guide for other options to try\n\n\n\n\n−+\n02:00"
+    "text": "YAML Header\n---\ntitle: \"My Documnet\"\nauthor: \"Your Name\"\ndate: today\ndate-format: long\nformat: html\nexecute:\n  echo: false\n  message: false\n---\n\nTry adding some of these options in your document\nThen render it again\nLook in the Quarto guide for other options to try"
   },
   {
     "objectID": "slides/week-2.1.html#markdown",
@@ -3962,7 +3962,7 @@
     "href": "slides/week-2.1.html#try-some-markdown",
     "title": "Getting Started, Part I",
     "section": "Try Some Markdown",
-    "text": "Try Some Markdown\n\n\nCheck out the Markdown Cheatsheet\nTry editing the markdown in your document\nTry some of the other things you find in the guide\nThen render it again\n\n\n\n\n−+\n10:00"
+    "text": "Try Some Markdown\n\n\nCheck out the Markdown Cheatsheet\nTry editing the markdown in your document\nTry some of the other things you find in the guide\nThen render it again"
   },
   {
     "objectID": "slides/week-2.1.html#code-chunks",
@@ -3997,7 +3997,7 @@
     "href": "slides/week-2.1.html#try-it-yourself",
     "title": "Getting Started, Part I",
     "section": "Try it Yourself!",
-    "text": "Try it Yourself!\n\nCreate a code chunk\nCopy this code chunk into your document\n\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()\n\n\nTry adding some chunk options in your document\nThen render it again\n\n\n\n\n−+\n02:00"
+    "text": "Try it Yourself!\n\nCreate a code chunk\nCopy this code chunk into your document\n\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()\n\n\nTry adding some chunk options in your document\nThen render it again"
   },
   {
     "objectID": "slides/week-2.1.html#r-packages-and-functions",
