@@ -1,11 +1,9 @@
 {
-  "hash": "d97ed56b2904ff1b51e74db3923d3098",
+  "hash": "73bc0186f626deb51e69ce5985f560fd",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Week 2\"\nsubtitle: \"Charting With ggplot2\"\nformat: html\n---\n\n\n\nWe start making plots right away with `ggplot2`, using clean data so we can focus on the visualization.\n\n## Readings\n\n| 📖 [Healy, ch. 3: Make a Plot](https://socviz.co/03-ggplot-basics.html)\n| 📖 [Healy, ch. 4: Show the Right Numbers](https://socviz.co/04-group-facet-transform.html)\n| 📖 [r4ds, ch. 2](https://r4ds.hadley.nz/data-visualize.html)\n| 📖 [r4ds, 10.1-10.4](https://r4ds.hadley.nz/layers.html)\n| 📖 [r4ds, 12.2](https://r4ds.hadley.nz/communication.html#labels)\n\n## Videos\n\n| 🖥️ [Bar charts](https://youtu.be/hl02sVTyCRA)\n| 🖥️ [Histograms](https://youtu.be/LuNDAIQXx9w)\n| 🖥️ [Line charts](https://youtu.be/cHos9y261SQ)\n| 🖥️ [Scatter plots](https://youtu.be/Cvme3C268wE)\n\n## Assignments\n\n| 📘 Weekly quiz, in class\n",
-    "supporting": [
-      "week-2_files"
-    ],
+    "markdown": "---\ntitle: \"Week 2\"\nsubtitle: \"Charting With ggplot2\"\nformat: html\n---\n\n\n\nWe start making plots right away with `ggplot2`, using clean data so we can focus on the visualization.\n\n## Readings\n\n| 📖 [Healy, ch. 3: Make a Plot](https://socviz.co/03-ggplot-basics.html)\n| 📖 [Healy, ch. 4: Show the Right Numbers](https://socviz.co/04-group-facet-transform.html)\n| 📖 [r4ds, ch. 2](https://r4ds.hadley.nz/data-visualize.html)\n| 📖 [r4ds, 10.1-10.4](https://r4ds.hadley.nz/layers.html)\n| 📖 [r4ds, 12.2](https://r4ds.hadley.nz/communication.html#labels)\n\n## Videos\n\n| 🖥️ [Bar charts](https://youtu.be/QG1oDJPoIio)\n| 🖥️ [Histograms](https://youtu.be/-1YhCql-gMo)\n| 🖥️ [Line charts](https://youtu.be/PnmQ2MFQpIc)\n| 🖥️ [Scatter plots](https://youtu.be/FiosjUVyfLM)\n\n## Assignments\n\n| 📘 Weekly quiz, in class\n",
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],

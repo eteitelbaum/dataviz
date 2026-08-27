@@ -22,10 +22,10 @@ We start making plots right away with `ggplot2`, using clean data so we can focu
 
 ## Videos
 
-| 🖥️ [Bar charts](https://youtu.be/hl02sVTyCRA)
-| 🖥️ [Histograms](https://youtu.be/LuNDAIQXx9w)
-| 🖥️ [Line charts](https://youtu.be/cHos9y261SQ)
-| 🖥️ [Scatter plots](https://youtu.be/Cvme3C268wE)
+| 🖥️ [Bar charts](https://youtu.be/QG1oDJPoIio)
+| 🖥️ [Histograms](https://youtu.be/-1YhCql-gMo)
+| 🖥️ [Line charts](https://youtu.be/PnmQ2MFQpIc)
+| 🖥️ [Scatter plots](https://youtu.be/FiosjUVyfLM)
 
 ## Assignments
 
