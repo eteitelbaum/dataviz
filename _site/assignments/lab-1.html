@@ -111,10 +111,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <meta property="og:title" content="Lab 1: Plotting – PSC/DATS 2102–Course Schedule">
-<meta property="og:description" content="Homepage for PSC/DATS 2102, George Washington University.">
+<meta property="og:description" content="Do Wealth and Democracy Go Together?">
 <meta property="og:site_name" content="PSC/DATS 2102--Course Schedule">
 <meta name="twitter:title" content="Lab 1: Plotting – PSC/DATS 2102–Course Schedule">
-<meta name="twitter:description" content="Homepage for PSC/DATS 2102, George Washington University.">
+<meta name="twitter:description" content="Do Wealth and Democracy Go Together?">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -704,9 +704,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#step-1-a-scatter-plot-of-development-vs.-democracy-35-pts" id="toc-step-1-a-scatter-plot-of-development-vs.-democracy-35-pts" class="nav-link" data-scroll-target="#step-1-a-scatter-plot-of-development-vs.-democracy-35-pts">Step 1: A scatter plot of development vs.&nbsp;democracy (35 pts)</a></li>
-  <li><a href="#step-2-a-line-chart-over-time-35-pts" id="toc-step-2-a-line-chart-over-time-35-pts" class="nav-link" data-scroll-target="#step-2-a-line-chart-over-time-35-pts">Step 2: A line chart over time (35 pts)</a></li>
-  <li><a href="#step-3-interpret-30-pts" id="toc-step-3-interpret-30-pts" class="nav-link" data-scroll-target="#step-3-interpret-30-pts">Step 3: Interpret (30 pts)</a></li>
+  <li><a href="#step-1-a-line-chart-over-time-30-pts" id="toc-step-1-a-line-chart-over-time-30-pts" class="nav-link" data-scroll-target="#step-1-a-line-chart-over-time-30-pts">Step 1: A line chart over time (30 pts)</a></li>
+  <li><a href="#step-2-a-bar-chart-comparing-regions-30-pts" id="toc-step-2-a-bar-chart-comparing-regions-30-pts" class="nav-link" data-scroll-target="#step-2-a-bar-chart-comparing-regions-30-pts">Step 2: A bar chart comparing regions (30 pts)</a></li>
+  <li><a href="#step-3-a-scatter-plot-30-pts" id="toc-step-3-a-scatter-plot-30-pts" class="nav-link" data-scroll-target="#step-3-a-scatter-plot-30-pts">Step 3: A scatter plot (30 pts)</a></li>
+  <li><a href="#step-4-conclusion-10-pts" id="toc-step-4-conclusion-10-pts" class="nav-link" data-scroll-target="#step-4-conclusion-10-pts">Step 4: Conclusion (10 pts)</a></li>
+  <li><a href="#bonus-1-pt-each" id="toc-bonus-1-pt-each" class="nav-link" data-scroll-target="#bonus-1-pt-each">Bonus (1 pt each)</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/dataviz/edit/main/assignments/lab-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/dataviz/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -717,6 +719,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignments/lab-1.html">Labs</a></li><li class="breadcrumb-item"><a href="../assignments/lab-1.html">Lab 1: Plotting</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Lab 1: Plotting</h1>
+<p class="subtitle lead">Do Wealth and Democracy Go Together?</p>
 </div>
 
 
@@ -748,41 +751,237 @@ How labs work
 </div>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>In this lab you will practice building and polishing plots with <code>ggplot2</code> using a clean data set we provide, so you can focus entirely on the visualization. We will explore the classic question of whether economic development and democracy go together (Lipset’s “modernization” hypothesis). The data are a country-year panel with a democracy score (<code>polyarchy</code>), GDP per capita (<code>gdp_pc</code>), <code>region</code>, and <code>year</code>.</p>
+<p>In 1959, Seymour Martin Lipset published a <a href="https://www-jstor-org.proxygw.wrlc.org/stable/1951731?seq=8">famous article</a> arguing that economic modernization—wealth, urbanization, education, health—makes democracy more likely. It has been cited more than 11,000 times. In this lab your group will put his argument to the test with three charts.</p>
+<p>The data are already prepared for you, so you can focus entirely on the visualization. Run the chunk below to load them.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A tidy data set is provided for you on the course site.</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>dem_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/eteitelbaum/dataviz/main/modules/data/dem_women.csv"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>dem_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/dem_data.csv"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dem_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 6,025
-Columns: 9
-$ country      &lt;chr&gt; "Mexico", "Mexico", "Mexico", "Mexico", "Mexico", "Mexico…
-$ vdem_ctry_id &lt;dbl&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, …
-$ iso3c        &lt;chr&gt; "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "…
-$ year         &lt;dbl&gt; 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 199…
-$ polyarchy    &lt;dbl&gt; 0.393, 0.415, 0.441, 0.455, 0.474, 0.493, 0.515, 0.559, 0…
-$ gdp_pc       &lt;dbl&gt; 11.389, 11.635, 11.883, 11.983, 12.043, 11.742, 12.059, 1…
-$ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "Latin…
-$ women_rep    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, 14.20, 17.40, 18.20, 16.00, 1…
-$ flfp         &lt;dbl&gt; NA, 34.26, 35.02, 35.86, 36.39, 37.63, 37.70, 39.66, 39.3…</code></pre>
+Columns: 15
+$ country       &lt;chr&gt; "Afghanistan", "Afghanistan", "Afghanistan", "Afghanista…
+$ iso3c         &lt;chr&gt; "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", …
+$ year          &lt;dbl&gt; 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 19…
+$ region        &lt;chr&gt; "Asia", "Asia", "Asia", "Asia", "Asia", "Asia", "Asia", …
+$ polyarchy     &lt;dbl&gt; 0.094, 0.094, 0.095, 0.093, 0.093, 0.093, 0.076, 0.073, …
+$ libdem        &lt;dbl&gt; 0.045, 0.041, 0.033, 0.023, 0.023, 0.022, 0.019, 0.022, …
+$ partipdem     &lt;dbl&gt; 0.025, 0.025, 0.028, 0.027, 0.027, 0.024, 0.013, 0.013, …
+$ delibdem      &lt;dbl&gt; 0.035, 0.035, 0.031, 0.027, 0.027, 0.027, 0.009, 0.007, …
+$ egaldem       &lt;dbl&gt; 0.099, 0.096, 0.066, 0.044, 0.044, 0.042, 0.036, 0.038, …
+$ gdp_pc        &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 308.3, 277.1, 33…
+$ life_exp      &lt;dbl&gt; 45.1, 45.5, 46.6, 51.0, 51.0, 52.1, 52.8, 53.2, 52.5, 54…
+$ inf_mort      &lt;dbl&gt; 145.9, 141.4, 137.2, 133.1, 129.4, 126.0, 122.7, 119.6, …
+$ urban_pct     &lt;dbl&gt; 17.3, 17.4, 17.5, 17.6, 17.7, 17.8, 18.0, 18.1, 18.2, 18…
+$ school_enroll &lt;dbl&gt; 11.0, 17.2, NA, 17.4, 23.5, 23.1, NA, NA, NA, NA, NA, 14…
+$ internet_pct  &lt;dbl&gt; 0.0, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 0.0, 0.0, 0…</code></pre>
+</div>
+</div>
+<p>Every row is one country in one year, from 1990 to 2023. Along with <code>country</code>, <code>year</code> and <code>region</code>, you have:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Measures of democracy</th>
+<th>Measures of modernization</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>polyarchy</code> — electoral democracy</td>
+<td><code>gdp_pc</code> — GDP per capita (US$)</td>
+</tr>
+<tr class="even">
+<td><code>libdem</code> — liberal democracy</td>
+<td><code>life_exp</code> — life expectancy (years)</td>
+</tr>
+<tr class="odd">
+<td><code>partipdem</code> — participatory democracy</td>
+<td><code>inf_mort</code> — infant mortality (per 1,000)</td>
+</tr>
+<tr class="even">
+<td><code>delibdem</code> — deliberative democracy</td>
+<td><code>urban_pct</code> — population that is urban (%)</td>
+</tr>
+<tr class="odd">
+<td><code>egaldem</code> — egalitarian democracy</td>
+<td><code>internet_pct</code> — population online (%)</td>
+</tr>
+</tbody>
+</table>
+<p>All five democracy measures run from 0 to 1, where higher is more democratic.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Pick your variables
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As a group, choose <strong>one</strong> democracy measure and <strong>one</strong> modernization measure to use for the whole lab. Different groups will choose differently, and that is the point—we will compare notes at the end.</p>
 </div>
 </div>
 </section>
-<section id="step-1-a-scatter-plot-of-development-vs.-democracy-35-pts" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-a-scatter-plot-of-development-vs.-democracy-35-pts">Step 1: A scatter plot of development vs.&nbsp;democracy (35 pts)</h2>
-<p><em>Using a single recent year of the data, make a scatter plot with GDP per capita on the x-axis and the democracy score on the y-axis, colored by region. Put the x-axis on a log scale and format it as dollars with the <code>scales</code> package, add a <code>viridis</code> color map, clear labels, and a theme. Then add a linear trend line with <code>geom_smooth(method = "lm")</code>.</em></p>
+<section id="step-1-a-line-chart-over-time-30-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-a-line-chart-over-time-30-pts">Step 1: A line chart over time (30 pts)</h2>
+<p><em>a) Pick three or four countries you are curious about, at different levels of wealth, and <code>filter()</code> the data down to just those countries.</em></p>
+<p>Country names have to match the data <strong>exactly</strong>. Run this to check a name before you use it—change <code>"Kor"</code> to the first few letters of whatever you are looking for:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dem_data <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(country) <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(country, <span class="st">"Kor"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 1
+  country    
+  &lt;chr&gt;      
+1 North Korea
+2 South Korea</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A few names are not what you would guess: <code>United States of America</code>, <code>Türkiye</code>, <code>Czechia</code>, <code>Burma/Myanmar</code>, and two separate Congos. Copy them from the check above rather than typing from memory.</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Starter code
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Copy this into the chunk below and add your countries inside the <code>c()</code>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>line_data <span class="ot">&lt;-</span> dem_data <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">""</span>))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(line_data, country)   <span class="co"># check you got what you expected</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p><em>b) Make a line chart. You need <code>year</code> on the x-axis, your democracy measure on the y-axis, and <code>country</code> mapped to <code>color</code> so each country gets its own line.</em></p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Starter code
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <code>aes()</code> call is where you say which column maps to which part of the chart. Fill in all three, then add your labels inside <code>labs()</code>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(line_data, <span class="fu">aes</span>(<span class="at">x =</span> , <span class="at">y =</span> , <span class="at">color =</span> )) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> , <span class="at">y =</span> , <span class="at">title =</span> , <span class="at">caption =</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p><em>c) In a sentence or two below this line, describe what you see. Which country changed the most?</em></p>
 </section>
-<section id="step-2-a-line-chart-over-time-35-pts" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-a-line-chart-over-time-35-pts">Step 2: A line chart over time (35 pts)</h2>
-<p><em>Pick four or five countries from different regions and make a line chart of the democracy score over time, mapping country to <code>color</code>. Add clear labels and a caption, a colorblind-friendly palette, and a theme. Add one annotation—for example a vertical line marking an important date—using <code>annotate()</code> or <code>geom_vline()</code>.</em></p>
+<section id="step-2-a-bar-chart-comparing-regions-30-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-a-bar-chart-comparing-regions-30-pts">Step 2: A bar chart comparing regions (30 pts)</h2>
+<p><em>a) Starting from <code>dem_data</code>, filter for a single recent year (2019 is a good choice), then group by <code>region</code> and take the mean of your democracy measure.</em></p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Starter code
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Three verbs in a row. Inside <code>summarize()</code> you give the new column a name, like <code>mean_polyarchy = mean(polyarchy)</code>.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>bar_data <span class="ot">&lt;-</span> dem_data <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> ) <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>() <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>()</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>bar_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p><em>b) Make a bar chart with <code>geom_col()</code>, putting <code>region</code> on the x-axis and your summarized democracy measure on the y-axis. Add labels and a title, and finish with a theme such as <code>theme_minimal()</code>.</em></p>
+<p><em>c) Below this line, say which region scores highest and which scores lowest.</em></p>
 </section>
-<section id="step-3-interpret-30-pts" class="level2">
-<h2 class="anchored" data-anchor-id="step-3-interpret-30-pts">Step 3: Interpret (30 pts)</h2>
-<p><em>In a few sentences of markdown text (not in a code chunk), interpret your two charts. Does the evidence support the idea that development and democracy go together? Point to an interesting exception if you see one.</em></p>
+<section id="step-3-a-scatter-plot-30-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-a-scatter-plot-30-pts">Step 3: A scatter plot (30 pts)</h2>
+<p><em>a) Filter <code>dem_data</code> for the same year you used in Step 2 and save it as <code>scatter_data</code>.</em></p>
+<p><em>b) Build a scatter plot: your modernization measure on the x-axis, your democracy measure on the y-axis, points colored by <code>region</code>. Then add a trend line with <code>geom_smooth(method = "lm")</code>, a colorblind-friendly palette with <code>scale_color_viridis_d()</code>, and clear labels.</em></p>
+<p>Build it up one layer at a time—run the chart after each <code>+</code> you add so you can see what each piece does.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Where you put <code>color</code> matters here
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Put <code>color = region</code> inside <code>geom_point()</code>, <strong>not</strong> in the top-level <code>aes()</code>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(scatter_data, <span class="fu">aes</span>(<span class="at">x =</span> , <span class="at">y =</span> )) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> region)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Anything in the top-level <code>aes()</code> is inherited by <em>every</em> layer. If you put <code>color = region</code> up there, <code>geom_smooth()</code> splits too and you get six separate trend lines instead of one overall trend. Try it both ways and see.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you chose <code>gdp_pc</code>, most countries will bunch up against the left edge. Add this layer to spread them out:</p>
+<p><code>scale_x_log10(labels = label_dollar())</code></p>
+</div>
+</div>
+<p><em>c) Below this line, describe the relationship. Does it look positive, negative, or flat? If you used <code>inf_mort</code>, think about why its direction differs from the others.</em></p>
+</section>
+<section id="step-4-conclusion-10-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-conclusion-10-pts">Step 4: Conclusion (10 pts)</h2>
+<p><em>Render your document, then write a short paragraph below this line. Taken together, do your three charts support Lipset’s argument? Name one country or region that does not fit the pattern.</em></p>
+</section>
+<section id="bonus-1-pt-each" class="level2">
+<h2 class="anchored" data-anchor-id="bonus-1-pt-each">Bonus (1 pt each)</h2>
+<p><em>a) Add <code>facet_wrap(~ region)</code> to your scatter plot.</em></p>
+<p><em>b) Mark something meaningful on your line chart with <code>geom_vline()</code> and <code>annotate()</code>—for example, the year a country held a key election.</em></p>
+<p><em>c) Make your scatter plot interactive with <code>ggplotly()</code> from the <code>plotly</code> package.</em></p>
 <p><em>AI note: <em>(one line on whether/how your group used AI)</em></em></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Submission Instructions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Head over to Blackboard and go to the Lab 1 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and that all of the work is your group’s own.</p>
+<p>Then upload a compressed (zipped) version of your project folder including the <strong>rendered</strong> HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).</p>
+</div>
+</div>
 
 
 </section>

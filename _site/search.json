@@ -2678,40 +2678,62 @@
     "href": "assignments/lab-1.html#overview",
     "title": "Lab 1: Plotting",
     "section": "Overview",
-    "text": "Overview\nIn this lab you will practice building and polishing plots with ggplot2 using a clean data set we provide, so you can focus entirely on the visualization. We will explore the classic question of whether economic development and democracy go together (Lipset’s “modernization” hypothesis). The data are a country-year panel with a democracy score (polyarchy), GDP per capita (gdp_pc), region, and year.\n\nlibrary(tidyverse)\nlibrary(scales)\n\n# A tidy data set is provided for you on the course site.\ndem_data &lt;- read_csv(\"https://raw.githubusercontent.com/eteitelbaum/dataviz/main/modules/data/dem_women.csv\")\nglimpse(dem_data)\n\nRows: 6,025\nColumns: 9\n$ country      &lt;chr&gt; \"Mexico\", \"Mexico\", \"Mexico\", \"Mexico\", \"Mexico\", \"Mexico…\n$ vdem_ctry_id &lt;dbl&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, …\n$ iso3c        &lt;chr&gt; \"MEX\", \"MEX\", \"MEX\", \"MEX\", \"MEX\", \"MEX\", \"MEX\", \"MEX\", \"…\n$ year         &lt;dbl&gt; 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 199…\n$ polyarchy    &lt;dbl&gt; 0.393, 0.415, 0.441, 0.455, 0.474, 0.493, 0.515, 0.559, 0…\n$ gdp_pc       &lt;dbl&gt; 11.389, 11.635, 11.883, 11.983, 12.043, 11.742, 12.059, 1…\n$ region       &lt;chr&gt; \"Latin America\", \"Latin America\", \"Latin America\", \"Latin…\n$ women_rep    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, 14.20, 17.40, 18.20, 16.00, 1…\n$ flfp         &lt;dbl&gt; NA, 34.26, 35.02, 35.86, 36.39, 37.63, 37.70, 39.66, 39.3…",
+    "text": "Overview\nIn 1959, Seymour Martin Lipset published a famous article arguing that economic modernization—wealth, urbanization, education, health—makes democracy more likely. It has been cited more than 11,000 times. In this lab your group will put his argument to the test with three charts.\nThe data are already prepared for you, so you can focus entirely on the visualization. Run the chunk below to load them.\n\nlibrary(tidyverse)\nlibrary(scales)\n\ndem_data &lt;- read_csv(\"data/dem_data.csv\")\n\nglimpse(dem_data)\n\nRows: 6,025\nColumns: 15\n$ country       &lt;chr&gt; \"Afghanistan\", \"Afghanistan\", \"Afghanistan\", \"Afghanista…\n$ iso3c         &lt;chr&gt; \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", …\n$ year          &lt;dbl&gt; 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 19…\n$ region        &lt;chr&gt; \"Asia\", \"Asia\", \"Asia\", \"Asia\", \"Asia\", \"Asia\", \"Asia\", …\n$ polyarchy     &lt;dbl&gt; 0.094, 0.094, 0.095, 0.093, 0.093, 0.093, 0.076, 0.073, …\n$ libdem        &lt;dbl&gt; 0.045, 0.041, 0.033, 0.023, 0.023, 0.022, 0.019, 0.022, …\n$ partipdem     &lt;dbl&gt; 0.025, 0.025, 0.028, 0.027, 0.027, 0.024, 0.013, 0.013, …\n$ delibdem      &lt;dbl&gt; 0.035, 0.035, 0.031, 0.027, 0.027, 0.027, 0.009, 0.007, …\n$ egaldem       &lt;dbl&gt; 0.099, 0.096, 0.066, 0.044, 0.044, 0.042, 0.036, 0.038, …\n$ gdp_pc        &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 308.3, 277.1, 33…\n$ life_exp      &lt;dbl&gt; 45.1, 45.5, 46.6, 51.0, 51.0, 52.1, 52.8, 53.2, 52.5, 54…\n$ inf_mort      &lt;dbl&gt; 145.9, 141.4, 137.2, 133.1, 129.4, 126.0, 122.7, 119.6, …\n$ urban_pct     &lt;dbl&gt; 17.3, 17.4, 17.5, 17.6, 17.7, 17.8, 18.0, 18.1, 18.2, 18…\n$ school_enroll &lt;dbl&gt; 11.0, 17.2, NA, 17.4, 23.5, 23.1, NA, NA, NA, NA, NA, 14…\n$ internet_pct  &lt;dbl&gt; 0.0, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 0.0, 0.0, 0…\n\n\nEvery row is one country in one year, from 1990 to 2023. Along with country, year and region, you have:\n\n\n\n\n\n\n\nMeasures of democracy\nMeasures of modernization\n\n\n\n\npolyarchy — electoral democracy\ngdp_pc — GDP per capita (US$)\n\n\nlibdem — liberal democracy\nlife_exp — life expectancy (years)\n\n\npartipdem — participatory democracy\ninf_mort — infant mortality (per 1,000)\n\n\ndelibdem — deliberative democracy\nurban_pct — population that is urban (%)\n\n\negaldem — egalitarian democracy\ninternet_pct — population online (%)\n\n\n\nAll five democracy measures run from 0 to 1, where higher is more democratic.\n\n\n\n\n\n\nPick your variables\n\n\n\nAs a group, choose one democracy measure and one modernization measure to use for the whole lab. Different groups will choose differently, and that is the point—we will compare notes at the end.",
     "crumbs": [
       "Labs",
       "Lab 1: Plotting"
     ]
   },
   {
-    "objectID": "assignments/lab-1.html#step-1-a-scatter-plot-of-development-vs.-democracy-35-pts",
-    "href": "assignments/lab-1.html#step-1-a-scatter-plot-of-development-vs.-democracy-35-pts",
+    "objectID": "assignments/lab-1.html#step-1-a-line-chart-over-time-30-pts",
+    "href": "assignments/lab-1.html#step-1-a-line-chart-over-time-30-pts",
     "title": "Lab 1: Plotting",
-    "section": "Step 1: A scatter plot of development vs. democracy (35 pts)",
-    "text": "Step 1: A scatter plot of development vs. democracy (35 pts)\nUsing a single recent year of the data, make a scatter plot with GDP per capita on the x-axis and the democracy score on the y-axis, colored by region. Put the x-axis on a log scale and format it as dollars with the scales package, add a viridis color map, clear labels, and a theme. Then add a linear trend line with geom_smooth(method = \"lm\").",
+    "section": "Step 1: A line chart over time (30 pts)",
+    "text": "Step 1: A line chart over time (30 pts)\na) Pick three or four countries you are curious about, at different levels of wealth, and filter() the data down to just those countries.\nCountry names have to match the data exactly. Run this to check a name before you use it—change \"Kor\" to the first few letters of whatever you are looking for:\n\ndem_data |&gt;\n  distinct(country) |&gt;\n  filter(str_detect(country, \"Kor\"))\n\n# A tibble: 2 × 1\n  country    \n  &lt;chr&gt;      \n1 North Korea\n2 South Korea\n\n\n\n\n\n\n\n\nWarning\n\n\n\nA few names are not what you would guess: United States of America, Türkiye, Czechia, Burma/Myanmar, and two separate Congos. Copy them from the check above rather than typing from memory.\n\n\n\n\n\n\n\n\nStarter code\n\n\n\nCopy this into the chunk below and add your countries inside the c().\nline_data &lt;- dem_data |&gt;\n  filter(country %in% c(\"\", \"\"))\n\ncount(line_data, country)   # check you got what you expected\n\n\nb) Make a line chart. You need year on the x-axis, your democracy measure on the y-axis, and country mapped to color so each country gets its own line.\n\n\n\n\n\n\nStarter code\n\n\n\nThe aes() call is where you say which column maps to which part of the chart. Fill in all three, then add your labels inside labs().\nggplot(line_data, aes(x = , y = , color = )) +\n  geom_line() +\n  labs(x = , y = , title = , caption = )\n\n\nc) In a sentence or two below this line, describe what you see. Which country changed the most?",
     "crumbs": [
       "Labs",
       "Lab 1: Plotting"
     ]
   },
   {
-    "objectID": "assignments/lab-1.html#step-2-a-line-chart-over-time-35-pts",
-    "href": "assignments/lab-1.html#step-2-a-line-chart-over-time-35-pts",
+    "objectID": "assignments/lab-1.html#step-2-a-bar-chart-comparing-regions-30-pts",
+    "href": "assignments/lab-1.html#step-2-a-bar-chart-comparing-regions-30-pts",
     "title": "Lab 1: Plotting",
-    "section": "Step 2: A line chart over time (35 pts)",
-    "text": "Step 2: A line chart over time (35 pts)\nPick four or five countries from different regions and make a line chart of the democracy score over time, mapping country to color. Add clear labels and a caption, a colorblind-friendly palette, and a theme. Add one annotation—for example a vertical line marking an important date—using annotate() or geom_vline().",
+    "section": "Step 2: A bar chart comparing regions (30 pts)",
+    "text": "Step 2: A bar chart comparing regions (30 pts)\na) Starting from dem_data, filter for a single recent year (2019 is a good choice), then group by region and take the mean of your democracy measure.\n\n\n\n\n\n\nStarter code\n\n\n\nThree verbs in a row. Inside summarize() you give the new column a name, like mean_polyarchy = mean(polyarchy).\nbar_data &lt;- dem_data |&gt;\n  filter(year == ) |&gt;\n  group_by() |&gt;\n  summarize()\n\nbar_data\n\n\nb) Make a bar chart with geom_col(), putting region on the x-axis and your summarized democracy measure on the y-axis. Add labels and a title, and finish with a theme such as theme_minimal().\nc) Below this line, say which region scores highest and which scores lowest.",
     "crumbs": [
       "Labs",
       "Lab 1: Plotting"
     ]
   },
   {
-    "objectID": "assignments/lab-1.html#step-3-interpret-30-pts",
-    "href": "assignments/lab-1.html#step-3-interpret-30-pts",
+    "objectID": "assignments/lab-1.html#step-3-a-scatter-plot-30-pts",
+    "href": "assignments/lab-1.html#step-3-a-scatter-plot-30-pts",
     "title": "Lab 1: Plotting",
-    "section": "Step 3: Interpret (30 pts)",
-    "text": "Step 3: Interpret (30 pts)\nIn a few sentences of markdown text (not in a code chunk), interpret your two charts. Does the evidence support the idea that development and democracy go together? Point to an interesting exception if you see one.\nAI note: (one line on whether/how your group used AI)",
+    "section": "Step 3: A scatter plot (30 pts)",
+    "text": "Step 3: A scatter plot (30 pts)\na) Filter dem_data for the same year you used in Step 2 and save it as scatter_data.\nb) Build a scatter plot: your modernization measure on the x-axis, your democracy measure on the y-axis, points colored by region. Then add a trend line with geom_smooth(method = \"lm\"), a colorblind-friendly palette with scale_color_viridis_d(), and clear labels.\nBuild it up one layer at a time—run the chart after each + you add so you can see what each piece does.\n\n\n\n\n\n\nWhere you put color matters here\n\n\n\nPut color = region inside geom_point(), not in the top-level aes():\nggplot(scatter_data, aes(x = , y = )) +\n  geom_point(aes(color = region)) +\n  geom_smooth(method = \"lm\")\nAnything in the top-level aes() is inherited by every layer. If you put color = region up there, geom_smooth() splits too and you get six separate trend lines instead of one overall trend. Try it both ways and see.\n\n\n\n\n\n\n\n\nTip\n\n\n\nIf you chose gdp_pc, most countries will bunch up against the left edge. Add this layer to spread them out:\nscale_x_log10(labels = label_dollar())\n\n\nc) Below this line, describe the relationship. Does it look positive, negative, or flat? If you used inf_mort, think about why its direction differs from the others.",
+    "crumbs": [
+      "Labs",
+      "Lab 1: Plotting"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-1.html#step-4-conclusion-10-pts",
+    "href": "assignments/lab-1.html#step-4-conclusion-10-pts",
+    "title": "Lab 1: Plotting",
+    "section": "Step 4: Conclusion (10 pts)",
+    "text": "Step 4: Conclusion (10 pts)\nRender your document, then write a short paragraph below this line. Taken together, do your three charts support Lipset’s argument? Name one country or region that does not fit the pattern.",
+    "crumbs": [
+      "Labs",
+      "Lab 1: Plotting"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-1.html#bonus-1-pt-each",
+    "href": "assignments/lab-1.html#bonus-1-pt-each",
+    "title": "Lab 1: Plotting",
+    "section": "Bonus (1 pt each)",
+    "text": "Bonus (1 pt each)\na) Add facet_wrap(~ region) to your scatter plot.\nb) Mark something meaningful on your line chart with geom_vline() and annotate()—for example, the year a country held a key election.\nc) Make your scatter plot interactive with ggplotly() from the plotly package.\nAI note: (one line on whether/how your group used AI)\n\n\n\n\n\n\nSubmission Instructions\n\n\n\nHead over to Blackboard and go to the Lab 1 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and that all of the work is your group’s own.\nThen upload a compressed (zipped) version of your project folder including the rendered HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).",
     "crumbs": [
       "Labs",
       "Lab 1: Plotting"
