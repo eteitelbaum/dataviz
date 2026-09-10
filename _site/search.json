@@ -4341,25 +4341,11 @@
     "text": "Your Turn!\n\n\nTake your dem_waves_chart object and run cvdPlot() on it\nExpand the window and have a good look\nWhich group would have the toughest time reading this graph?"
   },
   {
-    "objectID": "slides/week-3.1.html#two-palettes-that-work",
-    "href": "slides/week-3.1.html#two-palettes-that-work",
+    "objectID": "slides/week-3.1.html#colorblind-safe-palettes",
+    "href": "slides/week-3.1.html#colorblind-safe-palettes",
     "title": "Accessibility and Color Schemes",
-    "section": "Two Palettes That Work",
-    "text": "Two Palettes That Work\n\n\nOkabe-Ito – hex codes, no package needed, built for red-green CVD\nViridis – built into ggplot2, works for discrete and continuous data, and stays readable in grayscale\n\n\nAlso worth knowing:\n\nColorBrewer is built into ggplot2 too, but only some of its palettes are safe–use the selector tool and check the “colorblind safe” box\npaletteer collects thousands of palettes from across R. Great for browsing, but most of them were never designed with accessibility in mind–so check before you commit"
-  },
-  {
-    "objectID": "slides/week-3.1.html#okabe-ito",
-    "href": "slides/week-3.1.html#okabe-ito",
-    "title": "Accessibility and Color Schemes",
-    "section": "Okabe-Ito",
-    "text": "Okabe-Ito"
-  },
-  {
-    "objectID": "slides/week-3.1.html#okabe-ito-1",
-    "href": "slides/week-3.1.html#okabe-ito-1",
-    "title": "Accessibility and Color Schemes",
-    "section": "Okabe-Ito",
-    "text": "Okabe-Ito\n\nThe Okabe-Ito palette is eight colors chosen specifically to stay distinguishable under red-green CVD. There is no package to install–just a vector of hex codes that you apply with scale_color_manual()…\n\ncb_palette &lt;- c(\"#E69F00\", \"#56B4E9\", \"#009E73\", \"#F0E442\", \"#0072B2\", \"#D55E00\", \"#CC79A7\")\n\ndem_waves_chart + scale_color_manual(values = cb_palette)"
+    "section": "Colorblind-Safe Palettes",
+    "text": "Colorblind-Safe Palettes\n\nThree ready-made options. All work the same way–add a scale_color_* (or scale_fill_*) to your plot:\n\nViridis – built into ggplot2, works for discrete and continuous data, and stays readable in grayscale\nColorBrewer – also built in, but only some of its palettes are safe; use the selector tool and check the “colorblind safe” box\npaletteer – thousands of palettes through one function, including the classic Okabe-Ito set"
   },
   {
     "objectID": "slides/week-3.1.html#viridis",
@@ -4376,6 +4362,13 @@
     "text": "ColorBrewer\nOur countries are unordered categories, so we want a qualitative palette. Dark2 is the one that holds up best under CVD.\n\ndem_waves_chart + scale_color_brewer(palette = \"Dark2\")"
   },
   {
+    "objectID": "slides/week-3.1.html#paletteer",
+    "href": "slides/week-3.1.html#paletteer",
+    "title": "Accessibility and Color Schemes",
+    "section": "Paletteer",
+    "text": "Paletteer\npaletteer reaches palettes from all over the R ecosystem with one function. Here is Okabe-Ito, designed specifically for red-green CVD…\n\nlibrary(paletteer)\n\ndem_waves_chart + scale_color_paletteer_d(\"colorblindr::OkabeIto\")"
+  },
+  {
     "objectID": "slides/week-3.1.html#not-every-palette-is-safe",
     "href": "slides/week-3.1.html#not-every-palette-is-safe",
     "title": "Accessibility and Color Schemes",
@@ -4390,6 +4383,20 @@
     "text": "Not Every Palette Is Safe\nJapan and the United States collapse into the same color–always check!\n\ncvdPlot(dem_waves_bare + scale_color_brewer(palette = \"RdYlGn\"))"
   },
   {
+    "objectID": "slides/week-3.1.html#build-your-own",
+    "href": "slides/week-3.1.html#build-your-own",
+    "title": "Accessibility and Color Schemes",
+    "section": "Build Your Own",
+    "text": "Build Your Own"
+  },
+  {
+    "objectID": "slides/week-3.1.html#build-your-own-1",
+    "href": "slides/week-3.1.html#build-your-own-1",
+    "title": "Accessibility and Color Schemes",
+    "section": "Build Your Own",
+    "text": "Build Your Own\n\nA palette is really just a vector of colors. These are the Okabe-Ito hex codes–apply any vector you like with scale_color_manual()…\n\ncb_palette &lt;- c(\"#E69F00\", \"#56B4E9\", \"#009E73\", \"#F0E442\", \"#0072B2\", \"#D55E00\", \"#CC79A7\")\n\ndem_waves_chart + scale_color_manual(values = cb_palette)"
+  },
+  {
     "objectID": "slides/week-3.1.html#ask-your-ai",
     "href": "slides/week-3.1.html#ask-your-ai",
     "title": "Accessibility and Color Schemes",
@@ -4401,7 +4408,7 @@
     "href": "slides/week-3.1.html#your-turn-1",
     "title": "Accessibility and Color Schemes",
     "section": "Your Turn!",
-    "text": "Your Turn!\n\nGo to Module 2.2 on the course website\nDo the setup steps and rebuild the line chart\nApply the Okabe-Ito palette with scale_color_manual()\nTry changing one of the hex codes, then swap in scale_color_viridis_d()\nRun cvdPlot() on each one–which holds up best?\nTime permitting, try a coolors palette or GW colors"
+    "text": "Your Turn!\n\nGo to Module 2.2 on the course website\nDo the setup steps and rebuild the line chart\nTry scale_color_viridis_d(), then scale_color_brewer(palette = \"Dark2\")\nRun cvdPlot() on each one–which holds up best?\nThen build your own: paste in the Okabe-Ito codes and change one hex code. Does it still pass?\nTime permitting, try a coolors palette or GW colors"
   },
   {
     "objectID": "slides/week-3.1.html#fill-vs.-color",

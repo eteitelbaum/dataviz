@@ -156,46 +156,15 @@ countdown::countdown(minutes = 5,
                      color_finished_text = "#00264A")
 ```
 
-## Two Palettes That Work {.smaller}
+## Colorblind-Safe Palettes {.smaller}
 
 <br>
 
-- **Okabe-Ito** -- hex codes, no package needed, built for red-green CVD
+Three ready-made options. All work the same way--add a `scale_color_*` (or `scale_fill_*`) to your plot:
+
 - **Viridis** -- built into `ggplot2`, works for discrete *and* continuous data, and stays readable in grayscale
-
-<br>
-
-Also worth knowing:
-
-- **ColorBrewer** is built into `ggplot2` too, but only *some* of its palettes are safe--use the [selector tool](https://colorbrewer2.org/) and check the "colorblind safe" box
-- **[paletteer](https://emilhvitfeldt.github.io/paletteer/)** collects thousands of palettes from across R. Great for browsing, but most of them were never designed with accessibility in mind--so check before you commit
-
-## Okabe-Ito
-
-```{r}
-#| label: your_own_palette1
-
-cb_palette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
-
-dem_waves_chart + scale_color_manual(values = cb_palette)
-```
-
-## Okabe-Ito {.smaller}
-
-<br>
-
-The **Okabe-Ito** palette is eight colors chosen specifically to stay distinguishable under red-green CVD. There is no package to install--just a vector of hex codes that you apply with `scale_color_manual()`...
-
-```{r}
-#| label: your_own_palette2
-#| echo: true
-#| output: false
-#| code-line-numbers: "1|3"
-
-cb_palette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
-
-dem_waves_chart + scale_color_manual(values = cb_palette)
-```
+- **ColorBrewer** -- also built in, but only *some* of its palettes are safe; use the [selector tool](https://colorbrewer2.org/) and check the "colorblind safe" box
+- **[paletteer](https://emilhvitfeldt.github.io/paletteer/)** -- thousands of palettes through one function, including the classic **Okabe-Ito** set
 
 ## Viridis
 
@@ -215,6 +184,19 @@ Our countries are unordered categories, so we want a *qualitative* palette. `Dar
 #| echo: true
 
 dem_waves_chart + scale_color_brewer(palette = "Dark2")
+```
+
+## Paletteer {.smaller}
+
+`paletteer` reaches palettes from all over the R ecosystem with one function. Here is **Okabe-Ito**, designed specifically for red-green CVD...
+
+```{r}
+#| label: okabe_paletteer
+#| echo: true
+
+library(paletteer)
+
+dem_waves_chart + scale_color_paletteer_d("colorblindr::OkabeIto")
 ```
 
 ## Not Every Palette Is Safe
@@ -239,6 +221,33 @@ Japan and the United States collapse into the same color--always check!
 cvdPlot(dem_waves_bare + scale_color_brewer(palette = "RdYlGn"))
 ```
 
+## Build Your Own
+
+```{r}
+#| label: your_own_palette1
+
+cb_palette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+
+dem_waves_chart + scale_color_manual(values = cb_palette)
+```
+
+## Build Your Own {.smaller}
+
+<br>
+
+A palette is really just a vector of colors. These are the Okabe-Ito hex codes--apply any vector you like with `scale_color_manual()`...
+
+```{r}
+#| label: your_own_palette2
+#| echo: true
+#| output: false
+#| code-line-numbers: "1|3"
+
+cb_palette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+
+dem_waves_chart + scale_color_manual(values = cb_palette)
+```
+
 ## Ask Your AI {.smaller}
 
 <br>
@@ -257,9 +266,9 @@ When in doubt, paste your chart image--or just your hex codes--into an AI assist
 
 - Go to [Module 2.2](https://dataviz-gwu.rocks/modules/module-2.2) on the course website
 - Do the setup steps and rebuild the line chart
-- Apply the Okabe-Ito palette with `scale_color_manual()`
-- Try changing one of the [hex codes](https://htmlcolorcodes.com/), then swap in `scale_color_viridis_d()`
+- Try `scale_color_viridis_d()`, then `scale_color_brewer(palette = "Dark2")`
 - Run `cvdPlot()` on each one--which holds up best?
+- Then build your own: paste in the Okabe-Ito codes and change one [hex code](https://htmlcolorcodes.com/). Does it still pass?
 - Time permitting, try a [coolors palette](https://coolors.co/) or [GW colors](https://communications.gwu.edu/visual-identity/color-palette)
 
 ```{r}
