@@ -746,7 +746,7 @@ How labs work
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Labs are done <strong>with your group during class</strong> and are meant to be mostly finished in the class period. You may use AI to <strong>ask questions or debug</strong>, but not to write your code for you—the point is for your group to think it through together. At the end, add a one-line note saying whether and how you used AI.</p>
+<p>You are encouraged to <strong>work together and get started in class</strong>—talk through the problems with the people around you. You will finish the lab on your own time and submit your own work. You may use AI to <strong>ask questions or debug</strong>, but not to write your code for you; the point is to think it through yourself. At the end, add a one-line note saying whether and how you used AI.</p>
 </div>
 </div>
 <section id="overview" class="level2">
@@ -935,11 +935,8 @@ Where you put <code>color</code> matters here
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Put <code>color = region</code> inside <code>geom_point()</code>, <strong>not</strong> in the top-level <code>aes()</code>:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(scatter_data, <span class="fu">aes</span>(<span class="at">x =</span> , <span class="at">y =</span> )) <span class="sc">+</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> region)) <span class="sc">+</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Anything in the top-level <code>aes()</code> is inherited by <em>every</em> layer. If you put <code>color = region</code> up there, <code>geom_smooth()</code> splits too and you get six separate trend lines instead of one overall trend. Try it both ways and see.</p>
+<p>Anything you put in the top-level <code>aes()</code> is inherited by <strong>every</strong> layer that follows it. So if you map <code>color = region</code> there, <code>geom_smooth()</code> will split by region too, and you will get six separate trend lines instead of one overall trend.</p>
+<p>You want the points colored by region but a single trend line through all of them. Think about which layer actually needs the color, and put it there. If you end up with six trend lines, that is the clue.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -967,7 +964,7 @@ Tip
 <p><em>a) Add <code>facet_wrap(~ region)</code> to your scatter plot.</em></p>
 <p><em>b) Mark something meaningful on your line chart with <code>geom_vline()</code> and <code>annotate()</code>—for example, the year a country held a key election.</em></p>
 <p><em>c) Make your scatter plot interactive with <code>ggplotly()</code> from the <code>plotly</code> package.</em></p>
-<p><em>AI note: <em>(one line on whether/how your group used AI)</em></em></p>
+<p><em>AI note: <em>(one line on whether/how you used AI)</em></em></p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -978,7 +975,7 @@ Submission Instructions
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Head over to Blackboard and go to the Lab 1 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and that all of the work is your group’s own.</p>
+<p>Head over to Blackboard and go to the Lab 1 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and that all of the work is your own.</p>
 <p>Then upload a compressed (zipped) version of your project folder including the <strong>rendered</strong> HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).</p>
 </div>
 </div>
