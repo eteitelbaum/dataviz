@@ -16,6 +16,11 @@ source("../helper.R")
 
 We pull data straight from APIs and merge sources into a single tidy data frame.
 
+## Slides
+
+| 🖥️ [Working With Data](/slides/week-5.1.qmd)
+| 🖥️ [Merging and Summarizing Data](/slides/week-5.2.qmd)
+
 ## Readings
 
 | 📖 [Norris, "Electoral Reform and Women's Representation"](https://link.springer.com/article/10.1057/palgrave.ap.5500151)

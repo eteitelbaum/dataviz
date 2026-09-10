@@ -12,6 +12,11 @@ source("../helper.R")
 
 We build polished tables of data with `kableExtra` and `gt`, and add confidence intervals.
 
+## Slides
+
+| 🖥️ [Making Tables](/slides/week-9.1.qmd)
+| 🖥️ [Advanced Table Skills](/slides/week-9.2.qmd)
+
 ## Assignments
 
 | 📘 Weekly quiz, in class

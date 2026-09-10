@@ -1,5 +1,5 @@
 ---
-title: Grammar of Graphics
+title: Working With Data
 date: today
 date-format: long
 footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
@@ -18,382 +18,122 @@ execute:
   freeze: auto
 ---
 
-## Types of Visualizations {.smaller}
+## How Do We Get Tidy/Clean Data? 
 
 <br>
 
-::: {.incremental}
-- Column charts (bar charts)
-  - Use to compare values across categories
-- Histograms
-  - Use to show distribution of a single variable
-- Line charts 
-  - Use to show trends over time
-  - Can use column charts but not as effective
-- Scatter plots
-  - Use to show relationships between two variables
-  - X-axis is usually explanatory variable, Y-axis is outcome variable
-:::
+- Wrangle it ourselves
+- Use a package where it has been wrangled for us
+- Download via an API 
 
-## The Grammar of Graphics
+## This Lesson
 
-::: {.incremental}
-- Data viz has a language with its own grammar
-- Basic components include:
-  - Data we are trying to visualize
-  - Aesthetics (dimensions)
-  - Geom (e.g. bar, line, scatter plot)
-  - Color scales
-  - Themes
-  - Annotations
-::: 
+<br>
+
+- Practice with World Bank and V-Dem data
+- World Bank data through `wbstats`
+  - There is another package called `WDI`
+  - Both packages for accessing data through WB API
+- Varieties of Democracy (V-Dem) through `vdemdata`
+  - Downloads the full V-Dem dataset, which we pare down with `dplyr`
   
-## 
+## `filter()`, `select()`, `mutate()` {.smaller}
 
 <br>
 
-Let's start with the first two, the data and the aesthetic, with a column chart example...
+Along the way we will practice some important `dplyr` verbs:
 
 <br>
 
-```{r}
-#| label: barchart1
-#| output: false
-#| code-line-numbers: "6"
-
-library(readr)
-library(ggplot2)
-
-dem_summary <- read_csv("data/dem_summary.csv")
-
-ggplot(dem_summary, aes(x = region, y = polyarchy)) 
-```
-
-##
-
-This gives us the axes without any visualization:
-
-```{r}
-#| label: barchart2
-#| echo: false
-
-ggplot(dem_summary, aes(x = region, y = polyarchy)) 
-```
-
-
-##
+- `filter()` is used to select observations based on their values
+- `select()` is used to select variables
+- `mutate()` is used to create new variables or modifying existing ones  
 
 <br>
 
-Now let's add a geom. In this case we want a column chart so we *add* `geom_col()`.
+As well as some helpful functions from the `janitor` package.  
+
+## APIs
 
 <br>
 
-```{r}
-#| label: barchart3
-#| eval: false
+- API stands for "Application Programming Interface"
+- Way for two computers to talk to each other
+- In our case, we will use APIs to download social science data
 
-ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
-  geom_col()
-```
+## APIs in R
 
-## 
-
-That gets the idea across but looks a little depressing, so...
-
-```{r}
-#| label: barchart4
-#| echo: false
-
-ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
-  geom_col()
-```
-
-## 
-
-<br>
-
-...let's change the color of the columns by specifying `fill = "steelblue"`.
-
-<br>
-
-```{r}
-#| label: barchart5
-#| eval: false
-#| code-line-numbers: "2"
-
-ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
-  geom_col(fill = "steelblue")
-```
-
-<br>
-
-::: {.callout-tip}
-See [here](http://sape.inf.usi.ch/quick-reference/ggplot2/colour) for more `available`ggplot2` colors. 
+::: {.incremental}
+- APIs are accessed through packages in R
+- Sometimes there can be more than one package for an API
+- Much easier than reading in data from messy flat file!
+- We will use a few API packages in this course
+  - World Bank data through `wbstats` (or `WDI`)
+  - `fredr` for Federal Reserve Economic Data
+  - `tidycensus` for US Census data
+- But there are many APIs out there (please explore!)
 :::
 
-## 
 
-Note how color of original columns is simply overwritten:
-
-```{r}
-#| label: barchart6
-#| echo: false
-
-ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
-  geom_col(fill = "steelblue")
-```
-
-## 
-
-<br>
-
-Now let's *add* some labels with the `labs()` function:
+## Searching for WB Indicators
 
 <br>
 
 ```{r}
-#| label: barchart7
+#| label: search_wb
 #| eval: false
-#| code-line-numbers: "3-8"
 
-ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
-  geom_col(fill = "steelblue") +
-  labs(
-    x = "Region", 
-    y = "Avg. Polyarchy Score", 
-    title = "Democracy by region, 1990 - present", 
-    caption = "Source: V-Dem Institute"
-    )
+flfp_indicators <- wb_search("female labor force") # store the list of indicators
+
+print(flfp_indicators, n=26) # view the indicators
 ```
 
-## 
-
-And that gives us... 
-
-```{r}
-#| label: barchart8
-#| echo: false
-
-ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
-  geom_col(fill = "steelblue") +
-  labs(
-    x = "Region", 
-    y = "Avg. Polyarchy Score", 
-    title = "Democracy by region, 1990 - present", 
-    caption = "Source: V-Dem Institute"
-    )
-```
-
-## 
-
-Next, we reorder the bars with `fct_reorder()` from the `forcats` package. 
+## `wbstats` Example
 
 <br>
 
 ```{r}
-#| label: barchart9
+#| label: download_wb
 #| eval: false
-#| code-line-numbers: "1"
-
-library(forcats)
-
-ggplot(dem_summary, aes(x = fct_reorder(region, -polyarchy), y = polyarchy)) +
-  geom_col(fill = "steelblue") + 
-  labs(
-    x = "Region", 
-    y = "Avg. Polyarchy Score", 
-    title = "Democracy by region, 1990 - present", 
-    caption = "Source: V-Dem Institute"
-    )
-```
-
-<br> 
-
-Note that we could also use the base R `reorder()` function here.
-
-## 
-
-This way, we get a nice, visually appealing ordering of the bars according to levels of democracy...
-
-```{r}
-#| label: barchart10
-#| echo: false
-
-library(forcats)
-
-ggplot(dem_summary, aes(x = fct_reorder(region, -polyarchy), y = polyarchy)) +
-  geom_col(fill = "steelblue") + 
-  labs(
-    x = "Region", 
-    y = "Avg. Polyarchy Score", 
-    title = "Democracy by region, 1990 - present", 
-    caption = "Source: V-Dem Institute"
-    )
-```
-
-## 
-
-<br>
-
-Now let's change the theme to `theme_minimal()`. 
-
-<br>
-
-```{r}
-#| label: barchart11
-#| eval: false
-#| code-line-numbers: "8"
-
-ggplot(dem_summary, aes(x = reorder(region, -polyarchy), y = polyarchy)) +
-  geom_col(fill = "steelblue") + 
-  labs(
-    x = "Region", 
-    y = "Avg. Polyarchy Score", 
-    title = "Democracy by region, 1990 - present", 
-    caption = "Source: V-Dem Institute"
-    ) + theme_minimal()
-```
-
-<br>
-
-::: {.callout-tip}
-See [here](https://ggplot2.tidyverse.org/reference/ggtheme.html) for available `ggplot2` themes.
-:::
-
-## 
-
-Gives us a clean, elegant look. 
-
-```{r}
-#| label: barchart12
-#| echo: false
-
-ggplot(dem_summary, aes(x = reorder(region, -polyarchy), y = polyarchy)) +
-  geom_col(fill = "steelblue") + 
-  labs(
-    x = "Region", 
-    y = "Avg. Polyarchy Score", 
-    title = "Democracy by region, 1990 - present", 
-    caption = "Source: V-Dem Institute"
-    ) + theme_minimal()
-```
-
-
-##
-
-<br>
-
-Note that you can also save your plot as an object to modify later.
-
-<br>
-
-```{r}
-#| label: barchart13
-
-dem_bar_chart <- ggplot(dem_summary, aes(x = reorder(region, -polyarchy), y = polyarchy)) +
-  geom_col(fill = "steelblue")
-```
-
-##
-
-Which gives us...
-
-```{r}
-#| label: barchart14
- 
-dem_bar_chart
-```
-
-## 
-
-<br> 
-
-Now let's add back our labels... 
-
-<br>
-
-```{r}
-#| label: barchart15
-#| output: false
-
-dem_bar_chart <- dem_bar_chart +
-  labs(
-    x = "Region", 
-    y = "Avg. Polyarchy Score", 
-    title = "Democracy by region, 1990 - present", 
-    caption = "Source: V-Dem Institute"
-    )
-```
-
-##
-
-So now we have... 
-
-```{r}
-#| label: barchart16
-
-dem_bar_chart
-```
-
-## 
-
-<br> 
-
-And now we'll add back our theme...
-
-<br>
-
-```{r}
-#| label: barchart17
-#| output: false
-
-dem_bar_chart <- dem_bar_chart + theme_minimal()
-```
-
-##
-
-Voila! 
-
-```{r}
-#| label: barchart18
 #| echo: true
+#| code-line-numbers: "1-4|6-7|9|10|11|12|13-16|18-19"
 
-dem_bar_chart
+# Load packages
+library(wbstats) # for downloading WB data
+library(dplyr) # for selecting, renaming and mutating
+library(janitor) # for rounding
+
+# Store the list of indicators in an object
+indicators <- c("flfp" = "SL.TLF.CACT.FE.ZS", "women_rep" = "SG.GEN.PARL.ZS") 
+
+# Download the data  
+women_emp <- wb_data(indicators, mrv = 50) |> # download data for last 50 yrs
+  select(!iso2c) |> # drop the iso2c code which we won't be using
+  rename(year = date) |> # rename date to year 
+  mutate(
+    flfp = round_to_fraction(flfp, denominator = 100), # round to nearest 100th
+    women_rep = round_to_fraction(women_rep, denominator = 100) 
+  )
+
+# View the data
+glimpse(women_emp) 
 ```
 
-##
-
-Change the theme. There are many [themes](https://ggplot2.tidyverse.org/reference/ggtheme.html) to choose from.
-
-```{r}
-#| label: barchart19
-
-dem_bar_chart + theme_bw()
-```
-
-## Your Turn! {.smaller}
+## Your Turn!
 
 <br>
 
-1. `glimpse()` the data
-2. Find a new variable to visualize^[Data for GDP per capita spotty after 2015]
-3. Make a bar chart with it
-4. Change the [color](http://sape.inf.usi.ch/quick-reference/ggplot2/colour) of the bars
-5. Order the bars
-6. Add labels
-7. Add a [theme](https://ggplot2.tidyverse.org/reference/ggtheme.html)
-8. Try saving your plot as an object
-9. Then change the labels and/or theme
+- Search for a WB indicator
+- Download the data
 
 ```{r}
 #| label: timer1
-#| echo: false 
+#| echo: false
 
 library(countdown)
-countdown(minutes = 10, 
+countdown(minutes = 5, 
           id = "timer1", 
-          bottom = "10%", 
+          top = "10%", 
           right = "10%",
           color_border = "#fff",
           color_text = "#fff",
@@ -403,265 +143,302 @@ countdown(minutes = 10,
           color_finished_text = "#00264A")
 ```
 
-# Histograms
-
-## Purpose of Histograms
-
-<br> 
-
-- Histograms are used to visualize the distribution of a single variable
-- x-axis represents value of variable of interest
-- y-axis represents the frequency of that value
-
-## Purpose of Histograms
+## The V-Dem Dataset
 
 <br>
 
-- They are generally used for continuous variables (e.g., income, age, etc.)
-    - A *continuous* variable is one that can take on any value within a range (e.g., 0.5, 1.2, 3.7, etc.)
-    - A *discrete* variable is one that can only take on certain values (e.g., 1, 2, 3, etc.)
-- Typically, the height of the bar represents the number of observations which fall in that bin
+- V-Dem stands for Varieties of Democracy
+- It is a dataset that measures democracy around the world
+- Based on expert assessments of the quality of democracy in each country
+- We will access V-Dem data through the `vdemdata` package
 
-## Example
-
-```{r}
-#| label: histogram1
-#| echo: false
-
-# load dplyr
-library(dplyr)
-
-# load data
-dem_women <- read_csv("data/dem_women.csv")
-
-# filter to 2022
-dem_women_2022 <- dem_women |>
-  filter(year == 2022)
-
-# create histogram
-ggplot(dem_women_2022, aes(x = flfp)) +
-  geom_histogram(fill = "steelblue") + 
-  labs(
-    x = "Percentage of Working Aged Women in Labor Force",
-    y = "Number of Countries",
-    title = "Female labor force participation rates, 2022",
-    caption = "Source: World Bank"
-    ) + theme_minimal()
-```
-
-## Histogram Code
+## Downloading V-Dem Data
 
 <br>
 
+The `vdem` function from `vdemdata` just downloads all of the data. Try running this code chunk. What do you see in `democracy`?
+
 ```{r}
-#| label: histogram2
+#| label: vdemdata1
 #| eval: false
-#| code-line-numbers: "|1-2|4-6|8-10"
 
-# load dplyr
+library(vdemdata) # load the V-Dem package
 
-library(dplyr)
-
-# load data
-dem_women <- read_csv("data/dem_women.csv")
-
-# filter to 2022
-dem_women_2022 <- dem_women |>
-  filter(year == 2022) 
-
-# create histogram
-ggplot(dem_women_2022, aes(x = flfp)) +
-  geom_histogram(fill = "steelblue") + 
-  labs(
-    x = "Percentage of Working Aged Women in Labor Force",
-    y = "Number of Countries",
-    title = "Female labor force participation rates, 2022",
-    caption = "Source: World Bank"
-    ) + theme_minimal()
+democracy <- vdem() # download the V-Dem dataset
 ```
 
-## Histogram Code
 
-<br>
+## `filter()`
 
-Note that you only need to specify the x axis variable in the `aes()` function. `ggplot2` will automatically visualize the y-axis for a histogram.
-
-<br>
+- Run this code. What do you see?
+- Try changing the year 
+- For one year, use `==` instead of `>=`
+- Or try `<=` and see what happens 
 
 ```{r}
-#| label: histogram2.1
+#| label: vdemdata2
 #| eval: false
-#| code-line-numbers: "0-1"
 
-ggplot(dem_women_2022, aes(x = flfp)) +
-  geom_histogram(bins = 50, fill = "steelblue") + 
-  labs(
-    x = "Percentage of Working Aged Women in Labor Force",
-    y = "Number of Countries",
-    title = "Female labor force participation rates, 2022",
-    caption = "Source: World Bank"
-    ) + theme_minimal()
+democracy <- vdem |> # download the V-Dem dataset
+  filter(year >= 1990) # filter out years less than 1990
+  
+glimpse(democracy)  
 ```
 
-## Change Number of Bins
+## `=` versus `==`
 
 <br>
 
-Change number of bins (bars) using `bins` or `binwidth` arguments (default number of bins = 30):
+- `=` is used to assign values to variables, just like `<-`
+- `==` is used to test if two values are equal to each other
+- So `filter(year == 1990)` will give you just the observations for 1990
 
-<br>
+## `>=` and `<=`
+
+- `>=` is used to test if a value is greater than or equal to another value
+- `<=` is used to test if a value is less than or equal to another value
+- So `filter(year >= 1990)` will give you the observations for 1990 and later
+- And `filter(year <= 1990)` will give you the observations for 1990 and earlier
+
+## `select()`
+
+- Run this code. What do you see?
+- Now try `v2x_libdem` instead of `v2x_polyarchy`
+- Choose more from the [codebook](https://v-dem.net/documents/24/codebook_v13.pdf) 
 
 ```{r}
-#| label: histogram3
+#| label: vdemdata3
+#| echo: true
 #| eval: false
-#| code-line-numbers: "2"
 
-ggplot(dem_women_2022, aes(x = flfp)) +
-  geom_histogram(bins = 50, fill = "steelblue") + 
-  labs(
-    x = "Percentage of Working Aged Women in Labor Force",
-    y = "Number of Countries",
-    title = "Female labor force participation rates, 2022",
-    caption = "Source: World Bank"
-    ) + theme_minimal()
+democracy <- vdem |> # download the V-Dem dataset
+  select(                  # select (and rename) these variables
+    country = country_name,     # before the = sign is new name  
+    vdem_ctry_id = country_id,  # after the = sign is the old name
+    year, 
+    polyarchy = v2x_polyarchy
+  )
+  
+glimpse(democracy)  
 ```
-
-##
-
-At 50 bins...
-
-```{r}
-#| label: histogram4
-#| echo: false
-
-ggplot(dem_women_2022, aes(x = flfp)) +
-  geom_histogram(bins = 50, fill = "steelblue") + 
-  labs(
-    x = "Percentage of Working Aged Women in Labor Force",
-    y = "Number of Countries",
-    title = "Female labor force participation rates, 2022",
-    caption = "Source: World Bank"
-    ) + theme_minimal()
-```
-
-##
-
-At 100 bins...probably too many!
-
-```{r}
-#| label: histogram5
-#| echo: false
-
-ggplot(dem_women_2022, aes(x = flfp)) +
-  geom_histogram(bins = 100, fill = "steelblue") + 
-  labs(
-    x = "Percentage of Working Aged Women in Labor Force",
-    y = "Number of Countries",
-    title = "Female labor force participation rates, 2022",
-    caption = "Source: World Bank"
-    ) + theme_minimal()
-```
-
-## 
-
-<br>
-
-Using `binwidth` instead of `bins`... 
-
-<br>
-
-
-```{r}
-#| label: histogram6
-#| eval: false
-#| code-line-numbers: "2"
-
-ggplot(dem_women_2022, aes(x = flfp)) +
-  geom_histogram(binwidth = 2, fill = "steelblue") + 
-  labs(
-    x = "Percentage of Working Aged Women in Labor Force",
-    y = "Number of Countries",
-    title = "Female labor force participation rates, 2022",
-    caption = "Source: World Bank"
-    ) + theme_minimal()
-```
-
-##
-
-Setting `binwidth` to 2...
-
-```{r}
-#| label: histogram7
-#| echo: false
-
-ggplot(dem_women_2022, aes(x = flfp)) +
-  geom_histogram(binwidth = 2, fill = "steelblue") + 
-  labs(
-    x = "Percentage of Working Aged Women in Labor Force",
-    y = "Number of Countries",
-    title = "Female labor force participation rates, 2022",
-    caption = "Source: World Bank"
-    ) + theme_minimal()
-```
-
-## Change from Count to Density
-
-<br>
-
-```{r}
-#| label: histogram8
-#| eval: false
-#| code-line-numbers: "1,5"
-
-
-ggplot(dem_women_2022, aes(after_stat(density), x = flfp)) +
-  geom_histogram(fill = "steelblue") + 
-  labs(
-    x = "Percentage of Working Aged Women in Labor Force",
-    y = "Density",
-    title = "Female labor force participation rates, 2022",
-    caption = "Source: World Bank"
-    ) + theme_minimal()
-```
-
-<br>
-
-For densities, the total area sums to 1. The height of a bar represents the probability of observations in that bin (rather than the number of observations).
-
-## 
-
-Which gives us... 
-
-```{r}
-#| label: histogram9
-#| echo: false
-
-ggplot(dem_women_2022, aes(after_stat(density), x = flfp)) +
-  geom_histogram(fill = "steelblue") + 
-  labs(
-    x = "Percentage of Working Aged Women in Labor Force",
-    y = "Density",
-    title = "Female labor force participation rates, 2022",
-    caption = "Source: World Bank"
-    ) + theme_minimal()
-```
-
-## Your Turn! {.smaller}
-
-<br>
-
-1. Pick a variable that you want to explore the distribution of^[Data for GDP per capita spotty after 2015] 
-2. Make a histogram
-    a. Only specify `x = ` in `aes()`
-    b. Specify geom as `geom_histogram`
-3. Choose color for bars
-4. Choose appropriate labels
-5. Change number of bins
-6. Change from count to density
 
 ```{r}
 #| label: timer2
 #| echo: false
 
-countdown::countdown(minutes = 10, id = "timer2")
+countdown(minutes = 5, 
+          id = "timer2",
+          top = "0%",
+          right = "5%")
+```
+
+## `mutate()`
+
+- Modify the code to create new variable that is three times the value of `polyarchy` 
+- How about `polyarchy` squared? 
+
+```{r}
+#| label: vdemdata4
+#| eval: false
+
+democracy <- vdem |> # download the V-Dem dataset
+  filter(year == 2015) |> # keep only observations from 2015
+  select(                  # select (and rename) these variables
+    country = country_name,     # name before the = sign is new name  
+    vdem_ctry_id = country_id,  # name after the = sign is old name
+    year, 
+    polyarchy = v2x_polyarchy 
+    ) |>
+  mutate(
+    polyarchy_dbl = polyarchy * 2 # create variable 2X polyarchy
+  )
+  
+glimpse(democracy)  
+```
+
+```{r}
+#| label: timer3
+#| echo: false
+
+countdown(minutes = 5, 
+          id = "timer3",
+          top = "0%",
+          right = "5%")
+```
+
+## Some Common Arithmetic Operators
+
+<br>
+
+- `+` addition
+- `-` subtraction
+- `*` multiplication
+- `/` division
+- `^` exponentiation (also `**`)
+
+## `vdemdata` Example {.smaller}
+
+<br>
+
+```{r}
+#| label: vdemdata5
+#| eval: false
+
+# Load packages
+library(vdemdata) # to download V-Dem data
+library(dplyr)
+
+# Download the data
+democracy <- vdem |> # download the V-Dem dataset
+  filter(year == 2015)  |> # filter year, keep 2015
+  select(                  # select (and rename) these variables
+    country = country_name,     # the name before the = sign is the new name  
+    vdem_ctry_id = country_id,  # the name after the = sign is the old name
+    year, 
+    polyarchy = v2x_polyarchy, 
+    gdp_pc = e_gdppc, 
+    region = e_regionpol_6C
+    ) |>
+  mutate(
+    region = case_match(region, # replace the values in region with country names
+                     1 ~ "Eastern Europe", 
+                     2 ~ "Latin America",  
+                     3 ~ "Middle East",   
+                     4 ~ "Africa", 
+                     5 ~ "The West", 
+                     6 ~ "Asia")
+  )
+
+# View the data
+glimpse(democracy)
+```
+
+## {.smaller}
+
+<br>
+
+Use `filter()` to select years...
+
+<br>
+
+```{r}
+#| label: vdemdata6
+#| eval: false
+#| code-line-numbers: "2-3"
+
+# Download the data
+democracy <- vdem |> 
+  filter(year == 2015)  |> # keep 2015
+  select(                 
+    country = country_name,       
+    vdem_ctry_id = country_id,  
+    year, 
+    polyarchy = v2x_polyarchy, 
+    gdp_pc = e_gdppc, 
+    region = e_regionpol_6C
+    ) |>
+  mutate(
+    region = case_match(region,
+                     1 ~ "Eastern Europe", 
+                     2 ~ "Latin America",  
+                     3 ~ "Middle East",   
+                     4 ~ "Africa", 
+                     5 ~ "The West", 
+                     6 ~ "Asia")
+  )
+```
+
+## {.smaller}
+
+<br>
+
+Use `select()` to choose variables...
+
+<br>
+
+```{r}
+#| label: vdemdata7
+#| eval: false
+#| code-line-numbers: "4-11"
+
+# Download the data
+democracy <- vdem |> 
+  filter(year == 2015)  |> 
+  select(                  # select (and rename) these variables
+    country = country_name,     # the name before the = sign is the new name  
+    vdem_ctry_id = country_id,  # the name after the = sign is the old name
+    year, 
+    polyarchy = v2x_polyarchy, 
+    gdp_pc = e_gdppc, 
+    region = e_regionpol_6C
+    ) |>
+  mutate(
+    region = case_match(region, 
+                     1 ~ "Eastern Europe", 
+                     2 ~ "Latin America",  
+                     3 ~ "Middle East",   
+                     4 ~ "Africa", 
+                     5 ~ "The West", 
+                     6 ~ "Asia")
+  )
+```
+
+## {.smaller}
+
+<br>
+
+Use `mutate` with `case_match()` to Recode Region....
+
+<br>
+
+```{r}
+#| label: vdemdata8
+#| eval: false
+#| code-line-numbers: "12-23"
+
+# Download the data
+democracy <- vdem |>
+  filter(year == 2015)  |> 
+  select(                  
+    country = country_name,     
+    vdem_ctry_id = country_id,  
+    year, 
+    polyarchy = v2x_polyarchy, 
+    gdp_pc = e_gdppc, 
+    region = e_regionpol_6C
+    ) |>
+  mutate(
+    region = case_match(region, # replace the values in region with country names
+                     1 ~ "Eastern Europe", 
+                     2 ~ "Latin America",  
+                     3 ~ "Middle East",   
+                     4 ~ "Africa", 
+                     5 ~ "The West", 
+                     6 ~ "Asia")
+                    # number on the left of the ~ is the V-Dem region code
+                    # we are changing the number to the country name on the right
+                    # of the equals sign
+  )
+```
+
+## Your Turn
+
+<br>
+
+- Use `vdem` to download the full V-Dem dataset
+- Use `filter()` to keep a year (or years) you are interested in
+- Use `select()` to choose `country_name`, `year`, and an indicator of interest
+  - e.g., `v2x_polyarchy` for electoral democracy
+- Use `mutate()` with `case_match()` to recode the region variable (`e_regionpol_6C`)
+- `glimpse()` your data to check the result
+
+
+```{r}
+#| label: timer4
+#| echo: false
+
+countdown(minutes = 5, 
+          id = "timer4",
+          top = "0%",
+          right = "5%")
 ```

@@ -1,5 +1,5 @@
 ---
-title: Wrangling Data
+title: "Themes, Annotations and Interactivity"
 date: today
 date-format: long
 footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
@@ -18,115 +18,129 @@ execute:
   freeze: auto
 ---
 
-# Data Frames
-
-## What is a Data Frame?
-
-<br>
-
-- Special kind of tabular data used in data science
-- Each column can be a different data type
-- Data frames are the most common data structure in R
-
-## What is a Tibble? 
-
-<br>
-
-- Modern data frames in R
-- Offers better printing and subsetting behaviors 
-- Does not convert character vectors to factors by default
-- Displays only the first 10 rows and as many columns as fit on screen
-- Column names are preserved exactly, even if they contain spaces
-
-## Creating a Tibble {.smaller}
-
-<br> 
-
-- When you read data into R with `readr` you automatically get a tibble
-- You can create a tibble using `tibble()` from the **tibble** package:
-
 ```{r}
-  library(tibble)
-  
-  # Create a tibble
-  my_tibble <- tibble(
-    name = c("Alice", "Bob", "Charlie"),
-    age = c(25, 30, 35),
-    height = c(160, 170, 180),
-    is_student = c(TRUE, FALSE, FALSE)
-  )
-  
-my_tibble  
+#| label: setup
+#| include: false
+
+library(readr)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(wbstats)
+library(countrycode)
+library(countdown)
+
+indicators = c(flfp = "SL.TLF.CACT.FE.ZS", gdp_pc = "NY.GDP.PCAP.KD") # define indicators
+
+## Regional levels of FLFP for column chart 
+
+flfp_gdp_regions <- 
+  wb_data("SL.TLF.CACT.FE.ZS", country = "regions_only", mrnev = 1) |> 
+  rename(
+    region = country,
+    year = date,
+    flfp = SL.TLF.CACT.FE.ZS
+  ) |> 
+  select(region, iso3c, year, flfp)
+
+## Cross-section of data on FLFP and GDP per capita for scatter plot
+
+flfp_gdp <- wb_data(indicators, end_date = 2021) |> # download data for 2021
+    left_join(select(wb_countries(), c(iso3c, region)), by = "iso3c") |>  # add regions
+    drop_na() # drop rows with missing values
+
+## Time series data on regional trends in FLFP for line chart
+
+flfp_ts <- wb_data("SL.TLF.CACT.FE.ZS", country = "regions_only", start_date = 1990, end_date = 2022) |> 
+  rename(
+    region = country,
+    year = date,
+    flfp = SL.TLF.CACT.FE.ZS
+  ) |> 
+  select(region, iso3c, year, flfp)
 ```
 
-## Common Data Types {.smaller}
-
-- **\<chr> (Character)**: Stores text strings
-  - Example: `"hello"`, `"R programming"`
-  
-- **\<dbl> (Double)**: Stores decimal (floating-point) numbers
-  - Example: `3.14`, `-1.0`
-  
-- **\<int> (Integer)**: Stores whole numbers (integers)
-  - Example: `1`, `-100`, `42`
-
-- **\<lgl> (Logical)**: Stores boolean values (`TRUE`, `FALSE`, `NA`)
-  - Example: `TRUE`, `FALSE`, `NA`
-
-- **\<fct> (Factor)**: Stores categorical variables with fixed levels
-  - Example: `factor(c("low", "medium", "high"))`
-
-- **\<date> (Date)**: Stores dates in the "YYYY-MM-DD" format
-  - Example: `as.Date("2024-09-05")`
-
-## Other Data Types {.smaller}
-
-<br>
-
-- **\<dttm> (Date-Time or POSIXct)**: Stores date-time objects (both date and time).
-  - Example: `as.POSIXct("2024-09-05 14:30:00")`
-
-- **\<time> (Time)**: Specifically stores time-of-day values (rarely seen without a date)
-  - Example: `"14:30:00"`
-  
-- **\<list> (List)**: Stores lists, where each entry can be a complex object.
-  - Example: `list(c(1, 2, 3), c("a", "b", "c"))`  
-
-## Dates and Times with `lubridate`
-
-- **`lubridate`** is an R package that makes it easier to work with dates and times
-
-- Use convenient functions to store dates in different formats
+## Column Chart from Last Class
 
 ```{r}
-library(lubridate)
-  
-# Store a date
-my_date <- ymd("2024-09-05")
-my_date2 <- mdy("09-05-2024")
-my_date3 <- dmy("05-09-2024")
-  
-# Print in long form
-format(my_date, "%B %d, %Y")
-```
-
-## Your Turn
-
-<br>
-
-- Create your own tibble
-- Make it on a topic you find interesting
-- Try to include at least three data types
-
-```{r}
-#| label: timer1
+#| label: column_chart1
 #| echo: false
 
-library(countdown)
+flfp_region <- ggplot(flfp_gdp_regions, aes(x = reorder(iso3c, -flfp), y = flfp, fill = region)) +
+  geom_col(fill = "steelblue") + 
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
+  labs(
+    x = "Region", 
+    y = "Avg. Female Labor Force Participation", 
+    title = "Levels of female labor force participation by region", 
+    fill = "Region",
+    caption = "Source: World Bank"
+    ) 
+
+flfp_region
+```
+
+## Add a Theme
+
+```{r}
+#| label: column_chart2
+#| code-fold: true
+
+flfp_region + theme_minimal()
+```
+
+## Can Also Set Theme {.smaller}
+
+<br>
+
+If you like particular theme and want to use it for all of your visualizations, use `theme_set()` in a code chunk at the top of your document, e.g....
+
+<br>
+
+```{r}
+#| label: my_setup_chunk
+#| echo: fenced
+
+theme_set(theme_minimal())
+```
+
+<br>
+
+... and R will apply that theme to all of the visualizations in your document. 
+
+## Your Turn! 
+
+Produce this scatter plot... Then try different [themes](https://ggplot2.tidyverse.org/reference/ggtheme.html).
+
+```{r}
+#| label: exercise1
+#| echo: false
+
+wealth_flfp <- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + 
+  geom_point(aes(color = region)) + # color points by region
+  geom_smooth(method = "loess", linewidth = 1) +  # make the line a loess curve
+  scale_x_log10(labels = scales::label_dollar()) + # stretch axis, add '$' format
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) + # add % label
+  labs(
+    x= "GDP per Capita", # x-axis title
+    y = "Female Labor Force Participation", # y-axis title
+    title = "Wealth and female labor force participation, 2021", # plot title
+    caption = "Source: World Bank Development Indicators", # caption
+    color = "Region" # legend title
+    ) + 
+  scale_color_viridis_d(option = "plasma", end = .7) 
+
+wealth_flfp + theme_dark()
+```
+
+```{r}
+#| label: setup_timer
+#| echo: false
+
 countdown(minutes = 5, 
-          id = "timer1", 
-          bottom = "10%", 
-          right = "10%",
+          id = "setup", 
+          top = "10%", 
+          right = "-15%",
           color_border = "#fff",
           color_text = "#fff",
           color_running_background = "#42affa",
@@ -135,364 +149,358 @@ countdown(minutes = 5,
           color_finished_text = "#00264A")
 ```
 
-# Tidying Data
+## Add an Annotation
 
-## What is Tyding Data? 
+```{r}
+#| label: annotation1
+#| echo: false
 
-- In the last class we talked about the concept of "tidy data"
-  - Each variable forms a column
-  - Each observation is in a row
-  - Each cell has a single value 
-- The process of tidying data involves reshaping (or pivoting) data into a tidy format
-- We want to use the `pivot_longer()` or `pivot_wider()` functions from `tidyr` to do this
+flfp_line <- ggplot(flfp_ts, aes(x = year, y = flfp, color = region)) +
+  geom_line(linewidth = 1) + 
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
+  labs(
+    x = "Year", 
+    y = "Female Labor Force Participation", 
+    title = "Regional trends in female labor force participation, 2021", 
+    caption = "Source: V-Dem Institute", 
+    color = "Region"
+  ) + scale_color_viridis_d() +
+  theme_minimal()
+
+flfp_line + geom_hline(yintercept = 52, linetype="dashed", color = "red", size = 1) +
+  annotate("text", x = 1995, y = 55, label = "Global average")
+```
 
 ## 
 
-**Query:** Are these data in a tidy format? 
-
-<br>
+First step, add a horizontal line using `geom_hline()`... 
 
 ```{r}
-#| label: smiths
+#| code-fold: true
 
-library(tidyr)
-
-smiths
+flfp_line + 
+  geom_hline(yintercept = 52, linetype="dashed", color = "red", size = 1) 
 ```
 
-<br> 
+## 
 
-::: {.callout-tip appearance="minimal"}
-To get a list of data frames available in a package use the `data()` function, e.g. `data(package = "tidyr")`. 
-:::
-
-## {.smaller}
-
-<br>
-
-How about these data? 
-
-<br>
+Second step, the annotation with `annotate()`...
 
 ```{r}
-#| label: wb_pop
+#| code-fold: true 
 
-world_bank_pop
+flfp_line + 
+  geom_hline(yintercept = 52, linetype="dashed", color = "red", size = 1) +
+  annotate("text", x = 1995, y = 55, label = "Global average")
 ```
 
-## Pivot Longer
-
-<br>
-
-`pivot_longer()` takes three arguments:
-
-- **cols** - which columns you want to pivot
-- **names_to** - the name of the column where the old column names are going to (identifier)
-- **values_to** - the name of the column where the values are going to
-
-## Example: WB Population Data
-
-<br>
+## Vertical Reference Line
 
 ```{r}
-library(tidyr)
-library(dplyr)
-
-# Pivot using pivot_longer
-
-long_pop_data <- world_bank_pop |>
-  pivot_longer(
-    cols = `2000`:`2017`,   # The columns you want to pivot (years)
-    names_to = "year",      # New column name for the years
-    values_to = "pop"       # New column name for the values
-  ) 
-
-# View the tidied data
-long_pop_data
-```
-
-## {.smaller}
-
-This is better, usable even, but are we done if we want a tidy data frame? 
-
-<br>
-
-```{r}
-library(tidyr)
-library(dplyr)
-
-# Pivot using pivot_longer
-
-long_pop_data <- world_bank_pop |>
-  pivot_longer(
-    cols = `2000`:`2017`,   # The columns you want to pivot (years)
-    names_to = "year",      # New column name for the years
-    values_to = "pop"       # New column name for the values
-  ) 
-
-# View the tidied data
-long_pop_data
-```
-
-## {.smaller}
-
-<br>
-
-This is better, usable even, but are we done if we want a tidy data frame? 
-
-<br>
-
-```{r}
-library(tidyr)
-library(dplyr)
-
-# Pivot using pivot_longer
-
-long_pop_data <- world_bank_pop |>
-  pivot_longer(
-    cols = `2000`:`2017`,   # The columns you want to pivot (years)
-    names_to = "year",      # New column name for the years
-    values_to = "pop"       # New column name for the values
-  ) 
-
-# View the tidied data
-long_pop_data
-```
-
-## {.smaller}
-
-Issue is that the data are in long form (which is OK for some purposes), but we want to make it wider. Wider, but tidy... 
-
-<br>
-
-```{r}
-library(tidyr)
-library(dplyr)
-
-# Pivot using pivot_longer
-
-long_pop_data <- world_bank_pop |>
-  pivot_longer(
-    cols = `2000`:`2017`,   # The columns you want to pivot (years)
-    names_to = "year",      # New column name for the years
-    values_to = "pop"       # New column name for the values
-  ) 
-
-# View the tidied data
-long_pop_data
-```
-
-## Pivot Wider
-
-<br>
-
-`pivot_wider()` takes three main arguments:
-
-- **names_from** - the column whose values will become new column names (identifier)
-- **values_from** - the column containing the values that will fill the new columns
-- **values_fill** (optional) - specifies what to use for missing values (e.g., `NA`, `0`)
-
-## `pivotwider()` the WB Data {.smaller}
-
-<br>
-
-```{r}
-#| label: pivot_wb_data
-
-# pivot wider
-tidy_pop_data <- long_pop_data |>
-  pivot_wider(
-    names_from = indicator, 
-    values_from = pop
-  )
-
-# view the data
-tidy_pop_data
-```
-
-# Exercise
-
-## Download Some Messy Data
-
-<br>
-
-- Download some messy WB data
-- Make it multiple variables
-- Download as a CSV file
-- Save in your project `/data` folder
-
-## Messy Data Example
-
-![](images/messy_wb_data.jpg){width=70%}
-
-
-## Read Data 
-
-<br>
-
-```{r}
-#| label: read_data
-#| eval: false
-
-# Load packages
-library(readr) 
-library(dplyr) 
-
-# Read data from csv file into an object called "wb_data_messy"
-wb_data_messy <- read_csv("data/your_file_name.csv")
-
-# View the data
-glimpse(wb_data_messy)
-```
-
-## Pivot the Data
-
-<br>
-
-- Use `pivot_longer()` to get the data in long form
-- Use `pivot_wider()` to get the series in the columns
-
-## Special Considerations
-
-<br>
-
-```{r}
-#| label: pivot
-#| eval: false
-
-# Load tidyr
-library(tidyr)
-
-# Reshape the data
-wb_data <- wb_data_messy |> 
-  pivot_longer(             
-    cols = `1973 [YR1973]`: `2022 [YR2022]`, # columns to pivot
-    names_to = "year", # name the identifier column "year"
-    values_to = "values" # name the numeric var column 
-  ) 
-
-# View the data
-glimpse(wb_data)
-```
-
-## Special Considerations
-  
-<br>
-  
-```{r}
-#| label: pivot_multiple
-#| eval: false
-
-wb_data <- wb_data |>
-  select(-`Series Name`)
-
-# Reshape the data
-tidy_data <- wb_data |> 
-  pivot_wider(             
-    names_from = `Series Code`,
-    values_from = values
-  ) 
-
-# View the data
-glimpse(wb_data)
-```
-
-## Give it a Shot!
-
-<br>
-
-- Try downloading some messy WB data and make it tidy
-- Refer to previous slides for help
-
-```{r}
-#| label: timer3
 #| echo: false
 
-library(countdown)
-countdown(minutes = 10, 
-          id = "timer3", 
-          bottom = "10%", 
-          right = "10%")
+flfp_line + 
+  geom_vline(xintercept=2020, linetype = "dashed", size = 1) +
+  annotate("text", x = 2017, y = 35, label = "Pandemic")
 ```
 
-# Mutate
+## 
 
-## Mutating Variables
+First step, add a horizontal line using `geom_hline()`... 
+
+```{r}
+#| code-fold: true
+
+flfp_line + 
+  geom_vline(xintercept=2020, linetype = "dashed", size = 1)
+```
+
+## 
+
+Second step, add the annotation with `annotate()`
+
+```{r}
+#| code-fold: true
+
+flfp_line + 
+  geom_vline(xintercept=2020, linetype = "dashed", size = 1) +
+  annotate("text", x = 2017, y = 35, label = "Pandemic")
+```
+
+## Your Turn!
 
 <br>
 
-- Anytime we want to change a variable, we are going to use the `dplyr` verbs `mutate()` or `mutate_at()`
-- `mutate()` is if you want to change on variable
-- `mutate_at()` is for multiple variables
+- Go to module 2.2
+- Copy the code you need to make the line chart
+- Create a horizontal reference line and annotate it
+- In a new code chunk, create a vertical line and annotate it
+- Play with the parameters to move and style your line
+- Try different text, etc. 
 
-## Let's Fix Our Variables
+```{r}
+#| label: exercise2_timer
+#| echo: false
+
+countdown(minutes = 5, 
+          id = "exercise2", 
+          #bottom = "10%", 
+          #right = "10%"
+          )
+```
+
+## Interactivity
 
 <br>
 
 ```{r}
-#| label: mutate
-#| eval: false
+#| echo: false
 
-# Fix year and flfp
-wb_data <- wb_data |> # replace wb_data with a modified version of the dataframe 
-  mutate(year = substring(year, 1, 4)) |> # truncate year (keep first four characters)
-  mutate_at(c("year", "flfp"), as.numeric) # change year and flfp to numeric
+library(plotly)
 
-# View the data
-glimpse(wb_data)
+wealth_flfp_plotly <- wealth_flfp  + 
+  scale_color_viridis_d(option = "plasma", end = .7) +
+  theme_minimal() +
+  aes(label = country)  # need so ggplot retains label for plotly
+
+ggplotly(wealth_flfp_plotly, tooltip = c("country", "flfp", "gdp_pc")) |> 
+  
+  # add source
+  layout(annotations = list(text = "Source: World Bank Development Indicators",  
+                            font = list(size = 10), showarrow = FALSE,
+                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,
+                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |> 
+  # add web address
+  layout(annotations = list(text = "www.dataviz-gwu.rocks", 
+                            font = list(size = 10, color = 'grey'), showarrow = FALSE,
+                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,
+                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))
 ```
 
-## Now Try it With Multiple Varaibles
-
-<br>
-
-- Go to the data frame with multiple variables that you created earlier
-- How would you modify this code to make sure the variables are in the right format? 
-
-## Clean Variable Names
-
-<br>
-
-| Very simple: use the `janitor` package!
+## The Code
 
 ```{r}
-#| label: janitor
-#| eval: false
 #| echo: true
+#| output: false
 
-# Load janitor
-library(janitor)
+library(plotly)
 
-# Apply clean_names() to wb_data, store in new data frame called wb_data_clean
-wb_data_clean <- wb_data |>  
-  clean_names() 
+wealth_flfp_plotly <- wealth_flfp  + 
+  scale_color_viridis_d(option = "plasma", end = .7) +
+  theme_minimal() +
+  aes(label = country)  # need so ggplot retains label for plotly
 
-# Write wb_data_clean to a csv file
-write_csv(wb_data_clean, "data/wb_data_clean.csv")
-
-# View the data
-glimpse(wb_data_clean)
+ggplotly(wealth_flfp_plotly, tooltip = c("country", "flfp", "gdp_pc")) |> 
+  
+  # add source
+  layout(annotations = list(text = "Source: World Bank Development Indicators",  
+                            font = list(size = 10), showarrow = FALSE,
+                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,
+                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |> 
+  # add web address
+  layout(annotations = list(text = "www.dataviz-gwu.rocks", 
+                            font = list(size = 10, color = 'grey'), showarrow = FALSE,
+                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,
+                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))
 ```
 
-## Column Specifications
+## The Code
+
+```{r}
+#| eval: false
+#| code-line-numbers: "1|6|8|10-14|15-19"
+
+library(plotly)
+
+wealth_flfp_plotly <- wealth_flfp  + 
+  scale_color_viridis_d(option = "plasma") +
+  theme_minimal() +
+  aes(label = country)  # need so ggplot retains label for plotly
+
+ggplotly(wealth_flfp_plotly, tooltip = c("country", "flfp", "gdp_pc")) |> 
+  
+  # add source
+  layout(annotations = list(text = "Source: World Bank Development Indicators",  
+                            font = list(size = 10), showarrow = FALSE,
+                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,
+                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |> 
+  # add web address
+  layout(annotations = list(text = "www.dataviz-gwu.rocks", 
+                            font = list(size = 10, color = 'grey'), showarrow = FALSE,
+                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,
+                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))
+```
+
+## 
+
+But to make a plotly chart, all you need is this! 
+
+```{r}
+#| code-fold: true
+
+ggplotly(wealth_flfp_plotly)
+```
+<br>
+
+## Your Turn!
+
+- Go to module 2.2 and create the basic wealth vs. flfp scatter plot
+- Now "plotlify" the plot
+- At first, don't worry about annotations or tool tip
+- Then add in tool tip, play with setting
+- Then add in the annotations
+- Move annotations, change content
+
+```{r}
+#| label: exercise3_timer
+#| echo: false
+
+countdown(minutes = 5, 
+          id = "exercise3", 
+          #bottom = "10%", 
+          #right = "10%"
+          )
+```
+
+## Animated Plots
+
+```{r}
+#| echo: false
+
+flfp_gdp_ts <- wb_data(indicators, mrv = 25) |> # download data for 25 most recent years
+    left_join(select(wb_countries(), c(iso3c, region)), by = "iso3c") |> # add regions
+    rename(year = date) |>
+    drop_na() # drop rows with missing values
+
+library(gganimate)
+
+ggplot(flfp_gdp_ts, aes(x = gdp_pc, y = flfp)) + 
+  geom_point(aes(color = region)) + 
+  geom_smooth(method = "loess", linewidth = 1) +
+  scale_x_log10(labels = scales::label_dollar()) + 
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
+  transition_states(year) +
+  labs(
+    x= "GDP per Capita",
+    y = "Female Labor Force Participation",
+    title = "Wealth and female labor force participation, {closest_state}",
+    caption = "Source: World Bank Development Indicators",
+    color = "Region"
+    ) + 
+  scale_color_viridis_d(option = "plasma", end = .7) 
+```
+
+## Animated Plots
 
 <br>
 
-- Can clean columns on backend
-- But can also specify data types in `read_csv()` or `read_excel()`
-
 ```{r}
-#| label: col_types
 #| eval: false
-#| echo: true
 
-spec(wb_data_messy)
-
-wb_data_messy <- read_csv("data/your_file_name.csv", 
-                          col_types = cols(
-                           col_double(`1990 [YR1990]`) 
-                          )
-                          )
+flfp_gdp_ts <- wb_data(indicators, mrv = 25) |> # download data for 25 most recent years
+    left_join(select(wb_countries(), c(iso3c, region)), by = "iso3c") |> # add regions
+    rename(year = date) |>
+    drop_na() # drop rows with missing values
 ```
 
+## Animated Plots
 
+<br>
+
+```{r}
+#| eval: false
+#| code-line-numbers: "1|8|12"
+
+library(gganimate)
+
+ggplot(flfp_gdp_ts, aes(x = gdp_pc, y = flfp)) + 
+  geom_point(aes(color = region)) + 
+  geom_smooth(method = "loess", linewidth = 1) +
+  scale_x_log10(labels = scales::label_dollar()) + 
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
+  transition_states(year) +
+  labs(
+    x= "GDP per Capita",
+    y = "Female Labor Force Participation",
+    title = "Wealth and female labor force participation, {closest_state}",
+    caption = "Source: World Bank Development Indicators",
+    color = "Region"
+    ) + 
+  scale_color_viridis_d(option = "plasma", end = .7) 
+```
+
+## Your Turn!
+
+<br>
+
+- Try making an animated scatter plot with different a different y-axis variable
+- See if you can make the title change based on the year displayed
+
+```{r}
+#| label: exercise4_timer
+#| echo: false
+
+countdown(minutes = 5, 
+          id = "exercise4", 
+          #bottom = "10%", 
+          #right = "10%"
+          )
+```
+
+## Time Permitting
+
+Annotate (comment) the following code...
+
+```{r}
+#| eval: false
+
+wealth_flfp <- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + 
+  geom_point(aes(color = region)) + 
+  geom_smooth(method = "loess", linewidth = 1) +
+  scale_x_log10(labels = scales::label_dollar()) + 
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
+  labs(
+    x= "GDP per Capita",
+    y = "Female Labor Force Participation",
+    title = "Wealth and female labor force participation, 2021",
+    caption = "Source: World Bank Development Indicators",
+    color = "Region"
+    ) + 
+  scale_color_viridis_d(option = "plasma", end = .7) 
+
+wealth_flfp + theme_minimal()
+```
+
+## Time Permitting
+
+Annotate (comment) the following code...
+
+```{r}
+#| eval: false
+
+flfp_line <- ggplot(flfp_ts, aes(x = year, y = flfp, color = region)) +
+  geom_line(linewidth = 1) + 
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
+  labs(
+    x = "Year", 
+    y = "Female Labor Force Participation", 
+    title = "Regional trends in female labor force participation", 
+    caption = "Source: V-Dem Institute", 
+    color = "Country"
+  ) + scale_color_viridis_d() +
+  theme_minimal()
+
+flfp_line + geom_hline(yintercept = 52, linetype="dashed", color = "red", size = 1) +
+  annotate("text", x = 1995, y = 55, label = "Global average")
+```
+
+```{r}
+#| label: exercise5_timer
+#| echo: false
+
+countdown(minutes = 5, 
+          id = "exercise5", 
+          #bottom = "10%", 
+          #right = "10%"
+          )
+```

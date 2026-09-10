@@ -1,9 +1,11 @@
 {
-  "hash": "fc15ab4a9e263a56e48ed9ffd324d2fa",
+  "hash": "9dafd088dd3d2d2d89b4d269ea56aa97",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Week 9\"\nsubtitle: \"Tables\"\nformat: html\n---\n\n\n\nWe build polished tables of data with `kableExtra` and `gt`, and add confidence intervals.\n\n## Assignments\n\n| 📘 Weekly quiz, in class\n",
-    "supporting": [],
+    "markdown": "---\ntitle: \"Week 9\"\nsubtitle: \"Tables\"\nformat: html\n---\n\n\n\nWe build polished tables of data with `kableExtra` and `gt`, and add confidence intervals.\n\n## Slides\n\n| 🖥️ [Making Tables](/slides/week-9.1.qmd)\n| 🖥️ [Advanced Table Skills](/slides/week-9.2.qmd)\n\n## Assignments\n\n| 📘 Weekly quiz, in class\n",
+    "supporting": [
+      "week-9_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],

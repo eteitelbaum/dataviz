@@ -10,8 +10,8 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.31">
 
-  <meta name="dcterms.date" content="2026-08-24">
-  <title>PSC/DATS 2102--Course Schedule – Understanding Data</title>
+  <meta name="dcterms.date" content="2026-09-10">
+  <title>PSC/DATS 2102--Course Schedule – Accessibility and Color Schemes</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -192,11 +192,9 @@
   </style>
   <link href="../site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
   <script src="../site_libs/countdown-0.4.0/countdown.js"></script>
-<meta property="og:title" content="Understanding Data – PSC/DATS 2102–Course Schedule">
-<meta property="og:description" content="Sources and Structure">
+<meta property="og:title" content="Accessibility and Color Schemes – PSC/DATS 2102–Course Schedule">
 <meta property="og:site_name" content="PSC/DATS 2102--Course Schedule">
-<meta name="twitter:title" content="Understanding Data – PSC/DATS 2102–Course Schedule">
-<meta name="twitter:description" content="Sources and Structure">
+<meta name="twitter:title" content="Accessibility and Color Schemes – PSC/DATS 2102–Course Schedule">
 <meta name="twitter:card" content="summary">
 </head>
 <body class="quarto-dark">
@@ -204,349 +202,332 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Understanding Data</h1>
-  <p class="subtitle">Sources and Structure</p>
+  <h1 class="title">Accessibility and Color Schemes</h1>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">August 24, 2026</p>
+  <p class="date">September 10, 2026</p>
 </section>
-<section>
-<section id="preliminaries" class="title-slide slide level1 center">
-<h1>Preliminaries</h1>
-
-</section>
-<section id="where-does-data-come-from" class="slide level2">
-<h2>Where Does Data Come From?</h2>
+<section id="color-blindness" class="slide level2">
+<h2>Color Blindness</h2>
 <p><br></p>
-<p>Thoughts? <span class="emoji" data-emoji="sunglasses">😎</span> <span class="emoji" data-emoji="thought_balloon">💭</span></p>
-<div class="fragment">
 <ul>
-<li class="fragment">Your boss or a client sends you a file</li>
-<li class="fragment">Survey data collected by you or someone else</li>
-<li class="fragment">You can download it from a website</li>
-<li class="fragment">You can scrape it from a website</li>
-<li class="fragment">A data package (e.g.&nbsp;<code>unvotes</code>)</li>
-<li class="fragment">You can access it through an API</li>
+<li>Color Vision Deficiency (CVD) or color blindness affects 8 percent of men and 1 in 200 women</li>
+<li>There are different types of CVD but most common is red-green color blindness</li>
+<li>Therefore, don’t include red and green in the same chart!</li>
+<li>Look for color blind safe palettes</li>
 </ul>
+</section>
+<section id="last-weeks-line-chart" class="slide level2">
+<h2>Last Week’s Line Chart</h2>
+
+<img data-src="week-6.1_files/figure-revealjs/line_chart-1.png" width="960" class="r-stretch"></section>
+<section id="last-weeks-line-chart-1" class="slide level2">
+<h2>Last Week’s Line Chart</h2>
+<p><br></p>
+<p>Create last week’s line chart and save as an object…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>dem_waves_ctrs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/eteitelbaum/dataviz-fall-2023/main/slides/data/dem_waves_ctrs.csv"</span>)</span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a>dem_waves_chart <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dem_waves_ctrs, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> polyarchy, <span class="at">color =</span> country)) <span class="sc">+</span></span>
+<span id="cb1-4"><a></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># our geom is a line with a width of 1</span></span>
+<span id="cb1-5"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb1-6"><a></a>    <span class="at">x =</span> <span class="st">"Year"</span>, </span>
+<span id="cb1-7"><a></a>    <span class="at">y =</span> <span class="st">"Polyarchy Score"</span>, </span>
+<span id="cb1-8"><a></a>    <span class="at">title =</span> <span class="st">'Democracy in countries representing three different "waves"'</span>, </span>
+<span id="cb1-9"><a></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span>, </span>
+<span id="cb1-10"><a></a>    <span class="at">color =</span> <span class="st">"Country"</span> <span class="co"># make title of legend to upper case</span></span>
+<span id="cb1-11"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="getting-started-with-data" class="slide level2 smaller">
-<h2>Getting Started with Data</h2>
-<p><br></p>
-<ul>
-<li class="fragment"><em>Tabular data</em> is data that is organized into rows and columns
-<ul>
-<li class="fragment">a.k.a. <em>rectangular data</em></li>
-</ul></li>
-<li class="fragment">A <em>data frame</em> is a special kind of tabular data used in data science</li>
-<li class="fragment">A <em>variable</em> is something you can measure</li>
-<li class="fragment">An <em>observation</em> is a single unit or case in your data set</li>
-<li class="fragment">The <em>unit of analysis</em> is the level at which you are measuring
-<ul>
-<li class="fragment">In a cross-section: country, state, county, city, individual, etc.</li>
-<li class="fragment">In a time-series: year, month, day, etc.</li>
-</ul></li>
-</ul>
-</section></section>
-<section>
-<section id="adjectives-for-your-data" class="title-slide slide level1 center">
-<h1>Adjectives for Your Data</h1>
+<section id="cvd-plot" class="slide level2">
+<h2>CVD Plot</h2>
 
-</section>
-<section id="the-concept-of-tidy-data" class="slide level2">
-<h2>The Concept of “Tidy Data”</h2>
+<img data-src="week-6.1_files/figure-revealjs/cvdPlot_output-1.png" width="960" class="r-stretch"></section>
+<section id="cvd-plot-1" class="slide level2">
+<h2>CVD Plot</h2>
 <p><br></p>
-<ul>
-<li>Each column represents a single variable</li>
-<li>Each row represents a single observation</li>
-<li>Each cell represents a single value</li>
-</ul>
-</section>
-<section id="tidy-data-example" class="slide level2">
-<h2>Tidy Data Example</h2>
-
-<img data-src="images/tidy_data.jpg" class="r-stretch"></section>
-<section id="what-are-clean-data" class="slide level2">
-<h2>What are Clean Data?</h2>
-<ul>
-<li>Column names are easy to work with and are not duplicated</li>
-<li>Missing values have been dealt with</li>
-<li>There are no repeated observations or columns</li>
-<li>There are no blank observations or columns</li>
-<li>The data are in the proper format, for example dates should be formatted as dates</li>
-</ul>
-</section>
-<section id="messy-data-example" class="slide level2">
-<h2>Messy Data Example</h2>
-
-<img data-src="images/messy_wb_data.jpg" style="width:70.0%" class="r-stretch"></section>
-<section id="which-of-these-is-likely-tidyclean" class="slide level2">
-<h2>Which of These is Likely Tidy/Clean?</h2>
-<p><br></p>
-<ul>
-<li>Your boss or a client sends you a file</li>
-<li>Survey data collected by you or someone else</li>
-<li>You can download it from a website</li>
-<li>You can scrape it from a website</li>
-<li>A curated collection (e.g.&nbsp;<code>unvotes</code>)</li>
-<li>You can access it through an API</li>
-</ul>
-</section>
-<section id="how-do-we-get-tidyclean-data" class="slide level2">
-<h2>How Do We Get Tidy/Clean Data?</h2>
-<p><br></p>
-<ul>
-<li>Wrangle it ourselves</li>
-<li>Use a package where it has been wrangled for us</li>
-<li>Download via an API</li>
-</ul>
-</section></section>
-<section>
-<section id="reading-data" class="title-slide slide level1 center">
-<h1>Reading Data</h1>
-
-</section>
-<section id="read-data-into-r" class="slide level2">
-<h2>Read Data into R</h2>
-<ul>
-<li>Use <code>read_csv()</code> function from <code>readr</code> package</li>
-<li><code>readr</code> package is part of the <code>tidyverse</code></li>
-<li>Can do more with it than base R functions</li>
-</ul>
-</section>
-<section id="r-code-review" class="slide level2 smaller">
-<h2>R Code Review</h2>
-<p><br></p>
-<ul>
-<li class="fragment"><code>&lt;-</code> is the assignment operator
-<ul>
-<li class="fragment">Use it to assign values to objects</li>
-</ul></li>
-<li class="fragment"><code>#</code> is the comment operator
-<ul>
-<li class="fragment">Use it to comment out code or add comments</li>
-<li class="fragment">Different function than in markdown text</li>
-</ul></li>
-<li class="fragment">To call a library, use <code>library()</code> and name of library
-<ul>
-<li class="fragment">name of library does not have to be in quotes, e.g.&nbsp;<code>library(readr)</code></li>
-<li class="fragment">only when you install it, e.g.&nbsp;<code>install.packages("readr")</code></li>
-</ul></li>
-</ul>
-</section>
-<section id="read-data-into-r-1" class="slide level2">
-<h2>Read Data into R</h2>
+<p>Call CVD plot from the <code>colorBlindness</code> package. CVD stands for “color vision deficiency.”</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="|1|2-3|5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># load libraries</span></span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(readr)</span>
-<span id="cb1-3"><a></a><span class="fu">library</span>(dplry)</span>
-<span id="cb1-4"><a></a></span>
-<span id="cb1-5"><a></a>dem_summary <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/dem_summary.csv"</span>) <span class="co">#notice file path</span></span>
-<span id="cb1-6"><a></a></span>
-<span id="cb1-7"><a></a><span class="fu">glimpse</span>(dem_summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(colorBlindness)</span>
+<span id="cb2-2"><a></a></span>
+<span id="cb2-3"><a></a><span class="fu">cvdPlot</span>(dem_waves_chart)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="viewing-the-data-in-r" class="slide level2">
-<h2>Viewing the Data in R</h2>
-<p><br></p>
-<p>Use <code>glimpse()</code> to see the columns and data types:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># load libraries</span></span>
-<span id="cb2-2"><a></a><span class="fu">library</span>(readr)</span>
-<span id="cb2-3"><a></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb2-4"><a></a></span>
-<span id="cb2-5"><a></a>dem_summary <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/dem_summary.csv"</span>)</span>
-<span id="cb2-6"><a></a></span>
-<span id="cb2-7"><a></a><span class="fu">glimpse</span>(dem_summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 6
-Columns: 5
-$ region    &lt;chr&gt; "The West", "Latin America", "Eastern Europe", "Asia", "Afri…
-$ polyarchy &lt;dbl&gt; 0.8709230, 0.6371358, 0.5387451, 0.4076602, 0.3934166, 0.245…
-$ gdp_pc    &lt;dbl&gt; 37.913054, 9.610284, 12.176554, 9.746391, 4.410484, 21.134319
-$ flfp      &lt;dbl&gt; 52.99082, 48.12645, 50.45894, 50.32171, 56.69530, 26.57872
-$ women_rep &lt;dbl&gt; 28.12921, 21.32548, 17.99728, 14.45225, 17.44296, 10.21568</code></pre>
-</div>
-</div>
-</section></section>
-<section>
-<section id="section" class="title-slide slide level1 center">
-<h1></h1>
-<p>Or use <code>View()</code> or click on the name of the object in your Environment tab to see the data in a spreadsheet:</p>
+<section id="cvd-plot-2" class="slide level2">
+<h2>CVD Plot</h2>
 
-<img data-src="images/view_df.gif" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="try-it-yourself" class="slide level2">
-<h2>Try It Yourself!</h2>
+<img data-src="images/expand_view.png" class="r-stretch quarto-figure-center"><p class="caption">Click on little image to expand view…</p></section>
+<section id="your-turn" class="slide level2">
+<h2>Your Turn!</h2>
+<p><br></p>
 <ul>
-<li>Open the CSV file to see what it looks like</li>
-<li>Then use this code to read it into R and view it</li>
+<li>Take your <code>dem_waves_chart</code> object and run <code>cvdPlot()</code> on it</li>
+<li>Expand the window and have a good look</li>
+<li>Which group would have the toughest time reading this graph?</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># load libraries</span></span>
-<span id="cb4-2"><a></a><span class="fu">library</span>(readr)</span>
-<span id="cb4-3"><a></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb4-4"><a></a></span>
-<span id="cb4-5"><a></a>dem_summary <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/dem_summary.csv"</span>)</span>
-<span id="cb4-6"><a></a></span>
-<span id="cb4-7"><a></a><span class="fu">glimpse</span>(dem_summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer1" data-update-every="1" tabindex="0" style="right:10%;bottom:10%;">
+<div class="countdown" id="timer1" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
 </section>
-<section id="write-a-new-csv-file" class="slide level2">
-<h2>Write a New CSV File</h2>
+<section id="create-your-own-color-scheme" class="slide level2">
+<h2>Create Your Own Color Scheme</h2>
 <p><br></p>
-<p>Now try writing the same data to a file with a different name</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">write_csv</span>(dem_summary, <span class="st">"data/your_new_file_name.csv"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer2" data-update-every="1" tabindex="0" style="right:10%;bottom:10%;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="excel-files" class="title-slide slide level1 center">
-<h1>Excel Files</h1>
 
-</section>
-<section id="read-in-excel-file" class="slide level2">
-<h2>Read in Excel File</h2>
+<img data-src="week-6.1_files/figure-revealjs/your_own_palette1-1.png" width="960" class="r-stretch"></section>
+<section id="create-your-own-color-scheme-1" class="slide level2">
+<h2>Create Your Own Color Scheme</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">library</span>(readxl)</span>
-<span id="cb6-2"><a></a></span>
-<span id="cb6-3"><a></a>dem_summary <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/dem_summary.xlsx"</span>)</span>
-<span id="cb6-4"><a></a></span>
-<span id="cb6-5"><a></a><span class="fu">glimpse</span>(dem_summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>cb_palette <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#E69F00"</span>, <span class="st">"#56B4E9"</span>, <span class="st">"#009E73"</span>, <span class="st">"#F0E442"</span>, <span class="st">"#0072B2"</span>, <span class="st">"#D55E00"</span>, <span class="st">"#CC79A7"</span>)</span>
+<span id="cb3-2"><a></a></span>
+<span id="cb3-3"><a></a>flfp_region <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(flfp_gdp_regions, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(iso3c, <span class="sc">-</span>flfp), <span class="at">y =</span> flfp, <span class="at">fill =</span> region)) <span class="sc">+</span></span>
+<span id="cb3-4"><a></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb3-5"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>(<span class="at">scale =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb3-6"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-7"><a></a>    <span class="at">x =</span> <span class="st">"Region"</span>, </span>
+<span id="cb3-8"><a></a>    <span class="at">y =</span> <span class="st">"Avg. Female Labor Force Participation"</span>, </span>
+<span id="cb3-9"><a></a>    <span class="at">title =</span> <span class="st">"Levels of female labor force participation by region"</span>, </span>
+<span id="cb3-10"><a></a>    <span class="at">fill =</span> <span class="st">"Region"</span>,</span>
+<span id="cb3-11"><a></a>    <span class="at">caption =</span> <span class="st">"Source: World Bank"</span></span>
+<span id="cb3-12"><a></a>    ) </span>
+<span id="cb3-13"><a></a></span>
+<span id="cb3-14"><a></a>flfp_region <span class="sc">+</span> <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> cb_palette)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="try-with-excel" class="slide level2">
-<h2>Try With Excel</h2>
+<section id="create-your-own-color-scheme-2" class="slide level2">
+<h2>Create Your Own Color Scheme</h2>
 <p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="1,14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>cb_palette <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#E69F00"</span>, <span class="st">"#56B4E9"</span>, <span class="st">"#009E73"</span>, <span class="st">"#F0E442"</span>, <span class="st">"#0072B2"</span>, <span class="st">"#D55E00"</span>, <span class="st">"#CC79A7"</span>)</span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a>flfp_region <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(flfp_gdp_regions, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(iso3c, <span class="sc">-</span>flfp), <span class="at">y =</span> flfp, <span class="at">fill =</span> region)) <span class="sc">+</span></span>
+<span id="cb4-4"><a></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb4-5"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>(<span class="at">scale =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb4-6"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-7"><a></a>    <span class="at">x =</span> <span class="st">"Region"</span>, </span>
+<span id="cb4-8"><a></a>    <span class="at">y =</span> <span class="st">"Avg. Female Labor Force Participation"</span>, </span>
+<span id="cb4-9"><a></a>    <span class="at">title =</span> <span class="st">"Levels of female labor force participation by region"</span>, </span>
+<span id="cb4-10"><a></a>    <span class="at">fill =</span> <span class="st">"Region"</span>,</span>
+<span id="cb4-11"><a></a>    <span class="at">caption =</span> <span class="st">"Source: World Bank"</span></span>
+<span id="cb4-12"><a></a>    ) </span>
+<span id="cb4-13"><a></a></span>
+<span id="cb4-14"><a></a>flfp_region <span class="sc">+</span> <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> cb_palette)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="your-turn-1" class="slide level2">
+<h2>Your Turn!</h2>
 <ul>
-<li>Read in the Excel file</li>
-<li>Follow same steps as with CSV file
-<ul>
-<li>use <code>read_excel()</code> to read in the data</li>
-<li>install and experiment with <a href="https://cran.r-project.org/web/packages/writexl/index.html">writexl</a></li>
-</ul></li>
+<li>Go to <a href="https://dataviz-gwu.rocks/modules/module-2.2">Module 2.2</a> on the course website</li>
+<li>Do the setup steps</li>
+<li>Reproduce the column chart of FLFP with the custom color scheme</li>
+<li>Try changing one of the <a href="https://htmlcolorcodes.com/">hex codes</a></li>
+<li>Now run <code>cvdPlot()</code> on the plot object to make sure it is color-blind friendly</li>
+<li>Now try a <a href="https://coolors.co/">coolors palette</a> or <a href="https://communications.gwu.edu/visual-identity/color-palette">GW colors</a></li>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer3" data-update-every="1" tabindex="0" style="right:10%;bottom:10%;">
+<div class="countdown" id="dem_waves" data-update-every="1" tabindex="0" style="right:5%;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
-</section></section>
-<section>
-<section id="google-sheets" class="title-slide slide level1 center">
-<h1>Google Sheets</h1>
-
 </section>
-<section id="import-data-from-google-sheets" class="slide level2">
-<h2>Import Data from Google Sheets</h2>
+<section id="using-a-color-palette" class="slide level2">
+<h2>Using a Color Palette</h2>
 <p><br></p>
 <ul>
-<li>Can use <code>googlesheets4</code></li>
-<li>Have a look at <a href="https://docs.google.com/spreadsheets/d/1U6Cf_qEOhiR9AZqTqS3mbMF3zt2db48ZP5v3rkrAEJY/edit?gid=780868077#gid=780868077">these Gapminder data</a></li>
-<li>Use <code>gs4_deauth()</code> to authenticate</li>
-<li>Then use <code>read_sheet()</code> to read in the data</li>
+<li>There are many color palettes</li>
+<li>Viridis scales look cool and are accessible</li>
+<li>ColorBrewer has many scales some of which are color-blind safe</li>
+<li>The <a href="https://emilhvitfeldt.github.io/paletteer/">paletteer</a> package aims to be a comprehensive collection of color palettes</li>
 </ul>
 </section>
-<section id="example-code" class="slide level2">
-<h2>Example Code</h2>
-<p><br></p>
+<section id="viridis" class="slide level2">
+<h2>Viridis</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">library</span>(googlesheets4)</span>
-<span id="cb7-2"><a></a></span>
-<span id="cb7-3"><a></a><span class="co"># Deauthorize to access public sheets without credentials</span></span>
-<span id="cb7-4"><a></a><span class="fu">gs4_deauth</span>()</span>
-<span id="cb7-5"><a></a></span>
-<span id="cb7-6"><a></a><span class="co"># Read in the gapminder Africa data</span></span>
-<span id="cb7-7"><a></a>gapminder_data <span class="ot">&lt;-</span> <span class="fu">read_sheet</span>(<span class="st">"1U6Cf_qEOhiR9AZqTqS3mbMF3zt2db48ZP5v3rkrAEJY"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>flfp_region <span class="sc">+</span> <span class="fu">scale_fill_viridis_d</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
-</section>
-<section id="or" class="slide level2">
-<h2>Or…</h2>
-<p><br></p>
+<img data-src="week-6.1_files/figure-revealjs/viridis1-1.png" width="960" class="r-stretch"></section>
+<section id="viridis-1" class="slide level2">
+<h2>Viridis</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(googlesheets4)</span>
-<span id="cb8-2"><a></a></span>
-<span id="cb8-3"><a></a><span class="co"># Deauthorize to access public sheets without credentials</span></span>
-<span id="cb8-4"><a></a><span class="fu">gs4_deauth</span>()</span>
-<span id="cb8-5"><a></a></span>
-<span id="cb8-6"><a></a><span class="co"># Read in the gapminder Africa data</span></span>
-<span id="cb8-7"><a></a>gapminder_data <span class="ot">&lt;-</span> <span class="fu">read_sheet</span>(<span class="st">"1U6Cf_qEOhiR9AZqTqS3mbMF3zt2db48ZP5v3rkrAEJY"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>flfp_region <span class="ot">&lt;-</span>flfp_region <span class="sc">+</span> <span class="fu">scale_fill_viridis_d</span>()</span>
+<span id="cb6-2"><a></a><span class="fu">cvdPlot</span>(flfp_region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
-</section>
-<section id="or-1" class="slide level2">
-<h2>Or…</h2>
-<p><br></p>
+<img data-src="week-6.1_files/figure-revealjs/viridis2-1.png" width="960" class="r-stretch"></section>
+<section id="colorbrewer" class="slide level2">
+<h2>ColorBrewer</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(googlesheets4)</span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>flfp_region <span class="sc">+</span> <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"YlGn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="week-6.1_files/figure-revealjs/color_brewer1-1.png" width="960" class="r-stretch"></section>
+<section id="colorbrewer-1" class="slide level2">
+<h2>ColorBrewer</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>flfp_region <span class="ot">&lt;-</span> flfp_region <span class="sc">+</span> <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"YlGn"</span>)</span>
+<span id="cb8-2"><a></a><span class="fu">cvdPlot</span>(flfp_region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="week-6.1_files/figure-revealjs/color_brewer2-1.png" width="960" class="r-stretch"></section>
+<section id="paletteer" class="slide level2">
+<h2>Paletteer</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(paletteer)</span>
 <span id="cb9-2"><a></a></span>
-<span id="cb9-3"><a></a><span class="co"># Deauthorize to access public sheets without credentials</span></span>
-<span id="cb9-4"><a></a><span class="fu">gs4_deauth</span>()</span>
-<span id="cb9-5"><a></a></span>
-<span id="cb9-6"><a></a><span class="co"># Read in the gapminder Africa data</span></span>
-<span id="cb9-7"><a></a>gapminder_data <span class="ot">&lt;-</span> googledrive<span class="sc">::</span><span class="fu">drive_get</span>(<span class="st">"gapminder"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-8"><a></a>  <span class="fu">read_sheet</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a></a>flfp_region <span class="sc">+</span> <span class="fu">scale_fill_paletteer_d</span>(<span class="st">"rcartocolor::Temps"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="week-6.1_files/figure-revealjs/paletteer1-1.png" width="960" class="r-stretch"></section>
+<section id="paletteer-1" class="slide level2">
+<h2>Paletteer</h2>
+<p>Not all palettes are color-blind safe…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>flfp_region <span class="ot">&lt;-</span> flfp_region <span class="sc">+</span> <span class="fu">scale_fill_paletteer_d</span>(<span class="st">"rcartocolor::Temps"</span>)</span>
+<span id="cb10-2"><a></a><span class="fu">cvdPlot</span>(flfp_region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="week-6.1_files/figure-revealjs/paletteer2-1.png" width="960" class="r-stretch"></section>
+<section id="paletteer-2" class="slide level2">
+<h2>Paletteer</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">library</span>(paletteer)</span>
+<span id="cb11-2"><a></a></span>
+<span id="cb11-3"><a></a>flfp_region <span class="sc">+</span> <span class="fu">scale_fill_paletteer_d</span>(<span class="st">"beyonce::X1"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week-6.1_files/figure-revealjs/Paletteer3-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>And some many not have enough colors for your chart…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>flfp_region <span class="sc">+</span>  <span class="fu">scale_fill_paletteer_d</span>(<span class="st">"beyonce::X1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week-6.1_files/figure-revealjs/paletteer4-1.png" width="960"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
-<section id="try-it-yourself-1" class="slide level2">
-<h2>Try It Yourself!</h2>
+<section id="your-turn-2" class="slide level2">
+<h2>Your Turn</h2>
 <p><br></p>
 <ul>
-<li>Use the code above to read in the data</li>
-<li>Try reading in Gapminder data for a different country</li>
+<li>Try one of the color palettes packages we just discussed</li>
+<li>A full list of viridis schemes is <a href="https://search.r-project.org/CRAN/refmans/viridisLite/html/viridis.html">here</a></li>
+<li>For ColorBrewer, check out this <a href="https://colorbrewer2.org/#type=sequential&amp;scheme=BuGn&amp;n=3">selector tool</a></li>
+<li>For paletteer, check out this <a href="https://pmassicotte.github.io/paletteer_gallery/">paletteer gallery</a></li>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer4" data-update-every="1" tabindex="0" style="right:10%;bottom:10%;">
+<div class="countdown" id="palette_package" data-update-every="1" tabindex="0" style="right:5%;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
 </section>
-<section id="find-your-own-data" class="slide level2">
-<h2>Find Your Own Data</h2>
+<section id="scaling-for-scatter-plots" class="slide level2">
+<h2>Scaling for Scatter Plots</h2>
+
+<img data-src="week-6.1_files/figure-revealjs/scatterplot1-1.png" width="960" class="r-stretch"></section>
+<section id="fill-vs.-color" class="slide level2">
+<h2>Fill vs.&nbsp;Color</h2>
 <p><br></p>
 <ul>
-<li>Visit <a href="https://www.kaggle.com/datasets">kaggle.com</a></li>
-<li>Find a dataset you like</li>
-<li>Download it as a CSV</li>
-<li>Upload to your Posit Cloud project</li>
-<li>Read it into R</li>
-<li>Explore with <code>glimpse()</code> and <code>View()</code></li>
+<li>Use <strong>fill</strong> (e.g.&nbsp;<code>fill =</code> or <code>scale_fill_*</code>) to modify the fill color of shapes like bars, boxes, or polygons.</li>
+<li>Commonly applied to:
+<ul>
+<li>Bar charts</li>
+<li>Box plots</li>
+<li>Histograms</li>
+</ul></li>
+</ul>
+</section>
+<section id="fill-vs.-color-1" class="slide level2">
+<h2>Fill vs.&nbsp;Color</h2>
+<p><br></p>
+<ul>
+<li>Use <strong>color</strong> (e.g.&nbsp;<code>color =</code> or <code>scale_color_*</code>) to modify the color of points, lines, or text.</li>
+<li>Commonly applied to:
+<ul>
+<li>Scatter plots</li>
+<li>Line charts</li>
+<li>Text elements</li>
+</ul></li>
+</ul>
+</section>
+<section id="scaling-for-scatter-plots-1" class="slide level2">
+<h2>Scaling for Scatter Plots</h2>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" data-code-line-numbers="14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>wealth_flfp <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(flfp_gdp, <span class="fu">aes</span>(<span class="at">x =</span> gdp_pc, <span class="at">y =</span> flfp)) <span class="sc">+</span> </span>
+<span id="cb13-2"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> region)) <span class="sc">+</span> <span class="co"># color points by region</span></span>
+<span id="cb13-3"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span>  <span class="co"># make the line a loess curve</span></span>
+<span id="cb13-4"><a></a>  <span class="fu">scale_x_log10</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_dollar</span>()) <span class="sc">+</span> <span class="co"># stretch axis, add '$' format</span></span>
+<span id="cb13-5"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>(<span class="at">scale =</span> <span class="dv">1</span>)) <span class="sc">+</span> <span class="co"># add % label</span></span>
+<span id="cb13-6"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb13-7"><a></a>    <span class="at">x=</span> <span class="st">"GDP per Capita"</span>, <span class="co"># x-axis title</span></span>
+<span id="cb13-8"><a></a>    <span class="at">y =</span> <span class="st">"Female Labor Force Participation"</span>, <span class="co"># y-axis title</span></span>
+<span id="cb13-9"><a></a>    <span class="at">title =</span> <span class="st">"Wealth and female labor force participation"</span>, <span class="co"># plot title</span></span>
+<span id="cb13-10"><a></a>    <span class="at">caption =</span> <span class="st">"Source: World Bank Development Indicators"</span>, <span class="co"># caption</span></span>
+<span id="cb13-11"><a></a>    <span class="at">color =</span> <span class="st">"Region"</span> <span class="co"># legend title</span></span>
+<span id="cb13-12"><a></a>    )</span>
+<span id="cb13-13"><a></a></span>
+<span id="cb13-14"><a></a>wealth_flfp <span class="sc">+</span> <span class="fu">scale_color_viridis_d</span>(<span class="at">option =</span> <span class="st">"plasma"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="scaling-for-scatter-plots-2" class="slide level2">
+<h2>Scaling for Scatter Plots</h2>
+<p>Use the <code>end</code> argument to darken the colors</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>wealth_flfp <span class="sc">+</span> <span class="fu">scale_color_viridis_d</span>(<span class="at">option =</span> <span class="st">"plasma"</span>, <span class="at">end =</span> .<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="week-6.1_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"></section>
+<section id="scaling-for-scatter-plots-3" class="slide level2">
+<h2>Scaling for Scatter Plots</h2>
+<p>Use the <code>direction</code> argument to flip the color scale…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>wealth_flfp <span class="sc">+</span> <span class="fu">scale_color_viridis_d</span>(<span class="at">option =</span> <span class="st">"plasma"</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="week-6.1_files/figure-revealjs/unnamed-chunk-23-1.png" width="960" class="r-stretch"></section>
+<section id="your-turn-3" class="slide level2">
+<h2>Your Turn!</h2>
+<p><br></p>
+<ul>
+<li>Try using one of the color schemes on a scatter plot</li>
+<li>Use <code>scale_color_</code> instead of <code>scale_fill_</code></li>
+<li>Play around with <code>end</code> and <code>direction</code> arguments in <code>viridis</code></li>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer5" data-update-every="1" tabindex="0" style="right:10%;bottom:10%;">
+<div class="countdown" id="scatter_plot" data-update-every="1" tabindex="0" style="right:5%;bottom:10%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
 
 
-</section></section>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="images/dataviz-logo.png" class="slide-logo"></p>
@@ -563,6 +544,8 @@ $ women_rep &lt;dbl&gt; 28.12921, 21.32548, 17.99728, 14.45225, 17.44296, 10.215
   <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/multiplex/socket.io.js"></script>
+  <script src="../site_libs/revealjs/plugin/multiplex/multiplex.js"></script>
   <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -586,6 +569,7 @@ $ women_rep &lt;dbl&gt; 28.12921, 21.32548, 17.99728, 14.45225, 17.44296, 10.215
 'jumpToSlide': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'chalkboard': {"buttons":true},
+'multiplex': {"secret":null,"id":"0cb188965b9110b1","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -759,12 +743,50 @@ $ women_rep &lt;dbl&gt; 28.12921, 21.32548, 17.99728, 14.45225, 17.44296, 10.215
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
-          RevealNotes,
+          
           RevealSearch,
           RevealZoom
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

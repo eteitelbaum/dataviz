@@ -1,364 +1,464 @@
 ---
-title: "Understanding Data"
-subtitle: "Sources and Structure"
+title: Accessibility and Color Schemes
 date: today
 date-format: long
 footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
 logo: images/dataviz-logo.png
-from: markdown+emoji
 format:
   revealjs:
     theme: [simple, custom.scss]
     transition: fade
     slide-number: true
+    multiplex: true
     chalkboard: true
-    #multiplex: true
 execute:
-  echo: true
+  echo: false
   message: false
   warning: false
   freeze: auto
 ---
 
-# Preliminaries
-
-## Where Does Data Come From?
-
-<br>
-
-Thoughts? :sunglasses: :thought_balloon:
-
-. . .
-
-:::{.incremental}
-- Your boss or a client sends you a file
-- Survey data collected by you or someone else 
-- You can download it from a website 
-- You can scrape it from a website
-- A data package (e.g. `unvotes`)
-- You can access it through an API
-:::
-
-## Getting Started with Data {.smaller}
-
-<br>
-
-::: {.incremental}
-- *Tabular data* is data that is organized into rows and columns
-  - a.k.a. *rectangular data*
-- A *data frame* is a special kind of tabular data used in data science
-- A *variable* is something you can measure 
-- An *observation* is a single unit or case in your data set
-- The *unit of analysis* is the level at which you are measuring
-  - In a cross-section: country, state, county, city, individual, etc.
-  - In a time-series: year, month, day, etc.
-:::
-
-# Adjectives for Your Data
-
-## The Concept of "Tidy Data"
-
-<br>
-
-- Each column represents a single variable
-- Each row represents a single observation
-- Each cell represents a single value
-
-## Tidy Data Example
-
-![](images/tidy_data.jpg)
-
-## What are Clean Data?
-
-- Column names are easy to work with and are not duplicated
-- Missing values have been dealt with
-- There are no repeated observations or columns
-- There are no blank observations or columns
-- The data are in the proper format, for example dates should be formatted as dates
-
-## Messy Data Example
-
-![](images/messy_wb_data.jpg){width=70%}
-
-## Which of These is Likely Tidy/Clean?
-
-<br>
-
-- Your boss or a client sends you a file
-- Survey data collected by you or someone else 
-- You can download it from a website 
-- You can scrape it from a website
-- A curated collection (e.g. `unvotes`)
-- You can access it through an API
-
-## How Do We Get Tidy/Clean Data? 
-
-<br>
-
-- Wrangle it ourselves
-- Use a package where it has been wrangled for us
-- Download via an API
-
-# Reading Data
-
-## Read Data into R
-
-- Use `read_csv()` function from `readr` package
-- `readr` package is part of the `tidyverse`
-- Can do more with it than base R functions
-
-## R Code Review {.smaller}
-
-<br>
-
-::: {.incremental}
-- `<-` is the assignment operator
-  - Use it to assign values to objects
-- `#` is the comment operator
-  - Use it to comment out code or add comments
-  - Different function than in markdown text
-- To call a library, use `library()` and name of library
-  - name of library does not have to be in quotes, e.g. `library(readr)`
-  - only when you install it, e.g. `install.packages("readr")`
-:::
-
-## Read Data into R
-
-<br>
-
 ```{r}
-#| label: read_data1
-#| eval: false
-#| code-line-numbers: "|1|2-3|5"
+#| label: setup
 
-# load libraries
-library(readr)
-library(dplry)
-
-dem_summary <- read_csv("data/dem_summary.csv") #notice file path
-
-glimpse(dem_summary)
-```
-
-## Viewing the Data in R
-
-<br>
-
-Use `glimpse()` to see the columns and data types:
-
-```{r}
-#| label: read_data2
-#| code-line-numbers: "7"
-
-# load libraries
 library(readr)
 library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(wbstats)
+library(countrycode)
 
-dem_summary <- read_csv("data/dem_summary.csv")
+indicators = c(flfp = "SL.TLF.CACT.FE.ZS", gdp_pc = "NY.GDP.PCAP.KD") # define indicators
 
-glimpse(dem_summary)
+## Regional levels of FLFP for column chart 
+
+flfp_gdp_regions <- 
+  wb_data("SL.TLF.CACT.FE.ZS", country = "regions_only", mrnev = 1) |> 
+  rename(
+    region = country,
+    year = date,
+    flfp = SL.TLF.CACT.FE.ZS
+  ) |> 
+  select(region, iso3c, year, flfp)
+  
+## Cross-section of data on FLFP and GDP per capita for scatter plot
+
+flfp_gdp <- wb_data(indicators, end_date = 2021) |> # download data for 2021
+    left_join(select(wb_countries(), c(iso3c, region)), by = "iso3c") |>  # add regions
+    drop_na() # drop rows with missing values
 ```
 
-# 
+## Color Blindness
 
-Or use `View()` or click on the name of the object in your Environment tab to see the data in a spreadsheet:
+<br>
 
-![](images/view_df.gif){fig-align="center"}
+- Color Vision Deficiency (CVD) or color blindness affects 8 percent of men and 1 in 200 women
+- There are different types of CVD but most common is red-green color blindness
+- Therefore, don't include red and green in the same chart! 
+- Look for color blind safe palettes
 
-## Try It Yourself!
-
-- Open the CSV file to see what it looks like
-- Then use this code to read it into R and view it
+## Last Week's Line Chart
 
 ```{r}
-#| label: read_data3
-#| eval: false
+#| label: line_chart
 
-# load libraries
-library(readr)
-library(dplyr)
+dem_waves_ctrs <- read_csv("https://raw.githubusercontent.com/eteitelbaum/dataviz-fall-2023/main/slides/data/dem_waves_ctrs.csv")
 
-dem_summary <- read_csv("data/dem_summary.csv")
-
-glimpse(dem_summary)
+ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
+  geom_line(linewidth = 1) + # our geom is a line with a width of 1
+  labs(
+    x = "Year", 
+    y = "Polyarchy Score", 
+    title = 'Democracy in countries representing three different "waves"', 
+    caption = "Source: V-Dem Institute", 
+    color = "Country" # make title of legend to upper case
+  )
 ```
+
+## Last Week's Line Chart
+
+<br>
+
+Create last week's line chart and save as an object...
+
+```{r}
+#| label: line_chart_setup
+#| echo: true
+#| output: false
+
+dem_waves_ctrs <- read_csv("https://raw.githubusercontent.com/eteitelbaum/dataviz-fall-2023/main/slides/data/dem_waves_ctrs.csv")
+
+dem_waves_chart <- ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
+  geom_line(linewidth = 1) + # our geom is a line with a width of 1
+  labs(
+    x = "Year", 
+    y = "Polyarchy Score", 
+    title = 'Democracy in countries representing three different "waves"', 
+    caption = "Source: V-Dem Institute", 
+    color = "Country" # make title of legend to upper case
+  )
+```
+
+
+## CVD Plot
+
+```{r}
+#| label: cvdPlot_output
+
+library(colorBlindness)
+
+cvdPlot(dem_waves_chart)
+```
+
+## CVD Plot
+
+<br> 
+
+Call CVD plot from the `colorBlindness` package. CVD stands for "color vision deficiency." 
+
+<br>
+
+```{r}
+#| label: cvdPlot_code
+#| echo: true
+#| output: false
+
+library(colorBlindness)
+
+cvdPlot(dem_waves_chart)
+```
+
+## CVD Plot
+
+![Click on little image to expand view...](images/expand_view.png){fig-align="center"}
+
+
+## Your Turn!
+
+<br>
+
+- Take your `dem_waves_chart` object and run `cvdPlot()` on it
+- Expand the window and have a good look
+- Which group would have the toughest time reading this graph?
 
 ```{r}
 #| label: timer1
-#| echo: false
-
-library(countdown)
-countdown(minutes = 5, 
-          id = "timer1", 
-          bottom = "10%", 
-          right = "10%",
-          color_border = "#fff",
-          color_text = "#fff",
-          color_running_background = "#42affa",
-          color_running_text = "black",
-          color_finished_background = "#E5D19D",
-          color_finished_text = "#00264A")
+countdown::countdown(minutes = 5, 
+                     id = "timer1", 
+                     #bottom = "10%", 
+                     #right = "10%",
+                     color_border = "#fff",
+                     color_text = "#fff",
+                     color_running_background = "#42affa",
+                     color_running_text = "black",
+                     color_finished_background = "#E5D19D",
+                     color_finished_text = "#00264A")
 ```
 
-## Write a New CSV File
-
-<br>
-
-Now try writing the same data to a file with a different name
-
-```{r}
-#| label: write_data
-#| eval: false
-
-write_csv(dem_summary, "data/your_new_file_name.csv") 
-```
-
-```{r}
-#| label: timer2
-#| echo: false
-
-library(countdown)
-countdown(minutes = 2, 
-          id = "timer2", 
-          bottom = "10%", 
-          right = "10%")
-```
-
-# Excel Files
-
-## Read in Excel File
+## Create Your Own Color Scheme
 
 <br>
 
 ```{r}
-#| label: read_excel
-#| eval: false
+#| label: your_own_palette1
 
-library(readxl)
+cb_palette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 
-dem_summary <- read_excel("data/dem_summary.xlsx")
+flfp_region <- ggplot(flfp_gdp_regions, aes(x = reorder(iso3c, -flfp), y = flfp, fill = region)) +
+  geom_col() + 
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
+  labs(
+    x = "Region", 
+    y = "Avg. Female Labor Force Participation", 
+    title = "Levels of female labor force participation by region", 
+    fill = "Region",
+    caption = "Source: World Bank"
+    ) 
 
-glimpse(dem_summary)
+flfp_region + scale_fill_manual(values = cb_palette)
 ```
 
-## Try With Excel
 
-<br>
-
-- Read in the Excel file
-- Follow same steps as with CSV file
-  - use `read_excel()` to read in the data
-  - install and experiment with [writexl](https://cran.r-project.org/web/packages/writexl/index.html)
-
-```{r}
-#| label: timer3
-#| echo: false
-
-library(countdown)
-countdown(minutes = 5, 
-          id = "timer3", 
-          bottom = "10%", 
-          right = "10%")
-```
-
-# Google Sheets
-
-## Import Data from Google Sheets
-
-<br>
-
-- Can use `googlesheets4`
-- Have a look at [these Gapminder data](https://docs.google.com/spreadsheets/d/1U6Cf_qEOhiR9AZqTqS3mbMF3zt2db48ZP5v3rkrAEJY/edit?gid=780868077#gid=780868077)
-- Use `gs4_deauth()` to authenticate
-- Then use `read_sheet()` to read in the data
-
-## Example Code
+## Create Your Own Color Scheme
 
 <br>
 
 ```{r}
-#| label: gs_data1
+#| label: your_own_palette2
+#| echo: true
+#| output: false
 
-library(googlesheets4)
+cb_palette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 
-# Deauthorize to access public sheets without credentials
-gs4_deauth()
+flfp_region <- ggplot(flfp_gdp_regions, aes(x = reorder(iso3c, -flfp), y = flfp, fill = region)) +
+  geom_col() + 
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
+  labs(
+    x = "Region", 
+    y = "Avg. Female Labor Force Participation", 
+    title = "Levels of female labor force participation by region", 
+    fill = "Region",
+    caption = "Source: World Bank"
+    ) 
 
-# Read in the gapminder Africa data
-gapminder_data <- read_sheet("1U6Cf_qEOhiR9AZqTqS3mbMF3zt2db48ZP5v3rkrAEJY")
+flfp_region + scale_fill_manual(values = cb_palette)
 ```
 
-## Or... 
+## Create Your Own Color Scheme
 
 <br>
 
 ```{r}
-#| label: gs_data2
-#| eval: false
+#| label: your_own_palette3
+#| echo: true
+#| output: false
+#| code-line-numbers: "1,14"
 
-library(googlesheets4)
+cb_palette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 
-# Deauthorize to access public sheets without credentials
-gs4_deauth()
+flfp_region <- ggplot(flfp_gdp_regions, aes(x = reorder(iso3c, -flfp), y = flfp, fill = region)) +
+  geom_col() + 
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
+  labs(
+    x = "Region", 
+    y = "Avg. Female Labor Force Participation", 
+    title = "Levels of female labor force participation by region", 
+    fill = "Region",
+    caption = "Source: World Bank"
+    ) 
 
-# Read in the gapminder Africa data
-gapminder_data <- read_sheet("1U6Cf_qEOhiR9AZqTqS3mbMF3zt2db48ZP5v3rkrAEJY")
+flfp_region + scale_fill_manual(values = cb_palette)
 ```
 
-## Or...
+## Your Turn!
+
+- Go to [Module 2.2](https://dataviz-gwu.rocks/modules/module-2.2) on the course website
+- Do the setup steps
+- Reproduce the column chart of FLFP with the custom color scheme
+- Try changing one of the [hex codes](https://htmlcolorcodes.com/)
+- Now run `cvdPlot()` on the plot object to make sure it is color-blind friendly
+- Now try a [coolors palette](https://coolors.co/) or [GW colors](https://communications.gwu.edu/visual-identity/color-palette)
+
+```{r}
+#|label: custom_palette_timer
+countdown::countdown(minutes = 10, 
+                     id = "dem_waves", 
+                     #bottom = "10%", 
+                     right = "5%")
+```
+
+## Using a Color Palette
+
+<br>
+
+- There are many color palettes 
+- Viridis scales look cool and are accessible
+- ColorBrewer has many scales some of which are color-blind safe
+- The [paletteer](https://emilhvitfeldt.github.io/paletteer/) package aims to be a comprehensive collection of color palettes
+
+## Viridis
+
+```{r}
+#| label: viridis1
+#| echo: true
+
+flfp_region + scale_fill_viridis_d()
+```
+
+## Viridis
+
+```{r}
+#| label: viridis2
+#| echo: true
+
+flfp_region <-flfp_region + scale_fill_viridis_d()
+cvdPlot(flfp_region)
+```
+
+## ColorBrewer
+
+```{r}
+#| label: color_brewer1
+#| echo: true
+
+flfp_region + scale_fill_brewer(palette = "YlGn")
+```
+
+## ColorBrewer
+
+```{r}
+#| label: color_brewer2
+#| echo: true
+
+flfp_region <- flfp_region + scale_fill_brewer(palette = "YlGn")
+cvdPlot(flfp_region)
+```
+
+## Paletteer
+
+```{r}
+#| label: paletteer1
+#| echo: true
+
+library(paletteer)
+
+flfp_region + scale_fill_paletteer_d("rcartocolor::Temps")
+```
+
+## Paletteer
+
+Not all palettes are color-blind safe... 
+
+```{r}
+#| label: paletteer2
+#| echo: true
+
+flfp_region <- flfp_region + scale_fill_paletteer_d("rcartocolor::Temps")
+cvdPlot(flfp_region)
+```
+
+## Paletteer
+
+```{r}
+#| label: Paletteer3
+#| echo: true
+
+library(paletteer)
+
+flfp_region + scale_fill_paletteer_d("beyonce::X1") 
+```
+
+And some many not have enough colors for your chart...
+
+```{r}
+#| label: paletteer4
+#| echo: true
+
+flfp_region +  scale_fill_paletteer_d("beyonce::X1")
+```
+
+## Your Turn
+
+<br>
+
+- Try one of the color palettes packages we just discussed
+- A full list of viridis schemes is [here](https://search.r-project.org/CRAN/refmans/viridisLite/html/viridis.html)
+- For ColorBrewer, check out this [selector tool](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3)
+- For paletteer, check out this [paletteer gallery](https://pmassicotte.github.io/paletteer_gallery/)
+
+```{r}
+#|label: palette_package_timer
+countdown::countdown(minutes = 10, 
+                     id = "palette_package", 
+                     #bottom = "10%", 
+                     right = "5%")
+```
+
+
+## Scaling for Scatter Plots
+
+
+```{r}
+#| label: scatterplot1
+
+wealth_flfp <- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + 
+  geom_point(aes(color = region)) + # color points by region
+  geom_smooth(method = "loess", linewidth = 1) +  # make the line a loess curve
+  scale_x_log10(labels = scales::label_dollar()) + # stretch axis, add '$' format
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) + # add % label
+  labs(
+    x= "GDP per Capita", # x-axis title
+    y = "Female Labor Force Participation", # y-axis title
+    title = "Wealth and female labor force participation", # plot title
+    caption = "Source: World Bank Development Indicators", # caption
+    color = "Region" # legend title
+    )
+
+wealth_flfp + scale_color_viridis_d(option = "plasma")
+```
+
+## Fill vs. Color
+
+<br>
+
+- Use **fill** (e.g. `fill = ` or `scale_fill_*`) to modify the fill color of shapes like bars, boxes, or polygons. 
+- Commonly applied to:
+  - Bar charts
+  - Box plots
+  - Histograms
+
+## Fill vs. Color
+
+<br>
+
+- Use **color** (e.g. `color = ` or `scale_color_*`) to modify the color of points, lines, or text. 
+- Commonly applied to:
+  - Scatter plots
+  - Line charts
+  - Text elements
+
+## Scaling for Scatter Plots
 
 <br>
 
 ```{r}
-#| label: gs_data3
-#| eval: false
+#| label: scatterplot2
+#| echo: true
+#| output: false
+#| code-line-numbers: "14"
 
-library(googlesheets4)
+wealth_flfp <- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + 
+  geom_point(aes(color = region)) + # color points by region
+  geom_smooth(method = "loess", linewidth = 1) +  # make the line a loess curve
+  scale_x_log10(labels = scales::label_dollar()) + # stretch axis, add '$' format
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) + # add % label
+  labs(
+    x= "GDP per Capita", # x-axis title
+    y = "Female Labor Force Participation", # y-axis title
+    title = "Wealth and female labor force participation", # plot title
+    caption = "Source: World Bank Development Indicators", # caption
+    color = "Region" # legend title
+    )
 
-# Deauthorize to access public sheets without credentials
-gs4_deauth()
-
-# Read in the gapminder Africa data
-gapminder_data <- googledrive::drive_get("gapminder") |>
-  read_sheet()
+wealth_flfp + scale_color_viridis_d(option = "plasma")
 ```
 
-## Try It Yourself!
+## Scaling for Scatter Plots
+
+Use the `end` argument to darken the colors
+
+```{r}
+#| echo: true
+
+wealth_flfp + scale_color_viridis_d(option = "plasma", end = .7)
+```
+
+## Scaling for Scatter Plots
+
+Use the `direction` argument to flip the color scale... 
+
+```{r}
+#| echo: true 
+
+wealth_flfp + scale_color_viridis_d(option = "plasma", direction = -1)
+```
+
+## Your Turn!
 
 <br>
 
-- Use the code above to read in the data
-- Try reading in Gapminder data for a different country
+- Try using one of the color schemes on a scatter plot
+- Use `scale_color_` instead of `scale_fill_`
+- Play around with `end` and `direction` arguments in `viridis`
 
 ```{r}
-#| label: timer4
-#| echo: false
-
-library(countdown)
-countdown(minutes = 5, 
-          id = "timer4", 
-          bottom = "10%", 
-          right = "10%")
+#|label: scatter_plot_timer
+countdown::countdown(minutes = 10, 
+                     id = "scatter_plot", 
+                     bottom = "10%", 
+                     right = "5%")
 ```
 
-## Find Your Own Data
 
-<br>
 
-- Visit [kaggle.com](https://www.kaggle.com/datasets) 
-- Find a dataset you like
-- Download it as a CSV
-- Upload to your Posit Cloud project
-- Read it into R
-- Explore with `glimpse()` and `View()`
 
-```{r}
-#| label: timer5
-#| echo: false
-
-library(countdown)
-countdown(minutes = 5, 
-          id = "timer5", 
-          bottom = "10%", 
-          right = "10%")
-```

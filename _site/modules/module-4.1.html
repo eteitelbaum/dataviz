@@ -670,14 +670,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-6.2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Deploying &amp; Sharing Your App</span></a>
+  <a href="../modules/module-6.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Studio</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/module-6.1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Project Studio</span></a>
+  <a href="../modules/module-6.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deploying &amp; Sharing Your App</span></a>
   </div>
 </li>
       </ul>
@@ -819,7 +819,7 @@ $ top5 &lt;dbl&gt; 336788, 394694, 395620, 344470, 555007, 466181, 602707, 42085
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/JZLZHBqCbBk" title="Explore Your Data with kableExtra" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Now let’s use some <code>dplyr</code> <a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a> functions and <code>kableExtra</code> to subset and explore the data. First let’s see which are the wealthiest states. To do this, we can apply <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max()</a></code> to identify the states with the highest incomes among the top 5 percent of wage earners. We will save that list as an object called <code>top_10</code> and then call <code><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable()</a></code> to view it.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">top_10</span> <span class="op">&lt;-</span> <span class="va">quintiles</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max</a></span><span class="op">(</span><span class="va">top5</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>

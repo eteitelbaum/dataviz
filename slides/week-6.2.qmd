@@ -1,5 +1,5 @@
 ---
-title: "Themes, Annotations and Interactivity"
+title: "Make a Map Function"
 date: today
 date-format: long
 footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
@@ -18,489 +18,289 @@ execute:
   freeze: auto
 ---
 
-```{r}
-#| label: setup
-#| include: false
+# Make a Map Function
 
-library(readr)
+## What is a Function
+
+- A reusable piece of code that takes some inputs, performs some operations and returns an output
+- Elements
+  - Inputs (arguments)
+  - Operations (code block)
+  - Output (return value)
+- Like cooking (to produce a dish, you have a recipe and ingredients)
+- Don't repeat yourself (DRY)
+
+## Simple Example
+
+<br>
+
+```{r}
+# Define the function
+square_number <- function(x) {
+  result <- x^2
+  return(result)
+}
+
+# Use the function
+square_number(55)
+```
+
+## Tidy Evaluation
+
+<br>
+
+In the Tidyverse, ridy evaluation allows you to reference a column without using quotes or referencing the data frame
+
+<br>
+
+```{r}
+#| eval: false
+#| code-line-numbers: false
+democracy |> filter(polyarchy > .5)
+```
+vs. 
+```{r}
+#| eval: false
+#| code-line-numbers: false
+democracy[democracy$polyarchy > .5, ]
+```
+or
+```{r}
+#| eval: false
+#| code-line-numbers: false
+democracy[democracy[["polyarchy"]] > .5, ]
+```
+
+## Tidy Evaluation
+
+- Tidy evaluation lets us refer to **column names** without quotes, which is great for interactive use.
+- But it can be **tricky** for programming because `dplyr` and `ggplot2` assume that any argument passed to them is already a column name.
+- When we pass a **variable** containing a column name (e.g., a string), R doesn't automatically evaluate the variable to find the column name.
+- We need to explicitly tell R to look inside the variable and treat it as a column.
+
+## Tidy Evaluation
+
+<br> 
+
+- To do this we use `{{}}` in functions
+- For Shiny apps and strings we will use `.data[[]]`
+- Can also use `!!sym()` in some contexts
+- Depricated or less preferred methods include `get()`, `eval(parse())`,`aes_string()` and `!!enquo()`
+
+
+## Map Function
+
+```{r}
+#| label: map-function0
+#| echo: false
+
+source("functions/wb-maps.R", local = knitr::knit_global())
+
+create_map(var_id = "SL.TLF.CACT.FE.ZS", 
+           title= "Female Labor Force Participation", 
+           legend_title = "FLFP %", 
+           theme = "inferno", 
+           direction = -1)
+```
+
+## Map Function
+
+<br>
+
+```{r}
+#| label: map-function0.1
+#| eval: false
+
+source("functions/wb-maps.R", local = knitr::knit_global())
+
+create_map(var_id = "SL.TLF.CACT.FE.ZS", 
+           title= "Female Labor Force Participation", 
+           legend_title = "FLFP %", 
+           theme = "inferno", 
+           direction = -1)
+```
+
+## Map Function
+
+```{r}
+#| lable: map-function1
+#| echo: true
+#| output: false 
+#| code-line-numbers: "|7,11,16,18-19,27-28"
+
+library(rnaturalearth)
 library(dplyr)
-library(tidyr)
 library(ggplot2)
+library(ggthemes)
 library(wbstats)
-library(countrycode)
-library(countdown)
 
-indicators = c(flfp = "SL.TLF.CACT.FE.ZS", gdp_pc = "NY.GDP.PCAP.KD") # define indicators
+create_map <- function(var_id, title, legend_title, theme, direction){
 
-## Regional levels of FLFP for column chart 
-
-flfp_gdp_regions <- 
-  wb_data("SL.TLF.CACT.FE.ZS", country = "regions_only", mrnev = 1) |> 
-  rename(
-    region = country,
-    year = date,
-    flfp = SL.TLF.CACT.FE.ZS
+ne_countries(scale = "medium", returnclass = "sf") |> 
+  left_join(
+    wb_data(var_id, mrnev = 1), 
+    join_by(iso_a3 == iso3c)
   ) |> 
-  select(region, iso3c, year, flfp)
-
-## Cross-section of data on FLFP and GDP per capita for scatter plot
-
-flfp_gdp <- wb_data(indicators, end_date = 2021) |> # download data for 2021
-    left_join(select(wb_countries(), c(iso3c, region)), by = "iso3c") |>  # add regions
-    drop_na() # drop rows with missing values
-
-## Time series data on regional trends in FLFP for line chart
-
-flfp_ts <- wb_data("SL.TLF.CACT.FE.ZS", country = "regions_only", start_date = 1990, end_date = 2022) |> 
-  rename(
-    region = country,
-    year = date,
-    flfp = SL.TLF.CACT.FE.ZS
-  ) |> 
-  select(region, iso3c, year, flfp)
-```
-
-## Column Chart from Last Class
-
-```{r}
-#| label: column_chart1
-#| echo: false
-
-flfp_region <- ggplot(flfp_gdp_regions, aes(x = reorder(iso3c, -flfp), y = flfp, fill = region)) +
-  geom_col(fill = "steelblue") + 
-  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
+  filter(name != "Antarctica") |>  
+  ggplot() + 
+  geom_sf(aes(fill = .data[[var_id]])) + 
   labs(
-    x = "Region", 
-    y = "Avg. Female Labor Force Participation", 
-    title = "Levels of female labor force participation by region", 
-    fill = "Region",
-    caption = "Source: World Bank"
-    ) 
-
-flfp_region
+    title =  title, 
+    fill = legend_title, 
+    caption = "Source: World Bank Development Indicators"
+    ) +
+  theme_map() +
+  theme(
+    plot.title = element_text(face = "bold"),
+  ) +
+  scale_fill_viridis_c( 
+    option = theme, 
+    direction = direction 
+    )
+}
 ```
 
-## Add a Theme
-
-```{r}
-#| label: column_chart2
-#| code-fold: true
-
-flfp_region + theme_minimal()
-```
-
-## Can Also Set Theme {.smaller}
+## Map Function
 
 <br>
 
-If you like particular theme and want to use it for all of your visualizations, use `theme_set()` in a code chunk at the top of your document, e.g....
+Save the source code in a folder... 
 
 <br>
 
 ```{r}
-#| label: my_setup_chunk
-#| echo: fenced
-
-theme_set(theme_minimal())
-```
-
-<br>
-
-... and R will apply that theme to all of the visualizations in your document. 
-
-## Your Turn! 
-
-Produce this scatter plot... Then try different [themes](https://ggplot2.tidyverse.org/reference/ggtheme.html).
-
-```{r}
-#| label: exercise1
-#| echo: false
-
-wealth_flfp <- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + 
-  geom_point(aes(color = region)) + # color points by region
-  geom_smooth(method = "loess", linewidth = 1) +  # make the line a loess curve
-  scale_x_log10(labels = scales::label_dollar()) + # stretch axis, add '$' format
-  scale_y_continuous(labels = scales::label_percent(scale = 1)) + # add % label
-  labs(
-    x= "GDP per Capita", # x-axis title
-    y = "Female Labor Force Participation", # y-axis title
-    title = "Wealth and female labor force participation, 2021", # plot title
-    caption = "Source: World Bank Development Indicators", # caption
-    color = "Region" # legend title
-    ) + 
-  scale_color_viridis_d(option = "plasma", end = .7) 
-
-wealth_flfp + theme_dark()
-```
-
-```{r}
-#| label: setup_timer
-#| echo: false
-
-countdown(minutes = 5, 
-          id = "setup", 
-          top = "10%", 
-          right = "-15%",
-          color_border = "#fff",
-          color_text = "#fff",
-          color_running_background = "#42affa",
-          color_running_text = "black",
-          color_finished_background = "#E5D19D",
-          color_finished_text = "#00264A")
-```
-
-## Add an Annotation
-
-```{r}
-#| label: annotation1
-#| echo: false
-
-flfp_line <- ggplot(flfp_ts, aes(x = year, y = flfp, color = region)) +
-  geom_line(linewidth = 1) + 
-  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
-  labs(
-    x = "Year", 
-    y = "Female Labor Force Participation", 
-    title = "Regional trends in female labor force participation, 2021", 
-    caption = "Source: V-Dem Institute", 
-    color = "Region"
-  ) + scale_color_viridis_d() +
-  theme_minimal()
-
-flfp_line + geom_hline(yintercept = 52, linetype="dashed", color = "red", size = 1) +
-  annotate("text", x = 1995, y = 55, label = "Global average")
-```
-
-## 
-
-First step, add a horizontal line using `geom_hline()`... 
-
-```{r}
-#| code-fold: true
-
-flfp_line + 
-  geom_hline(yintercept = 52, linetype="dashed", color = "red", size = 1) 
-```
-
-## 
-
-Second step, the annotation with `annotate()`...
-
-```{r}
-#| code-fold: true 
-
-flfp_line + 
-  geom_hline(yintercept = 52, linetype="dashed", color = "red", size = 1) +
-  annotate("text", x = 1995, y = 55, label = "Global average")
-```
-
-## Vertical Reference Line
-
-```{r}
-#| echo: false
-
-flfp_line + 
-  geom_vline(xintercept=2020, linetype = "dashed", size = 1) +
-  annotate("text", x = 2017, y = 35, label = "Pandemic")
-```
-
-## 
-
-First step, add a horizontal line using `geom_hline()`... 
-
-```{r}
-#| code-fold: true
-
-flfp_line + 
-  geom_vline(xintercept=2020, linetype = "dashed", size = 1)
-```
-
-## 
-
-Second step, add the annotation with `annotate()`
-
-```{r}
-#| code-fold: true
-
-flfp_line + 
-  geom_vline(xintercept=2020, linetype = "dashed", size = 1) +
-  annotate("text", x = 2017, y = 35, label = "Pandemic")
-```
-
-## Your Turn!
-
-<br>
-
-- Go to module 2.2
-- Copy the code you need to make the line chart
-- Create a horizontal reference line and annotate it
-- In a new code chunk, create a vertical line and annotate it
-- Play with the parameters to move and style your line
-- Try different text, etc. 
-
-```{r}
-#| label: exercise2_timer
-#| echo: false
-
-countdown(minutes = 5, 
-          id = "exercise2", 
-          #bottom = "10%", 
-          #right = "10%"
-          )
-```
-
-## Interactivity
-
-<br>
-
-```{r}
-#| echo: false
-
-library(plotly)
-
-wealth_flfp_plotly <- wealth_flfp  + 
-  scale_color_viridis_d(option = "plasma", end = .7) +
-  theme_minimal() +
-  aes(label = country)  # need so ggplot retains label for plotly
-
-ggplotly(wealth_flfp_plotly, tooltip = c("country", "flfp", "gdp_pc")) |> 
-  
-  # add source
-  layout(annotations = list(text = "Source: World Bank Development Indicators",  
-                            font = list(size = 10), showarrow = FALSE,
-                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,
-                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |> 
-  # add web address
-  layout(annotations = list(text = "www.dataviz-gwu.rocks", 
-                            font = list(size = 10, color = 'grey'), showarrow = FALSE,
-                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,
-                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))
-```
-
-## The Code
-
-```{r}
+#| label: map-function7
 #| echo: true
 #| output: false
 
-library(plotly)
-
-wealth_flfp_plotly <- wealth_flfp  + 
-  scale_color_viridis_d(option = "plasma", end = .7) +
-  theme_minimal() +
-  aes(label = country)  # need so ggplot retains label for plotly
-
-ggplotly(wealth_flfp_plotly, tooltip = c("country", "flfp", "gdp_pc")) |> 
-  
-  # add source
-  layout(annotations = list(text = "Source: World Bank Development Indicators",  
-                            font = list(size = 10), showarrow = FALSE,
-                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,
-                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |> 
-  # add web address
-  layout(annotations = list(text = "www.dataviz-gwu.rocks", 
-                            font = list(size = 10, color = 'grey'), showarrow = FALSE,
-                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,
-                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))
+source("functions/wb-maps.R", local = knitr::knit_global())
 ```
 
-## The Code
+<br> 
+
+and call in your document...<br>
 
 ```{r}
-#| eval: false
-#| code-line-numbers: "1|6|8|10-14|15-19"
+#| label: map-function8
+#| output: false
 
-library(plotly)
-
-wealth_flfp_plotly <- wealth_flfp  + 
-  scale_color_viridis_d(option = "plasma") +
-  theme_minimal() +
-  aes(label = country)  # need so ggplot retains label for plotly
-
-ggplotly(wealth_flfp_plotly, tooltip = c("country", "flfp", "gdp_pc")) |> 
-  
-  # add source
-  layout(annotations = list(text = "Source: World Bank Development Indicators",  
-                            font = list(size = 10), showarrow = FALSE,
-                            xref = 'paper', x = 1.1, xanchor = 'right', xshift = 0,
-                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) |> 
-  # add web address
-  layout(annotations = list(text = "www.dataviz-gwu.rocks", 
-                            font = list(size = 10, color = 'grey'), showarrow = FALSE,
-                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,
-                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))
+create_map(var_id = "SL.TLF.CACT.FE.ZS", 
+           title= "Female Labor Force Participation", 
+           legend_title = "FLFP %", 
+           theme = "inferno", 
+           direction = -1)
 ```
 
-## 
-
-But to make a plotly chart, all you need is this! 
-
-```{r}
-#| code-fold: true
-
-ggplotly(wealth_flfp_plotly)
-```
-<br>
-
-## Your Turn!
-
-- Go to module 2.2 and create the basic wealth vs. flfp scatter plot
-- Now "plotlify" the plot
-- At first, don't worry about annotations or tool tip
-- Then add in tool tip, play with setting
-- Then add in the annotations
-- Move annotations, change content
-
-```{r}
-#| label: exercise3_timer
-#| echo: false
-
-countdown(minutes = 5, 
-          id = "exercise3", 
-          #bottom = "10%", 
-          #right = "10%"
-          )
-```
-
-## Animated Plots
-
-```{r}
-#| echo: false
-
-flfp_gdp_ts <- wb_data(indicators, mrv = 25) |> # download data for 25 most recent years
-    left_join(select(wb_countries(), c(iso3c, region)), by = "iso3c") |> # add regions
-    rename(year = date) |>
-    drop_na() # drop rows with missing values
-
-library(gganimate)
-
-ggplot(flfp_gdp_ts, aes(x = gdp_pc, y = flfp)) + 
-  geom_point(aes(color = region)) + 
-  geom_smooth(method = "loess", linewidth = 1) +
-  scale_x_log10(labels = scales::label_dollar()) + 
-  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
-  transition_states(year) +
-  labs(
-    x= "GDP per Capita",
-    y = "Female Labor Force Participation",
-    title = "Wealth and female labor force participation, {closest_state}",
-    caption = "Source: World Bank Development Indicators",
-    color = "Region"
-    ) + 
-  scale_color_viridis_d(option = "plasma", end = .7) 
-```
-
-## Animated Plots
+## Your Turn{.smaller}
 
 <br>
 
-```{r}
-#| eval: false
-
-flfp_gdp_ts <- wb_data(indicators, mrv = 25) |> # download data for 25 most recent years
-    left_join(select(wb_countries(), c(iso3c, region)), by = "iso3c") |> # add regions
-    rename(year = date) |>
-    drop_na() # drop rows with missing values
-```
-
-## Animated Plots
-
-<br>
-
-```{r}
-#| eval: false
-#| code-line-numbers: "1|8|12"
-
-library(gganimate)
-
-ggplot(flfp_gdp_ts, aes(x = gdp_pc, y = flfp)) + 
-  geom_point(aes(color = region)) + 
-  geom_smooth(method = "loess", linewidth = 1) +
-  scale_x_log10(labels = scales::label_dollar()) + 
-  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
-  transition_states(year) +
-  labs(
-    x= "GDP per Capita",
-    y = "Female Labor Force Participation",
-    title = "Wealth and female labor force participation, {closest_state}",
-    caption = "Source: World Bank Development Indicators",
-    color = "Region"
-    ) + 
-  scale_color_viridis_d(option = "plasma", end = .7) 
-```
-
-## Your Turn!
-
-<br>
-
-- Try making an animated scatter plot with different a different y-axis variable
-- See if you can make the title change based on the year displayed
-
-```{r}
-#| label: exercise4_timer
-#| echo: false
-
-countdown(minutes = 5, 
-          id = "exercise4", 
-          #bottom = "10%", 
-          #right = "10%"
-          )
-```
-
-## Time Permitting
-
-Annotate (comment) the following code...
-
-```{r}
-#| eval: false
-
-wealth_flfp <- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + 
-  geom_point(aes(color = region)) + 
-  geom_smooth(method = "loess", linewidth = 1) +
-  scale_x_log10(labels = scales::label_dollar()) + 
-  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
-  labs(
-    x= "GDP per Capita",
-    y = "Female Labor Force Participation",
-    title = "Wealth and female labor force participation, 2021",
-    caption = "Source: World Bank Development Indicators",
-    color = "Region"
-    ) + 
-  scale_color_viridis_d(option = "plasma", end = .7) 
-
-wealth_flfp + theme_minimal()
-```
-
-## Time Permitting
-
-Annotate (comment) the following code...
-
-```{r}
-#| eval: false
-
-flfp_line <- ggplot(flfp_ts, aes(x = year, y = flfp, color = region)) +
-  geom_line(linewidth = 1) + 
-  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
-  labs(
-    x = "Year", 
-    y = "Female Labor Force Participation", 
-    title = "Regional trends in female labor force participation", 
-    caption = "Source: V-Dem Institute", 
-    color = "Country"
-  ) + scale_color_viridis_d() +
-  theme_minimal()
-
-flfp_line + geom_hline(yintercept = 52, linetype="dashed", color = "red", size = 1) +
-  annotate("text", x = 1995, y = 55, label = "Global average")
-```
+- Take the code from module 3.1, paste in an R script and save in a folder
+- Call `source()` and then the function in your Quarto document
+- Change the values for the five parameters 
+- Go back to the code and add a new parameter (like subtitle)
+- Try calling the function again
+- Write something about your map and render the Quarto document
 
 ```{r}
 #| label: exercise5_timer
 #| echo: false
 
-countdown(minutes = 5, 
-          id = "exercise5", 
-          #bottom = "10%", 
-          #right = "10%"
+library(countdown)
+
+countdown(minutes = 10)
+```
+
+## Democracy Function{.smaller}
+
+<br>
+
+- Can you make a map function for a democracy indicator?
+- Come up with a plan
+  - What will the name of the function be?
+  - What will the parameters be?
+  - What would the
+- Take democracy code from last class and implement
+- Add more parameters if desired
+
+```{r}
+#| label: exercise6_timer
+#| echo: false
+
+countdown(minutes = 10, 
+          bottom = "10%", 
+          right = "10%"
           )
 ```
+
+## Other Functions
+
+<br>
+
+- What other visualizations could you "functionize"?
+- Line charts?
+- Bar charts? 
+- Scatter plots? 
+- Try one!
+
+## Group and Summarize
+
+<br>
+
+```{r}
+#| eval: false
+
+# var_id = any World Bank indicator
+# mrv = number of most recent values
+# group_var = column to group by (country or date)
+
+mean_wb_data <- function(var_id, mrv, group_var){
+  wb_data(var_id, mrv = mrv) |> 
+    group_by( {{ group_var }}) |> 
+    summarize(mean_value = mean(.data[[var_id]], na.rm = TRUE))
+}
+
+# Example call
+mean_wb_data("SL.TLF.CACT.FE.ZS", 3, date)
+```
+
+## Line Chart
+
+<br>
+
+```{r}
+#| eval: false
+
+create_line_chart <- function(data, x_var, y_var, color_var, title, x_label,
+                              y_label, legend_title, color_palette = "turbo",
+                              palette_end = 0.8) {
+  
+  ggplot(data, aes(x = {{ x_var }}, y = {{ y_var }}, color = {{ color_var }})) +
+    geom_line() +
+    labs(
+      title = title,
+      x = x_label,
+      y = y_label
+    ) +
+    scale_color_viridis_d(
+      name = legend_title,  
+      option = color_palette, 
+      end = palette_end
+    ) +
+    theme_minimal()
+}
+
+# Example call
+create_line_chart(
+  data = brics_dem, 
+  x_var = year, 
+  y_var = v2x_polyarchy, 
+  color_var = country_name, 
+  title = "Democracy in the BRICS Nations", 
+  x_label = "Year", 
+  y_label = "Polyarchy Score",
+  legend_title = "Index"
+)
+```
+
+

@@ -22,7 +22,7 @@ In Lab 1 we handed you clean data. Now you will build a tidy data set yourself--
 
 ## Step 1: Download your data (30 pts)
 
-*Use `fetchdem()` from `vdemlite` to download a democracy measure of your choice for all countries from roughly 1990 onward. Then use `wb_data()` from `wbstats` to download GDP per capita (or another development or women's-empowerment indicator) for the same period. `glimpse()` each to confirm they came through.*
+*Use `vdem` from `vdemdata` to download the V-Dem dataset, then use `filter()` and `select()` to keep a democracy measure of your choice for all countries from roughly 1990 onward. Then use `wb_data()` from `wbstats` to download GDP per capita (or another development or women's-empowerment indicator) for the same period. `glimpse()` each to confirm they came through.*
 
 ```{r}
 

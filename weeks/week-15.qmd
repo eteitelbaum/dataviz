@@ -10,4 +10,12 @@ format: html
 source("../helper.R")
 ```
 
-More in-class studio time: peer feedback and dry-run presentations to get your app ready for the final session.
+We deploy and share our apps on shinyapps.io, then use the rest of the week for studio time: peer feedback and dry-run presentations to get your app ready for the final session.
+
+## Readings
+
+| 📖 [Deploying & Sharing Your App](/modules/module-6.2.qmd)
+
+## Videos
+
+| 🖥️ [Deploying and sharing your app](https://youtu.be/dGUgSFhvaFs)

@@ -12,6 +12,11 @@ source("../helper.R")
 
 This week we get our tools set up and look at what data visualization can do. Session 1 is course overview and environment setup; session 2 shows off some inspiring examples.
 
+## Slides
+
+| 🖥️ [Getting Started, Part I](/slides/week-1.1.qmd)
+| 🖥️ [Getting Started, Part II](/slides/week-1.2.qmd)
+
 ## Readings
 
 | 📖 [Healy, ch. 2: Get Started](https://socviz.co/02-intro.html)

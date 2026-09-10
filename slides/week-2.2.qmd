@@ -1,6 +1,5 @@
 ---
-title: Getting Started, Part II
-subtitle: R and More Quarto
+title: Which Visualization Should I Use?
 date: today
 date-format: long
 footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
@@ -10,439 +9,580 @@ format:
     theme: [simple, custom.scss]
     transition: fade
     slide-number: true
+    #multiplex: true
     chalkboard: true
 execute:
-  echo: false
+  echo: true
   message: false
   warning: false
   freeze: auto
 ---
 
-## Plan for Today
-
-- A little more about R
-- Go over three examples on Posit Cloud
-- Discuss advanced use of Quarto
-- Make and publish a Quarto document on [Quarto Pub](https://quartopub.com/)
-
-# A Little More About R 
-
-## What is an Object?
-
-::: incremental
-- An object in R is a data structure used to store data
-- It can vary from simple scalar types to more complex data structures like vectors, lists, or data frames
-- Objects hold not only data but also information about the type of data and the operations that can be performed on them
-- Every entity in R is considered an object, making R a language based around the manipulation of objects
-:::
-
-## How to Store Data
-
-- In R, you can store data in objects using the assignment operator `<-`
-- The object name is on the left of `<-`, and the data or value you wish to assign to the object is on the right
-- Then you can print the object to the console using the object name
-
 ```{r}
-#| label: objects
-#| echo: true
+#| label: setup
+#| include: false
 
-# Store the value 42 in the object my_number
-my_number <- 42
+library(tidyverse)
+library(vdemdata)
+library(plotly)
+library(WDI)
 
-# Print the value of my_number
-my_number 
+theme_set(theme_minimal())
 ```
 
-## What Can R Do? 
-
-<br>
-
-::: incremental
-- R is a powerful language for data analysis and visualization
-- It is also a general-purpose programming language
-- It can be used for web development, machine learning, and more
-- It is open-source and has a large community of users and developers
-:::
-
-## R as a Calculator
-
-<br>
-
-- R can be used as a simple calculator
-- You can perform arithmetic operations on numbers
-
 ```{r}
-#| label: arithmetic
-#| echo: true
+#| label: vdem_setup
+#| include: false
 
-# Addi a number and store it to a value
-sum_of_2plus2 <- 2 + 2
-
-
-sum_of_2plus2
+polyarchy_annual <- vdem %>%
+  group_by(year) %>%
+  summarize(
+    polyarchy = mean(v2x_polyarchy, na.rm = TRUE),
+    gdp_pc = mean(e_gdppc, na.rm = TRUE)*1000
+  ) %>%
+  mutate(
+    wave = case_when(year <= 1827 ~ "pre 1st wave",
+                       year > 1827 & year <= 1926 ~ "1st wave", 
+                       year > 1926 & year <= 1945 ~ "1st rev. wave",
+                       year > 1945 & year <= 1962 ~ "2nd wave", 
+                       year > 1962 & year <= 1973 ~ "2nd rev. wave", 
+                       year > 1973 & year <= 2010 ~ "3rd wave", 
+                       year > 2010 ~ "3rd rev. wave") %>%
+      factor(levels = c("pre 1st wave", "1st wave", "1st rev. wave",
+                        "2nd wave", "2nd rev. wave", "3rd wave", "3rd rev. wave"))
+  ) %>%
+  drop_na()
 ```
 
-## When to Store Data in Objects
-
-<br>
-
-- Note that you don't always have to store data in objects
-- You should mostly store data in objects when you want to use the data later
-- If you only need to use the data once, you can just use the data directly
-
 ```{r}
-#| label: arithmetic2
-#| echo: true
+#| label: dem_waves_setup
+#| include: false
 
-# Add two numbers without storing them in an object
-2 + 2
+# library(vdemdata)
+# library(tidyverse)
+# 
+# dem_waves_ctrs <- vdem |>
+#   select(
+#     country = country_name,     
+#     year, 
+#     polyarchy = v2x_polyarchy, 
+#   ) |>
+#   filter( 
+#     country %in% c("United States of America", # select countries in this list
+#                    "Japan", 
+#                    "Portugal")
+#     )
+# 
+# write_csv(dem_waves_ctrs, "data/dem_waves_ctrs.csv")
 ```
 
-## Some Common Arithmetic Operators
+## Line Charts
 
 <br>
 
-- `+` addition
-- `-` subtraction
-- `*` multiplication
-- `/` division
-- `^` exponentiation (also `**`)
+- Line charts are used to show trends over time
+- You especially want to use a line chart when you have multiple cases or categories that you want to compare over time
 
-## Functions
+## Huntington's Three Waves
 
-- A function is a set of instructions that produces some output
-- In R, you can use built-in functions to perform specific tasks
-- For example, you can use the `mean()` function to calculate the average of a set of numbers
-- To do this you have to use the combine function `c()` to create a vector of numbers
+<br>
+
+```{r}
+#| label: huntington
+#| echo: false
+
+region_plot <- ggplot(polyarchy_annual, aes(x = gdp_pc, y = polyarchy)) + 
+  geom_point(aes(color = wave)) + 
+  geom_smooth(method = "lm", se = FALSE, size = .75) + 
+  scale_x_log10(label = scales::label_dollar()) +
+  aes(label = year) +
+  labs(x= "GDP Per Capita", y = "Polyarchy Score",
+       title = "Democracy, development and Huntington's three waves") +
+  scale_color_discrete(name = "Wave")
+
+ggplotly(region_plot, tooltip = c("year", "polyarchy")) %>% 
+  # adjust width
+  layout(width = 1000, height = 450) %>%
+  # add source
+  layout(annotations = list(text = "Source: The V-Dem Institute, Varities of Democracy Dataset",  
+                            font = list(size = 10), showarrow = FALSE,
+                            xref = 'paper', x = 1, xanchor = 'right', xshift = 100,
+                            yref = 'paper', y = -.1, yanchor = 'auto', yshift = 0)) %>%
+  # add web address
+  layout(annotations = list(text = "www.psc2339.com", 
+                            font = list(size = 10, color = 'grey'), showarrow = FALSE,
+                            xref = 'paper', x = .5, xanchor = 'center', xshift = 0,
+                            yref = 'paper', y = 1, yanchor = 'top', yshift = 0))
+```
+
+## Line Chart Example
+
+<br>
+
+```{r}
+#| label: geom_line1
+#| echo: false
+
+# load data
+dem_waves_ctrs <- read_csv("data/dem_waves_ctrs.csv")
+
+# in this ggplot() call, we add a third dimension for line color
+ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
+  geom_line(linewidth = 1) + # our geom is a line with a width of 1
+  labs(
+    x = "Year", 
+    y = "Polyarchy Score", 
+    title = 'Democracy in countries representing three different "waves"', 
+    caption = "Source: V-Dem Institute", 
+    color = "Country" # make title of legend to upper case
+  )
+```
+
+##
+
+<br>
+
+Here is the code... 
+
+<br>
+
+```{r}
+#| label: geom_line2
+#| eval: false
+
+# in this ggplot() call, we add a third dimension for line color
+ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
+  geom_line(linewidth = 1) + # our geom is a line with a width of 1
+  labs(
+    x = "Year", 
+    y = "Polyarchy Score", 
+    title = 'Democracy in countries representing three different "waves"', 
+    caption = "Source: V-Dem Institute", 
+    color = "Country" # make title of legend to upper case
+  )
+```
 
 ## 
 
-<br> 
+<br>
 
-Create a vector of numbers and take the mean...
+Use `geom_line()` to specify a line chart... 
 
 <br>
 
 ```{r}
-#| label: mean
-#| echo: true
+#| label: geom_line3
+#| eval: false
+#| code-line-numbers: "3"
 
-# Create a vector of numbers
-numbers <- c(1, 2, 3, 4, 5)
-
-# Calculate the mean of the numbers
-mean(numbers)
+# in this ggplot() call, we add a third dimension for line color
+ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
+  geom_line(linewidth = 1) + # our geom is a line with a width of 1
+  labs(
+    x = "Year", 
+    y = "Polyarchy Score", 
+    title = 'Democracy in countries representing three different "waves"', 
+    caption = "Source: V-Dem Institute", 
+    color = "Country" # make title of legend to upper case
+  )
 ```
 
-## Some Common Base R Functions {.smaller}
+## 
 
-- `mean()` calculates the mean of a set of numbers
-- `median()` calculates the median of a set of numbers
-- `sd()` calculates the standard deviation of a set of numbers
-- `sum()` calculates the sum of a set of numbers
-- `length()` calculates the length of a vector
-- `max()` and `min()` calculate the maximum and minimum values of a vector
-- `round()` rounds a number to a specified number of decimal places
-- `sqrt()` calculates the square root of a number
-- `log()` calculates the natural logarithm of a number
-- `exp()` calculates the exponential of a number
-- `abs()` calculates the absolute value of a number
+<br>
+
+Add third dimension to the `aes()` call for line color...
+
+<br>
+
+```{r}
+#| label: geom_line4
+#| eval: false
+#| code-line-numbers: "2"
+
+# in this ggplot() call, we add a third dimension for line color
+ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
+  geom_line(linewidth = 1) + # our geom is a line with a width of 1
+  labs(
+    x = "Year", 
+    y = "Polyarchy Score", 
+    title = 'Democracy in countries representing three different "waves"', 
+    caption = "Source: V-Dem Institute", 
+    color = "Country" # make title of legend to upper case
+  )
+```
+
+## 
+
+<br>
+
+Modify the legend title...
+
+<br>
+
+```{r}
+#| label: geom_line5
+#| eval: false
+#| code-line-numbers: "9"
+
+# in this ggplot() call, we add a third dimension for line color
+ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
+  geom_line(linewidth = 1) + # our geom is a line with a width of 1
+  labs(
+    x = "Year", 
+    y = "Polyarchy Score", 
+    title = 'Democracy in countries representing three different "waves"', 
+    caption = "Source: V-Dem Institute", 
+    color = "Country" # make title of legend to upper case
+  )
+```
 
 ## Your Turn!
 
 <br>
 
-- Start a new code chunk your Quarto document
-- Try storing some numbers as a vector and printing the result 
-- Try using some arithmetic operators
-- Try using some of the common base R functions
-
-```{r}
-#| label: timer0
-
-library(countdown)
-countdown(minutes = 3, 
-          id = "timer0", 
-          bottom = "10%",
-          right = "10%",
-          color_border = "#fff",
-          color_text = "#fff",
-          color_running_background = "#42affa",
-          color_running_text = "black",
-          color_finished_background = "#E5D19D",
-          color_finished_text = "#00264A")
-```
-
-
-# Three Examples
-
-## Let's get going . . .
-
-<br>
-
-Let's open up the Getting Started module on Posit Cloud...
-
-And work through the examples there.
-
-## Example: Make a Map!
-
-```{r}
-#| label: leaflet_map
-
-library(leaflet)
-leaflet() |>
-  addTiles() |>   # Add default OpenStreetMap map tiles
-  addMarkers(lat = 38.90243843683386, lng =  -77.0443814477152, 
-             label = "Elliott School of International Affairs")
-```
-
-## Example: Make a map!
-
-<br>
-
-```{r}
-#| label: leaflet_map2
-#| echo: true
-#| eval: false
-  
-library(leaflet)
-leaflet() |> 
-  addTiles() |>   # Add default OpenStreetMap map tiles
-  addMarkers(lat = 38.90243843683386, lng =  -77.0443814477152, 
-             label = "Elliott School of International Affairs")
-```
+- See table three of [this article](https://kurzman.unc.edu/wp-content/uploads/sites/1410/2011/06/Kurzman_Waves_of_Democratization.pdf)
+- Select three countries to visualize
+- Adjust setup code to filter data on those countries 
+- Visualize with `geom_line()`
 
 ```{r}
 #| label: timer1
+#| echo: false
 
-countdown(minutes = 3, 
-          id = "timer1", 
-          bottom = "10%",
-          right = "10%")
+countdown::countdown(minutes = 10, 
+                     id = "timer1", 
+                     bottom = "10%", 
+                     right = "10%",
+                     color_border = "#fff",
+                     color_text = "#fff",
+                     color_running_background = "#42affa",
+                     color_running_text = "black",
+                     color_finished_background = "#E5D19D",
+                     color_finished_text = "#00264A")
 ```
 
+## Scatter Plots
 
-## Example: Plotting Democracy Over Time
+<br>
 
-```{r}
-#| label: plot_democracy
+- Scatter plots are used to show the relationship between two variables
+- Frequently the outcome variable is on the y-axis and the predictor variable is on the x-axis
+- In addition to the points, you can use color, size, and shape to add more information to the plot
 
-# Load the packages
-library(vdemlite)
-library(ggplot2)
+## Scatter Plot Setup
 
-# Use vdemlite to extract democracy scores for France and INdia
-dem_data <- fetchdem(indicators = "v2x_polyarchy",
-                     countries = c("FRA", "IND"))
-
-# And now we can plot the data
-ggplot(dem_data, aes(y = v2x_polyarchy, x = year, color=country_name)) +
-  geom_line() +
-  theme_minimal() +
-  xlab("Year") +
-  ylab("Electoral Democracy Index") +
-  ggtitle("Electoral Democracy, 1970-2022") +
-  geom_hline(yintercept = .5, linetype = "dashed", color = "grey") +
-   scale_color_manual(name="Country", values=c("#E69F00", "#56B4E9")) +
-  ylim(0, 1)
-```
-
-## Example: Plotting Democracy Over Time
+<br>
 
 ```{r}
-#| label: plot_democracy2
-#| echo: true
-#| eval: false
+#| label: scatter_plot_setup
 
-# Load the packages
-library(vdemlite)
-library(ggplot2)
-
-# Use vdemlite to extract democracy scores for France and INdia
-dem_data <- fetchdem(indicators = "v2x_polyarchy",
-                     countries = c("FRA", "IND"))
-
-# And now we can plot the data
-ggplot(dem_data, aes(y = v2x_polyarchy, x = year, color=country_name)) +
-  geom_line() +
-  theme_minimal() +
-  xlab("Year") +
-  ylab("Electoral Democracy Index") +
-  ggtitle("Electoral Democracy, 1970-2022") +
-  geom_hline(yintercept = .5, linetype = "dashed", color = "grey") +
-   scale_color_manual(name="Country", values=c("#E69F00", "#56B4E9")) +
-  ylim(0, 1)
-```
-
-```{r}
-#| label: timer2
-
-countdown(minutes = 3, 
-          id = "timer2", 
-          bottom = "0%",
-          right = "0%")
-```
-
-## Example: UN Voting Trends
-
-```{r}
-#| label: un_voting
-
-library(tidyverse)
-library(unvotes)
-library(lubridate)
-library(scales)
-library(pacman)
-
-unvotes <- un_votes %>%
-  inner_join(un_roll_calls, by = "rcid") %>%
-  inner_join(un_roll_call_issues, by = "rcid")
-
-unvotes %>%
-  # then filter out to only include the countries we want
-  filter(country %in% c("South Africa", "United States", "France")) %>%
-  # then make sure R understands the the year variable is a data
-  mutate(year = year(date)) %>%
-  # Then group the data by country and year
-  group_by(country, year, issue) %>%
-  # then take the average Yes votes for each country_year
-  summarize(percent_yes = mean(vote == "yes")) %>%
-  # then make a nice plot
-  ggplot(mapping = aes(x = year, y = percent_yes, color = country)) +
-  geom_point(alpha = 0.4) +
-  geom_smooth(method = "loess", se = FALSE) +
-  facet_wrap(~issue) +
-  scale_y_continuous(labels = percent) +
-  scale_color_manual( values=c("#E69F00", "#56B4E9", "#009E73")) +
-  labs(
-    title = "Percentage of 'Yes' votes in the UN General Assembly",
-    subtitle = "1946 to 2019",
-    y = "% Yes",
-    x = "Year",
-    color = "Country"
+dem_summary_ctry <- read_csv("data/dem_women.csv") |>
+  group_by(country, region) |> # group by country, keep region
+  summarize(
+    polyarchy = mean(polyarchy, na.rm = TRUE),
+    gdp_pc = mean(gdp_pc, na.rm = TRUE), 
+    flfp = mean(flfp, na.rm = TRUE), 
+    women_rep = mean(women_rep, na.rm = TRUE)
   )
 ```
 
-## Example: UN Voting Trends
+## Scatter Plot
 
 ```{r}
-#| label: un_voting2
-#| echo: true
-#| eval: false
+#| label: scatter1
+#| code-fold: true
 
-library(tidyverse)
-library(unvotes)
-library(lubridate)
-library(scales)
-library(pacman)
-
-unvotes <- un_votes %>%
-  inner_join(un_roll_calls, by = "rcid") %>%
-  inner_join(un_roll_call_issues, by = "rcid")
-
-unvotes %>%
-  # then filter out to only include the countries we want
-  filter(country %in% c("South Africa", "United States", "France")) %>%
-  # then make sure R understands the the year variable is a data
-  mutate(year = year(date)) %>%
-  # Then group the data by country and year
-  group_by(country, year, issue) %>%
-  # then take the average Yes votes for each country_year
-  summarize(percent_yes = mean(vote == "yes")) %>%
-  # then make a nice plot
-  ggplot(mapping = aes(x = year, y = percent_yes, color = country)) +
-  geom_point(alpha = 0.4) +
-  geom_smooth(method = "loess", se = FALSE) +
-  facet_wrap(~issue) +
-  scale_y_continuous(labels = percent) +
-  scale_color_manual( values=c("#E69F00", "#56B4E9", "#009E73")) +
+ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy, color = region, size = women_rep)) + 
+  geom_point() + # use geom_point() for scatter plots
+  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
   labs(
-    title = "Percentage of 'Yes' votes in the UN General Assembly",
-    subtitle = "1946 to 2019",
-    y = "% Yes",
-    x = "Year",
-    color = "Country"
-  )
+    x= "GDP per Capita", 
+    y = "Polyarchy Score",
+    title = "Wealth and democracy, 1990 - present", 
+    caption = "Source: V-Dem Institute", 
+    color = "Region",
+    size = "Women Reps"
+    ) 
 ```
+
+## Scatter Plot
+
+<br>
+
+Use `geom_point()`...
 
 ```{r}
-#| label: timer3
+#| label: scatter2
+#| eval: false
+#| code-line-numbers: "2"
 
-countdown(minutes = 3, 
-          id = "timer3", 
-          bottom = "0%",
-          right = "0%")
+ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy, color = region, size = women_rep)) +
+  geom_point() + # use geom_point() for scatter plots
+  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
+  labs(
+    x= "GDP per Capita", 
+    y = "Polyarchy Score",
+    title = "Wealth and democracy, 1990 - present", 
+    caption = "Source: V-Dem Institute", 
+    color = "Region",
+    size = "Women Reps"
+    ) 
 ```
 
-# More About Quarto
-
-## Advanced HTML
+## Scatter Plot
 
 <br>
 
-- So far we have been using the basic HTML elements to create our documents
-- Quarto supports a wide range of HTML elements and attributes
-- We can use these to create more complex and interactive documents
+Four dimensions... 
 
-## Formatting Options
+```{r}
+#| label: scatter3
+#| eval: false
+#| code-line-numbers: "1-1"
 
-- We can make our documents have a more sophisticated feel by specifying various options in the YAML header
-- Examples include `title`, `subtitle`, `date`, `abstract`, `toc`, etc. 
-- We can also specify font styles and colors and control other aspects of the formatting
-- See [this page](https://quarto.org/docs/reference/formats/html.html) to explore the various formatting options
+ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy, color = region, size = women_rep)) + 
+  geom_point() + # use geom_point() for scatter plots
+  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
+  labs(
+    x= "GDP per Capita", 
+    y = "Polyarchy Score",
+    title = "Wealth and democracy, 1990 - present", 
+    caption = "Source: V-Dem Institute", 
+    color = "Region",
+    size = "Women Reps"
+    ) 
+```
 
-## Themes
-
-<br>
-
-- Quarto supports a wide range of themes
-- We can use these to change the look and feel of our documents
-- Check out [this page](https://quarto.org/docs/output-formats/html-themes.html) to explore the various themes available in Quarto
-
-## Footnotes
-
-<br>
-
-- You can also add footnotes to your document
-- Use the `^[]` or `[^1]` syntax to add a footnote
-- There are different ways to add footnotes
-- I find that inline notes are the easiest to work with
-  - For example `^[This is a footnote]`
-
-## Generating Lorem Ipsum
+## Scatter Plot
 
 <br>
 
-- For working on your document's format it is helpful to have random text
-- The [lorem package](http://pkg.garrickadenbuie.com/lorem/) is helpful for this
-- You can also install an R Studio Addin
+Stretch axis on log scale and use `scales` package to adjust labels...
 
-## Publishing on Quarto Pub
+```{r}
+#| label: scatter4
+#| eval: false
+#| code-line-numbers: "3"
+
+ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy, color = region, size = women_rep)) + 
+  geom_point() + # use geom_point() for scatter plots
+  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
+  labs(
+    x= "GDP per Capita", 
+    y = "Polyarchy Score",
+    title = "Wealth and democracy, 1990 - present", 
+    caption = "Source: V-Dem Institute", 
+    color = "Region",
+    size = "Women Reps"
+    ) 
+```
+
+
+## Scatter Plot
 
 <br>
 
-- [Quarto Pub](https://quartopub.com/) is a platform for publishing Quarto documents
-- You can publish your documents on Quarto Pub and share them with others
-- Quarto Pub is free to use
-- Sign up for an account, then publish with `quarto publish quarto-pub name-of-document.qmd` in the terminal  
+Change legend titles... 
+
+```{r}
+#| label: scatter5
+#| eval: false
+#| code-line-numbers: "9-10"
+
+ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy, color = region, size = women_rep)) + 
+  geom_point() + # use geom_point() for scatter plots
+  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
+  labs(
+    x= "GDP per Capita", 
+    y = "Polyarchy Score",
+    title = "Wealth and democracy, 1990 - present", 
+    caption = "Source: V-Dem Institute", 
+    color = "Region",
+    size = "Women Reps"
+    ) 
+```
 
 ## Your Turn! 
 
-- Start a new Quarto project
-- Create a new Quarto document in your project folder
-- Add a YAML header with the following options:
-  - `title:`
-  - `subtitle:`
-  - `date:`
-  - `date-format:`
-  - `theme:`
-  - `toc:`
-  
-## Your Turn!
+- There are four variables in `dem_summary_ctry`
+- Pick one related to women's empowerment
+- Visualize it on the y-axis with `gdp_pc` or `polyarchy` on the x-axis 
+- Change labels and legend titles to match your visualization
+- Interpret your plot
 
-- Try adding at least one more option to your YAML header 
-- Generate some sections and some random text using the `lorem` package
-- Add some code chunks to your document (and some code)
-- Add some footnotes to your document
-- Render the document and see what it looks like
-- Publish to Quarto pub
+```{r}
+#| label: dem_waves_time
+#| echo: false
+
+countdown::countdown(minutes = 10, 
+                     id = "women_emp")
+```
+
+## Add a Trend Line
+
+```{r}
+#| label: trend_line1
+#| echo: false
+
+ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy)) + 
+  geom_point(aes(color = region)) + 
+  geom_smooth(method = "lm", linewidth = 1) + 
+  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
+  labs(
+    x= "GDP per Capita", 
+    y = "Polyarchy Score",
+    title = "Wealth and democracy, 1990 - present", 
+    caption = "Source: V-Dem Institute", 
+    color = "Region"
+    ) 
+```
+
+## Add a Trend Line
+
+<br>
+
+```{r}
+#| label: trend_line2
+#| eval: false
+#| code-line-numbers: "3"
+ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy)) + 
+  geom_point(aes(color = region)) + 
+  geom_smooth(method = "lm", linewidth = 1) + 
+  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
+  labs(
+    x= "GDP per Capita", 
+    y = "Polyarchy Score",
+    title = "Wealth and democracy, 1990 - present", 
+    caption = "Source: V-Dem Institute", 
+    color = "Region"
+    ) 
+```
+
+## Add a Trend Line
+
+<br>
+
+Taking out size and adding color to `geom_point()` call...
+
+```{r}
+#| label: trend_line3
+#| eval: false
+#| code-line-numbers: "1-2"
+ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy)) + 
+  geom_point(aes(color = region)) + 
+  geom_smooth(method = "lm", linewidth = 1) + 
+  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
+  labs(
+    x= "GDP per Capita", 
+    y = "Polyarchy Score",
+    title = "Wealth and democracy, 1990 - present", 
+    caption = "Source: V-Dem Institute", 
+    color = "Region"
+    ) 
+```
+
+## Add a Trend Line
+
+<br>
+
+Changing legend titles...
+
+```{r}
+#| label: trend_line4
+#| eval: false
+#| code-line-numbers: "5-11"
+ggplot(dem_summary_ctry, aes(x = gdp_pc, y = polyarchy)) + 
+  geom_point(aes(color = region)) + 
+  geom_smooth(method = "lm", linewidth = 1) + 
+  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
+  labs(
+    x= "GDP per Capita", 
+    y = "Polyarchy Score",
+    title = "Wealth and democracy, 1990 - present", 
+    caption = "Source: V-Dem Institute", 
+    color = "Region"
+    ) 
+```
+
+## Your Turn! 
+
+<br>
+
+- Add a trendline to your plot
+- Change the labels accordingly
+- Try using `method = "loess"` instead of a "lm"
+
+```{r}
+#| label: timer2
+#| echo: false
+
+countdown::countdown(minutes = 10, 
+                     id = "timer2", 
+                     bottom = "10%", 
+                     right = "10%")
+```
+
+## Which Plot Should You Use? 
+
+<br>
+
+:::{.incremental}
+- Trends in stock process over time
+- Distribution of income in a country
+- Comparison of FLFP across MENA countries
+- Relationship between poverty and inequality (cross-nationally)
+:::
+
+## Which Geom Would You Use?
+
+<br>
+
+:::{.incremental}
+- Column chart
+- Histogram
+- Line chart
+- Scatter plot
+:::
+
+## Other Plots and Geometries {.smaller}
+
+<br>
+
+:::{.columns}
+::::{.column width=50%}
+- **Box Plot**  
+  `geom_boxplot()`
+  
+- **Violin Plot**  
+  `geom_violin()`
+  
+- **Density Plot**  
+  `geom_density()`
+  
+- **Bar Plot (Categorical)**  
+  `geom_bar()`
+  
+- **Heatmap**  
+  `geom_tile()`
+::::
+
+::::{.column width=50%}
+- **Area Plot**  
+  `geom_area()`
+  
+- **Dot Plot**  
+  `geom_dotplot()`
+  
+- **Pie Chart**  
+  (usually a bar plot with `coord_polar()`)
+
+- **Ridgeline Plot**  
+  `ggridges::geom_density_ridges()`
+  
+- **Map Plot (Choropleth)**  
+  `geom_polygon()`
+::::
+:::
+
+

@@ -1,6 +1,5 @@
 ---
-title: Getting Started, Part I
-subtitle: RStudio and Basic Quarto
+title: Grammar of Graphics
 date: today
 date-format: long
 footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
@@ -10,98 +9,392 @@ format:
     theme: [simple, custom.scss]
     transition: fade
     slide-number: true
+    #multiplex: true
     chalkboard: true
 execute:
-  echo: false
+  echo: true
   message: false
   warning: false
   freeze: auto
 ---
 
-## RStudio
-
--  RStudio is an integrated development environment (IDE) for R
--  RStudio has four panes
-    -   **Source**-where you write code
-    -   **Console**-where you run code
-    -   **Environment**-where you see objects in memory
-    -   **Files/Plots/Packages/Help**-where you can navigate files, see plots, install packages, and get help
-- Let's open RStudio and have a look around
-
-## Quarto
+## Types of Visualizations {.smaller}
 
 <br>
 
 ::: {.incremental}
--   [Quarto](https://quarto.org/) is an open-source scientific publishing platform
--   Allows you to integrate text with code
--   Kind of like a word processor for data science
--   Can use it to create reports, books, websites, etc.
--   Can make HTML, PDF, Word, and other formats
--   Can use R, Python, Julia, and other languages
+- Column charts (bar charts)
+  - Use to compare values across categories
+- Histograms
+  - Use to show distribution of a single variable
+- Line charts 
+  - Use to show trends over time
+  - Can use column charts but not as effective
+- Scatter plots
+  - Use to show relationships between two variables
+  - X-axis is usually explanatory variable, Y-axis is outcome variable
 :::
 
-## Project Oriented Workflow
+## The Grammar of Graphics
+
+::: {.incremental}
+- Data viz has a language with its own grammar
+- Basic components include:
+  - Data we are trying to visualize
+  - Aesthetics (dimensions)
+  - Geom (e.g. bar, line, scatter plot)
+  - Color scales
+  - Themes
+  - Annotations
+::: 
+  
+## 
 
 <br>
 
-:::{.incremental}
--   Always start a document in a project folder
-    -   That way you don't have to do `setwd`
-    -   Also can share easily with other people
--   Go to File\>New Project
--   Create a Quarto project folder
+Let's start with the first two, the data and the aesthetic, with a column chart example...
+
+<br>
+
+```{r}
+#| label: barchart1
+#| output: false
+#| code-line-numbers: "6"
+
+library(readr)
+library(ggplot2)
+
+dem_summary <- read_csv("data/dem_summary.csv")
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) 
+```
+
+##
+
+This gives us the axes without any visualization:
+
+```{r}
+#| label: barchart2
+#| echo: false
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) 
+```
+
+
+##
+
+<br>
+
+Now let's add a geom. In this case we want a column chart so we *add* `geom_col()`.
+
+<br>
+
+```{r}
+#| label: barchart3
+#| eval: false
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
+  geom_col()
+```
+
+## 
+
+That gets the idea across but looks a little depressing, so...
+
+```{r}
+#| label: barchart4
+#| echo: false
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
+  geom_col()
+```
+
+## 
+
+<br>
+
+...let's change the color of the columns by specifying `fill = "steelblue"`.
+
+<br>
+
+```{r}
+#| label: barchart5
+#| eval: false
+#| code-line-numbers: "2"
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
+  geom_col(fill = "steelblue")
+```
+
+<br>
+
+::: {.callout-tip}
+See [here](http://sape.inf.usi.ch/quick-reference/ggplot2/colour) for more `available`ggplot2` colors. 
 :::
 
-## Visual Editor
+## 
 
-::: {.incremental}
--   There are two ways to edit Quarto docs
-    -   Source (markdown)
-    -   Visual editor
--   Visual editor
-    -   WYSIWYM
-    -   Approximates appearance
--   Try both and see what you like
+Note how color of original columns is simply overwritten:
+
+```{r}
+#| label: barchart6
+#| echo: false
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
+  geom_col(fill = "steelblue")
+```
+
+## 
+
+<br>
+
+Now let's *add* some labels with the `labs()` function:
+
+<br>
+
+```{r}
+#| label: barchart7
+#| eval: false
+#| code-line-numbers: "3-8"
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
+  geom_col(fill = "steelblue") +
+  labs(
+    x = "Region", 
+    y = "Avg. Polyarchy Score", 
+    title = "Democracy by region, 1990 - present", 
+    caption = "Source: V-Dem Institute"
+    )
+```
+
+## 
+
+And that gives us... 
+
+```{r}
+#| label: barchart8
+#| echo: false
+
+ggplot(dem_summary, aes(x = region, y = polyarchy)) + 
+  geom_col(fill = "steelblue") +
+  labs(
+    x = "Region", 
+    y = "Avg. Polyarchy Score", 
+    title = "Democracy by region, 1990 - present", 
+    caption = "Source: V-Dem Institute"
+    )
+```
+
+## 
+
+Next, we reorder the bars with `fct_reorder()` from the `forcats` package. 
+
+<br>
+
+```{r}
+#| label: barchart9
+#| eval: false
+#| code-line-numbers: "1"
+
+library(forcats)
+
+ggplot(dem_summary, aes(x = fct_reorder(region, -polyarchy), y = polyarchy)) +
+  geom_col(fill = "steelblue") + 
+  labs(
+    x = "Region", 
+    y = "Avg. Polyarchy Score", 
+    title = "Democracy by region, 1990 - present", 
+    caption = "Source: V-Dem Institute"
+    )
+```
+
+<br> 
+
+Note that we could also use the base R `reorder()` function here.
+
+## 
+
+This way, we get a nice, visually appealing ordering of the bars according to levels of democracy...
+
+```{r}
+#| label: barchart10
+#| echo: false
+
+library(forcats)
+
+ggplot(dem_summary, aes(x = fct_reorder(region, -polyarchy), y = polyarchy)) +
+  geom_col(fill = "steelblue") + 
+  labs(
+    x = "Region", 
+    y = "Avg. Polyarchy Score", 
+    title = "Democracy by region, 1990 - present", 
+    caption = "Source: V-Dem Institute"
+    )
+```
+
+## 
+
+<br>
+
+Now let's change the theme to `theme_minimal()`. 
+
+<br>
+
+```{r}
+#| label: barchart11
+#| eval: false
+#| code-line-numbers: "8"
+
+ggplot(dem_summary, aes(x = reorder(region, -polyarchy), y = polyarchy)) +
+  geom_col(fill = "steelblue") + 
+  labs(
+    x = "Region", 
+    y = "Avg. Polyarchy Score", 
+    title = "Democracy by region, 1990 - present", 
+    caption = "Source: V-Dem Institute"
+    ) + theme_minimal()
+```
+
+<br>
+
+::: {.callout-tip}
+See [here](https://ggplot2.tidyverse.org/reference/ggtheme.html) for available `ggplot2` themes.
 :::
 
-## Rendering Documents {.smaller}
+## 
 
-::: {.incremental}
--   Rendering = converting to another format
-    - Default format is HTML
-    - Can also render to PDF, Word, etc. 
--   To render a Quarto document
-    -   Click on the Render button
-        -   Or keyboard shortcut (Cmd/Ctrl + Shift + K)
--   By default, Quarto will preview the document in your browser
--   But you can also preview in Viewer pane
-    - Click on the gear icon next to the Render button
-    - Select "Preview in Viewer Pane"
-:::
+Gives us a clean, elegant look. 
 
-## Illustration
+```{r}
+#| label: barchart12
+#| echo: false
 
-![](images/intro_quarto.gif){fig-align="center"}
+ggplot(dem_summary, aes(x = reorder(region, -polyarchy), y = polyarchy)) +
+  geom_col(fill = "steelblue") + 
+  labs(
+    x = "Region", 
+    y = "Avg. Polyarchy Score", 
+    title = "Democracy by region, 1990 - present", 
+    caption = "Source: V-Dem Institute"
+    ) + theme_minimal()
+```
 
-## Let's Try Quarto!
 
--   Create a new Quarto document
-    -   File\>New File\>Quarto Document
--   Save the document in your project folder
--   Render it
-    -   Click on the Render button
-    -   Or keyboard shortcut (Cmd/Ctr + Shift + K)
--   Try out the visual editor
+##
+
+<br>
+
+Note that you can also save your plot as an object to modify later.
+
+<br>
+
+```{r}
+#| label: barchart13
+
+dem_bar_chart <- ggplot(dem_summary, aes(x = reorder(region, -polyarchy), y = polyarchy)) +
+  geom_col(fill = "steelblue")
+```
+
+##
+
+Which gives us...
+
+```{r}
+#| label: barchart14
+ 
+dem_bar_chart
+```
+
+## 
+
+<br> 
+
+Now let's add back our labels... 
+
+<br>
+
+```{r}
+#| label: barchart15
+#| output: false
+
+dem_bar_chart <- dem_bar_chart +
+  labs(
+    x = "Region", 
+    y = "Avg. Polyarchy Score", 
+    title = "Democracy by region, 1990 - present", 
+    caption = "Source: V-Dem Institute"
+    )
+```
+
+##
+
+So now we have... 
+
+```{r}
+#| label: barchart16
+
+dem_bar_chart
+```
+
+## 
+
+<br> 
+
+And now we'll add back our theme...
+
+<br>
+
+```{r}
+#| label: barchart17
+#| output: false
+
+dem_bar_chart <- dem_bar_chart + theme_minimal()
+```
+
+##
+
+Voila! 
+
+```{r}
+#| label: barchart18
+#| echo: true
+
+dem_bar_chart
+```
+
+##
+
+Change the theme. There are many [themes](https://ggplot2.tidyverse.org/reference/ggtheme.html) to choose from.
+
+```{r}
+#| label: barchart19
+
+dem_bar_chart + theme_bw()
+```
+
+## Your Turn! {.smaller}
+
+<br>
+
+1. `glimpse()` the data
+2. Find a new variable to visualize^[Data for GDP per capita spotty after 2015]
+3. Make a bar chart with it
+4. Change the [color](http://sape.inf.usi.ch/quick-reference/ggplot2/colour) of the bars
+5. Order the bars
+6. Add labels
+7. Add a [theme](https://ggplot2.tidyverse.org/reference/ggtheme.html)
+8. Try saving your plot as an object
+9. Then change the labels and/or theme
 
 ```{r}
 #| label: timer1
+#| echo: false 
 
 library(countdown)
-countdown(minutes = 2, 
+countdown(minutes = 10, 
           id = "timer1", 
-          top = "0%",
-          right = "5%",
+          bottom = "10%", 
+          right = "10%",
           color_border = "#fff",
           color_text = "#fff",
           color_running_background = "#42affa",
@@ -110,210 +403,265 @@ countdown(minutes = 2,
           color_finished_text = "#00264A")
 ```
 
-# Quarto Docs
+# Histograms
 
-## Document Elements
+## Purpose of Histograms
+
+<br> 
+
+- Histograms are used to visualize the distribution of a single variable
+- x-axis represents value of variable of interest
+- y-axis represents the frequency of that value
+
+## Purpose of Histograms
 
 <br>
 
--   YAML Header
--   Markdown content
--   Code chunks
+- They are generally used for continuous variables (e.g., income, age, etc.)
+    - A *continuous* variable is one that can take on any value within a range (e.g., 0.5, 1.2, 3.7, etc.)
+    - A *discrete* variable is one that can only take on certain values (e.g., 1, 2, 3, etc.)
+- Typically, the height of the bar represents the number of observations which fall in that bin
 
-## YAML Header
-
-<br>
-
--   Metadata about the document
-    -   Title, author, date, etc.
--   Output format
--   Execution options
-
-## YAML Header
-
-```         
----
-title: "My Documnet"
-author: "Your Name"
-date: today
-date-format: long
-format: html
-execute:
-  echo: false
-  message: false
----
-```
- - Try adding some of these options in your document
- - Then render it again
- - Look in the Quarto [guide](https://quarto.org/docs/reference/formats/html.html) for other options to try
+## Example
 
 ```{r}
-#| label: timer3
+#| label: histogram1
+#| echo: false
 
-countdown(minutes = 2, 
-          id = "timer3", 
-          bottom = "0%",
-          right = "5%")
+# load dplyr
+library(dplyr)
+
+# load data
+dem_women <- read_csv("data/dem_women.csv")
+
+# filter to 2022
+dem_women_2022 <- dem_women |>
+  filter(year == 2022)
+
+# create histogram
+ggplot(dem_women_2022, aes(x = flfp)) +
+  geom_histogram(fill = "steelblue") + 
+  labs(
+    x = "Percentage of Working Aged Women in Labor Force",
+    y = "Number of Countries",
+    title = "Female labor force participation rates, 2022",
+    caption = "Source: World Bank"
+    ) + theme_minimal()
 ```
 
-## Markdown
+## Histogram Code
 
 <br>
-
-::: {.incremental}
--   Markdown is a simple markup language
--   You can use it to format text
--   You can also use it to embed images, tables, etc.
--   And to embed code chunks...
-:::
-
-## Markdown Syntax - Basic Authoring
-
-::: {.incremental}
--   For basic text you can just start typing
--   For line breaks use two spaces and return (enter)
--   Headings (use `#`, `##`, `###`, etc.)
-    -   `#` is the largest heading (level 1)
-    -   `##` is the next largest (level 2)
-    -   `###` is the next largest (level 3)
-    -   Etc.
-:::
-
-## Markdown Syntax - Styling
-
-::: {.incremental}
--   Emphasis = Italics (use `*`)
-    -   Bold (use `**`)
--   Lists
-    -   Bullet points (use `-`)
-    -   Numbered lists (use `1.`)
-:::
-
-## Markdown Syntax - Content
-
-::: {.incremental}
--   Links (use `[text](url)`)
--   Images (use `![](file path or url)`)
--   Code chunks
-    -   R code chunks (\`\`\`{r}...\`\`\`)
-    -   Python code chunks (\`\`\`{python}...\`\`\`)
-    -   Etc. 
-:::
-
-## Try Some Markdown
-
-<br>
-
--   Check out the [Markdown Cheatsheet](https://www.markdownguide.org/basic-syntax/)
--   Try editing the markdown in your document
--   Try some of the other things you find in the guide
--   Then render it again
 
 ```{r}
-#| label: timer4
-
-countdown(minutes = 10, 
-          id = "timer4", 
-          bottom = "10%",
-          right = "10%")
-```
-
-## Code Chunks
-
-::: {.incremental}
--   Incorporate R code (could also be Python, Julia, etc.)
--   Add a code chunk with the '+' button
--   Run the code chunk by clicking the play button
-    -   Or use keyboard shortcut (Cmd/Ctrl + Shift + Enter)
--   Run all chunks up that point by clicking the down arrow
-    -   Or use keyboard shortcut (Cmd/Ctrl + Shift + K)
--  Run a single line with shortcut (Cmd/Ctrl + Enter) 
-:::
-
-## Code Chunk Options
-
-::: {.incremental}
--   Use `#|` (hash-pipe) to add options 
--   `label` is a unique identifier for the chunk
--   Options to control what happens when you render
-    -   `echo` controls whether the code is shown
-    -   `eval` controls whether the code is run
-    -   `message` controls whether messages are shown
-    -   `warning` controls whether warnings are shown
-:::
-
-## Code Chunk Options
-
-<br>
-
--   Code-chunk options override global options set in YAML header
--   See [documentation](https://quarto.org/docs/reference/cells/cells-knitr.html) for more options
--   You can also use write chunk options inline with chunk name,
-    -   e.g., `{r, echo = FALSE} ...`
-    
-## Illustration
-
-![](images/code-chunks.gif){fig-align="center"}
-
-## Try it Yourself! 
-
--  Create a code chunk
--  Copy this code chunk into your document
-
-```{r}
-#| label: chunk1
-#| echo: true
+#| label: histogram2
 #| eval: false
-#| 
-library(ggplot2)
+#| code-line-numbers: "|1-2|4-6|8-10"
 
-ggplot(mpg, aes(displ, hwy, colour = class)) + 
-  geom_point()
+# load dplyr
+
+library(dplyr)
+
+# load data
+dem_women <- read_csv("data/dem_women.csv")
+
+# filter to 2022
+dem_women_2022 <- dem_women |>
+  filter(year == 2022) 
+
+# create histogram
+ggplot(dem_women_2022, aes(x = flfp)) +
+  geom_histogram(fill = "steelblue") + 
+  labs(
+    x = "Percentage of Working Aged Women in Labor Force",
+    y = "Number of Countries",
+    title = "Female labor force participation rates, 2022",
+    caption = "Source: World Bank"
+    ) + theme_minimal()
 ```
 
--  Try adding some chunk options in your document
--  Then render it again
-
-```{r}
-#| label: timer5
-
-countdown(minutes = 2, 
-          id = "timer5", 
-          bottom = "10%",
-          right = "10%")
-```
-
-# A Bit About R
-
-## R Packages and Functions {.smaller}
+## Histogram Code
 
 <br>
 
-::: {.incremental}
--   A *function* is a set of instructions
-    -   `read_csv()` is a function
-    -   `ggplot()` is a function
--   A *package* is a collection of functions
-    -   `readr` is a package that contains the `read_csv()` function
-    -   `ggplot2` is a package that contains the `ggplot()` function
--   Use `install.packages()` to install packages
--   Use `library()` to load packages
--   You can install packages from CRAN
-:::
+Note that you only need to specify the x axis variable in the `aes()` function. `ggplot2` will automatically visualize the y-axis for a histogram.
 
-## The Tidyverse {.smaller}
+<br>
 
-::: {.incremental}
--   The Tidyverse is a collection of data science packages
--   It is also considered a dialect of R
--   In this class, we will be using many Tidyverse packages
-    -   `ggplot2` for data visualization
-    -   `readr` for reading data
-    -   `dplyr` for data manipulation
-    -   `tidyr` for data tidying
-    -   Etc.
--   At first we will load the packages independently, e.g. `library(ggplot2)`
--   Later we will load them all at once with `library(tidyverse)`
-:::
+```{r}
+#| label: histogram2.1
+#| eval: false
+#| code-line-numbers: "0-1"
+
+ggplot(dem_women_2022, aes(x = flfp)) +
+  geom_histogram(bins = 50, fill = "steelblue") + 
+  labs(
+    x = "Percentage of Working Aged Women in Labor Force",
+    y = "Number of Countries",
+    title = "Female labor force participation rates, 2022",
+    caption = "Source: World Bank"
+    ) + theme_minimal()
+```
+
+## Change Number of Bins
+
+<br>
+
+Change number of bins (bars) using `bins` or `binwidth` arguments (default number of bins = 30):
+
+<br>
+
+```{r}
+#| label: histogram3
+#| eval: false
+#| code-line-numbers: "2"
+
+ggplot(dem_women_2022, aes(x = flfp)) +
+  geom_histogram(bins = 50, fill = "steelblue") + 
+  labs(
+    x = "Percentage of Working Aged Women in Labor Force",
+    y = "Number of Countries",
+    title = "Female labor force participation rates, 2022",
+    caption = "Source: World Bank"
+    ) + theme_minimal()
+```
+
+##
+
+At 50 bins...
+
+```{r}
+#| label: histogram4
+#| echo: false
+
+ggplot(dem_women_2022, aes(x = flfp)) +
+  geom_histogram(bins = 50, fill = "steelblue") + 
+  labs(
+    x = "Percentage of Working Aged Women in Labor Force",
+    y = "Number of Countries",
+    title = "Female labor force participation rates, 2022",
+    caption = "Source: World Bank"
+    ) + theme_minimal()
+```
+
+##
+
+At 100 bins...probably too many!
+
+```{r}
+#| label: histogram5
+#| echo: false
+
+ggplot(dem_women_2022, aes(x = flfp)) +
+  geom_histogram(bins = 100, fill = "steelblue") + 
+  labs(
+    x = "Percentage of Working Aged Women in Labor Force",
+    y = "Number of Countries",
+    title = "Female labor force participation rates, 2022",
+    caption = "Source: World Bank"
+    ) + theme_minimal()
+```
+
+## 
+
+<br>
+
+Using `binwidth` instead of `bins`... 
+
+<br>
 
 
+```{r}
+#| label: histogram6
+#| eval: false
+#| code-line-numbers: "2"
+
+ggplot(dem_women_2022, aes(x = flfp)) +
+  geom_histogram(binwidth = 2, fill = "steelblue") + 
+  labs(
+    x = "Percentage of Working Aged Women in Labor Force",
+    y = "Number of Countries",
+    title = "Female labor force participation rates, 2022",
+    caption = "Source: World Bank"
+    ) + theme_minimal()
+```
+
+##
+
+Setting `binwidth` to 2...
+
+```{r}
+#| label: histogram7
+#| echo: false
+
+ggplot(dem_women_2022, aes(x = flfp)) +
+  geom_histogram(binwidth = 2, fill = "steelblue") + 
+  labs(
+    x = "Percentage of Working Aged Women in Labor Force",
+    y = "Number of Countries",
+    title = "Female labor force participation rates, 2022",
+    caption = "Source: World Bank"
+    ) + theme_minimal()
+```
+
+## Change from Count to Density
+
+<br>
+
+```{r}
+#| label: histogram8
+#| eval: false
+#| code-line-numbers: "1,5"
+
+
+ggplot(dem_women_2022, aes(after_stat(density), x = flfp)) +
+  geom_histogram(fill = "steelblue") + 
+  labs(
+    x = "Percentage of Working Aged Women in Labor Force",
+    y = "Density",
+    title = "Female labor force participation rates, 2022",
+    caption = "Source: World Bank"
+    ) + theme_minimal()
+```
+
+<br>
+
+For densities, the total area sums to 1. The height of a bar represents the probability of observations in that bin (rather than the number of observations).
+
+## 
+
+Which gives us... 
+
+```{r}
+#| label: histogram9
+#| echo: false
+
+ggplot(dem_women_2022, aes(after_stat(density), x = flfp)) +
+  geom_histogram(fill = "steelblue") + 
+  labs(
+    x = "Percentage of Working Aged Women in Labor Force",
+    y = "Density",
+    title = "Female labor force participation rates, 2022",
+    caption = "Source: World Bank"
+    ) + theme_minimal()
+```
+
+## Your Turn! {.smaller}
+
+<br>
+
+1. Pick a variable that you want to explore the distribution of^[Data for GDP per capita spotty after 2015] 
+2. Make a histogram
+    a. Only specify `x = ` in `aes()`
+    b. Specify geom as `geom_histogram`
+3. Choose color for bars
+4. Choose appropriate labels
+5. Change number of bins
+6. Change from count to density
+
+```{r}
+#| label: timer2
+#| echo: false
+
+countdown::countdown(minutes = 10, id = "timer2")
+```

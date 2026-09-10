@@ -16,6 +16,10 @@ source("../helper.R")
 
 We fit models, present them as regression tables with `modelsummary`, and visualize them as coefficient plots.
 
+## Slides
+
+| 🖥️ [Regression Tables](/slides/week-10.1.qmd)
+
 ## Readings
 
 | 📖 [Healy, ch. 6: Work with Models](https://socviz.co/06-modeling.html)

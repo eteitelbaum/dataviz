@@ -1,5 +1,12 @@
 project:
   type: website
+  render:
+    - "**/*.qmd"
+    - "*.md"
+    # Not part of the published course: local quizzes (incl. answer keys)
+    # and working notes. Both are gitignored at source.
+    - "!quizzes/**"
+    - "!notes/**"
 
 website:
   page-navigation: true
@@ -146,10 +153,10 @@ website:
                 text: "Building a Shiny App"
               - href: modules/module-5.2.qmd
                 text: "Extending Your App"
-              - href: modules/module-6.2.qmd
-                text: "Deploying & Sharing Your App"
               - href: modules/module-6.1.qmd
                 text: "Project Studio"
+              - href: modules/module-6.2.qmd
+                text: "Deploying & Sharing Your App"
 format:
   html:
     theme:

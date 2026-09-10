@@ -1,9 +1,11 @@
 {
-  "hash": "73bc0186f626deb51e69ce5985f560fd",
+  "hash": "88b22dfda4f590fdeea6351c7990a6e5",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Week 2\"\nsubtitle: \"Charting With ggplot2\"\nformat: html\n---\n\n\n\nWe start making plots right away with `ggplot2`, using clean data so we can focus on the visualization.\n\n## Readings\n\n| 📖 [Healy, ch. 3: Make a Plot](https://socviz.co/03-ggplot-basics.html)\n| 📖 [Healy, ch. 4: Show the Right Numbers](https://socviz.co/04-group-facet-transform.html)\n| 📖 [r4ds, ch. 2](https://r4ds.hadley.nz/data-visualize.html)\n| 📖 [r4ds, 10.1-10.4](https://r4ds.hadley.nz/layers.html)\n| 📖 [r4ds, 12.2](https://r4ds.hadley.nz/communication.html#labels)\n\n## Videos\n\n| 🖥️ [Bar charts](https://youtu.be/QG1oDJPoIio)\n| 🖥️ [Histograms](https://youtu.be/-1YhCql-gMo)\n| 🖥️ [Line charts](https://youtu.be/PnmQ2MFQpIc)\n| 🖥️ [Scatter plots](https://youtu.be/FiosjUVyfLM)\n\n## Assignments\n\n| 📘 Weekly quiz, in class\n",
-    "supporting": [],
+    "markdown": "---\ntitle: \"Week 2\"\nsubtitle: \"Charting With ggplot2\"\nformat: html\n---\n\n\n\nWe start making plots right away with `ggplot2`, using clean data so we can focus on the visualization.\n\n## Slides\n\n| 🖥️ [Grammar of Graphics](/slides/week-2.1.qmd)\n| 🖥️ [Which Visualization Should I Use?](/slides/week-2.2.qmd)\n\n## Readings\n\n| 📖 [Healy, ch. 3: Make a Plot](https://socviz.co/03-ggplot-basics.html)\n| 📖 [Healy, ch. 4: Show the Right Numbers](https://socviz.co/04-group-facet-transform.html)\n| 📖 [r4ds, ch. 2](https://r4ds.hadley.nz/data-visualize.html)\n| 📖 [r4ds, 10.1-10.4](https://r4ds.hadley.nz/layers.html)\n| 📖 [r4ds, 12.2](https://r4ds.hadley.nz/communication.html#labels)\n\n## Videos\n\n| 🖥️ [Bar charts](https://youtu.be/QG1oDJPoIio)\n| 🖥️ [Histograms](https://youtu.be/-1YhCql-gMo)\n| 🖥️ [Line charts](https://youtu.be/PnmQ2MFQpIc)\n| 🖥️ [Scatter plots](https://youtu.be/FiosjUVyfLM)\n\n## Assignments\n\n| 📘 Weekly quiz, in class\n",
+    "supporting": [
+      "week-2_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],

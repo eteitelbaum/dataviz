@@ -12,6 +12,11 @@ source("../helper.R")
 
 We start making plots right away with `ggplot2`, using clean data so we can focus on the visualization.
 
+## Slides
+
+| 🖥️ [Grammar of Graphics](/slides/week-2.1.qmd)
+| 🖥️ [Which Visualization Should I Use?](/slides/week-2.2.qmd)
+
 ## Readings
 
 | 📖 [Healy, ch. 3: Make a Plot](https://socviz.co/03-ggplot-basics.html)

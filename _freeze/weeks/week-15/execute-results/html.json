@@ -1,8 +1,8 @@
 {
-  "hash": "47cef58754be2e4bf9603089c59a60f2",
+  "hash": "5d7ea6bd3b29635387fc21b53304a032",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Week 15\"\nsubtitle: \"Project Studio\"\nformat: html\n---\n\n\n\nMore in-class studio time: peer feedback and dry-run presentations to get your app ready for the final session.\n",
+    "markdown": "---\ntitle: \"Week 15\"\nsubtitle: \"Project Studio\"\nformat: html\n---\n\n\n\nWe deploy and share our apps on shinyapps.io, then use the rest of the week for studio time: peer feedback and dry-run presentations to get your app ready for the final session.\n\n## Readings\n\n| 📖 [Deploying & Sharing Your App](/modules/module-6.2.qmd)\n\n## Videos\n\n| 🖥️ [Deploying and sharing your app](https://youtu.be/dGUgSFhvaFs)\n",
     "supporting": [
       "week-15_files"
     ],

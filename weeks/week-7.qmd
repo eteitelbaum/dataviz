@@ -16,6 +16,10 @@ source("../helper.R")
 
 We build interactive maps with `leaflet` and customize them with markers, popups, and basemaps.
 
+## Slides
+
+| 🖥️ [Leaflet Maps](/slides/week-7.1.qmd)
+
 ## Videos
 
 | 🖥️ [Upload UCDP data](https://youtu.be/If2PwFv90iI)

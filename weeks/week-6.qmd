@@ -12,6 +12,11 @@ source("../helper.R")
 
 We map data with static choropleth maps and learn to wrap our map code in a reusable function.
 
+## Slides
+
+| 🖥️ [Choropleth Maps](/slides/week-6.1.qmd)
+| 🖥️ [Make a Map Function](/slides/week-6.2.qmd)
+
 ## Readings
 
 | 📖 [Healy, ch. 7: Draw Maps](https://socviz.co/07-maps.html)

@@ -1,8 +1,8 @@
 {
-  "hash": "5bffebb4dd58cae56a3068801297f582",
+  "hash": "569ff19bea902b66f2d846f35c048edd",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Week 12\"\nsubtitle: \"Extending & Deploying Your App\"\nformat: html\n---\n\n\n\nWe add more inputs, build a time-series app, and deploy and share our apps on shinyapps.io.\n\n## Readings\n\n| 📖 [Huntington, \"Democracy's Third Wave\"](https://muse-jhu-edu.proxygw.wrlc.org/article/225602)\n\n## Assignments\n\n| 📘 Weekly quiz, in class\n",
+    "markdown": "---\ntitle: \"Week 12\"\nsubtitle: \"Extending Your App\"\nformat: html\n---\n\n\n\nWe add more inputs and build a time-series app with observers and reactives, then learn to factor app code into reusable Shiny modules.\n\n## Slides\n\n| 🖥️ [Observers and Reactives](/slides/week-12.1.qmd)\n| 🖥️ [Modules](/slides/week-12.2.qmd)\n\n## Readings\n\n| 📖 [Huntington, \"Democracy's Third Wave\"](https://muse-jhu-edu.proxygw.wrlc.org/article/225602)\n\n## Assignments\n\n| 📘 Weekly quiz, in class\n",
     "supporting": [
       "week-12_files"
     ],

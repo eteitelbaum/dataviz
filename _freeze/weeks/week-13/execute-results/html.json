@@ -1,8 +1,8 @@
 {
-  "hash": "3818800d57174e6e109c66fefa96fcbf",
+  "hash": "34523f0e0b187a9c8818209cbed7a342",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Week 13\"\nsubtitle: \"Project Studio\"\nformat: html\n---\n\n\n\nIn-class studio time to build and troubleshoot your final project app, with help from your classmates and me.\n",
+    "markdown": "---\ntitle: \"Week 13\"\nsubtitle: \"Styling & Troubleshooting Your App\"\nformat: html\n---\n\n\n\nWe make our apps look good with `bslib` and dashboard layouts, then work through debugging techniques and practical tips for building your final project app.\n\n## Slides\n\n| 🖥️ [Styling Your App](/slides/week-13.1.qmd)\n| 🖥️ [Troubleshooting Your App](/slides/week-13.2.qmd)\n",
     "supporting": [
       "week-13_files"
     ],

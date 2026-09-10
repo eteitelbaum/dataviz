@@ -1,16 +1,18 @@
 ---
-title: Working With Data
+title: "Understanding Data"
+subtitle: "Sources and Structure"
 date: today
 date-format: long
 footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
 logo: images/dataviz-logo.png
+from: markdown+emoji
 format:
   revealjs:
     theme: [simple, custom.scss]
     transition: fade
     slide-number: true
-    #multiplex: true
     chalkboard: true
+    #multiplex: true
 execute:
   echo: true
   message: false
@@ -18,114 +20,168 @@ execute:
   freeze: auto
 ---
 
+# Preliminaries
+
+## Where Does Data Come From?
+
+<br>
+
+Thoughts? :sunglasses: :thought_balloon:
+
+. . .
+
+:::{.incremental}
+- Your boss or a client sends you a file
+- Survey data collected by you or someone else 
+- You can download it from a website 
+- You can scrape it from a website
+- A data package (e.g. `unvotes`)
+- You can access it through an API
+:::
+
+## Getting Started with Data {.smaller}
+
+<br>
+
+::: {.incremental}
+- *Tabular data* is data that is organized into rows and columns
+  - a.k.a. *rectangular data*
+- A *data frame* is a special kind of tabular data used in data science
+- A *variable* is something you can measure 
+- An *observation* is a single unit or case in your data set
+- The *unit of analysis* is the level at which you are measuring
+  - In a cross-section: country, state, county, city, individual, etc.
+  - In a time-series: year, month, day, etc.
+:::
+
+# Adjectives for Your Data
+
+## The Concept of "Tidy Data"
+
+<br>
+
+- Each column represents a single variable
+- Each row represents a single observation
+- Each cell represents a single value
+
+## Tidy Data Example
+
+![](images/tidy_data.jpg)
+
+## What are Clean Data?
+
+- Column names are easy to work with and are not duplicated
+- Missing values have been dealt with
+- There are no repeated observations or columns
+- There are no blank observations or columns
+- The data are in the proper format, for example dates should be formatted as dates
+
+## Messy Data Example
+
+![](images/messy_wb_data.jpg){width=70%}
+
+## Which of These is Likely Tidy/Clean?
+
+<br>
+
+- Your boss or a client sends you a file
+- Survey data collected by you or someone else 
+- You can download it from a website 
+- You can scrape it from a website
+- A curated collection (e.g. `unvotes`)
+- You can access it through an API
+
 ## How Do We Get Tidy/Clean Data? 
 
 <br>
 
 - Wrangle it ourselves
 - Use a package where it has been wrangled for us
-- Download via an API 
+- Download via an API
 
-## This Lesson
+# Reading Data
 
-<br>
+## Read Data into R
 
-- Practice with World Bank and V-Dem data
-- World Bank data through `wbstats`
-  - There is another package called `WDI`
-  - Both packages for accessing data through WB API
-- Varieties of Democracy (V-Dem) through `vdemlite`
-  - There is also a package called `vdemdata`
-  - `vdemlite` offers more functionality, works better in the cloud
-  
-## `filter()`, `select()`, `mutate()` {.smaller}
+- Use `read_csv()` function from `readr` package
+- `readr` package is part of the `tidyverse`
+- Can do more with it than base R functions
+
+## R Code Review {.smaller}
 
 <br>
-
-Along the way we will practice some important `dplyr` verbs:
-
-<br>
-
-- `filter()` is used to select observations based on their values
-- `select()` is used to select variables
-- `mutate()` is used to create new variables or modifying existing ones  
-
-<br>
-
-As well as some helpful functions from the `janitor` package.  
-
-## APIs
-
-<br>
-
-- API stands for "Application Programming Interface"
-- Way for two computers to talk to each other
-- In our case, we will use APIs to download social science data
-
-## APIs in R
 
 ::: {.incremental}
-- APIs are accessed through packages in R
-- Sometimes there can be more than one package for an API
-- Much easier than reading in data from messy flat file!
-- We will use a few API packages in this course
-  - World Bank data through `wbstats` (or `WDI`)
-  - `fredr` for Federal Reserve Economic Data
-  - `tidycensus` for US Census data
-- But there are many APIs out there (please explore!)
+- `<-` is the assignment operator
+  - Use it to assign values to objects
+- `#` is the comment operator
+  - Use it to comment out code or add comments
+  - Different function than in markdown text
+- To call a library, use `library()` and name of library
+  - name of library does not have to be in quotes, e.g. `library(readr)`
+  - only when you install it, e.g. `install.packages("readr")`
 :::
 
-
-## Searching for WB Indicators
-
-<br>
-
-```{r}
-#| label: search_wb
-#| eval: false
-
-flfp_indicators <- wb_search("female labor force") # store the list of indicators
-
-print(flfp_indicators, n=26) # view the indicators
-```
-
-## `wbstats` Example
+## Read Data into R
 
 <br>
 
 ```{r}
-#| label: download_wb
+#| label: read_data1
 #| eval: false
-#| echo: true
-#| code-line-numbers: "1-4|6-7|9|10|11|12|13-16|18-19"
+#| code-line-numbers: "|1|2-3|5"
 
-# Load packages
-library(wbstats) # for downloading WB data
-library(dplyr) # for selecting, renaming and mutating
-library(janitor) # for rounding
+# load libraries
+library(readr)
+library(dplry)
 
-# Store the list of indicators in an object
-indicators <- c("flfp" = "SL.TLF.CACT.FE.ZS", "women_rep" = "SG.GEN.PARL.ZS") 
+dem_summary <- read_csv("data/dem_summary.csv") #notice file path
 
-# Download the data  
-women_emp <- wb_data(indicators, mrv = 50) |> # download data for last 50 yrs
-  select(!iso2c) |> # drop the iso2c code which we won't be using
-  rename(year = date) |> # rename date to year 
-  mutate(
-    flfp = round_to_fraction(flfp, denominator = 100), # round to nearest 100th
-    women_rep = round_to_fraction(women_rep, denominator = 100) 
-  )
-
-# View the data
-glimpse(women_emp) 
+glimpse(dem_summary)
 ```
 
-## Your Turn!
+## Viewing the Data in R
 
 <br>
 
-- Search for a WB indicator
-- Download the data
+Use `glimpse()` to see the columns and data types:
+
+```{r}
+#| label: read_data2
+#| code-line-numbers: "7"
+
+# load libraries
+library(readr)
+library(dplyr)
+
+dem_summary <- read_csv("data/dem_summary.csv")
+
+glimpse(dem_summary)
+```
+
+# 
+
+Or use `View()` or click on the name of the object in your Environment tab to see the data in a spreadsheet:
+
+![](images/view_df.gif){fig-align="center"}
+
+## Try It Yourself!
+
+- Open the CSV file to see what it looks like
+- Then use this code to read it into R and view it
+
+```{r}
+#| label: read_data3
+#| eval: false
+
+# load libraries
+library(readr)
+library(dplyr)
+
+dem_summary <- read_csv("data/dem_summary.csv")
+
+glimpse(dem_summary)
+```
 
 ```{r}
 #| label: timer1
@@ -134,7 +190,7 @@ glimpse(women_emp)
 library(countdown)
 countdown(minutes = 5, 
           id = "timer1", 
-          top = "10%", 
+          bottom = "10%", 
           right = "10%",
           color_border = "#fff",
           color_text = "#fff",
@@ -144,362 +200,165 @@ countdown(minutes = 5,
           color_finished_text = "#00264A")
 ```
 
-## The V-Dem Dataset
+## Write a New CSV File
 
 <br>
 
-- V-Dem stands for Varieties of Democracy
-- It is a dataset that measures democracy around the world
-- Based on expert assessments of the quality of democracy in each country
-- Two packages we will explore: `vdemdata` and `vdemlite`
-
-## Downloading V-Dem Data
-
-<br>
-
-The `vdem` function from `vdemdata` just downloads all of the data. Try running this code chunk. What do you see in `democracy`?
+Now try writing the same data to a file with a different name
 
 ```{r}
-#| label: vdemdata1
+#| label: write_data
 #| eval: false
 
-library(vdemdata) # load the V-Dem package
-
-democracy <- vdem() # download the V-Dem dataset
-```
-
-
-## `filter()`
-
-- Run this code. What do you see?
-- Try changing the year 
-- For one year, use `==` instead of `>=`
-- Or try `<=` and see what happens 
-
-```{r}
-#| label: vdemdata2
-#| eval: false
-
-democracy <- vdem |> # download the V-Dem dataset
-  filter(year >= 1990) # filter out years less than 1990
-  
-glimpse(democracy)  
-```
-
-## `=` versus `==`
-
-<br>
-
-- `=` is used to assign values to variables, just like `<-`
-- `==` is used to test if two values are equal to each other
-- So `filter(year == 1990)` will give you just the observations for 1990
-
-## `>=` and `<=`
-
-- `>=` is used to test if a value is greater than or equal to another value
-- `<=` is used to test if a value is less than or equal to another value
-- So `filter(year >= 1990)` will give you the observations for 1990 and later
-- And `filter(year <= 1990)` will give you the observations for 1990 and earlier
-
-## `select()`
-
-- Run this code. What do you see?
-- Now try `v2x_libdem` instead of `v2x_polyarchy`
-- Choose more from the [codebook](https://v-dem.net/documents/24/codebook_v13.pdf) 
-
-```{r}
-#| label: vdemdata3
-#| echo: true
-#| eval: false
-
-democracy <- vdem |> # download the V-Dem dataset
-  select(                  # select (and rename) these variables
-    country = country_name,     # before the = sign is new name  
-    vdem_ctry_id = country_id,  # after the = sign is the old name
-    year, 
-    polyarchy = v2x_polyarchy
-  )
-  
-glimpse(democracy)  
+write_csv(dem_summary, "data/your_new_file_name.csv") 
 ```
 
 ```{r}
 #| label: timer2
 #| echo: false
 
-countdown(minutes = 5, 
-          id = "timer2",
-          top = "0%",
-          right = "5%")
+library(countdown)
+countdown(minutes = 2, 
+          id = "timer2", 
+          bottom = "10%", 
+          right = "10%")
 ```
 
-## `mutate()`
+# Excel Files
 
-- Modify the code to create new variable that is three times the value of `polyarchy` 
-- How about `polyarchy` squared? 
+## Read in Excel File
+
+<br>
 
 ```{r}
-#| label: vdemdata4
+#| label: read_excel
 #| eval: false
 
-democracy <- vdem |> # download the V-Dem dataset
-  filter(year == 2015) |> # keep only observations from 2015
-  select(                  # select (and rename) these variables
-    country = country_name,     # name before the = sign is new name  
-    vdem_ctry_id = country_id,  # name after the = sign is old name
-    year, 
-    polyarchy = v2x_polyarchy 
-    ) |>
-  mutate(
-    polyarchy_dbl = polyarchy * 2 # create variable 2X polyarchy
-  )
-  
-glimpse(democracy)  
+library(readxl)
+
+dem_summary <- read_excel("data/dem_summary.xlsx")
+
+glimpse(dem_summary)
 ```
+
+## Try With Excel
+
+<br>
+
+- Read in the Excel file
+- Follow same steps as with CSV file
+  - use `read_excel()` to read in the data
+  - install and experiment with [writexl](https://cran.r-project.org/web/packages/writexl/index.html)
 
 ```{r}
 #| label: timer3
 #| echo: false
 
+library(countdown)
 countdown(minutes = 5, 
-          id = "timer3",
-          top = "0%",
-          right = "5%")
+          id = "timer3", 
+          bottom = "10%", 
+          right = "10%")
 ```
 
-## Some Common Arithmetic Operators
+# Google Sheets
+
+## Import Data from Google Sheets
 
 <br>
 
-- `+` addition
-- `-` subtraction
-- `*` multiplication
-- `/` division
-- `^` exponentiation (also `**`)
+- Can use `googlesheets4`
+- Have a look at [these Gapminder data](https://docs.google.com/spreadsheets/d/1U6Cf_qEOhiR9AZqTqS3mbMF3zt2db48ZP5v3rkrAEJY/edit?gid=780868077#gid=780868077)
+- Use `gs4_deauth()` to authenticate
+- Then use `read_sheet()` to read in the data
 
-## `vdemdata` Example {.smaller}
+## Example Code
 
 <br>
 
 ```{r}
-#| label: vdemdata5
-#| eval: false
+#| label: gs_data1
 
-# Load packages
-library(vdemdata) # to download V-Dem data
-library(dplyr)
+library(googlesheets4)
 
-# Download the data
-democracy <- vdem |> # download the V-Dem dataset
-  filter(year == 2015)  |> # filter year, keep 2015
-  select(                  # select (and rename) these variables
-    country = country_name,     # the name before the = sign is the new name  
-    vdem_ctry_id = country_id,  # the name after the = sign is the old name
-    year, 
-    polyarchy = v2x_polyarchy, 
-    gdp_pc = e_gdppc, 
-    region = e_regionpol_6C
-    ) |>
-  mutate(
-    region = case_match(region, # replace the values in region with country names
-                     1 ~ "Eastern Europe", 
-                     2 ~ "Latin America",  
-                     3 ~ "Middle East",   
-                     4 ~ "Africa", 
-                     5 ~ "The West", 
-                     6 ~ "Asia")
-  )
+# Deauthorize to access public sheets without credentials
+gs4_deauth()
 
-# View the data
-glimpse(democracy)
+# Read in the gapminder Africa data
+gapminder_data <- read_sheet("1U6Cf_qEOhiR9AZqTqS3mbMF3zt2db48ZP5v3rkrAEJY")
 ```
 
-## {.smaller}
-
-<br>
-
-Use `filter()` to select years...
+## Or... 
 
 <br>
 
 ```{r}
-#| label: vdemdata6
+#| label: gs_data2
 #| eval: false
-#| code-line-numbers: "2-3"
 
-# Download the data
-democracy <- vdem |> 
-  filter(year == 2015)  |> # keep 2015
-  select(                 
-    country = country_name,       
-    vdem_ctry_id = country_id,  
-    year, 
-    polyarchy = v2x_polyarchy, 
-    gdp_pc = e_gdppc, 
-    region = e_regionpol_6C
-    ) |>
-  mutate(
-    region = case_match(region,
-                     1 ~ "Eastern Europe", 
-                     2 ~ "Latin America",  
-                     3 ~ "Middle East",   
-                     4 ~ "Africa", 
-                     5 ~ "The West", 
-                     6 ~ "Asia")
-  )
+library(googlesheets4)
+
+# Deauthorize to access public sheets without credentials
+gs4_deauth()
+
+# Read in the gapminder Africa data
+gapminder_data <- read_sheet("1U6Cf_qEOhiR9AZqTqS3mbMF3zt2db48ZP5v3rkrAEJY")
 ```
 
-## {.smaller}
-
-<br>
-
-Use `select()` to choose variables...
+## Or...
 
 <br>
 
 ```{r}
-#| label: vdemdata7
-#| eval: false
-#| code-line-numbers: "4-11"
-
-# Download the data
-democracy <- vdem |> 
-  filter(year == 2015)  |> 
-  select(                  # select (and rename) these variables
-    country = country_name,     # the name before the = sign is the new name  
-    vdem_ctry_id = country_id,  # the name after the = sign is the old name
-    year, 
-    polyarchy = v2x_polyarchy, 
-    gdp_pc = e_gdppc, 
-    region = e_regionpol_6C
-    ) |>
-  mutate(
-    region = case_match(region, 
-                     1 ~ "Eastern Europe", 
-                     2 ~ "Latin America",  
-                     3 ~ "Middle East",   
-                     4 ~ "Africa", 
-                     5 ~ "The West", 
-                     6 ~ "Asia")
-  )
-```
-
-## {.smaller}
-
-<br>
-
-Use `mutate` with `case_match()` to Recode Region....
-
-<br>
-
-```{r}
-#| label: vdemdata8
-#| eval: false
-#| code-line-numbers: "12-23"
-
-# Download the data
-democracy <- vdem |>
-  filter(year == 2015)  |> 
-  select(                  
-    country = country_name,     
-    vdem_ctry_id = country_id,  
-    year, 
-    polyarchy = v2x_polyarchy, 
-    gdp_pc = e_gdppc, 
-    region = e_regionpol_6C
-    ) |>
-  mutate(
-    region = case_match(region, # replace the values in region with country names
-                     1 ~ "Eastern Europe", 
-                     2 ~ "Latin America",  
-                     3 ~ "Middle East",   
-                     4 ~ "Africa", 
-                     5 ~ "The West", 
-                     6 ~ "Asia")
-                    # number on the left of the ~ is the V-Dem region code
-                    # we are changing the number to the country name on the right
-                    # of the equals sign
-  )
-```
-
-## `vdemlite` 
-
-<br>
-
-- Covers a few hundred commonly used indicators and indices from 1970 onward
-- Covers everything in [this document](https://v-dem.net/documents/41/v-dem_structureofaggregation_v14.pdf)
-- As opposed to 4000+ indicators from the 18th century onward
-- Adds some functionality for working with the data
-- Easier to work with in the cloud and apps
-
-## `vdemlite` fuctions
-
-<br>
-
-- `fetchdem()` to download the data
-- `summarizedem()` provides searchable table of indicators with summary stats
-- `searchdem()` to search for specific indicators or all indicators used to construct an index
-- See the [vdemlite documentation](https://eteitelbaum.github.io/vdemlite/articles/vdemlite.html) for more details
-
-## `fetchdem()`
-
-<br>
-
-```{r}
-#| label: vdemlite1
+#| label: gs_data3
 #| eval: false
 
-# Load packages
-library(vdemlite) # to download V-Dem data
+library(googlesheets4)
 
-# Polyarchy and clean elections index for USA and Sweden for 2000-2020
-dem_indicators <- fetchdem(indicators = c("v2x_polyarchy", "v2xel_frefair"),
-                           countries = c("USA", "SWE"))
+# Deauthorize to access public sheets without credentials
+gs4_deauth()
 
-# View the data
-glimpse(dem_indicators)
+# Read in the gapminder Africa data
+gapminder_data <- googledrive::drive_get("gapminder") |>
+  read_sheet()
 ```
 
-## `summarizedem()`
+## Try It Yourself!
 
 <br>
 
-```{r}
-#| label: vdemlite2
-#| eval: false
-
-# Summary statistics for the polyarchy index
-summarizedem(indicator = "v2x_polyarchy")
-```
-
-## `searchdem()`
-
-<br>
-
-```{r}
-#| label: vdemlite3
-#| eval: false
-
-searchdem()
-```
-
-## Your Turn
-
-<br>
-
-- Look at the [vdemlite documentation](https://eteitelbaum.github.io/vdemlite/articles/vdemlite.html)
-- Try using `searchdem()` to find an indicator you are interested in using
-- Use `summarizedem()` to get summary statistics for that variable
-- Use `fetchdem()` to download the data for that variable for a country or countries of interest
-- Try using `mutate()` to add region codes to the data 
-
+- Use the code above to read in the data
+- Try reading in Gapminder data for a different country
 
 ```{r}
 #| label: timer4
 #| echo: false
 
+library(countdown)
 countdown(minutes = 5, 
-          id = "timer4",
-          top = "0%",
-          right = "5%")
+          id = "timer4", 
+          bottom = "10%", 
+          right = "10%")
+```
+
+## Find Your Own Data
+
+<br>
+
+- Visit [kaggle.com](https://www.kaggle.com/datasets) 
+- Find a dataset you like
+- Download it as a CSV
+- Upload to your Posit Cloud project
+- Read it into R
+- Explore with `glimpse()` and `View()`
+
+```{r}
+#| label: timer5
+#| echo: false
+
+library(countdown)
+countdown(minutes = 5, 
+          id = "timer5", 
+          bottom = "10%", 
+          right = "10%")
 ```

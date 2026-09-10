@@ -12,6 +12,11 @@ source("../helper.R")
 
 We start building interactive Shiny apps: the user interface, the server, and reactivity.
 
+## Slides
+
+| 🖥️ [Shiny Apps](/slides/week-11.1.qmd)
+| 🖥️ [Scatter Plot App](/slides/week-11.2.qmd)
+
 ## Assignments
 
 | 📘 Weekly quiz, in class

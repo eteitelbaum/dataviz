@@ -16,6 +16,11 @@ source("../helper.R")
 
 We make our plots readable and beautiful: color schemes, themes, annotations, and interactivity.
 
+## Slides
+
+| 🖥️ [Accessibility and Color Schemes](/slides/week-3.1.qmd)
+| 🖥️ [Themes, Annotations and Interactivity](/slides/week-3.2.qmd)
+
 ## Readings
 
 | 📖 [Healy, ch. 8: Refine Your Plots](https://socviz.co/08-polishing.html)

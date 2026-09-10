@@ -1,6 +1,6 @@
 ---
 title: "Week 13"
-subtitle: "Project Studio"
+subtitle: "Styling & Troubleshooting Your App"
 format: html
 ---
 
@@ -10,4 +10,9 @@ format: html
 source("../helper.R")
 ```
 
-In-class studio time to build and troubleshoot your final project app, with help from your classmates and me.
+We make our apps look good with `bslib` and dashboard layouts, then work through debugging techniques and practical tips for building your final project app.
+
+## Slides
+
+| 🖥️ [Styling Your App](/slides/week-13.1.qmd)
+| 🖥️ [Troubleshooting Your App](/slides/week-13.2.qmd)
