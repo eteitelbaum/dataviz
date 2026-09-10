@@ -1055,7 +1055,7 @@
     "href": "slides/week-2.2.html#your-turn",
     "title": "Which Visualization Should I Use?",
     "section": "Your Turn!",
-    "text": "Your Turn!\n\n\nSee table three of this article\nSelect three countries to visualize\nAdjust setup code to filter data on those countries\nVisualize with geom_line()\n\n\n\n\n−+\n10:00"
+    "text": "Your Turn!\n\n\nSee table three of this article\nSelect three countries to visualize\nAdjust setup code to filter data on those countries\nVisualize with geom_line()"
   },
   {
     "objectID": "slides/week-2.2.html#scatter-plots",
@@ -1111,7 +1111,7 @@
     "href": "slides/week-2.2.html#your-turn-1",
     "title": "Which Visualization Should I Use?",
     "section": "Your Turn!",
-    "text": "Your Turn!\n\nThere are four variables in dem_summary_ctry\nPick one related to women’s empowerment\nVisualize it on the y-axis with gdp_pc or polyarchy on the x-axis\nChange labels and legend titles to match your visualization\nInterpret your plot\n\n\n\n\n−+\n10:00"
+    "text": "Your Turn!\n\nThere are four variables in dem_summary_ctry\nPick one related to women’s empowerment\nVisualize it on the y-axis with gdp_pc or polyarchy on the x-axis\nChange labels and legend titles to match your visualization\nInterpret your plot"
   },
   {
     "objectID": "slides/week-2.2.html#add-a-trend-line",
@@ -1146,7 +1146,7 @@
     "href": "slides/week-2.2.html#your-turn-2",
     "title": "Which Visualization Should I Use?",
     "section": "Your Turn!",
-    "text": "Your Turn!\n\n\nAdd a trendline to your plot\nChange the labels accordingly\nTry using method = \"loess\" instead of a “lm”\n\n\n\n\n−+\n10:00"
+    "text": "Your Turn!\n\n\nAdd a trendline to your plot\nChange the labels accordingly\nTry using method = \"loess\" instead of a “lm”"
   },
   {
     "objectID": "slides/week-2.2.html#which-plot-should-you-use",
@@ -4220,7 +4220,7 @@
     "href": "slides/week-2.1.html#your-turn",
     "title": "Grammar of Graphics",
     "section": "Your Turn!",
-    "text": "Your Turn!\n\n\nglimpse() the data\nFind a new variable to visualize1\nMake a bar chart with it\nChange the color of the bars\nOrder the bars\nAdd labels\nAdd a theme\nTry saving your plot as an object\nThen change the labels and/or theme\n\n\n\n\n−+\n10:00\n\n\n\nData for GDP per capita spotty after 2015"
+    "text": "Your Turn!\n\n\nglimpse() the data\nFind a new variable to visualize1\nMake a bar chart with it\nChange the color of the bars\nOrder the bars\nAdd labels\nAdd a theme\nTry saving your plot as an object\nThen change the labels and/or theme\n\n\n\n\n\n\nData for GDP per capita spotty after 2015"
   },
   {
     "objectID": "slides/week-2.1.html#purpose-of-histograms",
@@ -4311,7 +4311,7 @@
     "href": "slides/week-2.1.html#your-turn-1",
     "title": "Grammar of Graphics",
     "section": "Your Turn!",
-    "text": "Your Turn!\n\n\nPick a variable that you want to explore the distribution of1\nMake a histogram\n\nOnly specify x = in aes()\nSpecify geom as geom_histogram\n\nChoose color for bars\nChoose appropriate labels\nChange number of bins\nChange from count to density\n\n\n\n\n−+\n10:00\n\n\n\n\n\nData for GDP per capita spotty after 2015"
+    "text": "Your Turn!\n\n\nPick a variable that you want to explore the distribution of1\nMake a histogram\n\nOnly specify x = in aes()\nSpecify geom as geom_histogram\n\nChoose color for bars\nChoose appropriate labels\nChange number of bins\nChange from count to density\n\n\n\n\n\n\n\n\nData for GDP per capita spotty after 2015"
   },
   {
     "objectID": "slides/week-3.1.html#color-blindness",
