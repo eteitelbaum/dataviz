@@ -15,7 +15,7 @@ execute:
 ## Packages & functions in this module
 **Packages:** `tidyr`, `colorBlindness`, `dplyr`, `viridis`, `RColorBrewer`, `ggplot2`, `plotly`
 
-**Functions:** `drop_na()`, `cvdPlot()`, `scale_fill_manual()`, `scale_fill_viridis_d()`, `scale_fill_brewer()`, `scale_color_manual()`, `scale_color_viridis_d()`, `scale_color_brewer()`, `theme_minimal()`, `annotate()`, `geom_hline()`, `geom_vline()`, `ggplotly()`, `layout()`
+**Functions:** `drop_na()`, `cvdPlot()`, `scale_color_manual()`, `scale_color_viridis_d()`, `scale_color_brewer()`, `scale_fill_manual()`, `theme_minimal()`, `annotate()`, `geom_hline()`, `geom_vline()`, `ggplotly()`
 :::
 
 ::: {.callout-tip}
@@ -38,19 +38,6 @@ library(wbstats)
 library(countrycode)
 
 indicators = c(flfp = "SL.TLF.CACT.FE.ZS", gdp_pc = "NY.GDP.PCAP.KD") # define indicators
-
-## Regional levels of FLFP for column chart 
-
-flfp_gdp_regions <- 
-  wb_data("SL.TLF.CACT.FE.ZS", country = "regions_only", mrnev = 1) |> 
-  rename(
-    region = country,
-    year = date,
-    flfp = SL.TLF.CACT.FE.ZS
-  ) |> 
-  select(region, iso3c, year, flfp)
-  
-flfp_gdp_regions
 
 ## Cross-section of data on FLFP and GDP per capita for scatter plot
 
@@ -120,91 +107,86 @@ So once you determine that your color scheme is not colorblind friendly, what sh
 
 ### Create your own colorblind-friendly color scheme
 
-The first way to make your plot more accessible is to create your own [discrete scale](https://ggplot2.tidyverse.org/reference/scale_manual.html) using `scale_fill_manual()` or `scale_color_manual()` (depending on what type of plot you are trying to draw). 
+The first way to make your plot more accessible is to create your own [discrete scale](https://ggplot2.tidyverse.org/reference/scale_manual.html) using `scale_color_manual()` or `scale_fill_manual()` (depending on what type of plot you are trying to draw).
 
-Let's try using an [example](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/) color scheme from the R Cookbook to fill in the bars of a column chart. Here we will make use of the regional levels of female labor force participation data that we prepped in the prework section of this module. First we create a vector of colors called `cb_palette`. Then we build our bar chart and save it as an object called `flfp_region`. Crucially, when we perform our ggplot call, we include `fill = region` as a third dimension in our `aes()` function. This is in addition to including the region code `iso3c` on the x-axis. Finally, we use our palette to shade our bars using `scale_fill_manual()`. 
+Let's fix the line chart with the [Okabe-Ito palette](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/), a set of eight colors chosen specifically to stay distinguishable under color vision deficiency. First we create a vector of colors called `cb_palette`. Then we apply it to our lines with `scale_color_manual()`. We use `scale_color_manual()` rather than `scale_fill_manual()` because our chart is drawn with lines rather than filled shapes.
 
 ```{r}
-#| label: flfp_region
+#| label: dem_waves_manual
 cb_palette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 
-flfp_region <- ggplot(flfp_gdp_regions, aes(x = reorder(iso3c, -flfp), y = flfp, fill = region)) +
-  geom_col() + 
-  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
-  labs(
-    x = "Region", 
-    y = "Avg. Female Labor Force Participation", 
-    title = "Levels of female labor force participation by region", 
-    fill = "Region",
-    caption = "Source: World Bank"
-    ) 
-
-flfp_region + scale_fill_manual(values = cb_palette)
+dem_waves_chart + scale_color_manual(values = cb_palette)
 ```
 
-Now we can check our visualization using the `cvdPlot()` function from the `colorBlindness` package. 
+Now let's check our work with `cvdPlot()` again.
 
 ```{r}
-#| label: flfp_region_cvd
+#| label: dem_waves_manual_cvd
 #| fig-width: 12
 #| fig-height: 7
-flfp_region <- flfp_region + scale_fill_manual(values = cb_palette)
-
-cvdPlot(flfp_region)
+cvdPlot(dem_waves_chart + scale_color_manual(values = cb_palette))
 ```
 
-Although it would still be difficult for a person with red-green color blindness to see some of the colors in the chart (like the pink of SSF or the bright green of LAC), it would still be possible for them to distinguish the colors of the bars based on what would appear to them as shades of grey. 
+That is a big improvement. Japan and Portugal are now clearly distinct under both deuteranopia and protanopia, and they remain distinguishable in the desaturated (black and white) version as well.
 
 ### Use viridis
 
-Another option is to use a package designed with accessibility issues in mind. One of the more popular ones is the [viridis()](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) package. To use it just load `viridis` and add a `viridis` color scheme to the plot. You have the option of choosing continuous, discrete or binned color schemes but here we use the discrete option `scale_fill_viridis_d()` because our regions constitute a discrete variable. You can also try different `viridis` color maps by inserting the various available schemes in the function. For example you can get the "plasma" map with `scale_fill_viridis_d(option = "plasma"). The default map is "viridis." 
+Picking hex codes by hand gets tedious, so another option is to use a package designed with accessibility in mind. One of the more popular ones is the [viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) package, whose scales come built into `ggplot2`. You have the option of choosing continuous, discrete or binned color schemes but here we use the discrete option `scale_color_viridis_d()` because our countries constitute a discrete variable. You can also try different `viridis` color maps by inserting the various available schemes in the function. For example you can get the "plasma" map with `scale_color_viridis_d(option = "plasma")`. The default map is "viridis."
 
 ```{r}
 #| label: viridis
-flfp_region + scale_fill_viridis_d()
+dem_waves_chart + scale_color_viridis_d()
 ```
 
-Now let's run our bar chart with the `viridis` color mapping through `cvdPlot`: 
+Note the `end` argument, which controls how far along the color map the scale runs. Because the top of the viridis scale is a pale yellow that can wash out against a white background, `end = .8` is often a good idea for line charts.
 
 ```{r}
-#| label: viridis_cvd
-#| fig-width: 12
-#| fig-height: 7
-flfp_region <- flfp_region + scale_fill_viridis_d()
-
-cvdPlot(flfp_region)
+#| label: viridis_end
+dem_waves_chart + scale_color_viridis_d(end = .8)
 ```
-
-This is pretty good. In fact it looks fairly close to the original. It is even to easy to see the differences in colors when looking at the desaturated output. Of course the first column for the black and white plot is difficult to distinguish from the plot's background, but we will learn how to change this up later in this module. 
 
 ### Use ColorBrewer
 
-Another package available to us is the [RColorBrewer](https://cran.r-project.org/web/packages/RColorBrewer/index.html) package. Technically, `RColorBrewer` is a separate package but its color mappings come [available](https://ggplot2.tidyverse.org/reference/scale_brewer.html) as part of `ggplot2`, so we don't have to load `RColorBrewer` in order to use it with `ggplot2`. We can also use the color brewer [palette selector tool](https://colorbrewer2.org/) to help select palettes that are "colorblind safe." 
+Another package available to us is the [RColorBrewer](https://cran.r-project.org/web/packages/RColorBrewer/index.html) package. Technically, `RColorBrewer` is a separate package but its color mappings come [available](https://ggplot2.tidyverse.org/reference/scale_brewer.html) as part of `ggplot2`, so we don't have to load `RColorBrewer` in order to use it with `ggplot2`. We can also use the ColorBrewer [palette selector tool](https://colorbrewer2.org/) to help select palettes that are "colorblind safe."
 
-Let's try updating our column chart with a ColorBrewer color scheme:
+One thing to watch here is that ColorBrewer palettes come in three families: *sequential* (for ordered values that run low to high), *diverging* (for values around a meaningful midpoint), and *qualitative* (for unordered categories). Our three countries are unordered categories, so we want a qualitative palette like "Dark2":
 
 ```{r}
 #| label: brewer
-flfp_region + scale_fill_brewer(palette = "YlGn") 
+dem_waves_chart + scale_color_brewer(palette = "Dark2")
 ```
 
-And now lets run it through the `cvdPlot()` function. 
+### Not every palette is safe
+
+It is worth stressing that choosing *a* palette is not the same as choosing an *accessible* palette. Plenty of attractive palettes fail badly. Here is the same chart with a red-to-blue diverging palette:
 
 ```{r}
-#| label: brewer_cvd
+#| label: unsafe
+dem_waves_chart + scale_color_brewer(palette = "RdYlGn")
+```
+
+And here is what happens when we check it:
+
+```{r}
+#| label: unsafe_cvd
 #| fig-width: 12
 #| fig-height: 7
-flfp_region <- flfp_region + scale_fill_brewer(palette = "YlGn")
-
-cvdPlot(flfp_region)
+cvdPlot(dem_waves_chart + scale_color_brewer(palette = "RdYlGn"))
 ```
 
-### Scaling for scatter plots and line charts
+Two of the three lines collapse into nearly the same color under red-green color blindness. The lesson is to make `cvdPlot()` a habit: apply a palette, then check it before you ship the chart.
 
-One thing to note is that when we want to adjust the color scheme for a scatter plot or line chart, we should use "scale_color" instead of "scale_fill", e.g. `scale_color_manual()`, `scale_color_viridis_d()`, `scale_color_brewer`. Let's try a couple of examples. First, let's add a `viridis` color map to a scatter plot. We will use the flfp_gdp data we prepped in the prework section to generate our scatter plot.
+### Fill vs. color
+
+One thing to note is that when we want to adjust the color scheme for a scatter plot or line chart, we use `scale_color_*` instead of `scale_fill_*`. The rule of thumb is:
+
+- Use **fill** (`fill =`, `scale_fill_*`) for the inside of shapes: bar charts, column charts, box plots, histograms
+- Use **color** (`color =`, `scale_color_*`) for points, lines, and text: scatter plots, line charts, annotations
+
+Every palette we have discussed has both versions, e.g. `scale_fill_viridis_d()` and `scale_color_viridis_d()`. Let's try a `viridis` color map on a scatter plot. We will use the `flfp_gdp` data we prepped in the prework section.
 
 ```{r}
-#| label: scale_color_viridis()  
+#| label: scale_color_viridis
 wealth_flfp <- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) + 
   geom_point(aes(color = region)) + # color points by region
   geom_smooth(method = "loess", linewidth = 1) +  # make the line a loess curve
@@ -218,13 +200,13 @@ wealth_flfp <- ggplot(flfp_gdp, aes(x = gdp_pc, y = flfp)) +
     color = "Region" # legend title
     )
 
-wealth_flfp + scale_color_viridis_d(option = "plasma")
+wealth_flfp + scale_color_viridis_d(option = "plasma", end = .7)
 ```
 
-Now let's try adding a ColorBrewer scheme to a line chart. Here we will use the `flfp_ts` data frame that we prepped in our prework routine.
+Now let's try adding a ColorBrewer scheme to a different line chart. Here we will use the `flfp_ts` data frame that we prepped in our prework routine.
 
 ```{r}
-#| label: scale_color_brewer()
+#| label: scale_color_brewer_line
 flfp_line <- ggplot(flfp_ts, aes(x = year, y = flfp, color = region)) +
   geom_line(linewidth = 1) + 
   scale_y_continuous(labels = scales::label_percent(scale = 1)) +
@@ -232,11 +214,11 @@ flfp_line <- ggplot(flfp_ts, aes(x = year, y = flfp, color = region)) +
     x = "Year", 
     y = "Female Labor Force Participation", 
     title = "Regional trends in female labor force participation", 
-    caption = "Source: V-Dem Institute", 
-    color = "Country"
+    caption = "Source: World Bank", 
+    color = "Region"
   )
 
-flfp_line + scale_color_brewer(palette = "YlOrRd")
+flfp_line + scale_color_viridis_d(end = .8)
 ```
 
 ## Themes
@@ -256,7 +238,7 @@ wealth_flfp + scale_color_viridis_d(option = "plasma") + theme_dark()
 
 ```{r}
 #| label: theme_minimal()
-flfp_region + scale_fill_brewer(palette = "YlGn") + theme_minimal()
+dem_waves_chart + scale_color_viridis_d(end = .8) + theme_minimal()
 ```
 
 
@@ -310,13 +292,13 @@ library(plotly)
 ggplotly(flfp_line)
 ```
 
-In a lot of cases, we may want to control the tool tip of the plot. The tool tip is what appears when the user hovers over information on the chart. In this next example, the chart does not look that great unless we add the `tooltip` argument. But it is fairly simple to do. We just add the elements that we want to appear in a combine function, e.g. `c()`. In this case we will include region and female labor force participation in the tool tip.  
+In a lot of cases, we may want to control the tool tip of the plot. The tool tip is what appears when the user hovers over information on the chart. By default `plotly` shows every variable you have mapped, which is often more than you want. It is fairly simple to control. We just add the elements that we want to appear in a combine function, e.g. `c()`. In this case we will include region and female labor force participation in the tool tip.
 
 ```{r}
 #| label: tooltip
-flfp_region <- flfp_region + scale_fill_brewer(palette = "YlGn") + theme_minimal()
+flfp_line_plotly <- flfp_line + scale_color_viridis_d(end = .8) + theme_minimal()
 
-ggplotly(flfp_region, tooltip = c("region", "flfp")) # controlling the tooltip output
+ggplotly(flfp_line_plotly, tooltip = c("region", "flfp")) # controlling the tooltip output
 ```
 
 Another thing we may want to do is to include some additional annotations. We might also notice that some of the things we include in the labs argument in `ggplot2` do not get picked up by `plotly` and that we have to add them back with a `layout(annotations = )` call. One additional idiosyncrasy is that any item that we want to include in the `plotly` chart has to be passed as an argument in the `ggplot` code. For example, we need to include `aes(label = country)` to view country in tool tip. But `plotly` does support the R native pipe operator and that makes it a little easier to layer on multiple annotations.  
