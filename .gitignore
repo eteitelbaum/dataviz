@@ -18,6 +18,7 @@ weeks/*_files/
 assignments/*_files/
 project/*_files/
 modules/*_files/
+slides/*_files/
 
 # Local quiz files — not part of the published course
 /quizzes/
