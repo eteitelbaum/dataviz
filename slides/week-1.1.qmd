@@ -1,6 +1,5 @@
 ---
-title: Getting Started, Part I
-subtitle: RStudio and Basic Quarto
+title: Working in RStudio with Quarto and Markdown
 date: today
 date-format: long
 footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
@@ -318,14 +317,6 @@ countdown(minutes = 2,
 - I find that inline notes are the easiest to work with
   - For example `^[This is a footnote]`
 
-## Generating Lorem Ipsum
-
-<br>
-
-- For working on your document's format it is helpful to have random text
-- The [lorem package](http://pkg.garrickadenbuie.com/lorem/) is helpful for this
-- You can also install an R Studio Addin
-
 ## Your Turn!
 
 - Start a new Quarto project
@@ -341,7 +332,6 @@ countdown(minutes = 2,
 ## Your Turn!
 
 - Try adding at least one more option to your YAML header
-- Generate some sections and some random text using the `lorem` package
 - Add some code chunks to your document (and some code)
 - Add some footnotes to your document
 - Render the document and see what it looks like

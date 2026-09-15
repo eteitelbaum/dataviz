@@ -2823,7 +2823,7 @@
     "href": "index.html",
     "title": "Course Schedule",
     "section": "",
-    "text": "Topic\nDate\nSkills\nReadings\nReference\nSlides\nVideos\nAssignments\n\n\n\n\n\nAug 25\nCourse overview & environment setup\n📖\n📖\n\n\n\n\n\nGetting Started\nAug 27\nRStudio & Quarto setup (cont’d)\n\n\n🖥️\n🖥️🖥️\n\n\n\nR Programming Basics\nSep 1\nR programming basics\n\n\n🖥️\n\n\n\n\nThree DataViz Examples\nSep 3\nThree visualization examples: make a map, plot democracy over time, UN voting trends\n📖\n\n🖥️\n\n\n\n\nCharting With ggplot2\nSep 8\nBar charts & histograms\n📖\n📖📖\n🖥️\n🖥️🖥️\n\n\n\n\nSep 10\nMore Visualization Basics\n📖\n📖\n🖥️\n🖥️🖥️\n\n\n\nColor, Themes & Annotations\nSep 15\nColor schemes\n📖 📖\n📖\n🖥️\n🖥️\n\n\n\n\nSep 17\nThemes, annotations & interactivity\n📖\n📖\n🖥️\n🖥️🖥️🖥️\n🧪\n\n\nReading & Reshaping Data\nSep 22\nRead data into R\n\n📖\n🖥️\n🖥️\n\n\n\n\nSep 24\nReshape & clean data\n\n📖\n🖥️\n🖥️🖥️\n\n\n\nImporting & Merging Data\nSep 29\nDownload data from APIs\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 1\nMerge, group, summarize & arrange\n\n📖 📖\n🖥️\n🖥️🖥️🖥️\n🧪\n\n\nChoropleth Maps\nOct 6\nMap data with choropleth maps\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 8\nTurn your map into a function\n📖\n📖\n🖥️\n🖥️\n\n\n\n\nOct 13\nNo class, fall break\n\n🍁🍂🎃\n\n\n\n\n\nInteractive Maps\nOct 15\nMake a leaflet map\n\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 20\nCustomize your interactive map\n\n\n\n🖥️\n🧪\n\n\n\nOct 22\nFlex session: what makes good data viz? + brainstorm your final project\n\n\n\n\n✍️\n\n\nTables\nOct 27\nExplore tabular data\n\n\n🖥️\n\n\n\n\n\nOct 29\nMake a gt table & confidence intervals\n\n\n🖥️\n\n\n\n\nModels & Coefficient Plots\nNov 3\nRun models & display regression tables\n📖 📖\n\n🖥️\n🖥️\n\n\n\n\nNov 5\nRegression tables & coefficient plots (recorded — no live class)\n\n\n\n🖥️🖥️\n🧪\n\n\nBuilding a Shiny App\nNov 10\nApp setup & building the UI\n\n\n🖥️\n🖥️🖥️\n\n\n\n\nNov 12\nBuilding the server\n\n\n🖥️\n🖥️\n\n\n\nExtending Your App\nNov 17\nAdd inputs & a time-series app\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nNov 19\nShiny modules\n\n\n🖥️\n\n\n\n\n\nNov 24\nNo class, Thanksgiving break\n\n🦃🥧🍂\n\n\n\n\n\n\nNov 26\nNo class, Thanksgiving break\n\n\n\n\n\n\n\nDeploying & Sharing / Project Studio\nDec 1\nDeploy & share your app (shinyapps.io) + studio time (app track) or finish your report (report track)\n\n\n\n🖥️\n\n\n\n\nDec 3\nProject Studio: peer feedback & dry-run presentations\n\n\n\n\n\n\n\n\nDec 8\nFinal presentations / lightning talks",
+    "text": "Topic\nDate\nSkills\nReadings\nReference\nSlides\nVideos\nAssignments\n\n\n\n\n\nAug 25\nCourse overview & environment setup\n📖\n📖\n\n\n\n\n\nWorking in RStudio with Quarto and Markdown\nAug 27\nRStudio & Quarto setup (cont’d)\n\n\n🖥️\n🖥️🖥️\n\n\n\nR Programming Basics\nSep 1\nR programming basics\n\n\n🖥️\n\n\n\n\nThree DataViz Examples\nSep 3\nThree visualization examples: make a map, plot democracy over time, UN voting trends\n📖\n\n🖥️\n\n\n\n\nCharting With ggplot2\nSep 8\nBar charts & histograms\n📖\n📖📖\n🖥️\n🖥️🖥️\n\n\n\n\nSep 10\nMore Visualization Basics\n📖\n📖\n🖥️\n🖥️🖥️\n\n\n\nColor, Themes & Annotations\nSep 15\nColor schemes\n📖 📖\n📖\n🖥️\n🖥️\n\n\n\n\nSep 17\nThemes, annotations & interactivity\n📖\n📖\n🖥️\n🖥️🖥️🖥️\n🧪\n\n\nReading & Reshaping Data\nSep 22\nRead data into R\n\n📖\n🖥️\n🖥️\n\n\n\n\nSep 24\nReshape & clean data\n\n📖\n🖥️\n🖥️🖥️\n\n\n\nImporting & Merging Data\nSep 29\nDownload data from APIs\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 1\nMerge, group, summarize & arrange\n\n📖 📖\n🖥️\n🖥️🖥️🖥️\n🧪\n\n\nChoropleth Maps\nOct 6\nMap data with choropleth maps\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 8\nTurn your map into a function\n📖\n📖\n🖥️\n🖥️\n\n\n\n\nOct 13\nNo class, fall break\n\n🍁🍂🎃\n\n\n\n\n\nInteractive Maps\nOct 15\nMake a leaflet map\n\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 20\nCustomize your interactive map\n\n\n\n🖥️\n🧪\n\n\n\nOct 22\nFlex session: what makes good data viz? + brainstorm your final project\n\n\n\n\n✍️\n\n\nTables\nOct 27\nExplore tabular data\n\n\n🖥️\n\n\n\n\n\nOct 29\nMake a gt table & confidence intervals\n\n\n🖥️\n\n\n\n\nModels & Coefficient Plots\nNov 3\nRun models & display regression tables\n📖 📖\n\n🖥️\n🖥️\n\n\n\n\nNov 5\nRegression tables & coefficient plots (recorded — no live class)\n\n\n\n🖥️🖥️\n🧪\n\n\nBuilding a Shiny App\nNov 10\nApp setup & building the UI\n\n\n🖥️\n🖥️🖥️\n\n\n\n\nNov 12\nBuilding the server\n\n\n🖥️\n🖥️\n\n\n\nExtending Your App\nNov 17\nAdd inputs & a time-series app\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nNov 19\nShiny modules\n\n\n🖥️\n\n\n\n\n\nNov 24\nNo class, Thanksgiving break\n\n🦃🥧🍂\n\n\n\n\n\n\nNov 26\nNo class, Thanksgiving break\n\n\n\n\n\n\n\nDeploying & Sharing / Project Studio\nDec 1\nDeploy & share your app (shinyapps.io) + studio time (app track) or finish your report (report track)\n\n\n\n🖥️\n\n\n\n\nDec 3\nProject Studio: peer feedback & dry-run presentations\n\n\n\n\n\n\n\n\nDec 8\nFinal presentations / lightning talks",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -3439,168 +3439,168 @@
   {
     "objectID": "slides/week-1.1.html#rstudio",
     "href": "slides/week-1.1.html#rstudio",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "RStudio",
     "text": "RStudio\n\nRStudio is an integrated development environment (IDE) for R\nRStudio has four panes\n\nSource-where you write code\nConsole-where you run code\nEnvironment-where you see objects in memory\nFiles/Plots/Packages/Help-where you can navigate files, see plots, install packages, and get help\n\nLet’s open RStudio and have a look around"
   },
   {
     "objectID": "slides/week-1.1.html#quarto",
     "href": "slides/week-1.1.html#quarto",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Quarto",
     "text": "Quarto\n\n\nQuarto is an open-source scientific publishing platform\nAllows you to integrate text with code\nKind of like a word processor for data science\nCan use it to create reports, books, websites, etc.\nCan make HTML, PDF, Word, and other formats\nCan use R, Python, Julia, and other languages"
   },
   {
     "objectID": "slides/week-1.1.html#project-oriented-workflow",
     "href": "slides/week-1.1.html#project-oriented-workflow",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Project Oriented Workflow",
     "text": "Project Oriented Workflow\n\n\nAlways start a document in a project folder\n\nThat way you don’t have to do setwd\nAlso can share easily with other people\n\nGo to File&gt;New Project\nCreate a Quarto project folder"
   },
   {
     "objectID": "slides/week-1.1.html#visual-editor",
     "href": "slides/week-1.1.html#visual-editor",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Visual Editor",
     "text": "Visual Editor\n\nThere are two ways to edit Quarto docs\n\nSource (markdown)\nVisual editor\n\nVisual editor\n\nWYSIWYM\nApproximates appearance\n\nTry both and see what you like"
   },
   {
     "objectID": "slides/week-1.1.html#rendering-documents",
     "href": "slides/week-1.1.html#rendering-documents",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Rendering Documents",
     "text": "Rendering Documents\n\nRendering = converting to another format\n\nDefault format is HTML\nCan also render to PDF, Word, etc.\n\nTo render a Quarto document\n\nClick on the Render button\n\nOr keyboard shortcut (Cmd/Ctrl + Shift + K)\n\n\nBy default, Quarto will preview the document in your browser\nBut you can also preview in Viewer pane\n\nClick on the gear icon next to the Render button\nSelect “Preview in Viewer Pane”"
   },
   {
     "objectID": "slides/week-1.1.html#illustration",
     "href": "slides/week-1.1.html#illustration",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Illustration",
     "text": "Illustration"
   },
   {
     "objectID": "slides/week-1.1.html#lets-try-quarto",
     "href": "slides/week-1.1.html#lets-try-quarto",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Let’s Try Quarto!",
     "text": "Let’s Try Quarto!\n\nCreate a new Quarto document\n\nFile&gt;New File&gt;Quarto Document\n\nSave the document in your project folder\nRender it\n\nClick on the Render button\nOr keyboard shortcut (Cmd/Ctr + Shift + K)\n\nTry out the visual editor"
   },
   {
     "objectID": "slides/week-1.1.html#document-elements",
     "href": "slides/week-1.1.html#document-elements",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Document Elements",
     "text": "Document Elements\n\n\nYAML Header\nMarkdown content\nCode chunks"
   },
   {
     "objectID": "slides/week-1.1.html#yaml-header",
     "href": "slides/week-1.1.html#yaml-header",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "YAML Header",
     "text": "YAML Header\n\n\nMetadata about the document\n\nTitle, author, date, etc.\n\nOutput format\nExecution options"
   },
   {
     "objectID": "slides/week-1.1.html#yaml-header-1",
     "href": "slides/week-1.1.html#yaml-header-1",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "YAML Header",
     "text": "YAML Header\n---\ntitle: \"My Documnet\"\nauthor: \"Your Name\"\ndate: today\ndate-format: long\nformat: html\nexecute:\n  echo: false\n  message: false\n---\n\nTry adding some of these options in your document\nThen render it again\nLook in the Quarto guide for other options to try"
   },
   {
     "objectID": "slides/week-1.1.html#markdown",
     "href": "slides/week-1.1.html#markdown",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Markdown",
     "text": "Markdown\n\n\nMarkdown is a simple markup language\nYou can use it to format text\nYou can also use it to embed images, tables, etc.\nAnd to embed code chunks…"
   },
   {
     "objectID": "slides/week-1.1.html#markdown-syntax---basic-authoring",
     "href": "slides/week-1.1.html#markdown-syntax---basic-authoring",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Markdown Syntax - Basic Authoring",
     "text": "Markdown Syntax - Basic Authoring\n\nFor basic text you can just start typing\nFor line breaks use two spaces and return (enter)\nHeadings (use #, ##, ###, etc.)\n\n# is the largest heading (level 1)\n## is the next largest (level 2)\n### is the next largest (level 3)\nEtc."
   },
   {
     "objectID": "slides/week-1.1.html#markdown-syntax---styling",
     "href": "slides/week-1.1.html#markdown-syntax---styling",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Markdown Syntax - Styling",
     "text": "Markdown Syntax - Styling\n\nEmphasis = Italics (use *)\n\nBold (use **)\n\nLists\n\nBullet points (use -)\nNumbered lists (use 1.)"
   },
   {
     "objectID": "slides/week-1.1.html#markdown-syntax---content",
     "href": "slides/week-1.1.html#markdown-syntax---content",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Markdown Syntax - Content",
     "text": "Markdown Syntax - Content\n\nLinks (use [text](url))\nImages (use ![](file path or url))\nCode chunks\n\nR code chunks (```{r}…```)\nPython code chunks (```{python}…```)\nEtc."
   },
   {
     "objectID": "slides/week-1.1.html#try-some-markdown",
     "href": "slides/week-1.1.html#try-some-markdown",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Try Some Markdown",
     "text": "Try Some Markdown\n\n\nCheck out the Markdown Cheatsheet\nTry editing the markdown in your document\nTry some of the other things you find in the guide\nThen render it again"
   },
   {
     "objectID": "slides/week-1.1.html#code-chunks",
     "href": "slides/week-1.1.html#code-chunks",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Code Chunks",
     "text": "Code Chunks\n\nIncorporate R code (could also be Python, Julia, etc.)\nAdd a code chunk with the ‘+’ button\nRun the code chunk by clicking the play button\n\nOr use keyboard shortcut (Cmd/Ctrl + Shift + Enter)\n\nRun all chunks up that point by clicking the down arrow\n\nOr use keyboard shortcut (Cmd/Ctrl + Shift + K)\n\nRun a single line with shortcut (Cmd/Ctrl + Enter)"
   },
   {
     "objectID": "slides/week-1.1.html#code-chunk-options",
     "href": "slides/week-1.1.html#code-chunk-options",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Code Chunk Options",
     "text": "Code Chunk Options\n\nUse #| (hash-pipe) to add options\nlabel is a unique identifier for the chunk\nOptions to control what happens when you render\n\necho controls whether the code is shown\neval controls whether the code is run\nmessage controls whether messages are shown\nwarning controls whether warnings are shown"
   },
   {
     "objectID": "slides/week-1.1.html#code-chunk-options-1",
     "href": "slides/week-1.1.html#code-chunk-options-1",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Code Chunk Options",
     "text": "Code Chunk Options\n\n\nCode-chunk options override global options set in YAML header\nSee documentation for more options\nYou can also use write chunk options inline with chunk name,\n\ne.g., {r, echo = FALSE} ..."
   },
   {
     "objectID": "slides/week-1.1.html#illustration-1",
     "href": "slides/week-1.1.html#illustration-1",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Illustration",
     "text": "Illustration"
   },
   {
     "objectID": "slides/week-1.1.html#try-it-yourself",
     "href": "slides/week-1.1.html#try-it-yourself",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Try it Yourself!",
     "text": "Try it Yourself!\n\nCreate a code chunk\nCopy this code chunk into your document\n\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()\n\n\nTry adding some chunk options in your document\nThen render it again"
   },
   {
     "objectID": "slides/week-1.1.html#advanced-html",
     "href": "slides/week-1.1.html#advanced-html",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Advanced HTML",
     "text": "Advanced HTML\n\n\nSo far we have been using the basic HTML elements to create our documents\nQuarto supports a wide range of HTML elements and attributes\nWe can use these to create more complex and interactive documents"
   },
   {
     "objectID": "slides/week-1.1.html#formatting-options",
     "href": "slides/week-1.1.html#formatting-options",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Formatting Options",
     "text": "Formatting Options\n\nWe can make our documents have a more sophisticated feel by specifying various options in the YAML header\nExamples include title, subtitle, date, abstract, toc, etc.\nWe can also specify font styles and colors and control other aspects of the formatting\nSee this page to explore the various formatting options"
   },
   {
     "objectID": "slides/week-1.1.html#themes",
     "href": "slides/week-1.1.html#themes",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Themes",
     "text": "Themes\n\n\nQuarto supports a wide range of themes\nWe can use these to change the look and feel of our documents\nCheck out this page to explore the various themes available in Quarto"
   },
   {
     "objectID": "slides/week-1.1.html#footnotes",
     "href": "slides/week-1.1.html#footnotes",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nYou can also add footnotes to your document\nUse the ^[] or [^1] syntax to add a footnote\nThere are different ways to add footnotes\nI find that inline notes are the easiest to work with\n\nFor example ^[This is a footnote]"
   },
@@ -3614,16 +3614,16 @@
   {
     "objectID": "slides/week-1.1.html#your-turn",
     "href": "slides/week-1.1.html#your-turn",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Your Turn!",
     "text": "Your Turn!\n\nStart a new Quarto project\nCreate a new Quarto document in your project folder\nAdd a YAML header with the following options:\n\ntitle:\nsubtitle:\ndate:\ndate-format:\ntheme:\ntoc:"
   },
   {
     "objectID": "slides/week-1.1.html#your-turn-1",
     "href": "slides/week-1.1.html#your-turn-1",
-    "title": "Getting Started, Part I",
+    "title": "Working in RStudio with Quarto and Markdown",
     "section": "Your Turn!",
-    "text": "Your Turn!\n\nTry adding at least one more option to your YAML header\nGenerate some sections and some random text using the lorem package\nAdd some code chunks to your document (and some code)\nAdd some footnotes to your document\nRender the document and see what it looks like"
+    "text": "Your Turn!\n\nTry adding at least one more option to your YAML header\nAdd some code chunks to your document (and some code)\nAdd some footnotes to your document\nRender the document and see what it looks like"
   },
   {
     "objectID": "slides/week-1.3.html#plan-for-today",
