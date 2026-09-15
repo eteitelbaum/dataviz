@@ -1,6 +1,6 @@
 ---
 title: "Week 11"
-subtitle: "Building a Shiny App"
+subtitle: "Models & Coefficient Plots"
 format: html
 ---
 
@@ -10,13 +10,22 @@ format: html
 source("../helper.R")
 ```
 
-We start building interactive Shiny apps: the user interface, the server, and reactivity.
+::: {.callout-important}
+**Lab 4 (Tables & coefficient plots)** due by 11:59 p.m. on `r advdate2(mon, 11)`. Thursday's session is recorded, not live — instructor out of town.
+:::
+
+We fit models, present them as regression tables with `modelsummary`, and visualize them as coefficient plots. Second half of the tables sequence, following last week's `gt`/nano-tables work.
 
 ## Slides
 
-| 🖥️ [Shiny Apps](/slides/week-11.1.qmd)
-| 🖥️ [Scatter Plot App](/slides/week-11.2.qmd)
+| 🖥️ [Regression Tables](/slides/week-10.1.qmd)
+
+## Readings
+
+| 📖 [Healy, ch. 6: Work with Models](https://socviz.co/06-modeling.html)
+| 📖 [Fearon & Laitin, "Ethnicity, Insurgency, and Civil War"](https://www.jstor.org/stable/3118222)
 
 ## Assignments
 
+| 🧪 [Lab 4: Tables & coefficient plots](/assignments/lab-4.qmd)
 | 📘 Weekly quiz, in class

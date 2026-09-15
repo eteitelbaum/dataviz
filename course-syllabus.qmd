@@ -154,7 +154,7 @@ The following assessments help you gauge and demonstrate your progress in the co
 
 -   **Quizzes:** Short in-class quizzes give you---and me---a quick read on how well the week's material and readings are landing. They provide immediate feedback and support ongoing learning.
 
--   **Final Project:** You will design and build your own interactive data visualization application (a Shiny app) as your final project, developed over the second half of the semester and presented in class during our final session.
+-   **Final Project:** You will design and build your own interactive Shiny app, or write a polished report built around a well-crafted visualization, as your final project. Either way, it's developed over the second half of the semester and presented in class during our final session.
 
 You'll find support for Blackboard and other tools used for course activities and assignments under the **Technology Support** link in the left navigation menu in our course on Blackboard.
 
@@ -188,7 +188,7 @@ You will complete short in-class quizzes on the week's readings and core concept
 
 ### Final Project
 
-You will design and build an interactive R Shiny app, developed over the second half of the semester during our in-class project studios and presented to the class at the end of the term. You may work on your own or in a **group of up to three**, with a clear division of responsibilities. Full details, including the group policy, are on the [Project Description](/project/project-description.qmd) page.
+You will design and build an interactive R Shiny app, or write a report built around a well-crafted visualization---your choice of track---developed over the second half of the semester during our in-class project studios and presented to the class at the end of the term. You may work on your own or in a **group of up to three**, with a clear division of responsibilities. Full details, including the group policy, are on the [Project Description](/project/project-description.qmd) page.
 
 ## Course Grading
 

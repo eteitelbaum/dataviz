@@ -1,8 +1,8 @@
 {
-  "hash": "7aa9028eba02e67ecefadcbbabc3d017",
+  "hash": "2e5c19f09084823a2adac513b989c41f",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Week 8\"\nsubtitle: \"Fall break & project ideation\"\nformat: html\n---\n\n\n\n::: {.callout-important}\n**No class Tuesday** (fall break). **Project proposal** due by 11:59 p.m. on Monday, October 19.\n:::\n\nThursday is a flex session: we step back to talk about what makes good data visualization and brainstorm ideas for your final project.\n\n## Assignments\n\n| ✍️ [Project Proposal](/project/project-assignment-1.qmd)\n",
+    "markdown": "---\ntitle: \"Week 8\"\nsubtitle: \"Fall Break & Interactive Maps I\"\nformat: html\n---\n\n\n\n::: {.callout-important}\n**No class Tuesday** (fall break).\n:::\n\nThursday we start building interactive maps with `leaflet`, customizing them with markers, popups, and basemaps. We finish this up next week.\n\n## Slides\n\n| 🖥️ [Leaflet Maps](/slides/week-7.1.qmd)\n\n## Videos\n\n| 🖥️ [Upload UCDP data](https://youtu.be/If2PwFv90iI)\n| 🖥️ [Make a leaflet map](https://youtu.be/hHUPqgHRqYU)\n\n## Assignments\n\n| 📘 Weekly quiz, in class\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

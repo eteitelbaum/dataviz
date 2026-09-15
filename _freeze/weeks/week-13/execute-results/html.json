@@ -1,8 +1,8 @@
 {
-  "hash": "34523f0e0b187a9c8818209cbed7a342",
+  "hash": "1c731395eb31ca09c108c6cc24fac321",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Week 13\"\nsubtitle: \"Styling & Troubleshooting Your App\"\nformat: html\n---\n\n\n\nWe make our apps look good with `bslib` and dashboard layouts, then work through debugging techniques and practical tips for building your final project app.\n\n## Slides\n\n| 🖥️ [Styling Your App](/slides/week-13.1.qmd)\n| 🖥️ [Troubleshooting Your App](/slides/week-13.2.qmd)\n",
+    "markdown": "---\ntitle: \"Week 13\"\nsubtitle: \"Extending Your App\"\nformat: html\n---\n\n\n\nWe add more inputs and build a time-series app with observers and reactives, then learn to factor app code into reusable Shiny modules.\n\n::: {.callout-note}\n[Styling Your App](/modules/module-6.1.qmd) and [Troubleshooting Your App](/modules/module-6.1.qmd) are now optional material for students building a Shiny app for their final project — work through them on your own if that's your track.\n:::\n\n## Slides\n\n| 🖥️ [Observers and Reactives](/slides/week-12.1.qmd)\n| 🖥️ [Modules](/slides/week-12.2.qmd)\n\n## Readings\n\n| 📖 [Huntington, \"Democracy's Third Wave\"](https://muse-jhu-edu.proxygw.wrlc.org/article/225602)\n\n## Assignments\n\n| 📘 Weekly quiz, in class\n",
     "supporting": [
       "week-13_files"
     ],

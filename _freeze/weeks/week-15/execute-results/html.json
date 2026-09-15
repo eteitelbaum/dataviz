@@ -1,8 +1,8 @@
 {
-  "hash": "5d7ea6bd3b29635387fc21b53304a032",
+  "hash": "ce861bf55c2e87b5db4c1653f2e87287",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Week 15\"\nsubtitle: \"Project Studio\"\nformat: html\n---\n\n\n\nWe deploy and share our apps on shinyapps.io, then use the rest of the week for studio time: peer feedback and dry-run presentations to get your app ready for the final session.\n\n## Readings\n\n| 📖 [Deploying & Sharing Your App](/modules/module-6.2.qmd)\n\n## Videos\n\n| 🖥️ [Deploying and sharing your app](https://youtu.be/dGUgSFhvaFs)\n",
+    "markdown": "---\ntitle: \"Week 15\"\nsubtitle: \"Project Studio\"\nformat: html\n---\n\n\n\nIf you're building a Shiny app, we deploy and share it on shinyapps.io; if you're doing the report track, use this time to finalize your visualization and write-up. The rest of the week is studio time: peer feedback and dry-run presentations to get your project ready for the final session.\n\n::: {.callout-note}\nBuilding an app? [Styling Your App](/modules/module-6.1.qmd) and [Troubleshooting Your App](/modules/module-6.1.qmd) are optional reference material for polishing and debugging.\n:::\n\n## Readings\n\n| 📖 [Deploying & Sharing Your App](/modules/module-6.2.qmd)\n\n## Videos\n\n| 🖥️ [Deploying and sharing your app](https://youtu.be/dGUgSFhvaFs)\n",
     "supporting": [
       "week-15_files"
     ],

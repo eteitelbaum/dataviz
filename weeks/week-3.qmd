@@ -1,6 +1,6 @@
 ---
 title: "Week 3"
-subtitle: "Color, Themes & Annotations"
+subtitle: "Charting With ggplot2"
 format: html
 ---
 
@@ -10,33 +10,28 @@ format: html
 source("../helper.R")
 ```
 
-::: {.callout-important}
-**Lab 1 (Plotting)** due by 11:59 p.m. on `r advdate2(mon, 3)`.
-:::
-
-We make our plots readable and beautiful: color schemes, themes, annotations, and interactivity.
+We start making plots right away with `ggplot2`, using clean data so we can focus on the visualization.
 
 ## Slides
 
-| 🖥️ [Accessibility and Color Schemes](/slides/week-3.1.qmd)
-| 🖥️ [Themes, Annotations and Interactivity](/slides/week-3.2.qmd)
+| 🖥️ [Grammar of Graphics](/slides/week-2.1.qmd)
+| 🖥️ [Which Visualization Should I Use?](/slides/week-2.2.qmd)
 
 ## Readings
 
-| 📖 [Healy, ch. 8: Refine Your Plots](https://socviz.co/08-polishing.html)
-| 📖 [Healy, ch. 5: Graph Tables, Add Labels, Make Notes](https://socviz.co/05-more-on-geoms.html)
-| 📖 [Lipset, "Some Social Requisites of Democracy"](https://www-jstor-org.proxygw.wrlc.org/stable/1951731?seq=8)
-| 📖 [r4ds, 12.4](https://r4ds.hadley.nz/communication.html#scales)
-| 📖 [r4ds, 12.3 & 12.5](https://r4ds.hadley.nz/communication.html#annotations)
+| 📖 [Healy, ch. 3: Make a Plot](https://socviz.co/03-ggplot-basics.html)
+| 📖 [r4ds, 2](https://r4ds.hadley.nz/data-visualize.html)
+| 📖 [r4ds, 12.2](https://r4ds.hadley.nz/communication.html#labels)
+| 📖 [Healy, ch. 4: Show the Right Numbers](https://socviz.co/04-group-facet-transform.html)
+| 📖 [r4ds, 10.1-10.4](https://r4ds.hadley.nz/layers.html)
 
 ## Videos
 
-| 🖥️ [Color schemes](https://youtu.be/fBCtSjg_-Ik)
-| 🖥️ [Themes](https://youtu.be/Le0OJXdsy3o)
-| 🖥️ [Annotations](https://youtu.be/uEpBMgWilXc)
-| 🖥️ [Interactivity](https://youtu.be/T-7jtbcwaJ0)
+| 🖥️ [Bar charts](https://youtu.be/QG1oDJPoIio)
+| 🖥️ [Histograms](https://youtu.be/-1YhCql-gMo)
+| 🖥️ [Line charts](https://youtu.be/PnmQ2MFQpIc)
+| 🖥️ [Scatter plots](https://youtu.be/FiosjUVyfLM)
 
 ## Assignments
 
-| 🧪 [Lab 1: Plotting](/assignments/lab-1.qmd)
 | 📘 Weekly quiz, in class

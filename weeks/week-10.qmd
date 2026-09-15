@@ -1,6 +1,6 @@
 ---
 title: "Week 10"
-subtitle: "Models & Coefficient Plots"
+subtitle: "Tables"
 format: html
 ---
 
@@ -10,22 +10,13 @@ format: html
 source("../helper.R")
 ```
 
-::: {.callout-important}
-**Lab 4 (Tables & coefficient plots)** due by 11:59 p.m. on `r advdate2(mon, 10)`.
-:::
-
-We fit models, present them as regression tables with `modelsummary`, and visualize them as coefficient plots.
+We build polished tables of data with `kableExtra` and `gt`, and add confidence intervals.
 
 ## Slides
 
-| 🖥️ [Regression Tables](/slides/week-10.1.qmd)
-
-## Readings
-
-| 📖 [Healy, ch. 6: Work with Models](https://socviz.co/06-modeling.html)
-| 📖 [Fearon & Laitin, "Ethnicity, Insurgency, and Civil War"](https://www.jstor.org/stable/3118222)
+| 🖥️ [Making Tables](/slides/week-9.1.qmd)
+| 🖥️ [Advanced Table Skills](/slides/week-9.2.qmd)
 
 ## Assignments
 
-| 🧪 [Lab 4: Tables & coefficient plots](/assignments/lab-4.qmd)
 | 📘 Weekly quiz, in class

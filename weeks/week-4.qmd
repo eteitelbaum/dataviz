@@ -1,6 +1,6 @@
 ---
 title: "Week 4"
-subtitle: "Reading & Reshaping Data"
+subtitle: "Color, Themes & Annotations"
 format: html
 ---
 
@@ -10,24 +10,33 @@ format: html
 source("../helper.R")
 ```
 
-Now that we can plot, we learn to get data into R and shape it into tidy form.
+::: {.callout-important}
+**Lab 1 (Plotting)** due by 11:59 p.m. on `r advdate2(mon, 4)`.
+:::
+
+We make our plots readable and beautiful: color schemes, themes, annotations, and interactivity.
 
 ## Slides
 
-| 🖥️ [Understanding Data](/slides/week-4.1.qmd)
-| 🖥️ [Wrangling Data](/slides/week-4.2.qmd)
+| 🖥️ [Color Schemes](/slides/week-3.1.qmd)
+| 🖥️ [Themes, Annotations & Interactivity](/slides/week-3.2.qmd)
 
 ## Readings
 
-| 📖 [r4ds, 8.1 & 8.2](https://r4ds.hadley.nz/data-import.html#introduction)
-| 📖 [r4ds, 6.1 & 6.3](https://r4ds.hadley.nz/data-tidy.html)
+| 📖 [Healy, ch. 8: Refine Your Plots](https://socviz.co/08-polishing.html)
+| 📖 [Lipset](https://www-jstor-org.proxygw.wrlc.org/stable/1951731?seq=8)
+| 📖 [r4ds, 12.4](https://r4ds.hadley.nz/communication.html#scales)
+| 📖 [Healy, ch. 5: Graph Tables, Add Labels, Make Notes](https://socviz.co/05-more-on-geoms.html)
+| 📖 [r4ds, 12.3 & 12.5](https://r4ds.hadley.nz/communication.html#annotations)
 
 ## Videos
 
-| 🖥️ [Reading data into R](https://youtu.be/ZwJsSjJRuMU)
-| 🖥️ [Reshaping data](https://youtu.be/u4AXi8A1Bqo)
-| 🖥️ [Cleaning data in R](https://youtu.be/xa0tYCfHHTI)
+| 🖥️ [Color schemes](https://youtu.be/fBCtSjg_-Ik)
+| 🖥️ [Themes](https://youtu.be/Le0OJXdsy3o)
+| 🖥️ [Annotations](https://youtu.be/uEpBMgWilXc)
+| 🖥️ [Interactivity](https://youtu.be/T-7jtbcwaJ0)
 
 ## Assignments
 
+| 🧪 [Lab 1: Plotting](/assignments/lab-1.qmd)
 | 📘 Weekly quiz, in class

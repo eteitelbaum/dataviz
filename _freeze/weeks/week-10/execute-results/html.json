@@ -1,11 +1,9 @@
 {
-  "hash": "9dbe3b9be230ff0ee47299b2cd824cd7",
+  "hash": "5581e9517f4c793829d8fb4bfead34ea",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Week 10\"\nsubtitle: \"Models & Coefficient Plots\"\nformat: html\n---\n\n\n\n::: {.callout-important}\n**Lab 4 (Tables & coefficient plots)** due by 11:59 p.m. on Monday, November 2.\n:::\n\nWe fit models, present them as regression tables with `modelsummary`, and visualize them as coefficient plots.\n\n## Slides\n\n| 🖥️ [Regression Tables](/slides/week-10.1.qmd)\n\n## Readings\n\n| 📖 [Healy, ch. 6: Work with Models](https://socviz.co/06-modeling.html)\n| 📖 [Fearon & Laitin, \"Ethnicity, Insurgency, and Civil War\"](https://www.jstor.org/stable/3118222)\n\n## Assignments\n\n| 🧪 [Lab 4: Tables & coefficient plots](/assignments/lab-4.qmd)\n| 📘 Weekly quiz, in class\n",
-    "supporting": [
-      "week-10_files"
-    ],
+    "markdown": "---\ntitle: \"Week 10\"\nsubtitle: \"Tables\"\nformat: html\n---\n\n\n\nWe build polished tables of data with `kableExtra` and `gt`, and add confidence intervals.\n\n## Slides\n\n| 🖥️ [Making Tables](/slides/week-9.1.qmd)\n| 🖥️ [Advanced Table Skills](/slides/week-9.2.qmd)\n\n## Assignments\n\n| 📘 Weekly quiz, in class\n",
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],

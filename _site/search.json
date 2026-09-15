@@ -11,7 +11,29 @@
     "href": "weeks/week-8.html",
     "title": "Week 8",
     "section": "",
-    "text": "Important\n\n\n\nNo class Tuesday (fall break). Project proposal due by 11:59 p.m. on Monday, October 19.\nThursday is a flex session: we step back to talk about what makes good data visualization and brainstorm ideas for your final project.",
+    "text": "Important\n\n\n\nNo class Tuesday (fall break).\nThursday we start building interactive maps with leaflet, customizing them with markers, popups, and basemaps. We finish this up next week.",
+    "crumbs": [
+      "Weekly Materials",
+      "Week 8"
+    ]
+  },
+  {
+    "objectID": "weeks/week-8.html#slides",
+    "href": "weeks/week-8.html#slides",
+    "title": "Week 8",
+    "section": "Slides",
+    "text": "Slides\n🖥️ Leaflet Maps",
+    "crumbs": [
+      "Weekly Materials",
+      "Week 8"
+    ]
+  },
+  {
+    "objectID": "weeks/week-8.html#videos",
+    "href": "weeks/week-8.html#videos",
+    "title": "Week 8",
+    "section": "Videos",
+    "text": "Videos\n🖥️ Upload UCDP data\n🖥️ Make a leaflet map",
     "crumbs": [
       "Weekly Materials",
       "Week 8"
@@ -22,7 +44,7 @@
     "href": "weeks/week-8.html#assignments",
     "title": "Week 8",
     "section": "Assignments",
-    "text": "Assignments\n✍️ Project Proposal",
+    "text": "Assignments\n📘 Weekly quiz, in class",
     "crumbs": [
       "Weekly Materials",
       "Week 8"
@@ -33,7 +55,7 @@
     "href": "weeks/week-6.html",
     "title": "Week 6",
     "section": "",
-    "text": "We map data with static choropleth maps and learn to wrap our map code in a reusable function.",
+    "text": "Important\n\n\n\nLab 2 (Wrangling) due by 11:59 p.m. on Monday, October 5.\nWe pull data straight from APIs and merge sources into a single tidy data frame.",
     "crumbs": [
       "Weekly Materials",
       "Week 6"
@@ -44,7 +66,7 @@
     "href": "weeks/week-6.html#slides",
     "title": "Week 6",
     "section": "Slides",
-    "text": "Slides\n🖥️ Choropleth Maps\n🖥️ Make a Map Function",
+    "text": "Slides\n🖥️ Working With Data\n🖥️ Merging and Summarizing Data",
     "crumbs": [
       "Weekly Materials",
       "Week 6"
@@ -55,7 +77,7 @@
     "href": "weeks/week-6.html#readings",
     "title": "Week 6",
     "section": "Readings",
-    "text": "Readings\n📖 Healy, ch. 7: Draw Maps\n📖 Ross, The Oil Curse, ch. 3\n📖 r4ds, ch. 25 (functions)",
+    "text": "Readings\n📖 Norris, “Electoral Reform and Women’s Representation”\n📖 r4ds, 20.3\n📖 r4ds, 4.5",
     "crumbs": [
       "Weekly Materials",
       "Week 6"
@@ -66,7 +88,7 @@
     "href": "weeks/week-6.html#videos",
     "title": "Week 6",
     "section": "Videos",
-    "text": "Videos\n🖥️ Choropleth maps\n🖥️ Map World Bank data\n🖥️ Turn your map into a function",
+    "text": "Videos\n🖥️ Download data from the World Bank\n🖥️ Download data from V-Dem\n🖥️ Add country codes\n🖥️ Merge two data frames\n🖥️ Group, summarize and arrange",
     "crumbs": [
       "Weekly Materials",
       "Week 6"
@@ -77,7 +99,7 @@
     "href": "weeks/week-6.html#assignments",
     "title": "Week 6",
     "section": "Assignments",
-    "text": "Assignments\n📘 Weekly quiz, in class",
+    "text": "Assignments\n🧪 Lab 2: Wrangling\n📘 Weekly quiz, in class",
     "crumbs": [
       "Weekly Materials",
       "Week 6"
@@ -88,7 +110,7 @@
     "href": "weeks/week-4.html",
     "title": "Week 4",
     "section": "",
-    "text": "Now that we can plot, we learn to get data into R and shape it into tidy form.",
+    "text": "Important\n\n\n\nLab 1 (Plotting) due by 11:59 p.m. on Monday, September 21.\nWe make our plots readable and beautiful: color schemes, themes, annotations, and interactivity.",
     "crumbs": [
       "Weekly Materials",
       "Week 4"
@@ -99,7 +121,7 @@
     "href": "weeks/week-4.html#slides",
     "title": "Week 4",
     "section": "Slides",
-    "text": "Slides\n🖥️ Understanding Data\n🖥️ Wrangling Data",
+    "text": "Slides\n🖥️ Color Schemes\n🖥️ Themes, Annotations & Interactivity",
     "crumbs": [
       "Weekly Materials",
       "Week 4"
@@ -110,7 +132,7 @@
     "href": "weeks/week-4.html#readings",
     "title": "Week 4",
     "section": "Readings",
-    "text": "Readings\n📖 r4ds, 8.1 & 8.2\n📖 r4ds, 6.1 & 6.3",
+    "text": "Readings\n📖 Healy, ch. 8: Refine Your Plots\n📖 Lipset\n📖 r4ds, 12.4\n📖 Healy, ch. 5: Graph Tables, Add Labels, Make Notes\n📖 r4ds, 12.3 & 12.5",
     "crumbs": [
       "Weekly Materials",
       "Week 4"
@@ -121,7 +143,7 @@
     "href": "weeks/week-4.html#videos",
     "title": "Week 4",
     "section": "Videos",
-    "text": "Videos\n🖥️ Reading data into R\n🖥️ Reshaping data\n🖥️ Cleaning data in R",
+    "text": "Videos\n🖥️ Color schemes\n🖥️ Themes\n🖥️ Annotations\n🖥️ Interactivity",
     "crumbs": [
       "Weekly Materials",
       "Week 4"
@@ -132,7 +154,7 @@
     "href": "weeks/week-4.html#assignments",
     "title": "Week 4",
     "section": "Assignments",
-    "text": "Assignments\n📘 Weekly quiz, in class",
+    "text": "Assignments\n🧪 Lab 1: Plotting\n📘 Weekly quiz, in class",
     "crumbs": [
       "Weekly Materials",
       "Week 4"
@@ -143,7 +165,7 @@
     "href": "weeks/week-2.html",
     "title": "Week 2",
     "section": "",
-    "text": "We start making plots right away with ggplot2, using clean data so we can focus on the visualization.",
+    "text": "Now that our tools are set up, we spend session 1 on R programming basics, then session 2 shows off some inspiring examples: make a map, plot democracy over time, and chart UN voting trends.",
     "crumbs": [
       "Weekly Materials",
       "Week 2"
@@ -154,7 +176,7 @@
     "href": "weeks/week-2.html#slides",
     "title": "Week 2",
     "section": "Slides",
-    "text": "Slides\n🖥️ Grammar of Graphics\n🖥️ Which Visualization Should I Use?",
+    "text": "Slides\n🖥️ Getting Started, Part II",
     "crumbs": [
       "Weekly Materials",
       "Week 2"
@@ -165,18 +187,7 @@
     "href": "weeks/week-2.html#readings",
     "title": "Week 2",
     "section": "Readings",
-    "text": "Readings\n📖 Healy, ch. 3: Make a Plot\n📖 Healy, ch. 4: Show the Right Numbers\n📖 r4ds, ch. 2\n📖 r4ds, 10.1-10.4\n📖 r4ds, 12.2",
-    "crumbs": [
-      "Weekly Materials",
-      "Week 2"
-    ]
-  },
-  {
-    "objectID": "weeks/week-2.html#videos",
-    "href": "weeks/week-2.html#videos",
-    "title": "Week 2",
-    "section": "Videos",
-    "text": "Videos\n🖥️ Bar charts\n🖥️ Histograms\n🖥️ Line charts\n🖥️ Scatter plots",
+    "text": "Readings\n📖 Healy, ch. 1: Look at Data",
     "crumbs": [
       "Weekly Materials",
       "Week 2"
@@ -187,7 +198,7 @@
     "href": "weeks/week-2.html#assignments",
     "title": "Week 2",
     "section": "Assignments",
-    "text": "Assignments\n📘 Weekly quiz, in class",
+    "text": "Assignments\n📘 Weekly quiz, in class (see Quizzes)",
     "crumbs": [
       "Weekly Materials",
       "Week 2"
@@ -198,7 +209,7 @@
     "href": "weeks/week-15.html",
     "title": "Week 15",
     "section": "",
-    "text": "We deploy and share our apps on shinyapps.io, then use the rest of the week for studio time: peer feedback and dry-run presentations to get your app ready for the final session.",
+    "text": "If you’re building a Shiny app, we deploy and share it on shinyapps.io; if you’re doing the report track, use this time to finalize your visualization and write-up. The rest of the week is studio time: peer feedback and dry-run presentations to get your project ready for the final session.",
     "crumbs": [
       "Weekly Materials",
       "Week 15"
@@ -231,7 +242,7 @@
     "href": "weeks/week-13.html",
     "title": "Week 13",
     "section": "",
-    "text": "We make our apps look good with bslib and dashboard layouts, then work through debugging techniques and practical tips for building your final project app.",
+    "text": "We add more inputs and build a time-series app with observers and reactives, then learn to factor app code into reusable Shiny modules.",
     "crumbs": [
       "Weekly Materials",
       "Week 13"
@@ -242,7 +253,29 @@
     "href": "weeks/week-13.html#slides",
     "title": "Week 13",
     "section": "Slides",
-    "text": "Slides\n🖥️ Styling Your App\n🖥️ Troubleshooting Your App",
+    "text": "Slides\n🖥️ Observers and Reactives\n🖥️ Modules",
+    "crumbs": [
+      "Weekly Materials",
+      "Week 13"
+    ]
+  },
+  {
+    "objectID": "weeks/week-13.html#readings",
+    "href": "weeks/week-13.html#readings",
+    "title": "Week 13",
+    "section": "Readings",
+    "text": "Readings\n📖 Huntington, “Democracy’s Third Wave”",
+    "crumbs": [
+      "Weekly Materials",
+      "Week 13"
+    ]
+  },
+  {
+    "objectID": "weeks/week-13.html#assignments",
+    "href": "weeks/week-13.html#assignments",
+    "title": "Week 13",
+    "section": "Assignments",
+    "text": "Assignments\n📘 Weekly quiz, in class",
     "crumbs": [
       "Weekly Materials",
       "Week 13"
@@ -253,7 +286,7 @@
     "href": "weeks/week-11.html",
     "title": "Week 11",
     "section": "",
-    "text": "We start building interactive Shiny apps: the user interface, the server, and reactivity.",
+    "text": "Important\n\n\n\nLab 4 (Tables & coefficient plots) due by 11:59 p.m. on Monday, November 9. Thursday’s session is recorded, not live — instructor out of town.\nWe fit models, present them as regression tables with modelsummary, and visualize them as coefficient plots. Second half of the tables sequence, following last week’s gt/nano-tables work.",
     "crumbs": [
       "Weekly Materials",
       "Week 11"
@@ -264,7 +297,18 @@
     "href": "weeks/week-11.html#slides",
     "title": "Week 11",
     "section": "Slides",
-    "text": "Slides\n🖥️ Shiny Apps\n🖥️ Scatter Plot App",
+    "text": "Slides\n🖥️ Regression Tables",
+    "crumbs": [
+      "Weekly Materials",
+      "Week 11"
+    ]
+  },
+  {
+    "objectID": "weeks/week-11.html#readings",
+    "href": "weeks/week-11.html#readings",
+    "title": "Week 11",
+    "section": "Readings",
+    "text": "Readings\n📖 Healy, ch. 6: Work with Models\n📖 Fearon & Laitin, “Ethnicity, Insurgency, and Civil War”",
     "crumbs": [
       "Weekly Materials",
       "Week 11"
@@ -275,7 +319,7 @@
     "href": "weeks/week-11.html#assignments",
     "title": "Week 11",
     "section": "Assignments",
-    "text": "Assignments\n📘 Weekly quiz, in class",
+    "text": "Assignments\n🧪 Lab 4: Tables & coefficient plots\n📘 Weekly quiz, in class",
     "crumbs": [
       "Weekly Materials",
       "Week 11"
@@ -286,7 +330,7 @@
     "href": "weeks/week-1.html",
     "title": "Week 1",
     "section": "",
-    "text": "This week we get our tools set up and look at what data visualization can do. Session 1 is course overview and environment setup; session 2 shows off some inspiring examples.",
+    "text": "This week we get our tools set up: R, RStudio, Quarto and GitHub. Session 1 is course overview and the start of environment setup; session 2 continues setup.",
     "crumbs": [
       "Weekly Materials",
       "Week 1"
@@ -297,7 +341,7 @@
     "href": "weeks/week-1.html#slides",
     "title": "Week 1",
     "section": "Slides",
-    "text": "Slides\n🖥️ Getting Started, Part I\n🖥️ Getting Started, Part II",
+    "text": "Slides\n🖥️ Getting Started, Part I",
     "crumbs": [
       "Weekly Materials",
       "Week 1"
@@ -308,7 +352,7 @@
     "href": "weeks/week-1.html#readings",
     "title": "Week 1",
     "section": "Readings",
-    "text": "Readings\n📖 Healy, ch. 2: Get Started\n📖 Healy, ch. 1: Look at Data\n📖 A project-oriented workflow\n📖 Happy Git with R, chs 4, 6, 7, 9 & 12",
+    "text": "Readings\n📖 Healy, ch. 2: Get Started\n📖 A project-oriented workflow\n📖 Happy Git with R, chs 4, 6, 7, 9 & 12",
     "crumbs": [
       "Weekly Materials",
       "Week 1"
@@ -1741,7 +1785,7 @@
     "href": "project/project-description.html",
     "title": "Project Description",
     "section": "",
-    "text": "The capstone of this course is a Shiny app of your own design—an interactive tool that lets a user explore a data set and come away having learned something. You will pull together the whole arc of the course: getting and wrangling data, visualizing it well, and wrapping it in an interactive interface. Much of the work happens in class during the project studio sessions in the second half of the term, so you will not be building it alone.",
+    "text": "The capstone of this course is a final project that pulls together the whole arc of the course: getting and wrangling data, and visualizing it well. You have two tracks to choose from:\n\nShiny app — an interactive tool of your own design that lets a user explore a data set and come away having learned something, wrapped in an interactive interface.\nReport — a polished written report built around at least one well-crafted, labeled visualization.\n\nBoth tracks share the same proposal and studio schedule. Much of the work happens in class during the project studio sessions in the second half of the term, so you will not be building it alone. Choose the app track if you want the challenge of interactivity; choose the report track if you’d rather put your energy into the writing and the visualization itself. Either way, see Final Project for the deliverable specifics.",
     "crumbs": [
       "Project",
       "Description"
@@ -1752,7 +1796,7 @@
     "href": "project/project-description.html#overview",
     "title": "Project Description",
     "section": "",
-    "text": "The capstone of this course is a Shiny app of your own design—an interactive tool that lets a user explore a data set and come away having learned something. You will pull together the whole arc of the course: getting and wrangling data, visualizing it well, and wrapping it in an interactive interface. Much of the work happens in class during the project studio sessions in the second half of the term, so you will not be building it alone.",
+    "text": "The capstone of this course is a final project that pulls together the whole arc of the course: getting and wrangling data, and visualizing it well. You have two tracks to choose from:\n\nShiny app — an interactive tool of your own design that lets a user explore a data set and come away having learned something, wrapped in an interactive interface.\nReport — a polished written report built around at least one well-crafted, labeled visualization.\n\nBoth tracks share the same proposal and studio schedule. Much of the work happens in class during the project studio sessions in the second half of the term, so you will not be building it alone. Choose the app track if you want the challenge of interactivity; choose the report track if you’d rather put your energy into the writing and the visualization itself. Either way, see Final Project for the deliverable specifics.",
     "crumbs": [
       "Project",
       "Description"
@@ -1763,7 +1807,7 @@
     "href": "project/project-description.html#working-in-groups",
     "title": "Project Description",
     "section": "Working in groups",
-    "text": "Working in groups\nYou may complete the project on your own or in a group of up to three students. Groups are optional, but if you form one:\n\nKeep it to three students maximum.\nDivide the work clearly. In your proposal and again with your final submission, include a short statement of who is responsible for what (for example: data wrangling, UI design, server logic, write-up). Every member should contribute meaningfully to the code.\nYou will submit one app per group, and all members share the grade. Because of the group element, the project is weighted so that it is a meaningful—but not dominant—part of your grade.",
+    "text": "Working in groups\nYou may complete the project on your own or in a group of up to three students. Groups are optional, but if you form one:\n\nKeep it to three students maximum.\nDivide the work clearly. In your proposal and again with your final submission, include a short statement of who is responsible for what (for example: data wrangling, UI design, server logic, write-up). Every member should contribute meaningfully to the code.\nYou will submit one app or report per group, and all members share the grade. Because of the group element, the project is weighted so that it is a meaningful—but not dominant—part of your grade.",
     "crumbs": [
       "Project",
       "Description"
@@ -1774,7 +1818,7 @@
     "href": "project/project-description.html#what-makes-a-good-project",
     "title": "Project Description",
     "section": "What makes a good project",
-    "text": "What makes a good project\n\nA clear question or theme a user can explore.\nA data set that is comprehensive and convenient to work with (course data or another source—there is no time for original data collection).\nAt least one well-crafted, labeled visualization that responds to user input.\nA thoughtful interface: the controls should change the output in a way that teaches the user something.",
+    "text": "What makes a good project\n\nA clear question or theme a user can explore.\nA data set that is comprehensive and convenient to work with (course data or another source—there is no time for original data collection).\nAt least one well-crafted, labeled visualization that responds to user input (app track) or anchors the write-up (report track).\nApp track: a thoughtful interface where the controls change the output in a way that teaches the user something. Report track: clear, well-supported writing that puts the visualization to work.",
     "crumbs": [
       "Project",
       "Description"
@@ -1785,7 +1829,7 @@
     "href": "project/project-description.html#deliverables-and-timeline",
     "title": "Project Description",
     "section": "Deliverables and timeline",
-    "text": "Deliverables and timeline\n\n\n\nWhen\nDeliverable\n\n\n\n\nWeek 8 (flex session)\nProject proposal — commit to an idea, layout, data, and the interaction you envision. See Project Proposal.\n\n\nWeeks 13, 15\nProject studios — build and troubleshoot your app in class, with optional check-in meetings.\n\n\nWeek 16\nFinal app + live presentation — deploy your app and demo it for the class. See Final Project.\n\n\n\nFor ideas about data to work with, see the Datasets page.",
+    "text": "Deliverables and timeline\n\n\n\nWhen\nDeliverable\n\n\n\n\nWeek 9 (flex session)\nProject proposal — commit to an idea, track (app or report), data, and layout. See Project Proposal.\n\n\nWeeks 12, 13, 15\nProject studios — build and troubleshoot your app or draft your report in class, with optional check-in meetings.\n\n\nWeek 16\nFinal project + live presentation — deploy your app (or finalize your report) and present it to the class. See Final Project.\n\n\n\nFor ideas about data to work with, see the Datasets page.",
     "crumbs": [
       "Project",
       "Description"
@@ -2359,7 +2403,7 @@
     "href": "index.html",
     "title": "Course Schedule",
     "section": "",
-    "text": "Topic\nDate\nSkills\nReadings\nReference\nSlides\nVideos\nAssignments\n\n\n\n\nGetting Started\nAug 25\nCourse overview & environment setup\n📖\n📖 📖\n🖥️\n🖥️🖥️🖥️\n\n\n\n\nAug 27\nVisualization examples: make a map, plot democracy over time, UN voting trends\n📖\n\n🖥️\n\n\n\n\nCharting With ggplot2\nSep 1\nBar charts & histograms\n📖\n📖📖\n🖥️\n🖥️🖥️\n\n\n\n\nSep 3\nLine charts & scatter plots\n📖\n📖\n🖥️\n🖥️🖥️\n\n\n\nColor, Themes & Annotations\nSep 8\nColor schemes\n📖 📖\n📖\n🖥️\n🖥️\n\n\n\n\nSep 10\nThemes, annotations & interactivity\n📖\n📖\n🖥️\n🖥️🖥️🖥️\n🧪\n\n\nReading & Reshaping Data\nSep 15\nRead data into R\n\n📖\n🖥️\n🖥️\n\n\n\n\nSep 17\nReshape & clean data\n\n📖\n🖥️\n🖥️🖥️\n\n\n\nImporting & Merging Data\nSep 22\nDownload data from APIs\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nSep 24\nMerge, group, summarize & arrange\n\n📖 📖\n🖥️\n🖥️🖥️🖥️\n🧪\n\n\nChoropleth Maps\nSep 29\nMap data with choropleth maps\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 1\nTurn your map into a function\n📖\n📖\n🖥️\n🖥️\n\n\n\nInteractive Maps\nOct 6\nMake a leaflet map\n\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 8\nCustomize your interactive map\n\n\n\n🖥️\n🧪\n\n\n\nOct 13\nNo class, fall break\n\n🍁🍂🎃\n\n\n\n\n\n\nOct 15\nFlex session: what makes good data viz? + brainstorm your final project\n\n\n\n\n✍️\n\n\nTables\nOct 20\nExplore tabular data\n\n\n🖥️\n\n\n\n\n\nOct 22\nMake a gt table & confidence intervals\n\n\n🖥️\n\n\n\n\nModels & Coefficient Plots\nOct 27\nRun models & display regression tables\n📖 📖\n\n🖥️\n🖥️\n\n\n\n\nOct 29\nRegression tables & coefficient plots\n\n\n\n🖥️🖥️\n🧪\n\n\nBuilding a Shiny App\nNov 3\nApp setup & building the UI\n\n\n🖥️\n🖥️🖥️\n\n\n\n\nNov 5\nBuilding the server\n\n\n🖥️\n🖥️\n\n\n\nExtending Your App\nNov 10\nAdd inputs & a time-series app\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nNov 12\nShiny modules\n\n\n🖥️\n\n\n\n\nStyling & Troubleshooting\nNov 17\nStyle your app with bslib & dashboards\n\n\n🖥️\n\n\n\n\n\nNov 19\nDebugging & app-building tips\n\n\n🖥️\n🖥️\n\n\n\n\nNov 24\nNo class, Thanksgiving break\n\n🦃🥧🍂\n\n\n\n\n\n\nNov 26\nNo class, Thanksgiving break\n\n\n\n\n\n\n\nDeploying & Sharing\nDec 1\nDeploy & share your app (shinyapps.io) + studio time\n\n\n\n🖥️\n\n\n\n\nDec 3\nProject Studio: peer feedback & dry-run presentations\n\n\n\n\n\n\n\n\nDec 8\nFinal presentations / lightning talks",
+    "text": "Note\n\n\n\nFinal project, two tracks: build a Shiny app or produce a polished written report with a well-crafted visualization. Both tracks share the same proposal (flex session) and studio weeks; app-specific material (styling, deployment, troubleshooting) is optional and linked from the Project Studio week for students building an app. See the Project Description.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTopic\nDate\nSkills\nReadings\nReference\nSlides\nVideos\nAssignments\n\n\n\n\nGetting Started With RStudio & Quarto\nAug 25\nCourse overview & environment setup\n📖\n📖 📖\n🖥️\n🖥️🖥️🖥️\n\n\n\n\nAug 27\nRStudio, Quarto & GitHub setup (cont’d)\n\n\n\n\n\n\n\nR Programming Basics & Visualization Examples\nSep 1\nR programming basics\n\n\n🖥️\n\n\n\n\n\nSep 3\nThree visualization examples: make a map, plot democracy over time, UN voting trends\n📖\n\n🖥️\n\n\n\n\nCharting With ggplot2\nSep 8\nBar charts & histograms\n📖\n📖📖\n🖥️\n🖥️🖥️\n\n\n\n\nSep 10\nLine charts & scatter plots\n📖\n📖\n🖥️\n🖥️🖥️\n\n\n\nColor, Themes & Annotations\nSep 15\nColor schemes\n📖 📖\n📖\n🖥️\n🖥️\n\n\n\n\nSep 17\nThemes, annotations & interactivity\n📖\n📖\n🖥️\n🖥️🖥️🖥️\n🧪\n\n\nReading & Reshaping Data\nSep 22\nRead data into R\n\n📖\n🖥️\n🖥️\n\n\n\n\nSep 24\nReshape & clean data\n\n📖\n🖥️\n🖥️🖥️\n\n\n\nImporting & Merging Data\nSep 29\nDownload data from APIs\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 1\nMerge, group, summarize & arrange\n\n📖 📖\n🖥️\n🖥️🖥️🖥️\n🧪\n\n\nChoropleth Maps\nOct 6\nMap data with choropleth maps\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 8\nTurn your map into a function\n📖\n📖\n🖥️\n🖥️\n\n\n\n\nOct 13\nNo class, fall break\n\n🍁🍂🎃\n\n\n\n\n\nInteractive Maps\nOct 15\nMake a leaflet map\n\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 20\nCustomize your interactive map\n\n\n\n🖥️\n🧪\n\n\n\nOct 22\nFlex session: what makes good data viz? + brainstorm your final project\n\n\n\n\n✍️\n\n\nTables\nOct 27\nExplore tabular data\n\n\n🖥️\n\n\n\n\n\nOct 29\nMake a gt table & confidence intervals\n\n\n🖥️\n\n\n\n\nModels & Coefficient Plots\nNov 3\nRun models & display regression tables\n📖 📖\n\n🖥️\n🖥️\n\n\n\n\nNov 5\nRegression tables & coefficient plots (recorded — no live class)\n\n\n\n🖥️🖥️\n🧪\n\n\nBuilding a Shiny App\nNov 10\nApp setup & building the UI\n\n\n🖥️\n🖥️🖥️\n\n\n\n\nNov 12\nBuilding the server\n\n\n🖥️\n🖥️\n\n\n\nExtending Your App\nNov 17\nAdd inputs & a time-series app\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nNov 19\nShiny modules\n\n\n🖥️\n\n\n\n\n\nNov 24\nNo class, Thanksgiving break\n\n🦃🥧🍂\n\n\n\n\n\n\nNov 26\nNo class, Thanksgiving break\n\n\n\n\n\n\n\nDeploying & Sharing / Project Studio\nDec 1\nDeploy & share your app (shinyapps.io) + studio time (app track) or finish your report (report track)\n\n\n\n🖥️\n\n\n\n\nDec 3\nProject Studio: peer feedback & dry-run presentations\n\n\n\n\n\n\n\n\nDec 8\nFinal presentations / lightning talks",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -2480,7 +2524,7 @@
     "href": "course-syllabus.html#how-you-will-learn-and-demonstrate-knowledge",
     "title": "Course Syllabus",
     "section": "How You Will Learn and Demonstrate Knowledge",
-    "text": "How You Will Learn and Demonstrate Knowledge\nMy aim is to provide you opportunities for active learning and skills development that help you meet course learning objectives and also grow in your knowledge of this field.\n\nInstruction\nI’ve designed the following instructional components to support your learning and growth in the course.\n\nLecture Videos: Each week you will be responsible for watching or listening to video mini-lectures and/or podcasts. These media support provide you essential information in order to complete course activities and assessments. Please note that recorded lectures and podcasts are not a substitute for required readings.\nTutorial Videos: Each week you have the opportunity to explore a topic further by watching additional videos. These draw on the expertise of various organizations or individuals and can be used to help you complete activities and assessments.\nReadings: Each week you will be responsible for various reading assignments. The readings contain essential content for completing the course assignments.\n\n\n\nAssessment\nThe following assessments help you gauge and demonstrate your progress in the course and support you in meeting course learning objectives.\n\nDiscord: We will discuss course topics further through the Discord. Please post your questions and help other students with their questions when you can.\nIn-class labs: Most weeks you will work through a hands-on lab with your group during class. Labs let you apply new skills to real data while you have your classmates and me on hand to help.\nQuizzes: Short in-class quizzes give you—and me—a quick read on how well the week’s material and readings are landing. They provide immediate feedback and support ongoing learning.\nFinal Project: You will design and build your own interactive data visualization application (a Shiny app) as your final project, developed over the second half of the semester and presented in class during our final session.\n\nYou’ll find support for Blackboard and other tools used for course activities and assignments under the Technology Support link in the left navigation menu in our course on Blackboard.",
+    "text": "How You Will Learn and Demonstrate Knowledge\nMy aim is to provide you opportunities for active learning and skills development that help you meet course learning objectives and also grow in your knowledge of this field.\n\nInstruction\nI’ve designed the following instructional components to support your learning and growth in the course.\n\nLecture Videos: Each week you will be responsible for watching or listening to video mini-lectures and/or podcasts. These media support provide you essential information in order to complete course activities and assessments. Please note that recorded lectures and podcasts are not a substitute for required readings.\nTutorial Videos: Each week you have the opportunity to explore a topic further by watching additional videos. These draw on the expertise of various organizations or individuals and can be used to help you complete activities and assessments.\nReadings: Each week you will be responsible for various reading assignments. The readings contain essential content for completing the course assignments.\n\n\n\nAssessment\nThe following assessments help you gauge and demonstrate your progress in the course and support you in meeting course learning objectives.\n\nDiscord: We will discuss course topics further through the Discord. Please post your questions and help other students with their questions when you can.\nIn-class labs: Most weeks you will work through a hands-on lab with your group during class. Labs let you apply new skills to real data while you have your classmates and me on hand to help.\nQuizzes: Short in-class quizzes give you—and me—a quick read on how well the week’s material and readings are landing. They provide immediate feedback and support ongoing learning.\nFinal Project: You will design and build your own interactive Shiny app, or write a polished report built around a well-crafted visualization, as your final project. Either way, it’s developed over the second half of the semester and presented in class during our final session.\n\nYou’ll find support for Blackboard and other tools used for course activities and assignments under the Technology Support link in the left navigation menu in our course on Blackboard.",
     "crumbs": [
       "Course information",
       "Syllabus"
@@ -2502,7 +2546,7 @@
     "href": "course-syllabus.html#assignments",
     "title": "Course Syllabus",
     "section": "Assignments",
-    "text": "Assignments\n\nIn-class labs (50%)\nQuizzes (20%)\nFinal project (30%)\n\nBecause your labs and quizzes are completed in class, a large share of your grade rewards showing up and engaging with the material in person.\n\nIn-class labs\nYou will complete four hands-on labs—on plotting, wrangling, maps, and tables and models—worked through with your group during class and meant to be mostly finished in the class period. Labs are where you apply new skills to real data. See the Policy on AI Tools for how AI may be used in labs.\n\n\nQuizzes\nYou will complete short in-class quizzes on the week’s readings and core concepts. Because they check your own understanding, quizzes are completed individually and without AI. I will drop your two lowest quiz scores; please do not email me about missed quizzes.\n\n\nFinal Project\nYou will design and build an interactive R Shiny app, developed over the second half of the semester during our in-class project studios and presented to the class at the end of the term. You may work on your own or in a group of up to three, with a clear division of responsibilities. Full details, including the group policy, are on the Project Description page.",
+    "text": "Assignments\n\nIn-class labs (50%)\nQuizzes (20%)\nFinal project (30%)\n\nBecause your labs and quizzes are completed in class, a large share of your grade rewards showing up and engaging with the material in person.\n\nIn-class labs\nYou will complete four hands-on labs—on plotting, wrangling, maps, and tables and models—worked through with your group during class and meant to be mostly finished in the class period. Labs are where you apply new skills to real data. See the Policy on AI Tools for how AI may be used in labs.\n\n\nQuizzes\nYou will complete short in-class quizzes on the week’s readings and core concepts. Because they check your own understanding, quizzes are completed individually and without AI. I will drop your two lowest quiz scores; please do not email me about missed quizzes.\n\n\nFinal Project\nYou will design and build an interactive R Shiny app, or write a report built around a well-crafted visualization—your choice of track—developed over the second half of the semester during our in-class project studios and presented to the class at the end of the term. You may work on your own or in a group of up to three, with a clear division of responsibilities. Full details, including the group policy, are on the Project Description page.",
     "crumbs": [
       "Course information",
       "Syllabus"
@@ -3256,7 +3300,7 @@
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Project Studio"
+      "Project Studio (optional: styling & troubleshooting)"
     ]
   },
   {
@@ -3268,7 +3312,7 @@
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Project Studio"
+      "Project Studio (optional: styling & troubleshooting)"
     ]
   },
   {
@@ -3280,7 +3324,7 @@
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Project Studio"
+      "Project Studio (optional: styling & troubleshooting)"
     ]
   },
   {
@@ -3292,7 +3336,7 @@
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Project Studio"
+      "Project Studio (optional: styling & troubleshooting)"
     ]
   },
   {
@@ -3304,7 +3348,7 @@
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Project Studio"
+      "Project Studio (optional: styling & troubleshooting)"
     ]
   },
   {
@@ -3316,7 +3360,7 @@
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Project Studio"
+      "Project Studio (optional: styling & troubleshooting)"
     ]
   },
   {
@@ -3328,7 +3372,7 @@
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Project Studio"
+      "Project Studio (optional: styling & troubleshooting)"
     ]
   },
   {
@@ -3340,7 +3384,7 @@
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Project Studio"
+      "Project Studio (optional: styling & troubleshooting)"
     ]
   },
   {
@@ -3352,7 +3396,7 @@
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Project Studio"
+      "Project Studio (optional: styling & troubleshooting)"
     ]
   },
   {
@@ -3364,7 +3408,7 @@
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Project Studio"
+      "Project Studio (optional: styling & troubleshooting)"
     ]
   },
   {
@@ -5039,7 +5083,7 @@
     "href": "weeks/week-10.html",
     "title": "Week 10",
     "section": "",
-    "text": "Important\n\n\n\nLab 4 (Tables & coefficient plots) due by 11:59 p.m. on Monday, November 2.\nWe fit models, present them as regression tables with modelsummary, and visualize them as coefficient plots.",
+    "text": "We build polished tables of data with kableExtra and gt, and add confidence intervals.",
     "crumbs": [
       "Weekly Materials",
       "Week 10"
@@ -5050,18 +5094,7 @@
     "href": "weeks/week-10.html#slides",
     "title": "Week 10",
     "section": "Slides",
-    "text": "Slides\n🖥️ Regression Tables",
-    "crumbs": [
-      "Weekly Materials",
-      "Week 10"
-    ]
-  },
-  {
-    "objectID": "weeks/week-10.html#readings",
-    "href": "weeks/week-10.html#readings",
-    "title": "Week 10",
-    "section": "Readings",
-    "text": "Readings\n📖 Healy, ch. 6: Work with Models\n📖 Fearon & Laitin, “Ethnicity, Insurgency, and Civil War”",
+    "text": "Slides\n🖥️ Making Tables\n🖥️ Advanced Table Skills",
     "crumbs": [
       "Weekly Materials",
       "Week 10"
@@ -5072,7 +5105,7 @@
     "href": "weeks/week-10.html#assignments",
     "title": "Week 10",
     "section": "Assignments",
-    "text": "Assignments\n🧪 Lab 4: Tables & coefficient plots\n📘 Weekly quiz, in class",
+    "text": "Assignments\n📘 Weekly quiz, in class",
     "crumbs": [
       "Weekly Materials",
       "Week 10"
@@ -5083,7 +5116,7 @@
     "href": "weeks/week-12.html",
     "title": "Week 12",
     "section": "",
-    "text": "We add more inputs and build a time-series app with observers and reactives, then learn to factor app code into reusable Shiny modules.",
+    "text": "We start building interactive Shiny apps: the user interface, the server, and reactivity.",
     "crumbs": [
       "Weekly Materials",
       "Week 12"
@@ -5094,18 +5127,7 @@
     "href": "weeks/week-12.html#slides",
     "title": "Week 12",
     "section": "Slides",
-    "text": "Slides\n🖥️ Observers and Reactives\n🖥️ Modules",
-    "crumbs": [
-      "Weekly Materials",
-      "Week 12"
-    ]
-  },
-  {
-    "objectID": "weeks/week-12.html#readings",
-    "href": "weeks/week-12.html#readings",
-    "title": "Week 12",
-    "section": "Readings",
-    "text": "Readings\n📖 Huntington, “Democracy’s Third Wave”",
+    "text": "Slides\n🖥️ Shiny Apps\n🖥️ Scatter Plot App",
     "crumbs": [
       "Weekly Materials",
       "Week 12"
@@ -5138,7 +5160,7 @@
     "href": "weeks/week-16.html",
     "title": "Week 16",
     "section": "",
-    "text": "Important\n\n\n\nFinal project due — present your app in class on Tuesday, December 8.\nWe wrap up the term with lightning-talk presentations of everyone’s Shiny apps.",
+    "text": "Important\n\n\n\nFinal project due — present your app or report in class on Tuesday, December 8.\nWe wrap up the term with lightning-talk presentations of everyone’s final projects, Shiny apps and reports alike.",
     "crumbs": [
       "Weekly Materials",
       "Week 16"
@@ -5149,7 +5171,7 @@
     "href": "weeks/week-16.html#assignments",
     "title": "Week 16",
     "section": "Assignments",
-    "text": "Assignments\n✍️ Final Project",
+    "text": "Assignments",
     "crumbs": [
       "Weekly Materials",
       "Week 16"
@@ -5160,7 +5182,7 @@
     "href": "weeks/week-3.html",
     "title": "Week 3",
     "section": "",
-    "text": "Important\n\n\n\nLab 1 (Plotting) due by 11:59 p.m. on Monday, September 14.\nWe make our plots readable and beautiful: color schemes, themes, annotations, and interactivity.",
+    "text": "We start making plots right away with ggplot2, using clean data so we can focus on the visualization.",
     "crumbs": [
       "Weekly Materials",
       "Week 3"
@@ -5171,7 +5193,7 @@
     "href": "weeks/week-3.html#slides",
     "title": "Week 3",
     "section": "Slides",
-    "text": "Slides\n🖥️ Accessibility and Color Schemes\n🖥️ Themes, Annotations and Interactivity",
+    "text": "Slides\n🖥️ Grammar of Graphics\n🖥️ Which Visualization Should I Use?",
     "crumbs": [
       "Weekly Materials",
       "Week 3"
@@ -5182,7 +5204,7 @@
     "href": "weeks/week-3.html#readings",
     "title": "Week 3",
     "section": "Readings",
-    "text": "Readings\n📖 Healy, ch. 8: Refine Your Plots\n📖 Healy, ch. 5: Graph Tables, Add Labels, Make Notes\n📖 Lipset, “Some Social Requisites of Democracy”\n📖 r4ds, 12.4\n📖 r4ds, 12.3 & 12.5",
+    "text": "Readings\n📖 Healy, ch. 3: Make a Plot\n📖 r4ds, 2\n📖 r4ds, 12.2\n📖 Healy, ch. 4: Show the Right Numbers\n📖 r4ds, 10.1-10.4",
     "crumbs": [
       "Weekly Materials",
       "Week 3"
@@ -5193,7 +5215,7 @@
     "href": "weeks/week-3.html#videos",
     "title": "Week 3",
     "section": "Videos",
-    "text": "Videos\n🖥️ Color schemes\n🖥️ Themes\n🖥️ Annotations\n🖥️ Interactivity",
+    "text": "Videos\n🖥️ Bar charts\n🖥️ Histograms\n🖥️ Line charts\n🖥️ Scatter plots",
     "crumbs": [
       "Weekly Materials",
       "Week 3"
@@ -5204,7 +5226,7 @@
     "href": "weeks/week-3.html#assignments",
     "title": "Week 3",
     "section": "Assignments",
-    "text": "Assignments\n🧪 Lab 1: Plotting\n📘 Weekly quiz, in class",
+    "text": "Assignments\n📘 Weekly quiz, in class",
     "crumbs": [
       "Weekly Materials",
       "Week 3"
@@ -5215,7 +5237,7 @@
     "href": "weeks/week-5.html",
     "title": "Week 5",
     "section": "",
-    "text": "Important\n\n\n\nLab 2 (Wrangling) due by 11:59 p.m. on Monday, September 28.\nWe pull data straight from APIs and merge sources into a single tidy data frame.",
+    "text": "Now that we can plot, we learn to get data into R and shape it into tidy form.",
     "crumbs": [
       "Weekly Materials",
       "Week 5"
@@ -5226,7 +5248,7 @@
     "href": "weeks/week-5.html#slides",
     "title": "Week 5",
     "section": "Slides",
-    "text": "Slides\n🖥️ Working With Data\n🖥️ Merging and Summarizing Data",
+    "text": "Slides\n🖥️ Understanding Data\n🖥️ Wrangling Data",
     "crumbs": [
       "Weekly Materials",
       "Week 5"
@@ -5237,7 +5259,7 @@
     "href": "weeks/week-5.html#readings",
     "title": "Week 5",
     "section": "Readings",
-    "text": "Readings\n📖 Norris, “Electoral Reform and Women’s Representation”\n📖 r4ds, 20.3\n📖 r4ds, 4.5",
+    "text": "Readings\n📖 r4ds, 8.1 & 8.2\n📖 r4ds, 6.1 & 6.3",
     "crumbs": [
       "Weekly Materials",
       "Week 5"
@@ -5248,7 +5270,7 @@
     "href": "weeks/week-5.html#videos",
     "title": "Week 5",
     "section": "Videos",
-    "text": "Videos\n🖥️ Download data from the World Bank\n🖥️ Download data from V-Dem\n🖥️ Add country codes\n🖥️ Merge two data frames\n🖥️ Group, summarize and arrange",
+    "text": "Videos\n🖥️ Reading data into R\n🖥️ Reshaping data\n🖥️ Cleaning data in R",
     "crumbs": [
       "Weekly Materials",
       "Week 5"
@@ -5259,7 +5281,7 @@
     "href": "weeks/week-5.html#assignments",
     "title": "Week 5",
     "section": "Assignments",
-    "text": "Assignments\n🧪 Lab 2: Wrangling\n📘 Weekly quiz, in class",
+    "text": "Assignments\n📘 Weekly quiz, in class",
     "crumbs": [
       "Weekly Materials",
       "Week 5"
@@ -5270,7 +5292,7 @@
     "href": "weeks/week-7.html",
     "title": "Week 7",
     "section": "",
-    "text": "Important\n\n\n\nLab 3 (Maps) due by 11:59 p.m. on Monday, October 12 (or as announced given fall break).\nWe build interactive maps with leaflet and customize them with markers, popups, and basemaps.",
+    "text": "We map data with static choropleth maps and learn to wrap our map code in a reusable function.",
     "crumbs": [
       "Weekly Materials",
       "Week 7"
@@ -5281,7 +5303,18 @@
     "href": "weeks/week-7.html#slides",
     "title": "Week 7",
     "section": "Slides",
-    "text": "Slides\n🖥️ Leaflet Maps",
+    "text": "Slides\n🖥️ Choropleth Maps\n🖥️ Make a Map Function",
+    "crumbs": [
+      "Weekly Materials",
+      "Week 7"
+    ]
+  },
+  {
+    "objectID": "weeks/week-7.html#readings",
+    "href": "weeks/week-7.html#readings",
+    "title": "Week 7",
+    "section": "Readings",
+    "text": "Readings\n📖 Healy, ch. 7: Draw Maps\n📖 Ross, The Oil Curse, ch. 3\n📖 r4ds, ch. 25 (functions)",
     "crumbs": [
       "Weekly Materials",
       "Week 7"
@@ -5292,7 +5325,7 @@
     "href": "weeks/week-7.html#videos",
     "title": "Week 7",
     "section": "Videos",
-    "text": "Videos\n🖥️ Upload UCDP data\n🖥️ Make a leaflet map\n🖥️ Customize your map",
+    "text": "Videos\n🖥️ Choropleth maps\n🖥️ Map World Bank data\n🖥️ Turn your map into a function",
     "crumbs": [
       "Weekly Materials",
       "Week 7"
@@ -5303,7 +5336,7 @@
     "href": "weeks/week-7.html#assignments",
     "title": "Week 7",
     "section": "Assignments",
-    "text": "Assignments\n🧪 Lab 3: Maps\n📘 Weekly quiz, in class",
+    "text": "Assignments\n📘 Weekly quiz, in class",
     "crumbs": [
       "Weekly Materials",
       "Week 7"
@@ -5314,18 +5347,18 @@
     "href": "weeks/week-9.html",
     "title": "Week 9",
     "section": "",
-    "text": "We build polished tables of data with kableExtra and gt, and add confidence intervals.",
+    "text": "Important\n\n\n\nLab 3 (Maps) due by 11:59 p.m. on Monday, October 26. Project proposal due by 11:59 p.m. on Monday, November 2.\nTuesday we finish customizing our interactive leaflet map. Thursday is a flex session: we step back to talk about what makes good data visualization and brainstorm ideas for your final project (Shiny app or report).",
     "crumbs": [
       "Weekly Materials",
       "Week 9"
     ]
   },
   {
-    "objectID": "weeks/week-9.html#slides",
-    "href": "weeks/week-9.html#slides",
+    "objectID": "weeks/week-9.html#videos",
+    "href": "weeks/week-9.html#videos",
     "title": "Week 9",
-    "section": "Slides",
-    "text": "Slides\n🖥️ Making Tables\n🖥️ Advanced Table Skills",
+    "section": "Videos",
+    "text": "Videos\n🖥️ Customize your map",
     "crumbs": [
       "Weekly Materials",
       "Week 9"
@@ -5336,7 +5369,7 @@
     "href": "weeks/week-9.html#assignments",
     "title": "Week 9",
     "section": "Assignments",
-    "text": "Assignments\n📘 Weekly quiz, in class",
+    "text": "Assignments\n🧪 Lab 3: Maps\n✍️ Project Proposal\n📘 Weekly quiz, in class",
     "crumbs": [
       "Weekly Materials",
       "Week 9"

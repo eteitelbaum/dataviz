@@ -1,6 +1,6 @@
 ---
 title: "Week 2"
-subtitle: "Charting With ggplot2"
+subtitle: "R Programming Basics & Three Visualization Examples"
 format: html
 ---
 
@@ -10,28 +10,16 @@ format: html
 source("../helper.R")
 ```
 
-We start making plots right away with `ggplot2`, using clean data so we can focus on the visualization.
+Now that our tools are set up, we spend session 1 on R programming basics, then session 2 shows off some inspiring examples: make a map, plot democracy over time, and chart UN voting trends.
 
 ## Slides
 
-| 🖥️ [Grammar of Graphics](/slides/week-2.1.qmd)
-| 🖥️ [Which Visualization Should I Use?](/slides/week-2.2.qmd)
+| 🖥️ [Getting Started, Part II](/slides/week-1.2.qmd)
 
 ## Readings
 
-| 📖 [Healy, ch. 3: Make a Plot](https://socviz.co/03-ggplot-basics.html)
-| 📖 [Healy, ch. 4: Show the Right Numbers](https://socviz.co/04-group-facet-transform.html)
-| 📖 [r4ds, ch. 2](https://r4ds.hadley.nz/data-visualize.html)
-| 📖 [r4ds, 10.1-10.4](https://r4ds.hadley.nz/layers.html)
-| 📖 [r4ds, 12.2](https://r4ds.hadley.nz/communication.html#labels)
-
-## Videos
-
-| 🖥️ [Bar charts](https://youtu.be/QG1oDJPoIio)
-| 🖥️ [Histograms](https://youtu.be/-1YhCql-gMo)
-| 🖥️ [Line charts](https://youtu.be/PnmQ2MFQpIc)
-| 🖥️ [Scatter plots](https://youtu.be/FiosjUVyfLM)
+| 📖 [Healy, ch. 1: Look at Data](https://socviz.co/01-look-at-data.html)
 
 ## Assignments
 
-| 📘 Weekly quiz, in class
+| 📘 Weekly quiz, in class (see [Quizzes](/quiz.qmd))

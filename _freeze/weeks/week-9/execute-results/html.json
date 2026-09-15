@@ -1,8 +1,8 @@
 {
-  "hash": "9dafd088dd3d2d2d89b4d269ea56aa97",
+  "hash": "c1d41de70424c033732ff29ceb0cdf6f",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Week 9\"\nsubtitle: \"Tables\"\nformat: html\n---\n\n\n\nWe build polished tables of data with `kableExtra` and `gt`, and add confidence intervals.\n\n## Slides\n\n| 🖥️ [Making Tables](/slides/week-9.1.qmd)\n| 🖥️ [Advanced Table Skills](/slides/week-9.2.qmd)\n\n## Assignments\n\n| 📘 Weekly quiz, in class\n",
+    "markdown": "---\ntitle: \"Week 9\"\nsubtitle: \"Interactive Maps II & Flex Session\"\nformat: html\n---\n\n\n\n::: {.callout-important}\n**Lab 3 (Maps)** due by 11:59 p.m. on Monday, October 26. **Project proposal** due by 11:59 p.m. on Monday, November 2.\n:::\n\nTuesday we finish customizing our interactive `leaflet` map. Thursday is a flex session: we step back to talk about what makes good data visualization and brainstorm ideas for your final project (Shiny app or report).\n\n## Videos\n\n| 🖥️ [Customize your map](https://youtu.be/qLYeSsoDvgs)\n\n## Assignments\n\n| 🧪 [Lab 3: Maps](/assignments/lab-3.qmd)\n| ✍️ [Project Proposal](/project/project-assignment-1.qmd)\n| 📘 Weekly quiz, in class\n",
     "supporting": [
       "week-9_files"
     ],

@@ -1,6 +1,6 @@
 ---
 title: "Week 13"
-subtitle: "Styling & Troubleshooting Your App"
+subtitle: "Extending Your App"
 format: html
 ---
 
@@ -10,9 +10,21 @@ format: html
 source("../helper.R")
 ```
 
-We make our apps look good with `bslib` and dashboard layouts, then work through debugging techniques and practical tips for building your final project app.
+We add more inputs and build a time-series app with observers and reactives, then learn to factor app code into reusable Shiny modules.
+
+::: {.callout-note}
+[Styling Your App](/modules/module-6.1.qmd) and [Troubleshooting Your App](/modules/module-6.1.qmd) are now optional material for students building a Shiny app for their final project — work through them on your own if that's your track.
+:::
 
 ## Slides
 
-| 🖥️ [Styling Your App](/slides/week-13.1.qmd)
-| 🖥️ [Troubleshooting Your App](/slides/week-13.2.qmd)
+| 🖥️ [Observers and Reactives](/slides/week-12.1.qmd)
+| 🖥️ [Modules](/slides/week-12.2.qmd)
+
+## Readings
+
+| 📖 [Huntington, "Democracy's Third Wave"](https://muse-jhu-edu.proxygw.wrlc.org/article/225602)
+
+## Assignments
+
+| 📘 Weekly quiz, in class

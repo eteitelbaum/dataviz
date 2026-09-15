@@ -1,6 +1,6 @@
 ---
 title: "Week 8"
-subtitle: "Fall break & project ideation"
+subtitle: "Fall Break & Interactive Maps I"
 format: html
 ---
 
@@ -11,11 +11,20 @@ source("../helper.R")
 ```
 
 ::: {.callout-important}
-**No class Tuesday** (fall break). **Project proposal** due by 11:59 p.m. on `r advdate2(mon, 8)`.
+**No class Tuesday** (fall break).
 :::
 
-Thursday is a flex session: we step back to talk about what makes good data visualization and brainstorm ideas for your final project.
+Thursday we start building interactive maps with `leaflet`, customizing them with markers, popups, and basemaps. We finish this up next week.
+
+## Slides
+
+| 🖥️ [Leaflet Maps](/slides/week-7.1.qmd)
+
+## Videos
+
+| 🖥️ [Upload UCDP data](https://youtu.be/If2PwFv90iI)
+| 🖥️ [Make a leaflet map](https://youtu.be/hHUPqgHRqYU)
 
 ## Assignments
 
-| ✍️ [Project Proposal](/project/project-assignment-1.qmd)
+| 📘 Weekly quiz, in class

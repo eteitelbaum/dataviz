@@ -1,6 +1,6 @@
 ---
 title: "Week 12"
-subtitle: "Extending Your App"
+subtitle: "Building a Shiny App"
 format: html
 ---
 
@@ -10,16 +10,12 @@ format: html
 source("../helper.R")
 ```
 
-We add more inputs and build a time-series app with observers and reactives, then learn to factor app code into reusable Shiny modules.
+We start building interactive Shiny apps: the user interface, the server, and reactivity.
 
 ## Slides
 
-| 🖥️ [Observers and Reactives](/slides/week-12.1.qmd)
-| 🖥️ [Modules](/slides/week-12.2.qmd)
-
-## Readings
-
-| 📖 [Huntington, "Democracy's Third Wave"](https://muse-jhu-edu.proxygw.wrlc.org/article/225602)
+| 🖥️ [Shiny Apps](/slides/week-11.1.qmd)
+| 🖥️ [Scatter Plot App](/slides/week-11.2.qmd)
 
 ## Assignments
 

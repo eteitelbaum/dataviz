@@ -10,7 +10,11 @@ format: html
 source("../helper.R")
 ```
 
-We deploy and share our apps on shinyapps.io, then use the rest of the week for studio time: peer feedback and dry-run presentations to get your app ready for the final session.
+If you're building a Shiny app, we deploy and share it on shinyapps.io; if you're doing the report track, use this time to finalize your visualization and write-up. The rest of the week is studio time: peer feedback and dry-run presentations to get your project ready for the final session.
+
+::: {.callout-note}
+Building an app? [Styling Your App](/modules/module-6.1.qmd) and [Troubleshooting Your App](/modules/module-6.1.qmd) are optional reference material for polishing and debugging.
+:::
 
 ## Readings
 

@@ -1,11 +1,9 @@
 {
-  "hash": "46aefc1607e807adfb1ca45c43f0fffd",
+  "hash": "8887dfb142385362bb4fe1f74e58088a",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Week 7\"\nsubtitle: \"Interactive Maps\"\nformat: html\n---\n\n\n\n::: {.callout-important}\n**Lab 3 (Maps)** due by 11:59 p.m. on Monday, October 12 (or as announced given fall break).\n:::\n\nWe build interactive maps with `leaflet` and customize them with markers, popups, and basemaps.\n\n## Slides\n\n| 🖥️ [Leaflet Maps](/slides/week-7.1.qmd)\n\n## Videos\n\n| 🖥️ [Upload UCDP data](https://youtu.be/If2PwFv90iI)\n| 🖥️ [Make a leaflet map](https://youtu.be/hHUPqgHRqYU)\n| 🖥️ [Customize your map](https://youtu.be/qLYeSsoDvgs)\n\n## Assignments\n\n| 🧪 [Lab 3: Maps](/assignments/lab-3.qmd)\n| 📘 Weekly quiz, in class\n",
-    "supporting": [
-      "week-7_files"
-    ],
+    "markdown": "---\ntitle: \"Week 7\"\nsubtitle: \"Choropleth Maps\"\nformat: html\n---\n\n\n\nWe map data with static choropleth maps and learn to wrap our map code in a reusable function.\n\n## Slides\n\n| 🖥️ [Choropleth Maps](/slides/week-6.1.qmd)\n| 🖥️ [Make a Map Function](/slides/week-6.2.qmd)\n\n## Readings\n\n| 📖 [Healy, ch. 7: Draw Maps](https://socviz.co/07-maps.html)\n| 📖 [Ross, *The Oil Curse*, ch. 3](https://www-jstor-org.proxygw.wrlc.org/stable/j.ctt7s3wz.10)\n| 📖 [r4ds, ch. 25 (functions)](https://r4ds.hadley.nz/functions)\n\n## Videos\n\n| 🖥️ [Choropleth maps](https://youtu.be/HB3PMF93hzs)\n| 🖥️ [Map World Bank data](https://youtu.be/5RnnGov3Iw4)\n| 🖥️ [Turn your map into a function](https://youtu.be/m42vrbEEHT4)\n\n## Assignments\n\n| 📘 Weekly quiz, in class\n",
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],

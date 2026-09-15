@@ -1,6 +1,6 @@
 ---
 title: "Week 9"
-subtitle: "Tables"
+subtitle: "Interactive Maps II & Flex Session"
 format: html
 ---
 
@@ -10,13 +10,18 @@ format: html
 source("../helper.R")
 ```
 
-We build polished tables of data with `kableExtra` and `gt`, and add confidence intervals.
+::: {.callout-important}
+**Lab 3 (Maps)** due by 11:59 p.m. on `r advdate2(mon, 9)`. **Project proposal** due by 11:59 p.m. on `r advdate2(mon, 10)`.
+:::
 
-## Slides
+Tuesday we finish customizing our interactive `leaflet` map. Thursday is a flex session: we step back to talk about what makes good data visualization and brainstorm ideas for your final project (Shiny app or report).
 
-| 🖥️ [Making Tables](/slides/week-9.1.qmd)
-| 🖥️ [Advanced Table Skills](/slides/week-9.2.qmd)
+## Videos
+
+| 🖥️ [Customize your map](https://youtu.be/qLYeSsoDvgs)
 
 ## Assignments
 
+| 🧪 [Lab 3: Maps](/assignments/lab-3.qmd)
+| ✍️ [Project Proposal](/project/project-assignment-1.qmd)
 | 📘 Weekly quiz, in class
