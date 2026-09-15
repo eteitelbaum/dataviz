@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.7.31">
 
   <meta name="dcterms.date" content="2026-09-14">
-  <title>PSC/DATS 2102--Course Schedule – R Programming Basics</title>
+  <title>PSC/DATS 2102--Course Schedule – Three DataViz Examples</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -190,13 +190,23 @@
       margin-right: 0; 
     }
   </style>
+  <link href="../site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+  <script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+  <script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <link href="../site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+  <script src="../site_libs/leaflet-1.3.1/leaflet.js"></script>
+  <link href="../site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+  <script src="../site_libs/proj4-2.6.2/proj4.min.js"></script>
+  <script src="../site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+  <link href="../site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+  <script src="../site_libs/leaflet-binding-2.2.3/leaflet.js"></script>
   <link href="../site_libs/countdown-0.6.0/countdown.css" rel="stylesheet">
   <script src="../site_libs/countdown-0.6.0/countdown.js"></script>
-<meta property="og:title" content="R Programming Basics – PSC/DATS 2102–Course Schedule">
-<meta property="og:description" content="Functions, Packages, and Objects">
+<meta property="og:title" content="Three DataViz Examples – PSC/DATS 2102–Course Schedule">
+<meta property="og:description" content="Maps, Democracy Trends, and UN Voting">
 <meta property="og:site_name" content="PSC/DATS 2102--Course Schedule">
-<meta name="twitter:title" content="R Programming Basics – PSC/DATS 2102–Course Schedule">
-<meta name="twitter:description" content="Functions, Packages, and Objects">
+<meta name="twitter:title" content="Three DataViz Examples – PSC/DATS 2102–Course Schedule">
+<meta name="twitter:description" content="Maps, Democracy Trends, and UN Voting">
 <meta name="twitter:card" content="summary">
 </head>
 <body class="quarto-dark">
@@ -204,8 +214,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">R Programming Basics</h1>
-  <p class="subtitle">Functions, Packages, and Objects</p>
+  <h1 class="title">Three DataViz Examples</h1>
+  <p class="subtitle">Maps, Democracy Trends, and UN Voting</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -215,197 +225,124 @@
 <section id="plan-for-today" class="slide level2">
 <h2>Plan for Today</h2>
 <ul>
-<li>Learn about R packages and functions</li>
-<li>Explore objects and how to store data</li>
-<li>Practice using some common base R functions</li>
+<li>Go over three visualization examples on Posit Cloud</li>
+<li>Make a map</li>
+<li>Plot democracy over time</li>
+<li>Plot UN voting trends</li>
 </ul>
 </section>
-<section>
-<section id="a-bit-about-r" class="title-slide slide level1 center">
-<h1>A Bit About R</h1>
-
-</section>
-<section id="r-packages-and-functions" class="slide level2 smaller">
-<h2>R Packages and Functions</h2>
+<section id="lets-get-going-.-.-." class="slide level2">
+<h2>Let’s get going . . .</h2>
 <p><br></p>
-<ul>
-<li class="fragment">A <em>function</em> is a set of instructions
-<ul>
-<li class="fragment"><code>read_csv()</code> is a function</li>
-<li class="fragment"><code>ggplot()</code> is a function</li>
-</ul></li>
-<li class="fragment">A <em>package</em> is a collection of functions
-<ul>
-<li class="fragment"><code>readr</code> is a package that contains the <code>read_csv()</code> function</li>
-<li class="fragment"><code>ggplot2</code> is a package that contains the <code>ggplot()</code> function</li>
-</ul></li>
-<li class="fragment">Use <code>install.packages()</code> to install packages</li>
-<li class="fragment">Use <code>library()</code> to load packages</li>
-<li class="fragment">You can install packages from CRAN</li>
-</ul>
+<p>Let’s open up the Getting Started module on Posit Cloud…</p>
+<p>And work through the examples there.</p>
 </section>
-<section id="the-tidyverse" class="slide level2 smaller">
-<h2>The Tidyverse</h2>
-<ul>
-<li class="fragment">The Tidyverse is a collection of data science packages</li>
-<li class="fragment">It is also considered a dialect of R</li>
-<li class="fragment">In this class, we will be using many Tidyverse packages
-<ul>
-<li class="fragment"><code>ggplot2</code> for data visualization</li>
-<li class="fragment"><code>readr</code> for reading data</li>
-<li class="fragment"><code>dplyr</code> for data manipulation</li>
-<li class="fragment"><code>tidyr</code> for data tidying</li>
-<li class="fragment">Etc.</li>
-</ul></li>
-<li class="fragment">At first we will load the packages independently, e.g.&nbsp;<code>library(ggplot2)</code></li>
-<li class="fragment">Later we will load them all at once with <code>library(tidyverse)</code></li>
-</ul>
-</section></section>
-<section>
-<section id="a-little-more-about-r" class="title-slide slide level1 center">
-<h1>A Little More About R</h1>
-
-</section>
-<section id="what-is-an-object" class="slide level2">
-<h2>What is an Object?</h2>
-<ul>
-<li class="fragment">An object in R is a data structure used to store data</li>
-<li class="fragment">It can vary from simple scalar types to more complex data structures like vectors, lists, or data frames</li>
-<li class="fragment">Objects hold not only data but also information about the type of data and the operations that can be performed on them</li>
-<li class="fragment">Every entity in R is considered an object, making R a language based around the manipulation of objects</li>
-</ul>
-</section>
-<section id="how-to-store-data" class="slide level2">
-<h2>How to Store Data</h2>
-<ul>
-<li>In R, you can store data in objects using the assignment operator <code>&lt;-</code></li>
-<li>The object name is on the left of <code>&lt;-</code>, and the data or value you wish to assign to the object is on the right</li>
-<li>Then you can print the object to the console using the object name</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Store the value 42 in the object my_number</span></span>
-<span id="cb1-2"><a></a>my_number <span class="ot">&lt;-</span> <span class="dv">42</span></span>
-<span id="cb1-3"><a></a></span>
-<span id="cb1-4"><a></a><span class="co"># Print the value of my_number</span></span>
-<span id="cb1-5"><a></a>my_number </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 42</code></pre>
-</div>
-</div>
-</section>
-<section id="what-can-r-do" class="slide level2">
-<h2>What Can R Do?</h2>
-<p><br></p>
-<ul>
-<li class="fragment">R is a powerful language for data analysis and visualization</li>
-<li class="fragment">It is also a general-purpose programming language</li>
-<li class="fragment">It can be used for web development, machine learning, and more</li>
-<li class="fragment">It is open-source and has a large community of users and developers</li>
-</ul>
-</section>
-<section id="r-as-a-calculator" class="slide level2">
-<h2>R as a Calculator</h2>
-<p><br></p>
-<ul>
-<li>R can be used as a simple calculator</li>
-<li>You can perform arithmetic operations on numbers</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Addi a number and store it to a value</span></span>
-<span id="cb3-2"><a></a>sum_of_2plus2 <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
-<span id="cb3-3"><a></a></span>
-<span id="cb3-4"><a></a></span>
-<span id="cb3-5"><a></a>sum_of_2plus2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-</div>
-</section>
-<section id="when-to-store-data-in-objects" class="slide level2">
-<h2>When to Store Data in Objects</h2>
-<p><br></p>
-<ul>
-<li>Note that you don’t always have to store data in objects</li>
-<li>You should mostly store data in objects when you want to use the data later</li>
-<li>If you only need to use the data once, you can just use the data directly</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># Add two numbers without storing them in an object</span></span>
-<span id="cb5-2"><a></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-</div>
-</section>
-<section id="some-common-arithmetic-operators" class="slide level2">
-<h2>Some Common Arithmetic Operators</h2>
-<p><br></p>
-<ul>
-<li><code>+</code> addition</li>
-<li><code>-</code> subtraction</li>
-<li><code>*</code> multiplication</li>
-<li><code>/</code> division</li>
-<li><code>^</code> exponentiation (also <code>**</code>)</li>
-</ul>
-</section>
-<section id="functions" class="slide level2">
-<h2>Functions</h2>
-<ul>
-<li>A function is a set of instructions that produces some output</li>
-<li>In R, you can use built-in functions to perform specific tasks</li>
-<li>For example, you can use the <code>mean()</code> function to calculate the average of a set of numbers</li>
-<li>To do this you have to use the combine function <code>c()</code> to create a vector of numbers</li>
-</ul>
-</section>
-<section id="section" class="slide level2">
-<h2></h2>
-<p><br></p>
-<p>Create a vector of numbers and take the mean…</p>
-<p><br></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># Create a vector of numbers</span></span>
-<span id="cb7-2"><a></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb7-3"><a></a></span>
-<span id="cb7-4"><a></a><span class="co"># Calculate the mean of the numbers</span></span>
-<span id="cb7-5"><a></a><span class="fu">mean</span>(numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
-</div>
-</div>
-</section>
-<section id="some-common-base-r-functions" class="slide level2 smaller">
-<h2>Some Common Base R Functions</h2>
-<ul>
-<li><code>mean()</code> calculates the mean of a set of numbers</li>
-<li><code>median()</code> calculates the median of a set of numbers</li>
-<li><code>sd()</code> calculates the standard deviation of a set of numbers</li>
-<li><code>sum()</code> calculates the sum of a set of numbers</li>
-<li><code>length()</code> calculates the length of a vector</li>
-<li><code>max()</code> and <code>min()</code> calculate the maximum and minimum values of a vector</li>
-<li><code>round()</code> rounds a number to a specified number of decimal places</li>
-<li><code>sqrt()</code> calculates the square root of a number</li>
-<li><code>log()</code> calculates the natural logarithm of a number</li>
-<li><code>exp()</code> calculates the exponential of a number</li>
-<li><code>abs()</code> calculates the absolute value of a number</li>
-</ul>
-</section>
-<section id="your-turn" class="slide level2">
-<h2>Your Turn!</h2>
-<p><br></p>
-<ul>
-<li>Start a new code chunk your Quarto document</li>
-<li>Try storing some numbers as a vector and printing the result</li>
-<li>Try using some arithmetic operators</li>
-<li>Try using some of the common base R functions</li>
-</ul>
+<section id="example-make-a-map" class="slide level2">
+<h2>Example: Make a Map!</h2>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer0" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:10%;bottom:10%;--countdown-color-border:#fff;--countdown-color-text:#fff;--countdown-color-running-background:#42affa;--countdown-color-running-text:black;--countdown-color-finished-background:#E5D19D;--countdown-color-finished-text:#00264A;"></countdown-timer>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-faacb14323e9a034a163" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-faacb14323e9a034a163">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[38.90243843683386,-77.0443814477152,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,"Elliott School of International Affairs",{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[38.90243843683386,38.90243843683386],"lng":[-77.0443814477152,-77.0443814477152]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="example-make-a-map-1" class="slide level2">
+<h2>Example: Make a map!</h2>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb1-2"><a></a><span class="fu">leaflet</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-3"><a></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span>   <span class="co"># Add default OpenStreetMap map tiles</span></span>
+<span id="cb1-4"><a></a>  <span class="fu">addMarkers</span>(<span class="at">lat =</span> <span class="fl">38.90243843683386</span>, <span class="at">lng =</span>  <span class="sc">-</span><span class="fl">77.0443814477152</span>,</span>
+<span id="cb1-5"><a></a>             <span class="at">label =</span> <span class="st">"Elliott School of International Affairs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer1" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:10%;bottom:10%;"></countdown-timer>
+</div>
+</div>
+</section>
+<section id="example-plotting-democracy-over-time" class="slide level2">
+<h2>Example: Plotting Democracy Over Time</h2>
+
+<img data-src="week-1.3_files/figure-revealjs/plot_democracy-1.png" width="960" class="r-stretch"></section>
+<section id="example-plotting-democracy-over-time-1" class="slide level2">
+<h2>Example: Plotting Democracy Over Time</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># Load the packages</span></span>
+<span id="cb2-2"><a></a><span class="fu">library</span>(vdemlite)</span>
+<span id="cb2-3"><a></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-4"><a></a></span>
+<span id="cb2-5"><a></a><span class="co"># Use vdemlite to extract democracy scores for France and INdia</span></span>
+<span id="cb2-6"><a></a>dem_data <span class="ot">&lt;-</span> <span class="fu">fetchdem</span>(<span class="at">indicators =</span> <span class="st">"v2x_polyarchy"</span>,</span>
+<span id="cb2-7"><a></a>                     <span class="at">countries =</span> <span class="fu">c</span>(<span class="st">"FRA"</span>, <span class="st">"IND"</span>))</span>
+<span id="cb2-8"><a></a></span>
+<span id="cb2-9"><a></a><span class="co"># And now we can plot the data</span></span>
+<span id="cb2-10"><a></a><span class="fu">ggplot</span>(dem_data, <span class="fu">aes</span>(<span class="at">y =</span> v2x_polyarchy, <span class="at">x =</span> year, <span class="at">color=</span>country_name)) <span class="sc">+</span></span>
+<span id="cb2-11"><a></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb2-12"><a></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb2-13"><a></a>  <span class="fu">xlab</span>(<span class="st">"Year"</span>) <span class="sc">+</span></span>
+<span id="cb2-14"><a></a>  <span class="fu">ylab</span>(<span class="st">"Electoral Democracy Index"</span>) <span class="sc">+</span></span>
+<span id="cb2-15"><a></a>  <span class="fu">ggtitle</span>(<span class="st">"Electoral Democracy, 1970-2022"</span>) <span class="sc">+</span></span>
+<span id="cb2-16"><a></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> .<span class="dv">5</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"grey"</span>) <span class="sc">+</span></span>
+<span id="cb2-17"><a></a>   <span class="fu">scale_color_manual</span>(<span class="at">name=</span><span class="st">"Country"</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"#E69F00"</span>, <span class="st">"#56B4E9"</span>)) <span class="sc">+</span></span>
+<span id="cb2-18"><a></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer2" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0%;bottom:0%;"></countdown-timer>
+</div>
+</div>
+</section>
+<section id="example-un-voting-trends" class="slide level2">
+<h2>Example: UN Voting Trends</h2>
+
+<img data-src="week-1.3_files/figure-revealjs/un_voting-1.png" width="960" class="r-stretch"></section>
+<section id="example-un-voting-trends-1" class="slide level2">
+<h2>Example: UN Voting Trends</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-2"><a></a><span class="fu">library</span>(unvotes)</span>
+<span id="cb3-3"><a></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb3-4"><a></a><span class="fu">library</span>(scales)</span>
+<span id="cb3-5"><a></a><span class="fu">library</span>(pacman)</span>
+<span id="cb3-6"><a></a></span>
+<span id="cb3-7"><a></a>unvotes <span class="ot">&lt;-</span> un_votes <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a></a>  <span class="fu">inner_join</span>(un_roll_calls, <span class="at">by =</span> <span class="st">"rcid"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-9"><a></a>  <span class="fu">inner_join</span>(un_roll_call_issues, <span class="at">by =</span> <span class="st">"rcid"</span>)</span>
+<span id="cb3-10"><a></a></span>
+<span id="cb3-11"><a></a>unvotes <span class="sc">%&gt;%</span></span>
+<span id="cb3-12"><a></a>  <span class="co"># then filter out to only include the countries we want</span></span>
+<span id="cb3-13"><a></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"South Africa"</span>, <span class="st">"United States"</span>, <span class="st">"France"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-14"><a></a>  <span class="co"># then make sure R understands the the year variable is a data</span></span>
+<span id="cb3-15"><a></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">year</span>(date)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-16"><a></a>  <span class="co"># Then group the data by country and year</span></span>
+<span id="cb3-17"><a></a>  <span class="fu">group_by</span>(country, year, issue) <span class="sc">%&gt;%</span></span>
+<span id="cb3-18"><a></a>  <span class="co"># then take the average Yes votes for each country_year</span></span>
+<span id="cb3-19"><a></a>  <span class="fu">summarize</span>(<span class="at">percent_yes =</span> <span class="fu">mean</span>(vote <span class="sc">==</span> <span class="st">"yes"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-20"><a></a>  <span class="co"># then make a nice plot</span></span>
+<span id="cb3-21"><a></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> percent_yes, <span class="at">color =</span> country)) <span class="sc">+</span></span>
+<span id="cb3-22"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb3-23"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb3-24"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>issue) <span class="sc">+</span></span>
+<span id="cb3-25"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> percent) <span class="sc">+</span></span>
+<span id="cb3-26"><a></a>  <span class="fu">scale_color_manual</span>( <span class="at">values=</span><span class="fu">c</span>(<span class="st">"#E69F00"</span>, <span class="st">"#56B4E9"</span>, <span class="st">"#009E73"</span>)) <span class="sc">+</span></span>
+<span id="cb3-27"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-28"><a></a>    <span class="at">title =</span> <span class="st">"Percentage of 'Yes' votes in the UN General Assembly"</span>,</span>
+<span id="cb3-29"><a></a>    <span class="at">subtitle =</span> <span class="st">"1946 to 2019"</span>,</span>
+<span id="cb3-30"><a></a>    <span class="at">y =</span> <span class="st">"% Yes"</span>,</span>
+<span id="cb3-31"><a></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb3-32"><a></a>    <span class="at">color =</span> <span class="st">"Country"</span></span>
+<span id="cb3-33"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer3" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0%;bottom:0%;"></countdown-timer>
 </div>
 </div>
 
 
-</section></section>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="images/dataviz-logo.png" class="slide-logo"></p>

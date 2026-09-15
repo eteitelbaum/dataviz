@@ -499,44 +499,83 @@ execute:
 </div>
 </section></section>
 <section>
-<section id="a-bit-about-r" class="title-slide slide level1 center">
-<h1>A Bit About R</h1>
+<section id="more-about-quarto" class="title-slide slide level1 center">
+<h1>More About Quarto</h1>
 
 </section>
-<section id="r-packages-and-functions" class="slide level2 smaller">
-<h2>R Packages and Functions</h2>
+<section id="advanced-html" class="slide level2">
+<h2>Advanced HTML</h2>
 <p><br></p>
 <ul>
-<li class="fragment">A <em>function</em> is a set of instructions
-<ul>
-<li class="fragment"><code>read_csv()</code> is a function</li>
-<li class="fragment"><code>ggplot()</code> is a function</li>
-</ul></li>
-<li class="fragment">A <em>package</em> is a collection of functions
-<ul>
-<li class="fragment"><code>readr</code> is a package that contains the <code>read_csv()</code> function</li>
-<li class="fragment"><code>ggplot2</code> is a package that contains the <code>ggplot()</code> function</li>
-</ul></li>
-<li class="fragment">Use <code>install.packages()</code> to install packages</li>
-<li class="fragment">Use <code>library()</code> to load packages</li>
-<li class="fragment">You can install packages from CRAN</li>
+<li>So far we have been using the basic HTML elements to create our documents</li>
+<li>Quarto supports a wide range of HTML elements and attributes</li>
+<li>We can use these to create more complex and interactive documents</li>
 </ul>
 </section>
-<section id="the-tidyverse" class="slide level2 smaller">
-<h2>The Tidyverse</h2>
+<section id="formatting-options" class="slide level2">
+<h2>Formatting Options</h2>
 <ul>
-<li class="fragment">The Tidyverse is a collection of data science packages</li>
-<li class="fragment">It is also considered a dialect of R</li>
-<li class="fragment">In this class, we will be using many Tidyverse packages
+<li>We can make our documents have a more sophisticated feel by specifying various options in the YAML header</li>
+<li>Examples include <code>title</code>, <code>subtitle</code>, <code>date</code>, <code>abstract</code>, <code>toc</code>, etc.</li>
+<li>We can also specify font styles and colors and control other aspects of the formatting</li>
+<li>See <a href="https://quarto.org/docs/reference/formats/html.html">this page</a> to explore the various formatting options</li>
+</ul>
+</section>
+<section id="themes" class="slide level2">
+<h2>Themes</h2>
+<p><br></p>
 <ul>
-<li class="fragment"><code>ggplot2</code> for data visualization</li>
-<li class="fragment"><code>readr</code> for reading data</li>
-<li class="fragment"><code>dplyr</code> for data manipulation</li>
-<li class="fragment"><code>tidyr</code> for data tidying</li>
-<li class="fragment">Etc.</li>
+<li>Quarto supports a wide range of themes</li>
+<li>We can use these to change the look and feel of our documents</li>
+<li>Check out <a href="https://quarto.org/docs/output-formats/html-themes.html">this page</a> to explore the various themes available in Quarto</li>
+</ul>
+</section>
+<section id="footnotes" class="slide level2">
+<h2>Footnotes</h2>
+<p><br></p>
+<ul>
+<li>You can also add footnotes to your document</li>
+<li>Use the <code>^[]</code> or <code>[^1]</code> syntax to add a footnote</li>
+<li>There are different ways to add footnotes</li>
+<li>I find that inline notes are the easiest to work with
+<ul>
+<li>For example <code>^[This is a footnote]</code></li>
 </ul></li>
-<li class="fragment">At first we will load the packages independently, e.g.&nbsp;<code>library(ggplot2)</code></li>
-<li class="fragment">Later we will load them all at once with <code>library(tidyverse)</code></li>
+</ul>
+</section>
+<section id="generating-lorem-ipsum" class="slide level2">
+<h2>Generating Lorem Ipsum</h2>
+<p><br></p>
+<ul>
+<li>For working on your document’s format it is helpful to have random text</li>
+<li>The <a href="http://pkg.garrickadenbuie.com/lorem/">lorem package</a> is helpful for this</li>
+<li>You can also install an R Studio Addin</li>
+</ul>
+</section>
+<section id="your-turn" class="slide level2">
+<h2>Your Turn!</h2>
+<ul>
+<li>Start a new Quarto project</li>
+<li>Create a new Quarto document in your project folder</li>
+<li>Add a YAML header with the following options:
+<ul>
+<li><code>title:</code></li>
+<li><code>subtitle:</code></li>
+<li><code>date:</code></li>
+<li><code>date-format:</code></li>
+<li><code>theme:</code></li>
+<li><code>toc:</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="your-turn-1" class="slide level2">
+<h2>Your Turn!</h2>
+<ul>
+<li>Try adding at least one more option to your YAML header</li>
+<li>Generate some sections and some random text using the <code>lorem</code> package</li>
+<li>Add some code chunks to your document (and some code)</li>
+<li>Add some footnotes to your document</li>
+<li>Render the document and see what it looks like</li>
 </ul>
 
 

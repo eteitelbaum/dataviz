@@ -277,43 +277,73 @@ ggplot(mpg, aes(displ, hwy, colour = class)) +
 ```{r}
 #| label: timer5
 
-countdown(minutes = 2, 
-          id = "timer5", 
+countdown(minutes = 2,
+          id = "timer5",
           bottom = "10%",
           right = "10%")
 ```
 
-# A Bit About R
+# More About Quarto
 
-## R Packages and Functions {.smaller}
+## Advanced HTML
 
 <br>
 
-::: {.incremental}
--   A *function* is a set of instructions
-    -   `read_csv()` is a function
-    -   `ggplot()` is a function
--   A *package* is a collection of functions
-    -   `readr` is a package that contains the `read_csv()` function
-    -   `ggplot2` is a package that contains the `ggplot()` function
--   Use `install.packages()` to install packages
--   Use `library()` to load packages
--   You can install packages from CRAN
-:::
+- So far we have been using the basic HTML elements to create our documents
+- Quarto supports a wide range of HTML elements and attributes
+- We can use these to create more complex and interactive documents
 
-## The Tidyverse {.smaller}
+## Formatting Options
 
-::: {.incremental}
--   The Tidyverse is a collection of data science packages
--   It is also considered a dialect of R
--   In this class, we will be using many Tidyverse packages
-    -   `ggplot2` for data visualization
-    -   `readr` for reading data
-    -   `dplyr` for data manipulation
-    -   `tidyr` for data tidying
-    -   Etc.
--   At first we will load the packages independently, e.g. `library(ggplot2)`
--   Later we will load them all at once with `library(tidyverse)`
-:::
+- We can make our documents have a more sophisticated feel by specifying various options in the YAML header
+- Examples include `title`, `subtitle`, `date`, `abstract`, `toc`, etc.
+- We can also specify font styles and colors and control other aspects of the formatting
+- See [this page](https://quarto.org/docs/reference/formats/html.html) to explore the various formatting options
+
+## Themes
+
+<br>
+
+- Quarto supports a wide range of themes
+- We can use these to change the look and feel of our documents
+- Check out [this page](https://quarto.org/docs/output-formats/html-themes.html) to explore the various themes available in Quarto
+
+## Footnotes
+
+<br>
+
+- You can also add footnotes to your document
+- Use the `^[]` or `[^1]` syntax to add a footnote
+- There are different ways to add footnotes
+- I find that inline notes are the easiest to work with
+  - For example `^[This is a footnote]`
+
+## Generating Lorem Ipsum
+
+<br>
+
+- For working on your document's format it is helpful to have random text
+- The [lorem package](http://pkg.garrickadenbuie.com/lorem/) is helpful for this
+- You can also install an R Studio Addin
+
+## Your Turn!
+
+- Start a new Quarto project
+- Create a new Quarto document in your project folder
+- Add a YAML header with the following options:
+  - `title:`
+  - `subtitle:`
+  - `date:`
+  - `date-format:`
+  - `theme:`
+  - `toc:`
+
+## Your Turn!
+
+- Try adding at least one more option to your YAML header
+- Generate some sections and some random text using the `lorem` package
+- Add some code chunks to your document (and some code)
+- Add some footnotes to your document
+- Render the document and see what it looks like
 
 
