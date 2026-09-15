@@ -9,7 +9,9 @@
 .DS_Store
 
 # Local working notes / execution plans — not part of the published course
-/notes/
+# (no trailing slash: these are now symlinks into ~/Documents/dataviz-notes,
+# and a trailing-slash pattern doesn't match a symlink, only a real directory)
+/notes
 
 # single-file quarto render byproducts
 /site_libs/
@@ -21,4 +23,5 @@ modules/*_files/
 slides/*_files/
 
 # Local quiz files — not part of the published course
-/quizzes/
+# (no trailing slash: see note above /notes)
+/quizzes
