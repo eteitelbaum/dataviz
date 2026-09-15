@@ -20,42 +20,9 @@ execute:
 
 ## Plan for Today
 
-- Learn about R packages and functions
 - Explore objects and how to store data
 - Practice using some common base R functions
-
-# A Bit About R
-
-## R Packages and Functions {.smaller}
-
-<br>
-
-::: {.incremental}
--   A *function* is a set of instructions
-    -   `read_csv()` is a function
-    -   `ggplot()` is a function
--   A *package* is a collection of functions
-    -   `readr` is a package that contains the `read_csv()` function
-    -   `ggplot2` is a package that contains the `ggplot()` function
--   Use `install.packages()` to install packages
--   Use `library()` to load packages
--   You can install packages from CRAN
-:::
-
-## The Tidyverse {.smaller}
-
-::: {.incremental}
--   The Tidyverse is a collection of data science packages
--   It is also considered a dialect of R
--   In this class, we will be using many Tidyverse packages
-    -   `ggplot2` for data visualization
-    -   `readr` for reading data
-    -   `dplyr` for data manipulation
-    -   `tidyr` for data tidying
-    -   Etc.
--   At first we will load the packages independently, e.g. `library(ggplot2)`
--   Later we will load them all at once with `library(tidyverse)`
-:::
+- Learn about R packages and functions
 
 # A Little More About R
 
@@ -193,8 +160,8 @@ mean(numbers)
 #| label: timer0
 
 library(countdown)
-countdown(minutes = 3, 
-          id = "timer0", 
+countdown(minutes = 3,
+          id = "timer0",
           bottom = "10%",
           right = "10%",
           color_border = "#fff",
@@ -204,3 +171,36 @@ countdown(minutes = 3,
           color_finished_background = "#E5D19D",
           color_finished_text = "#00264A")
 ```
+
+# A Bit About R
+
+## R Packages and Functions {.smaller}
+
+<br>
+
+::: {.incremental}
+-   A *function* is a set of instructions
+    -   `read_csv()` is a function
+    -   `ggplot()` is a function
+-   A *package* is a collection of functions
+    -   `readr` is a package that contains the `read_csv()` function
+    -   `ggplot2` is a package that contains the `ggplot()` function
+-   Use `install.packages()` to install packages
+-   Use `library()` to load packages
+-   You can install packages from CRAN
+:::
+
+## The Tidyverse {.smaller}
+
+::: {.incremental}
+-   The Tidyverse is a collection of data science packages
+-   It is also considered a dialect of R
+-   In this class, we will be using many Tidyverse packages
+    -   `ggplot2` for data visualization
+    -   `readr` for reading data
+    -   `dplyr` for data manipulation
+    -   `tidyr` for data tidying
+    -   Etc.
+-   At first we will load the packages independently, e.g. `library(ggplot2)`
+-   Later we will load them all at once with `library(tidyverse)`
+:::

@@ -1631,7 +1631,7 @@
     "href": "slides/week-1.2.html#plan-for-today",
     "title": "R Programming Basics",
     "section": "Plan for Today",
-    "text": "Plan for Today\n\nLearn about R packages and functions\nExplore objects and how to store data\nPractice using some common base R functions"
+    "text": "Plan for Today\n\nExplore objects and how to store data\nPractice using some common base R functions\nLearn about R packages and functions"
   },
   {
     "objectID": "slides/week-1.2.html#r-packages-and-functions",
