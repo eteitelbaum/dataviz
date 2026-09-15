@@ -3,6 +3,10 @@ title: "Project Description"
 editor: visual
 ---
 
+::: {.callout-note}
+**Two tracks:** build a **Shiny app** or produce a polished **written report with a well-crafted visualization**. Both tracks share the same proposal (flex session) and studio weeks; app-specific material (styling, deployment, troubleshooting) is optional and linked from the Project Studio week for students building an app.
+:::
+
 ## Overview
 
 The capstone of this course is a final project that pulls together the whole arc of the course: getting and wrangling data, and visualizing it well. You have **two tracks** to choose from:
