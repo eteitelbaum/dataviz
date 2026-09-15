@@ -61,7 +61,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../modules/module-1.2.html" rel="next">
-<link href="../modules/getting-started.html" rel="prev">
+<link href="../modules/getting-started-2.html" rel="prev">
 <link href="../images/dataviz-logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -279,7 +279,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/getting-started.html">Course Topics</a></li><li class="breadcrumb-item"><a href="../modules/module-1.1.html">I — Working With Data</a></li><li class="breadcrumb-item"><a href="../modules/module-1.1.html">Reading &amp; Reshaping Data</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/getting-started-1.html">Course Topics</a></li><li class="breadcrumb-item"><a href="../modules/module-1.1.html">I — Working With Data</a></li><li class="breadcrumb-item"><a href="../modules/module-1.1.html">Reading &amp; Reshaping Data</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -545,8 +545,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../modules/getting-started.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Getting Started</span></a>
+  <a href="../modules/getting-started-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R and RStudio Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/getting-started-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quarto and Markdown</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
@@ -693,7 +699,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/dataviz/edit/main/modules/module-1.1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/dataviz/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/getting-started.html">Course Topics</a></li><li class="breadcrumb-item"><a href="../modules/module-1.1.html">I — Working With Data</a></li><li class="breadcrumb-item"><a href="../modules/module-1.1.html">Reading &amp; Reshaping Data</a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/getting-started-1.html">Course Topics</a></li><li class="breadcrumb-item"><a href="../modules/module-1.1.html">I — Working With Data</a></li><li class="breadcrumb-item"><a href="../modules/module-1.1.html">Reading &amp; Reshaping Data</a></li></ol></nav><div class="quarto-title">
 <h1 class="title">Reading &amp; Reshaping Data</h1>
 <p class="subtitle lead">Working With Flat Files</p>
 </div>
@@ -734,7 +740,7 @@ Prework
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Install R, R Studio and the Tidyverse collection of packages if you have not done so already (see <a href="../modules/getting-started.html">getting started</a>)</li>
+<li>Install R, R Studio and the Tidyverse collection of packages if you have not done so already (see <a href="../modules/getting-started-1.html">R and RStudio Setup</a>)</li>
 <li>Install the <code>janitor</code> package (<code>install.packages("janitor")</code>)</li>
 <li>Have a look at the documentation for <a href="https://readr.tidyverse.org/">readr</a>, <a href="https://dplyr.tidyverse.org/">dplyr</a>, <a href="https://tidyr.tidyverse.org/">tidyr</a> and <a href="https://sfirke.github.io/janitor/">janitor</a>
 </li>
@@ -1398,8 +1404,8 @@ $ flfp         &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../modules/getting-started.html" class="pagination-link" aria-label="Getting Started">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Getting Started</span>
+      <a href="../modules/getting-started-2.html" class="pagination-link" aria-label="Quarto and Markdown">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Quarto and Markdown</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

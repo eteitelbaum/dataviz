@@ -1634,20 +1634,6 @@
     "text": "Plan for Today\n\nExplore objects and how to store data\nPractice using some common base R functions\nLearn about R packages and functions"
   },
   {
-    "objectID": "slides/week-1.2.html#r-packages-and-functions",
-    "href": "slides/week-1.2.html#r-packages-and-functions",
-    "title": "R Programming Basics",
-    "section": "R Packages and Functions",
-    "text": "R Packages and Functions\n\n\nA function is a set of instructions\n\nread_csv() is a function\nggplot() is a function\n\nA package is a collection of functions\n\nreadr is a package that contains the read_csv() function\nggplot2 is a package that contains the ggplot() function\n\nUse install.packages() to install packages\nUse library() to load packages\nYou can install packages from CRAN"
-  },
-  {
-    "objectID": "slides/week-1.2.html#the-tidyverse",
-    "href": "slides/week-1.2.html#the-tidyverse",
-    "title": "R Programming Basics",
-    "section": "The Tidyverse",
-    "text": "The Tidyverse\n\nThe Tidyverse is a collection of data science packages\nIt is also considered a dialect of R\nIn this class, we will be using many Tidyverse packages\n\nggplot2 for data visualization\nreadr for reading data\ndplyr for data manipulation\ntidyr for data tidying\nEtc.\n\nAt first we will load the packages independently, e.g. library(ggplot2)\nLater we will load them all at once with library(tidyverse)"
-  },
-  {
     "objectID": "slides/week-1.2.html#what-is-an-object",
     "href": "slides/week-1.2.html#what-is-an-object",
     "title": "R Programming Basics",
@@ -1716,6 +1702,20 @@
     "title": "R Programming Basics",
     "section": "Your Turn!",
     "text": "Your Turn!\n\n\nStart a new code chunk your Quarto document\nTry storing some numbers as a vector and printing the result\nTry using some arithmetic operators\nTry using some of the common base R functions"
+  },
+  {
+    "objectID": "slides/week-1.2.html#r-packages-and-functions",
+    "href": "slides/week-1.2.html#r-packages-and-functions",
+    "title": "R Programming Basics",
+    "section": "R Packages and Functions",
+    "text": "R Packages and Functions\n\n\nA function is a set of instructions\n\nread_csv() is a function\nggplot() is a function\n\nA package is a collection of functions\n\nreadr is a package that contains the read_csv() function\nggplot2 is a package that contains the ggplot() function\n\nUse install.packages() to install packages\nUse library() to load packages\nYou can install packages from CRAN"
+  },
+  {
+    "objectID": "slides/week-1.2.html#the-tidyverse",
+    "href": "slides/week-1.2.html#the-tidyverse",
+    "title": "R Programming Basics",
+    "section": "The Tidyverse",
+    "text": "The Tidyverse\n\nThe Tidyverse is a collection of data science packages\nIt is also considered a dialect of R\nIn this class, we will be using many Tidyverse packages\n\nggplot2 for data visualization\nreadr for reading data\ndplyr for data manipulation\ntidyr for data tidying\nEtc.\n\nAt first we will load the packages independently, e.g. library(ggplot2)\nLater we will load them all at once with library(tidyverse)"
   },
   {
     "objectID": "quiz.html",
@@ -2273,296 +2273,47 @@
     ]
   },
   {
-    "objectID": "instructor.html",
-    "href": "instructor.html",
-    "title": "Instructor",
+    "objectID": "modules/getting-started-1.html",
+    "href": "modules/getting-started-1.html",
+    "title": "R and RStudio Setup",
     "section": "",
-    "text": "Emmanuel Teitelbaum is an associate professor of political science and international affairs at the The George Washington University His research and writing explore how class conflict and compromise intersect with democracy and development. He also has a strong interest in labor standards and understanding how labor unions, nonprofit organizations, consumers and corporations can help to promote them.\nAt GW, Professor Teitelbaum teaches courses on comparative politics, comparative political economy and data science. He is on faculty in the Department of Political Science and the Elliott School of International Affairs and is affiliated with the Sigur Center for Asian Studies as well as the Institute for International Economic Policy.",
+    "text": "Packages in this module\n\n\n\nPackages: tidyverse, leaflet, vdemlite, unvotes",
+    "crumbs": [
+      "Course Topics",
+      "R and RStudio Setup"
+    ]
+  },
+  {
+    "objectID": "modules/getting-started-1.html#sec-rstudio-setup",
+    "href": "modules/getting-started-1.html#sec-rstudio-setup",
+    "title": "R and RStudio Setup",
+    "section": "R and RStudio",
+    "text": "R and RStudio\n\nAll of our work for this course will be done in the R language and we will be working with R in RStudio. RStudio is an integrated development environment (IDE) develop by a company named Posit. Please be sure to download and install the most recent versions of R and R Studio from Posit’s website.\nIt is a good idea to periodically update R and RStudio. RStudio will prompt you when it is time to update and you can follow the same process of downloading and installing from the Posit website that we just did here. For R, the easiest approach is to use rig (R Installation Manager), which works on Windows, Mac, and Linux and lets you install and switch between R versions from the command line. On Windows you can also use the installr package. I usually update R once a semester.\nWe are going to be using a number of R packages throughout the course. One essential set of packages are those that comprise the Tidyverse, but especially readr, dplyr, ggplot2 and tidyr. You can install the entire Tidyverse collection of packages by typing install.packages(\"tidyverse\") in your console. We will talk about these packages in detail as we go through the course, but have a look at this basic description now to gain some basic familiarity.\nAnother thing that you really want to do is to make sure that you have the native pipe operator (|&gt;) enabled. In RStudio, go to Tools&gt;Global Options, then go to Code and select “Use native pipe operator.”\nWhile you are here, you can also go to Appearance to select a different editor theme or to Pane Layout to change how the four panes in R Studio are organized. Next, familiarize yourself with how to expand and minimize the four windows. The most important window that I want to highlight here is the source window. This is where we are going to be working most of the time in this course. And if I tell you to send your source code, I mean to send the file that you are working on in this window. This could be a Quarto document, an R script or an app.R file for a Shiny app.\nThe next window is the Console and there we also see tabs for Terminal and Background Jobs. The console is where you can run R code one line at a time. The terminal is relevant for more advanced users and we will make some use of it when we talk about publishing Quarto documents. Background Jobs is going to be helpful when we want troubleshoot a Quarto document that is not rendering properly.\nFrom there, the next pane we want to explore is Environment, History, etc. Environment tells us what files are currently available to us.\nFinally, we see a pane with Files, Plots, Packages etc. Files tells us what files are in our project folder and enables us to copy, and delete files associated with our project. Plots is a window for viewing our visualizations. And Packages shows us what packages are available and loaded into our environment.\nBefore you move on to the next section, take some time to familiarize yourself with the various user-friendly buttons and shortcuts available to you like the drop down menu for the pane layout, a spell checker, a button for inserting a code chunk and other features that you can play around with.",
+    "crumbs": [
+      "Course Topics",
+      "R and RStudio Setup"
+    ]
+  },
+  {
+    "objectID": "modules/getting-started-1.html#three-visualization-examples",
+    "href": "modules/getting-started-1.html#three-visualization-examples",
+    "title": "R and RStudio Setup",
+    "section": "Three Visualization Examples",
+    "text": "Three Visualization Examples\nNow that RStudio is set up, let’s get our hands dirty by running some real data visualization code. The three examples below use packages we will cover in much more depth as the course goes on, but for now the goal is just to run the code, render the document, and see what R can do.\nCreate a new Quarto document, copy each code chunk below into it, and render. Try tweaking small things (a country name, a color, a date range) and re-render to see what changes.\n\nExample 1: Make a Map!\n\nlibrary(leaflet)\nleaflet() |&gt;\n  addTiles() |&gt;   # Add default OpenStreetMap map tiles\n  addMarkers(lat = 38.90243843683386, lng =  -77.0443814477152,\n             label = \"Elliott School of International Affairs\")\n\n\n\n\n\n\n\nExample 2: Plotting Democracy Over Time\n\n# Load the packages\nlibrary(vdemlite)\nlibrary(ggplot2)\n\n# Use vdemlite to extract democracy scores for France and India\ndem_data &lt;- fetchdem(indicators = \"v2x_polyarchy\",\n                     countries = c(\"FRA\", \"IND\"))\n\n# And now we can plot the data\nggplot(dem_data, aes(y = v2x_polyarchy, x = year, color = country_name)) +\n  geom_line() +\n  theme_minimal() +\n  xlab(\"Year\") +\n  ylab(\"Electoral Democracy Index\") +\n  ggtitle(\"Electoral Democracy, 1970-2022\") +\n  geom_hline(yintercept = .5, linetype = \"dashed\", color = \"grey\") +\n  scale_color_manual(name = \"Country\", values = c(\"#E69F00\", \"#56B4E9\")) +\n  ylim(0, 1)\n\n\n\n\n\n\n\n\n\n\nExample 3: UN Voting Trends\n\nlibrary(tidyverse)\nlibrary(unvotes)\nlibrary(lubridate)\nlibrary(scales)\nlibrary(pacman)\n\nunvotes &lt;- un_votes |&gt;\n  inner_join(un_roll_calls, by = \"rcid\") |&gt;\n  inner_join(un_roll_call_issues, by = \"rcid\")\n\nunvotes |&gt;\n  # then filter out to only include the countries we want\n  filter(country %in% c(\"South Africa\", \"United States\", \"France\")) |&gt;\n  # then make sure R understands the the year variable is a date\n  mutate(year = year(date)) |&gt;\n  # Then group the data by country and year\n  group_by(country, year, issue) |&gt;\n  # then take the average Yes votes for each country_year\n  summarize(percent_yes = mean(vote == \"yes\")) |&gt;\n  # then make a nice plot\n  ggplot(mapping = aes(x = year, y = percent_yes, color = country)) +\n  geom_point(alpha = 0.4) +\n  geom_smooth(method = \"loess\", se = FALSE) +\n  facet_wrap(~issue) +\n  scale_y_continuous(labels = percent) +\n  scale_color_manual(values = c(\"#E69F00\", \"#56B4E9\", \"#009E73\")) +\n  labs(\n    title = \"Percentage of 'Yes' votes in the UN General Assembly\",\n    subtitle = \"1946 to 2019\",\n    y = \"% Yes\",\n    x = \"Year\",\n    color = \"Country\"\n  )",
+    "crumbs": [
+      "Course Topics",
+      "R and RStudio Setup"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Course Schedule",
+    "section": "",
+    "text": "Topic\nDate\nSkills\nReadings\nReference\nSlides\nVideos\nAssignments\n\n\n\n\nGetting Started\nAug 25\nCourse overview\n\n\n\n\n\n\n\n\nAug 27\nEnvironment setup\n📖\n\n🖥️\n\n\n\n\nQuarto and Markdown\nSep 1\nAuthoring with Quarto and Markdown\n📖\n📖\n🖥️\n🖥️🖥️\n\n\n\n\nSep 3\nR programming basics\n\n\n🖥️\n\n\n\n\nCharting With ggplot2\nSep 8\nBar charts & histograms\n📖\n📖📖\n🖥️\n🖥️🖥️\n\n\n\n\nSep 10\nMore Visualization Basics\n📖\n📖\n🖥️\n🖥️🖥️\n\n\n\nColor, Themes & Annotations\nSep 15\nColor schemes\n📖 📖\n📖\n🖥️\n🖥️\n\n\n\n\nSep 17\nThemes, annotations & interactivity\n📖\n📖\n🖥️\n🖥️🖥️🖥️\n🧪\n\n\nReading & Reshaping Data\nSep 22\nRead data into R\n\n📖\n🖥️\n🖥️\n\n\n\n\nSep 24\nReshape & clean data\n\n📖\n🖥️\n🖥️🖥️\n\n\n\nImporting & Merging Data\nSep 29\nDownload data from APIs\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 1\nMerge, group, summarize & arrange\n\n📖 📖\n🖥️\n🖥️🖥️🖥️\n🧪\n\n\nChoropleth Maps\nOct 6\nMap data with choropleth maps\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 8\nTurn your map into a function\n📖\n📖\n🖥️\n🖥️\n\n\n\n\nOct 13\nNo class, fall break\n\n🍁🍂🎃\n\n\n\n\n\nInteractive Maps\nOct 15\nMake a leaflet map\n\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 20\nCustomize your interactive map\n\n\n\n🖥️\n🧪\n\n\n\nOct 22\nFinal project planning session: what makes good data viz? + brainstorm your final project\n\n\n\n\n✍️\n\n\nTables\nOct 27\nExplore tabular data\n\n\n🖥️\n\n\n\n\n\nOct 29\nMake a gt table & confidence intervals\n\n\n🖥️\n\n\n\n\nModels & Coefficient Plots\nNov 3\nRun models & display regression tables\n📖 📖\n\n🖥️\n🖥️\n\n\n\n\nNov 5\nRegression tables & coefficient plots (recorded — no live class)\n\n\n\n🖥️🖥️\n🧪\n\n\nBuilding a Shiny App\nNov 10\nApp setup & building the UI\n\n\n🖥️\n🖥️🖥️\n\n\n\n\nNov 12\nBuilding the server\n\n\n🖥️\n🖥️\n\n\n\nExtending Your App\nNov 17\nAdd inputs & a time-series app\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nNov 19\nShiny modules\n\n\n🖥️\n\n\n\n\n\nNov 24\nNo class, Thanksgiving break\n\n🦃🥧🍂\n\n\n\n\n\n\nNov 26\nNo class, Thanksgiving break\n\n\n\n\n\n\n\nDeploying & Sharing / Project Studio\nDec 1\nDeploy & share your app (shinyapps.io) + studio time (app track) or finish your report (report track)\n\n\n\n🖥️\n\n\n\n\nDec 3\nProject Studio: peer feedback & dry-run presentations\n\n\n\n\n\n\n\n\nDec 8\nFinal presentations / lightning talks",
     "crumbs": [
       "Course information",
-      "Instructor"
-    ]
-  },
-  {
-    "objectID": "instructor.html#office-hours",
-    "href": "instructor.html#office-hours",
-    "title": "Instructor",
-    "section": "Office Hours",
-    "text": "Office Hours\nProfessor Teitelbaum’s office hours are on Mondays from 3:00 p.m. to 5:00 p.m. Please sign up for a slot (or two) on his Calendly page. He is available for consultation virtually on Zoom or in his office at 411 Monroe Hall (2115 G. ST NW).",
-    "crumbs": [
-      "Course information",
-      "Instructor"
-    ]
-  },
-  {
-    "objectID": "course-support.html",
-    "href": "course-support.html",
-    "title": "Support",
-    "section": "",
-    "text": "Writing Center GW’s Writing Center cultivates confident writers in the University community by facilitating collaborative, critical, and inclusive conversations at all stages of the writing process. Working alongside peer mentors, writers develop strategies to write independently in academic and public settings. Appointments can be booked online here.\nAcademic Commons Academic Commons provides tutoring and other academic support resources to students in many courses. Students can schedule virtual one-on-one appointments or attend virtual drop-in sessions. Students may schedule an appointment, review the tutoring schedule, access other academic support resources, or obtain assistance here.",
-    "crumbs": [
-      "Course information",
-      "Support"
-    ]
-  },
-  {
-    "objectID": "course-support.html#academic-support",
-    "href": "course-support.html#academic-support",
-    "title": "Support",
-    "section": "",
-    "text": "Writing Center GW’s Writing Center cultivates confident writers in the University community by facilitating collaborative, critical, and inclusive conversations at all stages of the writing process. Working alongside peer mentors, writers develop strategies to write independently in academic and public settings. Appointments can be booked online here.\nAcademic Commons Academic Commons provides tutoring and other academic support resources to students in many courses. Students can schedule virtual one-on-one appointments or attend virtual drop-in sessions. Students may schedule an appointment, review the tutoring schedule, access other academic support resources, or obtain assistance here.",
-    "crumbs": [
-      "Course information",
-      "Support"
-    ]
-  },
-  {
-    "objectID": "course-support.html#support-for-students-outside-the-classroom",
-    "href": "course-support.html#support-for-students-outside-the-classroom",
-    "title": "Support",
-    "section": "Support for students outside the classroom",
-    "text": "Support for students outside the classroom\nDisability Support Services (DSS) 202-994-8250 Any student who may need an accommodation based on the potential impact of a disability should contact Disability Support Services to establish eligibility and to coordinate reasonable accommodations.\nCounseling and Psychological Services 202-994-5300 GW’s Colonial Health Center offers counseling and psychological services, supporting mental health and personal development by collaborating directly with students to overcome challenges and difficulties that may interfere with academic, emotional, and personal success.\nGW aims to create a community that cares for each other.The CARE Team fosters this goal by creating a pathway through which students who may need additional support can be identified and referred to the most appropriate services. Through the CARE Team, students are given the support they need to persist and succeed at GW and beyond.\nSafety and Security:\n\nIn an emergency: call GWPD 202-994-6111 or 911.\nFor situation-specific actions: review the Emergency Response Handbook\nStay informed: safety.gwu.edu/stay-informed",
-    "crumbs": [
-      "Course information",
-      "Support"
-    ]
-  },
-  {
-    "objectID": "course-links.html",
-    "href": "course-links.html",
-    "title": "Useful links",
-    "section": "",
-    "text": "Lecture Recordings\n🔗 on Blackboard\n\n\nProf T’s Zoom Office\n🔗 on Zoom\n\n\nOffice Hours Appointments\n🔗 on Calendly",
-    "crumbs": [
-      "Course information",
-      "Useful links"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-4.html",
-    "href": "assignments/lab-4.html",
-    "title": "Lab 4: Tables & coefficient plots",
-    "section": "",
-    "text": "How labs work\n\n\n\nLabs are done with your group during class and are meant to be mostly finished in the class period. You may use AI to ask questions or debug, but not to write your code for you. At the end, add a one-line note saying whether and how you used AI.",
-    "crumbs": [
-      "Labs",
-      "Lab 4: Tables & coefficient plots"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-4.html#overview",
-    "href": "assignments/lab-4.html#overview",
-    "title": "Lab 4: Tables & coefficient plots",
-    "section": "Overview",
-    "text": "Overview\nIn this lab you will present data two ways: as a polished table with gt, and as a regression table plus coefficient plot with modelsummary. For Part II we approximate Fearon and Laitin’s Ethnicity, Insurgency, and Civil War, whose provocative claim is that ethnic diversity per se does not predict civil conflict.",
-    "crumbs": [
-      "Labs",
-      "Lab 4: Tables & coefficient plots"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-4.html#part-i-a-gt-table-40-pts",
-    "href": "assignments/lab-4.html#part-i-a-gt-table-40-pts",
-    "title": "Lab 4: Tables & coefficient plots",
-    "section": "Part I: A gt table (40 pts)",
-    "text": "Part I: A gt table (40 pts)\nChoose a state and use tidycensus to download county-level data on income quintiles (geography = \"county\"). Clean the variable names and use mutate(name = str_replace_all(...)) so only the county name shows. Then make a polished gt table: add a title and subtitle, relabel the columns, format the numbers as dollars, and add a source note. Below the table, note in a sentence which counties stand out.",
-    "crumbs": [
-      "Labs",
-      "Lab 4: Tables & coefficient plots"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-4.html#part-ii-regression-table-and-coefficient-plot-60-pts",
-    "href": "assignments/lab-4.html#part-ii-regression-table-and-coefficient-plot-60-pts",
-    "title": "Lab 4: Tables & coefficient plots",
-    "section": "Part II: Regression table and coefficient plot (60 pts)",
-    "text": "Part II: Regression table and coefficient plot (60 pts)\nUse create_stateyears() and the peacesciencer “add” functions to build a state-year data frame for analyzing conflict onset (ucdponset), filtered to 1946–2019. Fit two or three model specifications—varying, say, ethnic fractionalization vs. polarization, the democracy measure, or the terrain measure—and present them side by side in a modelsummary table. Then use modelplot() to show one model as a coefficient plot with confidence intervals. In a sentence or two, compare your results to Fearon and Laitin’s and note what the coefficient plot makes easier to see than the table.\nAI note: (one line on whether/how your group used AI)",
-    "crumbs": [
-      "Labs",
-      "Lab 4: Tables & coefficient plots"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-2.html",
-    "href": "assignments/lab-2.html",
-    "title": "Lab 2: Wrangling",
-    "section": "",
-    "text": "How labs work\n\n\n\nLabs are done with your group during class and are meant to be mostly finished in the class period. You may use AI to ask questions or debug, but not to write your code for you. At the end, add a one-line note saying whether and how you used AI.",
-    "crumbs": [
-      "Labs",
-      "Lab 2: Wrangling"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-2.html#overview",
-    "href": "assignments/lab-2.html#overview",
-    "title": "Lab 2: Wrangling",
-    "section": "Overview",
-    "text": "Overview\nIn Lab 1 we handed you clean data. Now you will build a tidy data set yourself—the skill that makes every later visualization possible. You will pull a democracy measure from V-Dem and a development or empowerment indicator from the World Bank, wrangle them, and merge them into one data frame.",
-    "crumbs": [
-      "Labs",
-      "Lab 2: Wrangling"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-2.html#step-1-download-your-data-30-pts",
-    "href": "assignments/lab-2.html#step-1-download-your-data-30-pts",
-    "title": "Lab 2: Wrangling",
-    "section": "Step 1: Download your data (30 pts)",
-    "text": "Step 1: Download your data (30 pts)\nUse vdem from vdemdata to download the V-Dem dataset, then use filter() and select() to keep a democracy measure of your choice for all countries from roughly 1990 onward. Then use wb_data() from wbstats to download GDP per capita (or another development or women’s-empowerment indicator) for the same period. glimpse() each to confirm they came through.",
-    "crumbs": [
-      "Labs",
-      "Lab 2: Wrangling"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-2.html#step-2-clean-and-merge-40-pts",
-    "href": "assignments/lab-2.html#step-2-clean-and-merge-40-pts",
-    "title": "Lab 2: Wrangling",
-    "section": "Step 2: Clean and merge (40 pts)",
-    "text": "Step 2: Clean and merge (40 pts)\nGet both data frames into a compatible shape (rename or reshape as needed). Add country codes with the countrycode package, then join the two sources into a single data frame with left_join(). glimpse() the result and check for excessive NAs.",
-    "crumbs": [
-      "Labs",
-      "Lab 2: Wrangling"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-2.html#step-3-summarize-30-pts",
-    "href": "assignments/lab-2.html#step-3-summarize-30-pts",
-    "title": "Lab 2: Wrangling",
-    "section": "Step 3: Summarize (30 pts)",
-    "text": "Step 3: Summarize (30 pts)\nUse a group_by(), summarize(), arrange() sequence to pull one insight from your merged data—for example, how regions compare on average democracy and development, or which countries stand out. Write a sentence or two below the chunk describing what you find.\nAI note: (one line on whether/how your group used AI)",
-    "crumbs": [
-      "Labs",
-      "Lab 2: Wrangling"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "assignments/lab-1.html",
-    "href": "assignments/lab-1.html",
-    "title": "Lab 1: Plotting",
-    "section": "",
-    "text": "How labs work\n\n\n\nYou are encouraged to work together and get started in class—talk through the problems with the people around you. You will finish the lab on your own time and submit your own work. You may use AI to ask questions or debug, but not to write your code for you; the point is to think it through yourself. At the end, add a one-line note saying whether and how you used AI.",
-    "crumbs": [
-      "Labs",
-      "Lab 1: Plotting"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-1.html#overview",
-    "href": "assignments/lab-1.html#overview",
-    "title": "Lab 1: Plotting",
-    "section": "Overview",
-    "text": "Overview\nIn 1959, Seymour Martin Lipset published a famous article arguing that economic modernization—wealth, urbanization, education, health—makes democracy more likely. It has been cited more than 11,000 times. In this lab your group will put his argument to the test with three charts.\nThe data are already prepared for you, so you can focus entirely on the visualization. Run the chunk below to load them.\n\nlibrary(tidyverse)\nlibrary(scales)\n\ndem_data &lt;- read_csv(\"data/dem_data.csv\")\n\nglimpse(dem_data)\n\nRows: 6,025\nColumns: 15\n$ country       &lt;chr&gt; \"Afghanistan\", \"Afghanistan\", \"Afghanistan\", \"Afghanista…\n$ iso3c         &lt;chr&gt; \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", …\n$ year          &lt;dbl&gt; 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 19…\n$ region        &lt;chr&gt; \"Asia\", \"Asia\", \"Asia\", \"Asia\", \"Asia\", \"Asia\", \"Asia\", …\n$ polyarchy     &lt;dbl&gt; 0.094, 0.094, 0.095, 0.093, 0.093, 0.093, 0.076, 0.073, …\n$ libdem        &lt;dbl&gt; 0.045, 0.041, 0.033, 0.023, 0.023, 0.022, 0.019, 0.022, …\n$ partipdem     &lt;dbl&gt; 0.025, 0.025, 0.028, 0.027, 0.027, 0.024, 0.013, 0.013, …\n$ delibdem      &lt;dbl&gt; 0.035, 0.035, 0.031, 0.027, 0.027, 0.027, 0.009, 0.007, …\n$ egaldem       &lt;dbl&gt; 0.099, 0.096, 0.066, 0.044, 0.044, 0.042, 0.036, 0.038, …\n$ gdp_pc        &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 308.3, 277.1, 33…\n$ life_exp      &lt;dbl&gt; 45.1, 45.5, 46.6, 51.0, 51.0, 52.1, 52.8, 53.2, 52.5, 54…\n$ inf_mort      &lt;dbl&gt; 145.9, 141.4, 137.2, 133.1, 129.4, 126.0, 122.7, 119.6, …\n$ urban_pct     &lt;dbl&gt; 17.3, 17.4, 17.5, 17.6, 17.7, 17.8, 18.0, 18.1, 18.2, 18…\n$ school_enroll &lt;dbl&gt; 11.0, 17.2, NA, 17.4, 23.5, 23.1, NA, NA, NA, NA, NA, 14…\n$ internet_pct  &lt;dbl&gt; 0.0, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 0.0, 0.0, 0…\n\n\nEvery row is one country in one year, from 1990 to 2023. Along with country, year and region, you have:\n\n\n\n\n\n\n\nMeasures of democracy\nMeasures of modernization\n\n\n\n\npolyarchy — electoral democracy\ngdp_pc — GDP per capita (US$)\n\n\nlibdem — liberal democracy\nlife_exp — life expectancy (years)\n\n\npartipdem — participatory democracy\ninf_mort — infant mortality (per 1,000)\n\n\ndelibdem — deliberative democracy\nurban_pct — population that is urban (%)\n\n\negaldem — egalitarian democracy\ninternet_pct — population online (%)\n\n\n\nAll five democracy measures run from 0 to 1, where higher is more democratic.\n\n\n\n\n\n\nPick your variables\n\n\n\nAs a group, choose one democracy measure and one modernization measure to use for the whole lab. Different groups will choose differently, and that is the point—we will compare notes at the end.",
-    "crumbs": [
-      "Labs",
-      "Lab 1: Plotting"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-1.html#step-1-a-line-chart-over-time-30-pts",
-    "href": "assignments/lab-1.html#step-1-a-line-chart-over-time-30-pts",
-    "title": "Lab 1: Plotting",
-    "section": "Step 1: A line chart over time (30 pts)",
-    "text": "Step 1: A line chart over time (30 pts)\na) Pick three or four countries you are curious about, at different levels of wealth, and filter() the data down to just those countries.\nCountry names have to match the data exactly. Run this to check a name before you use it—change \"Kor\" to the first few letters of whatever you are looking for:\n\ndem_data |&gt;\n  distinct(country) |&gt;\n  filter(str_detect(country, \"Kor\"))\n\n# A tibble: 2 × 1\n  country    \n  &lt;chr&gt;      \n1 North Korea\n2 South Korea\n\n\n\n\n\n\n\n\nWarning\n\n\n\nA few names are not what you would guess: United States of America, Türkiye, Czechia, Burma/Myanmar, and two separate Congos. Copy them from the check above rather than typing from memory.\n\n\n\n\n\n\n\n\nStarter code\n\n\n\nCopy this into the chunk below and add your countries inside the c().\nline_data &lt;- dem_data |&gt;\n  filter(country %in% c(\"\", \"\"))\n\ncount(line_data, country)   # check you got what you expected\n\n\nb) Make a line chart. You need year on the x-axis, your democracy measure on the y-axis, and country mapped to color so each country gets its own line.\n\n\n\n\n\n\nStarter code\n\n\n\nThe aes() call is where you say which column maps to which part of the chart. Fill in all three, then add your labels inside labs().\nggplot(line_data, aes(x = , y = , color = )) +\n  geom_line() +\n  labs(x = , y = , title = , caption = )\n\n\nc) In a sentence or two below this line, describe what you see. Which country changed the most?",
-    "crumbs": [
-      "Labs",
-      "Lab 1: Plotting"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-1.html#step-2-a-bar-chart-comparing-regions-30-pts",
-    "href": "assignments/lab-1.html#step-2-a-bar-chart-comparing-regions-30-pts",
-    "title": "Lab 1: Plotting",
-    "section": "Step 2: A bar chart comparing regions (30 pts)",
-    "text": "Step 2: A bar chart comparing regions (30 pts)\na) Starting from dem_data, filter for a single recent year (2019 is a good choice), then group by region and take the mean of your democracy measure.\n\n\n\n\n\n\nStarter code\n\n\n\nThree verbs in a row. Inside summarize() you give the new column a name, like mean_polyarchy = mean(polyarchy).\nbar_data &lt;- dem_data |&gt;\n  filter(year == ) |&gt;\n  group_by() |&gt;\n  summarize()\n\nbar_data\n\n\nb) Make a bar chart with geom_col(), putting region on the x-axis and your summarized democracy measure on the y-axis. Add labels and a title, and finish with a theme such as theme_minimal().\nc) Below this line, say which region scores highest and which scores lowest.",
-    "crumbs": [
-      "Labs",
-      "Lab 1: Plotting"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-1.html#step-3-a-scatter-plot-30-pts",
-    "href": "assignments/lab-1.html#step-3-a-scatter-plot-30-pts",
-    "title": "Lab 1: Plotting",
-    "section": "Step 3: A scatter plot (30 pts)",
-    "text": "Step 3: A scatter plot (30 pts)\na) Filter dem_data for the same year you used in Step 2 and save it as scatter_data.\nb) Build a scatter plot: your modernization measure on the x-axis, your democracy measure on the y-axis, points colored by region. Then add a trend line with geom_smooth(method = \"lm\"), a colorblind-friendly palette with scale_color_viridis_d(), and clear labels.\nBuild it up one layer at a time—run the chart after each + you add so you can see what each piece does.\n\n\n\n\n\n\nWhere you put color matters here\n\n\n\nAnything you put in the top-level aes() is inherited by every layer that follows it. So if you map color = region there, geom_smooth() will split by region too, and you will get six separate trend lines instead of one overall trend.\nYou want the points colored by region but a single trend line through all of them. Think about which layer actually needs the color, and put it there. If you end up with six trend lines, that is the clue.\n\n\n\n\n\n\n\n\nTip\n\n\n\nIf you chose gdp_pc, most countries will bunch up against the left edge. Add this layer to spread them out:\nscale_x_log10(labels = label_dollar())\n\n\nc) Below this line, describe the relationship. Does it look positive, negative, or flat? If you used inf_mort, think about why its direction differs from the others.",
-    "crumbs": [
-      "Labs",
-      "Lab 1: Plotting"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-1.html#step-4-conclusion-10-pts",
-    "href": "assignments/lab-1.html#step-4-conclusion-10-pts",
-    "title": "Lab 1: Plotting",
-    "section": "Step 4: Conclusion (10 pts)",
-    "text": "Step 4: Conclusion (10 pts)\nRender your document, then write a short paragraph below this line. Taken together, do your three charts support Lipset’s argument? Name one country or region that does not fit the pattern.",
-    "crumbs": [
-      "Labs",
-      "Lab 1: Plotting"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-1.html#bonus-1-pt-each",
-    "href": "assignments/lab-1.html#bonus-1-pt-each",
-    "title": "Lab 1: Plotting",
-    "section": "Bonus (1 pt each)",
-    "text": "Bonus (1 pt each)\na) Add facet_wrap(~ region) to your scatter plot.\nb) Mark something meaningful on your line chart with geom_vline() and annotate()—for example, the year a country held a key election.\nc) Make your scatter plot interactive with ggplotly() from the plotly package.\nAI note: (one line on whether/how you used AI)\n\n\n\n\n\n\nSubmission Instructions\n\n\n\nHead over to Blackboard and go to the Lab 1 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and that all of the work is your own.\nThen upload a compressed (zipped) version of your project folder including the rendered HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).",
-    "crumbs": [
-      "Labs",
-      "Lab 1: Plotting"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-3.html",
-    "href": "assignments/lab-3.html",
-    "title": "Lab 3: Maps",
-    "section": "",
-    "text": "How labs work\n\n\n\nLabs are done with your group during class and are meant to be mostly finished in the class period. You may use AI to ask questions or debug, but not to write your code for you. At the end, add a one-line note saying whether and how you used AI.",
-    "crumbs": [
-      "Labs",
-      "Lab 3: Maps"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-3.html#overview",
-    "href": "assignments/lab-3.html#overview",
-    "title": "Lab 3: Maps",
-    "section": "Overview",
-    "text": "Overview\nIn this lab you will make two kinds of maps: a static choropleth with ggplot2 and sf, and an interactive leaflet map. We will map data relevant to Michael Ross’s argument in The Oil Curse that oil wealth undermines democracy.",
-    "crumbs": [
-      "Labs",
-      "Lab 3: Maps"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-3.html#step-1-a-choropleth-map-50-pts",
-    "href": "assignments/lab-3.html#step-1-a-choropleth-map-50-pts",
-    "title": "Lab 3: Maps",
-    "section": "Step 1: A choropleth map (50 pts)",
-    "text": "Step 1: A choropleth map (50 pts)\nUse rnaturalearth to get country shapes (filter out Antarctica). Choose a variable relevant to Ross’s argument—a democracy measure, oil rents (NY.GDP.PETR.RT.ZS), or taxes as a share of revenue—and join it to the shapes by ISO3C code. Then map it with ggplot() and geom_sf(), using theme_map() from ggthemes and a viridis color scale. Give the map clear labels. Below the map, say in a sentence or two what pattern you see.",
-    "crumbs": [
-      "Labs",
-      "Lab 3: Maps"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-3.html#step-2-a-leaflet-map-of-conflict-50-pts",
-    "href": "assignments/lab-3.html#step-2-a-leaflet-map-of-conflict-50-pts",
-    "title": "Lab 3: Maps",
-    "section": "Step 2: A leaflet map of conflict (50 pts)",
-    "text": "Step 2: A leaflet map of conflict (50 pts)\nPick an oil-rich country that has experienced internal conflict (e.g., Iraq, Nigeria, Syria). Following the approach from the Interactive Maps topic, filter a few months of UCDP GED conflict data for your country and convert the coordinates to simple features with st_as_sf(). Then build a leaflet map with markers for the conflict events: show the location name on hover and the number of deaths and date on click. Use “OpenTopoMap” as your basemap.\nAI note: (one line on whether/how your group used AI)",
-    "crumbs": [
-      "Labs",
-      "Lab 3: Maps"
+      "Schedule"
     ]
   },
   {
@@ -2819,47 +2570,329 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Course Schedule",
+    "objectID": "assignments/lab-3.html",
+    "href": "assignments/lab-3.html",
+    "title": "Lab 3: Maps",
     "section": "",
-    "text": "Topic\nDate\nSkills\nReadings\nReference\nSlides\nVideos\nAssignments\n\n\n\n\n\nAug 25\nCourse overview\n\n\n\n\n\n\n\n\nAug 27\nEnvironment setup + three visualization examples: make a map, plot democracy over time, UN voting trends\n📖\n\n🖥️\n\n\n\n\nGetting Started\nSep 1\nAuthoring with Quarto and Markdown\n📖\n📖\n🖥️\n🖥️🖥️\n\n\n\n\nSep 3\nR programming basics\n\n\n🖥️\n\n\n\n\nCharting With ggplot2\nSep 8\nBar charts & histograms\n📖\n📖📖\n🖥️\n🖥️🖥️\n\n\n\n\nSep 10\nMore Visualization Basics\n📖\n📖\n🖥️\n🖥️🖥️\n\n\n\nColor, Themes & Annotations\nSep 15\nColor schemes\n📖 📖\n📖\n🖥️\n🖥️\n\n\n\n\nSep 17\nThemes, annotations & interactivity\n📖\n📖\n🖥️\n🖥️🖥️🖥️\n🧪\n\n\nReading & Reshaping Data\nSep 22\nRead data into R\n\n📖\n🖥️\n🖥️\n\n\n\n\nSep 24\nReshape & clean data\n\n📖\n🖥️\n🖥️🖥️\n\n\n\nImporting & Merging Data\nSep 29\nDownload data from APIs\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 1\nMerge, group, summarize & arrange\n\n📖 📖\n🖥️\n🖥️🖥️🖥️\n🧪\n\n\nChoropleth Maps\nOct 6\nMap data with choropleth maps\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 8\nTurn your map into a function\n📖\n📖\n🖥️\n🖥️\n\n\n\n\nOct 13\nNo class, fall break\n\n🍁🍂🎃\n\n\n\n\n\nInteractive Maps\nOct 15\nMake a leaflet map\n\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 20\nCustomize your interactive map\n\n\n\n🖥️\n🧪\n\n\n\nOct 22\nFinal project planning session: what makes good data viz? + brainstorm your final project\n\n\n\n\n✍️\n\n\nTables\nOct 27\nExplore tabular data\n\n\n🖥️\n\n\n\n\n\nOct 29\nMake a gt table & confidence intervals\n\n\n🖥️\n\n\n\n\nModels & Coefficient Plots\nNov 3\nRun models & display regression tables\n📖 📖\n\n🖥️\n🖥️\n\n\n\n\nNov 5\nRegression tables & coefficient plots (recorded — no live class)\n\n\n\n🖥️🖥️\n🧪\n\n\nBuilding a Shiny App\nNov 10\nApp setup & building the UI\n\n\n🖥️\n🖥️🖥️\n\n\n\n\nNov 12\nBuilding the server\n\n\n🖥️\n🖥️\n\n\n\nExtending Your App\nNov 17\nAdd inputs & a time-series app\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nNov 19\nShiny modules\n\n\n🖥️\n\n\n\n\n\nNov 24\nNo class, Thanksgiving break\n\n🦃🥧🍂\n\n\n\n\n\n\nNov 26\nNo class, Thanksgiving break\n\n\n\n\n\n\n\nDeploying & Sharing / Project Studio\nDec 1\nDeploy & share your app (shinyapps.io) + studio time (app track) or finish your report (report track)\n\n\n\n🖥️\n\n\n\n\nDec 3\nProject Studio: peer feedback & dry-run presentations\n\n\n\n\n\n\n\n\nDec 8\nFinal presentations / lightning talks",
+    "text": "How labs work\n\n\n\nLabs are done with your group during class and are meant to be mostly finished in the class period. You may use AI to ask questions or debug, but not to write your code for you. At the end, add a one-line note saying whether and how you used AI.",
     "crumbs": [
-      "Course information",
-      "Schedule"
+      "Labs",
+      "Lab 3: Maps"
     ]
   },
   {
-    "objectID": "modules/getting-started.html",
-    "href": "modules/getting-started.html",
-    "title": "Getting Started",
+    "objectID": "assignments/lab-3.html#overview",
+    "href": "assignments/lab-3.html#overview",
+    "title": "Lab 3: Maps",
+    "section": "Overview",
+    "text": "Overview\nIn this lab you will make two kinds of maps: a static choropleth with ggplot2 and sf, and an interactive leaflet map. We will map data relevant to Michael Ross’s argument in The Oil Curse that oil wealth undermines democracy.",
+    "crumbs": [
+      "Labs",
+      "Lab 3: Maps"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-3.html#step-1-a-choropleth-map-50-pts",
+    "href": "assignments/lab-3.html#step-1-a-choropleth-map-50-pts",
+    "title": "Lab 3: Maps",
+    "section": "Step 1: A choropleth map (50 pts)",
+    "text": "Step 1: A choropleth map (50 pts)\nUse rnaturalearth to get country shapes (filter out Antarctica). Choose a variable relevant to Ross’s argument—a democracy measure, oil rents (NY.GDP.PETR.RT.ZS), or taxes as a share of revenue—and join it to the shapes by ISO3C code. Then map it with ggplot() and geom_sf(), using theme_map() from ggthemes and a viridis color scale. Give the map clear labels. Below the map, say in a sentence or two what pattern you see.",
+    "crumbs": [
+      "Labs",
+      "Lab 3: Maps"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-3.html#step-2-a-leaflet-map-of-conflict-50-pts",
+    "href": "assignments/lab-3.html#step-2-a-leaflet-map-of-conflict-50-pts",
+    "title": "Lab 3: Maps",
+    "section": "Step 2: A leaflet map of conflict (50 pts)",
+    "text": "Step 2: A leaflet map of conflict (50 pts)\nPick an oil-rich country that has experienced internal conflict (e.g., Iraq, Nigeria, Syria). Following the approach from the Interactive Maps topic, filter a few months of UCDP GED conflict data for your country and convert the coordinates to simple features with st_as_sf(). Then build a leaflet map with markers for the conflict events: show the location name on hover and the number of deaths and date on click. Use “OpenTopoMap” as your basemap.\nAI note: (one line on whether/how your group used AI)",
+    "crumbs": [
+      "Labs",
+      "Lab 3: Maps"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-1.html",
+    "href": "assignments/lab-1.html",
+    "title": "Lab 1: Plotting",
+    "section": "",
+    "text": "How labs work\n\n\n\nYou are encouraged to work together and get started in class—talk through the problems with the people around you. You will finish the lab on your own time and submit your own work. You may use AI to ask questions or debug, but not to write your code for you; the point is to think it through yourself. At the end, add a one-line note saying whether and how you used AI.",
+    "crumbs": [
+      "Labs",
+      "Lab 1: Plotting"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-1.html#overview",
+    "href": "assignments/lab-1.html#overview",
+    "title": "Lab 1: Plotting",
+    "section": "Overview",
+    "text": "Overview\nIn 1959, Seymour Martin Lipset published a famous article arguing that economic modernization—wealth, urbanization, education, health—makes democracy more likely. It has been cited more than 11,000 times. In this lab your group will put his argument to the test with three charts.\nThe data are already prepared for you, so you can focus entirely on the visualization. Run the chunk below to load them.\n\nlibrary(tidyverse)\nlibrary(scales)\n\ndem_data &lt;- read_csv(\"data/dem_data.csv\")\n\nglimpse(dem_data)\n\nRows: 6,025\nColumns: 15\n$ country       &lt;chr&gt; \"Afghanistan\", \"Afghanistan\", \"Afghanistan\", \"Afghanista…\n$ iso3c         &lt;chr&gt; \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", …\n$ year          &lt;dbl&gt; 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 19…\n$ region        &lt;chr&gt; \"Asia\", \"Asia\", \"Asia\", \"Asia\", \"Asia\", \"Asia\", \"Asia\", …\n$ polyarchy     &lt;dbl&gt; 0.094, 0.094, 0.095, 0.093, 0.093, 0.093, 0.076, 0.073, …\n$ libdem        &lt;dbl&gt; 0.045, 0.041, 0.033, 0.023, 0.023, 0.022, 0.019, 0.022, …\n$ partipdem     &lt;dbl&gt; 0.025, 0.025, 0.028, 0.027, 0.027, 0.024, 0.013, 0.013, …\n$ delibdem      &lt;dbl&gt; 0.035, 0.035, 0.031, 0.027, 0.027, 0.027, 0.009, 0.007, …\n$ egaldem       &lt;dbl&gt; 0.099, 0.096, 0.066, 0.044, 0.044, 0.042, 0.036, 0.038, …\n$ gdp_pc        &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 308.3, 277.1, 33…\n$ life_exp      &lt;dbl&gt; 45.1, 45.5, 46.6, 51.0, 51.0, 52.1, 52.8, 53.2, 52.5, 54…\n$ inf_mort      &lt;dbl&gt; 145.9, 141.4, 137.2, 133.1, 129.4, 126.0, 122.7, 119.6, …\n$ urban_pct     &lt;dbl&gt; 17.3, 17.4, 17.5, 17.6, 17.7, 17.8, 18.0, 18.1, 18.2, 18…\n$ school_enroll &lt;dbl&gt; 11.0, 17.2, NA, 17.4, 23.5, 23.1, NA, NA, NA, NA, NA, 14…\n$ internet_pct  &lt;dbl&gt; 0.0, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 0.0, 0.0, 0…\n\n\nEvery row is one country in one year, from 1990 to 2023. Along with country, year and region, you have:\n\n\n\n\n\n\n\nMeasures of democracy\nMeasures of modernization\n\n\n\n\npolyarchy — electoral democracy\ngdp_pc — GDP per capita (US$)\n\n\nlibdem — liberal democracy\nlife_exp — life expectancy (years)\n\n\npartipdem — participatory democracy\ninf_mort — infant mortality (per 1,000)\n\n\ndelibdem — deliberative democracy\nurban_pct — population that is urban (%)\n\n\negaldem — egalitarian democracy\ninternet_pct — population online (%)\n\n\n\nAll five democracy measures run from 0 to 1, where higher is more democratic.\n\n\n\n\n\n\nPick your variables\n\n\n\nAs a group, choose one democracy measure and one modernization measure to use for the whole lab. Different groups will choose differently, and that is the point—we will compare notes at the end.",
+    "crumbs": [
+      "Labs",
+      "Lab 1: Plotting"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-1.html#step-1-a-line-chart-over-time-30-pts",
+    "href": "assignments/lab-1.html#step-1-a-line-chart-over-time-30-pts",
+    "title": "Lab 1: Plotting",
+    "section": "Step 1: A line chart over time (30 pts)",
+    "text": "Step 1: A line chart over time (30 pts)\na) Pick three or four countries you are curious about, at different levels of wealth, and filter() the data down to just those countries.\nCountry names have to match the data exactly. Run this to check a name before you use it—change \"Kor\" to the first few letters of whatever you are looking for:\n\ndem_data |&gt;\n  distinct(country) |&gt;\n  filter(str_detect(country, \"Kor\"))\n\n# A tibble: 2 × 1\n  country    \n  &lt;chr&gt;      \n1 North Korea\n2 South Korea\n\n\n\n\n\n\n\n\nWarning\n\n\n\nA few names are not what you would guess: United States of America, Türkiye, Czechia, Burma/Myanmar, and two separate Congos. Copy them from the check above rather than typing from memory.\n\n\n\n\n\n\n\n\nStarter code\n\n\n\nCopy this into the chunk below and add your countries inside the c().\nline_data &lt;- dem_data |&gt;\n  filter(country %in% c(\"\", \"\"))\n\ncount(line_data, country)   # check you got what you expected\n\n\nb) Make a line chart. You need year on the x-axis, your democracy measure on the y-axis, and country mapped to color so each country gets its own line.\n\n\n\n\n\n\nStarter code\n\n\n\nThe aes() call is where you say which column maps to which part of the chart. Fill in all three, then add your labels inside labs().\nggplot(line_data, aes(x = , y = , color = )) +\n  geom_line() +\n  labs(x = , y = , title = , caption = )\n\n\nc) In a sentence or two below this line, describe what you see. Which country changed the most?",
+    "crumbs": [
+      "Labs",
+      "Lab 1: Plotting"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-1.html#step-2-a-bar-chart-comparing-regions-30-pts",
+    "href": "assignments/lab-1.html#step-2-a-bar-chart-comparing-regions-30-pts",
+    "title": "Lab 1: Plotting",
+    "section": "Step 2: A bar chart comparing regions (30 pts)",
+    "text": "Step 2: A bar chart comparing regions (30 pts)\na) Starting from dem_data, filter for a single recent year (2019 is a good choice), then group by region and take the mean of your democracy measure.\n\n\n\n\n\n\nStarter code\n\n\n\nThree verbs in a row. Inside summarize() you give the new column a name, like mean_polyarchy = mean(polyarchy).\nbar_data &lt;- dem_data |&gt;\n  filter(year == ) |&gt;\n  group_by() |&gt;\n  summarize()\n\nbar_data\n\n\nb) Make a bar chart with geom_col(), putting region on the x-axis and your summarized democracy measure on the y-axis. Add labels and a title, and finish with a theme such as theme_minimal().\nc) Below this line, say which region scores highest and which scores lowest.",
+    "crumbs": [
+      "Labs",
+      "Lab 1: Plotting"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-1.html#step-3-a-scatter-plot-30-pts",
+    "href": "assignments/lab-1.html#step-3-a-scatter-plot-30-pts",
+    "title": "Lab 1: Plotting",
+    "section": "Step 3: A scatter plot (30 pts)",
+    "text": "Step 3: A scatter plot (30 pts)\na) Filter dem_data for the same year you used in Step 2 and save it as scatter_data.\nb) Build a scatter plot: your modernization measure on the x-axis, your democracy measure on the y-axis, points colored by region. Then add a trend line with geom_smooth(method = \"lm\"), a colorblind-friendly palette with scale_color_viridis_d(), and clear labels.\nBuild it up one layer at a time—run the chart after each + you add so you can see what each piece does.\n\n\n\n\n\n\nWhere you put color matters here\n\n\n\nAnything you put in the top-level aes() is inherited by every layer that follows it. So if you map color = region there, geom_smooth() will split by region too, and you will get six separate trend lines instead of one overall trend.\nYou want the points colored by region but a single trend line through all of them. Think about which layer actually needs the color, and put it there. If you end up with six trend lines, that is the clue.\n\n\n\n\n\n\n\n\nTip\n\n\n\nIf you chose gdp_pc, most countries will bunch up against the left edge. Add this layer to spread them out:\nscale_x_log10(labels = label_dollar())\n\n\nc) Below this line, describe the relationship. Does it look positive, negative, or flat? If you used inf_mort, think about why its direction differs from the others.",
+    "crumbs": [
+      "Labs",
+      "Lab 1: Plotting"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-1.html#step-4-conclusion-10-pts",
+    "href": "assignments/lab-1.html#step-4-conclusion-10-pts",
+    "title": "Lab 1: Plotting",
+    "section": "Step 4: Conclusion (10 pts)",
+    "text": "Step 4: Conclusion (10 pts)\nRender your document, then write a short paragraph below this line. Taken together, do your three charts support Lipset’s argument? Name one country or region that does not fit the pattern.",
+    "crumbs": [
+      "Labs",
+      "Lab 1: Plotting"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-1.html#bonus-1-pt-each",
+    "href": "assignments/lab-1.html#bonus-1-pt-each",
+    "title": "Lab 1: Plotting",
+    "section": "Bonus (1 pt each)",
+    "text": "Bonus (1 pt each)\na) Add facet_wrap(~ region) to your scatter plot.\nb) Mark something meaningful on your line chart with geom_vline() and annotate()—for example, the year a country held a key election.\nc) Make your scatter plot interactive with ggplotly() from the plotly package.\nAI note: (one line on whether/how you used AI)\n\n\n\n\n\n\nSubmission Instructions\n\n\n\nHead over to Blackboard and go to the Lab 1 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and that all of the work is your own.\nThen upload a compressed (zipped) version of your project folder including the rendered HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).",
+    "crumbs": [
+      "Labs",
+      "Lab 1: Plotting"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "assignments/lab-2.html",
+    "href": "assignments/lab-2.html",
+    "title": "Lab 2: Wrangling",
+    "section": "",
+    "text": "How labs work\n\n\n\nLabs are done with your group during class and are meant to be mostly finished in the class period. You may use AI to ask questions or debug, but not to write your code for you. At the end, add a one-line note saying whether and how you used AI.",
+    "crumbs": [
+      "Labs",
+      "Lab 2: Wrangling"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-2.html#overview",
+    "href": "assignments/lab-2.html#overview",
+    "title": "Lab 2: Wrangling",
+    "section": "Overview",
+    "text": "Overview\nIn Lab 1 we handed you clean data. Now you will build a tidy data set yourself—the skill that makes every later visualization possible. You will pull a democracy measure from V-Dem and a development or empowerment indicator from the World Bank, wrangle them, and merge them into one data frame.",
+    "crumbs": [
+      "Labs",
+      "Lab 2: Wrangling"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-2.html#step-1-download-your-data-30-pts",
+    "href": "assignments/lab-2.html#step-1-download-your-data-30-pts",
+    "title": "Lab 2: Wrangling",
+    "section": "Step 1: Download your data (30 pts)",
+    "text": "Step 1: Download your data (30 pts)\nUse vdem from vdemdata to download the V-Dem dataset, then use filter() and select() to keep a democracy measure of your choice for all countries from roughly 1990 onward. Then use wb_data() from wbstats to download GDP per capita (or another development or women’s-empowerment indicator) for the same period. glimpse() each to confirm they came through.",
+    "crumbs": [
+      "Labs",
+      "Lab 2: Wrangling"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-2.html#step-2-clean-and-merge-40-pts",
+    "href": "assignments/lab-2.html#step-2-clean-and-merge-40-pts",
+    "title": "Lab 2: Wrangling",
+    "section": "Step 2: Clean and merge (40 pts)",
+    "text": "Step 2: Clean and merge (40 pts)\nGet both data frames into a compatible shape (rename or reshape as needed). Add country codes with the countrycode package, then join the two sources into a single data frame with left_join(). glimpse() the result and check for excessive NAs.",
+    "crumbs": [
+      "Labs",
+      "Lab 2: Wrangling"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-2.html#step-3-summarize-30-pts",
+    "href": "assignments/lab-2.html#step-3-summarize-30-pts",
+    "title": "Lab 2: Wrangling",
+    "section": "Step 3: Summarize (30 pts)",
+    "text": "Step 3: Summarize (30 pts)\nUse a group_by(), summarize(), arrange() sequence to pull one insight from your merged data—for example, how regions compare on average democracy and development, or which countries stand out. Write a sentence or two below the chunk describing what you find.\nAI note: (one line on whether/how your group used AI)",
+    "crumbs": [
+      "Labs",
+      "Lab 2: Wrangling"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-4.html",
+    "href": "assignments/lab-4.html",
+    "title": "Lab 4: Tables & coefficient plots",
+    "section": "",
+    "text": "How labs work\n\n\n\nLabs are done with your group during class and are meant to be mostly finished in the class period. You may use AI to ask questions or debug, but not to write your code for you. At the end, add a one-line note saying whether and how you used AI.",
+    "crumbs": [
+      "Labs",
+      "Lab 4: Tables & coefficient plots"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-4.html#overview",
+    "href": "assignments/lab-4.html#overview",
+    "title": "Lab 4: Tables & coefficient plots",
+    "section": "Overview",
+    "text": "Overview\nIn this lab you will present data two ways: as a polished table with gt, and as a regression table plus coefficient plot with modelsummary. For Part II we approximate Fearon and Laitin’s Ethnicity, Insurgency, and Civil War, whose provocative claim is that ethnic diversity per se does not predict civil conflict.",
+    "crumbs": [
+      "Labs",
+      "Lab 4: Tables & coefficient plots"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-4.html#part-i-a-gt-table-40-pts",
+    "href": "assignments/lab-4.html#part-i-a-gt-table-40-pts",
+    "title": "Lab 4: Tables & coefficient plots",
+    "section": "Part I: A gt table (40 pts)",
+    "text": "Part I: A gt table (40 pts)\nChoose a state and use tidycensus to download county-level data on income quintiles (geography = \"county\"). Clean the variable names and use mutate(name = str_replace_all(...)) so only the county name shows. Then make a polished gt table: add a title and subtitle, relabel the columns, format the numbers as dollars, and add a source note. Below the table, note in a sentence which counties stand out.",
+    "crumbs": [
+      "Labs",
+      "Lab 4: Tables & coefficient plots"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-4.html#part-ii-regression-table-and-coefficient-plot-60-pts",
+    "href": "assignments/lab-4.html#part-ii-regression-table-and-coefficient-plot-60-pts",
+    "title": "Lab 4: Tables & coefficient plots",
+    "section": "Part II: Regression table and coefficient plot (60 pts)",
+    "text": "Part II: Regression table and coefficient plot (60 pts)\nUse create_stateyears() and the peacesciencer “add” functions to build a state-year data frame for analyzing conflict onset (ucdponset), filtered to 1946–2019. Fit two or three model specifications—varying, say, ethnic fractionalization vs. polarization, the democracy measure, or the terrain measure—and present them side by side in a modelsummary table. Then use modelplot() to show one model as a coefficient plot with confidence intervals. In a sentence or two, compare your results to Fearon and Laitin’s and note what the coefficient plot makes easier to see than the table.\nAI note: (one line on whether/how your group used AI)",
+    "crumbs": [
+      "Labs",
+      "Lab 4: Tables & coefficient plots"
+    ]
+  },
+  {
+    "objectID": "course-links.html",
+    "href": "course-links.html",
+    "title": "Useful links",
+    "section": "",
+    "text": "Lecture Recordings\n🔗 on Blackboard\n\n\nProf T’s Zoom Office\n🔗 on Zoom\n\n\nOffice Hours Appointments\n🔗 on Calendly",
+    "crumbs": [
+      "Course information",
+      "Useful links"
+    ]
+  },
+  {
+    "objectID": "course-support.html",
+    "href": "course-support.html",
+    "title": "Support",
+    "section": "",
+    "text": "Writing Center GW’s Writing Center cultivates confident writers in the University community by facilitating collaborative, critical, and inclusive conversations at all stages of the writing process. Working alongside peer mentors, writers develop strategies to write independently in academic and public settings. Appointments can be booked online here.\nAcademic Commons Academic Commons provides tutoring and other academic support resources to students in many courses. Students can schedule virtual one-on-one appointments or attend virtual drop-in sessions. Students may schedule an appointment, review the tutoring schedule, access other academic support resources, or obtain assistance here.",
+    "crumbs": [
+      "Course information",
+      "Support"
+    ]
+  },
+  {
+    "objectID": "course-support.html#academic-support",
+    "href": "course-support.html#academic-support",
+    "title": "Support",
+    "section": "",
+    "text": "Writing Center GW’s Writing Center cultivates confident writers in the University community by facilitating collaborative, critical, and inclusive conversations at all stages of the writing process. Working alongside peer mentors, writers develop strategies to write independently in academic and public settings. Appointments can be booked online here.\nAcademic Commons Academic Commons provides tutoring and other academic support resources to students in many courses. Students can schedule virtual one-on-one appointments or attend virtual drop-in sessions. Students may schedule an appointment, review the tutoring schedule, access other academic support resources, or obtain assistance here.",
+    "crumbs": [
+      "Course information",
+      "Support"
+    ]
+  },
+  {
+    "objectID": "course-support.html#support-for-students-outside-the-classroom",
+    "href": "course-support.html#support-for-students-outside-the-classroom",
+    "title": "Support",
+    "section": "Support for students outside the classroom",
+    "text": "Support for students outside the classroom\nDisability Support Services (DSS) 202-994-8250 Any student who may need an accommodation based on the potential impact of a disability should contact Disability Support Services to establish eligibility and to coordinate reasonable accommodations.\nCounseling and Psychological Services 202-994-5300 GW’s Colonial Health Center offers counseling and psychological services, supporting mental health and personal development by collaborating directly with students to overcome challenges and difficulties that may interfere with academic, emotional, and personal success.\nGW aims to create a community that cares for each other.The CARE Team fosters this goal by creating a pathway through which students who may need additional support can be identified and referred to the most appropriate services. Through the CARE Team, students are given the support they need to persist and succeed at GW and beyond.\nSafety and Security:\n\nIn an emergency: call GWPD 202-994-6111 or 911.\nFor situation-specific actions: review the Emergency Response Handbook\nStay informed: safety.gwu.edu/stay-informed",
+    "crumbs": [
+      "Course information",
+      "Support"
+    ]
+  },
+  {
+    "objectID": "instructor.html",
+    "href": "instructor.html",
+    "title": "Instructor",
+    "section": "",
+    "text": "Emmanuel Teitelbaum is an associate professor of political science and international affairs at the The George Washington University His research and writing explore how class conflict and compromise intersect with democracy and development. He also has a strong interest in labor standards and understanding how labor unions, nonprofit organizations, consumers and corporations can help to promote them.\nAt GW, Professor Teitelbaum teaches courses on comparative politics, comparative political economy and data science. He is on faculty in the Department of Political Science and the Elliott School of International Affairs and is affiliated with the Sigur Center for Asian Studies as well as the Institute for International Economic Policy.",
+    "crumbs": [
+      "Course information",
+      "Instructor"
+    ]
+  },
+  {
+    "objectID": "instructor.html#office-hours",
+    "href": "instructor.html#office-hours",
+    "title": "Instructor",
+    "section": "Office Hours",
+    "text": "Office Hours\nProfessor Teitelbaum’s office hours are on Mondays from 3:00 p.m. to 5:00 p.m. Please sign up for a slot (or two) on his Calendly page. He is available for consultation virtually on Zoom or in his office at 411 Monroe Hall (2115 G. ST NW).",
+    "crumbs": [
+      "Course information",
+      "Instructor"
+    ]
+  },
+  {
+    "objectID": "modules/getting-started-2.html",
+    "href": "modules/getting-started-2.html",
+    "title": "Quarto and Markdown",
     "section": "",
     "text": "Packages in this module\n\n\n\nPackages: tidyverse, quarto",
     "crumbs": [
       "Course Topics",
-      "Getting Started"
+      "Quarto and Markdown"
     ]
   },
   {
-    "objectID": "modules/getting-started.html#sec-rstudio-setup",
-    "href": "modules/getting-started.html#sec-rstudio-setup",
-    "title": "Getting Started",
-    "section": "R and RStudio",
-    "text": "R and RStudio\n\nAll of our work for this course will be done in the R language and we will be working with R in RStudio. RStudio is an integrated development environment (IDE) develop by a company named Posit. Please be sure to download and install the most recent versions of R and R Studio from Posit’s website.\nIt is a good idea to periodically update R and RStudio. RStudio will prompt you when it is time to update and you can follow the same process of downloading and installing from the Posit website that we just did here. For R, the easiest approach is to use rig (R Installation Manager), which works on Windows, Mac, and Linux and lets you install and switch between R versions from the command line. On Windows you can also use the installr package. I usually update R once a semester.\nWe are going to be using a number of R packages throughout the course. One essential set of packages are those that comprise the Tidyverse, but especially readr, dplyr, ggplot2 and tidyr. You can install the entire Tidyverse collection of packages by typing install.packages(\"tidyverse\") in your console. We will talk about these packages in detail as we go through the course, but have a look at this basic description now to gain some basic familiarity.\nAnother thing that you really want to do is to make sure that you have the native pipe operator (|&gt;) enabled. In RStudio, go to Tools&gt;Global Options, then go to Code and select “Use native pipe operator.”\nWhile you are here, you can also go to Appearance to select a different editor theme or to Pane Layout to change how the four panes in R Studio are organized. Next, familiarize yourself with how to expand and minimize the four windows. The most important window that I want to highlight here is the source window. This is where we are going to be working most of the time in this course. And if I tell you to send your source code, I mean to send the file that you are working on in this window. This could be a Quarto document, an R script or an app.R file for a Shiny app.\nThe next window is the Console and there we also see tabs for Terminal and Background Jobs. The console is where you can run R code one line at a time. The terminal is relevant for more advanced users and we will make some use of it when we talk about publishing Quarto documents. Background Jobs is going to be helpful when we want troubleshoot a Quarto document that is not rendering properly.\nFrom there, the next pane we want to explore is Environment, History, etc. Environment tells us what files are currently available to us.\nFinally, we see a pane with Files, Plots, Packages etc. Files tells us what files are in our project folder and enables us to copy, and delete files associated with our project. Plots is a window for viewing our visualizations. And Packages shows us what packages are available and loaded into our environment.\nBefore you move on to the next section, take some time to familiarize yourself with the various user-friendly buttons and shortcuts available to you like the drop down menu for the pane layout, a spell checker, a button for inserting a code chunk and other features that you can play around with.",
-    "crumbs": [
-      "Course Topics",
-      "Getting Started"
-    ]
-  },
-  {
-    "objectID": "modules/getting-started.html#quarto",
-    "href": "modules/getting-started.html#quarto",
-    "title": "Getting Started",
+    "objectID": "modules/getting-started-2.html#quarto",
+    "href": "modules/getting-started-2.html#quarto",
+    "title": "Quarto and Markdown",
     "section": "Quarto",
-    "text": "Quarto\n\nOnce you have R, R Studio and Quarto installed, you are ready to start integrating text and code with Quarto. Quarto is an open source publishing platform that enables you to integrate text with code. If you have used R Markdown before then Quarto will look familiar to you because Quarto is the next generation of R Markdown.\nRStudio comes with a version of Quarto already installed, but it can be useful to install the most recent version separately and because doing so will allow you to use Quarto with another IDE like VS Code. You can install the most recent version of Quarto by visiting this page and selecting the version for your operating system.\nNow take a little time to create a Quarto project in R Studio and make sure everything is working properly. But before you get started, create a new folder(directory) for this course on your computer somewhere. Once that is done, go to File &gt; New Project. Then select Quarto Project and name the project something like “test-project” in the Directory name field. Next, select Browse and navigate to the folder that you created for this course. Select Create Project.\nYou will notice that in your new project folder there is a file with an .Rproj extension. The .Rproj file is what tells RStudio which files are associated with the project and it obviates the need to set the working directory. It also makes it possible to share the folder with anyone who is running R and RStudio and have them run your code without having to set a working directory. This is what we refer to as a project-based workflow and we will use it for every assignment in this class.\nNow try rendering the document with the Render toggle button. By default, Quarto renders an .html file that it will open in a browser and save to your project folder.\nNext we want to try rendering a .pdf document. To do this, we have to install tinytex, a lightweight version of LaTeX. To do this, go to the Terminal and type quarto install tinytex. Now, change the format from html to pdf by inserting format: pdf in the YAML header. Then render the document again. A .pdf document should open up.\nNow take a few minutes and try changing more of the code in the YAML header. You can try changing the title, adding a subtitle (subtitle:) or changing the execution options. By default, Quarto uses the visual editor but behind the scenes it is using Markdown. Try and edit some text using the toggle buttons available in the visual editor and then switch to Source to view the underlying Markdown code. Play with the R code chunks embedded in the document or try adding new code chunks.\nYou may already have some experience writing in Markdown, which is a lightweight markup language that enables you to format plaintext files. If you have not used Markdown, or if your memory is hazy, don’t worry: it is really easy to learn. Have a look at this Markdown cheat sheet and try to familiarize yourself with its basic syntax. Finally, take some time to get familiar with the Guide and Reference sections of the Quarto website. Then take a look at the gallery so that you can get an idea of the kinds of things you can produce with Quarto.",
+    "text": "Quarto\n\nOnce you have R, R Studio and Quarto installed, you are ready to start integrating text and code with Quarto. Quarto is an open source publishing platform that enables you to integrate text with code. If you have used R Markdown before then Quarto will look familiar to you because Quarto is the next generation of R Markdown.\nRStudio comes with a version of Quarto already installed, but it can be useful to install the most recent version separately and because doing so will allow you to use Quarto with another IDE like VS Code. You can install the most recent version of Quarto by visiting this page and selecting the version for your operating system.\nNow take a little time to create a Quarto project in R Studio and make sure everything is working properly. But before you get started, create a new folder(directory) for this course on your computer somewhere. Once that is done, go to File &gt; New Project. Then select Quarto Project and name the project something like “test-project” in the Directory name field. Next, select Browse and navigate to the folder that you created for this course. Select Create Project.\nYou will notice that in your new project folder there is a file with an .Rproj extension. The .Rproj file is what tells RStudio which files are associated with the project and it obviates the need to set the working directory. It also makes it possible to share the folder with anyone who is running R and RStudio and have them run your code without having to set a working directory. This is what we refer to as a project-based workflow and we will use it for every assignment in this class.\nNow try rendering the document with the Render toggle button. By default, Quarto renders an .html file that it will open in a browser and save to your project folder.\nNext we want to try rendering a .pdf document. To do this, we have to install tinytex, a lightweight version of LaTeX. To do this, go to the Terminal and type quarto install tinytex. Now, change the format from html to pdf by inserting format: pdf in the YAML header. Then render the document again. A .pdf document should open up.\nNow take a few minutes and try changing more of the code in the YAML header. You can try changing the title, adding a subtitle (subtitle:) or changing the execution options. By default, Quarto uses the visual editor but behind the scenes it is using Markdown. Try and edit some text using the toggle buttons available in the visual editor and then switch to Source to view the underlying Markdown code.",
     "crumbs": [
       "Course Topics",
-      "Getting Started"
+      "Quarto and Markdown"
+    ]
+  },
+  {
+    "objectID": "modules/getting-started-2.html#markdown",
+    "href": "modules/getting-started-2.html#markdown",
+    "title": "Quarto and Markdown",
+    "section": "Markdown",
+    "text": "Markdown\nYou may already have some experience writing in Markdown, which is a lightweight markup language that enables you to format plaintext files. If you have not used Markdown, or if your memory is hazy, don’t worry: it is really easy to learn.\nA Quarto document is made up of three basic elements: a YAML header (the part between the --- lines at the top, where you set the title, author, date and output format), Markdown content (your regular text, formatted with a few simple symbols), and code chunks (where the R code lives). Markdown governs everything outside the code chunks.\nHere are the basics:\n\nHeadings are created with # symbols: one # is the largest heading (level 1), ## is the next size down (level 2), ### is level 3, and so on.\nEmphasis: wrap text in a single asterisk for italics (*italics*) or two asterisks for bold (**bold**).\nLists: start a line with - for a bullet list, or 1. for a numbered list.\nLinks: [link text](url) — for example [Quarto](https://quarto.org/) becomes Quarto.\nImages: same idea as links, with a ! in front — ![alt text](file path or url).\nCode chunks: fence a chunk of R code with three backticks and a curly-brace language tag, e.g. ```{r} on its own line, your code, then ``` to close it. Chunks can be run one at a time from the editor or all together when you render.\n\nTry editing some text in your Quarto document using these elements, then switch between the Source and Visual editors to see how each one is represented in the other. When you’re ready to see everything Markdown can do, have a look at this Markdown guide and this cheat sheet for quick reference.\nFinally, take some time to get familiar with the Guide and Reference sections of the Quarto website. Then take a look at the gallery so that you can get an idea of the kinds of things you can produce with Quarto.",
+    "crumbs": [
+      "Course Topics",
+      "Quarto and Markdown"
     ]
   },
   {
@@ -3603,13 +3636,6 @@
     "title": "Working in RStudio with Quarto and Markdown",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nYou can also add footnotes to your document\nUse the ^[] or [^1] syntax to add a footnote\nThere are different ways to add footnotes\nI find that inline notes are the easiest to work with\n\nFor example ^[This is a footnote]"
-  },
-  {
-    "objectID": "slides/week-1.1.html#generating-lorem-ipsum",
-    "href": "slides/week-1.1.html#generating-lorem-ipsum",
-    "title": "Getting Started, Part I",
-    "section": "Generating Lorem Ipsum",
-    "text": "Generating Lorem Ipsum\n\n\nFor working on your document’s format it is helpful to have random text\nThe lorem package is helpful for this\nYou can also install an R Studio Addin"
   },
   {
     "objectID": "slides/week-1.1.html#your-turn",

@@ -21,7 +21,7 @@ execute:
 ::: {.callout-tip}
 ## Prework
 
-- Install R, R Studio and the Tidyverse collection of packages if you have not done so already (see [getting started](/modules/getting-started.html))
+- Install R, R Studio and the Tidyverse collection of packages if you have not done so already (see [R and RStudio Setup](/modules/getting-started-1.html))
 - Install the `janitor` package (`install.packages("janitor")`)
 - Have a look at the documentation for [readr](https://readr.tidyverse.org/), [dplyr](https://dplyr.tidyverse.org/), [tidyr](https://tidyr.tidyverse.org/) and [janitor](https://sfirke.github.io/janitor/)
 - Familiarize yourself with the [readr](https://posit.co/wp-content/uploads/2022/10/data-import.pdf), [dplyr](https://posit.co/wp-content/uploads/2022/10/data-transformation-1.pdf) and [tidyr](https://posit.co/wp-content/uploads/2022/10/tidyr.pdf) cheatsheets

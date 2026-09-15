@@ -121,8 +121,10 @@ website:
             text: "Datasets"
       - section: "Course Topics"
         contents:
-          - href: modules/getting-started.qmd
-            text: "Getting Started"
+          - href: modules/getting-started-1.qmd
+            text: "R and RStudio Setup"
+          - href: modules/getting-started-2.qmd
+            text: "Quarto and Markdown"
           - section: "I — Working With Data"
             contents:
               - href: modules/module-1.1.qmd
