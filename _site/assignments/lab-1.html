@@ -710,10 +710,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#step-1-a-line-chart-over-time-30-pts" id="toc-step-1-a-line-chart-over-time-30-pts" class="nav-link" data-scroll-target="#step-1-a-line-chart-over-time-30-pts">Step 1: A line chart over time (30 pts)</a></li>
-  <li><a href="#step-2-a-bar-chart-comparing-regions-30-pts" id="toc-step-2-a-bar-chart-comparing-regions-30-pts" class="nav-link" data-scroll-target="#step-2-a-bar-chart-comparing-regions-30-pts">Step 2: A bar chart comparing regions (30 pts)</a></li>
-  <li><a href="#step-3-a-scatter-plot-30-pts" id="toc-step-3-a-scatter-plot-30-pts" class="nav-link" data-scroll-target="#step-3-a-scatter-plot-30-pts">Step 3: A scatter plot (30 pts)</a></li>
-  <li><a href="#step-4-conclusion-10-pts" id="toc-step-4-conclusion-10-pts" class="nav-link" data-scroll-target="#step-4-conclusion-10-pts">Step 4: Conclusion (10 pts)</a></li>
+  <li><a href="#step-1-a-line-chart-over-time-35-pts" id="toc-step-1-a-line-chart-over-time-35-pts" class="nav-link" data-scroll-target="#step-1-a-line-chart-over-time-35-pts">Step 1: A line chart over time (35 pts)</a></li>
+  <li><a href="#step-2-a-bar-chart-comparing-regions-20-pts" id="toc-step-2-a-bar-chart-comparing-regions-20-pts" class="nav-link" data-scroll-target="#step-2-a-bar-chart-comparing-regions-20-pts">Step 2: A bar chart comparing regions (20 pts)</a></li>
+  <li><a href="#step-3-a-scatter-plot-25-pts" id="toc-step-3-a-scatter-plot-25-pts" class="nav-link" data-scroll-target="#step-3-a-scatter-plot-25-pts">Step 3: A scatter plot (25 pts)</a></li>
+  <li><a href="#step-4-make-it-interactive-10-pts" id="toc-step-4-make-it-interactive-10-pts" class="nav-link" data-scroll-target="#step-4-make-it-interactive-10-pts">Step 4: Make it interactive (10 pts)</a></li>
+  <li><a href="#step-5-conclusion-10-pts" id="toc-step-5-conclusion-10-pts" class="nav-link" data-scroll-target="#step-5-conclusion-10-pts">Step 5: Conclusion (10 pts)</a></li>
   <li><a href="#bonus-1-pt-each" id="toc-bonus-1-pt-each" class="nav-link" data-scroll-target="#bonus-1-pt-each">Bonus (1 pt each)</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/dataviz/edit/main/assignments/lab-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/dataviz/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -836,8 +837,8 @@ Pick your variables
 </div>
 </div>
 </section>
-<section id="step-1-a-line-chart-over-time-30-pts" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-a-line-chart-over-time-30-pts">Step 1: A line chart over time (30 pts)</h2>
+<section id="step-1-a-line-chart-over-time-35-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-a-line-chart-over-time-35-pts">Step 1: A line chart over time (35 pts)</h2>
 <p><em>a) Pick three or four countries you are curious about, at different levels of wealth, and <code>filter()</code> the data down to just those countries.</em></p>
 <p>Country names have to match the data <strong>exactly</strong>. Run this to check a name before you use it—change <code>"Kor"</code> to the first few letters of whatever you are looking for:</p>
 <div class="cell">
@@ -879,7 +880,7 @@ Starter code
 <div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>line_data <span class="ot">&lt;-</span> dem_data <span class="sc">|&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">""</span>))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(line_data, country)   <span class="co"># check you got what you expected</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(line_data)   <span class="co"># check you got what you expected</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p><em>b) Make a line chart. You need <code>year</code> on the x-axis, your democracy measure on the y-axis, and <code>country</code> mapped to <code>color</code> so each country gets its own line.</em></p>
@@ -899,10 +900,48 @@ Starter code
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> , <span class="at">y =</span> , <span class="at">title =</span> , <span class="at">caption =</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p><em>c) In a sentence or two below this line, describe what you see. Which country changed the most?</em></p>
+<p><em>c) Now polish it. Add a theme and swap the default colors for a colorblind-safe scheme.</em></p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Starter code
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>country</code> is a discrete variable, so you want the discrete version of the viridis scale. Save the chart to an object first so you can keep building on it in the next part.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>line_chart <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(line_data, <span class="fu">aes</span>(<span class="at">x =</span> , <span class="at">y =</span> , <span class="at">color =</span> )) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> , <span class="at">y =</span> , <span class="at">title =</span> , <span class="at">caption =</span> ) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>line_chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p><em>d) Mark a moment that matters. Add a dashed vertical line at a year when something important happened in one of your countries—an election, a coup, the start of a war—and label it with <code>annotate()</code>.</em></p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Starter code
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>xintercept</code> is the year the line crosses the x-axis. For the label, <code>x</code> and <code>y</code> are the coordinates where the text sits, so put it somewhere it will not collide with your lines.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>line_chart <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> , <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> , <span class="at">y =</span> , <span class="at">label =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p><em>e) In a sentence or two below this line, describe what you see. Which country changed the most? What does the event you marked in part (d) look like on the chart?</em></p>
 </section>
-<section id="step-2-a-bar-chart-comparing-regions-30-pts" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-a-bar-chart-comparing-regions-30-pts">Step 2: A bar chart comparing regions (30 pts)</h2>
+<section id="step-2-a-bar-chart-comparing-regions-20-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-a-bar-chart-comparing-regions-20-pts">Step 2: A bar chart comparing regions (20 pts)</h2>
 <p><em>a) Starting from <code>dem_data</code>, filter for a single recent year (2019 is a good choice), then group by <code>region</code> and take the mean of your democracy measure.</em></p>
 <div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -915,21 +954,34 @@ Starter code
 </div>
 <div class="callout-body-container callout-body">
 <p>Three verbs in a row. Inside <code>summarize()</code> you give the new column a name, like <code>mean_polyarchy = mean(polyarchy)</code>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>bar_data <span class="ot">&lt;-</span> dem_data <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> ) <span class="sc">|&gt;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>() <span class="sc">|&gt;</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>()</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>bar_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>bar_data <span class="ot">&lt;-</span> dem_data <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> ) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>() <span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>()</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>bar_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p><em>b) Make a bar chart with <code>geom_col()</code>, putting <code>region</code> on the x-axis and your summarized democracy measure on the y-axis. Add labels and a title, and finish with a theme such as <code>theme_minimal()</code>.</em></p>
+<p><em>b) Make a bar chart with <code>geom_col()</code>, putting <code>region</code> on the x-axis and your summarized democracy measure on the y-axis. Add labels and a title.</em></p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Keep it consistent
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>From here on, every chart you make should get the same treatment you gave your line chart: a theme, and a colorblind-safe palette wherever you map a color. If you map <code>fill = region</code> here, reach for <code>scale_fill_viridis_d()</code>—the fill counterpart to the <code>scale_color_viridis_d()</code> you used in Step 1.</p>
+</div>
+</div>
 <p><em>c) Below this line, say which region scores highest and which scores lowest.</em></p>
 </section>
-<section id="step-3-a-scatter-plot-30-pts" class="level2">
-<h2 class="anchored" data-anchor-id="step-3-a-scatter-plot-30-pts">Step 3: A scatter plot (30 pts)</h2>
+<section id="step-3-a-scatter-plot-25-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-a-scatter-plot-25-pts">Step 3: A scatter plot (25 pts)</h2>
 <p><em>a) Filter <code>dem_data</code> for the same year you used in Step 2 and save it as <code>scatter_data</code>.</em></p>
-<p><em>b) Build a scatter plot: your modernization measure on the x-axis, your democracy measure on the y-axis, points colored by <code>region</code>. Then add a trend line with <code>geom_smooth(method = "lm")</code>, a colorblind-friendly palette with <code>scale_color_viridis_d()</code>, and clear labels.</em></p>
+<p><em>b) Build a scatter plot: your modernization measure on the x-axis, your democracy measure on the y-axis, points colored by <code>region</code>. Then add a trend line with <code>geom_smooth(method = "lm")</code>, a colorblind-safe palette with <code>scale_color_viridis_d()</code>, a theme to match your other charts, and clear labels. Save it as <code>scatter_chart</code>—you will need it again in Step 4.</em></p>
 <p>Build it up one layer at a time—run the chart after each <code>+</code> you add so you can see what each piece does.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -961,15 +1013,35 @@ Tip
 </div>
 <p><em>c) Below this line, describe the relationship. Does it look positive, negative, or flat? If you used <code>inf_mort</code>, think about why its direction differs from the others.</em></p>
 </section>
-<section id="step-4-conclusion-10-pts" class="level2">
-<h2 class="anchored" data-anchor-id="step-4-conclusion-10-pts">Step 4: Conclusion (10 pts)</h2>
-<p><em>Render your document, then write a short paragraph below this line. Taken together, do your three charts support Lipset’s argument? Name one country or region that does not fit the pattern.</em></p>
+<section id="step-4-make-it-interactive-10-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-make-it-interactive-10-pts">Step 4: Make it interactive (10 pts)</h2>
+<p><em>Take the scatter plot from Step 3 and make it interactive with <code>ggplotly()</code> from the <code>plotly</code> package. Then hover over a few points to see what the tooltip tells you.</em></p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Starter code
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>By default the tooltip shows every variable you mapped. Use <code>tooltip =</code> to choose which ones appear, and add <code>aes(label = country)</code> if you want the country name in there—it is not in the plot otherwise.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(scatter_chart)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p><em>Below this line, note one thing the interactive version lets you see that the static one did not.</em></p>
+</section>
+<section id="step-5-conclusion-10-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-conclusion-10-pts">Step 5: Conclusion (10 pts)</h2>
+<p><em>Render your document, then write a short paragraph below this line. Taken together, do your charts support Lipset’s argument? Name one country or region that does not fit the pattern.</em></p>
 </section>
 <section id="bonus-1-pt-each" class="level2">
 <h2 class="anchored" data-anchor-id="bonus-1-pt-each">Bonus (1 pt each)</h2>
 <p><em>a) Add <code>facet_wrap(~ region)</code> to your scatter plot.</em></p>
-<p><em>b) Mark something meaningful on your line chart with <code>geom_vline()</code> and <code>annotate()</code>—for example, the year a country held a key election.</em></p>
-<p><em>c) Make your scatter plot interactive with <code>ggplotly()</code> from the <code>plotly</code> package.</em></p>
+<p><em>b) Animate your scatter plot across time with the <code>gganimate</code> package. Go back to the full <code>dem_data</code> rather than the single year you filtered to in Step 3, add <code>transition_states(year)</code>, and use <code>{closest_state}</code> inside your title so the year updates as it plays.</em></p>
 <p><em>AI note: <em>(one line on whether/how you used AI)</em></em></p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">

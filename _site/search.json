@@ -2684,7 +2684,7 @@
     "href": "assignments/lab-1.html#bonus-1-pt-each",
     "title": "Lab 1: Plotting",
     "section": "Bonus (1 pt each)",
-    "text": "Bonus (1 pt each)\na) Add facet_wrap(~ region) to your scatter plot.\nb) Mark something meaningful on your line chart with geom_vline() and annotate()—for example, the year a country held a key election.\nc) Make your scatter plot interactive with ggplotly() from the plotly package.\nAI note: (one line on whether/how you used AI)\n\n\n\n\n\n\nSubmission Instructions\n\n\n\nHead over to Blackboard and go to the Lab 1 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and that all of the work is your own.\nThen upload a compressed (zipped) version of your project folder including the rendered HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).",
+    "text": "Bonus (1 pt each)\na) Add facet_wrap(~ region) to your scatter plot.\nb) Animate your scatter plot across time with the gganimate package. Go back to the full dem_data rather than the single year you filtered to in Step 3, add transition_states(year), and use {closest_state} inside your title so the year updates as it plays.\nAI note: (one line on whether/how you used AI)\n\n\n\n\n\n\nSubmission Instructions\n\n\n\nHead over to Blackboard and go to the Lab 1 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and that all of the work is your own.\nThen upload a compressed (zipped) version of your project folder including the rendered HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).",
     "crumbs": [
       "Labs",
       "Lab 1: Plotting"
@@ -5388,6 +5388,61 @@
     "crumbs": [
       "Weekly Materials",
       "Week 9"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-1.html#step-1-a-line-chart-over-time-35-pts",
+    "href": "assignments/lab-1.html#step-1-a-line-chart-over-time-35-pts",
+    "title": "Lab 1: Plotting",
+    "section": "Step 1: A line chart over time (35 pts)",
+    "text": "Step 1: A line chart over time (35 pts)\na) Pick three or four countries you are curious about, at different levels of wealth, and filter() the data down to just those countries.\nCountry names have to match the data exactly. Run this to check a name before you use it—change \"Kor\" to the first few letters of whatever you are looking for:\n\ndem_data |&gt;\n  distinct(country) |&gt;\n  filter(str_detect(country, \"Kor\"))\n\n# A tibble: 2 × 1\n  country    \n  &lt;chr&gt;      \n1 North Korea\n2 South Korea\n\n\n\n\n\n\n\n\nWarning\n\n\n\nA few names are not what you would guess: United States of America, Türkiye, Czechia, Burma/Myanmar, and two separate Congos. Copy them from the check above rather than typing from memory.\n\n\n\n\n\n\n\n\nStarter code\n\n\n\nCopy this into the chunk below and add your countries inside the c().\nline_data &lt;- dem_data |&gt;\n  filter(country %in% c(\"\", \"\"))\n\nglimpse(line_data)   # check you got what you expected\n\n\nb) Make a line chart. You need year on the x-axis, your democracy measure on the y-axis, and country mapped to color so each country gets its own line.\n\n\n\n\n\n\nStarter code\n\n\n\nThe aes() call is where you say which column maps to which part of the chart. Fill in all three, then add your labels inside labs().\nggplot(line_data, aes(x = , y = , color = )) +\n  geom_line() +\n  labs(x = , y = , title = , caption = )\n\n\nc) Now polish it. Add a theme and swap the default colors for a colorblind-safe scheme.\n\n\n\n\n\n\nStarter code\n\n\n\ncountry is a discrete variable, so you want the discrete version of the viridis scale. Save the chart to an object first so you can keep building on it in the next part.\nline_chart &lt;- ggplot(line_data, aes(x = , y = , color = )) +\n  geom_line() +\n  labs(x = , y = , title = , caption = ) +\n  scale_color_viridis_d() +\n  theme_minimal()\n\nline_chart\n\n\nd) Mark a moment that matters. Add a dashed vertical line at a year when something important happened in one of your countries—an election, a coup, the start of a war—and label it with annotate().\n\n\n\n\n\n\nStarter code\n\n\n\nxintercept is the year the line crosses the x-axis. For the label, x and y are the coordinates where the text sits, so put it somewhere it will not collide with your lines.\nline_chart +\n  geom_vline(xintercept = , linetype = \"dashed\") +\n  annotate(\"text\", x = , y = , label = \"\")\n\n\ne) In a sentence or two below this line, describe what you see. Which country changed the most? What does the event you marked in part (d) look like on the chart?",
+    "crumbs": [
+      "Labs",
+      "Lab 1: Plotting"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-1.html#step-2-a-bar-chart-comparing-regions-20-pts",
+    "href": "assignments/lab-1.html#step-2-a-bar-chart-comparing-regions-20-pts",
+    "title": "Lab 1: Plotting",
+    "section": "Step 2: A bar chart comparing regions (20 pts)",
+    "text": "Step 2: A bar chart comparing regions (20 pts)\na) Starting from dem_data, filter for a single recent year (2019 is a good choice), then group by region and take the mean of your democracy measure.\n\n\n\n\n\n\nStarter code\n\n\n\nThree verbs in a row. Inside summarize() you give the new column a name, like mean_polyarchy = mean(polyarchy).\nbar_data &lt;- dem_data |&gt;\n  filter(year == ) |&gt;\n  group_by() |&gt;\n  summarize()\n\nbar_data\n\n\nb) Make a bar chart with geom_col(), putting region on the x-axis and your summarized democracy measure on the y-axis. Add labels and a title.\n\n\n\n\n\n\nKeep it consistent\n\n\n\nFrom here on, every chart you make should get the same treatment you gave your line chart: a theme, and a colorblind-safe palette wherever you map a color. If you map fill = region here, reach for scale_fill_viridis_d()—the fill counterpart to the scale_color_viridis_d() you used in Step 1.\n\n\nc) Below this line, say which region scores highest and which scores lowest.",
+    "crumbs": [
+      "Labs",
+      "Lab 1: Plotting"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-1.html#step-3-a-scatter-plot-25-pts",
+    "href": "assignments/lab-1.html#step-3-a-scatter-plot-25-pts",
+    "title": "Lab 1: Plotting",
+    "section": "Step 3: A scatter plot (25 pts)",
+    "text": "Step 3: A scatter plot (25 pts)\na) Filter dem_data for the same year you used in Step 2 and save it as scatter_data.\nb) Build a scatter plot: your modernization measure on the x-axis, your democracy measure on the y-axis, points colored by region. Then add a trend line with geom_smooth(method = \"lm\"), a colorblind-safe palette with scale_color_viridis_d(), a theme to match your other charts, and clear labels. Save it as scatter_chart—you will need it again in Step 4.\nBuild it up one layer at a time—run the chart after each + you add so you can see what each piece does.\n\n\n\n\n\n\nWhere you put color matters here\n\n\n\nAnything you put in the top-level aes() is inherited by every layer that follows it. So if you map color = region there, geom_smooth() will split by region too, and you will get six separate trend lines instead of one overall trend.\nYou want the points colored by region but a single trend line through all of them. Think about which layer actually needs the color, and put it there. If you end up with six trend lines, that is the clue.\n\n\n\n\n\n\n\n\nTip\n\n\n\nIf you chose gdp_pc, most countries will bunch up against the left edge. Add this layer to spread them out:\nscale_x_log10(labels = label_dollar())\n\n\nc) Below this line, describe the relationship. Does it look positive, negative, or flat? If you used inf_mort, think about why its direction differs from the others.",
+    "crumbs": [
+      "Labs",
+      "Lab 1: Plotting"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-1.html#step-4-make-it-interactive-10-pts",
+    "href": "assignments/lab-1.html#step-4-make-it-interactive-10-pts",
+    "title": "Lab 1: Plotting",
+    "section": "Step 4: Make it interactive (10 pts)",
+    "text": "Step 4: Make it interactive (10 pts)\nTake the scatter plot from Step 3 and make it interactive with ggplotly() from the plotly package. Then hover over a few points to see what the tooltip tells you.\n\n\n\n\n\n\nStarter code\n\n\n\nBy default the tooltip shows every variable you mapped. Use tooltip = to choose which ones appear, and add aes(label = country) if you want the country name in there—it is not in the plot otherwise.\nlibrary(plotly)\n\nggplotly(scatter_chart)\n\n\nBelow this line, note one thing the interactive version lets you see that the static one did not.",
+    "crumbs": [
+      "Labs",
+      "Lab 1: Plotting"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-1.html#step-5-conclusion-10-pts",
+    "href": "assignments/lab-1.html#step-5-conclusion-10-pts",
+    "title": "Lab 1: Plotting",
+    "section": "Step 5: Conclusion (10 pts)",
+    "text": "Step 5: Conclusion (10 pts)\nRender your document, then write a short paragraph below this line. Taken together, do your charts support Lipset’s argument? Name one country or region that does not fit the pattern.",
+    "crumbs": [
+      "Labs",
+      "Lab 1: Plotting"
     ]
   }
 ]

@@ -46,7 +46,7 @@ All five democracy measures run from 0 to 1, where higher is more democratic.
 As a group, choose **one** democracy measure and **one** modernization measure to use for the whole lab. Different groups will choose differently, and that is the point---we will compare notes at the end.
 :::
 
-## Step 1: A line chart over time (30 pts)
+## Step 1: A line chart over time (35 pts)
 
 *a) Pick three or four countries you are curious about, at different levels of wealth, and `filter()` the data down to just those countries.*
 
@@ -72,7 +72,7 @@ Copy this into the chunk below and add your countries inside the `c()`.
 line_data <- dem_data |>
   filter(country %in% c("", ""))
 
-count(line_data, country)   # check you got what you expected
+glimpse(line_data)   # check you got what you expected
 ```
 :::
 
@@ -99,9 +99,49 @@ ggplot(line_data, aes(x = , y = , color = )) +
 
 ```
 
-*c) In a sentence or two below this line, describe what you see. Which country changed the most?*
+*c) Now polish it. Add a theme and swap the default colors for a colorblind-safe scheme.*
 
-## Step 2: A bar chart comparing regions (30 pts)
+::: {.callout-note appearance="simple"}
+## Starter code
+`country` is a discrete variable, so you want the discrete version of the viridis scale. Save the chart to an object first so you can keep building on it in the next part.
+
+```r
+line_chart <- ggplot(line_data, aes(x = , y = , color = )) +
+  geom_line() +
+  labs(x = , y = , title = , caption = ) +
+  scale_color_viridis_d() +
+  theme_minimal()
+
+line_chart
+```
+:::
+
+```{r}
+#| label: step1c
+
+```
+
+*d) Mark a moment that matters. Add a dashed vertical line at a year when something important happened in one of your countries---an election, a coup, the start of a war---and label it with `annotate()`.*
+
+::: {.callout-note appearance="simple"}
+## Starter code
+`xintercept` is the year the line crosses the x-axis. For the label, `x` and `y` are the coordinates where the text sits, so put it somewhere it will not collide with your lines.
+
+```r
+line_chart +
+  geom_vline(xintercept = , linetype = "dashed") +
+  annotate("text", x = , y = , label = "")
+```
+:::
+
+```{r}
+#| label: step1d
+
+```
+
+*e) In a sentence or two below this line, describe what you see. Which country changed the most? What does the event you marked in part (d) look like on the chart?*
+
+## Step 2: A bar chart comparing regions (20 pts)
 
 *a) Starting from `dem_data`, filter for a single recent year (2019 is a good choice), then group by `region` and take the mean of your democracy measure.*
 
@@ -124,7 +164,12 @@ bar_data
 
 ```
 
-*b) Make a bar chart with `geom_col()`, putting `region` on the x-axis and your summarized democracy measure on the y-axis. Add labels and a title, and finish with a theme such as `theme_minimal()`.*
+*b) Make a bar chart with `geom_col()`, putting `region` on the x-axis and your summarized democracy measure on the y-axis. Add labels and a title.*
+
+::: {.callout-note appearance="simple"}
+## Keep it consistent
+From here on, every chart you make should get the same treatment you gave your line chart: a theme, and a colorblind-safe palette wherever you map a color. If you map `fill = region` here, reach for `scale_fill_viridis_d()`---the fill counterpart to the `scale_color_viridis_d()` you used in Step 1.
+:::
 
 ```{r}
 #| label: step2b
@@ -133,7 +178,7 @@ bar_data
 
 *c) Below this line, say which region scores highest and which scores lowest.*
 
-## Step 3: A scatter plot (30 pts)
+## Step 3: A scatter plot (25 pts)
 
 *a) Filter `dem_data` for the same year you used in Step 2 and save it as `scatter_data`.*
 
@@ -142,7 +187,7 @@ bar_data
 
 ```
 
-*b) Build a scatter plot: your modernization measure on the x-axis, your democracy measure on the y-axis, points colored by `region`. Then add a trend line with `geom_smooth(method = "lm")`, a colorblind-friendly palette with `scale_color_viridis_d()`, and clear labels.*
+*b) Build a scatter plot: your modernization measure on the x-axis, your democracy measure on the y-axis, points colored by `region`. Then add a trend line with `geom_smooth(method = "lm")`, a colorblind-safe palette with `scale_color_viridis_d()`, a theme to match your other charts, and clear labels. Save it as `scatter_chart`---you will need it again in Step 4.*
 
 Build it up one layer at a time---run the chart after each `+` you add so you can see what each piece does.
 
@@ -166,17 +211,37 @@ If you chose `gdp_pc`, most countries will bunch up against the left edge. Add t
 
 *c) Below this line, describe the relationship. Does it look positive, negative, or flat? If you used `inf_mort`, think about why its direction differs from the others.*
 
-## Step 4: Conclusion (10 pts)
+## Step 4: Make it interactive (10 pts)
 
-*Render your document, then write a short paragraph below this line. Taken together, do your three charts support Lipset's argument? Name one country or region that does not fit the pattern.*
+*Take the scatter plot from Step 3 and make it interactive with `ggplotly()` from the `plotly` package. Then hover over a few points to see what the tooltip tells you.*
+
+::: {.callout-note appearance="simple"}
+## Starter code
+By default the tooltip shows every variable you mapped. Use `tooltip =` to choose which ones appear, and add `aes(label = country)` if you want the country name in there---it is not in the plot otherwise.
+
+```r
+library(plotly)
+
+ggplotly(scatter_chart)
+```
+:::
+
+```{r}
+#| label: step4
+
+```
+
+*Below this line, note one thing the interactive version lets you see that the static one did not.*
+
+## Step 5: Conclusion (10 pts)
+
+*Render your document, then write a short paragraph below this line. Taken together, do your charts support Lipset's argument? Name one country or region that does not fit the pattern.*
 
 ## Bonus (1 pt each)
 
 *a) Add `facet_wrap(~ region)` to your scatter plot.*
 
-*b) Mark something meaningful on your line chart with `geom_vline()` and `annotate()`---for example, the year a country held a key election.*
-
-*c) Make your scatter plot interactive with `ggplotly()` from the `plotly` package.*
+*b) Animate your scatter plot across time with the `gganimate` package. Go back to the full `dem_data` rather than the single year you filtered to in Step 3, add `transition_states(year)`, and use `{closest_state}` inside your title so the year updates as it plays.*
 
 *AI note: _(one line on whether/how you used AI)_*
 
