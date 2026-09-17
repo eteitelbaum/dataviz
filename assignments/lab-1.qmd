@@ -46,7 +46,7 @@ All five democracy measures run from 0 to 1, where higher is more democratic.
 As a group, choose **one** democracy measure and **one** modernization measure to use for the whole lab. Different groups will choose differently, and that is the point---we will compare notes at the end.
 :::
 
-## Step 1: A line chart over time (35 pts)
+## Step 1: A line chart over time (30 pts)
 
 *a) Pick three or four countries you are curious about, at different levels of wealth, and `filter()` the data down to just those countries.*
 
@@ -141,7 +141,7 @@ line_chart +
 
 *e) In a sentence or two below this line, describe what you see. Which country changed the most? What does the event you marked in part (d) look like on the chart?*
 
-## Step 2: A bar chart comparing regions (20 pts)
+## Step 2: A bar chart comparing regions (25 pts)
 
 *a) Starting from `dem_data`, filter for a single recent year (2019 is a good choice), then group by `region` and take the mean of your democracy measure.*
 
