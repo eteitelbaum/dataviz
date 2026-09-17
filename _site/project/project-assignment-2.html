@@ -76,10 +76,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <meta property="og:title" content="Final Project – PSC/DATS 2102–Course Schedule">
-<meta property="og:description" content="Homepage for PSC/DATS 2102, George Washington University.">
 <meta property="og:site_name" content="PSC/DATS 2102--Course Schedule">
 <meta name="twitter:title" content="Final Project – PSC/DATS 2102–Course Schedule">
-<meta name="twitter:description" content="Homepage for PSC/DATS 2102, George Washington University.">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -669,21 +667,8 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#step-1-setup" id="toc-step-1-setup" class="nav-link" data-scroll-target="#step-1-setup">Step 1: Setup</a></li>
-  <li><a href="#step-2-define-the-ui" id="toc-step-2-define-the-ui" class="nav-link" data-scroll-target="#step-2-define-the-ui">Step 2: Define the ui</a></li>
-  <li><a href="#step-3-define-the-server-logic" id="toc-step-3-define-the-server-logic" class="nav-link" data-scroll-target="#step-3-define-the-server-logic">Step 3: Define the server logic</a></li>
-  <li><a href="#step-4-debug-your-app" id="toc-step-4-debug-your-app" class="nav-link" data-scroll-target="#step-4-debug-your-app">Step 4: Debug your app</a></li>
-  <li><a href="#step-5-post-your-app-to-shinyapps.io" id="toc-step-5-post-your-app-to-shinyapps.io" class="nav-link" data-scroll-target="#step-5-post-your-app-to-shinyapps.io">Step 5: Post your app to shinyapps.io</a></li>
-  <li><a href="#step-6-present-your-app-in-class" id="toc-step-6-present-your-app-in-class" class="nav-link" data-scroll-target="#step-6-present-your-app-in-class">Step 6: Present your app in class</a></li>
-  <li><a href="#step-7-submit-your-app" id="toc-step-7-submit-your-app" class="nav-link" data-scroll-target="#step-7-submit-your-app">Step 7: Submit your app</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/dataviz/edit/main/project/project-assignment-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/dataviz/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -708,53 +693,11 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>Now that you have a clear sense of where you are going with your app, it is time to build it. Much of this work happens during the project studio sessions in class, so lean on your classmates and on me. This is the hard part and you will likely have to invest significant time in wrangling your data and debugging the app. Be patient! It will turn out great and you will have a nice project to show for it.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div style="text-align: center; font-size: clamp(3rem, 12vw, 7rem); font-weight: 700; line-height: 1.1; margin: 5rem 0;">
+<p>Coming Soon!</p>
 </div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you are working in a group (up to three students), submit <strong>one app</strong> and include a short note on who was responsible for what. See the <a href="../project/project-description.html">Project Description</a> for the group policy.</p>
-</div>
-</div>
-</section>
-<section id="step-1-setup" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-setup">Step 1: Setup</h2>
-<p><em>Start a new Shiny app in R Studio. In your app.R file, begin by loading your packages, loading and/or wrangling your data, and creating lists for your inputs.</em></p>
-</section>
-<section id="step-2-define-the-ui" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-define-the-ui">Step 2: Define the ui</h2>
-<p><em>Starting with <code>ui &lt;- fluidPage()</code>, start building your UI. Add a <code>titlePanel()</code>, a <code>fluidRow()</code> and then add the various columnar elements that you want to include such as inputs, text and the plot output. Try running your app just with the ui set up and see how it looks.</em></p>
-</section>
-<section id="step-3-define-the-server-logic" class="level2">
-<h2 class="anchored" data-anchor-id="step-3-define-the-server-logic">Step 3: Define the server logic</h2>
-<p><em>Build your reactive function(s) and specify how the data and output will change based on user input(s). This is a process that is very specific to each project, so it is hard to say anything general here. But when in the process of building your server function, it often helps to look back at examples we have done in class or those that you might find helpful in the Shiny <a href="https://shiny.posit.co/r/gallery/">gallery</a>.</em></p>
-</section>
-<section id="step-4-debug-your-app" class="level2">
-<h2 class="anchored" data-anchor-id="step-4-debug-your-app">Step 4: Debug your app</h2>
-<p><em>Are you having issues with your code? See <a href="https://shiny.posit.co/r/articles/improve/debugging/">this post</a> and reach out for help on Discord.</em></p>
-</section>
-<section id="step-5-post-your-app-to-shinyapps.io" class="level2">
-<h2 class="anchored" data-anchor-id="step-5-post-your-app-to-shinyapps.io">Step 5: Post your app to shinyapps.io</h2>
-<p><em>Sign up for a free account at https://www.shinyapps.io/. When you are ready, hit the little blue icon at the top of your app.R window to publish it.</em></p>
-</section>
-<section id="step-6-present-your-app-in-class" class="level2">
-<h2 class="anchored" data-anchor-id="step-6-present-your-app-in-class">Step 6: Present your app in class</h2>
-<p><em>During our final session you will give a short live demo of your app to the class. Walk us through the main features: what data users can explore, how the controls work, and—most importantly—what patterns emerge and what we learn from the visualization that we might not have seen otherwise. If you are in a group, decide in advance who will present which part.</em></p>
-</section>
-<section id="step-7-submit-your-app" class="level2">
-<h2 class="anchored" data-anchor-id="step-7-submit-your-app">Step 7: Submit your app</h2>
-<p><em>Submit your project on Blackboard: include a link to your published app on shinyapps.io along with a compressed (zipped) copy of your project folder (your <code>app.R</code> and any supporting data or scripts). Groups submit once; include your division-of-work note.</em></p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1194,7 +1137,7 @@ Note
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/eteitelbaum/dataviz/edit/main/project/project-assignment-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/dataviz/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/dataviz/edit/main/project/project-assignment-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/dataviz/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>. 👷🛠️</p>
 </div>
