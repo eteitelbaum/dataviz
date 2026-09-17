@@ -43,7 +43,7 @@ source("helper.R")
 |  | `r advdate(thu,13)` | No class, Thanksgiving break |  |  |  |  |  |
 | [Deploying & Sharing / Project Studio](/modules/module-6.2.qmd "Deploying & Sharing Your App") | `r advdate(tue,14)` | Final project workshop |  |  |  | 🖥️ |  |
 |  | `r advdate(thu,14)` | Final project workshop |  |  |  |  |  |
-|  | `r advdate(tue,15)` | Final presentations / lightning talks |  |  |  |  |  |
+|  | `r advdate(tue,15)` | Lightning talks |  |  |  |  |  |
 :::
 
 \* Prof T is traveling on this day. Please follow the modules and videos and we will cover the material in class when he returns.
