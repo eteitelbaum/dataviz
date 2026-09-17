@@ -23,6 +23,8 @@ The data are already prepared for you, so you can focus entirely on the visualiz
 
 library(tidyverse)
 library(scales)
+library(plotly)
+library(gganimate)
 
 dem_data <- read_csv("data/dem_data.csv")
 
@@ -164,12 +166,7 @@ bar_data
 
 ```
 
-*b) Make a bar chart with `geom_col()`, putting `region` on the x-axis and your summarized democracy measure on the y-axis. Add labels and a title.*
-
-::: {.callout-note appearance="simple"}
-## Keep it consistent
-From here on, every chart you make should get the same treatment you gave your line chart: a theme, and a colorblind-safe palette wherever you map a color. If you map `fill = region` here, reach for `scale_fill_viridis_d()`---the fill counterpart to the `scale_color_viridis_d()` you used in Step 1.
-:::
+*b) Make a bar chart with `geom_col()`, putting `region` on the x-axis and your summarized democracy measure on the y-axis. Add labels and a title. Add a color with `fill = ` and maintain the same theme as your first plot*
 
 ```{r}
 #| label: step2b
@@ -187,7 +184,7 @@ From here on, every chart you make should get the same treatment you gave your l
 
 ```
 
-*b) Build a scatter plot: your modernization measure on the x-axis, your democracy measure on the y-axis, points colored by `region`. Then add a trend line with `geom_smooth(method = "lm")`, a colorblind-safe palette with `scale_color_viridis_d()`, a theme to match your other charts, and clear labels. Save it as `scatter_chart`---you will need it again in Step 4.*
+*b) Build a scatter plot: your modernization measure on the x-axis, your democracy measure on the y-axis, points colored by `region`. Then add a trend line with `geom_smooth(method = "lm")`, a colorblind-safe palette, a theme to match your other charts, and clear labels. Save it as `scatter_chart`---you will need it again in Step 4.*
 
 Build it up one layer at a time---run the chart after each `+` you add so you can see what each piece does.
 

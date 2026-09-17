@@ -29,8 +29,8 @@ source("helper.R")
 |  | `r advdate(thu,6)` | Turn your map into a function | [📖](https://www-jstor-org.proxygw.wrlc.org/stable/j.ctt7s3wz.10 "Ross, Chapter 3") | [📖](https://r4ds.hadley.nz/functions "r4ds, chap. 25") | [🖥️](slides/week-6.2.qmd) | [🖥️](https://youtu.be/m42vrbEEHT4 "Turn your map into a function") |  |
 |  | `r advdate(tue,7)` | No class, fall break |  | 🍁🍂🎃 |  |  |  |
 | [Interactive Maps](/modules/module-3.2.qmd "Interactive Maps") | `r advdate(thu,7)` | Make a leaflet map **(Prof T away)**\* |  |  | [🖥️](slides/week-7.1.qmd) | [🖥️](https://youtu.be/If2PwFv90iI "Upload UCDP data")[🖥️](https://youtu.be/hHUPqgHRqYU "Make a leaflet map") |  |
-|  | `r advdate(tue,8)` | Map wrap-up |  |  |  | [🖥️](https://youtu.be/qLYeSsoDvgs "Customize your map") | [🧪](/assignments/lab-3.qmd "Lab 3: Maps") |
-|  | `r advdate(thu,8)` | **Final project planning session:** what makes good data viz? + brainstorm your final project |  |  |  |  |  |
+|  | `r advdate(tue,8)` | Customize your interactive map |  |  |  | [🖥️](https://youtu.be/qLYeSsoDvgs "Customize your map") |  |
+|  | `r advdate(thu,8)` | Map wrap-up |  |  |  |  | [🧪](/assignments/lab-3.qmd "Lab 3: Maps") |
 | [Tables](/modules/module-4.1.qmd "Tables") | `r advdate(tue,9)` | Explore tabular data |  |  | [🖥️](slides/week-9.1.qmd) |  |  |
 |  | `r advdate(thu,9)` | Make a `gt` table & confidence intervals |  |  | [🖥️](slides/week-9.2.qmd) |  |  |
 | [Models & Coefficient Plots](/modules/module-4.2.qmd "Models & Coefficient Plots") | `r advdate(tue,10)` | Run models & display regression tables | [📖](https://socviz.co/06-modeling.html "Healy, ch. 6: Work with Models") [📖](https://www.jstor.org/stable/3118222 "Fearon & Laitin") |  | [🖥️](slides/week-10.1.qmd) | 🖥️ |  |

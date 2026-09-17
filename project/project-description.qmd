@@ -4,7 +4,7 @@ editor: visual
 ---
 
 ::: {.callout-note}
-**Two tracks:** build a **Shiny app** or produce a polished **written report with a well-crafted visualization**. Both tracks share the same proposal (flex session) and studio weeks; app-specific material (styling, deployment, troubleshooting) is optional and linked from the Project Studio week for students building an app.
+**Two tracks:** build a **Shiny app** or produce a polished **written report with a well-crafted visualization**. Both tracks share the same proposal and studio weeks; app-specific material (styling, deployment, troubleshooting) is optional and linked from the Project Studio week for students building an app.
 :::
 
 ## Overview
@@ -35,7 +35,7 @@ You may complete the project **on your own or in a group of up to three students
 
 | When | Deliverable |
 |------|-------------|
-| **Week 9** (flex session) | **Project proposal** --- commit to an idea, track (app or report), data, and layout. See [Project Proposal](/project/project-assignment-1.qmd). |
+| See the [course schedule](/) | **Project proposal** --- commit to an idea, track (app or report), data, and layout. See [Project Proposal](/project/project-assignment-1.qmd). |
 | **Weeks 12, 13, 15** | **Project studios** --- build and troubleshoot your app or draft your report in class, with optional check-in meetings. |
 | **Week 16** | **Final project + live presentation** --- deploy your app (or finalize your report) and present it to the class. See [Final Project](/project/project-assignment-2.qmd). |
 
