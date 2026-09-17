@@ -271,11 +271,13 @@ ggplotly(wealth_flfp_plotly)
 
 ##
 
+<br>
+
 ```{r}
 #| label: plotly_basic_out
 #| echo: false
 
-ggplotly(wealth_flfp_plotly)
+ggplotly(wealth_flfp_plotly, height = 450)
 ```
 
 ## Controlling the Tooltip {.smaller}
@@ -296,12 +298,15 @@ ggplotly(wealth_flfp_plotly, tooltip = c("country", "gdp_pc", "flfp"))
 
 ##
 
+<br>
+
 ```{r}
 #| label: plotly_tooltip_out
 #| echo: false
 
 ggplotly(wealth_flfp_plotly + aes(label = country),
-         tooltip = c("country", "gdp_pc", "flfp"))
+         tooltip = c("country", "gdp_pc", "flfp"),
+         height = 450)
 ```
 
 ## Your Turn!
