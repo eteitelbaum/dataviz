@@ -41,8 +41,8 @@ source("helper.R")
 |  | `r advdate(thu,12)` | Shiny modules |  |  | [🖥️](slides/week-12.2.qmd) |  | [✍️](project/project-assignment-1.qmd "Project Proposal") |
 |  | `r advdate(tue,13)` | No class, Thanksgiving break |  | 🦃🥧🍂 |  |  |  |
 |  | `r advdate(thu,13)` | No class, Thanksgiving break |  |  |  |  |  |
-| [Deploying & Sharing / Project Studio](/modules/module-6.2.qmd "Deploying & Sharing Your App") | `r advdate(tue,14)` | Deploy & share your app (shinyapps.io) + studio time (app track) or finish your report (report track) |  |  |  | 🖥️ |  |
-|  | `r advdate(thu,14)` | Project Studio: peer feedback & dry-run presentations |  |  |  |  |  |
+| [Deploying & Sharing / Project Studio](/modules/module-6.2.qmd "Deploying & Sharing Your App") | `r advdate(tue,14)` | Final project workshop |  |  |  | 🖥️ |  |
+|  | `r advdate(thu,14)` | Final project workshop |  |  |  |  |  |
 |  | `r advdate(tue,15)` | Final presentations / lightning talks |  |  |  |  |  |
 :::
 
