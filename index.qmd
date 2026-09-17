@@ -33,15 +33,15 @@ source("helper.R")
 |  | `r advdate(thu,8)` | Map wrap-up |  |  |  |  | [🧪](/assignments/lab-3.qmd "Lab 3: Maps") |
 | [Tables](/modules/module-4.1.qmd "Tables") | `r advdate(tue,9)` | Explore tabular data |  |  | [🖥️](slides/week-9.1.qmd) |  |  |
 |  | `r advdate(thu,9)` | Make a `gt` table & confidence intervals |  |  | [🖥️](slides/week-9.2.qmd) |  |  |
-| [Models & Coefficient Plots](/modules/module-4.2.qmd "Models & Coefficient Plots") | `r advdate(tue,10)` | Run models & display regression tables | [📖](https://socviz.co/06-modeling.html "Healy, ch. 6: Work with Models") [📖](https://www.jstor.org/stable/3118222 "Fearon & Laitin") |  | [🖥️](slides/week-10.1.qmd) | 🖥️ |  |
-|  | `r advdate(thu,10)` | Coefficient plots **(Prof T away)**\* |  |  |  | 🖥️🖥️ | [🧪](/assignments/lab-4.qmd "Lab 4: Tables & coefficient plots") |
-| [Building a Shiny App](/modules/module-5.1.qmd "Building a Shiny App") | `r advdate(tue,11)` | App setup & building the UI |  |  | [🖥️](slides/week-11.1.qmd) | 🖥️🖥️ |  |
-|  | `r advdate(thu,11)` | Building the server |  |  | [🖥️](slides/week-11.2.qmd) | 🖥️ |  |
-| [Extending Your App](/modules/module-5.2.qmd "Extending Your App") | `r advdate(tue,12)` | Add inputs & a time-series app | [📖](https://muse-jhu-edu.proxygw.wrlc.org/article/225602 "Huntington") |  | [🖥️](slides/week-12.1.qmd) | 🖥️🖥️ |  |
+| [Models & Coefficient Plots](/modules/module-4.2.qmd "Models & Coefficient Plots") | `r advdate(tue,10)` | Run models & display regression tables | [📖](https://socviz.co/06-modeling.html "Healy, ch. 6: Work with Models") [📖](https://www.jstor.org/stable/3118222 "Fearon & Laitin") |  | [🖥️](slides/week-10.1.qmd) | [🖥️](https://youtu.be/upn8dlhvbns "Make regression tables with broom")[🖥️](https://youtu.be/My6_X6x5TZw "Display multiple models with modelsummary") |  |
+|  | `r advdate(thu,10)` | Coefficient plots **(Prof T away)**\* |  |  |  | [🖥️](https://youtu.be/gif_wkqyub8 "Display regression results with a plot") | [🧪](/assignments/lab-4.qmd "Lab 4: Tables & coefficient plots") |
+| [Building a Shiny App](/modules/module-5.1.qmd "Building a Shiny App") | `r advdate(tue,11)` | App setup & building the UI |  |  | [🖥️](slides/week-11.1.qmd) | [🖥️](https://youtu.be/9KfZbOQGnpY "First Shiny app setup")[🖥️](https://youtu.be/tEaTpdmg74o "User interface (UI)") |  |
+|  | `r advdate(thu,11)` | Building the server |  |  | [🖥️](slides/week-11.2.qmd) | [🖥️](https://youtu.be/1q-JFdcAsRs "Server function") |  |
+| [Extending Your App](/modules/module-5.2.qmd "Extending Your App") | `r advdate(tue,12)` | Add inputs & a time-series app | [📖](https://muse-jhu-edu.proxygw.wrlc.org/article/225602 "Huntington") |  | [🖥️](slides/week-12.1.qmd) | [🖥️](https://youtu.be/U79y3DgK2Ts "FRED app setup")[🖥️](https://youtu.be/wTlL9HeqbjA "FRED app user interface (UI)")[🖥️](https://youtu.be/oWtlrw8hqUU "FRED app server") |  |
 |  | `r advdate(thu,12)` | Shiny modules |  |  | [🖥️](slides/week-12.2.qmd) |  | [✍️](project/project-assignment-1.qmd "Project Proposal") |
 |  | `r advdate(tue,13)` | No class, Thanksgiving break |  | 🦃🥧🍂 |  |  |  |
 |  | `r advdate(thu,13)` | No class, Thanksgiving break |  |  |  |  |  |
-| [Deploying & Sharing / Project Studio](/modules/module-6.2.qmd "Deploying & Sharing Your App") | `r advdate(tue,14)` | Final project workshop |  |  |  | 🖥️ |  |
+| [Deploying & Sharing / Project Studio](/modules/module-6.2.qmd "Deploying & Sharing Your App") | `r advdate(tue,14)` | Final project workshop |  |  |  |  |  |
 |  | `r advdate(thu,14)` | Final project workshop |  |  |  |  |  |
 |  | `r advdate(tue,15)` | Lightning talks |  |  |  |  |  |
 :::
