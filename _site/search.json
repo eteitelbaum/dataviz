@@ -5411,5 +5411,19 @@
       "Project",
       "Description"
     ]
+  },
+  {
+    "objectID": "slides/week-4.2.html#how-does-format-know-what-to-do",
+    "href": "slides/week-4.2.html#how-does-format-know-what-to-do",
+    "title": "Wrangling Data",
+    "section": "How Does format() Know What to Do?",
+    "text": "How Does format() Know What to Do?\n\nThe \"%B %d, %Y\" part is a format string borrowed from base R’s strftime() (date → string) and strptime() (string → date)\nEach % code stands in for a piece of the date or time — mix and match to build any output\n\n\n\n\nCode\nMeaning\nExample\n\n\n\n\n%Y / %y\n4-digit / 2-digit year\n2024 / 24\n\n\n%B / %b\nFull / abbreviated month\nSeptember / Sep\n\n\n%m\nMonth number (01-12)\n09\n\n\n%d\nDay of month\n05\n\n\n%A / %a\nFull / abbreviated weekday\nThursday / Thu\n\n\n%H : %M : %S\nHour : minute : second\n14:30:00\n\n\n%t, %n, %%\nTab, newline, literal %\n\n\n\n\n\nformat(my_date, \"%A, %B %d, %Y\")  # Thursday, September 05, 2024\n\n[1] \"Thursday, September 05, 2024\"\n\nformat(my_date, \"%m/%d/%y\")       # 09/05/24\n\n[1] \"09/05/24\"\n\n\n\n\n\nRun ?strptime in the console to see the full list of format codes available in base R."
+  },
+  {
+    "objectID": "slides/week-4.2.html#formatting-dates-examples",
+    "href": "slides/week-4.2.html#formatting-dates-examples",
+    "title": "Wrangling Data",
+    "section": "Formatting Dates: Examples",
+    "text": "Formatting Dates: Examples\n\n\nMix and match codes (and add your own spaces, slashes, commas) to build any output you want\n\n\nmy_date &lt;- ymd(\"2024-09-05\")\n\n# Full written-out date\nformat(my_date, \"%A, %B %d, %Y\")\n\n[1] \"Thursday, September 05, 2024\"\n\n# Common US numeric format\nformat(my_date, \"%m/%d/%y\")\n\n[1] \"09/05/24\"\n\n# Abbreviated, compact\nformat(my_date, \"%d-%b-%Y\")\n\n[1] \"05-Sep-2024\"\n\n\n\n\n\nRun ?strptime in the console to see the full list of format codes available in base R."
   }
 ]

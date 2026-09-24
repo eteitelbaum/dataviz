@@ -110,6 +110,29 @@ my_date3 <- dmy("05-09-2024")
 format(my_date, "%B %d, %Y")
 ```
 
+## How Does `format()` Know What to Do? {.smaller}
+
+- The `"%B %d, %Y"` part is a **format string** borrowed from base R's `strftime()` (date → string) and `strptime()` (string → date)
+- Each `%` code stands in for a piece of the date or time
+
+| Code | Meaning | Example |
+|:----:|---------|:-------:|
+| `%Y` / `%y` | 4-digit / 2-digit year | 2024 / 24 |
+| `%B` / `%b` | Full / abbreviated month | September / Sep |
+| `%m` | Month number (01-12) | 09 |
+| `%d` | Day of month | 05 |
+| `%A` / `%a` | Full / abbreviated weekday | Thursday / Thu |
+| `%H` : `%M` : `%S` | Hour : minute : second | 14:30:00 |
+
+```{r}
+format(my_date, "%A, %B %d, %Y")  # Thursday, September 05, 2024
+format(my_date, "%m/%d/%y")       # 09/05/24
+```
+
+::: {.callout-tip appearance="minimal"}
+Run `?strptime` in the console to see the full list of format codes available in base R.
+:::
+
 ## Your Turn
 
 <br>
