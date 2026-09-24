@@ -770,7 +770,7 @@
     "href": "slides/week-4.2.html#your-turn",
     "title": "Wrangling Data",
     "section": "Your Turn",
-    "text": "Your Turn\n\n\nCreate your own tibble\nMake it on a topic you find interesting\nTry to include at least three data types\n\n\n\n\n−+\n05:00"
+    "text": "Your Turn\n\n\nCreate your own tibble\nMake it on a topic you find interesting\nTry to include at least three data types"
   },
   {
     "objectID": "slides/week-4.2.html#what-is-tyding-data",
@@ -889,7 +889,7 @@
     "href": "slides/week-4.2.html#give-it-a-shot",
     "title": "Wrangling Data",
     "section": "Give it a Shot!",
-    "text": "Give it a Shot!\n\n\nTry downloading some messy WB data and make it tidy\nRefer to previous slides for help\n\n\n\n\n−+\n10:00"
+    "text": "Give it a Shot!\n\n\nTry downloading some messy WB data and make it tidy\nRefer to previous slides for help"
   },
   {
     "objectID": "slides/week-4.2.html#mutating-variables",

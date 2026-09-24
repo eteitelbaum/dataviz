@@ -473,26 +473,3 @@ write_csv(wb_data_clean, "data/wb_data_clean.csv")
 # View the data
 glimpse(wb_data_clean)
 ```
-
-## Column Specifications
-
-<br>
-
-- Can clean columns on backend
-- But can also specify data types in `read_csv()` or `read_excel()`
-
-```{r}
-#| label: col_types
-#| eval: false
-#| echo: true
-
-spec(wb_data_messy)
-
-wb_data_messy <- read_csv("data/your_file_name.csv", 
-                          col_types = cols(
-                           col_double(`1990 [YR1990]`) 
-                          )
-                          )
-```
-
-
