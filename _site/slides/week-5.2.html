@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.31">
 
-  <meta name="dcterms.date" content="2026-09-17">
+  <meta name="dcterms.date" content="2026-10-01">
   <title>PSC/DATS 2102--Course Schedule – Merging and Summarizing Data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -205,7 +205,7 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">September 17, 2026</p>
+  <p class="date">October 1, 2026</p>
 </section>
 <section id="merging-data-frames" class="slide level2">
 <h2>Merging Data Frames</h2>
@@ -375,6 +375,79 @@
 </ol>
 <ol start="3" type="1">
 <li>Try sorting countries in ascending order of the selected variable (hint: delete “desc” from the <code>arrange()</code> call). Which country ranks at the “top” of the list? <strong>Now change it back to descending order.</strong></li>
+</ol>
+</section>
+<section id="from-summary-to-chart" class="slide level2">
+<h2>From Summary to Chart</h2>
+<p><br></p>
+<ul>
+<li>A summary table is a good start, but a chart is easier to read</li>
+<li>Save the summary as an object, then hand it to <code>ggplot()</code></li>
+<li><code>geom_col()</code> draws one bar per region at the height of the summary value</li>
+<li>Note: <code>arrange()</code> sorts the <em>table</em>, not the <em>bars</em>
+<ul>
+<li>Use <code>fct_reorder()</code> to sort the bars</li>
+</ul></li>
+</ul>
+</section>
+<section id="step-1-save-the-summary" class="slide level2">
+<h2>Step 1: Save the Summary</h2>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>polyarchy_region <span class="ot">&lt;-</span> dem_women <span class="sc">|&gt;</span> <span class="co"># save result as new object</span></span>
+<span id="cb5-2"><a></a>  <span class="fu">group_by</span>(region) <span class="sc">|&gt;</span> <span class="co"># group data by region</span></span>
+<span id="cb5-3"><a></a>  <span class="fu">summarize</span>(</span>
+<span id="cb5-4"><a></a>    <span class="at">polyarchy =</span> <span class="fu">mean</span>(polyarchy, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="co"># mean polyarchy score by region</span></span>
+<span id="cb5-5"><a></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb5-6"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(polyarchy)) <span class="co"># arrange in descending order</span></span>
+<span id="cb5-7"><a></a></span>
+<span id="cb5-8"><a></a>polyarchy_region</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  region         polyarchy
+  &lt;chr&gt;              &lt;dbl&gt;
+1 The West           0.871
+2 Latin America      0.637
+3 Eastern Europe     0.539
+4 Asia               0.408
+5 Africa             0.393
+6 Middle East        0.246</code></pre>
+</div>
+</div>
+</section>
+<section id="step-2-make-a-column-chart" class="slide level2">
+<h2>Step 2: Make a Column Chart</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(polyarchy_region, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(region, <span class="sc">-</span>polyarchy), <span class="at">y =</span> polyarchy)) <span class="sc">+</span></span>
+<span id="cb7-2"><a></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span> <span class="co"># one bar per region</span></span>
+<span id="cb7-3"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-4"><a></a>    <span class="at">x =</span> <span class="st">"Region"</span>, </span>
+<span id="cb7-5"><a></a>    <span class="at">y =</span> <span class="st">"Avg. Polyarchy Score"</span>, </span>
+<span id="cb7-6"><a></a>    <span class="at">title =</span> <span class="st">"Democracy by region, 1990 - present"</span>, </span>
+<span id="cb7-7"><a></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span></span>
+<span id="cb7-8"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb7-9"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+</section>
+<section id="step-2-make-a-column-chart-output" class="slide level2 output-location-slide"><h2>Step 2: Make a Column Chart</h2><div class="cell output-location-slide">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week-5.2_files/figure-revealjs/polyarchy_chart-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></section><section id="try-it-yourself-3" class="slide level2 scrollable">
+<h2>Try it Yourself</h2>
+<ul>
+<li>Using your merged data frame from today:</li>
+</ul>
+<ol type="1">
+<li><p>Make a column chart of the <strong>median</strong> <code>libdem</code> score by region. Which region ranks highest? Lowest?</p></li>
+<li><p>Add <code>filter(year == 2019)</code> before <code>group_by()</code>. Does the ranking change compared to the 1990 - present average?</p></li>
+<li><p>Now chart one of your <strong>World Bank</strong> variables (e.g.&nbsp;<code>flfp</code> or <code>women_rep</code>) by region. Do the regions line up in the same order as they do for democracy?</p></li>
+<li><p>Change the <code>fill</code> color and the <code>theme</code>, and update the axis labels and title to match your new chart.</p></li>
 </ol>
 
 
@@ -597,6 +670,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

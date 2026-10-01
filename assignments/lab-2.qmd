@@ -13,36 +13,137 @@ Labs are done **with your group during class** and are meant to be mostly finish
 
 ## Overview
 
-In Lab 1 we handed you clean data. Now you will build a tidy data set yourself---the skill that makes every later visualization possible. You will pull a democracy measure from V-Dem and a development or empowerment indicator from the World Bank, wrangle them, and merge them into one data frame.
+In Lab 1 we handed you clean data. Now you will build a tidy data set yourself---the skill that makes every later visualization possible. You will pull a democracy measure from V-Dem and a development or empowerment indicator from the World Bank, wrangle them, merge them into one data frame, and finish with a chart comparing regions.
 
 ```{r}
 #| label: setup
 
 ```
 
-## Step 1: Download your data (30 pts)
+## Step 1: Download your data (20 pts)
 
-*Use `vdem` from `vdemdata` to download the V-Dem dataset, then use `filter()` and `select()` to keep a democracy measure of your choice for all countries from roughly 1990 onward. Then use `wb_data()` from `wbstats` to download GDP per capita (or another development or women's-empowerment indicator) for the same period. `glimpse()` each to confirm they came through.*
+*a) Use `vdem` from `vdemdata` to download the V-Dem dataset. Use `filter()` to keep the years from 1990 onward, then use `select()` to keep and rename the country name, the V-Dem country ID, the year, a democracy measure of your choice and the region variable (`e_regionpol_6C`). Recode the region numbers into names with `mutate()` and `case_match()`. `glimpse()` the result.*
 
 ```{r}
+#| label: step1a
 
 ```
 
-## Step 2: Clean and merge (40 pts)
-
-*Get both data frames into a compatible shape (rename or reshape as needed). Add country codes with the `countrycode` package, then join the two sources into a single data frame with `left_join()`. `glimpse()` the result and check for excessive `NA`s.*
+*b) Use `wb_data()` from `wbstats` to download GDP per capita (or another development or women's-empowerment indicator) for the same years. Give your indicator a readable name, drop `iso2c`, and rename `date` to `year` so it matches V-Dem. `glimpse()` the result.*
 
 ```{r}
+#| label: step1b
 
 ```
 
-## Step 3: Summarize (30 pts)
+## Step 2: Add country codes (15 pts)
 
-*Use a `group_by()`, `summarize()`, `arrange()` sequence to pull one insight from your merged data---for example, how regions compare on average democracy and development, or which countries stand out. Write a sentence or two below the chunk describing what you find.*
+*V-Dem and the World Bank use different country codes, so we need a common one before we can merge. Use `mutate()` and `countrycode()` to add an `iso3c` variable to your V-Dem data frame, converting from the `"vdem"` codes to the `"wb"` codes. `glimpse()` the result to confirm the new column is there.*
 
 ```{r}
+#| label: step2
 
 ```
 
+## Step 3: Merge (20 pts)
+
+*Use `left_join()` to merge your V-Dem and World Bank data frames by `iso3c` and `year`. Make sure you end up with just one country name column. `glimpse()` the result and check for excessive `NA`s.*
+
+```{r}
+#| label: step3
+
+```
+
+## Step 4: Summarize by region (20 pts)
+
+*a) Starting from your merged data frame, use `group_by()` and `summarize()` to calculate the mean (or median) of one of your variables---your democracy measure or your World Bank indicator---for each region. You can use all years or `filter()` for a single year first. Save the result as a new object.*
+
+```{r}
+#| label: step4a
+
+```
+
+*b) Use `arrange()` to sort the regions from highest to lowest. Which region comes out on top? Which is at the bottom?*
+
+```{r}
+#| label: step4b
+
+```
+
+## Step 5: Visualize (25 pts)
+
+*a) Make a column chart with `geom_col()` showing your summarized variable by region. Sort the bars from highest to lowest, choose a fill color and a theme, and add axis labels, a title and a caption naming your source.*
+
+```{r}
+#| label: step5a
+
+```
+
+*b) Below this line, write a sentence or two describing what the chart shows. Is this what you expected?*
 
 *AI note: _(one line on whether/how your group used AI)_*
+
+---
+
+## Hints
+
+*Only look at these if you're stuck!*
+
+**Hint 1 --- Recoding the region variable:**
+
+`e_regionpol_6C` comes as numbers from 1 to 6. Use `case_match()` inside `mutate()` to turn them into names:
+
+```r
+mutate(
+  region = case_match(region,
+                      1 ~ "Eastern Europe",
+                      2 ~ "Latin America",
+                      3 ~ "Middle East",
+                      4 ~ "Africa",
+                      5 ~ "The West",
+                      6 ~ "Asia")
+)
+```
+
+**Hint 2 --- Naming your World Bank indicator:**
+
+If you pass `wb_data()` a *named* vector, the column comes back with your name instead of the indicator code:
+
+```r
+indicators <- c("gdp_pc" = "NY.GDP.PCAP.CD")
+
+wb_data(indicators, start_date = 1990, end_date = 2023)
+```
+
+**Hint 3 --- Do we need to reshape?**
+
+No. Both V-Dem and `wb_data()` already give you one row per country-year, so the two data frames have the same shape. You only need to make sure the columns you join on have the same *names* (`year`, not `date`) and the same *codes* (that is what `countrycode()` is for).
+
+**Hint 4 --- The `countrycode()` warning:**
+
+You will probably see a warning like `Some values were not matched unambiguously`. That is OK. V-Dem includes a few historical units (like Zanzibar or Somaliland) that have no World Bank code, so they get an `NA` for `iso3c` and will not find a match in the merge.
+
+**Hint 5 --- Two country columns after the merge:**
+
+Both data frames have a `country` column, so `left_join()` gives you `country.x` and `country.y`. Drop the World Bank version with `select(-country)` before you join, or drop and rename the extra column after.
+
+**Hint 6 --- `NA`s in your summary:**
+
+If your summary comes back as `NA`, it is because some country-years are missing data. Add `na.rm = TRUE`:
+
+```r
+summarize(gdp_pc = mean(gdp_pc, na.rm = TRUE))
+```
+
+**Hint 7 --- Sorting the bars:**
+
+`arrange()` sorts your table but not your chart---`ggplot()` will still put the regions in alphabetical order. Use `fct_reorder()` inside `aes()` to sort the bars (the `-` puts the highest value first):
+
+```r
+ggplot(region_summary, aes(x = fct_reorder(region, -gdp_pc), y = gdp_pc)) +
+  geom_col(fill = "steelblue")
+```
+
+**Hint 8 --- Formatting the y-axis:**
+
+If you chart GDP per capita, `scale_y_continuous(labels = label_dollar())` from the `scales` package will format the axis as dollars. For a percentage, use `label_percent(scale = 1)`.

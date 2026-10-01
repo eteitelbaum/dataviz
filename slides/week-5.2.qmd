@@ -185,3 +185,67 @@ dem_women |>
   d. What is the min of `flfp` for Germany?
 
 3. Try sorting countries in ascending order of the selected variable (hint: delete "desc" from the `arrange()` call). Which country ranks at the "top" of the list? **Now change it back to descending order.** 
+
+## From Summary to Chart
+
+<br>
+
+- A summary table is a good start, but a chart is easier to read
+- Save the summary as an object, then hand it to `ggplot()`
+- `geom_col()` draws one bar per region at the height of the summary value
+- Note: `arrange()` sorts the *table*, not the *bars*
+  - Use `fct_reorder()` to sort the bars
+
+## Step 1: Save the Summary
+
+<br>
+
+```{r}
+#| label: load_dem_women
+#| echo: false
+
+library(tidyverse)
+dem_women <- read_csv("data/dem_women.csv")
+```
+
+```{r}
+#| label: polyarchy_region
+
+polyarchy_region <- dem_women |> # save result as new object
+  group_by(region) |> # group data by region
+  summarize(
+    polyarchy = mean(polyarchy, na.rm = TRUE) # mean polyarchy score by region
+  ) |> 
+  arrange(desc(polyarchy)) # arrange in descending order
+
+polyarchy_region
+```
+
+## Step 2: Make a Column Chart
+
+```{r}
+#| label: polyarchy_chart
+#| output-location: slide
+
+ggplot(polyarchy_region, aes(x = fct_reorder(region, -polyarchy), y = polyarchy)) +
+  geom_col(fill = "steelblue") + # one bar per region
+  labs(
+    x = "Region", 
+    y = "Avg. Polyarchy Score", 
+    title = "Democracy by region, 1990 - present", 
+    caption = "Source: V-Dem Institute"
+  ) +
+  theme_minimal()
+```
+
+## Try it Yourself {.scrollable}
+
+- Using your merged data frame from today: 
+
+1. Make a column chart of the **median** `libdem` score by region. Which region ranks highest? Lowest?
+
+2. Add `filter(year == 2019)` before `group_by()`. Does the ranking change compared to the 1990 - present average?
+
+3. Now chart one of your **World Bank** variables (e.g. `flfp` or `women_rep`) by region. Do the regions line up in the same order as they do for democracy?
+
+4. Change the `fill` color and the `theme`, and update the axis labels and title to match your new chart. 

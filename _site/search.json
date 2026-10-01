@@ -2724,7 +2724,7 @@
     "href": "assignments/lab-2.html#overview",
     "title": "Lab 2: Wrangling",
     "section": "Overview",
-    "text": "Overview\nIn Lab 1 we handed you clean data. Now you will build a tidy data set yourself—the skill that makes every later visualization possible. You will pull a democracy measure from V-Dem and a development or empowerment indicator from the World Bank, wrangle them, and merge them into one data frame.",
+    "text": "Overview\nIn Lab 1 we handed you clean data. Now you will build a tidy data set yourself—the skill that makes every later visualization possible. You will pull a democracy measure from V-Dem and a development or empowerment indicator from the World Bank, wrangle them, merge them into one data frame, and finish with a chart comparing regions.",
     "crumbs": [
       "Labs",
       "Lab 2: Wrangling"
@@ -5425,5 +5425,106 @@
     "title": "Wrangling Data",
     "section": "Formatting Dates: Examples",
     "text": "Formatting Dates: Examples\n\n\nMix and match codes (and add your own spaces, slashes, commas) to build any output you want\n\n\nmy_date &lt;- ymd(\"2024-09-05\")\n\n# Full written-out date\nformat(my_date, \"%A, %B %d, %Y\")\n\n[1] \"Thursday, September 05, 2024\"\n\n# Common US numeric format\nformat(my_date, \"%m/%d/%y\")\n\n[1] \"09/05/24\"\n\n# Abbreviated, compact\nformat(my_date, \"%d-%b-%Y\")\n\n[1] \"05-Sep-2024\"\n\n\n\n\n\nRun ?strptime in the console to see the full list of format codes available in base R."
+  },
+  {
+    "objectID": "slides/week-5.2.html#from-summary-to-chart",
+    "href": "slides/week-5.2.html#from-summary-to-chart",
+    "title": "Merging and Summarizing Data",
+    "section": "From Summary to Chart",
+    "text": "From Summary to Chart\n\n\nA summary table is a good start, but a chart is easier to read\nSave the summary as an object, then hand it to ggplot()\ngeom_col() draws one bar per region at the height of the summary value\nNote: arrange() sorts the table, not the bars\n\nUse fct_reorder() to sort the bars"
+  },
+  {
+    "objectID": "slides/week-5.2.html#step-1-save-the-summary",
+    "href": "slides/week-5.2.html#step-1-save-the-summary",
+    "title": "Merging and Summarizing Data",
+    "section": "Step 1: Save the Summary",
+    "text": "Step 1: Save the Summary\n\n\npolyarchy_region &lt;- dem_women |&gt; # save result as new object\n  group_by(region) |&gt; # group data by region\n  summarize(\n    polyarchy = mean(polyarchy, na.rm = TRUE) # mean polyarchy score by region\n  ) |&gt; \n  arrange(desc(polyarchy)) # arrange in descending order\n\npolyarchy_region\n\n# A tibble: 6 × 2\n  region         polyarchy\n  &lt;chr&gt;              &lt;dbl&gt;\n1 The West           0.871\n2 Latin America      0.637\n3 Eastern Europe     0.539\n4 Asia               0.408\n5 Africa             0.393\n6 Middle East        0.246"
+  },
+  {
+    "objectID": "slides/week-5.2.html#step-2-make-a-column-chart",
+    "href": "slides/week-5.2.html#step-2-make-a-column-chart",
+    "title": "Merging and Summarizing Data",
+    "section": "Step 2: Make a Column Chart",
+    "text": "Step 2: Make a Column Chart\n\nggplot(polyarchy_region, aes(x = fct_reorder(region, -polyarchy), y = polyarchy)) +\n  geom_col(fill = \"steelblue\") + # one bar per region\n  labs(\n    x = \"Region\", \n    y = \"Avg. Polyarchy Score\", \n    title = \"Democracy by region, 1990 - present\", \n    caption = \"Source: V-Dem Institute\"\n  ) +\n  theme_minimal()"
+  },
+  {
+    "objectID": "slides/week-5.2.html#step-2-make-a-column-chart-output",
+    "href": "slides/week-5.2.html#step-2-make-a-column-chart-output",
+    "title": "Merging and Summarizing Data",
+    "section": "Step 2: Make a Column Chart",
+    "text": "Step 2: Make a Column Chart"
+  },
+  {
+    "objectID": "slides/week-5.2.html#try-it-yourself-3",
+    "href": "slides/week-5.2.html#try-it-yourself-3",
+    "title": "Merging and Summarizing Data",
+    "section": "Try it Yourself",
+    "text": "Try it Yourself\n\nUsing your merged data frame from today:\n\n\nMake a column chart of the median libdem score by region. Which region ranks highest? Lowest?\nAdd filter(year == 2019) before group_by(). Does the ranking change compared to the 1990 - present average?\nNow chart one of your World Bank variables (e.g. flfp or women_rep) by region. Do the regions line up in the same order as they do for democracy?\nChange the fill color and the theme, and update the axis labels and title to match your new chart."
+  },
+  {
+    "objectID": "assignments/lab-2.html#step-1-download-your-data-20-pts",
+    "href": "assignments/lab-2.html#step-1-download-your-data-20-pts",
+    "title": "Lab 2: Wrangling",
+    "section": "Step 1: Download your data (20 pts)",
+    "text": "Step 1: Download your data (20 pts)\na) Use vdem from vdemdata to download the V-Dem dataset. Use filter() to keep the years from 1990 onward, then use select() to keep and rename the country name, the V-Dem country ID, the year, a democracy measure of your choice and the region variable (e_regionpol_6C). Recode the region numbers into names with mutate() and case_match(). glimpse() the result.\nb) Use wb_data() from wbstats to download GDP per capita (or another development or women’s-empowerment indicator) for the same years. Give your indicator a readable name, drop iso2c, and rename date to year so it matches V-Dem. glimpse() the result.",
+    "crumbs": [
+      "Labs",
+      "Lab 2: Wrangling"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-2.html#step-2-add-country-codes-15-pts",
+    "href": "assignments/lab-2.html#step-2-add-country-codes-15-pts",
+    "title": "Lab 2: Wrangling",
+    "section": "Step 2: Add country codes (15 pts)",
+    "text": "Step 2: Add country codes (15 pts)\nV-Dem and the World Bank use different country codes, so we need a common one before we can merge. Use mutate() and countrycode() to add an iso3c variable to your V-Dem data frame, converting from the \"vdem\" codes to the \"wb\" codes. glimpse() the result to confirm the new column is there.",
+    "crumbs": [
+      "Labs",
+      "Lab 2: Wrangling"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-2.html#step-3-merge-20-pts",
+    "href": "assignments/lab-2.html#step-3-merge-20-pts",
+    "title": "Lab 2: Wrangling",
+    "section": "Step 3: Merge (20 pts)",
+    "text": "Step 3: Merge (20 pts)\nUse left_join() to merge your V-Dem and World Bank data frames by iso3c and year. Make sure you end up with just one country name column. glimpse() the result and check for excessive NAs.",
+    "crumbs": [
+      "Labs",
+      "Lab 2: Wrangling"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-2.html#step-4-summarize-by-region-20-pts",
+    "href": "assignments/lab-2.html#step-4-summarize-by-region-20-pts",
+    "title": "Lab 2: Wrangling",
+    "section": "Step 4: Summarize by region (20 pts)",
+    "text": "Step 4: Summarize by region (20 pts)\na) Starting from your merged data frame, use group_by() and summarize() to calculate the mean (or median) of one of your variables—your democracy measure or your World Bank indicator—for each region. You can use all years or filter() for a single year first. Save the result as a new object.\nb) Use arrange() to sort the regions from highest to lowest. Which region comes out on top? Which is at the bottom?",
+    "crumbs": [
+      "Labs",
+      "Lab 2: Wrangling"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-2.html#step-5-visualize-25-pts",
+    "href": "assignments/lab-2.html#step-5-visualize-25-pts",
+    "title": "Lab 2: Wrangling",
+    "section": "Step 5: Visualize (25 pts)",
+    "text": "Step 5: Visualize (25 pts)\na) Make a column chart with geom_col() showing your summarized variable by region. Sort the bars from highest to lowest, choose a fill color and a theme, and add axis labels, a title and a caption naming your source.\nb) Below this line, write a sentence or two describing what the chart shows. Is this what you expected?\nAI note: (one line on whether/how your group used AI)",
+    "crumbs": [
+      "Labs",
+      "Lab 2: Wrangling"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-2.html#hints",
+    "href": "assignments/lab-2.html#hints",
+    "title": "Lab 2: Wrangling",
+    "section": "Hints",
+    "text": "Hints\nOnly look at these if you’re stuck!\nHint 1 — Recoding the region variable:\ne_regionpol_6C comes as numbers from 1 to 6. Use case_match() inside mutate() to turn them into names:\nmutate(\n  region = case_match(region,\n                      1 ~ \"Eastern Europe\",\n                      2 ~ \"Latin America\",\n                      3 ~ \"Middle East\",\n                      4 ~ \"Africa\",\n                      5 ~ \"The West\",\n                      6 ~ \"Asia\")\n)\nHint 2 — Naming your World Bank indicator:\nIf you pass wb_data() a named vector, the column comes back with your name instead of the indicator code:\nindicators &lt;- c(\"gdp_pc\" = \"NY.GDP.PCAP.CD\")\n\nwb_data(indicators, start_date = 1990, end_date = 2023)\nHint 3 — Do we need to reshape?\nNo. Both V-Dem and wb_data() already give you one row per country-year, so the two data frames have the same shape. You only need to make sure the columns you join on have the same names (year, not date) and the same codes (that is what countrycode() is for).\nHint 4 — The countrycode() warning:\nYou will probably see a warning like Some values were not matched unambiguously. That is OK. V-Dem includes a few historical units (like Zanzibar or Somaliland) that have no World Bank code, so they get an NA for iso3c and will not find a match in the merge.\nHint 5 — Two country columns after the merge:\nBoth data frames have a country column, so left_join() gives you country.x and country.y. Drop the World Bank version with select(-country) before you join, or drop and rename the extra column after.\nHint 6 — NAs in your summary:\nIf your summary comes back as NA, it is because some country-years are missing data. Add na.rm = TRUE:\nsummarize(gdp_pc = mean(gdp_pc, na.rm = TRUE))\nHint 7 — Sorting the bars:\narrange() sorts your table but not your chart—ggplot() will still put the regions in alphabetical order. Use fct_reorder() inside aes() to sort the bars (the - puts the highest value first):\nggplot(region_summary, aes(x = fct_reorder(region, -gdp_pc), y = gdp_pc)) +\n  geom_col(fill = \"steelblue\")\nHint 8 — Formatting the y-axis:\nIf you chart GDP per capita, scale_y_continuous(labels = label_dollar()) from the scales package will format the axis as dollars. For a percentage, use label_percent(scale = 1).",
+    "crumbs": [
+      "Labs",
+      "Lab 2: Wrangling"
+    ]
   }
 ]
