@@ -2574,7 +2574,7 @@
     "href": "assignments/lab-3.html",
     "title": "Lab 3: Maps",
     "section": "",
-    "text": "How labs work\n\n\n\nLabs are done with your group during class and are meant to be mostly finished in the class period. You may use AI to ask questions or debug, but not to write your code for you. At the end, add a one-line note saying whether and how you used AI.",
+    "text": "How labs work\n\n\n\nYou are encouraged to work together and get started in class—talk through the problems with the people around you. You will finish the lab on your own time and submit your own work.\nAI use: You may use AI to ask questions or debug, but not to write your code for you—the point is to think it through yourself. At the end of the lab, add a one-line note saying whether and how you used AI.",
     "crumbs": [
       "Labs",
       "Lab 3: Maps"
@@ -2607,7 +2607,7 @@
     "href": "assignments/lab-3.html#step-2-a-leaflet-map-of-conflict-50-pts",
     "title": "Lab 3: Maps",
     "section": "Step 2: A leaflet map of conflict (50 pts)",
-    "text": "Step 2: A leaflet map of conflict (50 pts)\nPick an oil-rich country that has experienced internal conflict (e.g., Iraq, Nigeria, Syria). Following the approach from the Interactive Maps topic, filter a few months of UCDP GED conflict data for your country and convert the coordinates to simple features with st_as_sf(). Then build a leaflet map with markers for the conflict events: show the location name on hover and the number of deaths and date on click. Use “OpenTopoMap” as your basemap.\nAI note: (one line on whether/how your group used AI)",
+    "text": "Step 2: A leaflet map of conflict (50 pts)\nPick an oil-rich country that has experienced internal conflict (e.g., Iraq, Nigeria, Syria). Following the approach from the Interactive Maps topic, filter a few months of UCDP GED conflict data for your country and convert the coordinates to simple features with st_as_sf(). Then build a leaflet map with markers for the conflict events: show the location name on hover and the number of deaths and date on click. Use “OpenTopoMap” as your basemap.\n\nAI statement: (one line on whether and how you used AI)",
     "crumbs": [
       "Labs",
       "Lab 3: Maps"
@@ -2618,7 +2618,7 @@
     "href": "assignments/lab-1.html",
     "title": "Lab 1: Plotting",
     "section": "",
-    "text": "How labs work\n\n\n\nYou are encouraged to work together and get started in class—talk through the problems with the people around you. You will finish the lab on your own time and submit your own work. You may use AI to ask questions or debug, but not to write your code for you; the point is to think it through yourself. At the end, add a one-line note saying whether and how you used AI.",
+    "text": "How labs work\n\n\n\nYou are encouraged to work together and get started in class—talk through the problems with the people around you. You will finish the lab on your own time and submit your own work.\nAI use: You may use AI to ask questions or debug, but not to write your code for you—the point is to think it through yourself. At the end of the lab, add a one-line note saying whether and how you used AI.",
     "crumbs": [
       "Labs",
       "Lab 1: Plotting"
@@ -2695,7 +2695,7 @@
     "href": "assignments/lab-1.html#bonus-1-pt-each",
     "title": "Lab 1: Plotting",
     "section": "Bonus (1 pt each)",
-    "text": "Bonus (1 pt each)\na) Add facet_wrap(~ region) to your scatter plot.\nb) Animate your scatter plot across time with the gganimate package. Go back to the full dem_data rather than the single year you filtered to in Step 3, add transition_states(year), and use {closest_state} inside your title so the year updates as it plays.\nAI note: (one line on whether/how you used AI)\n\n\n\n\n\n\nSubmission Instructions\n\n\n\nHead over to Blackboard and go to the Lab 1 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and that all of the work is your own.\nThen upload a compressed (zipped) version of your project folder including the rendered HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).",
+    "text": "Bonus (1 pt each)\na) Add facet_wrap(~ region) to your scatter plot.\nb) Animate your scatter plot across time with the gganimate package. Go back to the full dem_data rather than the single year you filtered to in Step 3, add transition_states(year), and use {closest_state} inside your title so the year updates as it plays.\n\nAI statement: (one line on whether and how you used AI)\n\n\n\n\n\n\nSubmission Instructions\n\n\n\nHead over to Blackboard and go to the Lab 1 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and that all of the work is your own.\nThen upload a compressed (zipped) version of your project folder including the rendered HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).",
     "crumbs": [
       "Labs",
       "Lab 1: Plotting"
@@ -2713,7 +2713,7 @@
     "href": "assignments/lab-2.html",
     "title": "Lab 2: Wrangling",
     "section": "",
-    "text": "How labs work\n\n\n\nLabs are done with your group during class and are meant to be mostly finished in the class period. You may use AI to ask questions or debug, but not to write your code for you. At the end, add a one-line note saying whether and how you used AI.",
+    "text": "How labs work\n\n\n\nYou are encouraged to work together and get started in class—talk through the problems with the people around you. You will finish the lab on your own time and submit your own work.\nAI use: You may use AI to ask questions or debug, but not to write your code for you—the point is to think it through yourself. At the end of the lab, add a one-line note saying whether and how you used AI.",
     "crumbs": [
       "Labs",
       "Lab 2: Wrangling"
@@ -2768,7 +2768,7 @@
     "href": "assignments/lab-4.html",
     "title": "Lab 4: Tables & coefficient plots",
     "section": "",
-    "text": "How labs work\n\n\n\nLabs are done with your group during class and are meant to be mostly finished in the class period. You may use AI to ask questions or debug, but not to write your code for you. At the end, add a one-line note saying whether and how you used AI.",
+    "text": "How labs work\n\n\n\nYou are encouraged to work together and get started in class—talk through the problems with the people around you. You will finish the lab on your own time and submit your own work.\nAI use: You may use AI to ask questions or debug, but not to write your code for you—the point is to think it through yourself. At the end of the lab, add a one-line note saying whether and how you used AI.",
     "crumbs": [
       "Labs",
       "Lab 4: Tables & coefficient plots"
@@ -2801,7 +2801,7 @@
     "href": "assignments/lab-4.html#part-ii-regression-table-and-coefficient-plot-60-pts",
     "title": "Lab 4: Tables & coefficient plots",
     "section": "Part II: Regression table and coefficient plot (60 pts)",
-    "text": "Part II: Regression table and coefficient plot (60 pts)\nUse create_stateyears() and the peacesciencer “add” functions to build a state-year data frame for analyzing conflict onset (ucdponset), filtered to 1946–2019. Fit two or three model specifications—varying, say, ethnic fractionalization vs. polarization, the democracy measure, or the terrain measure—and present them side by side in a modelsummary table. Then use modelplot() to show one model as a coefficient plot with confidence intervals. In a sentence or two, compare your results to Fearon and Laitin’s and note what the coefficient plot makes easier to see than the table.\nAI note: (one line on whether/how your group used AI)",
+    "text": "Part II: Regression table and coefficient plot (60 pts)\nUse create_stateyears() and the peacesciencer “add” functions to build a state-year data frame for analyzing conflict onset (ucdponset), filtered to 1946–2019. Fit two or three model specifications—varying, say, ethnic fractionalization vs. polarization, the democracy measure, or the terrain measure—and present them side by side in a modelsummary table. Then use modelplot() to show one model as a coefficient plot with confidence intervals. In a sentence or two, compare your results to Fearon and Laitin’s and note what the coefficient plot makes easier to see than the table.\n\nAI statement: (one line on whether and how you used AI)",
     "crumbs": [
       "Labs",
       "Lab 4: Tables & coefficient plots"
@@ -5445,7 +5445,7 @@
     "href": "slides/week-5.2.html#step-2-make-a-column-chart",
     "title": "Merging and Summarizing Data",
     "section": "Step 2: Make a Column Chart",
-    "text": "Step 2: Make a Column Chart\n\nggplot(polyarchy_region, aes(x = fct_reorder(region, -polyarchy), y = polyarchy)) +\n  geom_col(fill = \"steelblue\") + # one bar per region\n  labs(\n    x = \"Region\", \n    y = \"Avg. Polyarchy Score\", \n    title = \"Democracy by region, 1990 - present\", \n    caption = \"Source: V-Dem Institute\"\n  ) +\n  theme_minimal()"
+    "text": "Step 2: Make a Column Chart\n\n\nggplot(polyarchy_region, aes(x = fct_reorder(region, -polyarchy), y = polyarchy)) +\n  geom_col(fill = \"steelblue\") + # one bar per region\n  labs(\n    x = \"Region\", \n    y = \"Avg. Polyarchy Score\", \n    title = \"Democracy by region, 1990 - present\", \n    caption = \"Source: V-Dem Institute\"\n  ) +\n  theme_minimal()"
   },
   {
     "objectID": "slides/week-5.2.html#step-2-make-a-column-chart-output",
@@ -5510,7 +5510,7 @@
     "href": "assignments/lab-2.html#step-5-visualize-25-pts",
     "title": "Lab 2: Wrangling",
     "section": "Step 5: Visualize (25 pts)",
-    "text": "Step 5: Visualize (25 pts)\na) Make a column chart with geom_col() showing your summarized variable by region. Sort the bars from highest to lowest, choose a fill color and a theme, and add axis labels, a title and a caption naming your source.\nb) Below this line, write a sentence or two describing what the chart shows. Is this what you expected?\nAI note: (one line on whether/how your group used AI)",
+    "text": "Step 5: Visualize (25 pts)\na) Make a column chart with geom_col() showing your summarized variable by region. Sort the bars from highest to lowest, choose a fill color and a theme, and add axis labels, a title and a caption naming your source.\nb) Below this line, write a sentence or two describing what the chart shows. Is this what you expected?\n\nAI statement: (one line on whether and how you used AI)",
     "crumbs": [
       "Labs",
       "Lab 2: Wrangling"
@@ -5526,5 +5526,12 @@
       "Labs",
       "Lab 2: Wrangling"
     ]
+  },
+  {
+    "objectID": "slides/week-5.2.html#step-2-make-a-column-chart-1",
+    "href": "slides/week-5.2.html#step-2-make-a-column-chart-1",
+    "title": "Merging and Summarizing Data",
+    "section": "Step 2: Make a Column Chart",
+    "text": "Step 2: Make a Column Chart"
   }
 ]

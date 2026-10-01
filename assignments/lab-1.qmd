@@ -9,7 +9,9 @@ execute:
 
 ::: {.callout-tip}
 ## How labs work
-You are encouraged to **work together and get started in class**---talk through the problems with the people around you. You will finish the lab on your own time and submit your own work. You may use AI to **ask questions or debug**, but not to write your code for you; the point is to think it through yourself. At the end, add a one-line note saying whether and how you used AI.
+You are encouraged to **work together and get started in class**---talk through the problems with the people around you. You will finish the lab on your own time and submit your own work.
+
+**AI use: You may use AI to ask questions or debug, but not to write your code for you---the point is to think it through yourself. At the end of the lab, add a one-line note saying whether and how you used AI.**
 :::
 
 ## Overview
@@ -240,7 +242,9 @@ ggplotly(scatter_chart)
 
 *b) Animate your scatter plot across time with the `gganimate` package. Go back to the full `dem_data` rather than the single year you filtered to in Step 3, add `transition_states(year)`, and use `{closest_state}` inside your title so the year updates as it plays.*
 
-*AI note: _(one line on whether/how you used AI)_*
+<br>
+
+**AI statement:** *(one line on whether and how you used AI)*
 
 ::: {.callout-important}
 ## Submission Instructions

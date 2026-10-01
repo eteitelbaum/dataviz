@@ -223,9 +223,11 @@ polyarchy_region
 
 ## Step 2: Make a Column Chart
 
+<br>
+
 ```{r}
 #| label: polyarchy_chart
-#| output-location: slide
+#| fig-show: hide
 
 ggplot(polyarchy_region, aes(x = fct_reorder(region, -polyarchy), y = polyarchy)) +
   geom_col(fill = "steelblue") + # one bar per region
@@ -236,6 +238,16 @@ ggplot(polyarchy_region, aes(x = fct_reorder(region, -polyarchy), y = polyarchy)
     caption = "Source: V-Dem Institute"
   ) +
   theme_minimal()
+```
+
+## Step 2: Make a Column Chart
+
+<br>
+
+```{r}
+#| label: polyarchy_chart_output
+#| ref.label: polyarchy_chart
+#| echo: false
 ```
 
 ## Try it Yourself {.scrollable}
