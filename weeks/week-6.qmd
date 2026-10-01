@@ -11,7 +11,7 @@ source("../helper.R")
 ```
 
 ::: {.callout-important}
-**Lab 2 (Wrangling)** due by 11:59 p.m. on `r advdate2(mon, 6)`.
+**Lab 2 (Wrangling)** due by 11:59 p.m. on `r advdate2(mon, 7)` (deadline moved from `r advdate2(mon, 6)`).
 :::
 
 We pull data straight from APIs and merge sources into a single tidy data frame.

@@ -55,7 +55,7 @@
     "href": "weeks/week-6.html",
     "title": "Week 6",
     "section": "",
-    "text": "Important\n\n\n\nLab 2 (Wrangling) due by 11:59 p.m. on Monday, October 5.\nWe pull data straight from APIs and merge sources into a single tidy data frame.",
+    "text": "Important\n\n\n\nLab 2 (Wrangling) due by 11:59 p.m. on Monday, October 12 (deadline moved from Monday, October 5).\nWe pull data straight from APIs and merge sources into a single tidy data frame.",
     "crumbs": [
       "Weekly Materials",
       "Week 6"
@@ -5318,7 +5318,7 @@
     "href": "weeks/week-7.html",
     "title": "Week 7",
     "section": "",
-    "text": "We map data with static choropleth maps and learn to wrap our map code in a reusable function.",
+    "text": "Important\n\n\n\nLab 2 (Wrangling) due by 11:59 p.m. on Monday, October 12.\nWe map data with static choropleth maps and learn to wrap our map code in a reusable function.",
     "crumbs": [
       "Weekly Materials",
       "Week 7"

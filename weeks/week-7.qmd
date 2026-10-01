@@ -10,6 +10,10 @@ format: html
 source("../helper.R")
 ```
 
+::: {.callout-important}
+**Lab 2 (Wrangling)** due by 11:59 p.m. on `r advdate2(mon, 7)`.
+:::
+
 We map data with static choropleth maps and learn to wrap our map code in a reusable function.
 
 ## Slides
