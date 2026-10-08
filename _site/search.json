@@ -2121,7 +2121,7 @@
     "href": "modules/module-3.1.html#using-rnaturalearth-to-map-other-data",
     "title": "Choropleth Maps",
     "section": "Using rnaturalearth to map other data",
-    "text": "Using rnaturalearth to map other data\n\nNow that we know how to make a map with Natural Earth shapes and geom_sf(), we can merge in data and map data from other sources. Let’s go ahead and merge some data on oil rents from the World Bank. We will do a left_join() based on iso3c country codes. In the World Bank data the iso3c codes are simply called “iso3c.” In rnaturalearth there are a number of options, but the best here for our purposes is “iso_a3_eh.”\n\n\n\n\n\n\nWarning\n\n\n\nWhy not just use “iso_a3”? Because Natural Earth leaves it as -99 for France and Norway. The shapes Natural Earth draws for those countries include territories that ISO codes separately (French Guiana, Svalbard), so the official code is withheld. The “iso_a3_eh” column fills in the closest match (FRA, NOR). If you join on “iso_a3,” France and Norway will silently drop out of your map. This is a good reminder to always check which rows failed to match after a join!\n\n\n\nlibrary(wbstats)\n\noil_rents_df &lt;- wb_data(c(oil_rents_gdp = \"NY.GDP.PETR.RT.ZS\"), mrnev = 1) \n\nrents_map_df &lt;- left_join(world_map_df, oil_rents_df, join_by(iso_a3_eh == iso3c))\n\nrents_map_df |&gt;\n  select(last_col(5):last_col()) |&gt; #select last 5 columns of df\n  glimpse() \n\nRows: 241\nColumns: 6\n$ date          &lt;dbl&gt; 2021, 2021, 2018, 2021, 2014, NA, 2021, 2021, 2021, NA, …\n$ oil_rents_gdp &lt;dbl&gt; 0.047768809, 0.000000000, 4.823561531, 0.669314215, 11.3…\n$ obs_status    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …\n$ footnote      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …\n$ last_updated  &lt;date&gt; 2026-07-13, 2026-07-13, 2026-07-13, 2026-07-13, 2026-07…\n$ geometry      &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((31.28789 -2..., MULTIPOLYGO…\n\n\nNow we can map these data. Everything here is pretty much the same as before, except we change the fill to oil_rents_gdp. We will also add a subtitle and make a few other cosmetic changes like shifting the position of the legend title, bolding the plot title and changing the viridis color scale from discrete to continuous.\n\nggplot(data = rents_map_df) +\n  geom_sf(aes(fill = oil_rents_gdp)) + # shade based on oil rents\n  labs(\n    title = \"Oil rents (% of GDP)\",\n    subtitle = \"(Most recent available data)\", # add subtitle\n    fill = \"Percent\", \n    caption = \"Source: World Bank Development Indicators\"\n    ) +\n  theme_map() +\n  theme(\n    legend.position = \"right\", \n    #legend.title = element_text(size = 8),\n    #legend.text = element_text(size = 6)\n    plot.title = element_text(face = \"bold\"), # move legend\n    ) +\n  scale_fill_viridis_c( # chg from discrete (_d) to continuous (_c)\n      option = \"magma\", #  chg to magma theme\n      labels = scales::label_percent(scale = 1) # add % label for legend\n      )",
+    "text": "Using rnaturalearth to map other data\n\nNow that we know how to make a map with Natural Earth shapes and geom_sf(), we can merge in data and map data from other sources. Let’s go ahead and merge some data on oil rents from the World Bank. We will do a left_join() based on iso3c country codes. In the World Bank data the iso3c codes are simply called “iso3c.” In rnaturalearth there are a number of options, but the best here for our purposes is “iso_a3_eh.”\n\n\n\n\n\n\nWarning\n\n\n\nWhy not just use “iso_a3”? Because Natural Earth leaves it as -99 for France and Norway. The shapes Natural Earth draws for those countries include territories that ISO codes separately (French Guiana, Svalbard), so the official code is withheld. The “iso_a3_eh” column fills in the closest match (FRA, NOR). If you join on “iso_a3,” France and Norway will silently drop out of your map. This is a good reminder to always check which rows failed to match after a join!\n\n\n\nlibrary(wbstats)\n\noil_rents_df &lt;- wb_data(c(oil_rents_gdp = \"NY.GDP.PETR.RT.ZS\"), mrnev = 1) \n\nrents_map_df &lt;- left_join(world_map_df, oil_rents_df, join_by(iso_a3_eh == iso3c))\n\nrents_map_df |&gt;\n  select(last_col(5):last_col()) |&gt; #select last 5 columns of df\n  glimpse() \n\nRows: 241\nColumns: 6\n$ date          &lt;dbl&gt; 2021, 2021, 2018, 2021, 2014, NA, 2021, 2021, 2021, NA, …\n$ oil_rents_gdp &lt;dbl&gt; 0.047768809, 0.000000000, 4.823561531, 0.669314215, 11.3…\n$ obs_status    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …\n$ footnote      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …\n$ last_updated  &lt;date&gt; 2026-07-13, 2026-07-13, 2026-07-13, 2026-07-13, 2026-07…\n$ geometry      &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((31.28789 -2..., MULTIPOLYGO…\n\n\nNow we can map these data. Everything here is pretty much the same as before, except we change the fill to oil_rents_gdp. We will also add a subtitle and make a few other cosmetic changes like shifting the position of the legend title, bolding the plot title and changing the viridis color scale from discrete to continuous.\n\nggplot(data = rents_map_df) +\n  geom_sf(aes(fill = oil_rents_gdp)) + # shade based on oil rents\n  labs(\n    title = \"Oil rents (% of GDP)\",\n    subtitle = \"(Most recent available data)\", # add subtitle\n    fill = \"Percent\", \n    caption = \"Source: World Bank Development Indicators\"\n    ) +\n  theme_map() +\n  theme(\n    legend.position = \"right\", \n    #legend.title = element_text(size = 8),\n    #legend.text = element_text(size = 6)\n    plot.title = element_text(face = \"bold\"), # move legend\n    ) +\n  scale_fill_viridis_c( # chg from discrete (_d) to continuous (_c)\n      option = \"magma\", #  chg to magma theme\n      direction = -1, # reverse scale so darker = more oil\n      labels = scales::label_percent(scale = 1) # add % label for legend\n      )",
     "crumbs": [
       "Course Topics",
       "III — Maps",
@@ -4899,7 +4899,7 @@
     "href": "slides/week-6.1.html#map-code-2",
     "title": "Choropleth Maps",
     "section": "Map Code",
-    "text": "Map Code\n\nAdd a color scale and a theme.\n\n\nlibrary(ggthemes)\n\nggplot(data = world_map_df) +\n  geom_sf(aes(fill = income_grp)) + \n  labs(\n    title = \"World Bank country income categories\",\n    fill = \"Category\"\n    ) +\n    scale_fill_viridis_d() +\n    theme_map()"
+    "text": "Map Code"
   },
   {
     "objectID": "slides/week-6.1.html#your-turn",
@@ -4927,7 +4927,7 @@
     "href": "slides/week-6.1.html#map-other-data-2",
     "title": "Choropleth Maps",
     "section": "Map Other Data",
-    "text": "Map Other Data\n\nggplot(data = rents_map_df) +\n  geom_sf(aes(fill = oil_rents_gdp)) + # shade based on oil rents\n  labs(\n    title = \"Oil rents (% of GDP)\",\n    subtitle = \"(Most recent available data)\", # add subtitle\n    fill = \"Percent\", \n    caption = \"Source: World Bank Development Indicators\"\n    ) +\n  theme_map() +\n  theme(\n    legend.position = \"right\", \n    #legend.title = element_text(size = 8),\n    #legend.text = element_text(size = 6)\n    plot.title = element_text(face = \"bold\"), # move legend\n    ) +\n  scale_fill_viridis_c( # chg from discrete (_d) to continuous (_c)\n      option = \"magma\", #  chg to magma theme\n      labels = scales::label_percent(scale = 1) # add % label for legend\n      )"
+    "text": "Map Other Data\n\nggplot(data = rents_map_df) +\n  geom_sf(aes(fill = oil_rents_gdp)) + # shade based on oil rents\n  labs(\n    title = \"Oil rents (% of GDP)\",\n    subtitle = \"(Most recent available data)\", # add subtitle\n    fill = \"Percent\", \n    caption = \"Source: World Bank Development Indicators\"\n    ) +\n  theme_map() +\n  theme(\n    legend.position = \"right\", \n    #legend.title = element_text(size = 8),\n    #legend.text = element_text(size = 6)\n    plot.title = element_text(face = \"bold\"), # move legend\n    ) +\n  scale_fill_viridis_c( # chg from discrete (_d) to continuous (_c)\n      option = \"magma\", #  chg to magma theme\n      direction = -1, # reverse scale so darker = more oil\n      labels = scales::label_percent(scale = 1) # add % label for legend\n      )"
   },
   {
     "objectID": "slides/week-6.1.html#your-turn-1",
@@ -5533,5 +5533,33 @@
     "title": "Merging and Summarizing Data",
     "section": "Step 2: Make a Column Chart",
     "text": "Step 2: Make a Column Chart"
+  },
+  {
+    "objectID": "slides/week-6.1.html#map-code-3",
+    "href": "slides/week-6.1.html#map-code-3",
+    "title": "Choropleth Maps",
+    "section": "Map Code",
+    "text": "Map Code\n\nAdd a color scale and a theme.\n\n\nlibrary(ggthemes)\n\nggplot(data = world_map_df) +\n  geom_sf(aes(fill = income_grp)) + \n  labs(\n    title = \"World Bank country income categories\",\n    fill = \"Category\"\n    ) +\n    scale_fill_viridis_d() +\n    theme_map()"
+  },
+  {
+    "objectID": "slides/week-6.1.html#map-code-4",
+    "href": "slides/week-6.1.html#map-code-4",
+    "title": "Choropleth Maps",
+    "section": "Map Code",
+    "text": "Map Code"
+  },
+  {
+    "objectID": "slides/week-6.2.html#map-function-4",
+    "href": "slides/week-6.2.html#map-function-4",
+    "title": "Make a Map Function",
+    "section": "Map Function",
+    "text": "Map Function\n\nNow we can map any World Bank indicator by changing the inputs…\n\n\ncreate_map(var_id = \"NY.GDP.PCAP.PP.KD\", \n           title= \"GDP per capita (constant 2017 international $)\", \n           legend_title = \"Geary-Khamis $\", \n           theme = \"mako\", \n           direction = -1)"
+  },
+  {
+    "objectID": "slides/week-6.2.html#map-function-5",
+    "href": "slides/week-6.2.html#map-function-5",
+    "title": "Make a Map Function",
+    "section": "Map Function",
+    "text": "Map Function"
   }
 ]

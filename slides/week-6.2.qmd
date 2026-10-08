@@ -191,6 +191,38 @@ create_map(var_id = "SL.TLF.CACT.FE.ZS",
            direction = -1)
 ```
 
+## Map Function
+
+<br>
+
+Now we can map any World Bank indicator by changing the inputs...
+
+<br>
+
+```{r}
+#| label: map-function9
+#| eval: false
+
+create_map(var_id = "NY.GDP.PCAP.PP.KD", 
+           title= "GDP per capita (constant 2017 international $)", 
+           legend_title = "Geary-Khamis $", 
+           theme = "mako", 
+           direction = -1)
+```
+
+## Map Function
+
+```{r}
+#| label: gdp_map
+#| echo: false
+
+create_map(var_id = "NY.GDP.PCAP.PP.KD", 
+           title= "GDP per capita (constant 2017 international $)", 
+           legend_title = "Geary-Khamis $", 
+           theme = "mako", 
+           direction = -1)
+```
+
 ## Your Turn{.smaller}
 
 <br>

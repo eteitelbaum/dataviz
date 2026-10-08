@@ -160,6 +160,7 @@ ggplot(data = rents_map_df) +
     ) +
   scale_fill_viridis_c( # chg from discrete (_d) to continuous (_c)
       option = "magma", #  chg to magma theme
+      direction = -1, # reverse scale so darker = more oil
       labels = scales::label_percent(scale = 1) # add % label for legend
       ) 
 ```

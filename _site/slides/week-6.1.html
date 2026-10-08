@@ -229,10 +229,6 @@
 <h2>Disputed Territory</h2>
 
 <img data-src="images/kashmir.png" class="r-stretch quarto-figure-center"><p class="caption"><em>Source:</em> Wikimedia Commons</p></section>
-<section id="development" class="slide level2">
-<h2>Development</h2>
-
-<img data-src="week-6.1_files/figure-revealjs/gdp_map-1.png" width="960" class="r-stretch"></section>
 <section id="map-code" class="slide level2">
 <h2>Map Code</h2>
 <p><br></p>
@@ -268,6 +264,10 @@
 </section>
 <section id="map-code-2" class="slide level2">
 <h2>Map Code</h2>
+
+<img data-src="week-6.1_files/figure-revealjs/first_map_output-1.png" width="960" class="r-stretch"></section>
+<section id="map-code-3" class="slide level2">
+<h2>Map Code</h2>
 <p><br></p>
 <p>Add a color scale and a theme.</p>
 <p><br></p>
@@ -284,6 +284,10 @@
 <span id="cb3-10"><a></a>    <span class="fu">theme_map</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+<section id="map-code-4" class="slide level2">
+<h2>Map Code</h2>
+
+<img data-src="week-6.1_files/figure-revealjs/beautify_map_output-1.png" width="960" class="r-stretch"></section>
 <section id="your-turn" class="slide level2">
 <h2>Your Turn!</h2>
 <p><br></p>
@@ -341,8 +345,9 @@
 <span id="cb5-15"><a></a>    ) <span class="sc">+</span></span>
 <span id="cb5-16"><a></a>  <span class="fu">scale_fill_viridis_c</span>( <span class="co"># chg from discrete (_d) to continuous (_c)</span></span>
 <span id="cb5-17"><a></a>      <span class="at">option =</span> <span class="st">"magma"</span>, <span class="co">#  chg to magma theme</span></span>
-<span id="cb5-18"><a></a>      <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>(<span class="at">scale =</span> <span class="dv">1</span>) <span class="co"># add % label for legend</span></span>
-<span id="cb5-19"><a></a>      ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-18"><a></a>      <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="co"># reverse scale so darker = more oil</span></span>
+<span id="cb5-19"><a></a>      <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>(<span class="at">scale =</span> <span class="dv">1</span>) <span class="co"># add % label for legend</span></span>
+<span id="cb5-20"><a></a>      ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="your-turn-1" class="slide level2">
@@ -358,7 +363,7 @@
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_8330a3ba" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:10%;bottom:10%;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_fb7746d7" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:10%;bottom:10%;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -374,24 +379,7 @@
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_6aaa1646" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:10%;bottom:10%;"></countdown-timer>
-</div>
-</div>
-</section>
-<section id="coding-with-ai" class="slide level2">
-<h2>Coding With AI</h2>
-<p><br></p>
-<ul>
-<li>Sometimes coding with AI can helpful</li>
-<li>Sometimes not!</li>
-<li>Try prompting ChatGPT to code up a choropleth map</li>
-<li>Tell it what packages to use</li>
-<li>Note differences from our code</li>
-<li>Debug if necessary</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_60fff038" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_dc2ad203" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:10%;bottom:10%;"></countdown-timer>
 </div>
 </div>
 

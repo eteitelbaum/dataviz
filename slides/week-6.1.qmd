@@ -57,19 +57,6 @@ create_map(var_id = "SL.TLF.CACT.FE.ZS",
 
 ![*Source:* Wikimedia Commons](images/kashmir.png)
 
-## Development
-
-```{r}
-#| label: gdp_map
-#| echo: false
-
-create_map(var_id = "NY.GDP.PCAP.PP.KD", 
-           title= "GDP per capita (constant 2017 international $)", 
-           legend_title = "Geary-Khamis $", 
-           theme = "mako", 
-           direction = -1)
-```
-
 ## Map Code
 
 <br> 
@@ -117,6 +104,17 @@ ggplot(data = world_map_df) +
 
 ## Map Code
 
+```{r}
+#| label: first_map_output
+#| echo: false
+
+ggplot(data = world_map_df) +
+  geom_sf(aes(fill = income_grp)) + 
+  labs(title = "World Bank country income categories")
+```
+
+## Map Code
+
 <br>
   
 Add a color scale and a theme. 
@@ -128,6 +126,22 @@ Add a color scale and a theme.
 #| output: false
 
 library(ggthemes)
+
+ggplot(data = world_map_df) +
+  geom_sf(aes(fill = income_grp)) + 
+  labs(
+    title = "World Bank country income categories",
+    fill = "Category"
+    ) +
+    scale_fill_viridis_d() +
+    theme_map() 
+```
+
+## Map Code
+
+```{r}
+#| label: beautify_map_output
+#| echo: false
 
 ggplot(data = world_map_df) +
   geom_sf(aes(fill = income_grp)) + 
@@ -195,6 +209,7 @@ ggplot(data = rents_map_df) +
     ) +
   scale_fill_viridis_c( # chg from discrete (_d) to continuous (_c)
       option = "magma", #  chg to magma theme
+      direction = -1, # reverse scale so darker = more oil
       labels = scales::label_percent(scale = 1) # add % label for legend
       ) 
 ```
@@ -245,6 +260,7 @@ ggplot(data = rents_map_df) +
     ) +
   scale_fill_viridis_c( # chg from discrete (_d) to continuous (_c)
       option = "magma", #  chg to magma theme
+      direction = -1, # reverse scale so darker = more oil
       labels = scales::label_percent(scale = 1) # add % label for legend
       ) 
 ```
@@ -289,22 +305,4 @@ countdown(minutes = 10,
           bottom = "10%", 
           right = "10%"
           )
-```
-
-## Coding With AI
-
-<br>
-
-- Sometimes coding with AI can helpful
-- Sometimes not! 
-- Try prompting ChatGPT to code up a choropleth map
-- Tell it what packages to use
-- Note differences from our code
-- Debug if necessary
-
-```{r}
-#| label: exercise4_timer
-#| echo: false
-
-countdown(minutes = 10)
 ```

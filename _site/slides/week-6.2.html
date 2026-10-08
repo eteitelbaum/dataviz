@@ -351,6 +351,23 @@
 <span id="cb9-5"><a></a>           <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+<section id="map-function-4" class="slide level2">
+<h2>Map Function</h2>
+<p><br></p>
+<p>Now we can map any World Bank indicator by changing the inputs…</p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">create_map</span>(<span class="at">var_id =</span> <span class="st">"NY.GDP.PCAP.PP.KD"</span>, </span>
+<span id="cb10-2"><a></a>           <span class="at">title=</span> <span class="st">"GDP per capita (constant 2017 international $)"</span>, </span>
+<span id="cb10-3"><a></a>           <span class="at">legend_title =</span> <span class="st">"Geary-Khamis $"</span>, </span>
+<span id="cb10-4"><a></a>           <span class="at">theme =</span> <span class="st">"mako"</span>, </span>
+<span id="cb10-5"><a></a>           <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="map-function-5" class="slide level2">
+<h2>Map Function</h2>
+
+<img data-src="week-6.2_files/figure-revealjs/gdp_map-1.png" width="960" class="r-stretch"></section>
 <section id="your-turn" class="slide level2 smaller">
 <h2>Your Turn</h2>
 <p><br></p>
@@ -364,7 +381,7 @@
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_4a2a0e37" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_80390432" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -384,7 +401,7 @@
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_d261ab30" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:10%;bottom:10%;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_f9d9996f" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:10%;bottom:10%;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -403,54 +420,54 @@
 <h2>Group and Summarize</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># var_id = any World Bank indicator</span></span>
-<span id="cb10-2"><a></a><span class="co"># mrv = number of most recent values</span></span>
-<span id="cb10-3"><a></a><span class="co"># group_var = column to group by (country or date)</span></span>
-<span id="cb10-4"><a></a></span>
-<span id="cb10-5"><a></a>mean_wb_data <span class="ot">&lt;-</span> <span class="cf">function</span>(var_id, mrv, group_var){</span>
-<span id="cb10-6"><a></a>  <span class="fu">wb_data</span>(var_id, <span class="at">mrv =</span> mrv) <span class="sc">|&gt;</span> </span>
-<span id="cb10-7"><a></a>    <span class="fu">group_by</span>( {{ group_var }}) <span class="sc">|&gt;</span> </span>
-<span id="cb10-8"><a></a>    <span class="fu">summarize</span>(<span class="at">mean_value =</span> <span class="fu">mean</span>(.data[[var_id]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb10-9"><a></a>}</span>
-<span id="cb10-10"><a></a></span>
-<span id="cb10-11"><a></a><span class="co"># Example call</span></span>
-<span id="cb10-12"><a></a><span class="fu">mean_wb_data</span>(<span class="st">"SL.TLF.CACT.FE.ZS"</span>, <span class="dv">3</span>, date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="co"># var_id = any World Bank indicator</span></span>
+<span id="cb11-2"><a></a><span class="co"># mrv = number of most recent values</span></span>
+<span id="cb11-3"><a></a><span class="co"># group_var = column to group by (country or date)</span></span>
+<span id="cb11-4"><a></a></span>
+<span id="cb11-5"><a></a>mean_wb_data <span class="ot">&lt;-</span> <span class="cf">function</span>(var_id, mrv, group_var){</span>
+<span id="cb11-6"><a></a>  <span class="fu">wb_data</span>(var_id, <span class="at">mrv =</span> mrv) <span class="sc">|&gt;</span> </span>
+<span id="cb11-7"><a></a>    <span class="fu">group_by</span>( {{ group_var }}) <span class="sc">|&gt;</span> </span>
+<span id="cb11-8"><a></a>    <span class="fu">summarize</span>(<span class="at">mean_value =</span> <span class="fu">mean</span>(.data[[var_id]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb11-9"><a></a>}</span>
+<span id="cb11-10"><a></a></span>
+<span id="cb11-11"><a></a><span class="co"># Example call</span></span>
+<span id="cb11-12"><a></a><span class="fu">mean_wb_data</span>(<span class="st">"SL.TLF.CACT.FE.ZS"</span>, <span class="dv">3</span>, date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="line-chart" class="slide level2">
 <h2>Line Chart</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>create_line_chart <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x_var, y_var, color_var, title, x_label,</span>
-<span id="cb11-2"><a></a>                              y_label, legend_title, <span class="at">color_palette =</span> <span class="st">"turbo"</span>,</span>
-<span id="cb11-3"><a></a>                              <span class="at">palette_end =</span> <span class="fl">0.8</span>) {</span>
-<span id="cb11-4"><a></a>  </span>
-<span id="cb11-5"><a></a>  <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> {{ x_var }}, <span class="at">y =</span> {{ y_var }}, <span class="at">color =</span> {{ color_var }})) <span class="sc">+</span></span>
-<span id="cb11-6"><a></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb11-7"><a></a>    <span class="fu">labs</span>(</span>
-<span id="cb11-8"><a></a>      <span class="at">title =</span> title,</span>
-<span id="cb11-9"><a></a>      <span class="at">x =</span> x_label,</span>
-<span id="cb11-10"><a></a>      <span class="at">y =</span> y_label</span>
-<span id="cb11-11"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb11-12"><a></a>    <span class="fu">scale_color_viridis_d</span>(</span>
-<span id="cb11-13"><a></a>      <span class="at">name =</span> legend_title,  </span>
-<span id="cb11-14"><a></a>      <span class="at">option =</span> color_palette, </span>
-<span id="cb11-15"><a></a>      <span class="at">end =</span> palette_end</span>
-<span id="cb11-16"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb11-17"><a></a>    <span class="fu">theme_minimal</span>()</span>
-<span id="cb11-18"><a></a>}</span>
-<span id="cb11-19"><a></a></span>
-<span id="cb11-20"><a></a><span class="co"># Example call</span></span>
-<span id="cb11-21"><a></a><span class="fu">create_line_chart</span>(</span>
-<span id="cb11-22"><a></a>  <span class="at">data =</span> brics_dem, </span>
-<span id="cb11-23"><a></a>  <span class="at">x_var =</span> year, </span>
-<span id="cb11-24"><a></a>  <span class="at">y_var =</span> v2x_polyarchy, </span>
-<span id="cb11-25"><a></a>  <span class="at">color_var =</span> country_name, </span>
-<span id="cb11-26"><a></a>  <span class="at">title =</span> <span class="st">"Democracy in the BRICS Nations"</span>, </span>
-<span id="cb11-27"><a></a>  <span class="at">x_label =</span> <span class="st">"Year"</span>, </span>
-<span id="cb11-28"><a></a>  <span class="at">y_label =</span> <span class="st">"Polyarchy Score"</span>,</span>
-<span id="cb11-29"><a></a>  <span class="at">legend_title =</span> <span class="st">"Index"</span></span>
-<span id="cb11-30"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>create_line_chart <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x_var, y_var, color_var, title, x_label,</span>
+<span id="cb12-2"><a></a>                              y_label, legend_title, <span class="at">color_palette =</span> <span class="st">"turbo"</span>,</span>
+<span id="cb12-3"><a></a>                              <span class="at">palette_end =</span> <span class="fl">0.8</span>) {</span>
+<span id="cb12-4"><a></a>  </span>
+<span id="cb12-5"><a></a>  <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> {{ x_var }}, <span class="at">y =</span> {{ y_var }}, <span class="at">color =</span> {{ color_var }})) <span class="sc">+</span></span>
+<span id="cb12-6"><a></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb12-7"><a></a>    <span class="fu">labs</span>(</span>
+<span id="cb12-8"><a></a>      <span class="at">title =</span> title,</span>
+<span id="cb12-9"><a></a>      <span class="at">x =</span> x_label,</span>
+<span id="cb12-10"><a></a>      <span class="at">y =</span> y_label</span>
+<span id="cb12-11"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb12-12"><a></a>    <span class="fu">scale_color_viridis_d</span>(</span>
+<span id="cb12-13"><a></a>      <span class="at">name =</span> legend_title,  </span>
+<span id="cb12-14"><a></a>      <span class="at">option =</span> color_palette, </span>
+<span id="cb12-15"><a></a>      <span class="at">end =</span> palette_end</span>
+<span id="cb12-16"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb12-17"><a></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb12-18"><a></a>}</span>
+<span id="cb12-19"><a></a></span>
+<span id="cb12-20"><a></a><span class="co"># Example call</span></span>
+<span id="cb12-21"><a></a><span class="fu">create_line_chart</span>(</span>
+<span id="cb12-22"><a></a>  <span class="at">data =</span> brics_dem, </span>
+<span id="cb12-23"><a></a>  <span class="at">x_var =</span> year, </span>
+<span id="cb12-24"><a></a>  <span class="at">y_var =</span> v2x_polyarchy, </span>
+<span id="cb12-25"><a></a>  <span class="at">color_var =</span> country_name, </span>
+<span id="cb12-26"><a></a>  <span class="at">title =</span> <span class="st">"Democracy in the BRICS Nations"</span>, </span>
+<span id="cb12-27"><a></a>  <span class="at">x_label =</span> <span class="st">"Year"</span>, </span>
+<span id="cb12-28"><a></a>  <span class="at">y_label =</span> <span class="st">"Polyarchy Score"</span>,</span>
+<span id="cb12-29"><a></a>  <span class="at">legend_title =</span> <span class="st">"Index"</span></span>
+<span id="cb12-30"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
