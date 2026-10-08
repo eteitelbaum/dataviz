@@ -255,9 +255,11 @@ countdown(minutes = 10)
 - Come up with a plan
   - What will the name of the function be?
   - What will the parameters be?
-  - What would the
+  - What will it return?
 - Take democracy code from last class and implement
 - Add more parameters if desired
+- Writing functions is tedious work that AI can help with
+  - Give it your plan and ask for a first draft, then test it!
 
 ```{r}
 #| label: exercise6_timer
@@ -284,7 +286,8 @@ countdown(minutes = 10,
 <br>
 
 ```{r}
-#| eval: false
+#| label: mean-wb-data
+#| output: false
 
 # var_id = any World Bank indicator
 # mrv = number of most recent values
@@ -300,12 +303,38 @@ mean_wb_data <- function(var_id, mrv, group_var){
 mean_wb_data("SL.TLF.CACT.FE.ZS", 3, date)
 ```
 
-## Line Chart
+## Group and Summarize
+
+<br>
+
+Average female labor force participation across countries, last three years...
 
 <br>
 
 ```{r}
-#| eval: false
+#| label: mean-wb-data-output
+
+mean_wb_data("SL.TLF.CACT.FE.ZS", 3, date)
+```
+
+## Line Chart
+
+```{r}
+#| label: brics-data
+#| include: false
+
+library(vdemlite)
+
+brics_dem <- fetchdem(indicators = "v2x_polyarchy",
+                      start_year = 2000, end_year = 2020,
+                      countries = c("BRA", "RUS", "IND", "CHN", "ZAF"))
+```
+
+<br>
+
+```{r}
+#| label: line-chart-function
+#| output: false
 
 create_line_chart <- function(data, x_var, y_var, color_var, title, x_label,
                               y_label, legend_title, color_palette = "turbo",
@@ -335,7 +364,25 @@ create_line_chart(
   title = "Democracy in the BRICS Nations", 
   x_label = "Year", 
   y_label = "Polyarchy Score",
-  legend_title = "Index"
+  legend_title = "Country"
+)
+```
+
+## Line Chart
+
+```{r}
+#| label: line-chart-output
+#| echo: false
+
+create_line_chart(
+  data = brics_dem, 
+  x_var = year, 
+  y_var = v2x_polyarchy, 
+  color_var = country_name, 
+  title = "Democracy in the BRICS Nations", 
+  x_label = "Year", 
+  y_label = "Polyarchy Score",
+  legend_title = "Country"
 )
 ```
 

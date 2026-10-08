@@ -388,7 +388,7 @@
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_b19166a0" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_11a536ac" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -401,14 +401,18 @@
 <ul>
 <li>What will the name of the function be?</li>
 <li>What will the parameters be?</li>
-<li>What would the</li>
+<li>What will it return?</li>
 </ul></li>
 <li>Take democracy code from last class and implement</li>
 <li>Add more parameters if desired</li>
+<li>Writing functions is tedious work that AI can help with
+<ul>
+<li>Give it your plan and ask for a first draft, then test it!</li>
+</ul></li>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_76c783ab" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:10%;bottom:10%;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_e7e4c7a8" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:10%;bottom:10%;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -441,44 +445,65 @@
 <span id="cb11-12"><a></a><span class="fu">mean_wb_data</span>(<span class="st">"SL.TLF.CACT.FE.ZS"</span>, <span class="dv">3</span>, date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+<section id="group-and-summarize-1" class="slide level2">
+<h2>Group and Summarize</h2>
+<p><br></p>
+<p>Average female labor force participation across countries, last three years…</p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">mean_wb_data</span>(<span class="st">"SL.TLF.CACT.FE.ZS"</span>, <span class="dv">3</span>, date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+   date mean_value
+  &lt;dbl&gt;      &lt;dbl&gt;
+1  2023       51.4
+2  2024       51.5
+3  2025       51.4</code></pre>
+</div>
+</div>
+</section>
 <section id="line-chart" class="slide level2">
 <h2>Line Chart</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>create_line_chart <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x_var, y_var, color_var, title, x_label,</span>
-<span id="cb12-2"><a></a>                              y_label, legend_title, <span class="at">color_palette =</span> <span class="st">"turbo"</span>,</span>
-<span id="cb12-3"><a></a>                              <span class="at">palette_end =</span> <span class="fl">0.8</span>) {</span>
-<span id="cb12-4"><a></a>  </span>
-<span id="cb12-5"><a></a>  <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> {{ x_var }}, <span class="at">y =</span> {{ y_var }}, <span class="at">color =</span> {{ color_var }})) <span class="sc">+</span></span>
-<span id="cb12-6"><a></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb12-7"><a></a>    <span class="fu">labs</span>(</span>
-<span id="cb12-8"><a></a>      <span class="at">title =</span> title,</span>
-<span id="cb12-9"><a></a>      <span class="at">x =</span> x_label,</span>
-<span id="cb12-10"><a></a>      <span class="at">y =</span> y_label</span>
-<span id="cb12-11"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb12-12"><a></a>    <span class="fu">scale_color_viridis_d</span>(</span>
-<span id="cb12-13"><a></a>      <span class="at">name =</span> legend_title,  </span>
-<span id="cb12-14"><a></a>      <span class="at">option =</span> color_palette, </span>
-<span id="cb12-15"><a></a>      <span class="at">end =</span> palette_end</span>
-<span id="cb12-16"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb12-17"><a></a>    <span class="fu">theme_minimal</span>()</span>
-<span id="cb12-18"><a></a>}</span>
-<span id="cb12-19"><a></a></span>
-<span id="cb12-20"><a></a><span class="co"># Example call</span></span>
-<span id="cb12-21"><a></a><span class="fu">create_line_chart</span>(</span>
-<span id="cb12-22"><a></a>  <span class="at">data =</span> brics_dem, </span>
-<span id="cb12-23"><a></a>  <span class="at">x_var =</span> year, </span>
-<span id="cb12-24"><a></a>  <span class="at">y_var =</span> v2x_polyarchy, </span>
-<span id="cb12-25"><a></a>  <span class="at">color_var =</span> country_name, </span>
-<span id="cb12-26"><a></a>  <span class="at">title =</span> <span class="st">"Democracy in the BRICS Nations"</span>, </span>
-<span id="cb12-27"><a></a>  <span class="at">x_label =</span> <span class="st">"Year"</span>, </span>
-<span id="cb12-28"><a></a>  <span class="at">y_label =</span> <span class="st">"Polyarchy Score"</span>,</span>
-<span id="cb12-29"><a></a>  <span class="at">legend_title =</span> <span class="st">"Index"</span></span>
-<span id="cb12-30"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>create_line_chart <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x_var, y_var, color_var, title, x_label,</span>
+<span id="cb14-2"><a></a>                              y_label, legend_title, <span class="at">color_palette =</span> <span class="st">"turbo"</span>,</span>
+<span id="cb14-3"><a></a>                              <span class="at">palette_end =</span> <span class="fl">0.8</span>) {</span>
+<span id="cb14-4"><a></a>  </span>
+<span id="cb14-5"><a></a>  <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> {{ x_var }}, <span class="at">y =</span> {{ y_var }}, <span class="at">color =</span> {{ color_var }})) <span class="sc">+</span></span>
+<span id="cb14-6"><a></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb14-7"><a></a>    <span class="fu">labs</span>(</span>
+<span id="cb14-8"><a></a>      <span class="at">title =</span> title,</span>
+<span id="cb14-9"><a></a>      <span class="at">x =</span> x_label,</span>
+<span id="cb14-10"><a></a>      <span class="at">y =</span> y_label</span>
+<span id="cb14-11"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb14-12"><a></a>    <span class="fu">scale_color_viridis_d</span>(</span>
+<span id="cb14-13"><a></a>      <span class="at">name =</span> legend_title,  </span>
+<span id="cb14-14"><a></a>      <span class="at">option =</span> color_palette, </span>
+<span id="cb14-15"><a></a>      <span class="at">end =</span> palette_end</span>
+<span id="cb14-16"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb14-17"><a></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb14-18"><a></a>}</span>
+<span id="cb14-19"><a></a></span>
+<span id="cb14-20"><a></a><span class="co"># Example call</span></span>
+<span id="cb14-21"><a></a><span class="fu">create_line_chart</span>(</span>
+<span id="cb14-22"><a></a>  <span class="at">data =</span> brics_dem, </span>
+<span id="cb14-23"><a></a>  <span class="at">x_var =</span> year, </span>
+<span id="cb14-24"><a></a>  <span class="at">y_var =</span> v2x_polyarchy, </span>
+<span id="cb14-25"><a></a>  <span class="at">color_var =</span> country_name, </span>
+<span id="cb14-26"><a></a>  <span class="at">title =</span> <span class="st">"Democracy in the BRICS Nations"</span>, </span>
+<span id="cb14-27"><a></a>  <span class="at">x_label =</span> <span class="st">"Year"</span>, </span>
+<span id="cb14-28"><a></a>  <span class="at">y_label =</span> <span class="st">"Polyarchy Score"</span>,</span>
+<span id="cb14-29"><a></a>  <span class="at">legend_title =</span> <span class="st">"Country"</span></span>
+<span id="cb14-30"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="line-chart-1" class="slide level2">
+<h2>Line Chart</h2>
 
 
-</section></section>
+
+<img data-src="week-6.2_files/figure-revealjs/line-chart-output-1.png" width="960" class="r-stretch"></section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="images/dataviz-logo.png" class="slide-logo"></p>

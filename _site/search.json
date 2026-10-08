@@ -623,7 +623,7 @@
     "href": "slides/week-6.2.html#democracy-function",
     "title": "Make a Map Function",
     "section": "Democracy Function",
-    "text": "Democracy Function\n\n\nCan you make a map function for a democracy indicator?\nCome up with a plan\n\nWhat will the name of the function be?\nWhat will the parameters be?\nWhat would the\n\nTake democracy code from last class and implement\nAdd more parameters if desired"
+    "text": "Democracy Function\n\n\nCan you make a map function for a democracy indicator?\nCome up with a plan\n\nWhat will the name of the function be?\nWhat will the parameters be?\nWhat will it return?\n\nTake democracy code from last class and implement\nAdd more parameters if desired\nWriting functions is tedious work that AI can help with\n\nGive it your plan and ask for a first draft, then test it!"
   },
   {
     "objectID": "slides/week-6.2.html#other-functions",
@@ -644,7 +644,7 @@
     "href": "slides/week-6.2.html#line-chart",
     "title": "Make a Map Function",
     "section": "Line Chart",
-    "text": "Line Chart\n\n\ncreate_line_chart &lt;- function(data, x_var, y_var, color_var, title, x_label,\n                              y_label, legend_title, color_palette = \"turbo\",\n                              palette_end = 0.8) {\n  \n  ggplot(data, aes(x = {{ x_var }}, y = {{ y_var }}, color = {{ color_var }})) +\n    geom_line() +\n    labs(\n      title = title,\n      x = x_label,\n      y = y_label\n    ) +\n    scale_color_viridis_d(\n      name = legend_title,  \n      option = color_palette, \n      end = palette_end\n    ) +\n    theme_minimal()\n}\n\n# Example call\ncreate_line_chart(\n  data = brics_dem, \n  x_var = year, \n  y_var = v2x_polyarchy, \n  color_var = country_name, \n  title = \"Democracy in the BRICS Nations\", \n  x_label = \"Year\", \n  y_label = \"Polyarchy Score\",\n  legend_title = \"Index\"\n)"
+    "text": "Line Chart\n\n\ncreate_line_chart &lt;- function(data, x_var, y_var, color_var, title, x_label,\n                              y_label, legend_title, color_palette = \"turbo\",\n                              palette_end = 0.8) {\n  \n  ggplot(data, aes(x = {{ x_var }}, y = {{ y_var }}, color = {{ color_var }})) +\n    geom_line() +\n    labs(\n      title = title,\n      x = x_label,\n      y = y_label\n    ) +\n    scale_color_viridis_d(\n      name = legend_title,  \n      option = color_palette, \n      end = palette_end\n    ) +\n    theme_minimal()\n}\n\n# Example call\ncreate_line_chart(\n  data = brics_dem, \n  x_var = year, \n  y_var = v2x_polyarchy, \n  color_var = country_name, \n  title = \"Democracy in the BRICS Nations\", \n  x_label = \"Year\", \n  y_label = \"Polyarchy Score\",\n  legend_title = \"Country\"\n)"
   },
   {
     "objectID": "slides/week-5.2.html#merging-data-frames",
@@ -5561,5 +5561,19 @@
     "title": "Make a Map Function",
     "section": "Map Function",
     "text": "Map Function"
+  },
+  {
+    "objectID": "slides/week-6.2.html#group-and-summarize-1",
+    "href": "slides/week-6.2.html#group-and-summarize-1",
+    "title": "Make a Map Function",
+    "section": "Group and Summarize",
+    "text": "Group and Summarize\n\nAverage female labor force participation across countries, last three years…\n\n\nmean_wb_data(\"SL.TLF.CACT.FE.ZS\", 3, date)\n\n# A tibble: 3 × 2\n   date mean_value\n  &lt;dbl&gt;      &lt;dbl&gt;\n1  2023       51.4\n2  2024       51.5\n3  2025       51.4"
+  },
+  {
+    "objectID": "slides/week-6.2.html#line-chart-1",
+    "href": "slides/week-6.2.html#line-chart-1",
+    "title": "Make a Map Function",
+    "section": "Line Chart",
+    "text": "Line Chart"
   }
 ]
