@@ -179,7 +179,7 @@ From there, you can build your function. The code for your function contains thr
 
 In this example, we are going to call our function `create_map()`. It is going to include five arguments: `var_id`, `title`, `legend_title`, `theme` and `direction`. `var_id` refers to the World Bank variable id, `title` and `legend_title` refer to the title of the plot and the title of the legend respectively. `theme` will allow the user to adjust the `viridis` theme. And `direction` refers to whether the color scale is light to dark or dark to light. 
 
-The code block will first join the country shapes to the selected World Bank data and then map those data by piping them into a `ggplot()` call. Everything is pretty similar to our previous use of `ggplot()` and `geom_sf()`, but one tricky part here is that we have to use `eval(parse(text=var_id))))` to remove the quotes surrounding the variable code entered by the user. 
+The code block will first join the country shapes to the selected World Bank data and then map those data by piping them into a `ggplot()` call. Everything is pretty similar to our previous use of `ggplot()` and `geom_sf()`, but one tricky part here is that the user enters `var_id` as a string (e.g. `"SL.TLF.CACT.FE.ZS"`), and `aes()` expects a bare column name. If we wrote `aes(fill = var_id)`, ggplot would treat the string as a constant and shade every country the same color. Instead we use `.data[[var_id]]`, which tells ggplot to look up the column whose name is stored in `var_id`.
 
 ```{r}
 #| label: create_function
@@ -200,7 +200,7 @@ ne_countries(scale = "medium", returnclass = "sf") |>
   ) |> 
   filter(name != "Antarctica") |>  
   ggplot() + 
-  geom_sf(aes(fill = eval(parse(text=var_id)))) + # remove quotes
+  geom_sf(aes(fill = .data[[var_id]])) + # look up column named in var_id
   labs(
     title =  title, # change title
     fill = legend_title, # change legend title
@@ -211,7 +211,7 @@ ne_countries(scale = "medium", returnclass = "sf") |>
     plot.title = element_text(face = "bold"),
   ) +
   scale_fill_viridis_c( 
-    option = "magma", #  chg theme
+    option = theme, #  chg theme
     direction = direction # change direction of scale
     )
 }

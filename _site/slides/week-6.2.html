@@ -248,7 +248,7 @@
 <section id="tidy-evaluation" class="slide level2">
 <h2>Tidy Evaluation</h2>
 <p><br></p>
-<p>In the Tidyverse, ridy evaluation allows you to reference a column without using quotes or referencing the data frame</p>
+<p>In the Tidyverse, tidy evaluation allows you to reference a column without using quotes or referencing the data frame</p>
 <p><br></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a>democracy <span class="sc">|&gt;</span> <span class="fu">filter</span>(polyarchy <span class="sc">&gt;</span> .<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -274,11 +274,18 @@
 <section id="tidy-evaluation-2" class="slide level2">
 <h2>Tidy Evaluation</h2>
 <p><br></p>
+<p>How we do this depends on how the column name arrives…</p>
 <ul>
-<li>To do this we use <code>{{}}</code> in functions</li>
-<li>For Shiny apps and strings we will use <code>.data[[]]</code></li>
-<li>Can also use <code>!!sym()</code> in some contexts</li>
-<li>Depricated or less preferred methods include <code>get()</code>, <code>eval(parse())</code>,<code>aes_string()</code> and <code>!!enquo()</code></li>
+<li><strong>As a string</strong>, e.g.&nbsp;<code>create_map("SL.TLF.CACT.FE.ZS")</code>
+<ul>
+<li>Use <code>.data[[var_id]]</code> (what we use in our map function)</li>
+<li><code>!!sym(var_id)</code> also works; common in older code</li>
+</ul></li>
+<li><strong>As a bare name</strong>, e.g.&nbsp;<code>my_chart(df, year)</code>
+<ul>
+<li>Use <code>{ x_var }</code> (“embracing”)</li>
+</ul></li>
+<li>Avoid: <code>eval(parse())</code>, <code>get()</code>, <code>aes_string()</code> and <code>!!enquo()</code></li>
 </ul>
 </section>
 <section id="map-function" class="slide level2">
@@ -381,7 +388,7 @@
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_80390432" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_5615fa2a" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -401,7 +408,7 @@
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_f9d9996f" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:10%;bottom:10%;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_5ad83625" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:10%;bottom:10%;"></countdown-timer>
 </div>
 </div>
 </section>

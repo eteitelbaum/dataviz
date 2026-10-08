@@ -49,7 +49,7 @@ square_number(55)
 
 <br>
 
-In the Tidyverse, ridy evaluation allows you to reference a column without using quotes or referencing the data frame
+In the Tidyverse, tidy evaluation allows you to reference a column without using quotes or referencing the data frame
 
 <br>
 
@@ -82,10 +82,14 @@ democracy[democracy[["polyarchy"]] > .5, ]
 
 <br> 
 
-- To do this we use `{{}}` in functions
-- For Shiny apps and strings we will use `.data[[]]`
-- Can also use `!!sym()` in some contexts
-- Depricated or less preferred methods include `get()`, `eval(parse())`,`aes_string()` and `!!enquo()`
+How we do this depends on how the column name arrives...
+
+- **As a string**, e.g. `create_map("SL.TLF.CACT.FE.ZS")`
+  - Use `.data[[var_id]]` (what we use in our map function)
+  - `!!sym(var_id)` also works; common in older code
+- **As a bare name**, e.g. `my_chart(df, year)`
+  - Use `{{ x_var }}` ("embracing")
+- Avoid: `eval(parse())`, `get()`, `aes_string()` and `!!enquo()`
 
 
 ## Map Function
