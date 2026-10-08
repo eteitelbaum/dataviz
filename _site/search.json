@@ -581,7 +581,7 @@
     "href": "slides/week-6.2.html#tidy-evaluation-2",
     "title": "Make a Map Function",
     "section": "Tidy Evaluation",
-    "text": "Tidy Evaluation\n\nHow we do this depends on how the column name arrives…\n\nAs a string, e.g. create_map(\"SL.TLF.CACT.FE.ZS\")\n\nUse .data[[var_id]] (what we use in our map function)\n!!sym(var_id) also works; common in older code\n\nAs a bare name, e.g. my_chart(df, year)\n\nUse { x_var } (“embracing”)\n\nAvoid: eval(parse()), get(), aes_string() and !!enquo()"
+    "text": "Tidy Evaluation\n\nHow we do this depends on how the column name arrives…\n\nAs a string, e.g. create_map(\"SL.TLF.CACT.FE.ZS\")\n\nUse .data[[var_id]] (like our map function)\n!!sym(var_id) also works; common in older code\n\nAs a bare name, e.g. my_chart(df, year)\n\nUse { x_var } (“embracing”)\n\nAvoid: eval(parse()), get(), aes_string() and !!enquo()"
   },
   {
     "objectID": "slides/week-6.2.html#map-function",

@@ -85,7 +85,7 @@ democracy[democracy[["polyarchy"]] > .5, ]
 How we do this depends on how the column name arrives...
 
 - **As a string**, e.g. `create_map("SL.TLF.CACT.FE.ZS")`
-  - Use `.data[[var_id]]` (what we use in our map function)
+  - Use `.data[[var_id]]` (like our map function)
   - `!!sym(var_id)` also works; common in older code
 - **As a bare name**, e.g. `my_chart(df, year)`
   - Use `{{ x_var }}` ("embracing")
