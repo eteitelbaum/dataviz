@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.31">
 
-  <meta name="dcterms.date" content="2026-09-17">
+  <meta name="dcterms.date" content="2026-10-08">
   <title>PSC/DATS 2102--Course Schedule – Make a Map Function</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -190,8 +190,8 @@
       margin-right: 0; 
     }
   </style>
-  <link href="../site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
-  <script src="../site_libs/countdown-0.4.0/countdown.js"></script>
+  <link href="../site_libs/countdown-0.6.0/countdown.css" rel="stylesheet">
+  <script src="../site_libs/countdown-0.6.0/countdown.js"></script>
 <meta property="og:title" content="Make a Map Function – PSC/DATS 2102–Course Schedule">
 <meta property="og:site_name" content="PSC/DATS 2102--Course Schedule">
 <meta name="twitter:title" content="Make a Map Function – PSC/DATS 2102–Course Schedule">
@@ -207,7 +207,7 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">September 17, 2026</p>
+  <p class="date">October 8, 2026</p>
 </section>
 <section>
 <section id="make-a-map-function" class="title-slide slide level1 center">
@@ -284,7 +284,7 @@
 <section id="map-function" class="slide level2">
 <h2>Map Function</h2>
 
-<img data-src="week-7.2_files/figure-revealjs/map-function0-1.png" width="960" class="r-stretch"></section>
+<img data-src="week-6.2_files/figure-revealjs/map-function0-1.png" width="960" class="r-stretch"></section>
 <section id="map-function-1" class="slide level2">
 <h2>Map Function</h2>
 <p><br></p>
@@ -312,7 +312,7 @@
 <span id="cb7-9"><a></a><span class="fu">ne_countries</span>(<span class="at">scale =</span> <span class="st">"medium"</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb7-10"><a></a>  <span class="fu">left_join</span>(</span>
 <span id="cb7-11"><a></a>    <span class="fu">wb_data</span>(var_id, <span class="at">mrnev =</span> <span class="dv">1</span>), </span>
-<span id="cb7-12"><a></a>    <span class="fu">join_by</span>(iso_a3 <span class="sc">==</span> iso3c)</span>
+<span id="cb7-12"><a></a>    <span class="fu">join_by</span>(iso_a3_eh <span class="sc">==</span> iso3c)</span>
 <span id="cb7-13"><a></a>  ) <span class="sc">|&gt;</span> </span>
 <span id="cb7-14"><a></a>  <span class="fu">filter</span>(name <span class="sc">!=</span> <span class="st">"Antarctica"</span>) <span class="sc">|&gt;</span>  </span>
 <span id="cb7-15"><a></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
@@ -364,10 +364,7 @@
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_8749a03d" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
+<countdown-timer class="countdown" id="timer_4a2a0e37" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -387,10 +384,7 @@
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_79dd3fc5" data-update-every="1" tabindex="0" style="right:10%;bottom:10%;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
+<countdown-timer class="countdown" id="timer_d261ab30" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:10%;bottom:10%;"></countdown-timer>
 </div>
 </div>
 </section>

@@ -115,10 +115,10 @@ ggplot(data = world_map_df) +
 
 {{< video https://youtu.be/5RnnGov3Iw4 title = 'Using rnaturalearth to map data'>}}
 
-Now that we know how to make a map with Natural Earth shapes and `geom_sf()`, we can merge in data and map data from other sources. Let's go ahead and merge some data on oil rents from the World Bank. We will do a `left_join()` based on iso3c country codes. In the World Bank data the iso3c codes are simply called "iso3c." In `rnaturalearth` there are a number of options, but the best here for our purposes is "iso_a3" 
+Now that we know how to make a map with Natural Earth shapes and `geom_sf()`, we can merge in data and map data from other sources. Let's go ahead and merge some data on oil rents from the World Bank. We will do a `left_join()` based on iso3c country codes. In the World Bank data the iso3c codes are simply called "iso3c." In `rnaturalearth` there are a number of options, but the best here for our purposes is "iso_a3_eh."
 
 ::: {.callout-warning}
-At the time I made the video, the codes for "iso_a3" and some of the others [were missing](https://github.com/ropensci/rnaturalearth/issues/77) so I recommended using "iso_a3_eh." But now the issue has been fixed, so please use "iso_a3."
+Why not just use "iso_a3"? Because Natural Earth leaves it as `-99` for France and Norway. The shapes Natural Earth draws for those countries include territories that ISO codes separately (French Guiana, Svalbard), so the official code is withheld. The "iso_a3_eh" column fills in the closest match (FRA, NOR). If you join on "iso_a3," France and Norway will silently drop out of your map. This is a good reminder to always check which rows failed to match after a join!
 :::
 
 ```{r}
@@ -129,7 +129,7 @@ library(wbstats)
 
 oil_rents_df <- wb_data(c(oil_rents_gdp = "NY.GDP.PETR.RT.ZS"), mrnev = 1) 
 
-rents_map_df <- left_join(world_map_df, oil_rents_df, join_by(iso_a3 == iso3c))
+rents_map_df <- left_join(world_map_df, oil_rents_df, join_by(iso_a3_eh == iso3c))
 
 rents_map_df |>
   select(last_col(5):last_col()) |> #select last 5 columns of df
@@ -195,7 +195,7 @@ create_map <- function(var_id, title, legend_title, theme, direction){
 ne_countries(scale = "medium", returnclass = "sf") |> 
   left_join(
     wb_data(var_id, mrnev = 1), # change variable id
-    join_by(iso_a3 == iso3c)
+    join_by(iso_a3_eh == iso3c)
   ) |> 
   filter(name != "Antarctica") |>  
   ggplot() + 
@@ -253,7 +253,7 @@ Now let's take that info. and use it to make a plot of GDP per capita.
 #| out-width: "100%" 
 
 create_map(var_id = "NY.GDP.PCAP.PP.KD", 
-           title= "GDP per capita (constant 2017 internatioal $)", 
+           title= "GDP per capita (constant 2017 international $)", 
            legend_title = "Geary-Khamis $", 
            theme = "mako", 
            direction = -1)

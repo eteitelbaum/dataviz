@@ -64,7 +64,7 @@ create_map(var_id = "SL.TLF.CACT.FE.ZS",
 #| echo: false
 
 create_map(var_id = "NY.GDP.PCAP.PP.KD", 
-           title= "GDP per capita (constant 2017 internatioal $)", 
+           title= "GDP per capita (constant 2017 international $)", 
            legend_title = "Geary-Khamis $", 
            theme = "mako", 
            direction = -1)
@@ -176,7 +176,7 @@ library(wbstats)
 
 oil_rents_df <- wb_data(c(oil_rents_gdp = "NY.GDP.PETR.RT.ZS"), mrnev = 1) 
 
-rents_map_df <- left_join(world_map_df, oil_rents_df, join_by(iso_a3 == iso3c))
+rents_map_df <- left_join(world_map_df, oil_rents_df, join_by(iso_a3_eh == iso3c))
 
 ggplot(data = rents_map_df) +
   geom_sf(aes(fill = oil_rents_gdp)) + # shade based on oil rents
@@ -215,7 +215,7 @@ library(wbstats)
 
 oil_rents_df <- wb_data(c(oil_rents_gdp = "NY.GDP.PETR.RT.ZS"), mrnev = 1) 
 
-rents_map_df <- left_join(world_map_df, oil_rents_df, join_by(iso_a3 == iso3c))
+rents_map_df <- left_join(world_map_df, oil_rents_df, join_by(iso_a3_eh == iso3c))
 
 rents_map_df |>
   select(last_col(5):last_col()) |> #select last 5 columns of df
