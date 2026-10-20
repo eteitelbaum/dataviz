@@ -25,3 +25,5 @@ slides/*_files/
 # Local quiz files — not part of the published course
 # (no trailing slash: see note above /notes)
 /quizzes
+
+**/*.quarto_ipynb
