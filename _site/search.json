@@ -5011,7 +5011,7 @@
     "href": "slides/week-7.1.html#change-content-of-popup",
     "title": "Leaflet Maps",
     "section": "Change Content of Popup",
-    "text": "Change Content of Popup\n\n\nged_yemen$popup_text &lt;- sprintf(\n      \"Date: %s &lt;br&gt; \n       Total Deaths: %.0f &lt;br&gt; \n       Govt. Deaths: %.0f &lt;br&gt; \n       Rebel Deaths: %.0f &lt;br&gt; \n       Civilian Death: %.0f &lt;br&gt;\",\n      ged_yemen$date, \n      ged_yemen$deaths, \n      ged_yemen$gov_deaths, \n      ged_yemen$rebel_deaths,\n      ged_yemen$civilian_deaths\n    ) |&gt; lapply(htmltools::HTML)"
+    "text": "Change Content of Popup\n\n\nged_yemen$popup_text &lt;- sprintf(\n      \"Date: %s &lt;br&gt; \n       Total Deaths: %.0f &lt;br&gt; \n       Govt. Deaths: %.0f &lt;br&gt; \n       Rebel Deaths: %.0f &lt;br&gt; \n       Civilian Death: %.0f &lt;br&gt;\",\n      ged_yemen$date, \n      ged_yemen$deaths, \n      ged_yemen$gov_deaths, \n      ged_yemen$rebel_deaths,\n      ged_yemen$civilian_deaths\n    )"
   },
   {
     "objectID": "slides/week-7.1.html#use-the-new-labels",

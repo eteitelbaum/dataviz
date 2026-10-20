@@ -241,7 +241,7 @@ ged_yemen$popup_text <- sprintf(
       ged_yemen$gov_deaths, 
       ged_yemen$rebel_deaths,
       ged_yemen$civilian_deaths
-    ) |> lapply(htmltools::HTML)
+    )
 ```
 
 ## Use the New Labels
