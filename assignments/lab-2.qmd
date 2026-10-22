@@ -7,10 +7,10 @@ execute:
 ---
 
 ::: {.callout-tip}
-## How labs work
-You are encouraged to **work together and get started in class**---talk through the problems with the people around you. You will finish the lab on your own time and submit your own work.
+## How to complete the lab
+You are encouraged to **work together and get started in class**. Talk through the problems with the people around you. Then, you will finish the lab on your own time and submit your work individually to Blackboard.
 
-**AI use: You may use AI to ask questions or debug, but not to write your code for you---the point is to think it through yourself. At the end of the lab, add a one-line note saying whether and how you used AI.**
+**AI use: You may use AI to ask questions or debug, but not to write your code for you. The point is to think it through yourself.**
 :::
 
 ## Overview
@@ -85,8 +85,13 @@ In Lab 1 we handed you clean data. Now you will build a tidy data set yourself--
 
 <br>
 
-**AI statement:** *(one line on whether and how you used AI)*
+::: {.callout-important}
+## Submission Instructions
 
+Head over to Blackboard and go to the Lab 2 assignment. Click "Create Submission" and write a brief statement saying that you have submitted the lab and note whether and in what capacity you used AI on the assignment.
+
+Then upload a compressed (zipped) version of your project folder including the **rendered** HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).
+:::
 ---
 
 ## Hints
@@ -151,3 +156,5 @@ ggplot(region_summary, aes(x = fct_reorder(region, -gdp_pc), y = gdp_pc)) +
 **Hint 8 --- Formatting the y-axis:**
 
 If you chart GDP per capita, `scale_y_continuous(labels = label_dollar())` from the `scales` package will format the axis as dollars. For a percentage, use `label_percent(scale = 1)`.
+
+

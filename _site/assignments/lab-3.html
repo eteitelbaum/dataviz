@@ -2,23 +2,64 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Lab 3: Maps – PSC/DATS 2102–Course Schedule</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -38,14 +79,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f7a9d044f8a96ce2fd6b062468a135ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-f77540120a66c362cb7a9d774880e664.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f7a9d044f8a96ce2fd6b062468a135ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-cfa5729b58fa530fd43303a6acb0ae78.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-10aac9a5c11e297f1ba76b27731c7f30.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-cfa5729b58fa530fd43303a6acb0ae78.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -77,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
 
 <meta property="og:title" content="Lab 3: Maps – PSC/DATS 2102–Course Schedule">
 <meta property="og:description" content="Homepage for PSC/DATS 2102, George Washington University.">
-<meta property="og:site_name" content="PSC/DATS 2102--Course Schedule">
+<meta property="og:site_name" content="PSC/DATS 2102–Course Schedule">
 <meta name="twitter:title" content="Lab 3: Maps – PSC/DATS 2102–Course Schedule">
 <meta name="twitter:description" content="Homepage for PSC/DATS 2102, George Washington University.">
 <meta name="twitter:card" content="summary">
@@ -269,7 +310,8 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/dataviz-logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../images/dataviz-logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../images/dataviz-logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://blackboard.gwu.edu" title="Blackboard" class="quarto-navigation-tool px-1" aria-label="Blackboard"><i class="bi bi-mortarboard-fill"></i></a>
@@ -675,7 +717,12 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#step-1-a-choropleth-map-50-pts" id="toc-step-1-a-choropleth-map-50-pts" class="nav-link" data-scroll-target="#step-1-a-choropleth-map-50-pts">Step 1: A choropleth map (50 pts)</a></li>
+  <li><a href="#step-1-choropleth-maps-50-pts" id="toc-step-1-choropleth-maps-50-pts" class="nav-link" data-scroll-target="#step-1-choropleth-maps-50-pts">Step 1: Choropleth maps (50 pts)</a>
+  <ul class="collapse">
+  <li><a href="#step-1a-build-your-data-frame-10-pts" id="toc-step-1a-build-your-data-frame-10-pts" class="nav-link" data-scroll-target="#step-1a-build-your-data-frame-10-pts">Step 1a: Build your data frame (10 pts)</a></li>
+  <li><a href="#step-1b-map-your-world-bank-indicator-20-pts" id="toc-step-1b-map-your-world-bank-indicator-20-pts" class="nav-link" data-scroll-target="#step-1b-map-your-world-bank-indicator-20-pts">Step 1b: Map your World Bank indicator (20 pts)</a></li>
+  <li><a href="#step-1c-map-democracy-20-pts" id="toc-step-1c-map-democracy-20-pts" class="nav-link" data-scroll-target="#step-1c-map-democracy-20-pts">Step 1c: Map democracy (20 pts)</a></li>
+  </ul></li>
   <li><a href="#step-2-a-leaflet-map-of-conflict-50-pts" id="toc-step-2-a-leaflet-map-of-conflict-50-pts" class="nav-link" data-scroll-target="#step-2-a-leaflet-map-of-conflict-50-pts">Step 2: A leaflet map of conflict (50 pts)</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/dataviz/edit/main/assignments/lab-3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/dataviz/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -709,27 +756,88 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-How labs work
+<span class="screen-reader-only">Tip</span>How to complete the lab
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You are encouraged to <strong>work together and get started in class</strong>—talk through the problems with the people around you. You will finish the lab on your own time and submit your own work.</p>
-<p><strong>AI use: You may use AI to ask questions or debug, but not to write your code for you—the point is to think it through yourself. At the end of the lab, add a one-line note saying whether and how you used AI.</strong></p>
+<p>You are encouraged to <strong>work together and get started in class</strong>. Talk through the problems with the people around you. Then, you will finish the lab on your own time and submit your work individually to Blackboard.</p>
+<p><strong>AI use: You may use AI to ask questions or debug, but not to write your code for you. The point is to think it through yourself.</strong></p>
 </div>
 </div>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>In this lab you will make two kinds of maps: a static <strong>choropleth</strong> with <code>ggplot2</code> and <code>sf</code>, and an interactive <strong>leaflet</strong> map. We will map data relevant to Michael Ross’s argument in <a href="https://www-jstor-org.proxygw.wrlc.org/stable/j.ctt7s3wz.10">The Oil Curse</a> that oil wealth undermines democracy.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load your libraries here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
-<section id="step-1-a-choropleth-map-50-pts" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-a-choropleth-map-50-pts">Step 1: A choropleth map (50 pts)</h2>
-<p><em>Use <code>rnaturalearth</code> to get country shapes (filter out Antarctica). Choose a variable relevant to Ross’s argument—a democracy measure, oil rents (<code>NY.GDP.PETR.RT.ZS</code>), or taxes as a share of revenue—and join it to the shapes by ISO3C code. Then map it with <code>ggplot()</code> and <code>geom_sf()</code>, using <code>theme_map()</code> from <code>ggthemes</code> and a <code>viridis</code> color scale. Give the map clear labels. Below the map, say in a sentence or two what pattern you see.</em></p>
+<section id="step-1-choropleth-maps-50-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-choropleth-maps-50-pts">Step 1: Choropleth maps (50 pts)</h2>
+<section id="step-1a-build-your-data-frame-10-pts" class="level3">
+<h3 class="anchored" data-anchor-id="step-1a-build-your-data-frame-10-pts">Step 1a: Build your data frame (10 pts)</h3>
+<p><em>Choose a World Bank indicator related to Ross’s argument. Some options, with the most recent year that has good coverage:</em></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicator</th>
+<th style="text-align: left;">Code</th>
+<th style="text-align: center;">Year to use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Oil rents (% of GDP)</td>
+<td style="text-align: left;"><code>NY.GDP.PETR.RT.ZS</code></td>
+<td style="text-align: center;">2021</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Total natural resource rents (% of GDP)</td>
+<td style="text-align: left;"><code>NY.GDP.TOTL.RT.ZS</code></td>
+<td style="text-align: center;">2021</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fuel exports (% of merchandise exports)</td>
+<td style="text-align: left;"><code>TX.VAL.FUEL.ZS.UN</code></td>
+<td style="text-align: center;">2023</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tax revenue (% of GDP)</td>
+<td style="text-align: left;"><code>GC.TAX.TOTL.GD.ZS</code></td>
+<td style="text-align: center;">2023</td>
+</tr>
+</tbody>
+</table>
+<p><em>Use <code>wb_data()</code> from <code>wbstats</code> to download your indicator for that single year (set <code>start_date</code> and <code>end_date</code> to the same year). Then use <code>vdem</code> from <code>vdemdata</code> to download the V-Dem dataset, filter it to the same year, and select the V-Dem country ID and a democracy measure of your choice, such as electoral democracy (<code>v2x_polyarchy</code>) or liberal democracy (<code>v2x_libdem</code>). Convert the V-Dem country ID to ISO3C codes with <code>countrycode()</code> and join the two data frames by <code>iso3c</code>. <code>glimpse()</code> the result.</em></p>
+</section>
+<section id="step-1b-map-your-world-bank-indicator-20-pts" class="level3">
+<h3 class="anchored" data-anchor-id="step-1b-map-your-world-bank-indicator-20-pts">Step 1b: Map your World Bank indicator (20 pts)</h3>
+<p><em>Use <code>rnaturalearth</code> to get country shapes (filter out Antarctica) and join your data frame to them, matching <code>iso_a3_eh</code> to <code>iso3c</code>. Then map your World Bank indicator with <code>ggplot()</code> and <code>geom_sf()</code>, using <code>theme_map()</code> from <code>ggthemes</code> and a <code>viridis</code> color scale. Give the map clear labels. Below the map, say in a sentence or two what pattern you see.</em></p>
+</section>
+<section id="step-1c-map-democracy-20-pts" class="level3">
+<h3 class="anchored" data-anchor-id="step-1c-map-democracy-20-pts">Step 1c: Map democracy (20 pts)</h3>
+<p><em>Now map your democracy measure the same way. Below the map, compare it to your first map in a sentence or two: do the resource-rich countries look less democratic, as Ross would predict? Do you see any exceptions?</em></p>
+</section>
 </section>
 <section id="step-2-a-leaflet-map-of-conflict-50-pts" class="level2">
 <h2 class="anchored" data-anchor-id="step-2-a-leaflet-map-of-conflict-50-pts">Step 2: A leaflet map of conflict (50 pts)</h2>
-<p><em>Pick an oil-rich country that has experienced internal conflict (e.g., Iraq, Nigeria, Syria). Following the approach from the Interactive Maps topic, filter a few months of UCDP GED conflict data for your country and convert the coordinates to simple features with <code>st_as_sf()</code>. Then build a <code>leaflet</code> map with markers for the conflict events: show the location name on hover and the number of deaths and date on click. Use “OpenTopoMap” as your basemap.</em></p>
+<p><em>Pick an oil-rich country that has experienced internal conflict, such as Nigeria (<code>country_id</code> 475), Iraq (645), Syria (652), Sudan (625) or Colombia (100). Instead of the 2021 file we used in class, use UCDP’s newest event data, which covers January through September 2026. You can read it straight from the UCDP website without downloading anything:</em></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ged_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_01_26_09.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>These are UCDP’s “candidate” events: they are released monthly and are preliminary until UCDP finishes checking them, but they have the same columns as the file we used in class. Following the approach from the Interactive Maps topic, filter a few months of events for your country and convert the coordinates to simple features with <code>st_as_sf()</code>. If your country has only a handful of events, use more months. Then build a <code>leaflet</code> map with markers for the conflict events: show the location name on hover and the number of deaths and date on click. Use “OpenTopoMap” as your basemap.</em></p>
 <p><br></p>
-<p><strong>AI statement:</strong> <em>(one line on whether and how you used AI)</em></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Submission Instructions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Head over to Blackboard and go to the Lab 3 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and note whether and in what capacity you used AI on the assignment.</p>
+<p>Then upload a compressed (zipped) version of your project folder including the <strong>rendered</strong> HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).</p>
+</div>
+</div>
 
 
 </section>
@@ -799,13 +907,14 @@ How labs work
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

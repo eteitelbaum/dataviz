@@ -1,11 +1,9 @@
 {
-  "hash": "1c731395eb31ca09c108c6cc24fac321",
+  "hash": "25196441c8bbfae071a2f79b5d85a10e",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Week 13\"\nsubtitle: \"Extending Your App\"\nformat: html\n---\n\n\n\nWe add more inputs and build a time-series app with observers and reactives, then learn to factor app code into reusable Shiny modules.\n\n::: {.callout-note}\n[Styling Your App](/modules/module-6.1.qmd) and [Troubleshooting Your App](/modules/module-6.1.qmd) are now optional material for students building a Shiny app for their final project — work through them on your own if that's your track.\n:::\n\n## Slides\n\n| 🖥️ [Observers and Reactives](/slides/week-12.1.qmd)\n| 🖥️ [Modules](/slides/week-12.2.qmd)\n\n## Readings\n\n| 📖 [Huntington, \"Democracy's Third Wave\"](https://muse-jhu-edu.proxygw.wrlc.org/article/225602)\n\n## Assignments\n\n| 📘 Weekly quiz, in class\n",
-    "supporting": [
-      "week-13_files"
-    ],
+    "markdown": "---\ntitle: \"Week 13\"\nsubtitle: \"Extending Your App\"\nformat: html\n---\n\n\n\n::: {.callout-important}\n**Project proposal** due by 11:59 p.m. on Monday, November 23.\n:::\n\nWe add more inputs and build a time-series app with observers and reactives, then learn to factor app code into reusable Shiny modules.\n\n::: {.callout-note}\n[Styling Your App](/modules/module-6.1.qmd) and [Troubleshooting Your App](/modules/module-6.1.qmd) are now optional material for students building a Shiny app for their final project — work through them on your own if that's your track.\n:::\n\n## Slides\n\n| 🖥️ [Observers and Reactives](/slides/week-12.1.qmd)\n| 🖥️ [Modules](/slides/week-12.2.qmd)\n\n## Readings\n\n| 📖 [Huntington, \"Democracy's Third Wave\"](https://muse-jhu-edu.proxygw.wrlc.org/article/225602)\n\n## Assignments\n\n| 📘 Weekly quiz, in class\n",
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],

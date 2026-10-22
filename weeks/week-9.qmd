@@ -1,6 +1,6 @@
 ---
 title: "Week 9"
-subtitle: "Interactive Maps II & Flex Session"
+subtitle: "Interactive Maps"
 format: html
 ---
 
@@ -11,7 +11,7 @@ source("../helper.R")
 ```
 
 ::: {.callout-important}
-**Lab 3 (Maps)** due by 11:59 p.m. on `r advdate2(mon, 9)`. **Project proposal** due by 11:59 p.m. on `r advdate2(mon, 10)`.
+**Lab 3 (Maps)** due by 11:59 p.m. on `r advdate2(fri, 9)`.
 :::
 
 Tuesday we finish customizing our interactive `leaflet` map. Thursday is a flex session: we step back to talk about what makes good data visualization and brainstorm ideas for your final project (Shiny app or report).

@@ -10,6 +10,9 @@ format: html
 source("../helper.R")
 ```
 
+
 ::: {.callout-important}
 **No class this week** — Thanksgiving break. 🦃
+
+But remember that your **project proposals** are due by 11:59 p.m. on `r advdate2(mon, 13)`.
 :::

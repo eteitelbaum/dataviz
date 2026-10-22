@@ -10,6 +10,10 @@ format: html
 source("../helper.R")
 ```
 
+::: {.callout-important}
+**Lab 3 (Maps)** due by 11:59 p.m. on `r advdate2(fri, 9)`.
+:::
+
 We build polished tables of data with `kableExtra` and `gt`, and add confidence intervals.
 
 ## Slides

@@ -1,8 +1,8 @@
 {
-  "hash": "5581e9517f4c793829d8fb4bfead34ea",
+  "hash": "deb9e0c83598da8b9fc118ef6c1848b4",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Week 10\"\nsubtitle: \"Tables\"\nformat: html\n---\n\n\n\nWe build polished tables of data with `kableExtra` and `gt`, and add confidence intervals.\n\n## Slides\n\n| 🖥️ [Making Tables](/slides/week-9.1.qmd)\n| 🖥️ [Advanced Table Skills](/slides/week-9.2.qmd)\n\n## Assignments\n\n| 📘 Weekly quiz, in class\n",
+    "markdown": "---\ntitle: \"Week 10\"\nsubtitle: \"Tables\"\nformat: html\n---\n\n\n\n::: {.callout-important}\n**Lab 3 (Maps)** due by 11:59 p.m. on Friday, October 30.\n:::\n\nWe build polished tables of data with `kableExtra` and `gt`, and add confidence intervals.\n\n## Slides\n\n| 🖥️ [Making Tables](/slides/week-9.1.qmd)\n| 🖥️ [Advanced Table Skills](/slides/week-9.2.qmd)\n\n## Assignments\n\n| 📘 Weekly quiz, in class\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

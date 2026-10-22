@@ -1,8 +1,8 @@
 {
-  "hash": "8e4d5634801266e73021aa22b11a406a",
+  "hash": "68d46094db9edf4e0e2dbb439ef39f54",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Week 14\"\nsubtitle: \"Thanksgiving break\"\nformat: html\n---\n\n\n\n::: {.callout-important}\n**No class this week** — Thanksgiving break. 🦃\n:::\n",
+    "markdown": "---\ntitle: \"Week 14\"\nsubtitle: \"Thanksgiving break\"\nformat: html\n---\n\n\n\n\n::: {.callout-important}\n**No class this week** — Thanksgiving break. 🦃\n\nBut remember that your **project proposals** are due by 11:59 p.m. on Monday, November 23.\n:::\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

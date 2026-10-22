@@ -1,11 +1,9 @@
 {
-  "hash": "c1d41de70424c033732ff29ceb0cdf6f",
+  "hash": "80a2d4e13e83ab474d0b84b83ccbd93e",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Week 9\"\nsubtitle: \"Interactive Maps II & Flex Session\"\nformat: html\n---\n\n\n\n::: {.callout-important}\n**Lab 3 (Maps)** due by 11:59 p.m. on Monday, October 26. **Project proposal** due by 11:59 p.m. on Monday, November 2.\n:::\n\nTuesday we finish customizing our interactive `leaflet` map. Thursday is a flex session: we step back to talk about what makes good data visualization and brainstorm ideas for your final project (Shiny app or report).\n\n## Videos\n\n| 🖥️ [Customize your map](https://youtu.be/qLYeSsoDvgs)\n\n## Assignments\n\n| 🧪 [Lab 3: Maps](/assignments/lab-3.qmd)\n| ✍️ [Project Proposal](/project/project-assignment-1.qmd)\n| 📘 Weekly quiz, in class\n",
-    "supporting": [
-      "week-9_files"
-    ],
+    "markdown": "---\ntitle: \"Week 9\"\nsubtitle: \"Interactive Maps\"\nformat: html\n---\n\n\n\n::: {.callout-important}\n**Lab 3 (Maps)** due by 11:59 p.m. on Friday, October 30.\n:::\n\nTuesday we finish customizing our interactive `leaflet` map. Thursday is a flex session: we step back to talk about what makes good data visualization and brainstorm ideas for your final project (Shiny app or report).\n\n## Videos\n\n| 🖥️ [Customize your map](https://youtu.be/qLYeSsoDvgs)\n\n## Assignments\n\n| 🧪 [Lab 3: Maps](/assignments/lab-3.qmd)\n| ✍️ [Project Proposal](/project/project-assignment-1.qmd)\n| 📘 Weekly quiz, in class\n",
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],

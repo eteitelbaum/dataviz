@@ -10,6 +10,10 @@ format: html
 source("../helper.R")
 ```
 
+::: {.callout-important}
+**Project proposal** due by 11:59 p.m. on `r advdate2(mon, 13)`.
+:::
+
 We add more inputs and build a time-series app with observers and reactives, then learn to factor app code into reusable Shiny modules.
 
 ::: {.callout-note}

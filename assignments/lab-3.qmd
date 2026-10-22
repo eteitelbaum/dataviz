@@ -7,10 +7,10 @@ execute:
 ---
 
 ::: {.callout-tip}
-## How labs work
-You are encouraged to **work together and get started in class**---talk through the problems with the people around you. You will finish the lab on your own time and submit your own work.
+## How to complete the lab
+You are encouraged to **work together and get started in class**. Talk through the problems with the people around you. Then, you will finish the lab on your own time and submit your work individually to Blackboard.
 
-**AI use: You may use AI to ask questions or debug, but not to write your code for you---the point is to think it through yourself. At the end of the lab, add a one-line note saying whether and how you used AI.**
+**AI use: You may use AI to ask questions or debug, but not to write your code for you. The point is to think it through yourself.**
 :::
 
 ## Overview
@@ -19,20 +19,55 @@ In this lab you will make two kinds of maps: a static **choropleth** with `ggplo
 
 ```{r}
 #| label: setup
+# load your libraries here
 
 ```
 
-## Step 1: A choropleth map (50 pts)
+## Step 1: Choropleth maps (50 pts)
 
-*Use `rnaturalearth` to get country shapes (filter out Antarctica). Choose a variable relevant to Ross's argument---a democracy measure, oil rents (`NY.GDP.PETR.RT.ZS`), or taxes as a share of revenue---and join it to the shapes by ISO3C code. Then map it with `ggplot()` and `geom_sf()`, using `theme_map()` from `ggthemes` and a `viridis` color scale. Give the map clear labels. Below the map, say in a sentence or two what pattern you see.*
+### Step 1a: Build your data frame (10 pts)
+
+*Choose a World Bank indicator related to Ross's argument. Some options, with the most recent year that has good coverage:*
+
+| Indicator | Code | Year to use |
+|:----------|:-----|:-----------:|
+| Oil rents (% of GDP) | `NY.GDP.PETR.RT.ZS` | 2021 |
+| Total natural resource rents (% of GDP) | `NY.GDP.TOTL.RT.ZS` | 2021 |
+| Fuel exports (% of merchandise exports) | `TX.VAL.FUEL.ZS.UN` | 2023 |
+| Tax revenue (% of GDP) | `GC.TAX.TOTL.GD.ZS` | 2023 |
+
+*Use `wb_data()` from `wbstats` to download your indicator for that single year (set `start_date` and `end_date` to the same year). Then use `vdem` from `vdemdata` to download the V-Dem dataset, filter it to the same year, and select the V-Dem country ID and a democracy measure of your choice, such as electoral democracy (`v2x_polyarchy`) or liberal democracy (`v2x_libdem`). Convert the V-Dem country ID to ISO3C codes with `countrycode()` and join the two data frames by `iso3c`. `glimpse()` the result.*
 
 ```{r}
 
 ```
 
+### Step 1b: Map your World Bank indicator (20 pts)
+
+*Use `rnaturalearth` to get country shapes (filter out Antarctica) and join your data frame to them, matching `iso_a3_eh` to `iso3c`. Then map your World Bank indicator with `ggplot()` and `geom_sf()`, using `theme_map()` from `ggthemes` and a `viridis` color scale. Give the map clear labels. Below the map, say in a sentence or two what pattern you see.*
+
+```{r}
+
+```
+
+### Step 1c: Map democracy (20 pts)
+
+*Now map your democracy measure the same way. Below the map, compare it to your first map in a sentence or two: do the resource-rich countries look less democratic, as Ross would predict? Do you see any exceptions?*
+
+```{r}
+
+```
+
+
 ## Step 2: A leaflet map of conflict (50 pts)
 
-*Pick an oil-rich country that has experienced internal conflict (e.g., Iraq, Nigeria, Syria). Following the approach from the Interactive Maps topic, filter a few months of UCDP GED conflict data for your country and convert the coordinates to simple features with `st_as_sf()`. Then build a `leaflet` map with markers for the conflict events: show the location name on hover and the number of deaths and date on click. Use "OpenTopoMap" as your basemap.*
+*Pick an oil-rich country that has experienced internal conflict, such as Nigeria (`country_id` 475), Iraq (645), Syria (652), Sudan (625) or Colombia (100). Instead of the 2021 file we used in class, use UCDP's newest event data, which covers January through September 2026. You can read it straight from the UCDP website without downloading anything:*
+
+```r
+ged_data <- read_csv("https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_01_26_09.csv")
+```
+
+*These are UCDP's "candidate" events: they are released monthly and are preliminary until UCDP finishes checking them, but they have the same columns as the file we used in class. Following the approach from the Interactive Maps topic, filter a few months of events for your country and convert the coordinates to simple features with `st_as_sf()`. If your country has only a handful of events, use more months. Then build a `leaflet` map with markers for the conflict events: show the location name on hover and the number of deaths and date on click. Use "OpenTopoMap" as your basemap.*
 
 ```{r}
 
@@ -41,4 +76,10 @@ In this lab you will make two kinds of maps: a static **choropleth** with `ggplo
 
 <br>
 
-**AI statement:** *(one line on whether and how you used AI)*
+::: {.callout-important}
+## Submission Instructions
+
+Head over to Blackboard and go to the Lab 3 assignment. Click "Create Submission" and write a brief statement saying that you have submitted the lab and note whether and in what capacity you used AI on the assignment.
+
+Then upload a compressed (zipped) version of your project folder including the **rendered** HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).
+:::

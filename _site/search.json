@@ -242,7 +242,7 @@
     "href": "weeks/week-13.html",
     "title": "Week 13",
     "section": "",
-    "text": "We add more inputs and build a time-series app with observers and reactives, then learn to factor app code into reusable Shiny modules.",
+    "text": "Important\n\n\n\nProject proposal due by 11:59 p.m. on Monday, November 23.\nWe add more inputs and build a time-series app with observers and reactives, then learn to factor app code into reusable Shiny modules.",
     "crumbs": [
       "Weekly Materials",
       "Week 13"
@@ -2574,7 +2574,7 @@
     "href": "assignments/lab-3.html",
     "title": "Lab 3: Maps",
     "section": "",
-    "text": "How labs work\n\n\n\nYou are encouraged to work together and get started in class—talk through the problems with the people around you. You will finish the lab on your own time and submit your own work.\nAI use: You may use AI to ask questions or debug, but not to write your code for you—the point is to think it through yourself. At the end of the lab, add a one-line note saying whether and how you used AI.",
+    "text": "TipHow to complete the lab\n\n\n\nYou are encouraged to work together and get started in class. Talk through the problems with the people around you. Then, you will finish the lab on your own time and submit your work individually to Blackboard.\nAI use: You may use AI to ask questions or debug, but not to write your code for you. The point is to think it through yourself.",
     "crumbs": [
       "Labs",
       "Lab 3: Maps"
@@ -2585,7 +2585,7 @@
     "href": "assignments/lab-3.html#overview",
     "title": "Lab 3: Maps",
     "section": "Overview",
-    "text": "Overview\nIn this lab you will make two kinds of maps: a static choropleth with ggplot2 and sf, and an interactive leaflet map. We will map data relevant to Michael Ross’s argument in The Oil Curse that oil wealth undermines democracy.",
+    "text": "Overview\nIn this lab you will make two kinds of maps: a static choropleth with ggplot2 and sf, and an interactive leaflet map. We will map data relevant to Michael Ross’s argument in The Oil Curse that oil wealth undermines democracy.\n\n# load your libraries here",
     "crumbs": [
       "Labs",
       "Lab 3: Maps"
@@ -2607,7 +2607,7 @@
     "href": "assignments/lab-3.html#step-2-a-leaflet-map-of-conflict-50-pts",
     "title": "Lab 3: Maps",
     "section": "Step 2: A leaflet map of conflict (50 pts)",
-    "text": "Step 2: A leaflet map of conflict (50 pts)\nPick an oil-rich country that has experienced internal conflict (e.g., Iraq, Nigeria, Syria). Following the approach from the Interactive Maps topic, filter a few months of UCDP GED conflict data for your country and convert the coordinates to simple features with st_as_sf(). Then build a leaflet map with markers for the conflict events: show the location name on hover and the number of deaths and date on click. Use “OpenTopoMap” as your basemap.\n\nAI statement: (one line on whether and how you used AI)",
+    "text": "Step 2: A leaflet map of conflict (50 pts)\nPick an oil-rich country that has experienced internal conflict, such as Nigeria (country_id 475), Iraq (645), Syria (652), Sudan (625) or Colombia (100). Instead of the 2021 file we used in class, use UCDP’s newest event data, which covers January through September 2026. You can read it straight from the UCDP website without downloading anything:\nged_data &lt;- read_csv(\"https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_01_26_09.csv\")\nThese are UCDP’s “candidate” events: they are released monthly and are preliminary until UCDP finishes checking them, but they have the same columns as the file we used in class. Following the approach from the Interactive Maps topic, filter a few months of events for your country and convert the coordinates to simple features with st_as_sf(). If your country has only a handful of events, use more months. Then build a leaflet map with markers for the conflict events: show the location name on hover and the number of deaths and date on click. Use “OpenTopoMap” as your basemap.\n\n\n\n\n\n\n\nImportantSubmission Instructions\n\n\n\nHead over to Blackboard and go to the Lab 3 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and note whether and in what capacity you used AI on the assignment.\nThen upload a compressed (zipped) version of your project folder including the rendered HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).",
     "crumbs": [
       "Labs",
       "Lab 3: Maps"
@@ -2618,7 +2618,7 @@
     "href": "assignments/lab-1.html",
     "title": "Lab 1: Plotting",
     "section": "",
-    "text": "How labs work\n\n\n\nYou are encouraged to work together and get started in class—talk through the problems with the people around you. You will finish the lab on your own time and submit your own work.\nAI use: You may use AI to ask questions or debug, but not to write your code for you—the point is to think it through yourself. At the end of the lab, add a one-line note saying whether and how you used AI.",
+    "text": "TipHow to complete the lab\n\n\n\nYou are encouraged to work together and get started in class. Talk through the problems with the people around you. Then, you will finish the lab on your own time and submit your work individually to Blackboard.\nAI use: You may use AI to ask questions or debug, but not to write your code for you. The point is to think it through yourself.",
     "crumbs": [
       "Labs",
       "Lab 1: Plotting"
@@ -2629,7 +2629,7 @@
     "href": "assignments/lab-1.html#overview",
     "title": "Lab 1: Plotting",
     "section": "Overview",
-    "text": "Overview\nIn 1959, Seymour Martin Lipset published a famous article arguing that economic modernization—wealth, urbanization, education, health—makes democracy more likely. It has been cited more than 11,000 times. In this lab your group will put his argument to the test with three charts.\nThe data are already prepared for you, so you can focus entirely on the visualization. Run the chunk below to load them.\n\nlibrary(tidyverse)\nlibrary(scales)\nlibrary(plotly)\nlibrary(gganimate)\n\ndem_data &lt;- read_csv(\"data/dem_data.csv\")\n\nglimpse(dem_data)\n\nRows: 6,025\nColumns: 15\n$ country       &lt;chr&gt; \"Afghanistan\", \"Afghanistan\", \"Afghanistan\", \"Afghanista…\n$ iso3c         &lt;chr&gt; \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", …\n$ year          &lt;dbl&gt; 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 19…\n$ region        &lt;chr&gt; \"Asia\", \"Asia\", \"Asia\", \"Asia\", \"Asia\", \"Asia\", \"Asia\", …\n$ polyarchy     &lt;dbl&gt; 0.094, 0.094, 0.095, 0.093, 0.093, 0.093, 0.076, 0.073, …\n$ libdem        &lt;dbl&gt; 0.045, 0.041, 0.033, 0.023, 0.023, 0.022, 0.019, 0.022, …\n$ partipdem     &lt;dbl&gt; 0.025, 0.025, 0.028, 0.027, 0.027, 0.024, 0.013, 0.013, …\n$ delibdem      &lt;dbl&gt; 0.035, 0.035, 0.031, 0.027, 0.027, 0.027, 0.009, 0.007, …\n$ egaldem       &lt;dbl&gt; 0.099, 0.096, 0.066, 0.044, 0.044, 0.042, 0.036, 0.038, …\n$ gdp_pc        &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 308.3, 277.1, 33…\n$ life_exp      &lt;dbl&gt; 45.1, 45.5, 46.6, 51.0, 51.0, 52.1, 52.8, 53.2, 52.5, 54…\n$ inf_mort      &lt;dbl&gt; 145.9, 141.4, 137.2, 133.1, 129.4, 126.0, 122.7, 119.6, …\n$ urban_pct     &lt;dbl&gt; 17.3, 17.4, 17.5, 17.6, 17.7, 17.8, 18.0, 18.1, 18.2, 18…\n$ school_enroll &lt;dbl&gt; 11.0, 17.2, NA, 17.4, 23.5, 23.1, NA, NA, NA, NA, NA, 14…\n$ internet_pct  &lt;dbl&gt; 0.0, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 0.0, 0.0, 0…\n\n\nEvery row is one country in one year, from 1990 to 2023. Along with country, year and region, you have:\n\n\n\n\n\n\n\nMeasures of democracy\nMeasures of modernization\n\n\n\n\npolyarchy — electoral democracy\ngdp_pc — GDP per capita (US$)\n\n\nlibdem — liberal democracy\nlife_exp — life expectancy (years)\n\n\npartipdem — participatory democracy\ninf_mort — infant mortality (per 1,000)\n\n\ndelibdem — deliberative democracy\nurban_pct — population that is urban (%)\n\n\negaldem — egalitarian democracy\ninternet_pct — population online (%)\n\n\n\nAll five democracy measures run from 0 to 1, where higher is more democratic.\n\n\n\n\n\n\nPick your variables\n\n\n\nAs a group, choose one democracy measure and one modernization measure to use for the whole lab. Different groups will choose differently, and that is the point—we will compare notes at the end.",
+    "text": "Overview\nIn 1959, Seymour Martin Lipset published a famous article arguing that economic modernization—wealth, urbanization, education, health—makes democracy more likely. It has been cited more than 11,000 times. In this lab your group will put his argument to the test with three charts.\nThe data are already prepared for you, so you can focus entirely on the visualization. Run the chunk below to load them.\n\nlibrary(tidyverse)\nlibrary(scales)\nlibrary(plotly)\nlibrary(gganimate)\n\ndem_data &lt;- read_csv(\"data/dem_data.csv\")\n\nglimpse(dem_data)\n\nRows: 6,025\nColumns: 15\n$ country       &lt;chr&gt; \"Afghanistan\", \"Afghanistan\", \"Afghanistan\", \"Afghanista…\n$ iso3c         &lt;chr&gt; \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", …\n$ year          &lt;dbl&gt; 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 19…\n$ region        &lt;chr&gt; \"Asia\", \"Asia\", \"Asia\", \"Asia\", \"Asia\", \"Asia\", \"Asia\", …\n$ polyarchy     &lt;dbl&gt; 0.094, 0.094, 0.095, 0.093, 0.093, 0.093, 0.076, 0.073, …\n$ libdem        &lt;dbl&gt; 0.045, 0.041, 0.033, 0.023, 0.023, 0.022, 0.019, 0.022, …\n$ partipdem     &lt;dbl&gt; 0.025, 0.025, 0.028, 0.027, 0.027, 0.024, 0.013, 0.013, …\n$ delibdem      &lt;dbl&gt; 0.035, 0.035, 0.031, 0.027, 0.027, 0.027, 0.009, 0.007, …\n$ egaldem       &lt;dbl&gt; 0.099, 0.096, 0.066, 0.044, 0.044, 0.042, 0.036, 0.038, …\n$ gdp_pc        &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 308.3, 277.1, 33…\n$ life_exp      &lt;dbl&gt; 45.1, 45.5, 46.6, 51.0, 51.0, 52.1, 52.8, 53.2, 52.5, 54…\n$ inf_mort      &lt;dbl&gt; 145.9, 141.4, 137.2, 133.1, 129.4, 126.0, 122.7, 119.6, …\n$ urban_pct     &lt;dbl&gt; 17.3, 17.4, 17.5, 17.6, 17.7, 17.8, 18.0, 18.1, 18.2, 18…\n$ school_enroll &lt;dbl&gt; 11.0, 17.2, NA, 17.4, 23.5, 23.1, NA, NA, NA, NA, NA, 14…\n$ internet_pct  &lt;dbl&gt; 0.0, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 0.0, 0.0, 0…\n\n\nEvery row is one country in one year, from 1990 to 2023. Along with country, year and region, you have:\n\n\n\n\n\n\n\nMeasures of democracy\nMeasures of modernization\n\n\n\n\npolyarchy — electoral democracy\ngdp_pc — GDP per capita (US$)\n\n\nlibdem — liberal democracy\nlife_exp — life expectancy (years)\n\n\npartipdem — participatory democracy\ninf_mort — infant mortality (per 1,000)\n\n\ndelibdem — deliberative democracy\nurban_pct — population that is urban (%)\n\n\negaldem — egalitarian democracy\ninternet_pct — population online (%)\n\n\n\nAll five democracy measures run from 0 to 1, where higher is more democratic.\n\n\n\n\n\n\nNotePick your variables\n\n\n\nAs a group, choose one democracy measure and one modernization measure to use for the whole lab. Different groups will choose differently, and that is the point—we will compare notes at the end.",
     "crumbs": [
       "Labs",
       "Lab 1: Plotting"
@@ -2640,7 +2640,7 @@
     "href": "assignments/lab-1.html#step-1-a-line-chart-over-time-30-pts",
     "title": "Lab 1: Plotting",
     "section": "Step 1: A line chart over time (30 pts)",
-    "text": "Step 1: A line chart over time (30 pts)\na) Pick three or four countries you are curious about, at different levels of wealth, and filter() the data down to just those countries.\nCountry names have to match the data exactly. Run this to check a name before you use it—change \"Kor\" to the first few letters of whatever you are looking for:\n\ndem_data |&gt;\n  distinct(country) |&gt;\n  filter(str_detect(country, \"Kor\"))\n\n# A tibble: 2 × 1\n  country    \n  &lt;chr&gt;      \n1 North Korea\n2 South Korea\n\n\n\n\n\n\n\n\nWarning\n\n\n\nA few names are not what you would guess: United States of America, Türkiye, Czechia, Burma/Myanmar, and two separate Congos. Copy them from the check above rather than typing from memory.\n\n\n\n\n\n\n\n\nStarter code\n\n\n\nCopy this into the chunk below and add your countries inside the c().\nline_data &lt;- dem_data |&gt;\n  filter(country %in% c(\"\", \"\"))\n\nglimpse(line_data)   # check you got what you expected\n\n\nb) Make a line chart. You need year on the x-axis, your democracy measure on the y-axis, and country mapped to color so each country gets its own line.\n\n\n\n\n\n\nStarter code\n\n\n\nThe aes() call is where you say which column maps to which part of the chart. Fill in all three, then add your labels inside labs().\nggplot(line_data, aes(x = , y = , color = )) +\n  geom_line() +\n  labs(x = , y = , title = , caption = )\n\n\nc) Now polish it. Add a theme and swap the default colors for a colorblind-safe scheme.\n\n\n\n\n\n\nStarter code\n\n\n\ncountry is a discrete variable, so you want the discrete version of the viridis scale. Save the chart to an object first so you can keep building on it in the next part.\nline_chart &lt;- ggplot(line_data, aes(x = , y = , color = )) +\n  geom_line() +\n  labs(x = , y = , title = , caption = ) +\n  scale_color_viridis_d() +\n  theme_minimal()\n\nline_chart\n\n\nd) Mark a moment that matters. Add a dashed vertical line at a year when something important happened in one of your countries—an election, a coup, the start of a war—and label it with annotate().\n\n\n\n\n\n\nStarter code\n\n\n\nxintercept is the year the line crosses the x-axis. For the label, x and y are the coordinates where the text sits, so put it somewhere it will not collide with your lines.\nline_chart +\n  geom_vline(xintercept = , linetype = \"dashed\") +\n  annotate(\"text\", x = , y = , label = \"\")\n\n\ne) In a sentence or two below this line, describe what you see. Which country changed the most? What does the event you marked in part (d) look like on the chart?",
+    "text": "Step 1: A line chart over time (30 pts)\na) Pick three or four countries you are curious about, at different levels of wealth, and filter() the data down to just those countries.\nCountry names have to match the data exactly. Run this to check a name before you use it—change \"Kor\" to the first few letters of whatever you are looking for:\n\ndem_data |&gt;\n  distinct(country) |&gt;\n  filter(str_detect(country, \"Kor\"))\n\n# A tibble: 2 × 1\n  country    \n  &lt;chr&gt;      \n1 North Korea\n2 South Korea\n\n\n\n\n\n\n\n\nWarning\n\n\n\nA few names are not what you would guess: United States of America, Türkiye, Czechia, Burma/Myanmar, and two separate Congos. Copy them from the check above rather than typing from memory.\n\n\n\n\n\n\n\n\nNoteStarter code\n\n\n\nCopy this into the chunk below and add your countries inside the c().\nline_data &lt;- dem_data |&gt;\n  filter(country %in% c(\"\", \"\"))\n\nglimpse(line_data)   # check you got what you expected\n\n\nb) Make a line chart. You need year on the x-axis, your democracy measure on the y-axis, and country mapped to color so each country gets its own line.\n\n\n\n\n\n\nNoteStarter code\n\n\n\nThe aes() call is where you say which column maps to which part of the chart. Fill in all three, then add your labels inside labs().\nggplot(line_data, aes(x = , y = , color = )) +\n  geom_line() +\n  labs(x = , y = , title = , caption = )\n\n\nc) Now polish it. Add a theme and swap the default colors for a colorblind-safe scheme.\n\n\n\n\n\n\nNoteStarter code\n\n\n\ncountry is a discrete variable, so you want the discrete version of the viridis scale. Save the chart to an object first so you can keep building on it in the next part.\nline_chart &lt;- ggplot(line_data, aes(x = , y = , color = )) +\n  geom_line() +\n  labs(x = , y = , title = , caption = ) +\n  scale_color_viridis_d() +\n  theme_minimal()\n\nline_chart\n\n\nd) Mark a moment that matters. Add a dashed vertical line at a year when something important happened in one of your countries—an election, a coup, the start of a war—and label it with annotate().\n\n\n\n\n\n\nNoteStarter code\n\n\n\nxintercept is the year the line crosses the x-axis. For the label, x and y are the coordinates where the text sits, so put it somewhere it will not collide with your lines.\nline_chart +\n  geom_vline(xintercept = , linetype = \"dashed\") +\n  annotate(\"text\", x = , y = , label = \"\")\n\n\ne) In a sentence or two below this line, describe what you see. Which country changed the most? What does the event you marked in part (d) look like on the chart?",
     "crumbs": [
       "Labs",
       "Lab 1: Plotting"
@@ -2651,7 +2651,7 @@
     "href": "assignments/lab-1.html#step-2-a-bar-chart-comparing-regions-25-pts",
     "title": "Lab 1: Plotting",
     "section": "Step 2: A bar chart comparing regions (25 pts)",
-    "text": "Step 2: A bar chart comparing regions (25 pts)\na) Starting from dem_data, filter for a single recent year (2019 is a good choice), then group by region and take the mean of your democracy measure.\n\n\n\n\n\n\nStarter code\n\n\n\nThree verbs in a row. Inside summarize() you give the new column a name, like mean_polyarchy = mean(polyarchy).\nbar_data &lt;- dem_data |&gt;\n  filter(year == ) |&gt;\n  group_by() |&gt;\n  summarize()\n\nbar_data\n\n\nb) Make a bar chart with geom_col(), putting region on the x-axis and your summarized democracy measure on the y-axis. Add labels and a title. Add a color with fill = and maintain the same theme as your first plot\nc) Below this line, say which region scores highest and which scores lowest.",
+    "text": "Step 2: A bar chart comparing regions (25 pts)\na) Starting from dem_data, filter for a single recent year (2019 is a good choice), then group by region and take the mean of your democracy measure.\n\n\n\n\n\n\nNoteStarter code\n\n\n\nThree verbs in a row. Inside summarize() you give the new column a name, like mean_polyarchy = mean(polyarchy).\nbar_data &lt;- dem_data |&gt;\n  filter(year == ) |&gt;\n  group_by() |&gt;\n  summarize()\n\nbar_data\n\n\nb) Make a bar chart with geom_col(), putting region on the x-axis and your summarized democracy measure on the y-axis. Add labels and a title. Add a color with fill = and maintain the same theme as your first plot\nc) Below this line, say which region scores highest and which scores lowest.",
     "crumbs": [
       "Labs",
       "Lab 1: Plotting"
@@ -2662,7 +2662,7 @@
     "href": "assignments/lab-1.html#step-3-a-scatter-plot-25-pts",
     "title": "Lab 1: Plotting",
     "section": "Step 3: A scatter plot (25 pts)",
-    "text": "Step 3: A scatter plot (25 pts)\na) Filter dem_data for the same year you used in Step 2 and save it as scatter_data.\nb) Build a scatter plot: your modernization measure on the x-axis, your democracy measure on the y-axis, points colored by region. Then add a trend line with geom_smooth(method = \"lm\"), a colorblind-safe palette, a theme to match your other charts, and clear labels. Save it as scatter_chart—you will need it again in Step 4.\nBuild it up one layer at a time—run the chart after each + you add so you can see what each piece does.\n\n\n\n\n\n\nWhere you put color matters here\n\n\n\nAnything you put in the top-level aes() is inherited by every layer that follows it. So if you map color = region there, geom_smooth() will split by region too, and you will get six separate trend lines instead of one overall trend.\nYou want the points colored by region but a single trend line through all of them. Think about which layer actually needs the color, and put it there. If you end up with six trend lines, that is the clue.\n\n\n\n\n\n\n\n\nTip\n\n\n\nIf you chose gdp_pc, most countries will bunch up against the left edge. Add this layer to spread them out:\nscale_x_log10(labels = label_dollar())\n\n\nc) Below this line, describe the relationship. Does it look positive, negative, or flat? If you used inf_mort, think about why its direction differs from the others.",
+    "text": "Step 3: A scatter plot (25 pts)\na) Filter dem_data for the same year you used in Step 2 and save it as scatter_data.\nb) Build a scatter plot: your modernization measure on the x-axis, your democracy measure on the y-axis, points colored by region. Then add a trend line with geom_smooth(method = \"lm\"), a colorblind-safe palette, a theme to match your other charts, and clear labels. Save it as scatter_chart—you will need it again in Step 4.\nBuild it up one layer at a time—run the chart after each + you add so you can see what each piece does.\n\n\n\n\n\n\nWarningWhere you put color matters here\n\n\n\nAnything you put in the top-level aes() is inherited by every layer that follows it. So if you map color = region there, geom_smooth() will split by region too, and you will get six separate trend lines instead of one overall trend.\nYou want the points colored by region but a single trend line through all of them. Think about which layer actually needs the color, and put it there. If you end up with six trend lines, that is the clue.\n\n\n\n\n\n\n\n\nTip\n\n\n\nIf you chose gdp_pc, most countries will bunch up against the left edge. Add this layer to spread them out:\nscale_x_log10(labels = label_dollar())\n\n\nc) Below this line, describe the relationship. Does it look positive, negative, or flat? If you used inf_mort, think about why its direction differs from the others.",
     "crumbs": [
       "Labs",
       "Lab 1: Plotting"
@@ -2673,7 +2673,7 @@
     "href": "assignments/lab-1.html#step-4-make-it-interactive-10-pts",
     "title": "Lab 1: Plotting",
     "section": "Step 4: Make it interactive (10 pts)",
-    "text": "Step 4: Make it interactive (10 pts)\nTake the scatter plot from Step 3 and make it interactive with ggplotly() from the plotly package. Then hover over a few points to see what the tooltip tells you.\n\n\n\n\n\n\nStarter code\n\n\n\nBy default the tooltip shows every variable you mapped. Use tooltip = to choose which ones appear, and add aes(label = country) if you want the country name in there—it is not in the plot otherwise.\nlibrary(plotly)\n\nggplotly(scatter_chart)\n\n\nBelow this line, note one thing the interactive version lets you see that the static one did not.",
+    "text": "Step 4: Make it interactive (10 pts)\nTake the scatter plot from Step 3 and make it interactive with ggplotly() from the plotly package. Then hover over a few points to see what the tooltip tells you.\n\n\n\n\n\n\nNoteStarter code\n\n\n\nBy default the tooltip shows every variable you mapped. Use tooltip = to choose which ones appear, and add aes(label = country) if you want the country name in there—it is not in the plot otherwise.\nlibrary(plotly)\n\nggplotly(scatter_chart)\n\n\nBelow this line, note one thing the interactive version lets you see that the static one did not.",
     "crumbs": [
       "Labs",
       "Lab 1: Plotting"
@@ -2695,7 +2695,7 @@
     "href": "assignments/lab-1.html#bonus-1-pt-each",
     "title": "Lab 1: Plotting",
     "section": "Bonus (1 pt each)",
-    "text": "Bonus (1 pt each)\na) Add facet_wrap(~ region) to your scatter plot.\nb) Animate your scatter plot across time with the gganimate package. Go back to the full dem_data rather than the single year you filtered to in Step 3, add transition_states(year), and use {closest_state} inside your title so the year updates as it plays.\n\nAI statement: (one line on whether and how you used AI)\n\n\n\n\n\n\nSubmission Instructions\n\n\n\nHead over to Blackboard and go to the Lab 1 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and that all of the work is your own.\nThen upload a compressed (zipped) version of your project folder including the rendered HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).",
+    "text": "Bonus (1 pt each)\na) Add facet_wrap(~ region) to your scatter plot.\nb) Animate your scatter plot across time with the gganimate package. Go back to the full dem_data rather than the single year you filtered to in Step 3, add transition_states(year), and use {closest_state} inside your title so the year updates as it plays.\n\n\n\n\n\n\n\nImportantSubmission Instructions\n\n\n\nHead over to Blackboard and go to the Lab 1 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and note whether and in what capacity you used AI on the assignment.\nThen upload a compressed (zipped) version of your project folder including the rendered HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).",
     "crumbs": [
       "Labs",
       "Lab 1: Plotting"
@@ -2713,7 +2713,7 @@
     "href": "assignments/lab-2.html",
     "title": "Lab 2: Wrangling",
     "section": "",
-    "text": "How labs work\n\n\n\nYou are encouraged to work together and get started in class—talk through the problems with the people around you. You will finish the lab on your own time and submit your own work.\nAI use: You may use AI to ask questions or debug, but not to write your code for you—the point is to think it through yourself. At the end of the lab, add a one-line note saying whether and how you used AI.",
+    "text": "TipHow to complete the lab\n\n\n\nYou are encouraged to work together and get started in class. Talk through the problems with the people around you. Then, you will finish the lab on your own time and submit your work individually to Blackboard.\nAI use: You may use AI to ask questions or debug, but not to write your code for you. The point is to think it through yourself.",
     "crumbs": [
       "Labs",
       "Lab 2: Wrangling"
@@ -2768,7 +2768,7 @@
     "href": "assignments/lab-4.html",
     "title": "Lab 4: Tables & coefficient plots",
     "section": "",
-    "text": "How labs work\n\n\n\nYou are encouraged to work together and get started in class—talk through the problems with the people around you. You will finish the lab on your own time and submit your own work.\nAI use: You may use AI to ask questions or debug, but not to write your code for you—the point is to think it through yourself. At the end of the lab, add a one-line note saying whether and how you used AI.",
+    "text": "TipHow labs work\n\n\n\nYou are encouraged to work together and get started in class—talk through the problems with the people around you. You will finish the lab on your own time and submit your own work.\nAI use: You may use AI to ask questions or debug, but not to write your code for you—the point is to think it through yourself. At the end of the lab, add a one-line note saying whether and how you used AI.",
     "crumbs": [
       "Labs",
       "Lab 4: Tables & coefficient plots"
@@ -5109,7 +5109,7 @@
     "href": "weeks/week-10.html",
     "title": "Week 10",
     "section": "",
-    "text": "We build polished tables of data with kableExtra and gt, and add confidence intervals.",
+    "text": "Important\n\n\n\nLab 3 (Maps) due by 11:59 p.m. on Friday, October 30.\nWe build polished tables of data with kableExtra and gt, and add confidence intervals.",
     "crumbs": [
       "Weekly Materials",
       "Week 10"
@@ -5175,7 +5175,7 @@
     "href": "weeks/week-14.html",
     "title": "Week 14",
     "section": "",
-    "text": "Important\n\n\n\nNo class this week — Thanksgiving break. 🦃",
+    "text": "Important\n\n\n\nNo class this week — Thanksgiving break. 🦃\nBut remember that your project proposals are due by 11:59 p.m. on Monday, November 23.",
     "crumbs": [
       "Weekly Materials",
       "Week 14"
@@ -5373,7 +5373,7 @@
     "href": "weeks/week-9.html",
     "title": "Week 9",
     "section": "",
-    "text": "Important\n\n\n\nLab 3 (Maps) due by 11:59 p.m. on Monday, October 26. Project proposal due by 11:59 p.m. on Monday, November 2.\nTuesday we finish customizing our interactive leaflet map. Thursday is a flex session: we step back to talk about what makes good data visualization and brainstorm ideas for your final project (Shiny app or report).",
+    "text": "Important\n\n\n\nLab 3 (Maps) due by 11:59 p.m. on Friday, October 30.\nTuesday we finish customizing our interactive leaflet map. Thursday is a flex session: we step back to talk about what makes good data visualization and brainstorm ideas for your final project (Shiny app or report).",
     "crumbs": [
       "Weekly Materials",
       "Week 9"
@@ -5510,7 +5510,7 @@
     "href": "assignments/lab-2.html#step-5-visualize-25-pts",
     "title": "Lab 2: Wrangling",
     "section": "Step 5: Visualize (25 pts)",
-    "text": "Step 5: Visualize (25 pts)\na) Make a column chart with geom_col() showing your summarized variable by region. Sort the bars from highest to lowest, choose a fill color and a theme, and add axis labels, a title and a caption naming your source.\nb) Below this line, write a sentence or two describing what the chart shows. Is this what you expected?\n\nAI statement: (one line on whether and how you used AI)",
+    "text": "Step 5: Visualize (25 pts)\na) Make a column chart with geom_col() showing your summarized variable by region. Sort the bars from highest to lowest, choose a fill color and a theme, and add axis labels, a title and a caption naming your source.\nb) Below this line, write a sentence or two describing what the chart shows. Is this what you expected?\n\n\n\n\n\n\n\nImportantSubmission Instructions\n\n\n\nHead over to Blackboard and go to the Lab 2 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and note whether and in what capacity you used AI on the assignment.\nThen upload a compressed (zipped) version of your project folder including the rendered HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).",
     "crumbs": [
       "Labs",
       "Lab 2: Wrangling"
@@ -5575,5 +5575,16 @@
     "title": "Make a Map Function",
     "section": "Line Chart",
     "text": "Line Chart"
+  },
+  {
+    "objectID": "assignments/lab-3.html#step-1-choropleth-maps-50-pts",
+    "href": "assignments/lab-3.html#step-1-choropleth-maps-50-pts",
+    "title": "Lab 3: Maps",
+    "section": "Step 1: Choropleth maps (50 pts)",
+    "text": "Step 1: Choropleth maps (50 pts)\n\nStep 1a: Build your data frame (10 pts)\nChoose a World Bank indicator related to Ross’s argument. Some options, with the most recent year that has good coverage:\n\n\n\nIndicator\nCode\nYear to use\n\n\n\n\nOil rents (% of GDP)\nNY.GDP.PETR.RT.ZS\n2021\n\n\nTotal natural resource rents (% of GDP)\nNY.GDP.TOTL.RT.ZS\n2021\n\n\nFuel exports (% of merchandise exports)\nTX.VAL.FUEL.ZS.UN\n2023\n\n\nTax revenue (% of GDP)\nGC.TAX.TOTL.GD.ZS\n2023\n\n\n\nUse wb_data() from wbstats to download your indicator for that single year (set start_date and end_date to the same year). Then use vdem from vdemdata to download the V-Dem dataset, filter it to the same year, and select the V-Dem country ID and a democracy measure of your choice, such as electoral democracy (v2x_polyarchy) or liberal democracy (v2x_libdem). Convert the V-Dem country ID to ISO3C codes with countrycode() and join the two data frames by iso3c. glimpse() the result.\n\n\nStep 1b: Map your World Bank indicator (20 pts)\nUse rnaturalearth to get country shapes (filter out Antarctica) and join your data frame to them, matching iso_a3_eh to iso3c. Then map your World Bank indicator with ggplot() and geom_sf(), using theme_map() from ggthemes and a viridis color scale. Give the map clear labels. Below the map, say in a sentence or two what pattern you see.\n\n\nStep 1c: Map democracy (20 pts)\nNow map your democracy measure the same way. Below the map, compare it to your first map in a sentence or two: do the resource-rich countries look less democratic, as Ross would predict? Do you see any exceptions?",
+    "crumbs": [
+      "Labs",
+      "Lab 3: Maps"
+    ]
   }
 ]

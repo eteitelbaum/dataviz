@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Lab 2: Wrangling – PSC/DATS 2102–Course Schedule</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -73,14 +79,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f7a9d044f8a96ce2fd6b062468a135ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-f77540120a66c362cb7a9d774880e664.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f7a9d044f8a96ce2fd6b062468a135ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-cfa5729b58fa530fd43303a6acb0ae78.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-10aac9a5c11e297f1ba76b27731c7f30.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-cfa5729b58fa530fd43303a6acb0ae78.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -112,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <meta property="og:title" content="Lab 2: Wrangling – PSC/DATS 2102–Course Schedule">
 <meta property="og:description" content="Homepage for PSC/DATS 2102, George Washington University.">
-<meta property="og:site_name" content="PSC/DATS 2102--Course Schedule">
+<meta property="og:site_name" content="PSC/DATS 2102–Course Schedule">
 <meta name="twitter:title" content="Lab 2: Wrangling – PSC/DATS 2102–Course Schedule">
 <meta name="twitter:description" content="Homepage for PSC/DATS 2102, George Washington University.">
 <meta name="twitter:card" content="summary">
@@ -304,7 +310,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/dataviz-logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../images/dataviz-logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../images/dataviz-logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://blackboard.gwu.edu" title="Blackboard" class="quarto-navigation-tool px-1" aria-label="Blackboard"><i class="bi bi-mortarboard-fill"></i></a>
@@ -748,12 +755,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-How labs work
+<span class="screen-reader-only">Tip</span>How to complete the lab
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You are encouraged to <strong>work together and get started in class</strong>—talk through the problems with the people around you. You will finish the lab on your own time and submit your own work.</p>
-<p><strong>AI use: You may use AI to ask questions or debug, but not to write your code for you—the point is to think it through yourself. At the end of the lab, add a one-line note saying whether and how you used AI.</strong></p>
+<p>You are encouraged to <strong>work together and get started in class</strong>. Talk through the problems with the people around you. Then, you will finish the lab on your own time and submit your work individually to Blackboard.</p>
+<p><strong>AI use: You may use AI to ask questions or debug, but not to write your code for you. The point is to think it through yourself.</strong></p>
 </div>
 </div>
 <section id="overview" class="level2">
@@ -783,7 +790,20 @@ How labs work
 <p><em>a) Make a column chart with <code>geom_col()</code> showing your summarized variable by region. Sort the bars from highest to lowest, choose a fill color and a theme, and add axis labels, a title and a caption naming your source.</em></p>
 <p><em>b) Below this line, write a sentence or two describing what the chart shows. Is this what you expected?</em></p>
 <p><br></p>
-<p><strong>AI statement:</strong> <em>(one line on whether and how you used AI)</em></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Submission Instructions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Head over to Blackboard and go to the Lab 2 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and note whether and in what capacity you used AI on the assignment.</p>
+<p>Then upload a compressed (zipped) version of your project folder including the <strong>rendered</strong> HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).</p>
+</div>
+</div>
 <hr>
 </section>
 <section id="hints" class="level2">
@@ -791,7 +811,7 @@ How labs work
 <p><em>Only look at these if you’re stuck!</em></p>
 <p><strong>Hint 1 — Recoding the region variable:</strong></p>
 <p><code>e_regionpol_6C</code> comes as numbers from 1 to 6. Use <code>case_match()</code> inside <code>mutate()</code> to turn them into names:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">region =</span> <span class="fu">case_match</span>(region,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Eastern Europe"</span>,</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Latin America"</span>,</span>
@@ -799,12 +819,12 @@ How labs work
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Africa"</span>,</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">5</span> <span class="sc">~</span> <span class="st">"The West"</span>,</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">6</span> <span class="sc">~</span> <span class="st">"Asia"</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Hint 2 — Naming your World Bank indicator:</strong></p>
 <p>If you pass <code>wb_data()</code> a <em>named</em> vector, the column comes back with your name instead of the indicator code:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>indicators <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"gdp_pc"</span> <span class="ot">=</span> <span class="st">"NY.GDP.PCAP.CD"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>indicators <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"gdp_pc"</span> <span class="ot">=</span> <span class="st">"NY.GDP.PCAP.CD"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wb_data</span>(indicators, <span class="at">start_date =</span> <span class="dv">1990</span>, <span class="at">end_date =</span> <span class="dv">2023</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wb_data</span>(indicators, <span class="at">start_date =</span> <span class="dv">1990</span>, <span class="at">end_date =</span> <span class="dv">2023</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Hint 3 — Do we need to reshape?</strong></p>
 <p>No.&nbsp;Both V-Dem and <code>wb_data()</code> already give you one row per country-year, so the two data frames have the same shape. You only need to make sure the columns you join on have the same <em>names</em> (<code>year</code>, not <code>date</code>) and the same <em>codes</em> (that is what <code>countrycode()</code> is for).</p>
 <p><strong>Hint 4 — The <code>countrycode()</code> warning:</strong></p>
@@ -813,11 +833,11 @@ How labs work
 <p>Both data frames have a <code>country</code> column, so <code>left_join()</code> gives you <code>country.x</code> and <code>country.y</code>. Drop the World Bank version with <code>select(-country)</code> before you join, or drop and rename the extra column after.</p>
 <p><strong>Hint 6 — <code>NA</code>s in your summary:</strong></p>
 <p>If your summary comes back as <code>NA</code>, it is because some country-years are missing data. Add <code>na.rm = TRUE</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="at">gdp_pc =</span> <span class="fu">mean</span>(gdp_pc, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="at">gdp_pc =</span> <span class="fu">mean</span>(gdp_pc, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Hint 7 — Sorting the bars:</strong></p>
 <p><code>arrange()</code> sorts your table but not your chart—<code>ggplot()</code> will still put the regions in alphabetical order. Use <code>fct_reorder()</code> inside <code>aes()</code> to sort the bars (the <code>-</code> puts the highest value first):</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(region_summary, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(region, <span class="sc">-</span>gdp_pc), <span class="at">y =</span> gdp_pc)) <span class="sc">+</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(region_summary, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(region, <span class="sc">-</span>gdp_pc), <span class="at">y =</span> gdp_pc)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Hint 8 — Formatting the y-axis:</strong></p>
 <p>If you chart GDP per capita, <code>scale_y_continuous(labels = label_dollar())</code> from the <code>scales</code> package will format the axis as dollars. For a percentage, use <code>label_percent(scale = 1)</code>.</p>
 
@@ -889,13 +909,14 @@ How labs work
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
