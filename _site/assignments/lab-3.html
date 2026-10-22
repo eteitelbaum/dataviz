@@ -724,6 +724,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#step-1c-map-democracy-20-pts" id="toc-step-1c-map-democracy-20-pts" class="nav-link" data-scroll-target="#step-1c-map-democracy-20-pts">Step 1c: Map democracy (20 pts)</a></li>
   </ul></li>
   <li><a href="#step-2-a-leaflet-map-of-conflict-50-pts" id="toc-step-2-a-leaflet-map-of-conflict-50-pts" class="nav-link" data-scroll-target="#step-2-a-leaflet-map-of-conflict-50-pts">Step 2: A leaflet map of conflict (50 pts)</a></li>
+  <li><a href="#bonus-quiz-extra-credit" id="toc-bonus-quiz-extra-credit" class="nav-link" data-scroll-target="#bonus-quiz-extra-credit">Bonus (quiz extra credit)</a></li>
+  <li><a href="#hints" id="toc-hints" class="nav-link" data-scroll-target="#hints">Hints</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/dataviz/edit/main/assignments/lab-3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/dataviz/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -823,6 +825,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>Pick an oil-rich country that has experienced internal conflict, such as Nigeria (<code>country_id</code> 475), Iraq (645), Syria (652), Sudan (625) or Colombia (100). Instead of the 2021 file we used in class, use UCDP’s newest event data, which covers January through September 2026. You can read it straight from the UCDP website without downloading anything:</em></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ged_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_01_26_09.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><em>These are UCDP’s “candidate” events: they are released monthly and are preliminary until UCDP finishes checking them, but they have the same columns as the file we used in class. Following the approach from the Interactive Maps topic, filter a few months of events for your country and convert the coordinates to simple features with <code>st_as_sf()</code>. If your country has only a handful of events, use more months. Then build a <code>leaflet</code> map with markers for the conflict events: show the location name on hover and the number of deaths and date on click. Use “OpenTopoMap” as your basemap.</em></p>
+</section>
+<section id="bonus-quiz-extra-credit" class="level2">
+<h2 class="anchored" data-anchor-id="bonus-quiz-extra-credit">Bonus (quiz extra credit)</h2>
+<p><em>Completing this bonus adds 2 points to a quiz where you lost points, up to full credit on that quiz.</em></p>
+<p><em>Steps 1b and 1c use almost the same code. Write a function called <code>create_map()</code> that takes four arguments (your map data frame, the name of the variable to map, a title, and a legend title) and returns a choropleth map. Then call your function twice to remake both maps.</em></p>
 <p><br></p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -838,6 +845,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Then upload a compressed (zipped) version of your project folder including the <strong>rendered</strong> HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).</p>
 </div>
 </div>
+<hr>
+</section>
+<section id="hints" class="level2">
+<h2 class="anchored" data-anchor-id="hints">Hints</h2>
+<p><em>Only look at these if you’re stuck!</em></p>
+<p><strong>Hint 1 — Downloading a single year from the World Bank:</strong></p>
+<p>Set <code>start_date</code> and <code>end_date</code> to the same year. If you pass <code>wb_data()</code> a <em>named</em> vector, the column comes back with your name instead of the indicator code:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wb_data</span>(<span class="fu">c</span>(<span class="at">fuel_exports =</span> <span class="st">"TX.VAL.FUEL.ZS.UN"</span>), <span class="at">start_date =</span> <span class="dv">2023</span>, <span class="at">end_date =</span> <span class="dv">2023</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Hint 2 — Converting the V-Dem country ID:</strong></p>
+<p>Use <code>countrycode()</code> inside <code>mutate()</code>, telling it the codes come from V-Dem:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">iso3c =</span> <span class="fu">countrycode</span>(country_id, <span class="at">origin =</span> <span class="st">"vdem"</span>, <span class="at">destination =</span> <span class="st">"iso3c"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You will probably see a warning like <code>Some values were not matched unambiguously</code>. That is OK. A few V-Dem units (like Kosovo, Somaliland or Zanzibar) have no ISO3C code, so they get an <code>NA</code> and will not show up on the map.</p>
+<p><strong>Hint 3 — Put the country shapes first in the join:</strong></p>
+<p>If you get an error saying <code>stat_sf()</code> requires the missing aesthetic <code>geometry</code>, check the order of your <code>left_join()</code>. The country shapes have to come first so the result stays a simple features data frame:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(world_map_df, your_data, <span class="fu">join_by</span>(iso_a3_eh <span class="sc">==</span> iso3c))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Hint 4 — Gray countries:</strong></p>
+<p>Countries shaded gray have no data for your variable (Greenland, for example, is not in V-Dem). That is expected; you do not need to fix it.</p>
+<p><strong>Hint 5 — “Discrete value supplied to continuous scale” (or the reverse):</strong></p>
+<p>Your variables are continuous, so use <code>scale_fill_viridis_c()</code>, not <code>scale_fill_viridis_d()</code>. If your variable is a percentage, <code>labels = scales::label_percent(scale = 1)</code> inside the scale function will add % signs to the legend.</p>
+<p><strong>Hint 6 — Filtering the conflict data by date:</strong></p>
+<p><code>date_start</code> is a date, so you can compare it to a date written as text:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(country_id <span class="sc">==</span> <span class="dv">475</span>, date_start <span class="sc">&gt;=</span> <span class="st">"2026-01-01"</span>, date_start <span class="sc">&lt;</span> <span class="st">"2026-04-01"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Hint 7 — Showing the deaths and the date in the popup:</strong></p>
+<p>Popups can display HTML, so you can use <code>paste()</code> to build the text and <code>&lt;br&gt;</code> to start a new line:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addMarkers</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">popup =</span> <span class="sc">~</span><span class="fu">paste</span>(<span class="st">"Date:"</span>, date, <span class="st">"&lt;br&gt;Deaths:"</span>, deaths),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="sc">~</span>place</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Hint 8 — Mapping a variable inside a function (bonus):</strong></p>
+<p>If your function takes the variable name as a string (like <code>"polyarchy"</code>), <code>aes(fill = var)</code> will not work, because ggplot treats the string as a constant. Use <code>.data[[var]]</code> instead, as we did in the Functions topic:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> .data[[var]]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>

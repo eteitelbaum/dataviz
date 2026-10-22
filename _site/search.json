@@ -2607,7 +2607,7 @@
     "href": "assignments/lab-3.html#step-2-a-leaflet-map-of-conflict-50-pts",
     "title": "Lab 3: Maps",
     "section": "Step 2: A leaflet map of conflict (50 pts)",
-    "text": "Step 2: A leaflet map of conflict (50 pts)\nPick an oil-rich country that has experienced internal conflict, such as Nigeria (country_id 475), Iraq (645), Syria (652), Sudan (625) or Colombia (100). Instead of the 2021 file we used in class, use UCDP’s newest event data, which covers January through September 2026. You can read it straight from the UCDP website without downloading anything:\nged_data &lt;- read_csv(\"https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_01_26_09.csv\")\nThese are UCDP’s “candidate” events: they are released monthly and are preliminary until UCDP finishes checking them, but they have the same columns as the file we used in class. Following the approach from the Interactive Maps topic, filter a few months of events for your country and convert the coordinates to simple features with st_as_sf(). If your country has only a handful of events, use more months. Then build a leaflet map with markers for the conflict events: show the location name on hover and the number of deaths and date on click. Use “OpenTopoMap” as your basemap.\n\n\n\n\n\n\n\nImportantSubmission Instructions\n\n\n\nHead over to Blackboard and go to the Lab 3 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and note whether and in what capacity you used AI on the assignment.\nThen upload a compressed (zipped) version of your project folder including the rendered HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).",
+    "text": "Step 2: A leaflet map of conflict (50 pts)\nPick an oil-rich country that has experienced internal conflict, such as Nigeria (country_id 475), Iraq (645), Syria (652), Sudan (625) or Colombia (100). Instead of the 2021 file we used in class, use UCDP’s newest event data, which covers January through September 2026. You can read it straight from the UCDP website without downloading anything:\nged_data &lt;- read_csv(\"https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_01_26_09.csv\")\nThese are UCDP’s “candidate” events: they are released monthly and are preliminary until UCDP finishes checking them, but they have the same columns as the file we used in class. Following the approach from the Interactive Maps topic, filter a few months of events for your country and convert the coordinates to simple features with st_as_sf(). If your country has only a handful of events, use more months. Then build a leaflet map with markers for the conflict events: show the location name on hover and the number of deaths and date on click. Use “OpenTopoMap” as your basemap.",
     "crumbs": [
       "Labs",
       "Lab 3: Maps"
@@ -5582,6 +5582,39 @@
     "title": "Lab 3: Maps",
     "section": "Step 1: Choropleth maps (50 pts)",
     "text": "Step 1: Choropleth maps (50 pts)\n\nStep 1a: Build your data frame (10 pts)\nChoose a World Bank indicator related to Ross’s argument. Some options, with the most recent year that has good coverage:\n\n\n\nIndicator\nCode\nYear to use\n\n\n\n\nOil rents (% of GDP)\nNY.GDP.PETR.RT.ZS\n2021\n\n\nTotal natural resource rents (% of GDP)\nNY.GDP.TOTL.RT.ZS\n2021\n\n\nFuel exports (% of merchandise exports)\nTX.VAL.FUEL.ZS.UN\n2023\n\n\nTax revenue (% of GDP)\nGC.TAX.TOTL.GD.ZS\n2023\n\n\n\nUse wb_data() from wbstats to download your indicator for that single year (set start_date and end_date to the same year). Then use vdem from vdemdata to download the V-Dem dataset, filter it to the same year, and select the V-Dem country ID and a democracy measure of your choice, such as electoral democracy (v2x_polyarchy) or liberal democracy (v2x_libdem). Convert the V-Dem country ID to ISO3C codes with countrycode() and join the two data frames by iso3c. glimpse() the result.\n\n\nStep 1b: Map your World Bank indicator (20 pts)\nUse rnaturalearth to get country shapes (filter out Antarctica) and join your data frame to them, matching iso_a3_eh to iso3c. Then map your World Bank indicator with ggplot() and geom_sf(), using theme_map() from ggthemes and a viridis color scale. Give the map clear labels. Below the map, say in a sentence or two what pattern you see.\n\n\nStep 1c: Map democracy (20 pts)\nNow map your democracy measure the same way. Below the map, compare it to your first map in a sentence or two: do the resource-rich countries look less democratic, as Ross would predict? Do you see any exceptions?",
+    "crumbs": [
+      "Labs",
+      "Lab 3: Maps"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-3.html#bonus-2-pts",
+    "href": "assignments/lab-3.html#bonus-2-pts",
+    "title": "Lab 3: Maps",
+    "section": "Bonus (2 pts)",
+    "text": "Bonus (2 pts)\nSteps 1b and 1c use almost the same code. Write a function called create_map() that takes four arguments (your map data frame, the name of the variable to map, a title, and a legend title) and returns a choropleth map. Then call your function twice to remake both maps.\n\n\n\n\n\n\n\nImportantSubmission Instructions\n\n\n\nHead over to Blackboard and go to the Lab 3 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and note whether and in what capacity you used AI on the assignment.\nThen upload a compressed (zipped) version of your project folder including the rendered HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).",
+    "crumbs": [
+      "Labs",
+      "Lab 3: Maps"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-3.html#hints",
+    "href": "assignments/lab-3.html#hints",
+    "title": "Lab 3: Maps",
+    "section": "Hints",
+    "text": "Hints\nOnly look at these if you’re stuck!\nHint 1 — Downloading a single year from the World Bank:\nSet start_date and end_date to the same year. If you pass wb_data() a named vector, the column comes back with your name instead of the indicator code:\nwb_data(c(fuel_exports = \"TX.VAL.FUEL.ZS.UN\"), start_date = 2023, end_date = 2023)\nHint 2 — Converting the V-Dem country ID:\nUse countrycode() inside mutate(), telling it the codes come from V-Dem:\nmutate(iso3c = countrycode(country_id, origin = \"vdem\", destination = \"iso3c\"))\nYou will probably see a warning like Some values were not matched unambiguously. That is OK. A few V-Dem units (like Kosovo, Somaliland or Zanzibar) have no ISO3C code, so they get an NA and will not show up on the map.\nHint 3 — Put the country shapes first in the join:\nIf you get an error saying stat_sf() requires the missing aesthetic geometry, check the order of your left_join(). The country shapes have to come first so the result stays a simple features data frame:\nleft_join(world_map_df, your_data, join_by(iso_a3_eh == iso3c))\nHint 4 — Gray countries:\nCountries shaded gray have no data for your variable (Greenland, for example, is not in V-Dem). That is expected; you do not need to fix it.\nHint 5 — “Discrete value supplied to continuous scale” (or the reverse):\nYour variables are continuous, so use scale_fill_viridis_c(), not scale_fill_viridis_d(). If your variable is a percentage, labels = scales::label_percent(scale = 1) inside the scale function will add % signs to the legend.\nHint 6 — Filtering the conflict data by date:\ndate_start is a date, so you can compare it to a date written as text:\nfilter(country_id == 475, date_start &gt;= \"2026-01-01\", date_start &lt; \"2026-04-01\")\nHint 7 — Showing the deaths and the date in the popup:\nPopups can display HTML, so you can use paste() to build the text and &lt;br&gt; to start a new line:\naddMarkers(\n  popup = ~paste(\"Date:\", date, \"&lt;br&gt;Deaths:\", deaths),\n  label = ~place\n)\nHint 8 — Mapping a variable inside a function (bonus):\nIf your function takes the variable name as a string (like \"polyarchy\"), aes(fill = var) will not work, because ggplot treats the string as a constant. Use .data[[var]] instead, as we did in the Functions topic:\ngeom_sf(aes(fill = .data[[var]]))",
+    "crumbs": [
+      "Labs",
+      "Lab 3: Maps"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-3.html#bonus-quiz-extra-credit",
+    "href": "assignments/lab-3.html#bonus-quiz-extra-credit",
+    "title": "Lab 3: Maps",
+    "section": "Bonus (quiz extra credit)",
+    "text": "Bonus (quiz extra credit)\nCompleting this bonus adds 2 points to a quiz where you lost points, up to full credit on that quiz.\nSteps 1b and 1c use almost the same code. Write a function called create_map() that takes four arguments (your map data frame, the name of the variable to map, a title, and a legend title) and returns a choropleth map. Then call your function twice to remake both maps.\n\n\n\n\n\n\n\nImportantSubmission Instructions\n\n\n\nHead over to Blackboard and go to the Lab 3 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and note whether and in what capacity you used AI on the assignment.\nThen upload a compressed (zipped) version of your project folder including the rendered HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).",
     "crumbs": [
       "Labs",
       "Lab 3: Maps"

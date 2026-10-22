@@ -73,6 +73,15 @@ ged_data <- read_csv("https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_01_
 
 ```
 
+## Bonus (quiz extra credit)
+
+*Completing this bonus adds 2 points to a quiz where you lost points, up to full credit on that quiz.*
+
+*Steps 1b and 1c use almost the same code. Write a function called `create_map()` that takes four arguments (your map data frame, the name of the variable to map, a title, and a legend title) and returns a choropleth map. Then call your function twice to remake both maps.*
+
+```{r}
+
+```
 
 <br>
 
@@ -83,3 +92,69 @@ Head over to Blackboard and go to the Lab 3 assignment. Click "Create Submission
 
 Then upload a compressed (zipped) version of your project folder including the **rendered** HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).
 :::
+---
+
+## Hints
+
+*Only look at these if you're stuck!*
+
+**Hint 1 --- Downloading a single year from the World Bank:**
+
+Set `start_date` and `end_date` to the same year. If you pass `wb_data()` a *named* vector, the column comes back with your name instead of the indicator code:
+
+```r
+wb_data(c(fuel_exports = "TX.VAL.FUEL.ZS.UN"), start_date = 2023, end_date = 2023)
+```
+
+**Hint 2 --- Converting the V-Dem country ID:**
+
+Use `countrycode()` inside `mutate()`, telling it the codes come from V-Dem:
+
+```r
+mutate(iso3c = countrycode(country_id, origin = "vdem", destination = "iso3c"))
+```
+
+You will probably see a warning like `Some values were not matched unambiguously`. That is OK. A few V-Dem units (like Kosovo, Somaliland or Zanzibar) have no ISO3C code, so they get an `NA` and will not show up on the map.
+
+**Hint 3 --- Put the country shapes first in the join:**
+
+If you get an error saying `stat_sf()` requires the missing aesthetic `geometry`, check the order of your `left_join()`. The country shapes have to come first so the result stays a simple features data frame:
+
+```r
+left_join(world_map_df, your_data, join_by(iso_a3_eh == iso3c))
+```
+
+**Hint 4 --- Gray countries:**
+
+Countries shaded gray have no data for your variable (Greenland, for example, is not in V-Dem). That is expected; you do not need to fix it.
+
+**Hint 5 --- "Discrete value supplied to continuous scale" (or the reverse):**
+
+Your variables are continuous, so use `scale_fill_viridis_c()`, not `scale_fill_viridis_d()`. If your variable is a percentage, `labels = scales::label_percent(scale = 1)` inside the scale function will add % signs to the legend.
+
+**Hint 6 --- Filtering the conflict data by date:**
+
+`date_start` is a date, so you can compare it to a date written as text:
+
+```r
+filter(country_id == 475, date_start >= "2026-01-01", date_start < "2026-04-01")
+```
+
+**Hint 7 --- Showing the deaths and the date in the popup:**
+
+Popups can display HTML, so you can use `paste()` to build the text and `<br>` to start a new line:
+
+```r
+addMarkers(
+  popup = ~paste("Date:", date, "<br>Deaths:", deaths),
+  label = ~place
+)
+```
+
+**Hint 8 --- Mapping a variable inside a function (bonus):**
+
+If your function takes the variable name as a string (like `"polyarchy"`), `aes(fill = var)` will not work, because ggplot treats the string as a constant. Use `.data[[var]]` instead, as we did in the Functions topic:
+
+```r
+geom_sf(aes(fill = .data[[var]]))
+```
