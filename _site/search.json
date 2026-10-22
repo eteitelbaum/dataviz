@@ -5619,5 +5619,16 @@
       "Labs",
       "Lab 3: Maps"
     ]
+  },
+  {
+    "objectID": "assignments/lab-3.html#bonus-extra-credit",
+    "href": "assignments/lab-3.html#bonus-extra-credit",
+    "title": "Lab 3: Maps",
+    "section": "Bonus (extra credit)",
+    "text": "Bonus (extra credit)\nCompleting this bonus restores full credit on one quiz where you lost points. If you have not lost points on any quiz, you will get 2 points of extra credit on this lab instead.\nSteps 1b and 1c use almost the same code. Write a function called create_map() that takes four arguments (your map data frame, the name of the variable to map, a title, and a legend title) and returns a choropleth map. Then call your function twice to remake both maps.\n\n\n\n\n\n\n\nImportantSubmission Instructions\n\n\n\nHead over to Blackboard and go to the Lab 3 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and note whether and in what capacity you used AI on the assignment.\nThen upload a compressed (zipped) version of your project folder including the rendered HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).",
+    "crumbs": [
+      "Labs",
+      "Lab 3: Maps"
+    ]
   }
 ]

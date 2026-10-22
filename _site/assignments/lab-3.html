@@ -724,7 +724,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#step-1c-map-democracy-20-pts" id="toc-step-1c-map-democracy-20-pts" class="nav-link" data-scroll-target="#step-1c-map-democracy-20-pts">Step 1c: Map democracy (20 pts)</a></li>
   </ul></li>
   <li><a href="#step-2-a-leaflet-map-of-conflict-50-pts" id="toc-step-2-a-leaflet-map-of-conflict-50-pts" class="nav-link" data-scroll-target="#step-2-a-leaflet-map-of-conflict-50-pts">Step 2: A leaflet map of conflict (50 pts)</a></li>
-  <li><a href="#bonus-quiz-extra-credit" id="toc-bonus-quiz-extra-credit" class="nav-link" data-scroll-target="#bonus-quiz-extra-credit">Bonus (quiz extra credit)</a></li>
+  <li><a href="#bonus-extra-credit" id="toc-bonus-extra-credit" class="nav-link" data-scroll-target="#bonus-extra-credit">Bonus (extra credit)</a></li>
   <li><a href="#hints" id="toc-hints" class="nav-link" data-scroll-target="#hints">Hints</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/dataviz/edit/main/assignments/lab-3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/dataviz/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -826,9 +826,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ged_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_01_26_09.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><em>These are UCDP’s “candidate” events: they are released monthly and are preliminary until UCDP finishes checking them, but they have the same columns as the file we used in class. Following the approach from the Interactive Maps topic, filter a few months of events for your country and convert the coordinates to simple features with <code>st_as_sf()</code>. If your country has only a handful of events, use more months. Then build a <code>leaflet</code> map with markers for the conflict events: show the location name on hover and the number of deaths and date on click. Use “OpenTopoMap” as your basemap.</em></p>
 </section>
-<section id="bonus-quiz-extra-credit" class="level2">
-<h2 class="anchored" data-anchor-id="bonus-quiz-extra-credit">Bonus (quiz extra credit)</h2>
-<p><em>Completing this bonus adds 2 points to a quiz where you lost points, up to full credit on that quiz.</em></p>
+<section id="bonus-extra-credit" class="level2">
+<h2 class="anchored" data-anchor-id="bonus-extra-credit">Bonus (extra credit)</h2>
+<p><em>Completing this bonus restores full credit on one quiz where you lost points. If you have not lost points on any quiz, you will get 2 points of extra credit on this lab instead.</em></p>
 <p><em>Steps 1b and 1c use almost the same code. Write a function called <code>create_map()</code> that takes four arguments (your map data frame, the name of the variable to map, a title, and a legend title) and returns a choropleth map. Then call your function twice to remake both maps.</em></p>
 <p><br></p>
 <div class="callout callout-style-default callout-important callout-titled">
