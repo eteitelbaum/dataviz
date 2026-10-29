@@ -481,3 +481,18 @@ awesometable
 gtsave(awesometable, "awesometable.png")
 ```
 
+## Your Turn!
+
+<br>
+
+- Pick a different set of states (e.g. a region, your home state and its neighbors)
+  - Hint: use `filter()` with `name %in% c(...)`
+- Make a great (or awesome!) `gt` table with your states
+  - Update the title and subtitle to describe your selection
+- Export your table with `gtsave()`
+
+```{r}
+countdown(minutes = 15,
+          id = "your_turn")
+```
+

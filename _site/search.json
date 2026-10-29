@@ -392,7 +392,7 @@
     "href": "slides/week-9.1.html#awesome-table",
     "title": "Making Tables",
     "section": "Awesome Table",
-    "text": "Awesome Table\n\n\n\n\n\n\n\n\n\nMean Household Income of Quintiles, 2021\n\n\nSeven Representative U.S. States\n\n\n\nlowest\nsecond\nthird\nfourth\nhighest\ntop 5%\n\n\n\n\nDistrict of Columbia\n$12,971\n$51,060\n$94,478\n$157,803\n$375,792\n$670,768\n\n\nMassachusetts\n$16,812\n$50,519\n$89,602\n$142,491\n$316,447\n$558,616\n\n\nCalifornia\n$17,433\n$49,234\n$84,658\n$134,560\n$309,857\n$555,007\n\n\nNorth Carolina\n$13,880\n$36,395\n$60,870\n$95,946\n$217,348\n$390,822\n\n\nOhio\n$13,962\n$37,248\n$62,197\n$96,445\n$209,247\n$370,964\n\n\nMaine\n$14,836\n$38,190\n$63,621\n$97,559\n$205,365\n$359,776\n\n\nPuerto Rico\n$2,906\n$12,144\n$22,163\n$38,397\n$99,043\n$187,234\n\n\n\nSource: US Census Bureau, American Community Survey"
+    "text": "Awesome Table\n\n\n\n\n\n\n\n\n\nMean Household Income of Quintiles, 2021\n\n\nSeven Representative U.S. States\n\n\n\nlowest\nsecond\nthird\nfourth\nhighest\ntop 5%\n\n\n\n\nDistrict of Columbia\n$12,971\n$51,060\n$94,478\n$157,803\n$375,792\n$670,768\n\n\nConnecticut\n$17,417\n$48,870\n$84,042\n$133,488\n$319,533\n$602,707\n\n\nIllinois\n$15,102\n$42,688\n$72,900\n$114,531\n$258,373\n$466,713\n\n\nAlaska\n$19,344\n$51,030\n$81,169\n$122,652\n$242,097\n$394,694\n\n\nNorth Dakota\n$15,507\n$41,406\n$68,558\n$104,602\n$217,143\n$380,261\n\n\nOhio\n$13,962\n$37,248\n$62,197\n$96,445\n$209,247\n$370,964\n\n\nPuerto Rico\n$2,906\n$12,144\n$22,163\n$38,397\n$99,043\n$187,234\n\n\n\nSource: US Census Bureau, American Community Survey"
   },
   {
     "objectID": "slides/week-9.1.html#when-not-to-use-tables",
@@ -434,7 +434,7 @@
     "href": "slides/week-9.1.html#clean-the-data",
     "title": "Making Tables",
     "section": "Clean the Data",
-    "text": "Clean the Data\n\nlibrary(stringr)\nlibrary(dplyr)\n\nquintiles &lt;- get_acs(geography = \"state\", \n                      variables = c(q1 = \"B19081_001\",\n                                    q2 = \"B19081_002\",\n                                    q3 = \"B19081_003\",\n                                    q4 = \"B19081_004\",\n                                    q5 = \"B19081_005\",\n                                    top5 = \"B19081_006\"),\n                      year = 2021,\n                      output = \"wide\") |&gt;\n                      select(\n                        !ends_with(\"M\"), # eliminate margin of error\n                        -GEOID) |&gt; # eliminate geo id\n                      rename(name = NAME) |&gt;\n                      rename_with(~str_remove(., 'E'))\n    \n\nglimpse(quintiles)\n\n\n\n\n−+\n10:00"
+    "text": "Clean the Data\n\nlibrary(stringr)\nlibrary(dplyr)\n\nquintiles &lt;- get_acs(geography = \"state\", \n                      variables = c(q1 = \"B19081_001\",\n                                    q2 = \"B19081_002\",\n                                    q3 = \"B19081_003\",\n                                    q4 = \"B19081_004\",\n                                    q5 = \"B19081_005\",\n                                    top5 = \"B19081_006\"),\n                      year = 2021,\n                      output = \"wide\") |&gt;\n                      select(\n                        !ends_with(\"M\"), # eliminate margin of error\n                        -GEOID) |&gt; # eliminate geo id\n                      rename(name = NAME) |&gt;\n                      rename_with(~str_remove(., 'E'))\n    \n\nglimpse(quintiles)"
   },
   {
     "objectID": "slides/week-9.1.html#kableextra-table",
@@ -462,35 +462,35 @@
     "href": "slides/week-9.1.html#lets-make-a-gt-table",
     "title": "Making Tables",
     "section": "Let’s make a gt table",
-    "text": "Let’s make a gt table\nCreate states data frame…\n\n# lowest \nstate_min &lt;- quintiles |&gt; \n  slice_min(q1) \n\n# highest\nstate_max &lt;- quintiles |&gt; \n  slice_max(top5) \n\n# randomly select five more\nfive_more &lt;- quintiles |&gt;\n   slice_sample(n = 5) \n\nstates &lt;- bind_rows(state_min, state_max, five_more) |&gt;\n  arrange(desc(top5))\n\n\n\n\n−+\n05:00"
+    "text": "Let’s make a gt table\nCreate states data frame…\n\n# lowest \nstate_min &lt;- quintiles |&gt; \n  slice_min(q1) \n\n# highest\nstate_max &lt;- quintiles |&gt; \n  slice_max(top5) \n\n# randomly select five more\nfive_more &lt;- quintiles |&gt;\n   slice_sample(n = 5) \n\nstates &lt;- bind_rows(state_min, state_max, five_more) |&gt;\n  arrange(desc(top5))"
   },
   {
     "objectID": "slides/week-9.1.html#lets-make-a-gt-table-1",
     "href": "slides/week-9.1.html#lets-make-a-gt-table-1",
     "title": "Making Tables",
     "section": "Let’s make a gt table",
-    "text": "Let’s make a gt table\n\n\nlibrary(gt)\ngt(states)\n\n\n\n\n\n\n\nname\nq1\nq2\nq3\nq4\nq5\ntop5\n\n\n\n\nDistrict of Columbia\n12971\n51060\n94478\n157803\n375792\n670768\n\n\nMassachusetts\n16812\n50519\n89602\n142491\n316447\n558616\n\n\nCalifornia\n17433\n49234\n84658\n134560\n309857\n555007\n\n\nNorth Carolina\n13880\n36395\n60870\n95946\n217348\n390822\n\n\nOhio\n13962\n37248\n62197\n96445\n209247\n370964\n\n\nMaine\n14836\n38190\n63621\n97559\n205365\n359776\n\n\nPuerto Rico\n2906\n12144\n22163\n38397\n99043\n187234"
+    "text": "Let’s make a gt table\n\n\nlibrary(gt)\ngt(states)\n\n\n\n\n\n\n\nname\nq1\nq2\nq3\nq4\nq5\ntop5\n\n\n\n\nDistrict of Columbia\n12971\n51060\n94478\n157803\n375792\n670768\n\n\nConnecticut\n17417\n48870\n84042\n133488\n319533\n602707\n\n\nIllinois\n15102\n42688\n72900\n114531\n258373\n466713\n\n\nAlaska\n19344\n51030\n81169\n122652\n242097\n394694\n\n\nNorth Dakota\n15507\n41406\n68558\n104602\n217143\n380261\n\n\nOhio\n13962\n37248\n62197\n96445\n209247\n370964\n\n\nPuerto Rico\n2906\n12144\n22163\n38397\n99043\n187234"
   },
   {
     "objectID": "slides/week-9.1.html#lets-make-a-good-gt-table",
     "href": "slides/week-9.1.html#lets-make-a-good-gt-table",
     "title": "Making Tables",
     "section": "Let’s make a good gt table",
-    "text": "Let’s make a good gt table\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMean Household Income of Quintiles, 2021\n\n\nSeven Representative U.S. States\n\n\n\nlowest\nsecond\nthird\nfourth\nhighest\ntop 5%\n\n\n\n\nDistrict of Columbia\n$12,971\n$51,060\n$94,478\n$157,803\n$375,792\n$670,768\n\n\nMassachusetts\n$16,812\n$50,519\n$89,602\n$142,491\n$316,447\n$558,616\n\n\nCalifornia\n$17,433\n$49,234\n$84,658\n$134,560\n$309,857\n$555,007\n\n\nNorth Carolina\n$13,880\n$36,395\n$60,870\n$95,946\n$217,348\n$390,822\n\n\nOhio\n$13,962\n$37,248\n$62,197\n$96,445\n$209,247\n$370,964\n\n\nMaine\n$14,836\n$38,190\n$63,621\n$97,559\n$205,365\n$359,776\n\n\nPuerto Rico\n$2,906\n$12,144\n$22,163\n$38,397\n$99,043\n$187,234\n\n\n\nSource: US Census Bureau, American Community Survey"
+    "text": "Let’s make a good gt table\n\n\n\n\n\n\n\n\n\nMean Household Income of Quintiles, 2021\n\n\nSeven Representative U.S. States\n\n\n\nlowest\nsecond\nthird\nfourth\nhighest\ntop 5%\n\n\n\n\nDistrict of Columbia\n$12,971\n$51,060\n$94,478\n$157,803\n$375,792\n$670,768\n\n\nConnecticut\n$17,417\n$48,870\n$84,042\n$133,488\n$319,533\n$602,707\n\n\nIllinois\n$15,102\n$42,688\n$72,900\n$114,531\n$258,373\n$466,713\n\n\nAlaska\n$19,344\n$51,030\n$81,169\n$122,652\n$242,097\n$394,694\n\n\nNorth Dakota\n$15,507\n$41,406\n$68,558\n$104,602\n$217,143\n$380,261\n\n\nOhio\n$13,962\n$37,248\n$62,197\n$96,445\n$209,247\n$370,964\n\n\nPuerto Rico\n$2,906\n$12,144\n$22,163\n$38,397\n$99,043\n$187,234\n\n\n\nSource: US Census Bureau, American Community Survey"
   },
   {
     "objectID": "slides/week-9.1.html#lets-make-a-good-gt-table-1",
     "href": "slides/week-9.1.html#lets-make-a-good-gt-table-1",
     "title": "Making Tables",
     "section": "Let’s make a good gt table",
-    "text": "Let’s make a good gt table\n\ngoodtable &lt;- gt(states) |&gt; \n  tab_header(\n    title = \"Mean Household Income of Quintiles, 2021\",\n    subtitle = \"Seven Representative U.S. States\"\n  ) |&gt; \n  cols_label(\n    name = \"\",\n    q1 = \"lowest\",\n    q2 = \"second\",\n    q3 = \"third\",\n    q4 = \"fourth\",\n    q5 = \"highest\",\n    top5 = \"top 5%\"\n  ) |&gt; \n  fmt_currency(\n    columns = c(q1:top5),\n    currency = \"USD\", \n    use_subunits = FALSE\n  ) |&gt;\n  # note that you can use markdown (md) to format the source note for html documents\n  tab_source_note(source_note = md(\"**Source**: US Census Bureau, American Community Survey\"))\n\ngoodtable\n\n\n\n\n−+\n10:00"
+    "text": "Let’s make a good gt table\n\ngoodtable &lt;- gt(states) |&gt; \n  tab_header(\n    title = \"Mean Household Income of Quintiles, 2021\",\n    subtitle = \"Seven Representative U.S. States\"\n  ) |&gt; \n  cols_label(\n    name = \"\",\n    q1 = \"lowest\",\n    q2 = \"second\",\n    q3 = \"third\",\n    q4 = \"fourth\",\n    q5 = \"highest\",\n    top5 = \"top 5%\"\n  ) |&gt; \n  fmt_currency(\n    columns = c(q1:top5),\n    currency = \"USD\", \n    use_subunits = FALSE\n  ) |&gt;\n  # note that you can use markdown (md) to format the source note for html documents\n  tab_source_note(source_note = md(\"**Source**: US Census Bureau, American Community Survey\"))\n\ngoodtable"
   },
   {
     "objectID": "slides/week-9.1.html#change-colum-width",
     "href": "slides/week-9.1.html#change-colum-width",
     "title": "Making Tables",
     "section": "Change Colum Width",
-    "text": "Change Colum Width\n\n\n\n\n\n\n\n\n\nMean Household Income of Quintiles, 2021\n\n\nSeven Representative U.S. States\n\n\n\nlowest\nsecond\nthird\nfourth\nhighest\ntop 5%\n\n\n\n\nDistrict of Columbia\n$12,971\n$51,060\n$94,478\n$157,803\n$375,792\n$670,768\n\n\nMassachusetts\n$16,812\n$50,519\n$89,602\n$142,491\n$316,447\n$558,616\n\n\nCalifornia\n$17,433\n$49,234\n$84,658\n$134,560\n$309,857\n$555,007\n\n\nNorth Carolina\n$13,880\n$36,395\n$60,870\n$95,946\n$217,348\n$390,822\n\n\nOhio\n$13,962\n$37,248\n$62,197\n$96,445\n$209,247\n$370,964\n\n\nMaine\n$14,836\n$38,190\n$63,621\n$97,559\n$205,365\n$359,776\n\n\nPuerto Rico\n$2,906\n$12,144\n$22,163\n$38,397\n$99,043\n$187,234\n\n\n\nSource: US Census Bureau, American Community Survey"
+    "text": "Change Colum Width\n\n\n\n\n\n\n\n\n\nMean Household Income of Quintiles, 2021\n\n\nSeven Representative U.S. States\n\n\n\nlowest\nsecond\nthird\nfourth\nhighest\ntop 5%\n\n\n\n\nDistrict of Columbia\n$12,971\n$51,060\n$94,478\n$157,803\n$375,792\n$670,768\n\n\nConnecticut\n$17,417\n$48,870\n$84,042\n$133,488\n$319,533\n$602,707\n\n\nIllinois\n$15,102\n$42,688\n$72,900\n$114,531\n$258,373\n$466,713\n\n\nAlaska\n$19,344\n$51,030\n$81,169\n$122,652\n$242,097\n$394,694\n\n\nNorth Dakota\n$15,507\n$41,406\n$68,558\n$104,602\n$217,143\n$380,261\n\n\nOhio\n$13,962\n$37,248\n$62,197\n$96,445\n$209,247\n$370,964\n\n\nPuerto Rico\n$2,906\n$12,144\n$22,163\n$38,397\n$99,043\n$187,234\n\n\n\nSource: US Census Bureau, American Community Survey"
   },
   {
     "objectID": "slides/week-9.1.html#change-colum-width-1",
@@ -504,7 +504,7 @@
     "href": "slides/week-9.1.html#change-font",
     "title": "Making Tables",
     "section": "Change Font",
-    "text": "Change Font\n\n\n\n\n\n\n\n\n\nMean Household Income of Quintiles, 2021\n\n\nSeven Representative U.S. States\n\n\n\nlowest\nsecond\nthird\nfourth\nhighest\ntop 5%\n\n\n\n\nDistrict of Columbia\n$12,971\n$51,060\n$94,478\n$157,803\n$375,792\n$670,768\n\n\nMassachusetts\n$16,812\n$50,519\n$89,602\n$142,491\n$316,447\n$558,616\n\n\nCalifornia\n$17,433\n$49,234\n$84,658\n$134,560\n$309,857\n$555,007\n\n\nNorth Carolina\n$13,880\n$36,395\n$60,870\n$95,946\n$217,348\n$390,822\n\n\nOhio\n$13,962\n$37,248\n$62,197\n$96,445\n$209,247\n$370,964\n\n\nMaine\n$14,836\n$38,190\n$63,621\n$97,559\n$205,365\n$359,776\n\n\nPuerto Rico\n$2,906\n$12,144\n$22,163\n$38,397\n$99,043\n$187,234\n\n\n\nSource: US Census Bureau, American Community Survey"
+    "text": "Change Font\n\n\n\n\n\n\n\n\n\nMean Household Income of Quintiles, 2021\n\n\nSeven Representative U.S. States\n\n\n\nlowest\nsecond\nthird\nfourth\nhighest\ntop 5%\n\n\n\n\nDistrict of Columbia\n$12,971\n$51,060\n$94,478\n$157,803\n$375,792\n$670,768\n\n\nConnecticut\n$17,417\n$48,870\n$84,042\n$133,488\n$319,533\n$602,707\n\n\nIllinois\n$15,102\n$42,688\n$72,900\n$114,531\n$258,373\n$466,713\n\n\nAlaska\n$19,344\n$51,030\n$81,169\n$122,652\n$242,097\n$394,694\n\n\nNorth Dakota\n$15,507\n$41,406\n$68,558\n$104,602\n$217,143\n$380,261\n\n\nOhio\n$13,962\n$37,248\n$62,197\n$96,445\n$209,247\n$370,964\n\n\nPuerto Rico\n$2,906\n$12,144\n$22,163\n$38,397\n$99,043\n$187,234\n\n\n\nSource: US Census Bureau, American Community Survey"
   },
   {
     "objectID": "slides/week-9.1.html#change-font-1",
@@ -518,7 +518,7 @@
     "href": "slides/week-9.1.html#center",
     "title": "Making Tables",
     "section": "Center",
-    "text": "Center\n\n\n\n\n\n\n\n\n\nMean Household Income of Quintiles, 2021\n\n\nSeven Representative U.S. States\n\n\n\nlowest\nsecond\nthird\nfourth\nhighest\ntop 5%\n\n\n\n\nDistrict of Columbia\n$12,971\n$51,060\n$94,478\n$157,803\n$375,792\n$670,768\n\n\nMassachusetts\n$16,812\n$50,519\n$89,602\n$142,491\n$316,447\n$558,616\n\n\nCalifornia\n$17,433\n$49,234\n$84,658\n$134,560\n$309,857\n$555,007\n\n\nNorth Carolina\n$13,880\n$36,395\n$60,870\n$95,946\n$217,348\n$390,822\n\n\nOhio\n$13,962\n$37,248\n$62,197\n$96,445\n$209,247\n$370,964\n\n\nMaine\n$14,836\n$38,190\n$63,621\n$97,559\n$205,365\n$359,776\n\n\nPuerto Rico\n$2,906\n$12,144\n$22,163\n$38,397\n$99,043\n$187,234\n\n\n\nSource: US Census Bureau, American Community Survey"
+    "text": "Center\n\n\n\n\n\n\n\n\n\nMean Household Income of Quintiles, 2021\n\n\nSeven Representative U.S. States\n\n\n\nlowest\nsecond\nthird\nfourth\nhighest\ntop 5%\n\n\n\n\nDistrict of Columbia\n$12,971\n$51,060\n$94,478\n$157,803\n$375,792\n$670,768\n\n\nConnecticut\n$17,417\n$48,870\n$84,042\n$133,488\n$319,533\n$602,707\n\n\nIllinois\n$15,102\n$42,688\n$72,900\n$114,531\n$258,373\n$466,713\n\n\nAlaska\n$19,344\n$51,030\n$81,169\n$122,652\n$242,097\n$394,694\n\n\nNorth Dakota\n$15,507\n$41,406\n$68,558\n$104,602\n$217,143\n$380,261\n\n\nOhio\n$13,962\n$37,248\n$62,197\n$96,445\n$209,247\n$370,964\n\n\nPuerto Rico\n$2,906\n$12,144\n$22,163\n$38,397\n$99,043\n$187,234\n\n\n\nSource: US Census Bureau, American Community Survey"
   },
   {
     "objectID": "slides/week-9.1.html#center-1",
@@ -532,7 +532,7 @@
     "href": "slides/week-9.1.html#add-borders-and-lines",
     "title": "Making Tables",
     "section": "Add Borders and Lines",
-    "text": "Add Borders and Lines\n\n\n\n\n\n\n\n\n\nMean Household Income of Quintiles, 2021\n\n\nSeven Representative U.S. States\n\n\n\nlowest\nsecond\nthird\nfourth\nhighest\ntop 5%\n\n\n\n\nDistrict of Columbia\n$12,971\n$51,060\n$94,478\n$157,803\n$375,792\n$670,768\n\n\nMassachusetts\n$16,812\n$50,519\n$89,602\n$142,491\n$316,447\n$558,616\n\n\nCalifornia\n$17,433\n$49,234\n$84,658\n$134,560\n$309,857\n$555,007\n\n\nNorth Carolina\n$13,880\n$36,395\n$60,870\n$95,946\n$217,348\n$390,822\n\n\nOhio\n$13,962\n$37,248\n$62,197\n$96,445\n$209,247\n$370,964\n\n\nMaine\n$14,836\n$38,190\n$63,621\n$97,559\n$205,365\n$359,776\n\n\nPuerto Rico\n$2,906\n$12,144\n$22,163\n$38,397\n$99,043\n$187,234\n\n\n\nSource: US Census Bureau, American Community Survey"
+    "text": "Add Borders and Lines\n\n\n\n\n\n\n\n\n\nMean Household Income of Quintiles, 2021\n\n\nSeven Representative U.S. States\n\n\n\nlowest\nsecond\nthird\nfourth\nhighest\ntop 5%\n\n\n\n\nDistrict of Columbia\n$12,971\n$51,060\n$94,478\n$157,803\n$375,792\n$670,768\n\n\nConnecticut\n$17,417\n$48,870\n$84,042\n$133,488\n$319,533\n$602,707\n\n\nIllinois\n$15,102\n$42,688\n$72,900\n$114,531\n$258,373\n$466,713\n\n\nAlaska\n$19,344\n$51,030\n$81,169\n$122,652\n$242,097\n$394,694\n\n\nNorth Dakota\n$15,507\n$41,406\n$68,558\n$104,602\n$217,143\n$380,261\n\n\nOhio\n$13,962\n$37,248\n$62,197\n$96,445\n$209,247\n$370,964\n\n\nPuerto Rico\n$2,906\n$12,144\n$22,163\n$38,397\n$99,043\n$187,234\n\n\n\nSource: US Census Bureau, American Community Survey"
   },
   {
     "objectID": "slides/week-9.1.html#add-borders-and-lines-1",
@@ -5046,28 +5046,28 @@
     "href": "slides/week-9.2.html#democracy-example",
     "title": "Advanced Table Skills",
     "section": "Democracy Example",
-    "text": "Democracy Example\n\n\nlibrary(vdemlite)\n\n# Grab the polyarchy scores for the United States between 2000 and 2020\nbrics_dem &lt;- fetchdem(indicators = \"v2x_polyarchy\",\n                         start_year = 2000, end_year = 2020,\n                         countries = c(\"BRA\", \"RUS\", \"IND\", \"CHN\", \"ZAF\"))"
+    "text": "Democracy Example\n\n\nlibrary(vdemdata)\n\n# Grab the polyarchy scores for the BRICS countries between 2000 and 2020\nbrics_dem &lt;- vdem |&gt;\n  filter(year &gt;= 2000 & year &lt;= 2020,\n         country_text_id %in% c(\"BRA\", \"RUS\", \"IND\", \"CHN\", \"ZAF\")) |&gt;\n  select(country = country_name, year, v2x_polyarchy)"
   },
   {
     "objectID": "slides/week-9.2.html#democracy-example-1",
     "href": "slides/week-9.2.html#democracy-example-1",
     "title": "Advanced Table Skills",
     "section": "Democracy Example",
-    "text": "Democracy Example\n\n\nlibrary(dplyr)\n\ndem_summary &lt;- brics_dem|&gt;\n  group_by(country_id) |&gt;\n  summarize(\n    max = max(v2x_polyarchy, na.rm = TRUE),\n    mean = mean(v2x_polyarchy, na.rm = TRUE),\n    sd = sd(v2x_polyarchy, na.rm = TRUE),\n    dem_data = list(v2x_polyarchy),\n    .groups = \"drop\"\n  )"
+    "text": "Democracy Example\n\n\nlibrary(dplyr)\n\ndem_summary &lt;- brics_dem|&gt;\n  group_by(country) |&gt;\n  summarize(\n    max = max(v2x_polyarchy, na.rm = TRUE),\n    mean = mean(v2x_polyarchy, na.rm = TRUE),\n    sd = sd(v2x_polyarchy, na.rm = TRUE),\n    dem_data = list(v2x_polyarchy),\n    .groups = \"drop\"\n  )"
   },
   {
     "objectID": "slides/week-9.2.html#democracy-example-2",
     "href": "slides/week-9.2.html#democracy-example-2",
     "title": "Advanced Table Skills",
     "section": "Democracy Example",
-    "text": "Democracy Example\n\n\nlibrary(gtExtras)\n\ndem_summary |&gt;\n  gt() |&gt;\n  gt_plt_sparkline(dem_data) #from gtExtras\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ncountry_id\nmax\nmean\nsd\ndem_data\n\n\n\n\n8\n0.773\n0.75280952\n0.01862423\n\n\n\n   0.7\n\n\n\n11\n0.405\n0.30133333\n0.04091251\n\n\n\n   0.26\n\n\n\n19\n0.878\n0.83461905\n0.05923046\n\n\n\n   0.7\n\n\n\n39\n0.736\n0.63866667\n0.11018182\n\n\n\n   0.4\n\n\n\n110\n0.103\n0.09042857\n0.00944760\n\n\n\n   0.08"
+    "text": "Democracy Example\n\n\nlibrary(gtExtras)\n\ndem_summary |&gt;\n  gt() |&gt;\n  gt_plt_sparkline(dem_data) #from gtExtras\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ncountry\nmax\nmean\nsd\ndem_data\n\n\n\n\nBrazil\n0.875\n0.83452381\n0.058298901\n\n    0.7\n\n\n\nChina\n0.103\n0.09042857\n0.009615464\n\n    0.08\n\n\n\nIndia\n0.739\n0.63666667\n0.112689988\n\n    0.4\n\n\n\nRussia\n0.403\n0.30238095\n0.040974963\n\n    0.26\n\n\n\nSouth Africa\n0.779\n0.75795238\n0.018834745\n\n    0.7"
   },
   {
     "objectID": "slides/week-9.2.html#your-turn",
     "href": "slides/week-9.2.html#your-turn",
     "title": "Advanced Table Skills",
     "section": "Your Turn!",
-    "text": "Your Turn!\n\n\nDownload democracy data for one year\nIndicator is your choice\nAdd region codes\nGroup and summarize by region\nAdd an appropriate inline plot to your table\n\n\n\n\n−+\n15:00"
+    "text": "Your Turn!\n\n\nDownload democracy data for one year\nIndicator is your choice\nAdd region codes\nGroup and summarize by region\nAdd an appropriate inline plot to your table"
   },
   {
     "objectID": "slides/week-9.2.html#not-a-good-table",
@@ -5095,7 +5095,7 @@
     "href": "slides/week-9.2.html#your-turn-1",
     "title": "Advanced Table Skills",
     "section": "Your Turn!",
-    "text": "Your Turn!\n\n\nDownload data on median income for another state\nPlot the income estimates for that state\n\n\n\n\n−+\n15:00"
+    "text": "Your Turn!\n\n\nDownload data on median income for another state\nPlot the income estimates for that state"
   },
   {
     "objectID": "slides/week-9.2.html#reactable",
@@ -5630,5 +5630,12 @@
       "Labs",
       "Lab 3: Maps"
     ]
+  },
+  {
+    "objectID": "slides/week-9.1.html#your-turn",
+    "href": "slides/week-9.1.html#your-turn",
+    "title": "Making Tables",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\n\nPick a different set of states (e.g. a region, your home state and its neighbors)\n\nHint: use filter() with name %in% c(...)\n\nMake a great (or awesome!) gt table with your states\n\nUpdate the title and subtitle to describe your selection\n\nExport your table with gtsave()"
   }
 ]

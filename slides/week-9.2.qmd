@@ -9,7 +9,7 @@ format:
     theme: [simple, custom.scss]
     transition: fade
     slide-number: true
-    multiplex: true
+    multiplex: false
     chalkboard: true
 execute:
   echo: true
@@ -48,12 +48,13 @@ census_api_key(my_api_key)
 <br>
 
 ```{r}
-library(vdemlite)
+library(vdemdata)
 
-# Grab the polyarchy scores for the United States between 2000 and 2020
-brics_dem <- fetchdem(indicators = "v2x_polyarchy",
-                         start_year = 2000, end_year = 2020,
-                         countries = c("BRA", "RUS", "IND", "CHN", "ZAF"))
+# Grab the polyarchy scores for the BRICS countries between 2000 and 2020
+brics_dem <- vdem |>
+  filter(year >= 2000 & year <= 2020,
+         country_text_id %in% c("BRA", "RUS", "IND", "CHN", "ZAF")) |>
+  select(country = country_name, year, v2x_polyarchy)
 ```
 
 ## Democracy Example
@@ -64,7 +65,7 @@ brics_dem <- fetchdem(indicators = "v2x_polyarchy",
 library(dplyr)
 
 dem_summary <- brics_dem|>
-  group_by(country_id) |>
+  group_by(country) |>
   summarize(
     max = max(v2x_polyarchy, na.rm = TRUE),
     mean = mean(v2x_polyarchy, na.rm = TRUE),
