@@ -11,7 +11,7 @@ source("../helper.R")
 ```
 
 ::: {.callout-important}
-**Lab 4 (Tables)** due by 11:59 p.m. on `r advdate2(mon, 11)`. Thursday's session is recorded, not live — instructor out of town.
+**Lab 4 (Tables)** due by 11:59 p.m. on `r advdate2(sun, 11)`. Thursday's session is recorded, not live — instructor out of town.
 :::
 
 We fit models, present them as regression tables with `modelsummary`, and visualize them as coefficient plots. Second half of the tables sequence, following last week's `gt`/nano-tables work.
