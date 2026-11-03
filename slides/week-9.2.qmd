@@ -158,7 +158,43 @@ mass_med_inc |>
   theme_minimal()
 ```
 
-## Use Confidence Intervals Instead
+## Download and Wrangle the Data
+
+`get_acs()` returns an `estimate` and a margin of error (`moe`) for each county
+
+```{r}
+#| eval: false
+
+library(tidycensus)
+library(janitor)
+library(stringr)
+
+mass_med_inc <- get_acs(
+  geography = "county",
+  variables = c(median_income = "B06011_001"),
+  state = "MA",
+  year = 2021
+  ) |>
+  clean_names() |>
+  mutate(name = str_replace_all(name, " County, Massachusetts", ""))
+```
+
+## Build the Confidence Intervals
+
+The ACS reports margins of error at the 90% level, so `estimate` ± `moe` gives a 90% confidence interval
+
+```{r}
+#| eval: false
+
+mass_med_inc <- mass_med_inc |>
+  mutate(
+    lower_90 = estimate - moe, # lower bound of the 90% CI
+    upper_90 = estimate + moe  # upper bound of the 90% CI
+  ) |>
+  select(name, estimate, lower_90, upper_90)
+```
+
+## Plot the Confidence Intervals
 
 <br>
 

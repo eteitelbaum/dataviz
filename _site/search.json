@@ -3748,35 +3748,35 @@
     "href": "slides/week-11.1.html#user-demos",
     "title": "Shiny Apps",
     "section": "User Demos",
-    "text": "User Demos\n\nHave a look at the Shiny gallery\nPick an app that you like?\nOne thing you would like to learn from that app?\nOne thing that you would improve\nDiscuss with a neighbor\n\n\n\n\n−+\n05:00"
+    "text": "User Demos\n\nHave a look at the Shiny gallery\nPick an app that you like?\nOne thing you would like to learn from that app?\nOne thing that you would improve\nDiscuss with a neighbor"
   },
   {
     "objectID": "slides/week-11.1.html#feature-demos",
     "href": "slides/week-11.1.html#feature-demos",
     "title": "Shiny Apps",
     "section": "Feature Demos",
-    "text": "Feature Demos\n\nNow let’s look at feature demos\nWhat widgets, layouts, or features are you interested in?\nHow would you use them in your own apps?\n\n\n\n\n−+\n05:00"
+    "text": "Feature Demos\n\nNow let’s look at feature demos\nWhat widgets, layouts, or features are you interested in?\nHow would you use them in your own apps?"
   },
   {
     "objectID": "slides/week-11.1.html#professional-apps",
     "href": "slides/week-11.1.html#professional-apps",
     "title": "Shiny Apps",
     "section": "Professional Apps",
-    "text": "Professional Apps\n\nHere is a selection of modern, professional Shiny Apps\n\nPESKAS fisheries monitoring in Timor-Leste\nWaCSE for tracking reductions in GHG emissions as part of Washington State’s Sustainable Farms and Fields program\nJHU Lyme Disease Tracker\nmovie-vue-r a Vue.js and Shiny app for exploring movie + COVID information\n\nThese are mainly for inspiration, but try to find the code on GitHub and see how much you can understand\n\n\n\n\n−+\n05:00"
+    "text": "Professional Apps\n\nHere is a selection of modern, professional Shiny Apps\n\nPESKAS fisheries monitoring in Timor-Leste\nWaCSE for tracking reductions in GHG emissions as part of Washington State’s Sustainable Farms and Fields program\nJHU Lyme Disease Tracker\nmovie-vue-r a Vue.js and Shiny app for exploring movie + COVID information\n\nThese are mainly for inspiration, but try to find the code on GitHub and see how much you can understand"
   },
   {
     "objectID": "slides/week-11.1.html#getting-started-with-shiny",
     "href": "slides/week-11.1.html#getting-started-with-shiny",
     "title": "Shiny Apps",
     "section": "Getting Started with Shiny",
-    "text": "Getting Started with Shiny\n\nOpen RStudio\nStart a folder for the workshop\nInstall the shiny package (if not installed already)\nCreate a new Shiny app\n\n(File &gt; New File &gt; Shiny Web App)\n\nRun the Geyser App\nTry opening it in a browser\n\n\n\n\n−+\n05:00"
+    "text": "Getting Started with Shiny\n\nOpen RStudio\nStart a folder for the workshop\nInstall the shiny package (if not installed already)\nCreate a new Shiny app\n\n(File &gt; New File &gt; Shiny Web App)\n\nRun the Geyser App\nTry opening it in a browser"
   },
   {
     "objectID": "slides/week-11.1.html#challenge",
     "href": "slides/week-11.1.html#challenge",
     "title": "Shiny Apps",
     "section": "Challenge",
-    "text": "Challenge\n\nLook at the faithful dataset in R (hint: ?faithful)\nCreate a Shiny app that displays a histogram of the eruptions column\nChange the labels accordingly\nWhat kind of distribution do you see?\n\n\n\n\n−+\n10:00"
+    "text": "Challenge\n\nLook at the faithful dataset in R (hint: ?faithful)\nCreate a Shiny app that displays a histogram of the eruptions column\nChange the labels accordingly\nWhat kind of distribution do you see?"
   },
   {
     "objectID": "slides/week-11.1.html#shiny-app-basics",
@@ -3888,7 +3888,7 @@
     "href": "slides/week-11.1.html#your-turn",
     "title": "Shiny Apps",
     "section": "Your Turn!",
-    "text": "Your Turn!\n\nCreate a Shiny app that displays the square of a number\nTry entering different numbers manually\nTry using the up and down arrows\nAdjust the server logic to display the cube of a number\nTry other calculations\n\n\n\n\n−+\n10:00"
+    "text": "Your Turn!\n\nCreate a Shiny app that displays the square of a number\nTry entering different numbers manually\nTry using the up and down arrows\nAdjust the server logic to display the cube of a number\nTry other calculations"
   },
   {
     "objectID": "slides/week-11.1.html#eager-output",
@@ -5404,5 +5404,26 @@
       "Weekly Materials",
       "Week 9"
     ]
+  },
+  {
+    "objectID": "slides/week-9.2.html#download-and-wrangle-the-data",
+    "href": "slides/week-9.2.html#download-and-wrangle-the-data",
+    "title": "Advanced Table Skills",
+    "section": "Download and Wrangle the Data",
+    "text": "Download and Wrangle the Data\nget_acs() returns an estimate and a margin of error (moe) for each county\n\nlibrary(tidycensus)\nlibrary(janitor)\nlibrary(stringr)\n\nmass_med_inc &lt;- get_acs(\n  geography = \"county\",\n  variables = c(median_income = \"B06011_001\"),\n  state = \"MA\",\n  year = 2021\n  ) |&gt;\n  clean_names() |&gt;\n  mutate(name = str_replace_all(name, \" County, Massachusetts\", \"\"))"
+  },
+  {
+    "objectID": "slides/week-9.2.html#build-the-confidence-intervals",
+    "href": "slides/week-9.2.html#build-the-confidence-intervals",
+    "title": "Advanced Table Skills",
+    "section": "Build the Confidence Intervals",
+    "text": "Build the Confidence Intervals\nThe ACS reports margins of error at the 90% level, so estimate ± moe gives a 90% confidence interval\n\nmass_med_inc &lt;- mass_med_inc |&gt;\n  mutate(\n    lower_90 = estimate - moe, # lower bound of the 90% CI\n    upper_90 = estimate + moe  # upper bound of the 90% CI\n  ) |&gt;\n  select(name, estimate, lower_90, upper_90)"
+  },
+  {
+    "objectID": "slides/week-9.2.html#plot-the-confidence-intervals",
+    "href": "slides/week-9.2.html#plot-the-confidence-intervals",
+    "title": "Advanced Table Skills",
+    "section": "Plot the Confidence Intervals",
+    "text": "Plot the Confidence Intervals\n\n\nlibrary(ggplot2)\n\nmass_med_inc |&gt;\n  ggplot(aes(x = estimate, y = reorder(name, estimate))) +\n  geom_errorbar(aes(xmin = lower_90, xmax = upper_90)) +\n  geom_point(color = \"red\", size = 2) +\n  labs(title = \"Household income by county in Massachusetts\",\n       subtitle = \"2017-2021 American Community Survey\",\n       y = \"\",\n       x = \"Median Income\", \n       caption = \"ACS estimate (bars represent 90% confidence intervals)\") +\n  theme_minimal()"
   }
 ]
