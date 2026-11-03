@@ -818,20 +818,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="hints" class="level2">
 <h2 class="anchored" data-anchor-id="hints">Hints</h2>
 <p><em>Only look at these if you’re stuck!</em></p>
-<p><strong>Hint 1 — “A Census API key is required”:</strong></p>
+<p><strong>Hint 1 — Which packages do I need?</strong></p>
+<p>Load the <code>tidyverse</code> (which includes <code>dplyr</code>, <code>stringr</code> and <code>ggplot2</code>), plus:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 37%">
+<col style="width: 62%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Step</th>
+<th style="text-align: left;">Packages</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;"><code>tidycensus</code>, <code>gt</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>vdemdata</code>, <code>gt</code>, <code>gtExtras</code> (for <code>gt_plt_sparkline()</code>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>tidycensus</code>, <code>janitor</code> (for <code>clean_names()</code>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bonus</td>
+<td style="text-align: left;"><code>peacesciencer</code>, <code>modelsummary</code> (for both <code>modelsummary()</code> and <code>modelplot()</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>You only need to load each package once, so put all of your <code>library()</code> calls in the setup chunk.</p>
+<p><strong>Hint 2 — “A Census API key is required”:</strong></p>
 <p>Set your key in the setup chunk before you call <code>get_acs()</code>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidycensus)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">census_api_key</span>(<span class="st">"YOUR API KEY"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Hint 2 — Picking your counties:</strong></p>
+<p><strong>Hint 3 — Picking your counties:</strong></p>
 <p>You can stack the counties you want with <code>bind_rows()</code>, as we did with states in class, or pick them by name:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>my_counties <span class="ot">&lt;-</span> county_quintiles <span class="sc">|&gt;</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Franklin"</span>, <span class="st">"Cuyahoga"</span>, <span class="st">"Hamilton"</span>, <span class="st">"Delaware"</span>, <span class="st">"Athens"</span>, <span class="st">"Holmes"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Hint 3 — County names that won’t clean up:</strong></p>
+<p><strong>Hint 4 — County names that won’t clean up:</strong></p>
 <p>A few states don’t call all of their counties “counties.” Louisiana has parishes, Alaska has boroughs, and Virginia has independent cities. If some names still have endings after <code>str_replace_all()</code>, add a second <code>str_replace_all()</code> for the other ending, or just choose a different state.</p>
-<p><strong>Hint 4 — V-Dem country codes:</strong></p>
+<p><strong>Hint 5 — V-Dem country codes:</strong></p>
 <p>Filter on <code>country_text_id</code>, which uses three-letter codes. The G7, for example, is:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(country_text_id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"USA"</span>, <span class="st">"GBR"</span>, <span class="st">"FRA"</span>, <span class="st">"DEU"</span>, <span class="st">"ITA"</span>, <span class="st">"JPN"</span>, <span class="st">"CAN"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Hint 5 — Too many counties to read in your plot:</strong></p>
+<p><strong>Hint 6 — Too many counties to read in your plot:</strong></p>
 <p>If your state has a lot of counties, the plot in Step 3 will be crowded. Plot a subset, for example the 20 highest-income counties with <code>slice_max(estimate, n = 20)</code> or 20 random ones with <code>slice_sample(n = 20)</code>, and say so in your subtitle.</p>
 
 

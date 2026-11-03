@@ -95,7 +95,20 @@ Then upload a compressed (zipped) version of your project folder including the *
 
 *Only look at these if you're stuck!*
 
-**Hint 1 --- "A Census API key is required":**
+**Hint 1 --- Which packages do I need?**
+
+Load the `tidyverse` (which includes `dplyr`, `stringr` and `ggplot2`), plus:
+
+| Step | Packages |
+|:-----|:---------|
+| 1 | `tidycensus`, `gt` |
+| 2 | `vdemdata`, `gt`, `gtExtras` (for `gt_plt_sparkline()`) |
+| 3 | `tidycensus`, `janitor` (for `clean_names()`) |
+| Bonus | `peacesciencer`, `modelsummary` (for both `modelsummary()` and `modelplot()`) |
+
+You only need to load each package once, so put all of your `library()` calls in the setup chunk.
+
+**Hint 2 --- "A Census API key is required":**
 
 Set your key in the setup chunk before you call `get_acs()`:
 
@@ -104,7 +117,7 @@ library(tidycensus)
 census_api_key("YOUR API KEY")
 ```
 
-**Hint 2 --- Picking your counties:**
+**Hint 3 --- Picking your counties:**
 
 You can stack the counties you want with `bind_rows()`, as we did with states in class, or pick them by name:
 
@@ -113,11 +126,11 @@ my_counties <- county_quintiles |>
   filter(name %in% c("Franklin", "Cuyahoga", "Hamilton", "Delaware", "Athens", "Holmes"))
 ```
 
-**Hint 3 --- County names that won't clean up:**
+**Hint 4 --- County names that won't clean up:**
 
 A few states don't call all of their counties "counties." Louisiana has parishes, Alaska has boroughs, and Virginia has independent cities. If some names still have endings after `str_replace_all()`, add a second `str_replace_all()` for the other ending, or just choose a different state.
 
-**Hint 4 --- V-Dem country codes:**
+**Hint 5 --- V-Dem country codes:**
 
 Filter on `country_text_id`, which uses three-letter codes. The G7, for example, is:
 
@@ -125,6 +138,6 @@ Filter on `country_text_id`, which uses three-letter codes. The G7, for example,
 filter(country_text_id %in% c("USA", "GBR", "FRA", "DEU", "ITA", "JPN", "CAN"))
 ```
 
-**Hint 5 --- Too many counties to read in your plot:**
+**Hint 6 --- Too many counties to read in your plot:**
 
 If your state has a lot of counties, the plot in Step 3 will be crowded. Plot a subset, for example the 20 highest-income counties with `slice_max(estimate, n = 20)` or 20 random ones with `slice_sample(n = 20)`, and say so in your subtitle.
