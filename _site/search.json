@@ -286,7 +286,7 @@
     "href": "weeks/week-11.html",
     "title": "Week 11",
     "section": "",
-    "text": "Important\n\n\n\nLab 4 (Tables & coefficient plots) due by 11:59 p.m. on Monday, November 9. Thursday’s session is recorded, not live — instructor out of town.\nWe fit models, present them as regression tables with modelsummary, and visualize them as coefficient plots. Second half of the tables sequence, following last week’s gt/nano-tables work.",
+    "text": "Important\n\n\n\nLab 4 (Tables) due by 11:59 p.m. on Monday, November 9. Thursday’s session is recorded, not live — instructor out of town.\nWe fit models, present them as regression tables with modelsummary, and visualize them as coefficient plots. Second half of the tables sequence, following last week’s gt/nano-tables work.",
     "crumbs": [
       "Weekly Materials",
       "Week 11"
@@ -319,7 +319,7 @@
     "href": "weeks/week-11.html#assignments",
     "title": "Week 11",
     "section": "Assignments",
-    "text": "Assignments\n🧪 Lab 4: Tables & coefficient plots\n📘 Weekly quiz, in class",
+    "text": "Assignments\n🧪 Lab 4: Tables\n📘 Weekly quiz, in class",
     "crumbs": [
       "Weekly Materials",
       "Week 11"
@@ -549,6 +549,13 @@
     "text": "Export Table\n\n\ngtsave(awesometable, \"awesometable.png\")"
   },
   {
+    "objectID": "slides/week-9.1.html#your-turn",
+    "href": "slides/week-9.1.html#your-turn",
+    "title": "Making Tables",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\n\nPick a different set of states (e.g. a region, your home state and its neighbors)\n\nHint: use filter() with name %in% c(...)\n\nMake a great (or awesome!) gt table with your states\n\nUpdate the title and subtitle to describe your selection\n\nExport your table with gtsave()"
+  },
+  {
     "objectID": "slides/week-6.2.html#what-is-a-function",
     "href": "slides/week-6.2.html#what-is-a-function",
     "title": "Make a Map Function",
@@ -612,6 +619,20 @@
     "text": "Map Function\n\nSave the source code in a folder…\n\n\nsource(\"functions/wb-maps.R\", local = knitr::knit_global())\n\n\nand call in your document…\n\ncreate_map(var_id = \"SL.TLF.CACT.FE.ZS\", \n           title= \"Female Labor Force Participation\", \n           legend_title = \"FLFP %\", \n           theme = \"inferno\", \n           direction = -1)"
   },
   {
+    "objectID": "slides/week-6.2.html#map-function-4",
+    "href": "slides/week-6.2.html#map-function-4",
+    "title": "Make a Map Function",
+    "section": "Map Function",
+    "text": "Map Function\n\nNow we can map any World Bank indicator by changing the inputs…\n\n\ncreate_map(var_id = \"NY.GDP.PCAP.PP.KD\", \n           title= \"GDP per capita (constant 2017 international $)\", \n           legend_title = \"Geary-Khamis $\", \n           theme = \"mako\", \n           direction = -1)"
+  },
+  {
+    "objectID": "slides/week-6.2.html#map-function-5",
+    "href": "slides/week-6.2.html#map-function-5",
+    "title": "Make a Map Function",
+    "section": "Map Function",
+    "text": "Map Function"
+  },
+  {
     "objectID": "slides/week-6.2.html#your-turn",
     "href": "slides/week-6.2.html#your-turn",
     "title": "Make a Map Function",
@@ -640,11 +661,25 @@
     "text": "Group and Summarize\n\n\n# var_id = any World Bank indicator\n# mrv = number of most recent values\n# group_var = column to group by (country or date)\n\nmean_wb_data &lt;- function(var_id, mrv, group_var){\n  wb_data(var_id, mrv = mrv) |&gt; \n    group_by( {{ group_var }}) |&gt; \n    summarize(mean_value = mean(.data[[var_id]], na.rm = TRUE))\n}\n\n# Example call\nmean_wb_data(\"SL.TLF.CACT.FE.ZS\", 3, date)"
   },
   {
+    "objectID": "slides/week-6.2.html#group-and-summarize-1",
+    "href": "slides/week-6.2.html#group-and-summarize-1",
+    "title": "Make a Map Function",
+    "section": "Group and Summarize",
+    "text": "Group and Summarize\n\nAverage female labor force participation across countries, last three years…\n\n\nmean_wb_data(\"SL.TLF.CACT.FE.ZS\", 3, date)\n\n# A tibble: 3 × 2\n   date mean_value\n  &lt;dbl&gt;      &lt;dbl&gt;\n1  2023       51.4\n2  2024       51.5\n3  2025       51.4"
+  },
+  {
     "objectID": "slides/week-6.2.html#line-chart",
     "href": "slides/week-6.2.html#line-chart",
     "title": "Make a Map Function",
     "section": "Line Chart",
     "text": "Line Chart\n\n\ncreate_line_chart &lt;- function(data, x_var, y_var, color_var, title, x_label,\n                              y_label, legend_title, color_palette = \"turbo\",\n                              palette_end = 0.8) {\n  \n  ggplot(data, aes(x = {{ x_var }}, y = {{ y_var }}, color = {{ color_var }})) +\n    geom_line() +\n    labs(\n      title = title,\n      x = x_label,\n      y = y_label\n    ) +\n    scale_color_viridis_d(\n      name = legend_title,  \n      option = color_palette, \n      end = palette_end\n    ) +\n    theme_minimal()\n}\n\n# Example call\ncreate_line_chart(\n  data = brics_dem, \n  x_var = year, \n  y_var = v2x_polyarchy, \n  color_var = country_name, \n  title = \"Democracy in the BRICS Nations\", \n  x_label = \"Year\", \n  y_label = \"Polyarchy Score\",\n  legend_title = \"Country\"\n)"
+  },
+  {
+    "objectID": "slides/week-6.2.html#line-chart-1",
+    "href": "slides/week-6.2.html#line-chart-1",
+    "title": "Make a Map Function",
+    "section": "Line Chart",
+    "text": "Line Chart"
   },
   {
     "objectID": "slides/week-5.2.html#merging-data-frames",
@@ -724,6 +759,41 @@
     "text": "Try it Yourself\n\nTry changing the parameters in the code to answer these questions:\n\n\nTry summarizing the data with a different function for one or more of the variables.\n\n\nWhat is the median value of polyarchy for The West?\nWhat is the max value of libdem for Eastern Europe?\nWhat is the standard deviation of women_rep for Africa?\nWhat is the mean of flfp for the Middle East?\n\n\nNow try grouping by country instead of region and filter for years &gt;= 2000.\n\n\nWhat is the median value of polyarchy for Sweden?\nWhat is the max value of libdem New Zealand?\nWhat is the standard deviation of women_rep for Norway?\nWhat is the min of flfp for Germany?\n\n\nTry sorting countries in ascending order of the selected variable (hint: delete “desc” from the arrange() call). Which country ranks at the “top” of the list? Now change it back to descending order."
   },
   {
+    "objectID": "slides/week-5.2.html#from-summary-to-chart",
+    "href": "slides/week-5.2.html#from-summary-to-chart",
+    "title": "Merging and Summarizing Data",
+    "section": "From Summary to Chart",
+    "text": "From Summary to Chart\n\n\nA summary table is a good start, but a chart is easier to read\nSave the summary as an object, then hand it to ggplot()\ngeom_col() draws one bar per region at the height of the summary value\nNote: arrange() sorts the table, not the bars\n\nUse fct_reorder() to sort the bars"
+  },
+  {
+    "objectID": "slides/week-5.2.html#step-1-save-the-summary",
+    "href": "slides/week-5.2.html#step-1-save-the-summary",
+    "title": "Merging and Summarizing Data",
+    "section": "Step 1: Save the Summary",
+    "text": "Step 1: Save the Summary\n\n\npolyarchy_region &lt;- dem_women |&gt; # save result as new object\n  group_by(region) |&gt; # group data by region\n  summarize(\n    polyarchy = mean(polyarchy, na.rm = TRUE) # mean polyarchy score by region\n  ) |&gt; \n  arrange(desc(polyarchy)) # arrange in descending order\n\npolyarchy_region\n\n# A tibble: 6 × 2\n  region         polyarchy\n  &lt;chr&gt;              &lt;dbl&gt;\n1 The West           0.871\n2 Latin America      0.637\n3 Eastern Europe     0.539\n4 Asia               0.408\n5 Africa             0.393\n6 Middle East        0.246"
+  },
+  {
+    "objectID": "slides/week-5.2.html#step-2-make-a-column-chart",
+    "href": "slides/week-5.2.html#step-2-make-a-column-chart",
+    "title": "Merging and Summarizing Data",
+    "section": "Step 2: Make a Column Chart",
+    "text": "Step 2: Make a Column Chart\n\n\nggplot(polyarchy_region, aes(x = fct_reorder(region, -polyarchy), y = polyarchy)) +\n  geom_col(fill = \"steelblue\") + # one bar per region\n  labs(\n    x = \"Region\", \n    y = \"Avg. Polyarchy Score\", \n    title = \"Democracy by region, 1990 - present\", \n    caption = \"Source: V-Dem Institute\"\n  ) +\n  theme_minimal()"
+  },
+  {
+    "objectID": "slides/week-5.2.html#step-2-make-a-column-chart-1",
+    "href": "slides/week-5.2.html#step-2-make-a-column-chart-1",
+    "title": "Merging and Summarizing Data",
+    "section": "Step 2: Make a Column Chart",
+    "text": "Step 2: Make a Column Chart"
+  },
+  {
+    "objectID": "slides/week-5.2.html#try-it-yourself-3",
+    "href": "slides/week-5.2.html#try-it-yourself-3",
+    "title": "Merging and Summarizing Data",
+    "section": "Try it Yourself",
+    "text": "Try it Yourself\n\nUsing your merged data frame from today:\n\n\nMake a column chart of the median libdem score by region. Which region ranks highest? Lowest?\nAdd filter(year == 2019) before group_by(). Does the ranking change compared to the 1990 - present average?\nNow chart one of your World Bank variables (e.g. flfp or women_rep) by region. Do the regions line up in the same order as they do for democracy?\nChange the fill color and the theme, and update the axis labels and title to match your new chart."
+  },
+  {
     "objectID": "slides/week-4.2.html#what-is-a-data-frame",
     "href": "slides/week-4.2.html#what-is-a-data-frame",
     "title": "Wrangling Data",
@@ -764,6 +834,13 @@
     "title": "Wrangling Data",
     "section": "Dates and Times with lubridate",
     "text": "Dates and Times with lubridate\n\nlubridate is an R package that makes it easier to work with dates and times\nUse convenient functions to store dates in different formats\n\n\nlibrary(lubridate)\n  \n# Store a date\nmy_date &lt;- ymd(\"2024-09-05\")\nmy_date2 &lt;- mdy(\"09-05-2024\")\nmy_date3 &lt;- dmy(\"05-09-2024\")\n  \n# Print in long form\nformat(my_date, \"%B %d, %Y\")\n\n[1] \"September 05, 2024\""
+  },
+  {
+    "objectID": "slides/week-4.2.html#how-does-format-know-what-to-do",
+    "href": "slides/week-4.2.html#how-does-format-know-what-to-do",
+    "title": "Wrangling Data",
+    "section": "How Does format() Know What to Do?",
+    "text": "How Does format() Know What to Do?\n\nThe \"%B %d, %Y\" part is a format string borrowed from base R’s strftime() (date → string) and strptime() (string → date)\nEach % code stands in for a piece of the date or time\n\n\n\n\nCode\nMeaning\nExample\n\n\n\n\n%Y / %y\n4-digit / 2-digit year\n2024 / 24\n\n\n%B / %b\nFull / abbreviated month\nSeptember / Sep\n\n\n%m\nMonth number (01-12)\n09\n\n\n%d\nDay of month\n05\n\n\n%A / %a\nFull / abbreviated weekday\nThursday / Thu\n\n\n%H : %M : %S\nHour : minute : second\n14:30:00\n\n\n\n\nformat(my_date, \"%A, %B %d, %Y\")  # Thursday, September 05, 2024\n\n[1] \"Thursday, September 05, 2024\"\n\nformat(my_date, \"%m/%d/%y\")       # 09/05/24\n\n[1] \"09/05/24\"\n\n\n\n\n\nRun ?strptime in the console to see the full list of format codes available in base R."
   },
   {
     "objectID": "slides/week-4.2.html#your-turn",
@@ -918,13 +995,6 @@
     "title": "Wrangling Data",
     "section": "Clean Variable Names",
     "text": "Clean Variable Names\n\nVery simple: use the janitor package!\n\n# Load janitor\nlibrary(janitor)\n\n# Apply clean_names() to wb_data, store in new data frame called wb_data_clean\nwb_data_clean &lt;- wb_data |&gt;  \n  clean_names() \n\n# Write wb_data_clean to a csv file\nwrite_csv(wb_data_clean, \"data/wb_data_clean.csv\")\n\n# View the data\nglimpse(wb_data_clean)"
-  },
-  {
-    "objectID": "slides/week-4.2.html#column-specifications",
-    "href": "slides/week-4.2.html#column-specifications",
-    "title": "Wrangling Data",
-    "section": "Column Specifications",
-    "text": "Column Specifications\n\n\nCan clean columns on backend\nBut can also specify data types in read_csv() or read_excel()\n\n\nspec(wb_data_messy)\n\nwb_data_messy &lt;- read_csv(\"data/your_file_name.csv\", \n                          col_types = cols(\n                           col_double(`1990 [YR1990]`) \n                          )\n                          )"
   },
   {
     "objectID": "slides/week-3.2.html#line-chart-from-last-class",
@@ -1533,42 +1603,42 @@
     "href": "slides/week-10.1.html#load-data",
     "title": "Regression Tables",
     "section": "Load Data",
-    "text": "Load Data\n\n\nlibrary(peacesciencer)\nlibrary(dplyr)\n\nconflict_df &lt;- create_stateyears(system = 'gw') |&gt;\n  filter(year %in% c(1946:1999)) |&gt;\n  add_ucdp_acd(type=c(\"intrastate\"), only_wars = FALSE) |&gt;\n  add_democracy() |&gt;\n  add_creg_fractionalization() |&gt;\n  add_sdp_gdp() |&gt;\n  add_rugged_terrain()\n\nglimpse(conflict_df)\n\n\n\n\n−+\n02:00"
+    "text": "Load Data\n\n\nlibrary(peacesciencer)\nlibrary(dplyr)\n\nconflict_df &lt;- create_stateyears(system = 'gw') |&gt;\n  filter(year %in% c(1946:1999)) |&gt;\n  add_ucdp_acd(type=c(\"intrastate\"), only_wars = FALSE) |&gt;\n  add_democracy() |&gt;\n  add_creg_fractionalization() |&gt;\n  add_sim_gdp_pop() |&gt;\n  add_rugged_terrain() |&gt;\n  mutate(gdppc = log(mrgdppc), # log GDP per capita\n         pop = log(pwtpop))    # log population\n\nglimpse(conflict_df)"
   },
   {
     "objectID": "slides/week-10.1.html#run-model",
     "href": "slides/week-10.1.html#run-model",
     "title": "Regression Tables",
     "section": "Run Model",
-    "text": "Run Model\n\n\nconflict_model &lt;- glm(ucdponset ~ ethfrac + relfrac + v2x_polyarchy + \n                        rugged + wbgdppc2011est + wbpopest,\n                  data= conflict_df,\n                  family = binomial(link=\"logit\"))\n\n\n\n\n−+\n02:00"
+    "text": "Run Model\n\n\nconflict_model &lt;- glm(ucdponset ~ ethfrac + relfrac + v2x_polyarchy + \n                        rugged + gdppc + pop,\n                  data= conflict_df,\n                  family = binomial(link=\"logit\"))"
   },
   {
     "objectID": "slides/week-10.1.html#view-with-summary",
     "href": "slides/week-10.1.html#view-with-summary",
     "title": "Regression Tables",
     "section": "View with summary()",
-    "text": "View with summary()\n\nsummary(conflict_model)\n\n\nCall:\nglm(formula = ucdponset ~ ethfrac + relfrac + v2x_polyarchy + \n    rugged + wbgdppc2011est + wbpopest, family = binomial(link = \"logit\"), \n    data = conflict_df)\n\nCoefficients:\n               Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)    -5.69260    1.40788  -4.043 5.27e-05 ***\nethfrac         0.80005    0.38072   2.101  0.03560 *  \nrelfrac        -0.39138    0.41673  -0.939  0.34764    \nv2x_polyarchy  -0.60161    0.50879  -1.182  0.23704    \nrugged          0.06413    0.07603   0.843  0.39897    \nwbgdppc2011est -0.37188    0.12059  -3.084  0.00204 ** \nwbpopest        0.29318    0.06735   4.353 1.34e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 1182.5  on 6150  degrees of freedom\nResidual deviance: 1126.7  on 6144  degrees of freedom\n  (885 observations deleted due to missingness)\nAIC: 1140.7\n\nNumber of Fisher Scoring iterations: 7"
+    "text": "View with summary()\n\nsummary(conflict_model)\n\n\nCall:\nglm(formula = ucdponset ~ ethfrac + relfrac + v2x_polyarchy + \n    rugged + gdppc + pop, family = binomial(link = \"logit\"), \n    data = conflict_df)\n\nCoefficients:\n              Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)   -1.62860    0.99050  -1.644  0.10013    \nethfrac        0.71013    0.37159   1.911  0.05600 .  \nrelfrac       -0.24805    0.40739  -0.609  0.54260    \nv2x_polyarchy -0.73674    0.50941  -1.446  0.14810    \nrugged         0.08712    0.07567   1.151  0.24959    \ngdppc         -0.37570    0.11969  -3.139  0.00169 ** \npop            0.29367    0.06866   4.277 1.89e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 1205.0  on 6128  degrees of freedom\nResidual deviance: 1148.6  on 6122  degrees of freedom\n  (1495 observations deleted due to missingness)\nAIC: 1162.6\n\nNumber of Fisher Scoring iterations: 7"
   },
   {
     "objectID": "slides/week-10.1.html#view-results-with-broom",
     "href": "slides/week-10.1.html#view-results-with-broom",
     "title": "Regression Tables",
     "section": "View results with broom",
-    "text": "View results with broom\n\nlibrary(broom)\n\ntidy_model &lt;- conflict_model |&gt;\n  tidy(conf.int = TRUE) |&gt;\n  mutate_if(is.numeric, round, 5)\n\ntidy_model\n\n# A tibble: 7 × 7\n  term           estimate std.error statistic p.value conf.low conf.high\n  &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;\n1 (Intercept)     -5.69      1.41      -4.04  0.00005  -8.44      -2.92 \n2 ethfrac          0.800     0.381      2.10  0.0356    0.0670     1.56 \n3 relfrac         -0.391     0.417     -0.939 0.348    -1.22       0.420\n4 v2x_polyarchy   -0.602     0.509     -1.18  0.237    -1.61       0.387\n5 rugged           0.0641    0.0760     0.843 0.399    -0.0923     0.207\n6 wbgdppc2011est  -0.372     0.121     -3.08  0.00204  -0.613     -0.140\n7 wbpopest         0.293     0.0673     4.35  0.00001   0.162      0.426\n\n\n\n\n\n−+\n02:00"
+    "text": "View results with broom\n\nlibrary(broom)\n\ntidy_model &lt;- conflict_model |&gt;\n  tidy(conf.int = TRUE) |&gt;\n  mutate_if(is.numeric, round, 5)\n\ntidy_model\n\n# A tibble: 7 × 7\n  term          estimate std.error statistic p.value conf.low conf.high\n  &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;\n1 (Intercept)    -1.63      0.990     -1.64  0.100   -3.56        0.326\n2 ethfrac         0.710     0.372      1.91  0.056   -0.00629     1.45 \n3 relfrac        -0.248     0.407     -0.609 0.543   -1.05        0.547\n4 v2x_polyarchy  -0.737     0.509     -1.45  0.148   -1.75        0.252\n5 rugged          0.0871    0.0757     1.15  0.250   -0.0680      0.229\n6 gdppc          -0.376     0.120     -3.14  0.00169 -0.615      -0.146\n7 pop             0.294     0.0687     4.28  0.00002  0.160       0.430"
   },
   {
     "objectID": "slides/week-10.1.html#how-close-are-our-results-to-fl",
     "href": "slides/week-10.1.html#how-close-are-our-results-to-fl",
     "title": "Regression Tables",
     "section": "How close are our results to F&L?",
-    "text": "How close are our results to F&L?\n\nDiscuss with a neighbor…\n\ntidy_model\n\n# A tibble: 7 × 7\n  term           estimate std.error statistic p.value conf.low conf.high\n  &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;\n1 (Intercept)     -5.69      1.41      -4.04  0.00005  -8.44      -2.92 \n2 ethfrac          0.800     0.381      2.10  0.0356    0.0670     1.56 \n3 relfrac         -0.391     0.417     -0.939 0.348    -1.22       0.420\n4 v2x_polyarchy   -0.602     0.509     -1.18  0.237    -1.61       0.387\n5 rugged           0.0641    0.0760     0.843 0.399    -0.0923     0.207\n6 wbgdppc2011est  -0.372     0.121     -3.08  0.00204  -0.613     -0.140\n7 wbpopest         0.293     0.0673     4.35  0.00001   0.162      0.426\n\n\n\n\n\n−+\n03:00"
+    "text": "How close are our results to F&L?\n\nDiscuss with a neighbor…\n\ntidy_model\n\n# A tibble: 7 × 7\n  term          estimate std.error statistic p.value conf.low conf.high\n  &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;\n1 (Intercept)    -1.63      0.990     -1.64  0.100   -3.56        0.326\n2 ethfrac         0.710     0.372      1.91  0.056   -0.00629     1.45 \n3 relfrac        -0.248     0.407     -0.609 0.543   -1.05        0.547\n4 v2x_polyarchy  -0.737     0.509     -1.45  0.148   -1.75        0.252\n5 rugged          0.0871    0.0757     1.15  0.250   -0.0680      0.229\n6 gdppc          -0.376     0.120     -3.14  0.00169 -0.615      -0.146\n7 pop             0.294     0.0687     4.28  0.00002  0.160       0.430"
   },
   {
     "objectID": "slides/week-10.1.html#could-we-get-closer-to-fl",
     "href": "slides/week-10.1.html#could-we-get-closer-to-fl",
     "title": "Regression Tables",
     "section": "Could we get closer to F&L?",
-    "text": "Could we get closer to F&L?\n\n\nHow close are our data to F&L’s?\nGot to the peacesciencer documentation\nCould we change something to better approximate their results?\nAre there predictors in the peacesciencer package that were not available to F&L?\n\n\n\n\n−+\n10:00"
+    "text": "Could we get closer to F&L?\n\n\nHow close are our data to F&L’s?\nGot to the peacesciencer documentation\nCould we change something to better approximate their results?\nAre there predictors in the peacesciencer package that were not available to F&L?"
   },
   {
     "objectID": "slides/week-10.1.html#regression-tables-with-modelsummary",
@@ -1582,35 +1652,35 @@
     "href": "slides/week-10.1.html#run-multiple-models",
     "title": "Regression Tables",
     "section": "Run Multiple Models",
-    "text": "Run Multiple Models\n\n\nethnicity &lt;- glm(ucdponset ~ ethfrac + relfrac + wbgdppc2011est + wbpopest, # store each model in an object\n                  data = conflict_df,\n                  family = \"binomial\")\n\ndemocracy &lt;- glm(ucdponset ~ v2x_polyarchy + wbgdppc2011est +  wbpopest,\n                  data = conflict_df,\n                  family = \"binomial\")\n\nterrain &lt;- glm(ucdponset ~ rugged + wbgdppc2011est + wbpopest ,\n                  data = conflict_df,\n                  family = \"binomial\")\n\nfull_model &lt;- glm(ucdponset ~ ethfrac + relfrac + v2x_polyarchy + rugged +\n                        wbgdppc2011est + wbpopest,\n                  data = conflict_df,\n                  family = \"binomial\")"
+    "text": "Run Multiple Models\n\n\nethnicity &lt;- glm(ucdponset ~ ethfrac + relfrac + gdppc + pop, # store each model in an object\n                  data = conflict_df,\n                  family = \"binomial\")\n\ndemocracy &lt;- glm(ucdponset ~ v2x_polyarchy + gdppc +  pop,\n                  data = conflict_df,\n                  family = \"binomial\")\n\nterrain &lt;- glm(ucdponset ~ rugged + gdppc + pop ,\n                  data = conflict_df,\n                  family = \"binomial\")\n\nfull_model &lt;- glm(ucdponset ~ ethfrac + relfrac + v2x_polyarchy + rugged +\n                        gdppc + pop,\n                  data = conflict_df,\n                  family = \"binomial\")"
   },
   {
     "objectID": "slides/week-10.1.html#prep-data-for-display",
     "href": "slides/week-10.1.html#prep-data-for-display",
     "title": "Regression Tables",
     "section": "Prep Data for Display",
-    "text": "Prep Data for Display\n\n\nmodels &lt;- list(\"Ethnicity\" = ethnicity,  # store list of models in an object\n               \"Democracy\" = democracy, \n               \"Terrain\" = terrain, \n               \"Full Model\" = full_model)\n\ncoef_map &lt;- c(\"ethfrac\" = \"Ethnic Frac\",  # map coefficients\n        \"relfrac\" = \"Religions Frac\",     #(change names and order)\n        \"v2x_polyarchy\" = \"Polyarchy\",\n        \"rugged\" = \"Terrain\",\n        \"wbgdppc2011est\" = \"Per capita GDP\",\n        \"wbpopest\" = \"Population\",\n        \"(Intercept)\" = \"Intercept\")\n\ncaption = \"Table 1: Predictors of Conflict Onset\" # store caption\nreference = \"See appendix for data sources.\"      # store reference notes"
+    "text": "Prep Data for Display\n\n\nmodels &lt;- list(\"Ethnicity\" = ethnicity,  # store list of models in an object\n               \"Democracy\" = democracy, \n               \"Terrain\" = terrain, \n               \"Full Model\" = full_model)\n\ncoef_map &lt;- c(\"ethfrac\" = \"Ethnic Frac\",  # map coefficients\n        \"relfrac\" = \"Religions Frac\",     #(change names and order)\n        \"v2x_polyarchy\" = \"Polyarchy\",\n        \"rugged\" = \"Terrain\",\n        \"gdppc\" = \"Per capita GDP\",\n        \"pop\" = \"Population\",\n        \"(Intercept)\" = \"Intercept\")\n\ncaption = \"Table 1: Predictors of Conflict Onset\" # store caption\nreference = \"See appendix for data sources.\"      # store reference notes"
   },
   {
     "objectID": "slides/week-10.1.html#display-the-models",
     "href": "slides/week-10.1.html#display-the-models",
     "title": "Regression Tables",
     "section": "Display the Models",
-    "text": "Display the Models\n\n\nCode\nlibrary(modelsummary)\n\nmodelsummary(models,                      # display the table\n             stars = TRUE,                # include stars for significance\n             gof_map = c(\"nobs\"),         # goodness of fit stats to include   \n             coef_map = coef_map,         # coefficient mapping\n             title = caption,             # title\n             notes = reference)           # source note\n\n\n \n\n  \n    \n    \n    tinytable_rjfnr54w7fui35u5l57c\n    \n    \n    \n    \n  \n\n  \n    \n      \n        \n        Table 1: Predictors of Conflict Onset\n              \n                 \n                Ethnicity\n                Democracy\n                Terrain\n                Full Model\n              \n        \n        + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001\nSee appendix for data sources.\n        \n                \n                  Ethnic Frac   \n                  0.744*   \n                           \n                           \n                  0.800*   \n                \n                \n                                \n                  (0.367)  \n                           \n                           \n                  (0.381)  \n                \n                \n                  Religions Frac\n                  -0.481   \n                           \n                           \n                  -0.391   \n                \n                \n                                \n                  (0.411)  \n                           \n                           \n                  (0.417)  \n                \n                \n                  Polyarchy     \n                           \n                  -0.228   \n                           \n                  -0.602   \n                \n                \n                                \n                           \n                  (0.436)  \n                           \n                  (0.509)  \n                \n                \n                  Terrain       \n                           \n                           \n                  0.031    \n                  0.064    \n                \n                \n                                \n                           \n                           \n                  (0.076)  \n                  (0.076)  \n                \n                \n                  Per capita GDP\n                  -0.474***\n                  -0.512***\n                  -0.543***\n                  -0.372** \n                \n                \n                                \n                  (0.104)  \n                  (0.108)  \n                  (0.092)  \n                  (0.121)  \n                \n                \n                  Population    \n                  0.282*** \n                  0.297*** \n                  0.299*** \n                  0.293*** \n                \n                \n                                \n                  (0.067)  \n                  (0.051)  \n                  (0.050)  \n                  (0.067)  \n                \n                \n                  Intercept     \n                  -4.703***\n                  -4.407***\n                  -4.296***\n                  -5.693***\n                \n                \n                                \n                  (1.327)  \n                  (1.205)  \n                  (1.143)  \n                  (1.408)  \n                \n                \n                  Num.Obs.      \n                  6364     \n                  6772     \n                  6840     \n                  6151"
+    "text": "Display the Models\n\n\nCode\nlibrary(modelsummary)\n\nmodelsummary(models,                      # display the table\n             stars = TRUE,                # include stars for significance\n             gof_map = c(\"nobs\"),         # goodness of fit stats to include   \n             coef_map = coef_map,         # coefficient mapping\n             title = caption,             # title\n             notes = reference)           # source note\n\n\n\n\n    \n\n    \n    \n    \n      \n        Table 1: Predictors of Conflict Onset\n        \n              \n                 \n                Ethnicity\n                Democracy\n                Terrain\n                Full Model\n              \n        \n        + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001\nSee appendix for data sources.\n        \n                \n                  Ethnic Frac\n                  0.747*\n                  \n                  \n                  0.710+\n                \n                \n                  \n                  (0.364)\n                  \n                  \n                  (0.372)\n                \n                \n                  Religions Frac\n                  -0.373\n                  \n                  \n                  -0.248\n                \n                \n                  \n                  (0.406)\n                  \n                  \n                  (0.407)\n                \n                \n                  Polyarchy\n                  \n                  -0.349\n                  \n                  -0.737\n                \n                \n                  \n                  \n                  (0.436)\n                  \n                  (0.509)\n                \n                \n                  Terrain\n                  \n                  \n                  0.036\n                  0.087\n                \n                \n                  \n                  \n                  \n                  (0.075)\n                  (0.076)\n                \n                \n                  Per capita GDP\n                  -0.478***\n                  -0.497***\n                  -0.539***\n                  -0.376**\n                \n                \n                  \n                  (0.104)\n                  (0.105)\n                  (0.092)\n                  (0.120)\n                \n                \n                  Population\n                  0.290***\n                  0.302***\n                  0.303***\n                  0.294***\n                \n                \n                  \n                  (0.068)\n                  (0.051)\n                  (0.050)\n                  (0.069)\n                \n                \n                  Intercept\n                  -0.887\n                  -0.425\n                  -0.254\n                  -1.629\n                \n                \n                  \n                  (0.898)\n                  (0.791)\n                  (0.758)\n                  (0.991)\n                \n                \n                  Num.Obs.\n                  6364\n                  6955\n                  6840\n                  6129"
   },
   {
     "objectID": "slides/week-10.1.html#your-turn",
     "href": "slides/week-10.1.html#your-turn",
     "title": "Regression Tables",
     "section": "Your Turn!",
-    "text": "Your Turn!\n\n\nGot to the peacesciencer documentation\nHow close are our data to F&L’s?\nCould we change something to better approximate their results?\nRun multiple models using different predictors\nDisplay the models using modelsummary\nTry to get as close to F&L as you can!\n\n\n\n\n−+\n10:00"
+    "text": "Your Turn!\n\n\nGot to the peacesciencer documentation\nHow close are our data to F&L’s?\nCould we change something to better approximate their results?\nRun multiple models using different predictors\nDisplay the models using modelsummary\nTry to get as close to F&L as you can!"
   },
   {
     "objectID": "slides/week-10.1.html#section",
     "href": "slides/week-10.1.html#section",
     "title": "Regression Tables",
     "section": "",
-    "text": "This doesn’t look that great…\n\n\nShow the code\nmodelsummary(conflict_model, \n             stars = TRUE,  \n             gof_map = c(\"nobs\"),\n             coef_map = coef_map,\n             title = caption, \n             notes = reference)\n\n\n \n\n  \n    \n    \n    tinytable_1l64ay7j2cyqkal583ua\n    \n    \n    \n    \n  \n\n  \n    \n      \n        \n        Table 1: Predictors of Conflict Onset\n              \n                 \n                (1)\n              \n        \n        + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001\nSee appendix for data sources.\n        \n                \n                  Ethnic Frac   \n                  0.800*   \n                \n                \n                                \n                  (0.381)  \n                \n                \n                  Religions Frac\n                  -0.391   \n                \n                \n                                \n                  (0.417)  \n                \n                \n                  Polyarchy     \n                  -0.602   \n                \n                \n                                \n                  (0.509)  \n                \n                \n                  Terrain       \n                  0.064    \n                \n                \n                                \n                  (0.076)  \n                \n                \n                  Per capita GDP\n                  -0.372** \n                \n                \n                                \n                  (0.121)  \n                \n                \n                  Population    \n                  0.293*** \n                \n                \n                                \n                  (0.067)  \n                \n                \n                  Intercept     \n                  -5.693***\n                \n                \n                                \n                  (1.408)  \n                \n                \n                  Num.Obs.      \n                  6151"
+    "text": "This doesn’t look that great…\n\n\nShow the code\nmodelsummary(conflict_model, \n             stars = TRUE,  \n             gof_map = c(\"nobs\"),\n             coef_map = coef_map,\n             title = caption, \n             notes = reference)\n\n\n\n\n    \n\n    \n    \n    \n      \n        Table 1: Predictors of Conflict Onset\n        \n              \n                 \n                (1)\n              \n        \n        + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001\nSee appendix for data sources.\n        \n                \n                  Ethnic Frac\n                  0.710+\n                \n                \n                  \n                  (0.372)\n                \n                \n                  Religions Frac\n                  -0.248\n                \n                \n                  \n                  (0.407)\n                \n                \n                  Polyarchy\n                  -0.737\n                \n                \n                  \n                  (0.509)\n                \n                \n                  Terrain\n                  0.087\n                \n                \n                  \n                  (0.076)\n                \n                \n                  Per capita GDP\n                  -0.376**\n                \n                \n                  \n                  (0.120)\n                \n                \n                  Population\n                  0.294***\n                \n                \n                  \n                  (0.069)\n                \n                \n                  Intercept\n                  -1.629\n                \n                \n                  \n                  (0.991)\n                \n                \n                  Num.Obs.\n                  6129"
   },
   {
     "objectID": "slides/week-10.1.html#section-1",
@@ -1624,7 +1694,7 @@
     "href": "slides/week-10.1.html#your-turn-1",
     "title": "Regression Tables",
     "section": "Your Turn!",
-    "text": "Your Turn!\n\nTake one of your models\nUse modelplot to create a coefficient plot of it\nCustomize the plot to your liking\nInterpret the results\nDiscuss advantages of coefficient plots with a neighbor\n\n\n\n\n−+\n10:00"
+    "text": "Your Turn!\n\nTake one of your models\nUse modelplot to create a coefficient plot of it\nCustomize the plot to your liking\nInterpret the results\nDiscuss advantages of coefficient plots with a neighbor"
   },
   {
     "objectID": "slides/week-1.2.html#plan-for-today",
@@ -1745,72 +1815,6 @@
     "title": "Project Proposal",
     "section": "",
     "text": "Coming Soon!",
-    "crumbs": [
-      "Project",
-      "Project Proposal"
-    ]
-  },
-  {
-    "objectID": "project/project-assignment-1.html#overview",
-    "href": "project/project-assignment-1.html#overview",
-    "title": "Project Proposal",
-    "section": "",
-    "text": "For your final project in this course, you will be producing your very own Shiny App. The purpose of this proposal is to get you to commit to an idea and think through the basic content and layout of your app before you start building. As you will learn, Shiny Apps are comprised of two basic elements: a user interface and a server function. We are going to be focusing on the user interface side of things for now, and later we will talk about how to generate the content for the user. What do you want your user to see and experience with your app? That is the question you will answer here.\n\n\n\n\n\n\nNote\n\n\n\nIf you are working in a group (up to three students), submit one proposal and include a short note on how you plan to divide the work. See the Project Description for the group policy.",
-    "crumbs": [
-      "Project",
-      "Project Proposal"
-    ]
-  },
-  {
-    "objectID": "project/project-assignment-1.html#step-1-think-about-a-layout-for-your-app-25-pts.",
-    "href": "project/project-assignment-1.html#step-1-think-about-a-layout-for-your-app-25-pts.",
-    "title": "Project Proposal",
-    "section": "Step 1: Think about a layout for your app (25 pts.)",
-    "text": "Step 1: Think about a layout for your app (25 pts.)\nGo to the Shiny gallery and have a look at examples of the Shiny Apps there. You can also go forward in the course a bit and have a look at the apps that we are going to be building together in modules 5.1 and 5.2. Among these apps, which layouts appeal to you most? Link to a few of them and talk about what you like here.",
-    "crumbs": [
-      "Project",
-      "Project Proposal"
-    ]
-  },
-  {
-    "objectID": "project/project-assignment-1.html#step-2-think-about-the-basic-content-25-pts.",
-    "href": "project/project-assignment-1.html#step-2-think-about-the-basic-content-25-pts.",
-    "title": "Project Proposal",
-    "section": "Step 2: Think about the basic content (25 pts.)",
-    "text": "Step 2: Think about the basic content (25 pts.)\nNext, think about the basic content of your app. What subject matter and data do you want to have your user explore? What do you want them to get out of the experience? What datasets would you use for your app? These could be datasets that we have used for the course or other sources but it should be comprehensive and convenient to work with. You will not have time in this course to do original data collection. Discuss in a paragraph below.",
-    "crumbs": [
-      "Project",
-      "Project Proposal"
-    ]
-  },
-  {
-    "objectID": "project/project-assignment-1.html#step-3-think-about-the-visualization-25-pts.",
-    "href": "project/project-assignment-1.html#step-3-think-about-the-visualization-25-pts.",
-    "title": "Project Proposal",
-    "section": "Step 3: Think about the visualization (25 pts.)",
-    "text": "Step 3: Think about the visualization (25 pts.)\nWhat is the type of visualization that you want to display. This could be a line chart, scatter plot, bar chart or map and could include some text elements as well. How would your selected visualization contribute to the knowledge enhancement that you want your user to experience? What would it teach them. Discuss in a paragraph below.",
-    "crumbs": [
-      "Project",
-      "Project Proposal"
-    ]
-  },
-  {
-    "objectID": "project/project-assignment-1.html#step-4-think-about-user-input-25-pts.",
-    "href": "project/project-assignment-1.html#step-4-think-about-user-input-25-pts.",
-    "title": "Project Proposal",
-    "section": "Step 4: Think about user input (25 pts.)",
-    "text": "Step 4: Think about user input (25 pts.)\nWhat would the user manipulate in your app? It could be a dropdown menu, a slider or some other control. See here for a list of control widgets. When your user interacts with the control, what output will it produce, e.g. what will change when the user manipulates the widget? How would your chosen control widget enhance the user’s experience and contribute to the overall purpose of the app?",
-    "crumbs": [
-      "Project",
-      "Project Proposal"
-    ]
-  },
-  {
-    "objectID": "project/project-assignment-1.html#submission",
-    "href": "project/project-assignment-1.html#submission",
-    "title": "Project Proposal",
-    "section": "Submission",
-    "text": "Submission\nPlease submit your unrendered QMD file to Blackboard.",
     "crumbs": [
       "Project",
       "Project Proposal"
@@ -1941,7 +1945,7 @@
     "href": "modules/module-5.1.html",
     "title": "Building a Shiny App",
     "section": "",
-    "text": "Packages & functions in this module\n\n\n\nPackages: dplyr, shiny\nFunctions: fluidPage(), titlePanel(), sidebarLayout(), sidebarPanel(), selectInput(), mainPanel(), plotOutput(), renderPlot(), reactive(), shinyApp()",
+    "text": "NotePackages & functions in this module\n\n\n\nPackages: dplyr, shiny\nFunctions: fluidPage(), titlePanel(), sidebarLayout(), sidebarPanel(), selectInput(), mainPanel(), plotOutput(), renderPlot(), reactive(), shinyApp()",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
@@ -2013,7 +2017,7 @@
     "href": "modules/module-4.1.html",
     "title": "Tables",
     "section": "",
-    "text": "Packages & functions in this module\n\n\n\nPackages: tidycensus, dplyr, stringr, kableExtra, gt, ggplot2\nFunctions: census_api_key(), load_variables(), get_acs(), rename(), str_remove(), kable(), slice_max(), slice_min(), bind_rows(), gt(), tab_header(), cols_label(), fmt_currency(), tab_source_note(), cols_align(), gtsave(), geom_errorbar()",
+    "text": "NotePackages & functions in this module\n\n\n\nPackages: tidycensus, dplyr, stringr, kableExtra, gt, ggplot2\nFunctions: census_api_key(), load_variables(), get_acs(), rename(), str_remove(), kable(), slice_max(), slice_min(), bind_rows(), gt(), tab_header(), cols_label(), fmt_currency(), tab_source_note(), cols_align(), gtsave(), geom_errorbar()",
     "crumbs": [
       "Course Topics",
       "IV — Tables & Models",
@@ -2085,7 +2089,7 @@
     "href": "modules/module-3.1.html",
     "title": "Choropleth Maps",
     "section": "",
-    "text": "Packages & functions in this module\n\n\n\nPackages: rnaturalearth, ggplot2, ggthemes, viridis\nFunctions: ne_countries(), geom_sf(), theme_map(), theme(), scale_fill_viridis_c(), source(), function()",
+    "text": "NotePackages & functions in this module\n\n\n\nPackages: rnaturalearth, ggplot2, ggthemes, viridis\nFunctions: ne_countries(), geom_sf(), theme_map(), theme(), scale_fill_viridis_c(), source(), function()",
     "crumbs": [
       "Course Topics",
       "III — Maps",
@@ -2145,7 +2149,7 @@
     "href": "modules/module-2.1.html",
     "title": "Charting With ggplot2",
     "section": "",
-    "text": "Packages & functions in this module\n\n\n\nPackages: ggplot2, scales\nFunctions: ggplot(), geom_col(), geom_histogram(), aes(), labs(), geom_line(), geom_point(), geom_smooth(), scale_x_log10(), label_number(), geom_text()",
+    "text": "NotePackages & functions in this module\n\n\n\nPackages: ggplot2, scales\nFunctions: ggplot(), geom_col(), geom_histogram(), aes(), labs(), geom_line(), geom_point(), geom_smooth(), scale_x_log10(), label_number(), geom_text()",
     "crumbs": [
       "Course Topics",
       "II — Visualizing Data",
@@ -2217,7 +2221,7 @@
     "href": "modules/module-1.1.html",
     "title": "Reading & Reshaping Data",
     "section": "",
-    "text": "Packages & functions in this module\n\n\n\nPackages: readr, dplyr, tidyr\nFunctions: read_csv(), glimpse(), pivot_longer(), mutate(), mutate_at(), substring()",
+    "text": "NotePackages & functions in this module\n\n\n\nPackages: readr, dplyr, tidyr\nFunctions: read_csv(), glimpse(), pivot_longer(), mutate(), mutate_at(), substring()",
     "crumbs": [
       "Course Topics",
       "I — Working With Data",
@@ -2253,7 +2257,7 @@
     "href": "modules/module-1.1.html#reshaping-data",
     "title": "Reading & Reshaping Data",
     "section": "Reshaping data",
-    "text": "Reshaping data\n\nThere are a few things about the data here that make it messy. First, in order for the data to be tidy, we want each column to represent a variable and each row to represent an observation.\nBut here we see the reverse: the data are in wide form, meaning that each column represents a year and each row represents a country. This entails that each row represents multiple observations in that we have data for multiple years for each row.\nTo rectify this, we need to reshape the data from wide form to long form. For this, we need the pivot_longer() function from the tidyr package.\nThe pivot_longer() function takes three basic arguments:\n\n\ncols - which columns you want to pivot\n\nnames_to - the name of the column where the old column names are going to\n\nvalues_to - the name of the column where the values are going to\n\nIn our case, we want to reshape all of the year columns and have the years represented in the rows. We want the newly created column to be called “year” and the values are going to represent the data on female labor force participation we downloaded (flfp).\n\n\n\n\n\n\nUpdating the year range\n\n\n\nThe video was recorded using data downloaded through 2021. If you downloaded your data today, your last column will be more recent (e.g. 2024 [YR2024]). Update the end column in the pivot_longer() call below to match the last year column in your own dataset.\n\n\n\n# Load tidyr\nlibrary(tidyr)\n\n# Reshape the data\nwb_data &lt;- wb_data_messy |&gt; # take wb_data_messy, and put it in wb_data, but first...\n  pivot_longer(             # pivot the data from wide to long form\n    cols = `1972 [YR1972]`: `2021 [YR2021]`, # columns to pivot\n    names_to = \"year\", # name the first column \"year\"\n    values_to = \"flfp\" # name the second column \"flfp\"\n  ) \n\n# View the data\nglimpse(wb_data)\n\nRows: 11,100\nColumns: 6\n$ `Country Name` &lt;chr&gt; \"Afghanistan\", \"Afghanistan\", \"Afghanistan\", \"Afghanist…\n$ `Country Code` &lt;chr&gt; \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\",…\n$ `Series Name`  &lt;chr&gt; \"Labor force participation rate, female (% of female po…\n$ `Series Code`  &lt;chr&gt; \"SL.TLF.ACTI.FE.ZS\", \"SL.TLF.ACTI.FE.ZS\", \"SL.TLF.ACTI.…\n$ year           &lt;chr&gt; \"1972 [YR1972]\", \"1973 [YR1973]\", \"1974 [YR1974]\", \"197…\n$ flfp           &lt;chr&gt; \"..\", \"..\", \"..\", \"..\", \"..\", \"..\", \"..\", \"..\", \"..\", \"…\n\n\n\n\n\n\n\n\nThe Pipe Operator\n\n\n\nFor our pivot-longer() call we used R’s native pipe operator, e.g. |&gt;. Pipes tell R to do something to the object that they are attached to. In this case, we are telling R to apply pivot_longer() to wb_data. The alternative way of writing this code would be to include the data as the first argument in the function, e.g. pivot_longer(wb_data, cols = ..., names_to = ... , values_to = ...). As you will see, pipe operators enable us to string together multiple functions in a convenient way to transform our data.\n\n\n\n\n\n\n\n\nSpaces in Variable Names\n\n\n\nNotice that when we specify the years in our pivot_longer() call we encapsulate them in backticks (``). This is because the years, as they were imported from the WDI dataset, have spaces in them. Typically we want to avoid this scenario by writing our variable names in snake_case.",
+    "text": "Reshaping data\n\nThere are a few things about the data here that make it messy. First, in order for the data to be tidy, we want each column to represent a variable and each row to represent an observation.\nBut here we see the reverse: the data are in wide form, meaning that each column represents a year and each row represents a country. This entails that each row represents multiple observations in that we have data for multiple years for each row.\nTo rectify this, we need to reshape the data from wide form to long form. For this, we need the pivot_longer() function from the tidyr package.\nThe pivot_longer() function takes three basic arguments:\n\n\ncols - which columns you want to pivot\n\nnames_to - the name of the column where the old column names are going to\n\nvalues_to - the name of the column where the values are going to\n\nIn our case, we want to reshape all of the year columns and have the years represented in the rows. We want the newly created column to be called “year” and the values are going to represent the data on female labor force participation we downloaded (flfp).\n\n\n\n\n\n\nNoteUpdating the year range\n\n\n\nThe video was recorded using data downloaded through 2021. If you downloaded your data today, your last column will be more recent (e.g. 2024 [YR2024]). Update the end column in the pivot_longer() call below to match the last year column in your own dataset.\n\n\n\n# Load tidyr\nlibrary(tidyr)\n\n# Reshape the data\nwb_data &lt;- wb_data_messy |&gt; # take wb_data_messy, and put it in wb_data, but first...\n  pivot_longer(             # pivot the data from wide to long form\n    cols = `1972 [YR1972]`: `2021 [YR2021]`, # columns to pivot\n    names_to = \"year\", # name the first column \"year\"\n    values_to = \"flfp\" # name the second column \"flfp\"\n  ) \n\n# View the data\nglimpse(wb_data)\n\nRows: 11,100\nColumns: 6\n$ `Country Name` &lt;chr&gt; \"Afghanistan\", \"Afghanistan\", \"Afghanistan\", \"Afghanist…\n$ `Country Code` &lt;chr&gt; \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\", \"AFG\",…\n$ `Series Name`  &lt;chr&gt; \"Labor force participation rate, female (% of female po…\n$ `Series Code`  &lt;chr&gt; \"SL.TLF.ACTI.FE.ZS\", \"SL.TLF.ACTI.FE.ZS\", \"SL.TLF.ACTI.…\n$ year           &lt;chr&gt; \"1972 [YR1972]\", \"1973 [YR1973]\", \"1974 [YR1974]\", \"197…\n$ flfp           &lt;chr&gt; \"..\", \"..\", \"..\", \"..\", \"..\", \"..\", \"..\", \"..\", \"..\", \"…\n\n\n\n\n\n\n\n\nImportantThe Pipe Operator\n\n\n\nFor our pivot-longer() call we used R’s native pipe operator, e.g. |&gt;. Pipes tell R to do something to the object that they are attached to. In this case, we are telling R to apply pivot_longer() to wb_data. The alternative way of writing this code would be to include the data as the first argument in the function, e.g. pivot_longer(wb_data, cols = ..., names_to = ... , values_to = ...). As you will see, pipe operators enable us to string together multiple functions in a convenient way to transform our data.\n\n\n\n\n\n\n\n\nCautionSpaces in Variable Names\n\n\n\nNotice that when we specify the years in our pivot_longer() call we encapsulate them in backticks (``). This is because the years, as they were imported from the WDI dataset, have spaces in them. Typically we want to avoid this scenario by writing our variable names in snake_case.",
     "crumbs": [
       "Course Topics",
       "I — Working With Data",
@@ -2277,7 +2281,7 @@
     "href": "modules/getting-started-1.html",
     "title": "R and RStudio Setup",
     "section": "",
-    "text": "Packages in this module\n\n\n\nPackages: tidyverse, leaflet, vdemlite, unvotes",
+    "text": "NotePackages in this module\n\n\n\nPackages: tidyverse, leaflet, vdemlite, unvotes",
     "crumbs": [
       "Course Topics",
       "R and RStudio Setup"
@@ -2592,11 +2596,11 @@
     ]
   },
   {
-    "objectID": "assignments/lab-3.html#step-1-a-choropleth-map-50-pts",
-    "href": "assignments/lab-3.html#step-1-a-choropleth-map-50-pts",
+    "objectID": "assignments/lab-3.html#step-1-choropleth-maps-50-pts",
+    "href": "assignments/lab-3.html#step-1-choropleth-maps-50-pts",
     "title": "Lab 3: Maps",
-    "section": "Step 1: A choropleth map (50 pts)",
-    "text": "Step 1: A choropleth map (50 pts)\nUse rnaturalearth to get country shapes (filter out Antarctica). Choose a variable relevant to Ross’s argument—a democracy measure, oil rents (NY.GDP.PETR.RT.ZS), or taxes as a share of revenue—and join it to the shapes by ISO3C code. Then map it with ggplot() and geom_sf(), using theme_map() from ggthemes and a viridis color scale. Give the map clear labels. Below the map, say in a sentence or two what pattern you see.",
+    "section": "Step 1: Choropleth maps (50 pts)",
+    "text": "Step 1: Choropleth maps (50 pts)\n\nStep 1a: Build your data frame (10 pts)\nChoose a World Bank indicator related to Ross’s argument. Some options, with the most recent year that has good coverage:\n\n\n\nIndicator\nCode\nYear to use\n\n\n\n\nOil rents (% of GDP)\nNY.GDP.PETR.RT.ZS\n2021\n\n\nTotal natural resource rents (% of GDP)\nNY.GDP.TOTL.RT.ZS\n2021\n\n\nFuel exports (% of merchandise exports)\nTX.VAL.FUEL.ZS.UN\n2023\n\n\nTax revenue (% of GDP)\nGC.TAX.TOTL.GD.ZS\n2023\n\n\n\nUse wb_data() from wbstats to download your indicator for that single year (set start_date and end_date to the same year). Then use vdem from vdemdata to download the V-Dem dataset, filter it to the same year, and select the V-Dem country ID and a democracy measure of your choice, such as electoral democracy (v2x_polyarchy) or liberal democracy (v2x_libdem). Convert the V-Dem country ID to ISO3C codes with countrycode() and join the two data frames by iso3c. glimpse() the result.\n\n\nStep 1b: Map your World Bank indicator (20 pts)\nUse rnaturalearth to get country shapes (filter out Antarctica) and join your data frame to them, matching iso_a3_eh to iso3c. Then map your World Bank indicator with ggplot() and geom_sf(), using theme_map() from ggthemes and a viridis color scale. Give the map clear labels. Below the map, say in a sentence or two what pattern you see.\n\n\nStep 1c: Map democracy (20 pts)\nNow map your democracy measure the same way. Below the map, compare it to your first map in a sentence or two: do the resource-rich countries look less democratic, as Ross would predict? Do you see any exceptions?",
     "crumbs": [
       "Labs",
       "Lab 3: Maps"
@@ -2608,6 +2612,28 @@
     "title": "Lab 3: Maps",
     "section": "Step 2: A leaflet map of conflict (50 pts)",
     "text": "Step 2: A leaflet map of conflict (50 pts)\nPick an oil-rich country that has experienced internal conflict, such as Nigeria (country_id 475), Iraq (645), Syria (652), Sudan (625) or Colombia (100). Instead of the 2021 file we used in class, use UCDP’s newest event data, which covers January through September 2026. You can read it straight from the UCDP website without downloading anything:\nged_data &lt;- read_csv(\"https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_01_26_09.csv\")\nThese are UCDP’s “candidate” events: they are released monthly and are preliminary until UCDP finishes checking them, but they have the same columns as the file we used in class. Following the approach from the Interactive Maps topic, filter a few months of events for your country and convert the coordinates to simple features with st_as_sf(). If your country has only a handful of events, use more months. Then build a leaflet map with markers for the conflict events: show the location name on hover and the number of deaths and date on click. Use “OpenTopoMap” as your basemap.",
+    "crumbs": [
+      "Labs",
+      "Lab 3: Maps"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-3.html#bonus-extra-credit",
+    "href": "assignments/lab-3.html#bonus-extra-credit",
+    "title": "Lab 3: Maps",
+    "section": "Bonus (extra credit)",
+    "text": "Bonus (extra credit)\nCompleting this bonus restores full credit on one quiz where you lost points. If you have not lost points on any quiz, you will get 2 points of extra credit on this lab instead.\nSteps 1b and 1c use almost the same code. Write a function called create_map() that takes four arguments (your map data frame, the name of the variable to map, a title, and a legend title) and returns a choropleth map. Then call your function twice to remake both maps.\n\n\n\n\n\n\n\nImportantSubmission Instructions\n\n\n\nHead over to Blackboard and go to the Lab 3 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and note whether and in what capacity you used AI on the assignment.\nThen upload a compressed (zipped) version of your project folder including the rendered HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).",
+    "crumbs": [
+      "Labs",
+      "Lab 3: Maps"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-3.html#hints",
+    "href": "assignments/lab-3.html#hints",
+    "title": "Lab 3: Maps",
+    "section": "Hints",
+    "text": "Hints\nOnly look at these if you’re stuck!\nHint 1 — Downloading a single year from the World Bank:\nSet start_date and end_date to the same year. If you pass wb_data() a named vector, the column comes back with your name instead of the indicator code:\nwb_data(c(fuel_exports = \"TX.VAL.FUEL.ZS.UN\"), start_date = 2023, end_date = 2023)\nHint 2 — Converting the V-Dem country ID:\nUse countrycode() inside mutate(), telling it the codes come from V-Dem:\nmutate(iso3c = countrycode(country_id, origin = \"vdem\", destination = \"iso3c\"))\nYou will probably see a warning like Some values were not matched unambiguously. That is OK. A few V-Dem units (like Kosovo, Somaliland or Zanzibar) have no ISO3C code, so they get an NA and will not show up on the map.\nHint 3 — Put the country shapes first in the join:\nIf you get an error saying stat_sf() requires the missing aesthetic geometry, check the order of your left_join(). The country shapes have to come first so the result stays a simple features data frame:\nleft_join(world_map_df, your_data, join_by(iso_a3_eh == iso3c))\nHint 4 — Gray countries:\nCountries shaded gray have no data for your variable (Greenland, for example, is not in V-Dem). That is expected; you do not need to fix it.\nHint 5 — “Discrete value supplied to continuous scale” (or the reverse):\nYour variables are continuous, so use scale_fill_viridis_c(), not scale_fill_viridis_d(). If your variable is a percentage, labels = scales::label_percent(scale = 1) inside the scale function will add % signs to the legend.\nHint 6 — Filtering the conflict data by date:\ndate_start is a date, so you can compare it to a date written as text:\nfilter(country_id == 475, date_start &gt;= \"2026-01-01\", date_start &lt; \"2026-04-01\")\nHint 7 — Showing the deaths and the date in the popup:\nPopups can display HTML, so you can use paste() to build the text and &lt;br&gt; to start a new line:\naddMarkers(\n  popup = ~paste(\"Date:\", date, \"&lt;br&gt;Deaths:\", deaths),\n  label = ~place\n)\nHint 8 — Mapping a variable inside a function (bonus):\nIf your function takes the variable name as a string (like \"polyarchy\"), aes(fill = var) will not work, because ggplot treats the string as a constant. Use .data[[var]] instead, as we did in the Functions topic:\ngeom_sf(aes(fill = .data[[var]]))",
     "crumbs": [
       "Labs",
       "Lab 3: Maps"
@@ -2731,33 +2757,66 @@
     ]
   },
   {
-    "objectID": "assignments/lab-2.html#step-1-download-your-data-30-pts",
-    "href": "assignments/lab-2.html#step-1-download-your-data-30-pts",
+    "objectID": "assignments/lab-2.html#step-1-download-your-data-20-pts",
+    "href": "assignments/lab-2.html#step-1-download-your-data-20-pts",
     "title": "Lab 2: Wrangling",
-    "section": "Step 1: Download your data (30 pts)",
-    "text": "Step 1: Download your data (30 pts)\nUse vdem from vdemdata to download the V-Dem dataset, then use filter() and select() to keep a democracy measure of your choice for all countries from roughly 1990 onward. Then use wb_data() from wbstats to download GDP per capita (or another development or women’s-empowerment indicator) for the same period. glimpse() each to confirm they came through.",
+    "section": "Step 1: Download your data (20 pts)",
+    "text": "Step 1: Download your data (20 pts)\na) Use vdem from vdemdata to download the V-Dem dataset. Use filter() to keep the years from 1990 onward, then use select() to keep and rename the country name, the V-Dem country ID, the year, a democracy measure of your choice and the region variable (e_regionpol_6C). Recode the region numbers into names with mutate() and case_match(). glimpse() the result.\nb) Use wb_data() from wbstats to download GDP per capita (or another development or women’s-empowerment indicator) for the same years. Give your indicator a readable name, drop iso2c, and rename date to year so it matches V-Dem. glimpse() the result.",
     "crumbs": [
       "Labs",
       "Lab 2: Wrangling"
     ]
   },
   {
-    "objectID": "assignments/lab-2.html#step-2-clean-and-merge-40-pts",
-    "href": "assignments/lab-2.html#step-2-clean-and-merge-40-pts",
+    "objectID": "assignments/lab-2.html#step-2-add-country-codes-15-pts",
+    "href": "assignments/lab-2.html#step-2-add-country-codes-15-pts",
     "title": "Lab 2: Wrangling",
-    "section": "Step 2: Clean and merge (40 pts)",
-    "text": "Step 2: Clean and merge (40 pts)\nGet both data frames into a compatible shape (rename or reshape as needed). Add country codes with the countrycode package, then join the two sources into a single data frame with left_join(). glimpse() the result and check for excessive NAs.",
+    "section": "Step 2: Add country codes (15 pts)",
+    "text": "Step 2: Add country codes (15 pts)\nV-Dem and the World Bank use different country codes, so we need a common one before we can merge. Use mutate() and countrycode() to add an iso3c variable to your V-Dem data frame, converting from the \"vdem\" codes to the \"wb\" codes. glimpse() the result to confirm the new column is there.",
     "crumbs": [
       "Labs",
       "Lab 2: Wrangling"
     ]
   },
   {
-    "objectID": "assignments/lab-2.html#step-3-summarize-30-pts",
-    "href": "assignments/lab-2.html#step-3-summarize-30-pts",
+    "objectID": "assignments/lab-2.html#step-3-merge-20-pts",
+    "href": "assignments/lab-2.html#step-3-merge-20-pts",
     "title": "Lab 2: Wrangling",
-    "section": "Step 3: Summarize (30 pts)",
-    "text": "Step 3: Summarize (30 pts)\nUse a group_by(), summarize(), arrange() sequence to pull one insight from your merged data—for example, how regions compare on average democracy and development, or which countries stand out. Write a sentence or two below the chunk describing what you find.\nAI note: (one line on whether/how your group used AI)",
+    "section": "Step 3: Merge (20 pts)",
+    "text": "Step 3: Merge (20 pts)\nUse left_join() to merge your V-Dem and World Bank data frames by iso3c and year. Make sure you end up with just one country name column. glimpse() the result and check for excessive NAs.",
+    "crumbs": [
+      "Labs",
+      "Lab 2: Wrangling"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-2.html#step-4-summarize-by-region-20-pts",
+    "href": "assignments/lab-2.html#step-4-summarize-by-region-20-pts",
+    "title": "Lab 2: Wrangling",
+    "section": "Step 4: Summarize by region (20 pts)",
+    "text": "Step 4: Summarize by region (20 pts)\na) Starting from your merged data frame, use group_by() and summarize() to calculate the mean (or median) of one of your variables—your democracy measure or your World Bank indicator—for each region. You can use all years or filter() for a single year first. Save the result as a new object.\nb) Use arrange() to sort the regions from highest to lowest. Which region comes out on top? Which is at the bottom?",
+    "crumbs": [
+      "Labs",
+      "Lab 2: Wrangling"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-2.html#step-5-visualize-25-pts",
+    "href": "assignments/lab-2.html#step-5-visualize-25-pts",
+    "title": "Lab 2: Wrangling",
+    "section": "Step 5: Visualize (25 pts)",
+    "text": "Step 5: Visualize (25 pts)\na) Make a column chart with geom_col() showing your summarized variable by region. Sort the bars from highest to lowest, choose a fill color and a theme, and add axis labels, a title and a caption naming your source.\nb) Below this line, write a sentence or two describing what the chart shows. Is this what you expected?\n\n\n\n\n\n\n\nImportantSubmission Instructions\n\n\n\nHead over to Blackboard and go to the Lab 2 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and note whether and in what capacity you used AI on the assignment.\nThen upload a compressed (zipped) version of your project folder including the rendered HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).",
+    "crumbs": [
+      "Labs",
+      "Lab 2: Wrangling"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-2.html#hints",
+    "href": "assignments/lab-2.html#hints",
+    "title": "Lab 2: Wrangling",
+    "section": "Hints",
+    "text": "Hints\nOnly look at these if you’re stuck!\nHint 1 — Recoding the region variable:\ne_regionpol_6C comes as numbers from 1 to 6. Use case_match() inside mutate() to turn them into names:\nmutate(\n  region = case_match(region,\n                      1 ~ \"Eastern Europe\",\n                      2 ~ \"Latin America\",\n                      3 ~ \"Middle East\",\n                      4 ~ \"Africa\",\n                      5 ~ \"The West\",\n                      6 ~ \"Asia\")\n)\nHint 2 — Naming your World Bank indicator:\nIf you pass wb_data() a named vector, the column comes back with your name instead of the indicator code:\nindicators &lt;- c(\"gdp_pc\" = \"NY.GDP.PCAP.CD\")\n\nwb_data(indicators, start_date = 1990, end_date = 2023)\nHint 3 — Do we need to reshape?\nNo. Both V-Dem and wb_data() already give you one row per country-year, so the two data frames have the same shape. You only need to make sure the columns you join on have the same names (year, not date) and the same codes (that is what countrycode() is for).\nHint 4 — The countrycode() warning:\nYou will probably see a warning like Some values were not matched unambiguously. That is OK. V-Dem includes a few historical units (like Zanzibar or Somaliland) that have no World Bank code, so they get an NA for iso3c and will not find a match in the merge.\nHint 5 — Two country columns after the merge:\nBoth data frames have a country column, so left_join() gives you country.x and country.y. Drop the World Bank version with select(-country) before you join, or drop and rename the extra column after.\nHint 6 — NAs in your summary:\nIf your summary comes back as NA, it is because some country-years are missing data. Add na.rm = TRUE:\nsummarize(gdp_pc = mean(gdp_pc, na.rm = TRUE))\nHint 7 — Sorting the bars:\narrange() sorts your table but not your chart—ggplot() will still put the regions in alphabetical order. Use fct_reorder() inside aes() to sort the bars (the - puts the highest value first):\nggplot(region_summary, aes(x = fct_reorder(region, -gdp_pc), y = gdp_pc)) +\n  geom_col(fill = \"steelblue\")\nHint 8 — Formatting the y-axis:\nIf you chart GDP per capita, scale_y_continuous(labels = label_dollar()) from the scales package will format the axis as dollars. For a percentage, use label_percent(scale = 1).",
     "crumbs": [
       "Labs",
       "Lab 2: Wrangling"
@@ -2766,45 +2825,78 @@
   {
     "objectID": "assignments/lab-4.html",
     "href": "assignments/lab-4.html",
-    "title": "Lab 4: Tables & coefficient plots",
+    "title": "Lab 4: Tables",
     "section": "",
-    "text": "TipHow labs work\n\n\n\nYou are encouraged to work together and get started in class—talk through the problems with the people around you. You will finish the lab on your own time and submit your own work.\nAI use: You may use AI to ask questions or debug, but not to write your code for you—the point is to think it through yourself. At the end of the lab, add a one-line note saying whether and how you used AI.",
+    "text": "TipHow to complete the lab\n\n\n\nYou are encouraged to work together and get started in class. Talk through the problems with the people around you. Then, you will finish the lab on your own time and submit your work individually to Blackboard.\nAI use: You may use AI to ask questions or debug, but not to write your code for you. The point is to think it through yourself.",
     "crumbs": [
       "Labs",
-      "Lab 4: Tables & coefficient plots"
+      "Lab 4: Tables"
     ]
   },
   {
     "objectID": "assignments/lab-4.html#overview",
     "href": "assignments/lab-4.html#overview",
-    "title": "Lab 4: Tables & coefficient plots",
+    "title": "Lab 4: Tables",
     "section": "Overview",
-    "text": "Overview\nIn this lab you will present data two ways: as a polished table with gt, and as a regression table plus coefficient plot with modelsummary. For Part II we approximate Fearon and Laitin’s Ethnicity, Insurgency, and Civil War, whose provocative claim is that ethnic diversity per se does not predict civil conflict.",
+    "text": "Overview\nIn this lab you will make three of the displays we built in class, using slightly different data: a polished gt table of Census income data, a table with sparklines of V-Dem democracy scores, and a plot of income estimates with confidence intervals. You will need your Census API key.\n\n# load your libraries and set your Census API key here",
     "crumbs": [
       "Labs",
-      "Lab 4: Tables & coefficient plots"
+      "Lab 4: Tables"
     ]
   },
   {
-    "objectID": "assignments/lab-4.html#part-i-a-gt-table-40-pts",
-    "href": "assignments/lab-4.html#part-i-a-gt-table-40-pts",
-    "title": "Lab 4: Tables & coefficient plots",
-    "section": "Part I: A gt table (40 pts)",
-    "text": "Part I: A gt table (40 pts)\nChoose a state and use tidycensus to download county-level data on income quintiles (geography = \"county\"). Clean the variable names and use mutate(name = str_replace_all(...)) so only the county name shows. Then make a polished gt table: add a title and subtitle, relabel the columns, format the numbers as dollars, and add a source note. Below the table, note in a sentence which counties stand out.",
+    "objectID": "assignments/lab-4.html#step-1-a-gt-table-50-pts",
+    "href": "assignments/lab-4.html#step-1-a-gt-table-50-pts",
+    "title": "Lab 4: Tables",
+    "section": "Step 1: A gt table (50 pts)",
+    "text": "Step 1: A gt table (50 pts)\nIn class we made a table of income quintiles for a selection of states. Now do the same for the counties in a state of your choice. Use get_acs() to download the mean household income of each quintile (B19081_001 through B19081_006) with geography = \"county\", your state, and year = 2023. Clean the data as we did in class, and use str_replace_all() so that only the county name shows (e.g. “Franklin” rather than “Franklin County, Ohio”).\nThen pick 6–10 counties to display. You could take the highest- and lowest-income counties, as we did in class, or counties you know. Make a great (or awesome!) gt table with a title and subtitle that describe your selection, relabeled columns, dollar formatting, a source note, and at least two of the styling steps from class (column widths, font, alignment, borders). Below the table, say in a sentence which counties stand out.\nFinally, save your table with gtsave() as an HTML file (e.g. \"county_table.html\").",
     "crumbs": [
       "Labs",
-      "Lab 4: Tables & coefficient plots"
+      "Lab 4: Tables"
     ]
   },
   {
-    "objectID": "assignments/lab-4.html#part-ii-regression-table-and-coefficient-plot-60-pts",
-    "href": "assignments/lab-4.html#part-ii-regression-table-and-coefficient-plot-60-pts",
-    "title": "Lab 4: Tables & coefficient plots",
-    "section": "Part II: Regression table and coefficient plot (60 pts)",
-    "text": "Part II: Regression table and coefficient plot (60 pts)\nUse create_stateyears() and the peacesciencer “add” functions to build a state-year data frame for analyzing conflict onset (ucdponset), filtered to 1946–2019. Fit two or three model specifications—varying, say, ethnic fractionalization vs. polarization, the democracy measure, or the terrain measure—and present them side by side in a modelsummary table. Then use modelplot() to show one model as a coefficient plot with confidence intervals. In a sentence or two, compare your results to Fearon and Laitin’s and note what the coefficient plot makes easier to see than the table.\n\nAI statement: (one line on whether and how you used AI)",
+    "objectID": "assignments/lab-4.html#step-2-a-sparkline-table-30-pts",
+    "href": "assignments/lab-4.html#step-2-a-sparkline-table-30-pts",
+    "title": "Lab 4: Tables",
+    "section": "Step 2: A sparkline table (30 pts)",
+    "text": "Step 2: A sparkline table (30 pts)\nIn class we made sparklines of electoral democracy (v2x_polyarchy) for the BRICS countries. Now choose a different group of 5–8 countries (for example the G7, or a set of neighbors) and a different V-Dem democracy index, such as liberal democracy (v2x_libdem), participatory democracy (v2x_partipdem) or egalitarian democracy (v2x_egaldem). Use vdem from vdemdata to keep the years 2000–2025 for your countries. Then summarize the max, mean and standard deviation of your index for each country, and make a gt table with a sparkline of its trend using gt_plt_sparkline(). Give the columns clear labels and round the numbers to two decimals. Below the table, describe in a sentence what the sparklines show.",
     "crumbs": [
       "Labs",
-      "Lab 4: Tables & coefficient plots"
+      "Lab 4: Tables"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-4.html#step-3-confidence-intervals-20-pts",
+    "href": "assignments/lab-4.html#step-3-confidence-intervals-20-pts",
+    "title": "Lab 4: Tables",
+    "section": "Step 3: Confidence intervals (20 pts)",
+    "text": "Step 3: Confidence intervals (20 pts)\nIn class we plotted median income for the counties in Massachusetts with 90% confidence intervals. Now choose a different state and download median household income (B19013_001) by county for 2023. Compute the lower and upper bounds of the 90% confidence interval from the margin of error, and plot the estimates with geom_point() and geom_errorbar(). Give the plot a title, subtitle and caption. Below the plot, say in a sentence what the error bars show that a table of estimates would not.",
+    "crumbs": [
+      "Labs",
+      "Lab 4: Tables"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-4.html#bonus-extra-credit",
+    "href": "assignments/lab-4.html#bonus-extra-credit",
+    "title": "Lab 4: Tables",
+    "section": "Bonus (extra credit)",
+    "text": "Bonus (extra credit)\nCompleting this bonus restores full credit on one quiz where you lost points. If you have not lost points on any quiz, you will get 2 points of extra credit on this lab instead.\nWe will approximate Fearon and Laitin’s Ethnicity, Insurgency, and Civil War, whose provocative claim is that ethnic diversity per se does not predict civil conflict. Build a country-year data frame with peacesciencer:\nlibrary(peacesciencer)\n\nconflict_df &lt;- create_stateyears(system = \"gw\") |&gt;\n  filter(year %in% c(1946:2019)) |&gt;\n  add_ucdp_acd(type = \"intrastate\", only_wars = FALSE) |&gt;\n  add_democracy() |&gt;\n  add_creg_fractionalization() |&gt;\n  add_sim_gdp_pop() |&gt;\n  mutate(gdppc = log(mrgdppc), # log GDP per capita\n         pop = log(pwtpop))    # log population\nUse glm() with family = \"binomial\" to fit two models of conflict onset (ucdponset). One should include ethnic fractionalization (ethfrac) and one should include democracy (v2x_polyarchy), and both should control for gdppc and pop. Display the two models side by side with modelsummary(), and use modelplot() to make a coefficient plot of one of them. In a sentence, say whether your results support Fearon and Laitin’s claim.\n\n\n\n\n\n\n\nImportantSubmission Instructions\n\n\n\nHead over to Blackboard and go to the Lab 4 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and note whether and in what capacity you used AI on the assignment.\nThen upload a compressed (zipped) version of your project folder including the rendered HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).",
+    "crumbs": [
+      "Labs",
+      "Lab 4: Tables"
+    ]
+  },
+  {
+    "objectID": "assignments/lab-4.html#hints",
+    "href": "assignments/lab-4.html#hints",
+    "title": "Lab 4: Tables",
+    "section": "Hints",
+    "text": "Hints\nOnly look at these if you’re stuck!\nHint 1 — “A Census API key is required”:\nSet your key in the setup chunk before you call get_acs():\nlibrary(tidycensus)\ncensus_api_key(\"YOUR API KEY\")\nHint 2 — Picking your counties:\nYou can stack the counties you want with bind_rows(), as we did with states in class, or pick them by name:\nmy_counties &lt;- county_quintiles |&gt;\n  filter(name %in% c(\"Franklin\", \"Cuyahoga\", \"Hamilton\", \"Delaware\", \"Athens\", \"Holmes\"))\nHint 3 — County names that won’t clean up:\nA few states don’t call all of their counties “counties.” Louisiana has parishes, Alaska has boroughs, and Virginia has independent cities. If some names still have endings after str_replace_all(), add a second str_replace_all() for the other ending, or just choose a different state.\nHint 4 — V-Dem country codes:\nFilter on country_text_id, which uses three-letter codes. The G7, for example, is:\nfilter(country_text_id %in% c(\"USA\", \"GBR\", \"FRA\", \"DEU\", \"ITA\", \"JPN\", \"CAN\"))\nHint 5 — Too many counties to read in your plot:\nIf your state has a lot of counties, the plot in Step 3 will be crowded. Plot a subset, for example the 20 highest-income counties with slice_max(estimate, n = 20) or 20 random ones with slice_sample(n = 20), and say so in your subtitle.",
+    "crumbs": [
+      "Labs",
+      "Lab 4: Tables"
     ]
   },
   {
@@ -2878,7 +2970,7 @@
     "href": "modules/getting-started-2.html",
     "title": "Quarto and Markdown",
     "section": "",
-    "text": "Packages in this module\n\n\n\nPackages: tidyverse, quarto",
+    "text": "NotePackages in this module\n\n\n\nPackages: tidyverse, quarto",
     "crumbs": [
       "Course Topics",
       "Quarto and Markdown"
@@ -2911,7 +3003,7 @@
     "href": "modules/module-1.2.html",
     "title": "Importing & Merging Data",
     "section": "",
-    "text": "Packages & functions in this module\n\n\n\nPackages: wbstats, vdemdata, dplyr, janitor, countrycode, readr\nFunctions: wb_data(), vdem, select(), filter(), case_match(), round_to_fraction(), countrycode(), left_join(), write_csv(), group_by(), summarize(), arrange()",
+    "text": "NotePackages & functions in this module\n\n\n\nPackages: wbstats, vdemdata, dplyr, janitor, countrycode, readr\nFunctions: wb_data(), vdem, select(), filter(), case_match(), round_to_fraction(), countrycode(), left_join(), write_csv(), group_by(), summarize(), arrange()",
     "crumbs": [
       "Course Topics",
       "I — Working With Data",
@@ -2995,7 +3087,7 @@
     "href": "modules/module-2.2.html",
     "title": "Color, Themes & Annotations",
     "section": "",
-    "text": "Packages & functions in this module\n\n\n\nPackages: tidyr, colorBlindness, dplyr, viridis, RColorBrewer, ggplot2, plotly\nFunctions: drop_na(), cvdPlot(), scale_color_manual(), scale_color_viridis_d(), scale_color_brewer(), scale_fill_manual(), theme_minimal(), annotate(), geom_hline(), geom_vline(), ggplotly()",
+    "text": "NotePackages & functions in this module\n\n\n\nPackages: tidyr, colorBlindness, dplyr, viridis, RColorBrewer, ggplot2, plotly\nFunctions: drop_na(), cvdPlot(), scale_color_manual(), scale_color_viridis_d(), scale_color_brewer(), scale_fill_manual(), theme_minimal(), annotate(), geom_hline(), geom_vline(), ggplotly()",
     "crumbs": [
       "Course Topics",
       "II — Visualizing Data",
@@ -3067,7 +3159,7 @@
     "href": "modules/module-3.2.html",
     "title": "Interactive Maps",
     "section": "",
-    "text": "Packages & functions in this module\n\n\n\nPackages: sf, leaflet, htmltools\nFunctions: leaflet(), st_as_sf(), addTiles(), addMarkers(), addProviderTiles(), setView(), addLegend()",
+    "text": "NotePackages & functions in this module\n\n\n\nPackages: sf, leaflet, htmltools\nFunctions: leaflet(), st_as_sf(), addTiles(), addMarkers(), addProviderTiles(), setView(), addLegend()",
     "crumbs": [
       "Course Topics",
       "III — Maps",
@@ -3127,7 +3219,7 @@
     "href": "modules/module-4.2.html",
     "title": "Models & Coefficient Plots",
     "section": "",
-    "text": "Packages & functions in this module\n\n\n\nPackages: peacesciencer, broom, dplyr, modelsummary\nFunctions: create_stateyears(), add_ucdp_acd(), add_democracy(), tidy(), mutate_if(), glm(), binomial(), list(), modelsummary(), modelplot(), rev()",
+    "text": "NotePackages & functions in this module\n\n\n\nPackages: peacesciencer, broom, dplyr, modelsummary\nFunctions: create_stateyears(), add_ucdp_acd(), add_democracy(), tidy(), mutate_if(), glm(), binomial(), list(), modelsummary(), modelplot(), rev()",
     "crumbs": [
       "Course Topics",
       "IV — Tables & Models",
@@ -3187,7 +3279,7 @@
     "href": "modules/module-5.2.html",
     "title": "Extending Your App",
     "section": "",
-    "text": "Packages & functions in this module\n\n\n\nPackages: fredr, shiny\nFunctions: fredr_set_key(), reactive(), sliderInput(), fredr(), fred_indicator()",
+    "text": "NotePackages & functions in this module\n\n\n\nPackages: fredr, shiny\nFunctions: fredr_set_key(), reactive(), sliderInput(), fredr(), fred_indicator()",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
@@ -3271,7 +3363,7 @@
     "href": "modules/module-6.2.html",
     "title": "Deploying & Sharing Your App",
     "section": "",
-    "text": "Packages in this module\n\n\n\nPackages: shiny, rsconnect\nNow that you have your Shiny app, how can you share it with others? The simplest and most logical thing to do is to publish it as a web page. After all, sharing your app on the web is sort of the point of making a web app and doing so is an essential if you want to share your apps with a broader set of users who do not know how to use R or and/or Shiny. There are many different ways to publish your app but the best way when you are getting started is ShinyApps.io.\nYou also may want to share your app with collaborators by sending them your R script and supporting files before you make your app public or available to a broader group of users. There are many ways to share your Shiny app files but the two we are going to cover are sending the files via email or sharing them on GitHub.",
+    "text": "NotePackages in this module\n\n\n\nPackages: shiny, rsconnect\nNow that you have your Shiny app, how can you share it with others? The simplest and most logical thing to do is to publish it as a web page. After all, sharing your app on the web is sort of the point of making a web app and doing so is an essential if you want to share your apps with a broader set of users who do not know how to use R or and/or Shiny. There are many different ways to publish your app but the best way when you are getting started is ShinyApps.io.\nYou also may want to share your app with collaborators by sending them your R script and supporting files before you make your app public or available to a broader group of users. There are many ways to share your Shiny app files but the two we are going to cover are sending the files via email or sharing them on GitHub.",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
@@ -3338,94 +3430,6 @@
     ]
   },
   {
-    "objectID": "project/project-assignment-2.html#overview",
-    "href": "project/project-assignment-2.html#overview",
-    "title": "Final Project",
-    "section": "",
-    "text": "Now that you have a clear sense of where you are going with your app, it is time to build it. Much of this work happens during the project studio sessions in class, so lean on your classmates and on me. This is the hard part and you will likely have to invest significant time in wrangling your data and debugging the app. Be patient! It will turn out great and you will have a nice project to show for it.\n\n\n\n\n\n\nNote\n\n\n\nIf you are working in a group (up to three students), submit one app and include a short note on who was responsible for what. See the Project Description for the group policy.",
-    "crumbs": [
-      "Project",
-      "Final Project"
-    ]
-  },
-  {
-    "objectID": "project/project-assignment-2.html#step-1-setup",
-    "href": "project/project-assignment-2.html#step-1-setup",
-    "title": "Final Project",
-    "section": "Step 1: Setup",
-    "text": "Step 1: Setup\nStart a new Shiny app in R Studio. In your app.R file, begin by loading your packages, loading and/or wrangling your data, and creating lists for your inputs.",
-    "crumbs": [
-      "Project",
-      "Final Project"
-    ]
-  },
-  {
-    "objectID": "project/project-assignment-2.html#step-2-define-the-ui",
-    "href": "project/project-assignment-2.html#step-2-define-the-ui",
-    "title": "Final Project",
-    "section": "Step 2: Define the ui",
-    "text": "Step 2: Define the ui\nStarting with ui &lt;- fluidPage(), start building your UI. Add a titlePanel(), a fluidRow() and then add the various columnar elements that you want to include such as inputs, text and the plot output. Try running your app just with the ui set up and see how it looks.",
-    "crumbs": [
-      "Project",
-      "Final Project"
-    ]
-  },
-  {
-    "objectID": "project/project-assignment-2.html#step-3-define-the-server-logic",
-    "href": "project/project-assignment-2.html#step-3-define-the-server-logic",
-    "title": "Final Project",
-    "section": "Step 3: Define the server logic",
-    "text": "Step 3: Define the server logic\nBuild your reactive function(s) and specify how the data and output will change based on user input(s). This is a process that is very specific to each project, so it is hard to say anything general here. But when in the process of building your server function, it often helps to look back at examples we have done in class or those that you might find helpful in the Shiny gallery.",
-    "crumbs": [
-      "Project",
-      "Final Project"
-    ]
-  },
-  {
-    "objectID": "project/project-assignment-2.html#step-4-debug-your-app",
-    "href": "project/project-assignment-2.html#step-4-debug-your-app",
-    "title": "Final Project",
-    "section": "Step 4: Debug your app",
-    "text": "Step 4: Debug your app\nAre you having issues with your code? See this post and reach out for help on Discord.",
-    "crumbs": [
-      "Project",
-      "Final Project"
-    ]
-  },
-  {
-    "objectID": "project/project-assignment-2.html#step-5-post-your-app-to-shinyapps.io",
-    "href": "project/project-assignment-2.html#step-5-post-your-app-to-shinyapps.io",
-    "title": "Final Project",
-    "section": "Step 5: Post your app to shinyapps.io",
-    "text": "Step 5: Post your app to shinyapps.io\nSign up for a free account at https://www.shinyapps.io/. When you are ready, hit the little blue icon at the top of your app.R window to publish it.",
-    "crumbs": [
-      "Project",
-      "Final Project"
-    ]
-  },
-  {
-    "objectID": "project/project-assignment-2.html#step-6-present-your-app-in-class",
-    "href": "project/project-assignment-2.html#step-6-present-your-app-in-class",
-    "title": "Final Project",
-    "section": "Step 6: Present your app in class",
-    "text": "Step 6: Present your app in class\nDuring our final session you will give a short live demo of your app to the class. Walk us through the main features: what data users can explore, how the controls work, and—most importantly—what patterns emerge and what we learn from the visualization that we might not have seen otherwise. If you are in a group, decide in advance who will present which part.",
-    "crumbs": [
-      "Project",
-      "Final Project"
-    ]
-  },
-  {
-    "objectID": "project/project-assignment-2.html#step-7-submit-your-app",
-    "href": "project/project-assignment-2.html#step-7-submit-your-app",
-    "title": "Final Project",
-    "section": "Step 7: Submit your app",
-    "text": "Step 7: Submit your app\nSubmit your project on Blackboard: include a link to your published app on shinyapps.io along with a compressed (zipped) copy of your project folder (your app.R and any supporting data or scripts). Groups submit once; include your division-of-work note.",
-    "crumbs": [
-      "Project",
-      "Final Project"
-    ]
-  },
-  {
     "objectID": "project/project-description.html",
     "href": "project/project-description.html",
     "title": "Project Description",
@@ -3470,11 +3474,11 @@
     ]
   },
   {
-    "objectID": "project/project-description.html#deliverables-and-timeline",
-    "href": "project/project-description.html#deliverables-and-timeline",
+    "objectID": "project/project-description.html#deliverables",
+    "href": "project/project-description.html#deliverables",
     "title": "Project Description",
-    "section": "Deliverables and timeline",
-    "text": "Deliverables and timeline\n\n\n\nWhen\nDeliverable\n\n\n\n\nSee the course schedule\nProject proposal — commit to an idea, track (app or report), data, and layout. See Project Proposal.\n\n\nWeeks 12, 13, 15\nProject studios — build and troubleshoot your app or draft your report in class, with optional check-in meetings.\n\n\nWeek 16\nFinal project + live presentation — deploy your app (or finalize your report) and present it to the class. See Final Project.\n\n\n\nFor ideas about data to work with, see the Datasets page.",
+    "section": "Deliverables",
+    "text": "Deliverables\nMore Coming Soon!\nFor ideas about data to work with, see the Datasets page.",
     "crumbs": [
       "Project",
       "Description"
@@ -4874,13 +4878,6 @@
     "text": "Disputed Territory\n\nSource: Wikimedia Commons"
   },
   {
-    "objectID": "slides/week-6.1.html#development",
-    "href": "slides/week-6.1.html#development",
-    "title": "Choropleth Maps",
-    "section": "Development",
-    "text": "Development"
-  },
-  {
     "objectID": "slides/week-6.1.html#map-code",
     "href": "slides/week-6.1.html#map-code",
     "title": "Choropleth Maps",
@@ -4897,6 +4894,20 @@
   {
     "objectID": "slides/week-6.1.html#map-code-2",
     "href": "slides/week-6.1.html#map-code-2",
+    "title": "Choropleth Maps",
+    "section": "Map Code",
+    "text": "Map Code"
+  },
+  {
+    "objectID": "slides/week-6.1.html#map-code-3",
+    "href": "slides/week-6.1.html#map-code-3",
+    "title": "Choropleth Maps",
+    "section": "Map Code",
+    "text": "Map Code\n\nAdd a color scale and a theme.\n\n\nlibrary(ggthemes)\n\nggplot(data = world_map_df) +\n  geom_sf(aes(fill = income_grp)) + \n  labs(\n    title = \"World Bank country income categories\",\n    fill = \"Category\"\n    ) +\n    scale_fill_viridis_d() +\n    theme_map()"
+  },
+  {
+    "objectID": "slides/week-6.1.html#map-code-4",
+    "href": "slides/week-6.1.html#map-code-4",
     "title": "Choropleth Maps",
     "section": "Map Code",
     "text": "Map Code"
@@ -4942,13 +4953,6 @@
     "title": "Choropleth Maps",
     "section": "Map Some V-Dem Data",
     "text": "Map Some V-Dem Data\n\n\nNow try mapping some V-Dem data\nRemind yourself of how to download data from V-Dem\nYou will have to convert country codes to iso3c\nThen merge with country shapes\nThen map your V-Dem indicator!"
-  },
-  {
-    "objectID": "slides/week-6.1.html#coding-with-ai",
-    "href": "slides/week-6.1.html#coding-with-ai",
-    "title": "Choropleth Maps",
-    "section": "Coding With AI",
-    "text": "Coding With AI\n\n\nSometimes coding with AI can helpful\nSometimes not!\nTry prompting ChatGPT to code up a choropleth map\nTell it what packages to use\nNote differences from our code\nDebug if necessary"
   },
   {
     "objectID": "slides/week-7.1.html#leaflet-maps",
@@ -5400,242 +5404,5 @@
       "Weekly Materials",
       "Week 9"
     ]
-  },
-  {
-    "objectID": "project/project-description.html#deliverables",
-    "href": "project/project-description.html#deliverables",
-    "title": "Project Description",
-    "section": "Deliverables",
-    "text": "Deliverables\nMore Coming Soon!\nFor ideas about data to work with, see the Datasets page.",
-    "crumbs": [
-      "Project",
-      "Description"
-    ]
-  },
-  {
-    "objectID": "slides/week-4.2.html#how-does-format-know-what-to-do",
-    "href": "slides/week-4.2.html#how-does-format-know-what-to-do",
-    "title": "Wrangling Data",
-    "section": "How Does format() Know What to Do?",
-    "text": "How Does format() Know What to Do?\n\nThe \"%B %d, %Y\" part is a format string borrowed from base R’s strftime() (date → string) and strptime() (string → date)\nEach % code stands in for a piece of the date or time\n\n\n\n\nCode\nMeaning\nExample\n\n\n\n\n%Y / %y\n4-digit / 2-digit year\n2024 / 24\n\n\n%B / %b\nFull / abbreviated month\nSeptember / Sep\n\n\n%m\nMonth number (01-12)\n09\n\n\n%d\nDay of month\n05\n\n\n%A / %a\nFull / abbreviated weekday\nThursday / Thu\n\n\n%H : %M : %S\nHour : minute : second\n14:30:00\n\n\n\n\nformat(my_date, \"%A, %B %d, %Y\")  # Thursday, September 05, 2024\n\n[1] \"Thursday, September 05, 2024\"\n\nformat(my_date, \"%m/%d/%y\")       # 09/05/24\n\n[1] \"09/05/24\"\n\n\n\n\n\nRun ?strptime in the console to see the full list of format codes available in base R."
-  },
-  {
-    "objectID": "slides/week-4.2.html#formatting-dates-examples",
-    "href": "slides/week-4.2.html#formatting-dates-examples",
-    "title": "Wrangling Data",
-    "section": "Formatting Dates: Examples",
-    "text": "Formatting Dates: Examples\n\n\nMix and match codes (and add your own spaces, slashes, commas) to build any output you want\n\n\nmy_date &lt;- ymd(\"2024-09-05\")\n\n# Full written-out date\nformat(my_date, \"%A, %B %d, %Y\")\n\n[1] \"Thursday, September 05, 2024\"\n\n# Common US numeric format\nformat(my_date, \"%m/%d/%y\")\n\n[1] \"09/05/24\"\n\n# Abbreviated, compact\nformat(my_date, \"%d-%b-%Y\")\n\n[1] \"05-Sep-2024\"\n\n\n\n\n\nRun ?strptime in the console to see the full list of format codes available in base R."
-  },
-  {
-    "objectID": "slides/week-5.2.html#from-summary-to-chart",
-    "href": "slides/week-5.2.html#from-summary-to-chart",
-    "title": "Merging and Summarizing Data",
-    "section": "From Summary to Chart",
-    "text": "From Summary to Chart\n\n\nA summary table is a good start, but a chart is easier to read\nSave the summary as an object, then hand it to ggplot()\ngeom_col() draws one bar per region at the height of the summary value\nNote: arrange() sorts the table, not the bars\n\nUse fct_reorder() to sort the bars"
-  },
-  {
-    "objectID": "slides/week-5.2.html#step-1-save-the-summary",
-    "href": "slides/week-5.2.html#step-1-save-the-summary",
-    "title": "Merging and Summarizing Data",
-    "section": "Step 1: Save the Summary",
-    "text": "Step 1: Save the Summary\n\n\npolyarchy_region &lt;- dem_women |&gt; # save result as new object\n  group_by(region) |&gt; # group data by region\n  summarize(\n    polyarchy = mean(polyarchy, na.rm = TRUE) # mean polyarchy score by region\n  ) |&gt; \n  arrange(desc(polyarchy)) # arrange in descending order\n\npolyarchy_region\n\n# A tibble: 6 × 2\n  region         polyarchy\n  &lt;chr&gt;              &lt;dbl&gt;\n1 The West           0.871\n2 Latin America      0.637\n3 Eastern Europe     0.539\n4 Asia               0.408\n5 Africa             0.393\n6 Middle East        0.246"
-  },
-  {
-    "objectID": "slides/week-5.2.html#step-2-make-a-column-chart",
-    "href": "slides/week-5.2.html#step-2-make-a-column-chart",
-    "title": "Merging and Summarizing Data",
-    "section": "Step 2: Make a Column Chart",
-    "text": "Step 2: Make a Column Chart\n\n\nggplot(polyarchy_region, aes(x = fct_reorder(region, -polyarchy), y = polyarchy)) +\n  geom_col(fill = \"steelblue\") + # one bar per region\n  labs(\n    x = \"Region\", \n    y = \"Avg. Polyarchy Score\", \n    title = \"Democracy by region, 1990 - present\", \n    caption = \"Source: V-Dem Institute\"\n  ) +\n  theme_minimal()"
-  },
-  {
-    "objectID": "slides/week-5.2.html#step-2-make-a-column-chart-output",
-    "href": "slides/week-5.2.html#step-2-make-a-column-chart-output",
-    "title": "Merging and Summarizing Data",
-    "section": "Step 2: Make a Column Chart",
-    "text": "Step 2: Make a Column Chart"
-  },
-  {
-    "objectID": "slides/week-5.2.html#try-it-yourself-3",
-    "href": "slides/week-5.2.html#try-it-yourself-3",
-    "title": "Merging and Summarizing Data",
-    "section": "Try it Yourself",
-    "text": "Try it Yourself\n\nUsing your merged data frame from today:\n\n\nMake a column chart of the median libdem score by region. Which region ranks highest? Lowest?\nAdd filter(year == 2019) before group_by(). Does the ranking change compared to the 1990 - present average?\nNow chart one of your World Bank variables (e.g. flfp or women_rep) by region. Do the regions line up in the same order as they do for democracy?\nChange the fill color and the theme, and update the axis labels and title to match your new chart."
-  },
-  {
-    "objectID": "assignments/lab-2.html#step-1-download-your-data-20-pts",
-    "href": "assignments/lab-2.html#step-1-download-your-data-20-pts",
-    "title": "Lab 2: Wrangling",
-    "section": "Step 1: Download your data (20 pts)",
-    "text": "Step 1: Download your data (20 pts)\na) Use vdem from vdemdata to download the V-Dem dataset. Use filter() to keep the years from 1990 onward, then use select() to keep and rename the country name, the V-Dem country ID, the year, a democracy measure of your choice and the region variable (e_regionpol_6C). Recode the region numbers into names with mutate() and case_match(). glimpse() the result.\nb) Use wb_data() from wbstats to download GDP per capita (or another development or women’s-empowerment indicator) for the same years. Give your indicator a readable name, drop iso2c, and rename date to year so it matches V-Dem. glimpse() the result.",
-    "crumbs": [
-      "Labs",
-      "Lab 2: Wrangling"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-2.html#step-2-add-country-codes-15-pts",
-    "href": "assignments/lab-2.html#step-2-add-country-codes-15-pts",
-    "title": "Lab 2: Wrangling",
-    "section": "Step 2: Add country codes (15 pts)",
-    "text": "Step 2: Add country codes (15 pts)\nV-Dem and the World Bank use different country codes, so we need a common one before we can merge. Use mutate() and countrycode() to add an iso3c variable to your V-Dem data frame, converting from the \"vdem\" codes to the \"wb\" codes. glimpse() the result to confirm the new column is there.",
-    "crumbs": [
-      "Labs",
-      "Lab 2: Wrangling"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-2.html#step-3-merge-20-pts",
-    "href": "assignments/lab-2.html#step-3-merge-20-pts",
-    "title": "Lab 2: Wrangling",
-    "section": "Step 3: Merge (20 pts)",
-    "text": "Step 3: Merge (20 pts)\nUse left_join() to merge your V-Dem and World Bank data frames by iso3c and year. Make sure you end up with just one country name column. glimpse() the result and check for excessive NAs.",
-    "crumbs": [
-      "Labs",
-      "Lab 2: Wrangling"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-2.html#step-4-summarize-by-region-20-pts",
-    "href": "assignments/lab-2.html#step-4-summarize-by-region-20-pts",
-    "title": "Lab 2: Wrangling",
-    "section": "Step 4: Summarize by region (20 pts)",
-    "text": "Step 4: Summarize by region (20 pts)\na) Starting from your merged data frame, use group_by() and summarize() to calculate the mean (or median) of one of your variables—your democracy measure or your World Bank indicator—for each region. You can use all years or filter() for a single year first. Save the result as a new object.\nb) Use arrange() to sort the regions from highest to lowest. Which region comes out on top? Which is at the bottom?",
-    "crumbs": [
-      "Labs",
-      "Lab 2: Wrangling"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-2.html#step-5-visualize-25-pts",
-    "href": "assignments/lab-2.html#step-5-visualize-25-pts",
-    "title": "Lab 2: Wrangling",
-    "section": "Step 5: Visualize (25 pts)",
-    "text": "Step 5: Visualize (25 pts)\na) Make a column chart with geom_col() showing your summarized variable by region. Sort the bars from highest to lowest, choose a fill color and a theme, and add axis labels, a title and a caption naming your source.\nb) Below this line, write a sentence or two describing what the chart shows. Is this what you expected?\n\n\n\n\n\n\n\nImportantSubmission Instructions\n\n\n\nHead over to Blackboard and go to the Lab 2 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and note whether and in what capacity you used AI on the assignment.\nThen upload a compressed (zipped) version of your project folder including the rendered HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).",
-    "crumbs": [
-      "Labs",
-      "Lab 2: Wrangling"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-2.html#hints",
-    "href": "assignments/lab-2.html#hints",
-    "title": "Lab 2: Wrangling",
-    "section": "Hints",
-    "text": "Hints\nOnly look at these if you’re stuck!\nHint 1 — Recoding the region variable:\ne_regionpol_6C comes as numbers from 1 to 6. Use case_match() inside mutate() to turn them into names:\nmutate(\n  region = case_match(region,\n                      1 ~ \"Eastern Europe\",\n                      2 ~ \"Latin America\",\n                      3 ~ \"Middle East\",\n                      4 ~ \"Africa\",\n                      5 ~ \"The West\",\n                      6 ~ \"Asia\")\n)\nHint 2 — Naming your World Bank indicator:\nIf you pass wb_data() a named vector, the column comes back with your name instead of the indicator code:\nindicators &lt;- c(\"gdp_pc\" = \"NY.GDP.PCAP.CD\")\n\nwb_data(indicators, start_date = 1990, end_date = 2023)\nHint 3 — Do we need to reshape?\nNo. Both V-Dem and wb_data() already give you one row per country-year, so the two data frames have the same shape. You only need to make sure the columns you join on have the same names (year, not date) and the same codes (that is what countrycode() is for).\nHint 4 — The countrycode() warning:\nYou will probably see a warning like Some values were not matched unambiguously. That is OK. V-Dem includes a few historical units (like Zanzibar or Somaliland) that have no World Bank code, so they get an NA for iso3c and will not find a match in the merge.\nHint 5 — Two country columns after the merge:\nBoth data frames have a country column, so left_join() gives you country.x and country.y. Drop the World Bank version with select(-country) before you join, or drop and rename the extra column after.\nHint 6 — NAs in your summary:\nIf your summary comes back as NA, it is because some country-years are missing data. Add na.rm = TRUE:\nsummarize(gdp_pc = mean(gdp_pc, na.rm = TRUE))\nHint 7 — Sorting the bars:\narrange() sorts your table but not your chart—ggplot() will still put the regions in alphabetical order. Use fct_reorder() inside aes() to sort the bars (the - puts the highest value first):\nggplot(region_summary, aes(x = fct_reorder(region, -gdp_pc), y = gdp_pc)) +\n  geom_col(fill = \"steelblue\")\nHint 8 — Formatting the y-axis:\nIf you chart GDP per capita, scale_y_continuous(labels = label_dollar()) from the scales package will format the axis as dollars. For a percentage, use label_percent(scale = 1).",
-    "crumbs": [
-      "Labs",
-      "Lab 2: Wrangling"
-    ]
-  },
-  {
-    "objectID": "slides/week-5.2.html#step-2-make-a-column-chart-1",
-    "href": "slides/week-5.2.html#step-2-make-a-column-chart-1",
-    "title": "Merging and Summarizing Data",
-    "section": "Step 2: Make a Column Chart",
-    "text": "Step 2: Make a Column Chart"
-  },
-  {
-    "objectID": "slides/week-6.1.html#map-code-3",
-    "href": "slides/week-6.1.html#map-code-3",
-    "title": "Choropleth Maps",
-    "section": "Map Code",
-    "text": "Map Code\n\nAdd a color scale and a theme.\n\n\nlibrary(ggthemes)\n\nggplot(data = world_map_df) +\n  geom_sf(aes(fill = income_grp)) + \n  labs(\n    title = \"World Bank country income categories\",\n    fill = \"Category\"\n    ) +\n    scale_fill_viridis_d() +\n    theme_map()"
-  },
-  {
-    "objectID": "slides/week-6.1.html#map-code-4",
-    "href": "slides/week-6.1.html#map-code-4",
-    "title": "Choropleth Maps",
-    "section": "Map Code",
-    "text": "Map Code"
-  },
-  {
-    "objectID": "slides/week-6.2.html#map-function-4",
-    "href": "slides/week-6.2.html#map-function-4",
-    "title": "Make a Map Function",
-    "section": "Map Function",
-    "text": "Map Function\n\nNow we can map any World Bank indicator by changing the inputs…\n\n\ncreate_map(var_id = \"NY.GDP.PCAP.PP.KD\", \n           title= \"GDP per capita (constant 2017 international $)\", \n           legend_title = \"Geary-Khamis $\", \n           theme = \"mako\", \n           direction = -1)"
-  },
-  {
-    "objectID": "slides/week-6.2.html#map-function-5",
-    "href": "slides/week-6.2.html#map-function-5",
-    "title": "Make a Map Function",
-    "section": "Map Function",
-    "text": "Map Function"
-  },
-  {
-    "objectID": "slides/week-6.2.html#group-and-summarize-1",
-    "href": "slides/week-6.2.html#group-and-summarize-1",
-    "title": "Make a Map Function",
-    "section": "Group and Summarize",
-    "text": "Group and Summarize\n\nAverage female labor force participation across countries, last three years…\n\n\nmean_wb_data(\"SL.TLF.CACT.FE.ZS\", 3, date)\n\n# A tibble: 3 × 2\n   date mean_value\n  &lt;dbl&gt;      &lt;dbl&gt;\n1  2023       51.4\n2  2024       51.5\n3  2025       51.4"
-  },
-  {
-    "objectID": "slides/week-6.2.html#line-chart-1",
-    "href": "slides/week-6.2.html#line-chart-1",
-    "title": "Make a Map Function",
-    "section": "Line Chart",
-    "text": "Line Chart"
-  },
-  {
-    "objectID": "assignments/lab-3.html#step-1-choropleth-maps-50-pts",
-    "href": "assignments/lab-3.html#step-1-choropleth-maps-50-pts",
-    "title": "Lab 3: Maps",
-    "section": "Step 1: Choropleth maps (50 pts)",
-    "text": "Step 1: Choropleth maps (50 pts)\n\nStep 1a: Build your data frame (10 pts)\nChoose a World Bank indicator related to Ross’s argument. Some options, with the most recent year that has good coverage:\n\n\n\nIndicator\nCode\nYear to use\n\n\n\n\nOil rents (% of GDP)\nNY.GDP.PETR.RT.ZS\n2021\n\n\nTotal natural resource rents (% of GDP)\nNY.GDP.TOTL.RT.ZS\n2021\n\n\nFuel exports (% of merchandise exports)\nTX.VAL.FUEL.ZS.UN\n2023\n\n\nTax revenue (% of GDP)\nGC.TAX.TOTL.GD.ZS\n2023\n\n\n\nUse wb_data() from wbstats to download your indicator for that single year (set start_date and end_date to the same year). Then use vdem from vdemdata to download the V-Dem dataset, filter it to the same year, and select the V-Dem country ID and a democracy measure of your choice, such as electoral democracy (v2x_polyarchy) or liberal democracy (v2x_libdem). Convert the V-Dem country ID to ISO3C codes with countrycode() and join the two data frames by iso3c. glimpse() the result.\n\n\nStep 1b: Map your World Bank indicator (20 pts)\nUse rnaturalearth to get country shapes (filter out Antarctica) and join your data frame to them, matching iso_a3_eh to iso3c. Then map your World Bank indicator with ggplot() and geom_sf(), using theme_map() from ggthemes and a viridis color scale. Give the map clear labels. Below the map, say in a sentence or two what pattern you see.\n\n\nStep 1c: Map democracy (20 pts)\nNow map your democracy measure the same way. Below the map, compare it to your first map in a sentence or two: do the resource-rich countries look less democratic, as Ross would predict? Do you see any exceptions?",
-    "crumbs": [
-      "Labs",
-      "Lab 3: Maps"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-3.html#bonus-2-pts",
-    "href": "assignments/lab-3.html#bonus-2-pts",
-    "title": "Lab 3: Maps",
-    "section": "Bonus (2 pts)",
-    "text": "Bonus (2 pts)\nSteps 1b and 1c use almost the same code. Write a function called create_map() that takes four arguments (your map data frame, the name of the variable to map, a title, and a legend title) and returns a choropleth map. Then call your function twice to remake both maps.\n\n\n\n\n\n\n\nImportantSubmission Instructions\n\n\n\nHead over to Blackboard and go to the Lab 3 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and note whether and in what capacity you used AI on the assignment.\nThen upload a compressed (zipped) version of your project folder including the rendered HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).",
-    "crumbs": [
-      "Labs",
-      "Lab 3: Maps"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-3.html#hints",
-    "href": "assignments/lab-3.html#hints",
-    "title": "Lab 3: Maps",
-    "section": "Hints",
-    "text": "Hints\nOnly look at these if you’re stuck!\nHint 1 — Downloading a single year from the World Bank:\nSet start_date and end_date to the same year. If you pass wb_data() a named vector, the column comes back with your name instead of the indicator code:\nwb_data(c(fuel_exports = \"TX.VAL.FUEL.ZS.UN\"), start_date = 2023, end_date = 2023)\nHint 2 — Converting the V-Dem country ID:\nUse countrycode() inside mutate(), telling it the codes come from V-Dem:\nmutate(iso3c = countrycode(country_id, origin = \"vdem\", destination = \"iso3c\"))\nYou will probably see a warning like Some values were not matched unambiguously. That is OK. A few V-Dem units (like Kosovo, Somaliland or Zanzibar) have no ISO3C code, so they get an NA and will not show up on the map.\nHint 3 — Put the country shapes first in the join:\nIf you get an error saying stat_sf() requires the missing aesthetic geometry, check the order of your left_join(). The country shapes have to come first so the result stays a simple features data frame:\nleft_join(world_map_df, your_data, join_by(iso_a3_eh == iso3c))\nHint 4 — Gray countries:\nCountries shaded gray have no data for your variable (Greenland, for example, is not in V-Dem). That is expected; you do not need to fix it.\nHint 5 — “Discrete value supplied to continuous scale” (or the reverse):\nYour variables are continuous, so use scale_fill_viridis_c(), not scale_fill_viridis_d(). If your variable is a percentage, labels = scales::label_percent(scale = 1) inside the scale function will add % signs to the legend.\nHint 6 — Filtering the conflict data by date:\ndate_start is a date, so you can compare it to a date written as text:\nfilter(country_id == 475, date_start &gt;= \"2026-01-01\", date_start &lt; \"2026-04-01\")\nHint 7 — Showing the deaths and the date in the popup:\nPopups can display HTML, so you can use paste() to build the text and &lt;br&gt; to start a new line:\naddMarkers(\n  popup = ~paste(\"Date:\", date, \"&lt;br&gt;Deaths:\", deaths),\n  label = ~place\n)\nHint 8 — Mapping a variable inside a function (bonus):\nIf your function takes the variable name as a string (like \"polyarchy\"), aes(fill = var) will not work, because ggplot treats the string as a constant. Use .data[[var]] instead, as we did in the Functions topic:\ngeom_sf(aes(fill = .data[[var]]))",
-    "crumbs": [
-      "Labs",
-      "Lab 3: Maps"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-3.html#bonus-quiz-extra-credit",
-    "href": "assignments/lab-3.html#bonus-quiz-extra-credit",
-    "title": "Lab 3: Maps",
-    "section": "Bonus (quiz extra credit)",
-    "text": "Bonus (quiz extra credit)\nCompleting this bonus adds 2 points to a quiz where you lost points, up to full credit on that quiz.\nSteps 1b and 1c use almost the same code. Write a function called create_map() that takes four arguments (your map data frame, the name of the variable to map, a title, and a legend title) and returns a choropleth map. Then call your function twice to remake both maps.\n\n\n\n\n\n\n\nImportantSubmission Instructions\n\n\n\nHead over to Blackboard and go to the Lab 3 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and note whether and in what capacity you used AI on the assignment.\nThen upload a compressed (zipped) version of your project folder including the rendered HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).",
-    "crumbs": [
-      "Labs",
-      "Lab 3: Maps"
-    ]
-  },
-  {
-    "objectID": "assignments/lab-3.html#bonus-extra-credit",
-    "href": "assignments/lab-3.html#bonus-extra-credit",
-    "title": "Lab 3: Maps",
-    "section": "Bonus (extra credit)",
-    "text": "Bonus (extra credit)\nCompleting this bonus restores full credit on one quiz where you lost points. If you have not lost points on any quiz, you will get 2 points of extra credit on this lab instead.\nSteps 1b and 1c use almost the same code. Write a function called create_map() that takes four arguments (your map data frame, the name of the variable to map, a title, and a legend title) and returns a choropleth map. Then call your function twice to remake both maps.\n\n\n\n\n\n\n\nImportantSubmission Instructions\n\n\n\nHead over to Blackboard and go to the Lab 3 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and note whether and in what capacity you used AI on the assignment.\nThen upload a compressed (zipped) version of your project folder including the rendered HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).",
-    "crumbs": [
-      "Labs",
-      "Lab 3: Maps"
-    ]
-  },
-  {
-    "objectID": "slides/week-9.1.html#your-turn",
-    "href": "slides/week-9.1.html#your-turn",
-    "title": "Making Tables",
-    "section": "Your Turn!",
-    "text": "Your Turn!\n\n\nPick a different set of states (e.g. a region, your home state and its neighbors)\n\nHint: use filter() with name %in% c(...)\n\nMake a great (or awesome!) gt table with your states\n\nUpdate the title and subtitle to describe your selection\n\nExport your table with gtsave()"
   }
 ]

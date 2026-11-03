@@ -39,8 +39,10 @@ conflict_df <- create_stateyears(system = 'gw') |>
   add_ucdp_acd(type=c("intrastate"), only_wars = FALSE) |>
   add_democracy() |>
   add_creg_fractionalization() |>
-  add_sdp_gdp() |>
-  add_rugged_terrain()
+  add_sim_gdp_pop() |>
+  add_rugged_terrain() |>
+  mutate(gdppc = log(mrgdppc), # log GDP per capita
+         pop = log(pwtpop))    # log population
 
 glimpse(conflict_df)
 ```
@@ -68,7 +70,7 @@ countdown(minutes = 2,
 
 ```{r}
 conflict_model <- glm(ucdponset ~ ethfrac + relfrac + v2x_polyarchy + 
-                        rugged + wbgdppc2011est + wbpopest,
+                        rugged + gdppc + pop,
                   data= conflict_df,
                   family = binomial(link="logit"))
 ```
@@ -159,20 +161,20 @@ countdown(minutes = 10,
 ```{r}
 #| label: multiple_models
 
-ethnicity <- glm(ucdponset ~ ethfrac + relfrac + wbgdppc2011est + wbpopest, # store each model in an object
+ethnicity <- glm(ucdponset ~ ethfrac + relfrac + gdppc + pop, # store each model in an object
                   data = conflict_df,
                   family = "binomial")
 
-democracy <- glm(ucdponset ~ v2x_polyarchy + wbgdppc2011est +  wbpopest,
+democracy <- glm(ucdponset ~ v2x_polyarchy + gdppc +  pop,
                   data = conflict_df,
                   family = "binomial")
 
-terrain <- glm(ucdponset ~ rugged + wbgdppc2011est + wbpopest ,
+terrain <- glm(ucdponset ~ rugged + gdppc + pop ,
                   data = conflict_df,
                   family = "binomial")
 
 full_model <- glm(ucdponset ~ ethfrac + relfrac + v2x_polyarchy + rugged +
-                        wbgdppc2011est + wbpopest,
+                        gdppc + pop,
                   data = conflict_df,
                   family = "binomial")
 ```
@@ -194,8 +196,8 @@ coef_map <- c("ethfrac" = "Ethnic Frac",  # map coefficients
         "relfrac" = "Religions Frac",     #(change names and order)
         "v2x_polyarchy" = "Polyarchy",
         "rugged" = "Terrain",
-        "wbgdppc2011est" = "Per capita GDP",
-        "wbpopest" = "Population",
+        "gdppc" = "Per capita GDP",
+        "pop" = "Population",
         "(Intercept)" = "Intercept")
 
 caption = "Table 1: Predictors of Conflict Onset" # store caption

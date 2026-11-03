@@ -2,14 +2,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.10.19">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Importing &amp; Merging Data – PSC/DATS 2102–Course Schedule</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -69,14 +75,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-f428fda71a3abb5b1b9c21151da8fd61.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6ec1ea2183979a90750e7180bf9040de.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-f428fda71a3abb5b1b9c21151da8fd61.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-9bbf5fa004a0676d7f26111dc3fdfdb2.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-a80805fb9204df0454a85aec670eb5fe.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-9bbf5fa004a0676d7f26111dc3fdfdb2.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-43e62ad85f92e2ddc80fafd6d77450a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-7c4110837d4a72e4e7962681f07c1561.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-43e62ad85f92e2ddc80fafd6d77450a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-d9bc93736d353b3a39c419978f381e19.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7b232ce752f883ea70c603695f82d85b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-d9bc93736d353b3a39c419978f381e19.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -102,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -113,7 +119,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -130,7 +136,7 @@ window.Quarto = {
 </script>
 <meta property="og:title" content="Importing &amp; Merging Data – PSC/DATS 2102–Course Schedule">
 <meta property="og:description" content="Working With APIs">
-<meta property="og:site_name" content="PSC/DATS 2102--Course Schedule">
+<meta property="og:site_name" content="PSC/DATS 2102–Course Schedule">
 <meta name="twitter:title" content="Importing &amp; Merging Data – PSC/DATS 2102–Course Schedule">
 <meta name="twitter:description" content="Working With APIs">
 <meta name="twitter:card" content="summary">
@@ -315,7 +321,7 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/dataviz-logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
+      <img src="../images/dataviz-logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none"><img src="../images/dataviz-logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none"></a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://blackboard.gwu.edu" title="Blackboard" class="quarto-navigation-tool px-1" aria-label="Blackboard"><i class="bi bi-mortarboard-fill"></i></a>
     <a href="https://github.com" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
@@ -519,7 +525,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignments/lab-4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 4: Tables &amp; coefficient plots</span></a>
+ <span class="menu-text">Lab 4: Tables</span></a>
   </div>
 </li>
       </ul>
@@ -748,7 +754,7 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Packages &amp; functions in this module
+<span class="screen-reader-only">Note</span>Packages &amp; functions in this module
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -762,7 +768,7 @@ Packages &amp; functions in this module
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Prework
+<span class="screen-reader-only">Tip</span>Prework
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -772,8 +778,8 @@ Prework
 <li>Install the <code>wbstats</code> and <code>countrycode</code> packages:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pkg_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"wbstats"</span>, <span class="st">"countrycode"</span><span class="op">)</span> <span class="co"># create a list of packages</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">pkg_list</span><span class="op">)</span> <span class="co"># install the packages</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pkg_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"wbstats"</span>, <span class="st">"countrycode"</span><span class="op">)</span> <span class="co"># create a list of packages</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">pkg_list</span><span class="op">)</span> <span class="co"># install the packages</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Have a look at the vignettes for <a href="https://cran.r-project.org/web/packages/wbstats/vignettes/wbstats.html">wbstats</a> and the <a href="https://vincentarelbundock.github.io/countrycode/">countrycode</a> documentation</li>
@@ -802,9 +808,9 @@ Note
 <div class="callout-body-container callout-body">
 <p>If you want to search World Bank data for additional indicators, you can use the <code><a href="https://rdrr.io/pkg/wbstats/man/wb_search.html">wb_search()</a></code> function. For example, if we wanted to find all of the indicators associated with female labor force participation, we could run:</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flfp_indicators</span> <span class="op">&lt;-</span> <span class="fu">wb_search</span><span class="op">(</span><span class="st">"female labor force"</span><span class="op">)</span> <span class="co"># store the list of indicators</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flfp_indicators</span> <span class="op">&lt;-</span> <span class="fu">wb_search</span><span class="op">(</span><span class="st">"female labor force"</span><span class="op">)</span> <span class="co"># store the list of indicators</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">flfp_indicators</span>, n<span class="op">=</span><span class="fl">26</span><span class="op">)</span> <span class="co"># view the indicators</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">flfp_indicators</span>, n<span class="op">=</span><span class="fl">26</span><span class="op">)</span> <span class="co"># view the indicators</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Try searching for some indicators related to a topic you are interested in and see what you get!</p>
 </div>
@@ -812,7 +818,7 @@ Note
 <p>While we are calling <code><a href="https://rdrr.io/pkg/wbstats/man/wb_data.html">wb_data()</a></code> we will go ahead and pipe some additional functions from <code>dplyr</code> and <code>janitor</code> to clean it up. First, we will use <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> to eliminate the iso2c variable, which we won’t be needing. Then, we will rename <code>date</code> to <code>year</code>. Then we will use a combination of <code>mutate</code> and <code><a href="https://sfirke.github.io/janitor/reference/round_to_fraction.html">round_to_fraction()</a></code> to round the data to the nearest hundredth.</p>
 <p>We will pipe all of these functions together and store the resulting data frame in a new object called <code>women_emp</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load packages</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load packages</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/pachadotdev/wbstats">wbstats</a></span><span class="op">)</span> <span class="co"># for downloading WB data</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># for selecting, renaming and mutating</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sfirke/janitor">janitor</a></span><span class="op">)</span> <span class="co"># for rounding</span></span>
@@ -830,7 +836,7 @@ Note
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="co"># View the data</span></span>
-<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">women_emp</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">women_emp</span><span class="op">)</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 7,812
 Columns: 5
@@ -864,7 +870,7 @@ Note
 <p>In addition to filtering out years and selecting variables, let’s also create a <code>region</code> coding to facilitate our analysis later on. We will do this by piping in a <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> call where we use the <a href="https://dplyr.tidyverse.org/reference/case_match.html">case_match()</a> function to change the <code>region</code> from a numeric variable to a string. This will come in handy when we go to visualize the data in future lessons.</p>
 <p>We will store our new data as an object called <code>democracy</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load packages</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load packages</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">vdemdata</span><span class="op">)</span> <span class="co"># to download V-Dem data</span></span>
 <span></span>
 <span><span class="co"># Download the data</span></span>
@@ -892,7 +898,7 @@ Note
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="co"># View the data</span></span>
-<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">democracy</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">democracy</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 6,383
 Columns: 6
@@ -912,7 +918,7 @@ $ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "L
 <p>Let’s create a new version of our democracy dataset where we add a variable called <code>iso3c</code>. We will call <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> to create the variable and wrap the <code><a href="https://rdrr.io/pkg/countrycode/man/countrycode.html">countrycode()</a></code> call inside of that. The <code>sourcevar</code> that we want to transform is the <code>vdem_ctry_id</code>, the origin code is “vdem”, and the destination code is “wb”.</p>
 <p>We are also going to pipe in a <a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a> call which simply moves the new <code>iso3c</code> column from the end of the data frame (where R automically drops it) so that it sits right next to <code>vdem_ctry_cd</code>. This is not essential but it is always good to keep our data frames looking nice and neat!.</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load countrycode</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load countrycode</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://vincentarelbundock.github.io/countrycode/">countrycode</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Create new iso3c variable</span></span>
@@ -923,7 +929,7 @@ $ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "L
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate</a></span><span class="op">(</span><span class="va">iso3c</span>, .after <span class="op">=</span> <span class="va">vdem_ctry_id</span><span class="op">)</span> <span class="co"># move iso3c </span></span>
 <span></span>
 <span><span class="co"># View the data</span></span>
-<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">democracy</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">democracy</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 6,383
 Columns: 7
@@ -944,7 +950,7 @@ $ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "L
 <p>When <code>dplyr</code> does a join, it renames any duplicate columns with suffixes like <code>.x</code> or <code>.y</code>. In our data, country is a duplicate column across the democracy and women’s empowerment datasets. So <code>dplyr</code> renames these <code>country.x</code> and <code>country.y</code>. It doesn’t really matter which one we keep, so let’s just rename <code>country.x</code> to <code>country</code> and filter out <code>country.y</code> using <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>.</p>
 <p>We can can pipe all of these functions together and store the resulting data frame in a new object called <code>dem_women</code>. Let’s also save these data as a .csv file for future use with <code><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv()</a></code>. The first argument for <code><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv()</a></code> is the name of the data frame or tibble that we want to save. The second argument is the path and name of the file that we want to save it to.</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load readr</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load readr</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Perform left join using common iso3c variable and year</span></span>
@@ -956,7 +962,7 @@ $ region       &lt;chr&gt; "Latin America", "Latin America", "Latin America", "L
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">dem_women</span>, <span class="st">"data/dem_women.csv"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># View the data</span></span>
-<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">dem_women</span><span class="op">)</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">dem_women</span><span class="op">)</span>  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 6,383
 Columns: 9
@@ -989,7 +995,7 @@ Note
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># group_by(), summarize() and arrange()</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># group_by(), summarize() and arrange()</span></span>
 <span><span class="va">dem_summary</span> <span class="op">&lt;-</span> <span class="va">dem_women</span> <span class="op">|&gt;</span> <span class="co"># save result as new object</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">region</span><span class="op">)</span>  <span class="op">|&gt;</span> <span class="co"># group dem_women data by region</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>           <span class="co"># summarize following vars (by region)</span></span>
@@ -1004,7 +1010,7 @@ Note
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">dem_summary</span>, <span class="st">"data/dem_summary.csv"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># View the data</span></span>
-<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">dem_summary</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">dem_summary</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 6
 Columns: 5
@@ -1081,13 +1087,14 @@ $ women_rep &lt;dbl&gt; 28.99865, 22.67775, 19.04034, 14.72685, 18.29685, 10.867
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

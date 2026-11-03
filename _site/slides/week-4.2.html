@@ -7,10 +7,10 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.31">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
 
-  <meta name="dcterms.date" content="2026-09-24">
+  <meta name="dcterms.date" content="2026-11-03">
   <title>PSC/DATS 2102--Course Schedule – Wrangling Data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -18,10 +18,16 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -96,7 +102,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #dcc6e0; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-20d3c30aff809de2494c8a31ffc217cf.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-907e92de6994ecdd3a06c5a755a85193.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -193,7 +199,7 @@
   <link href="../site_libs/countdown-0.6.0/countdown.css" rel="stylesheet">
   <script src="../site_libs/countdown-0.6.0/countdown.js"></script>
 <meta property="og:title" content="Wrangling Data – PSC/DATS 2102–Course Schedule">
-<meta property="og:site_name" content="PSC/DATS 2102--Course Schedule">
+<meta property="og:site_name" content="PSC/DATS 2102–Course Schedule">
 <meta name="twitter:title" content="Wrangling Data – PSC/DATS 2102–Course Schedule">
 <meta name="twitter:card" content="summary">
 </head>
@@ -207,7 +213,7 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">September 24, 2026</p>
+  <p class="date">November 3, 2026</p>
 </section>
 <section>
 <section id="data-frames" class="title-slide slide level1 center">
@@ -242,17 +248,17 @@
 <li>You can create a tibble using <code>tibble()</code> from the <strong>tibble</strong> package:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>  <span class="fu">library</span>(tibble)</span>
-<span id="cb1-2"><a></a>  </span>
-<span id="cb1-3"><a></a>  <span class="co"># Create a tibble</span></span>
-<span id="cb1-4"><a></a>  my_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb1-5"><a></a>    <span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>),</span>
-<span id="cb1-6"><a></a>    <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>),</span>
-<span id="cb1-7"><a></a>    <span class="at">height =</span> <span class="fu">c</span>(<span class="dv">160</span>, <span class="dv">170</span>, <span class="dv">180</span>),</span>
-<span id="cb1-8"><a></a>    <span class="at">is_student =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)</span>
-<span id="cb1-9"><a></a>  )</span>
-<span id="cb1-10"><a></a>  </span>
-<span id="cb1-11"><a></a>my_tibble  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a>  <span class="fu">library</span>(tibble)</span>
+<span id="cb1-2"><a aria-label="2"></a>  </span>
+<span id="cb1-3"><a aria-label="3"></a>  <span class="co"># Create a tibble</span></span>
+<span id="cb1-4"><a aria-label="4"></a>  my_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-5"><a aria-label="5"></a>    <span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>),</span>
+<span id="cb1-6"><a aria-label="6"></a>    <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>),</span>
+<span id="cb1-7"><a aria-label="7"></a>    <span class="at">height =</span> <span class="fu">c</span>(<span class="dv">160</span>, <span class="dv">170</span>, <span class="dv">180</span>),</span>
+<span id="cb1-8"><a aria-label="8"></a>    <span class="at">is_student =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb1-9"><a aria-label="9"></a>  )</span>
+<span id="cb1-10"><a aria-label="10"></a>  </span>
+<span id="cb1-11"><a aria-label="11"></a>my_tibble  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 4
   name      age height is_student
@@ -317,15 +323,15 @@
 <li><p>Use convenient functions to store dates in different formats</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb3-2"><a></a>  </span>
-<span id="cb3-3"><a></a><span class="co"># Store a date</span></span>
-<span id="cb3-4"><a></a>my_date <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2024-09-05"</span>)</span>
-<span id="cb3-5"><a></a>my_date2 <span class="ot">&lt;-</span> <span class="fu">mdy</span>(<span class="st">"09-05-2024"</span>)</span>
-<span id="cb3-6"><a></a>my_date3 <span class="ot">&lt;-</span> <span class="fu">dmy</span>(<span class="st">"05-09-2024"</span>)</span>
-<span id="cb3-7"><a></a>  </span>
-<span id="cb3-8"><a></a><span class="co"># Print in long form</span></span>
-<span id="cb3-9"><a></a><span class="fu">format</span>(my_date, <span class="st">"%B %d, %Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb3-2"><a aria-label="2"></a>  </span>
+<span id="cb3-3"><a aria-label="3"></a><span class="co"># Store a date</span></span>
+<span id="cb3-4"><a aria-label="4"></a>my_date <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2024-09-05"</span>)</span>
+<span id="cb3-5"><a aria-label="5"></a>my_date2 <span class="ot">&lt;-</span> <span class="fu">mdy</span>(<span class="st">"09-05-2024"</span>)</span>
+<span id="cb3-6"><a aria-label="6"></a>my_date3 <span class="ot">&lt;-</span> <span class="fu">dmy</span>(<span class="st">"05-09-2024"</span>)</span>
+<span id="cb3-7"><a aria-label="7"></a>  </span>
+<span id="cb3-8"><a aria-label="8"></a><span class="co"># Print in long form</span></span>
+<span id="cb3-9"><a aria-label="9"></a><span class="fu">format</span>(my_date, <span class="st">"%B %d, %Y"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "September 05, 2024"</code></pre>
 </div>
@@ -379,11 +385,11 @@
 </tbody>
 </table>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">format</span>(my_date, <span class="st">"%A, %B %d, %Y"</span>)  <span class="co"># Thursday, September 05, 2024</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a><span class="fu">format</span>(my_date, <span class="st">"%A, %B %d, %Y"</span>)  <span class="co"># Thursday, September 05, 2024</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Thursday, September 05, 2024"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">format</span>(my_date, <span class="st">"%m/%d/%y"</span>)       <span class="co"># 09/05/24</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a><span class="fu">format</span>(my_date, <span class="st">"%m/%d/%y"</span>)       <span class="co"># 09/05/24</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "09/05/24"</code></pre>
 </div>
@@ -433,9 +439,9 @@
 <p><strong>Query:</strong> Are these data in a tidy format?</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb9-2"><a></a></span>
-<span id="cb9-3"><a></a>smiths</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb9-2"><a aria-label="2"></a></span>
+<span id="cb9-3"><a aria-label="3"></a>smiths</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 5
   subject     time   age weight height
@@ -459,7 +465,7 @@
 <p>How about these data?</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>world_bank_pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a>world_bank_pop</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,064 × 20
    country indicator      `2000`  `2001`  `2002`  `2003`  `2004`  `2005`  `2006`
@@ -495,20 +501,20 @@
 <h2>Example: WB Population Data</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb13-2"><a></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb13-3"><a></a></span>
-<span id="cb13-4"><a></a><span class="co"># Pivot using pivot_longer</span></span>
-<span id="cb13-5"><a></a></span>
-<span id="cb13-6"><a></a>long_pop_data <span class="ot">&lt;-</span> world_bank_pop <span class="sc">|&gt;</span></span>
-<span id="cb13-7"><a></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb13-8"><a></a>    <span class="at">cols =</span> <span class="st">`</span><span class="at">2000</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2017</span><span class="st">`</span>,   <span class="co"># The columns you want to pivot (years)</span></span>
-<span id="cb13-9"><a></a>    <span class="at">names_to =</span> <span class="st">"year"</span>,      <span class="co"># New column name for the years</span></span>
-<span id="cb13-10"><a></a>    <span class="at">values_to =</span> <span class="st">"pop"</span>       <span class="co"># New column name for the values</span></span>
-<span id="cb13-11"><a></a>  ) </span>
-<span id="cb13-12"><a></a></span>
-<span id="cb13-13"><a></a><span class="co"># View the tidied data</span></span>
-<span id="cb13-14"><a></a>long_pop_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb13-2"><a aria-label="2"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb13-3"><a aria-label="3"></a></span>
+<span id="cb13-4"><a aria-label="4"></a><span class="co"># Pivot using pivot_longer</span></span>
+<span id="cb13-5"><a aria-label="5"></a></span>
+<span id="cb13-6"><a aria-label="6"></a>long_pop_data <span class="ot">&lt;-</span> world_bank_pop <span class="sc">|&gt;</span></span>
+<span id="cb13-7"><a aria-label="7"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb13-8"><a aria-label="8"></a>    <span class="at">cols =</span> <span class="st">`</span><span class="at">2000</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2017</span><span class="st">`</span>,   <span class="co"># The columns you want to pivot (years)</span></span>
+<span id="cb13-9"><a aria-label="9"></a>    <span class="at">names_to =</span> <span class="st">"year"</span>,      <span class="co"># New column name for the years</span></span>
+<span id="cb13-10"><a aria-label="10"></a>    <span class="at">values_to =</span> <span class="st">"pop"</span>       <span class="co"># New column name for the values</span></span>
+<span id="cb13-11"><a aria-label="11"></a>  ) </span>
+<span id="cb13-12"><a aria-label="12"></a></span>
+<span id="cb13-13"><a aria-label="13"></a><span class="co"># View the tidied data</span></span>
+<span id="cb13-14"><a aria-label="14"></a>long_pop_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 19,152 × 4
    country indicator   year    pop
@@ -532,20 +538,20 @@
 <p>This is better, usable even, but are we done if we want a tidy data frame?</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb15-2"><a></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb15-3"><a></a></span>
-<span id="cb15-4"><a></a><span class="co"># Pivot using pivot_longer</span></span>
-<span id="cb15-5"><a></a></span>
-<span id="cb15-6"><a></a>long_pop_data <span class="ot">&lt;-</span> world_bank_pop <span class="sc">|&gt;</span></span>
-<span id="cb15-7"><a></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb15-8"><a></a>    <span class="at">cols =</span> <span class="st">`</span><span class="at">2000</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2017</span><span class="st">`</span>,   <span class="co"># The columns you want to pivot (years)</span></span>
-<span id="cb15-9"><a></a>    <span class="at">names_to =</span> <span class="st">"year"</span>,      <span class="co"># New column name for the years</span></span>
-<span id="cb15-10"><a></a>    <span class="at">values_to =</span> <span class="st">"pop"</span>       <span class="co"># New column name for the values</span></span>
-<span id="cb15-11"><a></a>  ) </span>
-<span id="cb15-12"><a></a></span>
-<span id="cb15-13"><a></a><span class="co"># View the tidied data</span></span>
-<span id="cb15-14"><a></a>long_pop_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb15-2"><a aria-label="2"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb15-3"><a aria-label="3"></a></span>
+<span id="cb15-4"><a aria-label="4"></a><span class="co"># Pivot using pivot_longer</span></span>
+<span id="cb15-5"><a aria-label="5"></a></span>
+<span id="cb15-6"><a aria-label="6"></a>long_pop_data <span class="ot">&lt;-</span> world_bank_pop <span class="sc">|&gt;</span></span>
+<span id="cb15-7"><a aria-label="7"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb15-8"><a aria-label="8"></a>    <span class="at">cols =</span> <span class="st">`</span><span class="at">2000</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2017</span><span class="st">`</span>,   <span class="co"># The columns you want to pivot (years)</span></span>
+<span id="cb15-9"><a aria-label="9"></a>    <span class="at">names_to =</span> <span class="st">"year"</span>,      <span class="co"># New column name for the years</span></span>
+<span id="cb15-10"><a aria-label="10"></a>    <span class="at">values_to =</span> <span class="st">"pop"</span>       <span class="co"># New column name for the values</span></span>
+<span id="cb15-11"><a aria-label="11"></a>  ) </span>
+<span id="cb15-12"><a aria-label="12"></a></span>
+<span id="cb15-13"><a aria-label="13"></a><span class="co"># View the tidied data</span></span>
+<span id="cb15-14"><a aria-label="14"></a>long_pop_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 19,152 × 4
    country indicator   year    pop
@@ -570,20 +576,20 @@
 <p>This is better, usable even, but are we done if we want a tidy data frame?</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb17-2"><a></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb17-3"><a></a></span>
-<span id="cb17-4"><a></a><span class="co"># Pivot using pivot_longer</span></span>
-<span id="cb17-5"><a></a></span>
-<span id="cb17-6"><a></a>long_pop_data <span class="ot">&lt;-</span> world_bank_pop <span class="sc">|&gt;</span></span>
-<span id="cb17-7"><a></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb17-8"><a></a>    <span class="at">cols =</span> <span class="st">`</span><span class="at">2000</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2017</span><span class="st">`</span>,   <span class="co"># The columns you want to pivot (years)</span></span>
-<span id="cb17-9"><a></a>    <span class="at">names_to =</span> <span class="st">"year"</span>,      <span class="co"># New column name for the years</span></span>
-<span id="cb17-10"><a></a>    <span class="at">values_to =</span> <span class="st">"pop"</span>       <span class="co"># New column name for the values</span></span>
-<span id="cb17-11"><a></a>  ) </span>
-<span id="cb17-12"><a></a></span>
-<span id="cb17-13"><a></a><span class="co"># View the tidied data</span></span>
-<span id="cb17-14"><a></a>long_pop_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-label="1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb17-2"><a aria-label="2"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb17-3"><a aria-label="3"></a></span>
+<span id="cb17-4"><a aria-label="4"></a><span class="co"># Pivot using pivot_longer</span></span>
+<span id="cb17-5"><a aria-label="5"></a></span>
+<span id="cb17-6"><a aria-label="6"></a>long_pop_data <span class="ot">&lt;-</span> world_bank_pop <span class="sc">|&gt;</span></span>
+<span id="cb17-7"><a aria-label="7"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb17-8"><a aria-label="8"></a>    <span class="at">cols =</span> <span class="st">`</span><span class="at">2000</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2017</span><span class="st">`</span>,   <span class="co"># The columns you want to pivot (years)</span></span>
+<span id="cb17-9"><a aria-label="9"></a>    <span class="at">names_to =</span> <span class="st">"year"</span>,      <span class="co"># New column name for the years</span></span>
+<span id="cb17-10"><a aria-label="10"></a>    <span class="at">values_to =</span> <span class="st">"pop"</span>       <span class="co"># New column name for the values</span></span>
+<span id="cb17-11"><a aria-label="11"></a>  ) </span>
+<span id="cb17-12"><a aria-label="12"></a></span>
+<span id="cb17-13"><a aria-label="13"></a><span class="co"># View the tidied data</span></span>
+<span id="cb17-14"><a aria-label="14"></a>long_pop_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 19,152 × 4
    country indicator   year    pop
@@ -607,20 +613,20 @@
 <p>Issue is that the data are in long form (which is OK for some purposes), but we want to make it wider. Wider, but tidy…</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb19-2"><a></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb19-3"><a></a></span>
-<span id="cb19-4"><a></a><span class="co"># Pivot using pivot_longer</span></span>
-<span id="cb19-5"><a></a></span>
-<span id="cb19-6"><a></a>long_pop_data <span class="ot">&lt;-</span> world_bank_pop <span class="sc">|&gt;</span></span>
-<span id="cb19-7"><a></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb19-8"><a></a>    <span class="at">cols =</span> <span class="st">`</span><span class="at">2000</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2017</span><span class="st">`</span>,   <span class="co"># The columns you want to pivot (years)</span></span>
-<span id="cb19-9"><a></a>    <span class="at">names_to =</span> <span class="st">"year"</span>,      <span class="co"># New column name for the years</span></span>
-<span id="cb19-10"><a></a>    <span class="at">values_to =</span> <span class="st">"pop"</span>       <span class="co"># New column name for the values</span></span>
-<span id="cb19-11"><a></a>  ) </span>
-<span id="cb19-12"><a></a></span>
-<span id="cb19-13"><a></a><span class="co"># View the tidied data</span></span>
-<span id="cb19-14"><a></a>long_pop_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-label="1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb19-2"><a aria-label="2"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb19-3"><a aria-label="3"></a></span>
+<span id="cb19-4"><a aria-label="4"></a><span class="co"># Pivot using pivot_longer</span></span>
+<span id="cb19-5"><a aria-label="5"></a></span>
+<span id="cb19-6"><a aria-label="6"></a>long_pop_data <span class="ot">&lt;-</span> world_bank_pop <span class="sc">|&gt;</span></span>
+<span id="cb19-7"><a aria-label="7"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb19-8"><a aria-label="8"></a>    <span class="at">cols =</span> <span class="st">`</span><span class="at">2000</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2017</span><span class="st">`</span>,   <span class="co"># The columns you want to pivot (years)</span></span>
+<span id="cb19-9"><a aria-label="9"></a>    <span class="at">names_to =</span> <span class="st">"year"</span>,      <span class="co"># New column name for the years</span></span>
+<span id="cb19-10"><a aria-label="10"></a>    <span class="at">values_to =</span> <span class="st">"pop"</span>       <span class="co"># New column name for the values</span></span>
+<span id="cb19-11"><a aria-label="11"></a>  ) </span>
+<span id="cb19-12"><a aria-label="12"></a></span>
+<span id="cb19-13"><a aria-label="13"></a><span class="co"># View the tidied data</span></span>
+<span id="cb19-14"><a aria-label="14"></a>long_pop_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 19,152 × 4
    country indicator   year    pop
@@ -653,15 +659,15 @@
 <h2><code>pivotwider()</code> the WB Data</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="co"># pivot wider</span></span>
-<span id="cb21-2"><a></a>tidy_pop_data <span class="ot">&lt;-</span> long_pop_data <span class="sc">|&gt;</span></span>
-<span id="cb21-3"><a></a>  <span class="fu">pivot_wider</span>(</span>
-<span id="cb21-4"><a></a>    <span class="at">names_from =</span> indicator, </span>
-<span id="cb21-5"><a></a>    <span class="at">values_from =</span> pop</span>
-<span id="cb21-6"><a></a>  )</span>
-<span id="cb21-7"><a></a></span>
-<span id="cb21-8"><a></a><span class="co"># view the data</span></span>
-<span id="cb21-9"><a></a>tidy_pop_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-label="1"></a><span class="co"># pivot wider</span></span>
+<span id="cb21-2"><a aria-label="2"></a>tidy_pop_data <span class="ot">&lt;-</span> long_pop_data <span class="sc">|&gt;</span></span>
+<span id="cb21-3"><a aria-label="3"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb21-4"><a aria-label="4"></a>    <span class="at">names_from =</span> indicator, </span>
+<span id="cb21-5"><a aria-label="5"></a>    <span class="at">values_from =</span> pop</span>
+<span id="cb21-6"><a aria-label="6"></a>  )</span>
+<span id="cb21-7"><a aria-label="7"></a></span>
+<span id="cb21-8"><a aria-label="8"></a><span class="co"># view the data</span></span>
+<span id="cb21-9"><a aria-label="9"></a>tidy_pop_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4,788 × 6
    country year  SP.URB.TOTL SP.URB.GROW SP.POP.TOTL SP.POP.GROW
@@ -703,15 +709,15 @@
 <h2>Read Data</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="co"># Load packages</span></span>
-<span id="cb23-2"><a></a><span class="fu">library</span>(readr) </span>
-<span id="cb23-3"><a></a><span class="fu">library</span>(dplyr) </span>
-<span id="cb23-4"><a></a></span>
-<span id="cb23-5"><a></a><span class="co"># Read data from csv file into an object called "wb_data_messy"</span></span>
-<span id="cb23-6"><a></a>wb_data_messy <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/your_file_name.csv"</span>)</span>
-<span id="cb23-7"><a></a></span>
-<span id="cb23-8"><a></a><span class="co"># View the data</span></span>
-<span id="cb23-9"><a></a><span class="fu">glimpse</span>(wb_data_messy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-label="1"></a><span class="co"># Load packages</span></span>
+<span id="cb23-2"><a aria-label="2"></a><span class="fu">library</span>(readr) </span>
+<span id="cb23-3"><a aria-label="3"></a><span class="fu">library</span>(dplyr) </span>
+<span id="cb23-4"><a aria-label="4"></a></span>
+<span id="cb23-5"><a aria-label="5"></a><span class="co"># Read data from csv file into an object called "wb_data_messy"</span></span>
+<span id="cb23-6"><a aria-label="6"></a>wb_data_messy <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/your_file_name.csv"</span>)</span>
+<span id="cb23-7"><a aria-label="7"></a></span>
+<span id="cb23-8"><a aria-label="8"></a><span class="co"># View the data</span></span>
+<span id="cb23-9"><a aria-label="9"></a><span class="fu">glimpse</span>(wb_data_messy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="pivot-the-data" class="slide level2">
@@ -726,37 +732,37 @@
 <h2>Special Considerations</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="co"># Load tidyr</span></span>
-<span id="cb24-2"><a></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb24-3"><a></a></span>
-<span id="cb24-4"><a></a><span class="co"># Reshape the data</span></span>
-<span id="cb24-5"><a></a>wb_data <span class="ot">&lt;-</span> wb_data_messy <span class="sc">|&gt;</span> </span>
-<span id="cb24-6"><a></a>  <span class="fu">pivot_longer</span>(             </span>
-<span id="cb24-7"><a></a>    <span class="at">cols =</span> <span class="st">`</span><span class="at">1973 [YR1973]</span><span class="st">`</span><span class="sc">:</span> <span class="st">`</span><span class="at">2022 [YR2022]</span><span class="st">`</span>, <span class="co"># columns to pivot</span></span>
-<span id="cb24-8"><a></a>    <span class="at">names_to =</span> <span class="st">"year"</span>, <span class="co"># name the identifier column "year"</span></span>
-<span id="cb24-9"><a></a>    <span class="at">values_to =</span> <span class="st">"values"</span> <span class="co"># name the numeric var column </span></span>
-<span id="cb24-10"><a></a>  ) </span>
-<span id="cb24-11"><a></a></span>
-<span id="cb24-12"><a></a><span class="co"># View the data</span></span>
-<span id="cb24-13"><a></a><span class="fu">glimpse</span>(wb_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-label="1"></a><span class="co"># Load tidyr</span></span>
+<span id="cb24-2"><a aria-label="2"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb24-3"><a aria-label="3"></a></span>
+<span id="cb24-4"><a aria-label="4"></a><span class="co"># Reshape the data</span></span>
+<span id="cb24-5"><a aria-label="5"></a>wb_data <span class="ot">&lt;-</span> wb_data_messy <span class="sc">|&gt;</span> </span>
+<span id="cb24-6"><a aria-label="6"></a>  <span class="fu">pivot_longer</span>(             </span>
+<span id="cb24-7"><a aria-label="7"></a>    <span class="at">cols =</span> <span class="st">`</span><span class="at">1973 [YR1973]</span><span class="st">`</span><span class="sc">:</span> <span class="st">`</span><span class="at">2022 [YR2022]</span><span class="st">`</span>, <span class="co"># columns to pivot</span></span>
+<span id="cb24-8"><a aria-label="8"></a>    <span class="at">names_to =</span> <span class="st">"year"</span>, <span class="co"># name the identifier column "year"</span></span>
+<span id="cb24-9"><a aria-label="9"></a>    <span class="at">values_to =</span> <span class="st">"values"</span> <span class="co"># name the numeric var column </span></span>
+<span id="cb24-10"><a aria-label="10"></a>  ) </span>
+<span id="cb24-11"><a aria-label="11"></a></span>
+<span id="cb24-12"><a aria-label="12"></a><span class="co"># View the data</span></span>
+<span id="cb24-13"><a aria-label="13"></a><span class="fu">glimpse</span>(wb_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="special-considerations-1" class="slide level2">
 <h2>Special Considerations</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>wb_data <span class="ot">&lt;-</span> wb_data <span class="sc">|&gt;</span></span>
-<span id="cb25-2"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="st">`</span><span class="at">Series Name</span><span class="st">`</span>)</span>
-<span id="cb25-3"><a></a></span>
-<span id="cb25-4"><a></a><span class="co"># Reshape the data</span></span>
-<span id="cb25-5"><a></a>tidy_data <span class="ot">&lt;-</span> wb_data <span class="sc">|&gt;</span> </span>
-<span id="cb25-6"><a></a>  <span class="fu">pivot_wider</span>(             </span>
-<span id="cb25-7"><a></a>    <span class="at">names_from =</span> <span class="st">`</span><span class="at">Series Code</span><span class="st">`</span>,</span>
-<span id="cb25-8"><a></a>    <span class="at">values_from =</span> values</span>
-<span id="cb25-9"><a></a>  ) </span>
-<span id="cb25-10"><a></a></span>
-<span id="cb25-11"><a></a><span class="co"># View the data</span></span>
-<span id="cb25-12"><a></a><span class="fu">glimpse</span>(wb_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-label="1"></a>wb_data <span class="ot">&lt;-</span> wb_data <span class="sc">|&gt;</span></span>
+<span id="cb25-2"><a aria-label="2"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="st">`</span><span class="at">Series Name</span><span class="st">`</span>)</span>
+<span id="cb25-3"><a aria-label="3"></a></span>
+<span id="cb25-4"><a aria-label="4"></a><span class="co"># Reshape the data</span></span>
+<span id="cb25-5"><a aria-label="5"></a>tidy_data <span class="ot">&lt;-</span> wb_data <span class="sc">|&gt;</span> </span>
+<span id="cb25-6"><a aria-label="6"></a>  <span class="fu">pivot_wider</span>(             </span>
+<span id="cb25-7"><a aria-label="7"></a>    <span class="at">names_from =</span> <span class="st">`</span><span class="at">Series Code</span><span class="st">`</span>,</span>
+<span id="cb25-8"><a aria-label="8"></a>    <span class="at">values_from =</span> values</span>
+<span id="cb25-9"><a aria-label="9"></a>  ) </span>
+<span id="cb25-10"><a aria-label="10"></a></span>
+<span id="cb25-11"><a aria-label="11"></a><span class="co"># View the data</span></span>
+<span id="cb25-12"><a aria-label="12"></a><span class="fu">glimpse</span>(wb_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="give-it-a-shot" class="slide level2">
@@ -790,13 +796,13 @@
 <h2>Let’s Fix Our Variables</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="co"># Fix year and flfp</span></span>
-<span id="cb26-2"><a></a>wb_data <span class="ot">&lt;-</span> wb_data <span class="sc">|&gt;</span> <span class="co"># replace wb_data with a modified version of the dataframe </span></span>
-<span id="cb26-3"><a></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">substring</span>(year, <span class="dv">1</span>, <span class="dv">4</span>)) <span class="sc">|&gt;</span> <span class="co"># truncate year (keep first four characters)</span></span>
-<span id="cb26-4"><a></a>  <span class="fu">mutate_at</span>(<span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"flfp"</span>), as.numeric) <span class="co"># change year and flfp to numeric</span></span>
-<span id="cb26-5"><a></a></span>
-<span id="cb26-6"><a></a><span class="co"># View the data</span></span>
-<span id="cb26-7"><a></a><span class="fu">glimpse</span>(wb_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-label="1"></a><span class="co"># Fix year and flfp</span></span>
+<span id="cb26-2"><a aria-label="2"></a>wb_data <span class="ot">&lt;-</span> wb_data <span class="sc">|&gt;</span> <span class="co"># replace wb_data with a modified version of the dataframe </span></span>
+<span id="cb26-3"><a aria-label="3"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">substring</span>(year, <span class="dv">1</span>, <span class="dv">4</span>)) <span class="sc">|&gt;</span> <span class="co"># truncate year (keep first four characters)</span></span>
+<span id="cb26-4"><a aria-label="4"></a>  <span class="fu">mutate_at</span>(<span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"flfp"</span>), as.numeric) <span class="co"># change year and flfp to numeric</span></span>
+<span id="cb26-5"><a aria-label="5"></a></span>
+<span id="cb26-6"><a aria-label="6"></a><span class="co"># View the data</span></span>
+<span id="cb26-7"><a aria-label="7"></a><span class="fu">glimpse</span>(wb_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="now-try-it-with-multiple-varaibles" class="slide level2">
@@ -812,18 +818,18 @@
 <p><br></p>
 <div class="line-block">Very simple: use the <code>janitor</code> package!</div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="co"># Load janitor</span></span>
-<span id="cb27-2"><a></a><span class="fu">library</span>(janitor)</span>
-<span id="cb27-3"><a></a></span>
-<span id="cb27-4"><a></a><span class="co"># Apply clean_names() to wb_data, store in new data frame called wb_data_clean</span></span>
-<span id="cb27-5"><a></a>wb_data_clean <span class="ot">&lt;-</span> wb_data <span class="sc">|&gt;</span>  </span>
-<span id="cb27-6"><a></a>  <span class="fu">clean_names</span>() </span>
-<span id="cb27-7"><a></a></span>
-<span id="cb27-8"><a></a><span class="co"># Write wb_data_clean to a csv file</span></span>
-<span id="cb27-9"><a></a><span class="fu">write_csv</span>(wb_data_clean, <span class="st">"data/wb_data_clean.csv"</span>)</span>
-<span id="cb27-10"><a></a></span>
-<span id="cb27-11"><a></a><span class="co"># View the data</span></span>
-<span id="cb27-12"><a></a><span class="fu">glimpse</span>(wb_data_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-label="1"></a><span class="co"># Load janitor</span></span>
+<span id="cb27-2"><a aria-label="2"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb27-3"><a aria-label="3"></a></span>
+<span id="cb27-4"><a aria-label="4"></a><span class="co"># Apply clean_names() to wb_data, store in new data frame called wb_data_clean</span></span>
+<span id="cb27-5"><a aria-label="5"></a>wb_data_clean <span class="ot">&lt;-</span> wb_data <span class="sc">|&gt;</span>  </span>
+<span id="cb27-6"><a aria-label="6"></a>  <span class="fu">clean_names</span>() </span>
+<span id="cb27-7"><a aria-label="7"></a></span>
+<span id="cb27-8"><a aria-label="8"></a><span class="co"># Write wb_data_clean to a csv file</span></span>
+<span id="cb27-9"><a aria-label="9"></a><span class="fu">write_csv</span>(wb_data_clean, <span class="st">"data/wb_data_clean.csv"</span>)</span>
+<span id="cb27-10"><a aria-label="10"></a></span>
+<span id="cb27-11"><a aria-label="11"></a><span class="co"># View the data</span></span>
+<span id="cb27-12"><a aria-label="12"></a><span class="fu">glimpse</span>(wb_data_clean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
@@ -1020,7 +1026,7 @@
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1132,13 +1138,14 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lab 4: Tables &amp; coefficient plots – PSC/DATS 2102–Course Schedule</title>
+<title>Lab 4: Tables – PSC/DATS 2102–Course Schedule</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,6 +25,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -81,10 +116,10 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Lab 4: Tables &amp; coefficient plots – PSC/DATS 2102–Course Schedule">
+<meta property="og:title" content="Lab 4: Tables – PSC/DATS 2102–Course Schedule">
 <meta property="og:description" content="Homepage for PSC/DATS 2102, George Washington University.">
 <meta property="og:site_name" content="PSC/DATS 2102–Course Schedule">
-<meta name="twitter:title" content="Lab 4: Tables &amp; coefficient plots – PSC/DATS 2102–Course Schedule">
+<meta name="twitter:title" content="Lab 4: Tables – PSC/DATS 2102–Course Schedule">
 <meta name="twitter:description" content="Homepage for PSC/DATS 2102, George Washington University.">
 <meta name="twitter:card" content="summary">
 </head>
@@ -260,7 +295,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignments/lab-1.html">Labs</a></li><li class="breadcrumb-item"><a href="../assignments/lab-4.html">Lab 4: Tables &amp; coefficient plots</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignments/lab-1.html">Labs</a></li><li class="breadcrumb-item"><a href="../assignments/lab-4.html">Lab 4: Tables</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -481,7 +516,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignments/lab-4.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Lab 4: Tables &amp; coefficient plots</span></a>
+ <span class="menu-text">Lab 4: Tables</span></a>
   </div>
 </li>
       </ul>
@@ -682,8 +717,11 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#part-i-a-gt-table-40-pts" id="toc-part-i-a-gt-table-40-pts" class="nav-link" data-scroll-target="#part-i-a-gt-table-40-pts">Part I: A <code>gt</code> table (40 pts)</a></li>
-  <li><a href="#part-ii-regression-table-and-coefficient-plot-60-pts" id="toc-part-ii-regression-table-and-coefficient-plot-60-pts" class="nav-link" data-scroll-target="#part-ii-regression-table-and-coefficient-plot-60-pts">Part II: Regression table and coefficient plot (60 pts)</a></li>
+  <li><a href="#step-1-a-gt-table-50-pts" id="toc-step-1-a-gt-table-50-pts" class="nav-link" data-scroll-target="#step-1-a-gt-table-50-pts">Step 1: A <code>gt</code> table (50 pts)</a></li>
+  <li><a href="#step-2-a-sparkline-table-30-pts" id="toc-step-2-a-sparkline-table-30-pts" class="nav-link" data-scroll-target="#step-2-a-sparkline-table-30-pts">Step 2: A sparkline table (30 pts)</a></li>
+  <li><a href="#step-3-confidence-intervals-20-pts" id="toc-step-3-confidence-intervals-20-pts" class="nav-link" data-scroll-target="#step-3-confidence-intervals-20-pts">Step 3: Confidence intervals (20 pts)</a></li>
+  <li><a href="#bonus-extra-credit" id="toc-bonus-extra-credit" class="nav-link" data-scroll-target="#bonus-extra-credit">Bonus (extra credit)</a></li>
+  <li><a href="#hints" id="toc-hints" class="nav-link" data-scroll-target="#hints">Hints</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/dataviz/edit/main/assignments/lab-4.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/dataviz/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -691,9 +729,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignments/lab-1.html">Labs</a></li><li class="breadcrumb-item"><a href="../assignments/lab-4.html">Lab 4: Tables &amp; coefficient plots</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignments/lab-1.html">Labs</a></li><li class="breadcrumb-item"><a href="../assignments/lab-4.html">Lab 4: Tables</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Lab 4: Tables &amp; coefficient plots</h1>
+<h1 class="title">Lab 4: Tables</h1>
 </div>
 
 
@@ -716,27 +754,85 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>How labs work
+<span class="screen-reader-only">Tip</span>How to complete the lab
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You are encouraged to <strong>work together and get started in class</strong>—talk through the problems with the people around you. You will finish the lab on your own time and submit your own work.</p>
-<p><strong>AI use: You may use AI to ask questions or debug, but not to write your code for you—the point is to think it through yourself. At the end of the lab, add a one-line note saying whether and how you used AI.</strong></p>
+<p>You are encouraged to <strong>work together and get started in class</strong>. Talk through the problems with the people around you. Then, you will finish the lab on your own time and submit your work individually to Blackboard.</p>
+<p><strong>AI use: You may use AI to ask questions or debug, but not to write your code for you. The point is to think it through yourself.</strong></p>
 </div>
 </div>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>In this lab you will present data two ways: as a polished <strong>table</strong> with <code>gt</code>, and as a <strong>regression table plus coefficient plot</strong> with <code>modelsummary</code>. For Part II we approximate Fearon and Laitin’s <a href="https://www.jstor.org/stable/3118222">Ethnicity, Insurgency, and Civil War</a>, whose provocative claim is that ethnic diversity per se does not predict civil conflict.</p>
+<p>In this lab you will make three of the displays we built in class, using slightly different data: a polished <code>gt</code> table of Census income data, a table with sparklines of V-Dem democracy scores, and a plot of income estimates with confidence intervals. You will need your Census API key.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load your libraries and set your Census API key here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
-<section id="part-i-a-gt-table-40-pts" class="level2">
-<h2 class="anchored" data-anchor-id="part-i-a-gt-table-40-pts">Part I: A <code>gt</code> table (40 pts)</h2>
-<p><em>Choose a state and use <code>tidycensus</code> to download county-level data on income quintiles (<code>geography = "county"</code>). Clean the variable names and use <code>mutate(name = str_replace_all(...))</code> so only the county name shows. Then make a polished <code>gt</code> table: add a title and subtitle, relabel the columns, format the numbers as dollars, and add a source note. Below the table, note in a sentence which counties stand out.</em></p>
+<section id="step-1-a-gt-table-50-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-a-gt-table-50-pts">Step 1: A <code>gt</code> table (50 pts)</h2>
+<p><em>In class we made a table of income quintiles for a selection of states. Now do the same for the counties in a state of your choice. Use <code>get_acs()</code> to download the mean household income of each quintile (<code>B19081_001</code> through <code>B19081_006</code>) with <code>geography = "county"</code>, your <code>state</code>, and <code>year = 2023</code>. Clean the data as we did in class, and use <code>str_replace_all()</code> so that only the county name shows (e.g.&nbsp;“Franklin” rather than “Franklin County, Ohio”).</em></p>
+<p><em>Then pick 6–10 counties to display. You could take the highest- and lowest-income counties, as we did in class, or counties you know. Make a great (or awesome!) <code>gt</code> table with a title and subtitle that describe your selection, relabeled columns, dollar formatting, a source note, and at least two of the styling steps from class (column widths, font, alignment, borders). Below the table, say in a sentence which counties stand out.</em></p>
+<p><em>Finally, save your table with <code>gtsave()</code> as an HTML file (e.g.&nbsp;<code>"county_table.html"</code>).</em></p>
 </section>
-<section id="part-ii-regression-table-and-coefficient-plot-60-pts" class="level2">
-<h2 class="anchored" data-anchor-id="part-ii-regression-table-and-coefficient-plot-60-pts">Part II: Regression table and coefficient plot (60 pts)</h2>
-<p><em>Use <code>create_stateyears()</code> and the <code>peacesciencer</code> “add” functions to build a state-year data frame for analyzing conflict onset (<code>ucdponset</code>), filtered to 1946–2019. Fit two or three model specifications—varying, say, ethnic fractionalization vs.&nbsp;polarization, the democracy measure, or the terrain measure—and present them side by side in a <code>modelsummary</code> table. Then use <code>modelplot()</code> to show one model as a coefficient plot with confidence intervals. In a sentence or two, compare your results to Fearon and Laitin’s and note what the coefficient plot makes easier to see than the table.</em></p>
+<section id="step-2-a-sparkline-table-30-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-a-sparkline-table-30-pts">Step 2: A sparkline table (30 pts)</h2>
+<p><em>In class we made sparklines of electoral democracy (<code>v2x_polyarchy</code>) for the BRICS countries. Now choose a different group of 5–8 countries (for example the G7, or a set of neighbors) and a different V-Dem democracy index, such as liberal democracy (<code>v2x_libdem</code>), participatory democracy (<code>v2x_partipdem</code>) or egalitarian democracy (<code>v2x_egaldem</code>). Use <code>vdem</code> from <code>vdemdata</code> to keep the years 2000–2025 for your countries. Then summarize the max, mean and standard deviation of your index for each country, and make a <code>gt</code> table with a sparkline of its trend using <code>gt_plt_sparkline()</code>. Give the columns clear labels and round the numbers to two decimals. Below the table, describe in a sentence what the sparklines show.</em></p>
+</section>
+<section id="step-3-confidence-intervals-20-pts" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-confidence-intervals-20-pts">Step 3: Confidence intervals (20 pts)</h2>
+<p><em>In class we plotted median income for the counties in Massachusetts with 90% confidence intervals. Now choose a different state and download median <strong>household</strong> income (<code>B19013_001</code>) by county for 2023. Compute the lower and upper bounds of the 90% confidence interval from the margin of error, and plot the estimates with <code>geom_point()</code> and <code>geom_errorbar()</code>. Give the plot a title, subtitle and caption. Below the plot, say in a sentence what the error bars show that a table of estimates would not.</em></p>
+</section>
+<section id="bonus-extra-credit" class="level2">
+<h2 class="anchored" data-anchor-id="bonus-extra-credit">Bonus (extra credit)</h2>
+<p><em>Completing this bonus restores full credit on one quiz where you lost points. If you have not lost points on any quiz, you will get 2 points of extra credit on this lab instead.</em></p>
+<p><em>We will approximate Fearon and Laitin’s <a href="https://www.jstor.org/stable/3118222">Ethnicity, Insurgency, and Civil War</a>, whose provocative claim is that ethnic diversity per se does not predict civil conflict. Build a country-year data frame with <code>peacesciencer</code>:</em></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(peacesciencer)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>conflict_df <span class="ot">&lt;-</span> <span class="fu">create_stateyears</span>(<span class="at">system =</span> <span class="st">"gw"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1946</span><span class="sc">:</span><span class="dv">2019</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_ucdp_acd</span>(<span class="at">type =</span> <span class="st">"intrastate"</span>, <span class="at">only_wars =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_democracy</span>() <span class="sc">|&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_creg_fractionalization</span>() <span class="sc">|&gt;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_sim_gdp_pop</span>() <span class="sc">|&gt;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gdppc =</span> <span class="fu">log</span>(mrgdppc), <span class="co"># log GDP per capita</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">pop =</span> <span class="fu">log</span>(pwtpop))    <span class="co"># log population</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Use <code>glm()</code> with <code>family = "binomial"</code> to fit two models of conflict onset (<code>ucdponset</code>). One should include ethnic fractionalization (<code>ethfrac</code>) and one should include democracy (<code>v2x_polyarchy</code>), and both should control for <code>gdppc</code> and <code>pop</code>. Display the two models side by side with <code>modelsummary()</code>, and use <code>modelplot()</code> to make a coefficient plot of one of them. In a sentence, say whether your results support Fearon and Laitin’s claim.</em></p>
 <p><br></p>
-<p><strong>AI statement:</strong> <em>(one line on whether and how you used AI)</em></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Submission Instructions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Head over to Blackboard and go to the Lab 4 assignment. Click “Create Submission” and write a brief statement saying that you have submitted the lab and note whether and in what capacity you used AI on the assignment.</p>
+<p>Then upload a compressed (zipped) version of your project folder including the <strong>rendered</strong> HTML file. To compress your project folder, right-click it and choose Compress (Mac) or Send to → Compressed (zipped) folder (Windows).</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="hints" class="level2">
+<h2 class="anchored" data-anchor-id="hints">Hints</h2>
+<p><em>Only look at these if you’re stuck!</em></p>
+<p><strong>Hint 1 — “A Census API key is required”:</strong></p>
+<p>Set your key in the setup chunk before you call <code>get_acs()</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidycensus)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">census_api_key</span>(<span class="st">"YOUR API KEY"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Hint 2 — Picking your counties:</strong></p>
+<p>You can stack the counties you want with <code>bind_rows()</code>, as we did with states in class, or pick them by name:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>my_counties <span class="ot">&lt;-</span> county_quintiles <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Franklin"</span>, <span class="st">"Cuyahoga"</span>, <span class="st">"Hamilton"</span>, <span class="st">"Delaware"</span>, <span class="st">"Athens"</span>, <span class="st">"Holmes"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Hint 3 — County names that won’t clean up:</strong></p>
+<p>A few states don’t call all of their counties “counties.” Louisiana has parishes, Alaska has boroughs, and Virginia has independent cities. If some names still have endings after <code>str_replace_all()</code>, add a second <code>str_replace_all()</code> for the other ending, or just choose a different state.</p>
+<p><strong>Hint 4 — V-Dem country codes:</strong></p>
+<p>Filter on <code>country_text_id</code>, which uses three-letter codes. The G7, for example, is:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(country_text_id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"USA"</span>, <span class="st">"GBR"</span>, <span class="st">"FRA"</span>, <span class="st">"DEU"</span>, <span class="st">"ITA"</span>, <span class="st">"JPN"</span>, <span class="st">"CAN"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Hint 5 — Too many counties to read in your plot:</strong></p>
+<p>If your state has a lot of counties, the plot in Step 3 will be crowded. Plot a subset, for example the 20 highest-income counties with <code>slice_max(estimate, n = 20)</code> or 20 random ones with <code>slice_sample(n = 20)</code>, and say so in your subtitle.</p>
 
 
 </section>

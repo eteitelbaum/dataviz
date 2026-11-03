@@ -7,10 +7,10 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.31">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
 
-  <meta name="dcterms.date" content="2026-10-08">
+  <meta name="dcterms.date" content="2026-11-03">
   <title>PSC/DATS 2102--Course Schedule – Make a Map Function</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -18,10 +18,16 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -96,7 +102,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #dcc6e0; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-20d3c30aff809de2494c8a31ffc217cf.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-907e92de6994ecdd3a06c5a755a85193.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -193,7 +199,7 @@
   <link href="../site_libs/countdown-0.6.0/countdown.css" rel="stylesheet">
   <script src="../site_libs/countdown-0.6.0/countdown.js"></script>
 <meta property="og:title" content="Make a Map Function – PSC/DATS 2102–Course Schedule">
-<meta property="og:site_name" content="PSC/DATS 2102--Course Schedule">
+<meta property="og:site_name" content="PSC/DATS 2102–Course Schedule">
 <meta name="twitter:title" content="Make a Map Function – PSC/DATS 2102–Course Schedule">
 <meta name="twitter:card" content="summary">
 </head>
@@ -207,7 +213,7 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">October 8, 2026</p>
+  <p class="date">November 3, 2026</p>
 </section>
 <section>
 <section id="make-a-map-function" class="title-slide slide level1 center">
@@ -232,14 +238,14 @@
 <h2>Simple Example</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Define the function</span></span>
-<span id="cb1-2"><a></a>square_number <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb1-3"><a></a>  result <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb1-4"><a></a>  <span class="fu">return</span>(result)</span>
-<span id="cb1-5"><a></a>}</span>
-<span id="cb1-6"><a></a></span>
-<span id="cb1-7"><a></a><span class="co"># Use the function</span></span>
-<span id="cb1-8"><a></a><span class="fu">square_number</span>(<span class="dv">55</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="co"># Define the function</span></span>
+<span id="cb1-2"><a aria-label="2"></a>square_number <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb1-3"><a aria-label="3"></a>  result <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb1-4"><a aria-label="4"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb1-5"><a aria-label="5"></a>}</span>
+<span id="cb1-6"><a aria-label="6"></a></span>
+<span id="cb1-7"><a aria-label="7"></a><span class="co"># Use the function</span></span>
+<span id="cb1-8"><a aria-label="8"></a><span class="fu">square_number</span>(<span class="dv">55</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3025</code></pre>
 </div>
@@ -251,15 +257,15 @@
 <p>In the Tidyverse, tidy evaluation allows you to reference a column without using quotes or referencing the data frame</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a>democracy <span class="sc">|&gt;</span> <span class="fu">filter</span>(polyarchy <span class="sc">&gt;</span> .<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a>democracy <span class="sc">|&gt;</span> <span class="fu">filter</span>(polyarchy <span class="sc">&gt;</span> .<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>vs.&nbsp;</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a>democracy[democracy<span class="sc">$</span>polyarchy <span class="sc">&gt;</span> .<span class="dv">5</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a>democracy[democracy<span class="sc">$</span>polyarchy <span class="sc">&gt;</span> .<span class="dv">5</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>or</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a>democracy[democracy[[<span class="st">"polyarchy"</span>]] <span class="sc">&gt;</span> .<span class="dv">5</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a>democracy[democracy[[<span class="st">"polyarchy"</span>]] <span class="sc">&gt;</span> .<span class="dv">5</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="tidy-evaluation-1" class="slide level2">
@@ -296,48 +302,48 @@
 <h2>Map Function</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">source</span>(<span class="st">"functions/wb-maps.R"</span>, <span class="at">local =</span> knitr<span class="sc">::</span><span class="fu">knit_global</span>())</span>
-<span id="cb6-2"><a></a></span>
-<span id="cb6-3"><a></a><span class="fu">create_map</span>(<span class="at">var_id =</span> <span class="st">"SL.TLF.CACT.FE.ZS"</span>, </span>
-<span id="cb6-4"><a></a>           <span class="at">title=</span> <span class="st">"Female Labor Force Participation"</span>, </span>
-<span id="cb6-5"><a></a>           <span class="at">legend_title =</span> <span class="st">"FLFP %"</span>, </span>
-<span id="cb6-6"><a></a>           <span class="at">theme =</span> <span class="st">"inferno"</span>, </span>
-<span id="cb6-7"><a></a>           <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a><span class="fu">source</span>(<span class="st">"functions/wb-maps.R"</span>, <span class="at">local =</span> knitr<span class="sc">::</span><span class="fu">knit_global</span>())</span>
+<span id="cb6-2"><a aria-label="2"></a></span>
+<span id="cb6-3"><a aria-label="3"></a><span class="fu">create_map</span>(<span class="at">var_id =</span> <span class="st">"SL.TLF.CACT.FE.ZS"</span>, </span>
+<span id="cb6-4"><a aria-label="4"></a>           <span class="at">title=</span> <span class="st">"Female Labor Force Participation"</span>, </span>
+<span id="cb6-5"><a aria-label="5"></a>           <span class="at">legend_title =</span> <span class="st">"FLFP %"</span>, </span>
+<span id="cb6-6"><a aria-label="6"></a>           <span class="at">theme =</span> <span class="st">"inferno"</span>, </span>
+<span id="cb6-7"><a aria-label="7"></a>           <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="map-function-2" class="slide level2">
 <h2>Map Function</h2>
 <div class="cell" data-lable="map-function1">
-<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="|7,11,16,18-19,27-28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">library</span>(rnaturalearth)</span>
-<span id="cb7-2"><a></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb7-3"><a></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb7-4"><a></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb7-5"><a></a><span class="fu">library</span>(wbstats)</span>
-<span id="cb7-6"><a></a></span>
-<span id="cb7-7"><a></a>create_map <span class="ot">&lt;-</span> <span class="cf">function</span>(var_id, title, legend_title, theme, direction){</span>
-<span id="cb7-8"><a></a></span>
-<span id="cb7-9"><a></a><span class="fu">ne_countries</span>(<span class="at">scale =</span> <span class="st">"medium"</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb7-10"><a></a>  <span class="fu">left_join</span>(</span>
-<span id="cb7-11"><a></a>    <span class="fu">wb_data</span>(var_id, <span class="at">mrnev =</span> <span class="dv">1</span>), </span>
-<span id="cb7-12"><a></a>    <span class="fu">join_by</span>(iso_a3_eh <span class="sc">==</span> iso3c)</span>
-<span id="cb7-13"><a></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb7-14"><a></a>  <span class="fu">filter</span>(name <span class="sc">!=</span> <span class="st">"Antarctica"</span>) <span class="sc">|&gt;</span>  </span>
-<span id="cb7-15"><a></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb7-16"><a></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> .data[[var_id]])) <span class="sc">+</span> </span>
-<span id="cb7-17"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb7-18"><a></a>    <span class="at">title =</span>  title, </span>
-<span id="cb7-19"><a></a>    <span class="at">fill =</span> legend_title, </span>
-<span id="cb7-20"><a></a>    <span class="at">caption =</span> <span class="st">"Source: World Bank Development Indicators"</span></span>
-<span id="cb7-21"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb7-22"><a></a>  <span class="fu">theme_map</span>() <span class="sc">+</span></span>
-<span id="cb7-23"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb7-24"><a></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb7-25"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb7-26"><a></a>  <span class="fu">scale_fill_viridis_c</span>( </span>
-<span id="cb7-27"><a></a>    <span class="at">option =</span> theme, </span>
-<span id="cb7-28"><a></a>    <span class="at">direction =</span> direction </span>
-<span id="cb7-29"><a></a>    )</span>
-<span id="cb7-30"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" data-code-line-numbers="|7,11,16,18-19,27-28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a><span class="fu">library</span>(rnaturalearth)</span>
+<span id="cb7-2"><a aria-label="2"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb7-3"><a aria-label="3"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-4"><a aria-label="4"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb7-5"><a aria-label="5"></a><span class="fu">library</span>(wbstats)</span>
+<span id="cb7-6"><a aria-label="6"></a></span>
+<span id="cb7-7"><a aria-label="7"></a>create_map <span class="ot">&lt;-</span> <span class="cf">function</span>(var_id, title, legend_title, theme, direction){</span>
+<span id="cb7-8"><a aria-label="8"></a></span>
+<span id="cb7-9"><a aria-label="9"></a><span class="fu">ne_countries</span>(<span class="at">scale =</span> <span class="st">"medium"</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb7-10"><a aria-label="10"></a>  <span class="fu">left_join</span>(</span>
+<span id="cb7-11"><a aria-label="11"></a>    <span class="fu">wb_data</span>(var_id, <span class="at">mrnev =</span> <span class="dv">1</span>), </span>
+<span id="cb7-12"><a aria-label="12"></a>    <span class="fu">join_by</span>(iso_a3_eh <span class="sc">==</span> iso3c)</span>
+<span id="cb7-13"><a aria-label="13"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb7-14"><a aria-label="14"></a>  <span class="fu">filter</span>(name <span class="sc">!=</span> <span class="st">"Antarctica"</span>) <span class="sc">|&gt;</span>  </span>
+<span id="cb7-15"><a aria-label="15"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb7-16"><a aria-label="16"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> .data[[var_id]])) <span class="sc">+</span> </span>
+<span id="cb7-17"><a aria-label="17"></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-18"><a aria-label="18"></a>    <span class="at">title =</span>  title, </span>
+<span id="cb7-19"><a aria-label="19"></a>    <span class="at">fill =</span> legend_title, </span>
+<span id="cb7-20"><a aria-label="20"></a>    <span class="at">caption =</span> <span class="st">"Source: World Bank Development Indicators"</span></span>
+<span id="cb7-21"><a aria-label="21"></a>    ) <span class="sc">+</span></span>
+<span id="cb7-22"><a aria-label="22"></a>  <span class="fu">theme_map</span>() <span class="sc">+</span></span>
+<span id="cb7-23"><a aria-label="23"></a>  <span class="fu">theme</span>(</span>
+<span id="cb7-24"><a aria-label="24"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb7-25"><a aria-label="25"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-26"><a aria-label="26"></a>  <span class="fu">scale_fill_viridis_c</span>( </span>
+<span id="cb7-27"><a aria-label="27"></a>    <span class="at">option =</span> theme, </span>
+<span id="cb7-28"><a aria-label="28"></a>    <span class="at">direction =</span> direction </span>
+<span id="cb7-29"><a aria-label="29"></a>    )</span>
+<span id="cb7-30"><a aria-label="30"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="map-function-3" class="slide level2">
@@ -346,16 +352,16 @@
 <p>Save the source code in a folder…</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">source</span>(<span class="st">"functions/wb-maps.R"</span>, <span class="at">local =</span> knitr<span class="sc">::</span><span class="fu">knit_global</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a><span class="fu">source</span>(<span class="st">"functions/wb-maps.R"</span>, <span class="at">local =</span> knitr<span class="sc">::</span><span class="fu">knit_global</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 <p>and call in your document…<br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">create_map</span>(<span class="at">var_id =</span> <span class="st">"SL.TLF.CACT.FE.ZS"</span>, </span>
-<span id="cb9-2"><a></a>           <span class="at">title=</span> <span class="st">"Female Labor Force Participation"</span>, </span>
-<span id="cb9-3"><a></a>           <span class="at">legend_title =</span> <span class="st">"FLFP %"</span>, </span>
-<span id="cb9-4"><a></a>           <span class="at">theme =</span> <span class="st">"inferno"</span>, </span>
-<span id="cb9-5"><a></a>           <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a><span class="fu">create_map</span>(<span class="at">var_id =</span> <span class="st">"SL.TLF.CACT.FE.ZS"</span>, </span>
+<span id="cb9-2"><a aria-label="2"></a>           <span class="at">title=</span> <span class="st">"Female Labor Force Participation"</span>, </span>
+<span id="cb9-3"><a aria-label="3"></a>           <span class="at">legend_title =</span> <span class="st">"FLFP %"</span>, </span>
+<span id="cb9-4"><a aria-label="4"></a>           <span class="at">theme =</span> <span class="st">"inferno"</span>, </span>
+<span id="cb9-5"><a aria-label="5"></a>           <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="map-function-4" class="slide level2">
@@ -364,11 +370,11 @@
 <p>Now we can map any World Bank indicator by changing the inputs…</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">create_map</span>(<span class="at">var_id =</span> <span class="st">"NY.GDP.PCAP.PP.KD"</span>, </span>
-<span id="cb10-2"><a></a>           <span class="at">title=</span> <span class="st">"GDP per capita (constant 2017 international $)"</span>, </span>
-<span id="cb10-3"><a></a>           <span class="at">legend_title =</span> <span class="st">"Geary-Khamis $"</span>, </span>
-<span id="cb10-4"><a></a>           <span class="at">theme =</span> <span class="st">"mako"</span>, </span>
-<span id="cb10-5"><a></a>           <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a><span class="fu">create_map</span>(<span class="at">var_id =</span> <span class="st">"NY.GDP.PCAP.PP.KD"</span>, </span>
+<span id="cb10-2"><a aria-label="2"></a>           <span class="at">title=</span> <span class="st">"GDP per capita (constant 2017 international $)"</span>, </span>
+<span id="cb10-3"><a aria-label="3"></a>           <span class="at">legend_title =</span> <span class="st">"Geary-Khamis $"</span>, </span>
+<span id="cb10-4"><a aria-label="4"></a>           <span class="at">theme =</span> <span class="st">"mako"</span>, </span>
+<span id="cb10-5"><a aria-label="5"></a>           <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="map-function-5" class="slide level2">
@@ -431,18 +437,18 @@
 <h2>Group and Summarize</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="co"># var_id = any World Bank indicator</span></span>
-<span id="cb11-2"><a></a><span class="co"># mrv = number of most recent values</span></span>
-<span id="cb11-3"><a></a><span class="co"># group_var = column to group by (country or date)</span></span>
-<span id="cb11-4"><a></a></span>
-<span id="cb11-5"><a></a>mean_wb_data <span class="ot">&lt;-</span> <span class="cf">function</span>(var_id, mrv, group_var){</span>
-<span id="cb11-6"><a></a>  <span class="fu">wb_data</span>(var_id, <span class="at">mrv =</span> mrv) <span class="sc">|&gt;</span> </span>
-<span id="cb11-7"><a></a>    <span class="fu">group_by</span>( {{ group_var }}) <span class="sc">|&gt;</span> </span>
-<span id="cb11-8"><a></a>    <span class="fu">summarize</span>(<span class="at">mean_value =</span> <span class="fu">mean</span>(.data[[var_id]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb11-9"><a></a>}</span>
-<span id="cb11-10"><a></a></span>
-<span id="cb11-11"><a></a><span class="co"># Example call</span></span>
-<span id="cb11-12"><a></a><span class="fu">mean_wb_data</span>(<span class="st">"SL.TLF.CACT.FE.ZS"</span>, <span class="dv">3</span>, date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a><span class="co"># var_id = any World Bank indicator</span></span>
+<span id="cb11-2"><a aria-label="2"></a><span class="co"># mrv = number of most recent values</span></span>
+<span id="cb11-3"><a aria-label="3"></a><span class="co"># group_var = column to group by (country or date)</span></span>
+<span id="cb11-4"><a aria-label="4"></a></span>
+<span id="cb11-5"><a aria-label="5"></a>mean_wb_data <span class="ot">&lt;-</span> <span class="cf">function</span>(var_id, mrv, group_var){</span>
+<span id="cb11-6"><a aria-label="6"></a>  <span class="fu">wb_data</span>(var_id, <span class="at">mrv =</span> mrv) <span class="sc">|&gt;</span> </span>
+<span id="cb11-7"><a aria-label="7"></a>    <span class="fu">group_by</span>( {{ group_var }}) <span class="sc">|&gt;</span> </span>
+<span id="cb11-8"><a aria-label="8"></a>    <span class="fu">summarize</span>(<span class="at">mean_value =</span> <span class="fu">mean</span>(.data[[var_id]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb11-9"><a aria-label="9"></a>}</span>
+<span id="cb11-10"><a aria-label="10"></a></span>
+<span id="cb11-11"><a aria-label="11"></a><span class="co"># Example call</span></span>
+<span id="cb11-12"><a aria-label="12"></a><span class="fu">mean_wb_data</span>(<span class="st">"SL.TLF.CACT.FE.ZS"</span>, <span class="dv">3</span>, date)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="group-and-summarize-1" class="slide level2">
@@ -451,7 +457,7 @@
 <p>Average female labor force participation across countries, last three years…</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">mean_wb_data</span>(<span class="st">"SL.TLF.CACT.FE.ZS"</span>, <span class="dv">3</span>, date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a><span class="fu">mean_wb_data</span>(<span class="st">"SL.TLF.CACT.FE.ZS"</span>, <span class="dv">3</span>, date)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
    date mean_value
@@ -466,36 +472,36 @@
 <h2>Line Chart</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>create_line_chart <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x_var, y_var, color_var, title, x_label,</span>
-<span id="cb14-2"><a></a>                              y_label, legend_title, <span class="at">color_palette =</span> <span class="st">"turbo"</span>,</span>
-<span id="cb14-3"><a></a>                              <span class="at">palette_end =</span> <span class="fl">0.8</span>) {</span>
-<span id="cb14-4"><a></a>  </span>
-<span id="cb14-5"><a></a>  <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> {{ x_var }}, <span class="at">y =</span> {{ y_var }}, <span class="at">color =</span> {{ color_var }})) <span class="sc">+</span></span>
-<span id="cb14-6"><a></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb14-7"><a></a>    <span class="fu">labs</span>(</span>
-<span id="cb14-8"><a></a>      <span class="at">title =</span> title,</span>
-<span id="cb14-9"><a></a>      <span class="at">x =</span> x_label,</span>
-<span id="cb14-10"><a></a>      <span class="at">y =</span> y_label</span>
-<span id="cb14-11"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb14-12"><a></a>    <span class="fu">scale_color_viridis_d</span>(</span>
-<span id="cb14-13"><a></a>      <span class="at">name =</span> legend_title,  </span>
-<span id="cb14-14"><a></a>      <span class="at">option =</span> color_palette, </span>
-<span id="cb14-15"><a></a>      <span class="at">end =</span> palette_end</span>
-<span id="cb14-16"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb14-17"><a></a>    <span class="fu">theme_minimal</span>()</span>
-<span id="cb14-18"><a></a>}</span>
-<span id="cb14-19"><a></a></span>
-<span id="cb14-20"><a></a><span class="co"># Example call</span></span>
-<span id="cb14-21"><a></a><span class="fu">create_line_chart</span>(</span>
-<span id="cb14-22"><a></a>  <span class="at">data =</span> brics_dem, </span>
-<span id="cb14-23"><a></a>  <span class="at">x_var =</span> year, </span>
-<span id="cb14-24"><a></a>  <span class="at">y_var =</span> v2x_polyarchy, </span>
-<span id="cb14-25"><a></a>  <span class="at">color_var =</span> country_name, </span>
-<span id="cb14-26"><a></a>  <span class="at">title =</span> <span class="st">"Democracy in the BRICS Nations"</span>, </span>
-<span id="cb14-27"><a></a>  <span class="at">x_label =</span> <span class="st">"Year"</span>, </span>
-<span id="cb14-28"><a></a>  <span class="at">y_label =</span> <span class="st">"Polyarchy Score"</span>,</span>
-<span id="cb14-29"><a></a>  <span class="at">legend_title =</span> <span class="st">"Country"</span></span>
-<span id="cb14-30"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a>create_line_chart <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x_var, y_var, color_var, title, x_label,</span>
+<span id="cb14-2"><a aria-label="2"></a>                              y_label, legend_title, <span class="at">color_palette =</span> <span class="st">"turbo"</span>,</span>
+<span id="cb14-3"><a aria-label="3"></a>                              <span class="at">palette_end =</span> <span class="fl">0.8</span>) {</span>
+<span id="cb14-4"><a aria-label="4"></a>  </span>
+<span id="cb14-5"><a aria-label="5"></a>  <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> {{ x_var }}, <span class="at">y =</span> {{ y_var }}, <span class="at">color =</span> {{ color_var }})) <span class="sc">+</span></span>
+<span id="cb14-6"><a aria-label="6"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb14-7"><a aria-label="7"></a>    <span class="fu">labs</span>(</span>
+<span id="cb14-8"><a aria-label="8"></a>      <span class="at">title =</span> title,</span>
+<span id="cb14-9"><a aria-label="9"></a>      <span class="at">x =</span> x_label,</span>
+<span id="cb14-10"><a aria-label="10"></a>      <span class="at">y =</span> y_label</span>
+<span id="cb14-11"><a aria-label="11"></a>    ) <span class="sc">+</span></span>
+<span id="cb14-12"><a aria-label="12"></a>    <span class="fu">scale_color_viridis_d</span>(</span>
+<span id="cb14-13"><a aria-label="13"></a>      <span class="at">name =</span> legend_title,  </span>
+<span id="cb14-14"><a aria-label="14"></a>      <span class="at">option =</span> color_palette, </span>
+<span id="cb14-15"><a aria-label="15"></a>      <span class="at">end =</span> palette_end</span>
+<span id="cb14-16"><a aria-label="16"></a>    ) <span class="sc">+</span></span>
+<span id="cb14-17"><a aria-label="17"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb14-18"><a aria-label="18"></a>}</span>
+<span id="cb14-19"><a aria-label="19"></a></span>
+<span id="cb14-20"><a aria-label="20"></a><span class="co"># Example call</span></span>
+<span id="cb14-21"><a aria-label="21"></a><span class="fu">create_line_chart</span>(</span>
+<span id="cb14-22"><a aria-label="22"></a>  <span class="at">data =</span> brics_dem, </span>
+<span id="cb14-23"><a aria-label="23"></a>  <span class="at">x_var =</span> year, </span>
+<span id="cb14-24"><a aria-label="24"></a>  <span class="at">y_var =</span> v2x_polyarchy, </span>
+<span id="cb14-25"><a aria-label="25"></a>  <span class="at">color_var =</span> country_name, </span>
+<span id="cb14-26"><a aria-label="26"></a>  <span class="at">title =</span> <span class="st">"Democracy in the BRICS Nations"</span>, </span>
+<span id="cb14-27"><a aria-label="27"></a>  <span class="at">x_label =</span> <span class="st">"Year"</span>, </span>
+<span id="cb14-28"><a aria-label="28"></a>  <span class="at">y_label =</span> <span class="st">"Polyarchy Score"</span>,</span>
+<span id="cb14-29"><a aria-label="29"></a>  <span class="at">legend_title =</span> <span class="st">"Country"</span></span>
+<span id="cb14-30"><a aria-label="30"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="line-chart-1" class="slide level2">
@@ -696,7 +702,7 @@
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -808,13 +814,14 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

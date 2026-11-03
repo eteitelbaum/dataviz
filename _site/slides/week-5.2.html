@@ -7,10 +7,10 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.31">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
 
-  <meta name="dcterms.date" content="2026-10-01">
+  <meta name="dcterms.date" content="2026-11-03">
   <title>PSC/DATS 2102--Course Schedule – Merging and Summarizing Data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -18,10 +18,16 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -96,7 +102,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #dcc6e0; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-20d3c30aff809de2494c8a31ffc217cf.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-907e92de6994ecdd3a06c5a755a85193.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -191,7 +197,7 @@
     }
   </style>
 <meta property="og:title" content="Merging and Summarizing Data – PSC/DATS 2102–Course Schedule">
-<meta property="og:site_name" content="PSC/DATS 2102--Course Schedule">
+<meta property="og:site_name" content="PSC/DATS 2102–Course Schedule">
 <meta name="twitter:title" content="Merging and Summarizing Data – PSC/DATS 2102–Course Schedule">
 <meta name="twitter:card" content="summary">
 </head>
@@ -205,7 +211,7 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">October 1, 2026</p>
+  <p class="date">November 3, 2026</p>
 </section>
 <section id="merging-data-frames" class="slide level2">
 <h2>Merging Data Frames</h2>
@@ -237,18 +243,18 @@
 <h2><code>countrycode</code> Example</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Load countrycode</span></span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(countrycode)</span>
-<span id="cb1-3"><a></a></span>
-<span id="cb1-4"><a></a><span class="co"># Create new iso3c variable</span></span>
-<span id="cb1-5"><a></a>dem_data <span class="ot">&lt;-</span> dem_data <span class="sc">|&gt;</span>    </span>
-<span id="cb1-6"><a></a>  <span class="fu">mutate</span>(<span class="at">iso3c =</span> <span class="fu">countrycode</span>(<span class="at">sourcevar =</span> country_id, <span class="co"># what we are converting</span></span>
-<span id="cb1-7"><a></a>        <span class="at">origin =</span> <span class="st">"vdem"</span>,         <span class="co"># we are converting from vdem</span></span>
-<span id="cb1-8"><a></a>        <span class="at">destination =</span> <span class="st">"wb"</span>))  <span class="sc">|&gt;</span> <span class="co"># and converting to the WB iso3c code </span></span>
-<span id="cb1-9"><a></a>  <span class="fu">relocate</span>(iso3c, <span class="at">.after =</span> country_id) <span class="co"># move iso3c </span></span>
-<span id="cb1-10"><a></a></span>
-<span id="cb1-11"><a></a><span class="co"># View the data</span></span>
-<span id="cb1-12"><a></a><span class="fu">glimpse</span>(dem_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="co"># Load countrycode</span></span>
+<span id="cb1-2"><a aria-label="2"></a><span class="fu">library</span>(countrycode)</span>
+<span id="cb1-3"><a aria-label="3"></a></span>
+<span id="cb1-4"><a aria-label="4"></a><span class="co"># Create new iso3c variable</span></span>
+<span id="cb1-5"><a aria-label="5"></a>dem_data <span class="ot">&lt;-</span> dem_data <span class="sc">|&gt;</span>    </span>
+<span id="cb1-6"><a aria-label="6"></a>  <span class="fu">mutate</span>(<span class="at">iso3c =</span> <span class="fu">countrycode</span>(<span class="at">sourcevar =</span> country_id, <span class="co"># what we are converting</span></span>
+<span id="cb1-7"><a aria-label="7"></a>        <span class="at">origin =</span> <span class="st">"vdem"</span>,         <span class="co"># we are converting from vdem</span></span>
+<span id="cb1-8"><a aria-label="8"></a>        <span class="at">destination =</span> <span class="st">"wb"</span>))  <span class="sc">|&gt;</span> <span class="co"># and converting to the WB iso3c code </span></span>
+<span id="cb1-9"><a aria-label="9"></a>  <span class="fu">relocate</span>(iso3c, <span class="at">.after =</span> country_id) <span class="co"># move iso3c </span></span>
+<span id="cb1-10"><a aria-label="10"></a></span>
+<span id="cb1-11"><a aria-label="11"></a><span class="co"># View the data</span></span>
+<span id="cb1-12"><a aria-label="12"></a><span class="fu">glimpse</span>(dem_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="try-it-yourself" class="slide level2">
@@ -279,24 +285,24 @@
 <h2><code>left_join()</code> Example</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># Perform left join using common iso3c variable and year</span></span>
-<span id="cb2-2"><a></a>dem_women <span class="ot">&lt;-</span> <span class="fu">left_join</span>(dem_data, women_emp, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"iso3c"</span>, <span class="st">"year"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb2-3"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(country_text_id, country_id, country)) <span class="sc">|&gt;</span> <span class="co"># drop extra country codes/names</span></span>
-<span id="cb2-4"><a></a>  <span class="fu">rename</span>(<span class="at">region =</span> e_regionpol_6C, </span>
-<span id="cb2-5"><a></a>         <span class="at">polyarchy =</span> v2x_polyarchy,</span>
-<span id="cb2-6"><a></a>         <span class="at">libdem =</span> v2x_libdem) <span class="sc">|&gt;</span></span>
-<span id="cb2-7"><a></a>    <span class="fu">mutate</span>(</span>
-<span id="cb2-8"><a></a>    <span class="at">region =</span> <span class="fu">case_match</span>(region, <span class="co"># replace the values in region with country names</span></span>
-<span id="cb2-9"><a></a>                     <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Eastern Europe"</span>, </span>
-<span id="cb2-10"><a></a>                     <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Latin America"</span>,  </span>
-<span id="cb2-11"><a></a>                     <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Middle East"</span>,   </span>
-<span id="cb2-12"><a></a>                     <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Africa"</span>, </span>
-<span id="cb2-13"><a></a>                     <span class="dv">5</span> <span class="sc">~</span> <span class="st">"The West"</span>, </span>
-<span id="cb2-14"><a></a>                     <span class="dv">6</span> <span class="sc">~</span> <span class="st">"Asia"</span>)</span>
-<span id="cb2-15"><a></a>    )</span>
-<span id="cb2-16"><a></a>  </span>
-<span id="cb2-17"><a></a><span class="co"># View the data</span></span>
-<span id="cb2-18"><a></a><span class="fu">glimpse</span>(dem_women)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a><span class="co"># Perform left join using common iso3c variable and year</span></span>
+<span id="cb2-2"><a aria-label="2"></a>dem_women <span class="ot">&lt;-</span> <span class="fu">left_join</span>(dem_data, women_emp, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"iso3c"</span>, <span class="st">"year"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb2-3"><a aria-label="3"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(country_text_id, country_id, country)) <span class="sc">|&gt;</span> <span class="co"># drop extra country codes/names</span></span>
+<span id="cb2-4"><a aria-label="4"></a>  <span class="fu">rename</span>(<span class="at">region =</span> e_regionpol_6C, </span>
+<span id="cb2-5"><a aria-label="5"></a>         <span class="at">polyarchy =</span> v2x_polyarchy,</span>
+<span id="cb2-6"><a aria-label="6"></a>         <span class="at">libdem =</span> v2x_libdem) <span class="sc">|&gt;</span></span>
+<span id="cb2-7"><a aria-label="7"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb2-8"><a aria-label="8"></a>    <span class="at">region =</span> <span class="fu">case_match</span>(region, <span class="co"># replace the values in region with country names</span></span>
+<span id="cb2-9"><a aria-label="9"></a>                     <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Eastern Europe"</span>, </span>
+<span id="cb2-10"><a aria-label="10"></a>                     <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Latin America"</span>,  </span>
+<span id="cb2-11"><a aria-label="11"></a>                     <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Middle East"</span>,   </span>
+<span id="cb2-12"><a aria-label="12"></a>                     <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Africa"</span>, </span>
+<span id="cb2-13"><a aria-label="13"></a>                     <span class="dv">5</span> <span class="sc">~</span> <span class="st">"The West"</span>, </span>
+<span id="cb2-14"><a aria-label="14"></a>                     <span class="dv">6</span> <span class="sc">~</span> <span class="st">"Asia"</span>)</span>
+<span id="cb2-15"><a aria-label="15"></a>    )</span>
+<span id="cb2-16"><a aria-label="16"></a>  </span>
+<span id="cb2-17"><a aria-label="17"></a><span class="co"># View the data</span></span>
+<span id="cb2-18"><a aria-label="18"></a><span class="fu">glimpse</span>(dem_women)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="try-it-yourself-1" class="slide level2">
@@ -324,16 +330,16 @@
 <h2>Example</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># group_by(), summarize() and arrange()</span></span>
-<span id="cb3-2"><a></a>dem_women <span class="sc">|&gt;</span> <span class="co"># save result as new object</span></span>
-<span id="cb3-3"><a></a>  <span class="fu">group_by</span>(region)  <span class="sc">|&gt;</span> <span class="co"># group data by region</span></span>
-<span id="cb3-4"><a></a>  <span class="fu">summarize</span>(           <span class="co"># summarize following vars (by region)</span></span>
-<span id="cb3-5"><a></a>    <span class="at">polyarchy_mean =</span> <span class="fu">mean</span>(polyarchy, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="co"># calculate mean after remove NAs</span></span>
-<span id="cb3-6"><a></a>    <span class="at">libdem_median =</span> <span class="fu">median</span>(libdem, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="co"># calculate median after remove NAs</span></span>
-<span id="cb3-7"><a></a>    <span class="at">women_rep_sd =</span> <span class="fu">sd</span>(women_rep, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="co"># calculate std. dev after remove NAs</span></span>
-<span id="cb3-8"><a></a>    <span class="at">flfp_min =</span> <span class="fu">min</span>(flfp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="co"># calculate minimum flfp after remove NAs</span></span>
-<span id="cb3-9"><a></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb3-10"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(polyarchy_mean)) <span class="co"># arrange in descending order by polyarchy score</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="co"># group_by(), summarize() and arrange()</span></span>
+<span id="cb3-2"><a aria-label="2"></a>dem_women <span class="sc">|&gt;</span> <span class="co"># save result as new object</span></span>
+<span id="cb3-3"><a aria-label="3"></a>  <span class="fu">group_by</span>(region)  <span class="sc">|&gt;</span> <span class="co"># group data by region</span></span>
+<span id="cb3-4"><a aria-label="4"></a>  <span class="fu">summarize</span>(           <span class="co"># summarize following vars (by region)</span></span>
+<span id="cb3-5"><a aria-label="5"></a>    <span class="at">polyarchy_mean =</span> <span class="fu">mean</span>(polyarchy, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="co"># calculate mean after remove NAs</span></span>
+<span id="cb3-6"><a aria-label="6"></a>    <span class="at">libdem_median =</span> <span class="fu">median</span>(libdem, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="co"># calculate median after remove NAs</span></span>
+<span id="cb3-7"><a aria-label="7"></a>    <span class="at">women_rep_sd =</span> <span class="fu">sd</span>(women_rep, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="co"># calculate std. dev after remove NAs</span></span>
+<span id="cb3-8"><a aria-label="8"></a>    <span class="at">flfp_min =</span> <span class="fu">min</span>(flfp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="co"># calculate minimum flfp after remove NAs</span></span>
+<span id="cb3-9"><a aria-label="9"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb3-10"><a aria-label="10"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(polyarchy_mean)) <span class="co"># arrange in descending order by polyarchy score</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="section" class="slide level2">
@@ -342,12 +348,12 @@
 <p>Use <code>across()</code> to Apply Same Function to Multiple Columns</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>dem_women <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a></a>  <span class="fu">group_by</span>(region) <span class="sc">|&gt;</span> </span>
-<span id="cb4-3"><a></a>  <span class="fu">summarize</span>(</span>
-<span id="cb4-4"><a></a>    <span class="fu">across</span>(<span class="fu">c</span>(polyarchy, libdem, women_rep, flfp), mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb4-5"><a></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb4-6"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(polyarchy))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a>dem_women <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a aria-label="2"></a>  <span class="fu">group_by</span>(region) <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a aria-label="3"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb4-4"><a aria-label="4"></a>    <span class="fu">across</span>(<span class="fu">c</span>(polyarchy, libdem, women_rep, flfp), mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-5"><a aria-label="5"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb4-6"><a aria-label="6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(polyarchy))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="try-it-yourself-2" class="slide level2 scrollable">
@@ -394,14 +400,14 @@
 <h2>Step 1: Save the Summary</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>polyarchy_region <span class="ot">&lt;-</span> dem_women <span class="sc">|&gt;</span> <span class="co"># save result as new object</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">group_by</span>(region) <span class="sc">|&gt;</span> <span class="co"># group data by region</span></span>
-<span id="cb5-3"><a></a>  <span class="fu">summarize</span>(</span>
-<span id="cb5-4"><a></a>    <span class="at">polyarchy =</span> <span class="fu">mean</span>(polyarchy, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="co"># mean polyarchy score by region</span></span>
-<span id="cb5-5"><a></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb5-6"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(polyarchy)) <span class="co"># arrange in descending order</span></span>
-<span id="cb5-7"><a></a></span>
-<span id="cb5-8"><a></a>polyarchy_region</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a>polyarchy_region <span class="ot">&lt;-</span> dem_women <span class="sc">|&gt;</span> <span class="co"># save result as new object</span></span>
+<span id="cb5-2"><a aria-label="2"></a>  <span class="fu">group_by</span>(region) <span class="sc">|&gt;</span> <span class="co"># group data by region</span></span>
+<span id="cb5-3"><a aria-label="3"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb5-4"><a aria-label="4"></a>    <span class="at">polyarchy =</span> <span class="fu">mean</span>(polyarchy, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="co"># mean polyarchy score by region</span></span>
+<span id="cb5-5"><a aria-label="5"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb5-6"><a aria-label="6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(polyarchy)) <span class="co"># arrange in descending order</span></span>
+<span id="cb5-7"><a aria-label="7"></a></span>
+<span id="cb5-8"><a aria-label="8"></a>polyarchy_region</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
   region         polyarchy
@@ -419,15 +425,15 @@
 <h2>Step 2: Make a Column Chart</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(polyarchy_region, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(region, <span class="sc">-</span>polyarchy), <span class="at">y =</span> polyarchy)) <span class="sc">+</span></span>
-<span id="cb7-2"><a></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span> <span class="co"># one bar per region</span></span>
-<span id="cb7-3"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb7-4"><a></a>    <span class="at">x =</span> <span class="st">"Region"</span>, </span>
-<span id="cb7-5"><a></a>    <span class="at">y =</span> <span class="st">"Avg. Polyarchy Score"</span>, </span>
-<span id="cb7-6"><a></a>    <span class="at">title =</span> <span class="st">"Democracy by region, 1990 - present"</span>, </span>
-<span id="cb7-7"><a></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span></span>
-<span id="cb7-8"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb7-9"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a><span class="fu">ggplot</span>(polyarchy_region, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(region, <span class="sc">-</span>polyarchy), <span class="at">y =</span> polyarchy)) <span class="sc">+</span></span>
+<span id="cb7-2"><a aria-label="2"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span> <span class="co"># one bar per region</span></span>
+<span id="cb7-3"><a aria-label="3"></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-4"><a aria-label="4"></a>    <span class="at">x =</span> <span class="st">"Region"</span>, </span>
+<span id="cb7-5"><a aria-label="5"></a>    <span class="at">y =</span> <span class="st">"Avg. Polyarchy Score"</span>, </span>
+<span id="cb7-6"><a aria-label="6"></a>    <span class="at">title =</span> <span class="st">"Democracy by region, 1990 - present"</span>, </span>
+<span id="cb7-7"><a aria-label="7"></a>    <span class="at">caption =</span> <span class="st">"Source: V-Dem Institute"</span></span>
+<span id="cb7-8"><a aria-label="8"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-9"><a aria-label="9"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="step-2-make-a-column-chart-1" class="slide level2">
@@ -641,7 +647,7 @@
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -753,13 +759,14 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

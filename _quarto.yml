@@ -108,7 +108,7 @@ website:
           - href: assignments/lab-3.qmd
             text: "Lab 3: Maps"
           - href: assignments/lab-4.qmd
-            text: "Lab 4: Tables & coefficient plots"
+            text: "Lab 4: Tables"
       - section: "Project"
         contents:
           - href: project/project-description.qmd

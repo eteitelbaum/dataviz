@@ -7,10 +7,10 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.31">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
 
-  <meta name="dcterms.date" content="2026-10-08">
+  <meta name="dcterms.date" content="2026-11-03">
   <title>PSC/DATS 2102--Course Schedule – Choropleth Maps</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -18,10 +18,16 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -96,7 +102,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #dcc6e0; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-20d3c30aff809de2494c8a31ffc217cf.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-907e92de6994ecdd3a06c5a755a85193.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -193,7 +199,7 @@
   <link href="../site_libs/countdown-0.6.0/countdown.css" rel="stylesheet">
   <script src="../site_libs/countdown-0.6.0/countdown.js"></script>
 <meta property="og:title" content="Choropleth Maps – PSC/DATS 2102–Course Schedule">
-<meta property="og:site_name" content="PSC/DATS 2102--Course Schedule">
+<meta property="og:site_name" content="PSC/DATS 2102–Course Schedule">
 <meta name="twitter:title" content="Choropleth Maps – PSC/DATS 2102–Course Schedule">
 <meta name="twitter:card" content="summary">
 </head>
@@ -207,7 +213,7 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">October 8, 2026</p>
+  <p class="date">November 3, 2026</p>
 </section>
 <section id="choropleth-map" class="slide level2">
 <h2>Choropleth Map</h2>
@@ -235,18 +241,18 @@
 <p>Grab country shapes with <code>ne_countries()</code></p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(rnaturalearth)</span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-3"><a></a></span>
-<span id="cb1-4"><a></a>world_map_df <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">scale =</span> <span class="st">"medium"</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-5"><a></a>    <span class="fu">filter</span>(name <span class="sc">!=</span> <span class="st">"Antarctica"</span>) <span class="co"># remove Antarctica</span></span>
-<span id="cb1-6"><a></a></span>
-<span id="cb1-7"><a></a><span class="co">#world_map_df |&gt;</span></span>
-<span id="cb1-8"><a></a><span class="co">#glimpse()</span></span>
-<span id="cb1-9"><a></a></span>
-<span id="cb1-10"><a></a><span class="co"># view contents of geometry column</span></span>
-<span id="cb1-11"><a></a>world_map_df <span class="sc">|&gt;</span></span>
-<span id="cb1-12"><a></a>  <span class="fu">select</span>(geometry) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">library</span>(rnaturalearth)</span>
+<span id="cb1-2"><a aria-label="2"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a aria-label="3"></a></span>
+<span id="cb1-4"><a aria-label="4"></a>world_map_df <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">scale =</span> <span class="st">"medium"</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-5"><a aria-label="5"></a>    <span class="fu">filter</span>(name <span class="sc">!=</span> <span class="st">"Antarctica"</span>) <span class="co"># remove Antarctica</span></span>
+<span id="cb1-6"><a aria-label="6"></a></span>
+<span id="cb1-7"><a aria-label="7"></a><span class="co">#world_map_df |&gt;</span></span>
+<span id="cb1-8"><a aria-label="8"></a><span class="co">#glimpse()</span></span>
+<span id="cb1-9"><a aria-label="9"></a></span>
+<span id="cb1-10"><a aria-label="10"></a><span class="co"># view contents of geometry column</span></span>
+<span id="cb1-11"><a aria-label="11"></a>world_map_df <span class="sc">|&gt;</span></span>
+<span id="cb1-12"><a aria-label="12"></a>  <span class="fu">select</span>(geometry) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="map-code-1" class="slide level2">
@@ -255,11 +261,11 @@
 <p>Make a map using <code>geom_sf()</code> from <code>ggplot2</code>.</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb2-2"><a></a></span>
-<span id="cb2-3"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> world_map_df) <span class="sc">+</span></span>
-<span id="cb2-4"><a></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> income_grp)) <span class="sc">+</span> </span>
-<span id="cb2-5"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"World Bank country income categories"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-2"><a aria-label="2"></a></span>
+<span id="cb2-3"><a aria-label="3"></a><span class="fu">ggplot</span>(<span class="at">data =</span> world_map_df) <span class="sc">+</span></span>
+<span id="cb2-4"><a aria-label="4"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> income_grp)) <span class="sc">+</span> </span>
+<span id="cb2-5"><a aria-label="5"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"World Bank country income categories"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="map-code-2" class="slide level2">
@@ -272,16 +278,16 @@
 <p>Add a color scale and a theme.</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> world_map_df) <span class="sc">+</span></span>
-<span id="cb3-4"><a></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> income_grp)) <span class="sc">+</span> </span>
-<span id="cb3-5"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb3-6"><a></a>    <span class="at">title =</span> <span class="st">"World Bank country income categories"</span>,</span>
-<span id="cb3-7"><a></a>    <span class="at">fill =</span> <span class="st">"Category"</span></span>
-<span id="cb3-8"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb3-9"><a></a>    <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
-<span id="cb3-10"><a></a>    <span class="fu">theme_map</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb3-2"><a aria-label="2"></a></span>
+<span id="cb3-3"><a aria-label="3"></a><span class="fu">ggplot</span>(<span class="at">data =</span> world_map_df) <span class="sc">+</span></span>
+<span id="cb3-4"><a aria-label="4"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> income_grp)) <span class="sc">+</span> </span>
+<span id="cb3-5"><a aria-label="5"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-6"><a aria-label="6"></a>    <span class="at">title =</span> <span class="st">"World Bank country income categories"</span>,</span>
+<span id="cb3-7"><a aria-label="7"></a>    <span class="at">fill =</span> <span class="st">"Category"</span></span>
+<span id="cb3-8"><a aria-label="8"></a>    ) <span class="sc">+</span></span>
+<span id="cb3-9"><a aria-label="9"></a>    <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb3-10"><a aria-label="10"></a>    <span class="fu">theme_map</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="map-code-4" class="slide level2">
@@ -314,40 +320,40 @@
 <p>Grab data from the WB, join with country shapes…</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">library</span>(wbstats)</span>
-<span id="cb4-2"><a></a></span>
-<span id="cb4-3"><a></a>oil_rents_df <span class="ot">&lt;-</span> <span class="fu">wb_data</span>(<span class="fu">c</span>(<span class="at">oil_rents_gdp =</span> <span class="st">"NY.GDP.PETR.RT.ZS"</span>), <span class="at">mrnev =</span> <span class="dv">1</span>) </span>
-<span id="cb4-4"><a></a></span>
-<span id="cb4-5"><a></a>rents_map_df <span class="ot">&lt;-</span> <span class="fu">left_join</span>(world_map_df, oil_rents_df, <span class="fu">join_by</span>(iso_a3_eh <span class="sc">==</span> iso3c))</span>
-<span id="cb4-6"><a></a></span>
-<span id="cb4-7"><a></a>rents_map_df <span class="sc">|&gt;</span></span>
-<span id="cb4-8"><a></a>  <span class="fu">select</span>(<span class="fu">last_col</span>(<span class="dv">5</span>)<span class="sc">:</span><span class="fu">last_col</span>()) <span class="sc">|&gt;</span> <span class="co">#select last 5 columns of df</span></span>
-<span id="cb4-9"><a></a>  <span class="fu">glimpse</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a><span class="fu">library</span>(wbstats)</span>
+<span id="cb4-2"><a aria-label="2"></a></span>
+<span id="cb4-3"><a aria-label="3"></a>oil_rents_df <span class="ot">&lt;-</span> <span class="fu">wb_data</span>(<span class="fu">c</span>(<span class="at">oil_rents_gdp =</span> <span class="st">"NY.GDP.PETR.RT.ZS"</span>), <span class="at">mrnev =</span> <span class="dv">1</span>) </span>
+<span id="cb4-4"><a aria-label="4"></a></span>
+<span id="cb4-5"><a aria-label="5"></a>rents_map_df <span class="ot">&lt;-</span> <span class="fu">left_join</span>(world_map_df, oil_rents_df, <span class="fu">join_by</span>(iso_a3_eh <span class="sc">==</span> iso3c))</span>
+<span id="cb4-6"><a aria-label="6"></a></span>
+<span id="cb4-7"><a aria-label="7"></a>rents_map_df <span class="sc">|&gt;</span></span>
+<span id="cb4-8"><a aria-label="8"></a>  <span class="fu">select</span>(<span class="fu">last_col</span>(<span class="dv">5</span>)<span class="sc">:</span><span class="fu">last_col</span>()) <span class="sc">|&gt;</span> <span class="co">#select last 5 columns of df</span></span>
+<span id="cb4-9"><a aria-label="9"></a>  <span class="fu">glimpse</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="map-other-data-2" class="slide level2">
 <h2>Map Other Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> rents_map_df) <span class="sc">+</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> oil_rents_gdp)) <span class="sc">+</span> <span class="co"># shade based on oil rents</span></span>
-<span id="cb5-3"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb5-4"><a></a>    <span class="at">title =</span> <span class="st">"Oil rents (% of GDP)"</span>,</span>
-<span id="cb5-5"><a></a>    <span class="at">subtitle =</span> <span class="st">"(Most recent available data)"</span>, <span class="co"># add subtitle</span></span>
-<span id="cb5-6"><a></a>    <span class="at">fill =</span> <span class="st">"Percent"</span>, </span>
-<span id="cb5-7"><a></a>    <span class="at">caption =</span> <span class="st">"Source: World Bank Development Indicators"</span></span>
-<span id="cb5-8"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb5-9"><a></a>  <span class="fu">theme_map</span>() <span class="sc">+</span></span>
-<span id="cb5-10"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb5-11"><a></a>    <span class="at">legend.position =</span> <span class="st">"right"</span>, </span>
-<span id="cb5-12"><a></a>    <span class="co">#legend.title = element_text(size = 8),</span></span>
-<span id="cb5-13"><a></a>    <span class="co">#legend.text = element_text(size = 6)</span></span>
-<span id="cb5-14"><a></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>), <span class="co"># move legend</span></span>
-<span id="cb5-15"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb5-16"><a></a>  <span class="fu">scale_fill_viridis_c</span>( <span class="co"># chg from discrete (_d) to continuous (_c)</span></span>
-<span id="cb5-17"><a></a>      <span class="at">option =</span> <span class="st">"magma"</span>, <span class="co">#  chg to magma theme</span></span>
-<span id="cb5-18"><a></a>      <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="co"># reverse scale so darker = more oil</span></span>
-<span id="cb5-19"><a></a>      <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>(<span class="at">scale =</span> <span class="dv">1</span>) <span class="co"># add % label for legend</span></span>
-<span id="cb5-20"><a></a>      ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> rents_map_df) <span class="sc">+</span></span>
+<span id="cb5-2"><a aria-label="2"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> oil_rents_gdp)) <span class="sc">+</span> <span class="co"># shade based on oil rents</span></span>
+<span id="cb5-3"><a aria-label="3"></a>  <span class="fu">labs</span>(</span>
+<span id="cb5-4"><a aria-label="4"></a>    <span class="at">title =</span> <span class="st">"Oil rents (% of GDP)"</span>,</span>
+<span id="cb5-5"><a aria-label="5"></a>    <span class="at">subtitle =</span> <span class="st">"(Most recent available data)"</span>, <span class="co"># add subtitle</span></span>
+<span id="cb5-6"><a aria-label="6"></a>    <span class="at">fill =</span> <span class="st">"Percent"</span>, </span>
+<span id="cb5-7"><a aria-label="7"></a>    <span class="at">caption =</span> <span class="st">"Source: World Bank Development Indicators"</span></span>
+<span id="cb5-8"><a aria-label="8"></a>    ) <span class="sc">+</span></span>
+<span id="cb5-9"><a aria-label="9"></a>  <span class="fu">theme_map</span>() <span class="sc">+</span></span>
+<span id="cb5-10"><a aria-label="10"></a>  <span class="fu">theme</span>(</span>
+<span id="cb5-11"><a aria-label="11"></a>    <span class="at">legend.position =</span> <span class="st">"right"</span>, </span>
+<span id="cb5-12"><a aria-label="12"></a>    <span class="co">#legend.title = element_text(size = 8),</span></span>
+<span id="cb5-13"><a aria-label="13"></a>    <span class="co">#legend.text = element_text(size = 6)</span></span>
+<span id="cb5-14"><a aria-label="14"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>), <span class="co"># move legend</span></span>
+<span id="cb5-15"><a aria-label="15"></a>    ) <span class="sc">+</span></span>
+<span id="cb5-16"><a aria-label="16"></a>  <span class="fu">scale_fill_viridis_c</span>( <span class="co"># chg from discrete (_d) to continuous (_c)</span></span>
+<span id="cb5-17"><a aria-label="17"></a>      <span class="at">option =</span> <span class="st">"magma"</span>, <span class="co">#  chg to magma theme</span></span>
+<span id="cb5-18"><a aria-label="18"></a>      <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="co"># reverse scale so darker = more oil</span></span>
+<span id="cb5-19"><a aria-label="19"></a>      <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>(<span class="at">scale =</span> <span class="dv">1</span>) <span class="co"># add % label for legend</span></span>
+<span id="cb5-20"><a aria-label="20"></a>      ) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="your-turn-1" class="slide level2">
@@ -577,7 +583,7 @@
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -689,13 +695,14 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

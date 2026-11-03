@@ -7,10 +7,10 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.31">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
 
-  <meta name="dcterms.date" content="2026-09-17">
+  <meta name="dcterms.date" content="2026-11-03">
   <title>PSC/DATS 2102--Course Schedule – Observers and Reactives</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -18,10 +18,16 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -96,7 +102,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #dcc6e0; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-20d3c30aff809de2494c8a31ffc217cf.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-907e92de6994ecdd3a06c5a755a85193.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -193,7 +199,7 @@
   <link href="../site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
   <script src="../site_libs/countdown-0.4.0/countdown.js"></script>
 <meta property="og:title" content="Observers and Reactives – PSC/DATS 2102–Course Schedule">
-<meta property="og:site_name" content="PSC/DATS 2102--Course Schedule">
+<meta property="og:site_name" content="PSC/DATS 2102–Course Schedule">
 <meta name="twitter:title" content="Observers and Reactives – PSC/DATS 2102–Course Schedule">
 <meta name="twitter:card" content="summary">
 </head>
@@ -207,7 +213,7 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">September 17, 2026</p>
+  <p class="date">November 3, 2026</p>
 </section>
 <section>
 <section id="observers" class="title-slide slide level1 center">
@@ -253,60 +259,60 @@
 <h2>Example: Printing to Console</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="19-21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(shiny)</span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb1-4"><a></a>  <span class="fu">numericInput</span>(<span class="at">inputId =</span> <span class="st">"number"</span>, </span>
-<span id="cb1-5"><a></a>               <span class="at">label =</span> <span class="st">"Enter a number"</span>, </span>
-<span id="cb1-6"><a></a>               <span class="at">value =</span> <span class="dv">0</span>),</span>
-<span id="cb1-7"><a></a>               </span>
-<span id="cb1-8"><a></a>  <span class="fu">actionButton</span>(<span class="at">inputId =</span> <span class="st">"button"</span>, </span>
-<span id="cb1-9"><a></a>               <span class="at">label =</span> <span class="st">"Click me"</span>),</span>
-<span id="cb1-10"><a></a>               </span>
-<span id="cb1-11"><a></a>  <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"text"</span>)</span>
-<span id="cb1-12"><a></a>)</span>
-<span id="cb1-13"><a></a></span>
-<span id="cb1-14"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb1-15"><a></a>  output<span class="sc">$</span>text <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb1-16"><a></a>    input<span class="sc">$</span>number<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb1-17"><a></a>  }) <span class="sc">|&gt;</span> <span class="fu">bindEvent</span>(input<span class="sc">$</span>button)</span>
-<span id="cb1-18"><a></a>  </span>
-<span id="cb1-19"><a></a>  <span class="fu">observe</span>({</span>
-<span id="cb1-20"><a></a>    <span class="fu">print</span>(input<span class="sc">$</span>number<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb1-21"><a></a>  })</span>
-<span id="cb1-22"><a></a>}</span>
-<span id="cb1-23"><a></a></span>
-<span id="cb1-24"><a></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-code-line-numbers="19-21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb1-2"><a aria-label="2"></a></span>
+<span id="cb1-3"><a aria-label="3"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb1-4"><a aria-label="4"></a>  <span class="fu">numericInput</span>(<span class="at">inputId =</span> <span class="st">"number"</span>, </span>
+<span id="cb1-5"><a aria-label="5"></a>               <span class="at">label =</span> <span class="st">"Enter a number"</span>, </span>
+<span id="cb1-6"><a aria-label="6"></a>               <span class="at">value =</span> <span class="dv">0</span>),</span>
+<span id="cb1-7"><a aria-label="7"></a>               </span>
+<span id="cb1-8"><a aria-label="8"></a>  <span class="fu">actionButton</span>(<span class="at">inputId =</span> <span class="st">"button"</span>, </span>
+<span id="cb1-9"><a aria-label="9"></a>               <span class="at">label =</span> <span class="st">"Click me"</span>),</span>
+<span id="cb1-10"><a aria-label="10"></a>               </span>
+<span id="cb1-11"><a aria-label="11"></a>  <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"text"</span>)</span>
+<span id="cb1-12"><a aria-label="12"></a>)</span>
+<span id="cb1-13"><a aria-label="13"></a></span>
+<span id="cb1-14"><a aria-label="14"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb1-15"><a aria-label="15"></a>  output<span class="sc">$</span>text <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb1-16"><a aria-label="16"></a>    input<span class="sc">$</span>number<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb1-17"><a aria-label="17"></a>  }) <span class="sc">|&gt;</span> <span class="fu">bindEvent</span>(input<span class="sc">$</span>button)</span>
+<span id="cb1-18"><a aria-label="18"></a>  </span>
+<span id="cb1-19"><a aria-label="19"></a>  <span class="fu">observe</span>({</span>
+<span id="cb1-20"><a aria-label="20"></a>    <span class="fu">print</span>(input<span class="sc">$</span>number<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb1-21"><a aria-label="21"></a>  })</span>
+<span id="cb1-22"><a aria-label="22"></a>}</span>
+<span id="cb1-23"><a aria-label="23"></a></span>
+<span id="cb1-24"><a aria-label="24"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="example-printing-to-console-1" class="slide level2">
 <h2>Example: Printing to Console</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(shiny)</span>
-<span id="cb2-2"><a></a></span>
-<span id="cb2-3"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb2-4"><a></a>  <span class="fu">numericInput</span>(<span class="at">inputId =</span> <span class="st">"number"</span>, </span>
-<span id="cb2-5"><a></a>               <span class="at">label =</span> <span class="st">"Enter a number"</span>, </span>
-<span id="cb2-6"><a></a>               <span class="at">value =</span> <span class="dv">0</span>),</span>
-<span id="cb2-7"><a></a>               </span>
-<span id="cb2-8"><a></a>  <span class="fu">actionButton</span>(<span class="at">inputId =</span> <span class="st">"button"</span>, </span>
-<span id="cb2-9"><a></a>               <span class="at">label =</span> <span class="st">"Click me"</span>),</span>
-<span id="cb2-10"><a></a>               </span>
-<span id="cb2-11"><a></a>  <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"text"</span>)</span>
-<span id="cb2-12"><a></a>)</span>
-<span id="cb2-13"><a></a></span>
-<span id="cb2-14"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb2-15"><a></a>  output<span class="sc">$</span>text <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb2-16"><a></a>    input<span class="sc">$</span>number<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb2-17"><a></a>  }) <span class="sc">|&gt;</span> <span class="fu">bindEvent</span>(input<span class="sc">$</span>button)</span>
-<span id="cb2-18"><a></a>  </span>
-<span id="cb2-19"><a></a>  <span class="fu">observe</span>({</span>
-<span id="cb2-20"><a></a>    <span class="fu">print</span>(input<span class="sc">$</span>number<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb2-21"><a></a>  }) <span class="sc">|&gt;</span> <span class="fu">bindEvent</span>(input<span class="sc">$</span>button)</span>
-<span id="cb2-22"><a></a>}</span>
-<span id="cb2-23"><a></a></span>
-<span id="cb2-24"><a></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-code-line-numbers="21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb2-2"><a aria-label="2"></a></span>
+<span id="cb2-3"><a aria-label="3"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb2-4"><a aria-label="4"></a>  <span class="fu">numericInput</span>(<span class="at">inputId =</span> <span class="st">"number"</span>, </span>
+<span id="cb2-5"><a aria-label="5"></a>               <span class="at">label =</span> <span class="st">"Enter a number"</span>, </span>
+<span id="cb2-6"><a aria-label="6"></a>               <span class="at">value =</span> <span class="dv">0</span>),</span>
+<span id="cb2-7"><a aria-label="7"></a>               </span>
+<span id="cb2-8"><a aria-label="8"></a>  <span class="fu">actionButton</span>(<span class="at">inputId =</span> <span class="st">"button"</span>, </span>
+<span id="cb2-9"><a aria-label="9"></a>               <span class="at">label =</span> <span class="st">"Click me"</span>),</span>
+<span id="cb2-10"><a aria-label="10"></a>               </span>
+<span id="cb2-11"><a aria-label="11"></a>  <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"text"</span>)</span>
+<span id="cb2-12"><a aria-label="12"></a>)</span>
+<span id="cb2-13"><a aria-label="13"></a></span>
+<span id="cb2-14"><a aria-label="14"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb2-15"><a aria-label="15"></a>  output<span class="sc">$</span>text <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb2-16"><a aria-label="16"></a>    input<span class="sc">$</span>number<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb2-17"><a aria-label="17"></a>  }) <span class="sc">|&gt;</span> <span class="fu">bindEvent</span>(input<span class="sc">$</span>button)</span>
+<span id="cb2-18"><a aria-label="18"></a>  </span>
+<span id="cb2-19"><a aria-label="19"></a>  <span class="fu">observe</span>({</span>
+<span id="cb2-20"><a aria-label="20"></a>    <span class="fu">print</span>(input<span class="sc">$</span>number<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb2-21"><a aria-label="21"></a>  }) <span class="sc">|&gt;</span> <span class="fu">bindEvent</span>(input<span class="sc">$</span>button)</span>
+<span id="cb2-22"><a aria-label="22"></a>}</span>
+<span id="cb2-23"><a aria-label="23"></a></span>
+<span id="cb2-24"><a aria-label="24"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="example-resetting-values" class="slide level2">
@@ -315,16 +321,16 @@
 <p><a href="https://emmanuelteitelbaum.shinyapps.io/vdem-dashboard">Democracy Around the World!</a> App.</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>  <span class="co"># Observe changes to region selection</span></span>
-<span id="cb3-2"><a></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>regions, {</span>
-<span id="cb3-3"><a></a>    <span class="cf">if</span> (input<span class="sc">$</span>regions <span class="sc">==</span> <span class="st">"Global"</span>) {</span>
-<span id="cb3-4"><a></a>      <span class="co"># Reset the selected country and display global trend when "Global" is chosen</span></span>
-<span id="cb3-5"><a></a>      <span class="fu">selected_country</span>(<span class="cn">NULL</span>)</span>
-<span id="cb3-6"><a></a>    } <span class="cf">else</span> {</span>
-<span id="cb3-7"><a></a>      <span class="co"># Reset the selected country when any specific region is chosen</span></span>
-<span id="cb3-8"><a></a>      <span class="fu">selected_country</span>(<span class="cn">NULL</span>)</span>
-<span id="cb3-9"><a></a>    }</span>
-<span id="cb3-10"><a></a>  })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a>  <span class="co"># Observe changes to region selection</span></span>
+<span id="cb3-2"><a aria-label="2"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>regions, {</span>
+<span id="cb3-3"><a aria-label="3"></a>    <span class="cf">if</span> (input<span class="sc">$</span>regions <span class="sc">==</span> <span class="st">"Global"</span>) {</span>
+<span id="cb3-4"><a aria-label="4"></a>      <span class="co"># Reset the selected country and display global trend when "Global" is chosen</span></span>
+<span id="cb3-5"><a aria-label="5"></a>      <span class="fu">selected_country</span>(<span class="cn">NULL</span>)</span>
+<span id="cb3-6"><a aria-label="6"></a>    } <span class="cf">else</span> {</span>
+<span id="cb3-7"><a aria-label="7"></a>      <span class="co"># Reset the selected country when any specific region is chosen</span></span>
+<span id="cb3-8"><a aria-label="8"></a>      <span class="fu">selected_country</span>(<span class="cn">NULL</span>)</span>
+<span id="cb3-9"><a aria-label="9"></a>    }</span>
+<span id="cb3-10"><a aria-label="10"></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section>
 <section>
@@ -367,34 +373,34 @@
 <h2><code>reactive()</code> Example</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="15-17,20,24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">library</span>(shiny)</span>
-<span id="cb4-2"><a></a></span>
-<span id="cb4-3"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb4-4"><a></a>  <span class="fu">numericInput</span>(<span class="at">inputId =</span> <span class="st">"number"</span>, </span>
-<span id="cb4-5"><a></a>               <span class="at">label =</span> <span class="st">"Enter a number"</span>, </span>
-<span id="cb4-6"><a></a>               <span class="at">value =</span> <span class="dv">0</span>),</span>
-<span id="cb4-7"><a></a>               </span>
-<span id="cb4-8"><a></a>  <span class="fu">actionButton</span>(<span class="at">inputId =</span> <span class="st">"button"</span>, </span>
-<span id="cb4-9"><a></a>               <span class="at">label =</span> <span class="st">"Click me"</span>),</span>
-<span id="cb4-10"><a></a>               </span>
-<span id="cb4-11"><a></a>  <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"text"</span>)</span>
-<span id="cb4-12"><a></a>)</span>
-<span id="cb4-13"><a></a></span>
-<span id="cb4-14"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb4-15"><a></a>  number_squared <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb4-16"><a></a>    input<span class="sc">$</span>number<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb4-17"><a></a>  }) <span class="sc">|&gt;</span> <span class="fu">bindEvent</span>(input<span class="sc">$</span>button)</span>
-<span id="cb4-18"><a></a>  </span>
-<span id="cb4-19"><a></a>  output<span class="sc">$</span>text <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb4-20"><a></a>    <span class="fu">number_squared</span>()</span>
-<span id="cb4-21"><a></a>  })</span>
-<span id="cb4-22"><a></a>  </span>
-<span id="cb4-23"><a></a>  <span class="fu">observe</span>({</span>
-<span id="cb4-24"><a></a>    <span class="fu">print</span>(<span class="fu">number_squared</span>())</span>
-<span id="cb4-25"><a></a>  })</span>
-<span id="cb4-26"><a></a>}</span>
-<span id="cb4-27"><a></a></span>
-<span id="cb4-28"><a></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" data-code-line-numbers="15-17,20,24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb4-2"><a aria-label="2"></a></span>
+<span id="cb4-3"><a aria-label="3"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb4-4"><a aria-label="4"></a>  <span class="fu">numericInput</span>(<span class="at">inputId =</span> <span class="st">"number"</span>, </span>
+<span id="cb4-5"><a aria-label="5"></a>               <span class="at">label =</span> <span class="st">"Enter a number"</span>, </span>
+<span id="cb4-6"><a aria-label="6"></a>               <span class="at">value =</span> <span class="dv">0</span>),</span>
+<span id="cb4-7"><a aria-label="7"></a>               </span>
+<span id="cb4-8"><a aria-label="8"></a>  <span class="fu">actionButton</span>(<span class="at">inputId =</span> <span class="st">"button"</span>, </span>
+<span id="cb4-9"><a aria-label="9"></a>               <span class="at">label =</span> <span class="st">"Click me"</span>),</span>
+<span id="cb4-10"><a aria-label="10"></a>               </span>
+<span id="cb4-11"><a aria-label="11"></a>  <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"text"</span>)</span>
+<span id="cb4-12"><a aria-label="12"></a>)</span>
+<span id="cb4-13"><a aria-label="13"></a></span>
+<span id="cb4-14"><a aria-label="14"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb4-15"><a aria-label="15"></a>  number_squared <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb4-16"><a aria-label="16"></a>    input<span class="sc">$</span>number<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb4-17"><a aria-label="17"></a>  }) <span class="sc">|&gt;</span> <span class="fu">bindEvent</span>(input<span class="sc">$</span>button)</span>
+<span id="cb4-18"><a aria-label="18"></a>  </span>
+<span id="cb4-19"><a aria-label="19"></a>  output<span class="sc">$</span>text <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb4-20"><a aria-label="20"></a>    <span class="fu">number_squared</span>()</span>
+<span id="cb4-21"><a aria-label="21"></a>  })</span>
+<span id="cb4-22"><a aria-label="22"></a>  </span>
+<span id="cb4-23"><a aria-label="23"></a>  <span class="fu">observe</span>({</span>
+<span id="cb4-24"><a aria-label="24"></a>    <span class="fu">print</span>(<span class="fu">number_squared</span>())</span>
+<span id="cb4-25"><a aria-label="25"></a>  })</span>
+<span id="cb4-26"><a aria-label="26"></a>}</span>
+<span id="cb4-27"><a aria-label="27"></a></span>
+<span id="cb4-28"><a aria-label="28"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="laziness" class="slide level2">
@@ -417,72 +423,72 @@
 <h2><code>reactiveVal()</code> Example</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="15,17-19,22,26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(shiny)</span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb5-4"><a></a>  <span class="fu">numericInput</span>(<span class="at">inputId =</span> <span class="st">"number"</span>, </span>
-<span id="cb5-5"><a></a>               <span class="at">label =</span> <span class="st">"Enter a number"</span>, </span>
-<span id="cb5-6"><a></a>               <span class="at">value =</span> <span class="dv">0</span>),</span>
-<span id="cb5-7"><a></a>               </span>
-<span id="cb5-8"><a></a>  <span class="fu">actionButton</span>(<span class="at">inputId =</span> <span class="st">"button"</span>, </span>
-<span id="cb5-9"><a></a>               <span class="at">label =</span> <span class="st">"Click me"</span>),</span>
-<span id="cb5-10"><a></a>               </span>
-<span id="cb5-11"><a></a>  <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"text"</span>)</span>
-<span id="cb5-12"><a></a>)</span>
-<span id="cb5-13"><a></a></span>
-<span id="cb5-14"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb5-15"><a></a>  number_squared <span class="ot">&lt;-</span> <span class="fu">reactiveVal</span>(<span class="dv">0</span>)</span>
-<span id="cb5-16"><a></a>  </span>
-<span id="cb5-17"><a></a>  <span class="fu">observe</span>({</span>
-<span id="cb5-18"><a></a>    <span class="fu">number_squared</span>(input<span class="sc">$</span>number<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb5-19"><a></a>  }) <span class="sc">|&gt;</span> <span class="fu">bindEvent</span>(input<span class="sc">$</span>button)</span>
-<span id="cb5-20"><a></a>  </span>
-<span id="cb5-21"><a></a>  output<span class="sc">$</span>text <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb5-22"><a></a>    <span class="fu">number_squared</span>()</span>
-<span id="cb5-23"><a></a>  })</span>
-<span id="cb5-24"><a></a>  </span>
-<span id="cb5-25"><a></a>  <span class="fu">observe</span>({</span>
-<span id="cb5-26"><a></a>    <span class="fu">print</span>(<span class="fu">number_squared</span>())</span>
-<span id="cb5-27"><a></a>  })</span>
-<span id="cb5-28"><a></a>}</span>
-<span id="cb5-29"><a></a></span>
-<span id="cb5-30"><a></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" data-code-line-numbers="15,17-19,22,26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb5-2"><a aria-label="2"></a></span>
+<span id="cb5-3"><a aria-label="3"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb5-4"><a aria-label="4"></a>  <span class="fu">numericInput</span>(<span class="at">inputId =</span> <span class="st">"number"</span>, </span>
+<span id="cb5-5"><a aria-label="5"></a>               <span class="at">label =</span> <span class="st">"Enter a number"</span>, </span>
+<span id="cb5-6"><a aria-label="6"></a>               <span class="at">value =</span> <span class="dv">0</span>),</span>
+<span id="cb5-7"><a aria-label="7"></a>               </span>
+<span id="cb5-8"><a aria-label="8"></a>  <span class="fu">actionButton</span>(<span class="at">inputId =</span> <span class="st">"button"</span>, </span>
+<span id="cb5-9"><a aria-label="9"></a>               <span class="at">label =</span> <span class="st">"Click me"</span>),</span>
+<span id="cb5-10"><a aria-label="10"></a>               </span>
+<span id="cb5-11"><a aria-label="11"></a>  <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"text"</span>)</span>
+<span id="cb5-12"><a aria-label="12"></a>)</span>
+<span id="cb5-13"><a aria-label="13"></a></span>
+<span id="cb5-14"><a aria-label="14"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb5-15"><a aria-label="15"></a>  number_squared <span class="ot">&lt;-</span> <span class="fu">reactiveVal</span>(<span class="dv">0</span>)</span>
+<span id="cb5-16"><a aria-label="16"></a>  </span>
+<span id="cb5-17"><a aria-label="17"></a>  <span class="fu">observe</span>({</span>
+<span id="cb5-18"><a aria-label="18"></a>    <span class="fu">number_squared</span>(input<span class="sc">$</span>number<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb5-19"><a aria-label="19"></a>  }) <span class="sc">|&gt;</span> <span class="fu">bindEvent</span>(input<span class="sc">$</span>button)</span>
+<span id="cb5-20"><a aria-label="20"></a>  </span>
+<span id="cb5-21"><a aria-label="21"></a>  output<span class="sc">$</span>text <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb5-22"><a aria-label="22"></a>    <span class="fu">number_squared</span>()</span>
+<span id="cb5-23"><a aria-label="23"></a>  })</span>
+<span id="cb5-24"><a aria-label="24"></a>  </span>
+<span id="cb5-25"><a aria-label="25"></a>  <span class="fu">observe</span>({</span>
+<span id="cb5-26"><a aria-label="26"></a>    <span class="fu">print</span>(<span class="fu">number_squared</span>())</span>
+<span id="cb5-27"><a aria-label="27"></a>  })</span>
+<span id="cb5-28"><a aria-label="28"></a>}</span>
+<span id="cb5-29"><a aria-label="29"></a></span>
+<span id="cb5-30"><a aria-label="30"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="reactivevalues-example" class="slide level2">
 <h2><code>reactiveValues()</code> Example</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="15,17-19,22,26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">library</span>(shiny)</span>
-<span id="cb6-2"><a></a></span>
-<span id="cb6-3"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb6-4"><a></a>  <span class="fu">numericInput</span>(<span class="at">inputId =</span> <span class="st">"number"</span>, </span>
-<span id="cb6-5"><a></a>               <span class="at">label =</span> <span class="st">"Enter a number"</span>, </span>
-<span id="cb6-6"><a></a>               <span class="at">value =</span> <span class="dv">0</span>),</span>
-<span id="cb6-7"><a></a>               </span>
-<span id="cb6-8"><a></a>  <span class="fu">actionButton</span>(<span class="at">inputId =</span> <span class="st">"button"</span>, </span>
-<span id="cb6-9"><a></a>               <span class="at">label =</span> <span class="st">"Click me"</span>),</span>
-<span id="cb6-10"><a></a>               </span>
-<span id="cb6-11"><a></a>  <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"text"</span>)</span>
-<span id="cb6-12"><a></a>)</span>
-<span id="cb6-13"><a></a></span>
-<span id="cb6-14"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb6-15"><a></a>  r <span class="ot">&lt;-</span> <span class="fu">reactiveValues</span>(<span class="at">number_squared =</span> <span class="dv">0</span>) </span>
-<span id="cb6-16"><a></a>  </span>
-<span id="cb6-17"><a></a>  <span class="fu">observe</span>({</span>
-<span id="cb6-18"><a></a>    r<span class="sc">$</span>number_squared <span class="ot">&lt;-</span> input<span class="sc">$</span>number<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb6-19"><a></a>  }) <span class="sc">|&gt;</span> <span class="fu">bindEvent</span>(input<span class="sc">$</span>button)</span>
-<span id="cb6-20"><a></a>  </span>
-<span id="cb6-21"><a></a>  output<span class="sc">$</span>text <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb6-22"><a></a>    r<span class="sc">$</span>number_squared</span>
-<span id="cb6-23"><a></a>  })</span>
-<span id="cb6-24"><a></a>  </span>
-<span id="cb6-25"><a></a>  <span class="fu">observe</span>({</span>
-<span id="cb6-26"><a></a>    <span class="fu">print</span>(r<span class="sc">$</span>number_squared)</span>
-<span id="cb6-27"><a></a>  })</span>
-<span id="cb6-28"><a></a>}</span>
-<span id="cb6-29"><a></a></span>
-<span id="cb6-30"><a></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" data-code-line-numbers="15,17-19,22,26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb6-2"><a aria-label="2"></a></span>
+<span id="cb6-3"><a aria-label="3"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb6-4"><a aria-label="4"></a>  <span class="fu">numericInput</span>(<span class="at">inputId =</span> <span class="st">"number"</span>, </span>
+<span id="cb6-5"><a aria-label="5"></a>               <span class="at">label =</span> <span class="st">"Enter a number"</span>, </span>
+<span id="cb6-6"><a aria-label="6"></a>               <span class="at">value =</span> <span class="dv">0</span>),</span>
+<span id="cb6-7"><a aria-label="7"></a>               </span>
+<span id="cb6-8"><a aria-label="8"></a>  <span class="fu">actionButton</span>(<span class="at">inputId =</span> <span class="st">"button"</span>, </span>
+<span id="cb6-9"><a aria-label="9"></a>               <span class="at">label =</span> <span class="st">"Click me"</span>),</span>
+<span id="cb6-10"><a aria-label="10"></a>               </span>
+<span id="cb6-11"><a aria-label="11"></a>  <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"text"</span>)</span>
+<span id="cb6-12"><a aria-label="12"></a>)</span>
+<span id="cb6-13"><a aria-label="13"></a></span>
+<span id="cb6-14"><a aria-label="14"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb6-15"><a aria-label="15"></a>  r <span class="ot">&lt;-</span> <span class="fu">reactiveValues</span>(<span class="at">number_squared =</span> <span class="dv">0</span>) </span>
+<span id="cb6-16"><a aria-label="16"></a>  </span>
+<span id="cb6-17"><a aria-label="17"></a>  <span class="fu">observe</span>({</span>
+<span id="cb6-18"><a aria-label="18"></a>    r<span class="sc">$</span>number_squared <span class="ot">&lt;-</span> input<span class="sc">$</span>number<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb6-19"><a aria-label="19"></a>  }) <span class="sc">|&gt;</span> <span class="fu">bindEvent</span>(input<span class="sc">$</span>button)</span>
+<span id="cb6-20"><a aria-label="20"></a>  </span>
+<span id="cb6-21"><a aria-label="21"></a>  output<span class="sc">$</span>text <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb6-22"><a aria-label="22"></a>    r<span class="sc">$</span>number_squared</span>
+<span id="cb6-23"><a aria-label="23"></a>  })</span>
+<span id="cb6-24"><a aria-label="24"></a>  </span>
+<span id="cb6-25"><a aria-label="25"></a>  <span class="fu">observe</span>({</span>
+<span id="cb6-26"><a aria-label="26"></a>    <span class="fu">print</span>(r<span class="sc">$</span>number_squared)</span>
+<span id="cb6-27"><a aria-label="27"></a>  })</span>
+<span id="cb6-28"><a aria-label="28"></a>}</span>
+<span id="cb6-29"><a aria-label="29"></a></span>
+<span id="cb6-30"><a aria-label="30"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="reactive-values-1" class="slide level2">
@@ -506,20 +512,20 @@
 <h2>Server with <code>reactive()</code> Functions</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>    <span class="co"># Download data from FRED with reactive function. </span></span>
-<span id="cb7-2"><a></a>    <span class="co"># Only updates when user selects new indicator</span></span>
-<span id="cb7-3"><a></a>    fred_indicator <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb7-4"><a></a>      <span class="fu">fredr</span>(<span class="at">series_id =</span> input<span class="sc">$</span>indicator,</span>
-<span id="cb7-5"><a></a>        <span class="at">observation_start =</span> start_date,</span>
-<span id="cb7-6"><a></a>        <span class="at">observation_end =</span> end_date)</span>
-<span id="cb7-7"><a></a>    })</span>
-<span id="cb7-8"><a></a>  </span>
-<span id="cb7-9"><a></a>    <span class="co"># Filter data according to chosen years </span></span>
-<span id="cb7-10"><a></a>    <span class="co"># Only updates when user selects new data range</span></span>
-<span id="cb7-11"><a></a>    fred_data <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb7-12"><a></a>      <span class="fu">fred_indicator</span>() <span class="sc">|&gt;</span></span>
-<span id="cb7-13"><a></a>      <span class="fu">filter</span>(<span class="fu">between</span>(date, input<span class="sc">$</span>range[<span class="dv">1</span>],input<span class="sc">$</span>range[<span class="dv">2</span>])) </span>
-<span id="cb7-14"><a></a>   })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a>    <span class="co"># Download data from FRED with reactive function. </span></span>
+<span id="cb7-2"><a aria-label="2"></a>    <span class="co"># Only updates when user selects new indicator</span></span>
+<span id="cb7-3"><a aria-label="3"></a>    fred_indicator <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb7-4"><a aria-label="4"></a>      <span class="fu">fredr</span>(<span class="at">series_id =</span> input<span class="sc">$</span>indicator,</span>
+<span id="cb7-5"><a aria-label="5"></a>        <span class="at">observation_start =</span> start_date,</span>
+<span id="cb7-6"><a aria-label="6"></a>        <span class="at">observation_end =</span> end_date)</span>
+<span id="cb7-7"><a aria-label="7"></a>    })</span>
+<span id="cb7-8"><a aria-label="8"></a>  </span>
+<span id="cb7-9"><a aria-label="9"></a>    <span class="co"># Filter data according to chosen years </span></span>
+<span id="cb7-10"><a aria-label="10"></a>    <span class="co"># Only updates when user selects new data range</span></span>
+<span id="cb7-11"><a aria-label="11"></a>    fred_data <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb7-12"><a aria-label="12"></a>      <span class="fu">fred_indicator</span>() <span class="sc">|&gt;</span></span>
+<span id="cb7-13"><a aria-label="13"></a>      <span class="fu">filter</span>(<span class="fu">between</span>(date, input<span class="sc">$</span>range[<span class="dv">1</span>],input<span class="sc">$</span>range[<span class="dv">2</span>])) </span>
+<span id="cb7-14"><a aria-label="14"></a>   })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="key-concepts" class="slide level2 smaller">
@@ -546,73 +552,73 @@
 <h2>UI Code</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb8-2"><a></a></span>
-<span id="cb8-3"><a></a>    <span class="co"># Application title</span></span>
-<span id="cb8-4"><a></a>    <span class="fu">titlePanel</span>(<span class="st">"FRED Data App"</span>),</span>
-<span id="cb8-5"><a></a>    </span>
-<span id="cb8-6"><a></a>    <span class="fu">fluidRow</span>(</span>
-<span id="cb8-7"><a></a>      </span>
-<span id="cb8-8"><a></a>      <span class="co"># 12 columns on one row: this panel will take 1/3 of it</span></span>
-<span id="cb8-9"><a></a>      <span class="fu">column</span>(<span class="dv">4</span>, <span class="fu">wellPanel</span>(</span>
-<span id="cb8-10"><a></a>        <span class="fu">selectInput</span>(<span class="st">"indicator"</span>, <span class="st">"Indicator:"</span>, vars)</span>
-<span id="cb8-11"><a></a>        ),</span>
-<span id="cb8-12"><a></a>      <span class="fu">helpText</span>(<span class="st">"Select an indicator, choose a date range and view the trend. </span></span>
-<span id="cb8-13"><a></a><span class="st">               The grey bars represent economic recessions. </span></span>
-<span id="cb8-14"><a></a><span class="st">               The data for this app comes from the St. Louis Fed's </span></span>
-<span id="cb8-15"><a></a><span class="st">               FRED database. The consumer confidence, business confidence and </span></span>
-<span id="cb8-16"><a></a><span class="st">               lead composite indicators are OECD data downloaded through FRED."</span>)</span>
-<span id="cb8-17"><a></a>      ), </span>
-<span id="cb8-18"><a></a>      </span>
-<span id="cb8-19"><a></a>      <span class="co"># Remaining 2/3 occupied by plot</span></span>
-<span id="cb8-20"><a></a>      <span class="fu">column</span>(<span class="dv">8</span>,</span>
-<span id="cb8-21"><a></a>        <span class="fu">plotOutput</span>(<span class="st">"lineChart"</span>),     </span>
-<span id="cb8-22"><a></a>        <span class="fu">sliderInput</span>(</span>
-<span id="cb8-23"><a></a>          <span class="st">"range"</span>,</span>
-<span id="cb8-24"><a></a>          <span class="st">""</span>,</span>
-<span id="cb8-25"><a></a>          <span class="at">min =</span> start_date,</span>
-<span id="cb8-26"><a></a>          <span class="at">max =</span> end_date, </span>
-<span id="cb8-27"><a></a>          <span class="at">value =</span> <span class="fu">c</span>(start_date, end_date), </span>
-<span id="cb8-28"><a></a>          <span class="at">width =</span> <span class="st">"100%"</span></span>
-<span id="cb8-29"><a></a>        )</span>
-<span id="cb8-30"><a></a>      )</span>
-<span id="cb8-31"><a></a>    )</span>
-<span id="cb8-32"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb8-2"><a aria-label="2"></a></span>
+<span id="cb8-3"><a aria-label="3"></a>    <span class="co"># Application title</span></span>
+<span id="cb8-4"><a aria-label="4"></a>    <span class="fu">titlePanel</span>(<span class="st">"FRED Data App"</span>),</span>
+<span id="cb8-5"><a aria-label="5"></a>    </span>
+<span id="cb8-6"><a aria-label="6"></a>    <span class="fu">fluidRow</span>(</span>
+<span id="cb8-7"><a aria-label="7"></a>      </span>
+<span id="cb8-8"><a aria-label="8"></a>      <span class="co"># 12 columns on one row: this panel will take 1/3 of it</span></span>
+<span id="cb8-9"><a aria-label="9"></a>      <span class="fu">column</span>(<span class="dv">4</span>, <span class="fu">wellPanel</span>(</span>
+<span id="cb8-10"><a aria-label="10"></a>        <span class="fu">selectInput</span>(<span class="st">"indicator"</span>, <span class="st">"Indicator:"</span>, vars)</span>
+<span id="cb8-11"><a aria-label="11"></a>        ),</span>
+<span id="cb8-12"><a aria-label="12"></a>      <span class="fu">helpText</span>(<span class="st">"Select an indicator, choose a date range and view the trend. </span></span>
+<span id="cb8-13"><a aria-label="13"></a><span class="st">               The grey bars represent economic recessions. </span></span>
+<span id="cb8-14"><a aria-label="14"></a><span class="st">               The data for this app comes from the St. Louis Fed's </span></span>
+<span id="cb8-15"><a aria-label="15"></a><span class="st">               FRED database. The consumer confidence, business confidence and </span></span>
+<span id="cb8-16"><a aria-label="16"></a><span class="st">               lead composite indicators are OECD data downloaded through FRED."</span>)</span>
+<span id="cb8-17"><a aria-label="17"></a>      ), </span>
+<span id="cb8-18"><a aria-label="18"></a>      </span>
+<span id="cb8-19"><a aria-label="19"></a>      <span class="co"># Remaining 2/3 occupied by plot</span></span>
+<span id="cb8-20"><a aria-label="20"></a>      <span class="fu">column</span>(<span class="dv">8</span>,</span>
+<span id="cb8-21"><a aria-label="21"></a>        <span class="fu">plotOutput</span>(<span class="st">"lineChart"</span>),     </span>
+<span id="cb8-22"><a aria-label="22"></a>        <span class="fu">sliderInput</span>(</span>
+<span id="cb8-23"><a aria-label="23"></a>          <span class="st">"range"</span>,</span>
+<span id="cb8-24"><a aria-label="24"></a>          <span class="st">""</span>,</span>
+<span id="cb8-25"><a aria-label="25"></a>          <span class="at">min =</span> start_date,</span>
+<span id="cb8-26"><a aria-label="26"></a>          <span class="at">max =</span> end_date, </span>
+<span id="cb8-27"><a aria-label="27"></a>          <span class="at">value =</span> <span class="fu">c</span>(start_date, end_date), </span>
+<span id="cb8-28"><a aria-label="28"></a>          <span class="at">width =</span> <span class="st">"100%"</span></span>
+<span id="cb8-29"><a aria-label="29"></a>        )</span>
+<span id="cb8-30"><a aria-label="30"></a>      )</span>
+<span id="cb8-31"><a aria-label="31"></a>    )</span>
+<span id="cb8-32"><a aria-label="32"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="setup-global-code" class="slide level2">
 <h2>Setup (Global) Code</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># Load packages</span></span>
-<span id="cb9-2"><a></a><span class="fu">library</span>(shiny)</span>
-<span id="cb9-3"><a></a><span class="fu">library</span>(fredr)</span>
-<span id="cb9-4"><a></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb9-5"><a></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb9-6"><a></a></span>
-<span id="cb9-7"><a></a><span class="co"># Set Fred API key </span></span>
-<span id="cb9-8"><a></a><span class="fu">fredr_set_key</span>(<span class="st">"YOUR FRED API KEY"</span>) </span>
-<span id="cb9-9"><a></a></span>
-<span id="cb9-10"><a></a><span class="co"># Assign FRED series to objects</span></span>
-<span id="cb9-11"><a></a>cci <span class="ot">&lt;-</span> <span class="st">"CSCICP03USM665S"</span> <span class="co"># consumer confidence</span></span>
-<span id="cb9-12"><a></a>bci <span class="ot">&lt;-</span> <span class="st">"BSCICP03USM665S"</span> <span class="co"># business confidence</span></span>
-<span id="cb9-13"><a></a>cli <span class="ot">&lt;-</span> <span class="st">"USALOLITONOSTSAM"</span> <span class="co"># composite lead indicator</span></span>
-<span id="cb9-14"><a></a>unemp_rate <span class="ot">&lt;-</span> <span class="st">"UNRATE"</span> <span class="co"># unemployment rate</span></span>
-<span id="cb9-15"><a></a>growth <span class="ot">&lt;-</span> <span class="st">"A191RL1Q225SBEA"</span> <span class="co"># growth rate</span></span>
-<span id="cb9-16"><a></a></span>
-<span id="cb9-17"><a></a><span class="co"># set start and end date</span></span>
-<span id="cb9-18"><a></a>start_date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"1970-01-01"</span>)</span>
-<span id="cb9-19"><a></a>end_date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">Sys.Date</span>())</span>
-<span id="cb9-20"><a></a></span>
-<span id="cb9-21"><a></a><span class="co"># Create list of named values for the input selection</span></span>
-<span id="cb9-22"><a></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Consumer Confidence"</span> <span class="ot">=</span> cci, </span>
-<span id="cb9-23"><a></a>          <span class="st">"Business Confidence"</span> <span class="ot">=</span> bci, </span>
-<span id="cb9-24"><a></a>          <span class="st">"Composite Indicator"</span> <span class="ot">=</span> cli, </span>
-<span id="cb9-25"><a></a>          <span class="st">"Unemployment Rate"</span> <span class="ot">=</span> unemp_rate,</span>
-<span id="cb9-26"><a></a>          <span class="st">"Growth Rate"</span> <span class="ot">=</span> growth)</span>
-<span id="cb9-27"><a></a></span>
-<span id="cb9-28"><a></a><span class="co"># Load helper script</span></span>
-<span id="cb9-29"><a></a><span class="fu">source</span>(<span class="st">"helper.R"</span>) <span class="co"># scroll down, code pasted below</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a><span class="co"># Load packages</span></span>
+<span id="cb9-2"><a aria-label="2"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb9-3"><a aria-label="3"></a><span class="fu">library</span>(fredr)</span>
+<span id="cb9-4"><a aria-label="4"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb9-5"><a aria-label="5"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb9-6"><a aria-label="6"></a></span>
+<span id="cb9-7"><a aria-label="7"></a><span class="co"># Set Fred API key </span></span>
+<span id="cb9-8"><a aria-label="8"></a><span class="fu">fredr_set_key</span>(<span class="st">"YOUR FRED API KEY"</span>) </span>
+<span id="cb9-9"><a aria-label="9"></a></span>
+<span id="cb9-10"><a aria-label="10"></a><span class="co"># Assign FRED series to objects</span></span>
+<span id="cb9-11"><a aria-label="11"></a>cci <span class="ot">&lt;-</span> <span class="st">"CSCICP03USM665S"</span> <span class="co"># consumer confidence</span></span>
+<span id="cb9-12"><a aria-label="12"></a>bci <span class="ot">&lt;-</span> <span class="st">"BSCICP03USM665S"</span> <span class="co"># business confidence</span></span>
+<span id="cb9-13"><a aria-label="13"></a>cli <span class="ot">&lt;-</span> <span class="st">"USALOLITONOSTSAM"</span> <span class="co"># composite lead indicator</span></span>
+<span id="cb9-14"><a aria-label="14"></a>unemp_rate <span class="ot">&lt;-</span> <span class="st">"UNRATE"</span> <span class="co"># unemployment rate</span></span>
+<span id="cb9-15"><a aria-label="15"></a>growth <span class="ot">&lt;-</span> <span class="st">"A191RL1Q225SBEA"</span> <span class="co"># growth rate</span></span>
+<span id="cb9-16"><a aria-label="16"></a></span>
+<span id="cb9-17"><a aria-label="17"></a><span class="co"># set start and end date</span></span>
+<span id="cb9-18"><a aria-label="18"></a>start_date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"1970-01-01"</span>)</span>
+<span id="cb9-19"><a aria-label="19"></a>end_date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">Sys.Date</span>())</span>
+<span id="cb9-20"><a aria-label="20"></a></span>
+<span id="cb9-21"><a aria-label="21"></a><span class="co"># Create list of named values for the input selection</span></span>
+<span id="cb9-22"><a aria-label="22"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Consumer Confidence"</span> <span class="ot">=</span> cci, </span>
+<span id="cb9-23"><a aria-label="23"></a>          <span class="st">"Business Confidence"</span> <span class="ot">=</span> bci, </span>
+<span id="cb9-24"><a aria-label="24"></a>          <span class="st">"Composite Indicator"</span> <span class="ot">=</span> cli, </span>
+<span id="cb9-25"><a aria-label="25"></a>          <span class="st">"Unemployment Rate"</span> <span class="ot">=</span> unemp_rate,</span>
+<span id="cb9-26"><a aria-label="26"></a>          <span class="st">"Growth Rate"</span> <span class="ot">=</span> growth)</span>
+<span id="cb9-27"><a aria-label="27"></a></span>
+<span id="cb9-28"><a aria-label="28"></a><span class="co"># Load helper script</span></span>
+<span id="cb9-29"><a aria-label="29"></a><span class="fu">source</span>(<span class="st">"helper.R"</span>) <span class="co"># scroll down, code pasted below</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="your-turn" class="slide level2 smaller">
@@ -873,7 +879,7 @@
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -985,13 +991,14 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
