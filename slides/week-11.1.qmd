@@ -1,5 +1,5 @@
 ---
-title: "Shiny Apps"
+title: "Introducing Shiny Apps"
 date: today
 date-format: long
 footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
@@ -22,6 +22,8 @@ execute:
 
 ## What is Shiny?
 
+<br>
+
 ::: {.incremental}
 - Shiny is an R package developed by [Posit](www.posit.co) that makes it easy to build interactive web apps straight from R
 - No HTML, CSS, or JavaScript required
@@ -30,6 +32,8 @@ execute:
 :::
 
 ## What You Can Do with Shiny {.smaller}
+
+<br>
 
 ::: {.incremental}
 - **Data Exploration**: Utilize interactive widgets to filter and sort data dynamically
@@ -41,6 +45,8 @@ execute:
 
 ## Flavors of Shiny {.smaller}
 
+<br>
+
 :::{.incremental}
 - [R Shiny](https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/index.html): The original framework, allowing R users to build interactive web applications directly within R
 - [Shiny for Python](https://shiny.posit.co/py/): Extends Shiny's capabilities to Python, enabling Python users to create Shiny applications using Python code
@@ -50,6 +56,8 @@ execute:
 :::
 
 ## User Demos
+
+<br>
 
 - Have a look at the [Shiny gallery](https://shiny.posit.co/r/gallery/#user-showcase)
 - Pick an app that you like?
@@ -76,6 +84,8 @@ countdown(minutes = 5,
 
 ## Feature Demos
 
+<br>
+
 - Now let's look at [feature demos](https://shiny.posit.co/r/gallery/#feature-demos)
 - What widgets, layouts, or features are you interested in?
 - How would you use them in your own apps?
@@ -92,6 +102,8 @@ countdown(minutes = 5,
 
 ## Professional Apps {.smaller}
 
+<br>
+
 - Here is a selection of modern, professional Shiny Apps
   - [PESKAS](https://timor.peskas.org/) fisheries monitoring in Timor-Leste
   - [WaCSE](https://wsda.shinyapps.io/WaCSE/) for tracking reductions in GHG emissions as part of Washington State's [Sustainable Farms and Fields](https://www.scc.wa.gov/programs/sustainable-farms-fields) program
@@ -99,19 +111,9 @@ countdown(minutes = 5,
   - [movie-vue-r](https://friss.shinyapps.io/shiny-vue-r/#/) a Vue.js and Shiny app for exploring movie + COVID information
 - These are mainly for inspiration, but try to find the code on GitHub and see how much you can understand
 
-```{r}
-#| label: timer3
-#| echo: false
-
-countdown(minutes = 5, 
-          id = "timer3", 
-          bottom = "10%",
-          right = "10%")
-```
-
 ## Getting Started with Shiny
 
-- Open RStudio
+- Open RStudio (or Positron)
 - Start a folder for the workshop 
 - Install the `shiny` package (if not installed already)
 - Create a new Shiny app
@@ -125,23 +127,6 @@ countdown(minutes = 5,
 
 countdown(minutes = 5, 
           id = "timer4", 
-          bottom = "10%",
-          right = "10%")
-```
-
-## Challenge
-
-- Look at the `faithful` dataset in R (hint: `?faithful`)
-- Create a Shiny app that displays a histogram of the `eruptions` column
-- Change the labels accordingly
-- What kind of distribution do you see?
-
-```{r}
-#| label: timer5
-#| echo: false
-
-countdown(minutes = 10, 
-          id = "timer5", 
           bottom = "10%",
           right = "10%")
 ```
@@ -430,6 +415,23 @@ shinyApp(ui, server)
 - Go to the [getting started](https://shiny.posit.co/r/getstarted/shiny-basics/lesson3/) lesson on control widgets
 - See if you can control the calculation with a checkbox instead of a button
 - What is wrong with this approach?
+
+## Challenge
+
+- Look at the `faithful` dataset in R (hint: `?faithful`)
+- Create a Shiny app that displays a histogram of the `eruptions` column
+- Change the labels accordingly
+- What kind of distribution do you see?
+
+```{r}
+#| label: timer5
+#| echo: false
+
+countdown(minutes = 10, 
+          id = "timer5", 
+          bottom = "10%",
+          right = "10%")
+```
 
 ## Acknowledgements
 

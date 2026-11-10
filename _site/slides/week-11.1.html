@@ -10,8 +10,8 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.19">
 
-  <meta name="dcterms.date" content="2026-11-03">
-  <title>PSC/DATS 2102--Course Schedule – Shiny Apps</title>
+  <meta name="dcterms.date" content="2026-11-10">
+  <title>PSC/DATS 2102--Course Schedule – Introducing Shiny Apps</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -198,9 +198,9 @@
   </style>
   <link href="../site_libs/countdown-0.6.0/countdown.css" rel="stylesheet">
   <script src="../site_libs/countdown-0.6.0/countdown.js"></script>
-<meta property="og:title" content="Shiny Apps – PSC/DATS 2102–Course Schedule">
+<meta property="og:title" content="Introducing Shiny Apps – PSC/DATS 2102–Course Schedule">
 <meta property="og:site_name" content="PSC/DATS 2102–Course Schedule">
-<meta name="twitter:title" content="Shiny Apps – PSC/DATS 2102–Course Schedule">
+<meta name="twitter:title" content="Introducing Shiny Apps – PSC/DATS 2102–Course Schedule">
 <meta name="twitter:card" content="summary">
 </head>
 <body class="quarto-dark">
@@ -208,12 +208,12 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Shiny Apps</h1>
+  <h1 class="title">Introducing Shiny Apps</h1>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">November 3, 2026</p>
+  <p class="date">November 10, 2026</p>
 </section>
 <section>
 <section id="exploring-shiny" class="title-slide slide level1 center">
@@ -222,6 +222,7 @@
 </section>
 <section id="what-is-shiny" class="slide level2">
 <h2>What is Shiny?</h2>
+<p><br></p>
 <ul>
 <li class="fragment">Shiny is an R package developed by <a href="www.posit.co">Posit</a> that makes it easy to build interactive web apps straight from R</li>
 <li class="fragment">No HTML, CSS, or JavaScript required</li>
@@ -231,6 +232,7 @@
 </section>
 <section id="what-you-can-do-with-shiny" class="slide level2 smaller">
 <h2>What You Can Do with Shiny</h2>
+<p><br></p>
 <ul>
 <li class="fragment"><strong>Data Exploration</strong>: Utilize interactive widgets to filter and sort data dynamically</li>
 <li class="fragment"><strong>Basic Visualizations</strong>: Create real-time, interactive graphs and charts from datasets</li>
@@ -241,6 +243,7 @@
 </section>
 <section id="flavors-of-shiny" class="slide level2 smaller">
 <h2>Flavors of Shiny</h2>
+<p><br></p>
 <ul>
 <li class="fragment"><a href="https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/index.html">R Shiny</a>: The original framework, allowing R users to build interactive web applications directly within R</li>
 <li class="fragment"><a href="https://shiny.posit.co/py/">Shiny for Python</a>: Extends Shiny’s capabilities to Python, enabling Python users to create Shiny applications using Python code</li>
@@ -251,6 +254,7 @@
 </section>
 <section id="user-demos" class="slide level2">
 <h2>User Demos</h2>
+<p><br></p>
 <ul>
 <li>Have a look at the <a href="https://shiny.posit.co/r/gallery/#user-showcase">Shiny gallery</a></li>
 <li>Pick an app that you like?</li>
@@ -266,6 +270,7 @@
 </section>
 <section id="feature-demos" class="slide level2">
 <h2>Feature Demos</h2>
+<p><br></p>
 <ul>
 <li>Now let’s look at <a href="https://shiny.posit.co/r/gallery/#feature-demos">feature demos</a></li>
 <li>What widgets, layouts, or features are you interested in?</li>
@@ -279,6 +284,7 @@
 </section>
 <section id="professional-apps" class="slide level2 smaller">
 <h2>Professional Apps</h2>
+<p><br></p>
 <ul>
 <li>Here is a selection of modern, professional Shiny Apps
 <ul>
@@ -289,16 +295,11 @@
 </ul></li>
 <li>These are mainly for inspiration, but try to find the code on GitHub and see how much you can understand</li>
 </ul>
-<div class="cell">
-<div class="cell-output-display">
-<countdown-timer class="countdown" id="timer3" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:10%;bottom:10%;"></countdown-timer>
-</div>
-</div>
 </section>
 <section id="getting-started-with-shiny" class="slide level2">
 <h2>Getting Started with Shiny</h2>
 <ul>
-<li>Open RStudio</li>
+<li>Open RStudio (or Positron)</li>
 <li>Start a folder for the workshop</li>
 <li>Install the <code>shiny</code> package (if not installed already)</li>
 <li>Create a new Shiny app
@@ -311,20 +312,6 @@
 <div class="cell">
 <div class="cell-output-display">
 <countdown-timer class="countdown" id="timer4" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:10%;bottom:10%;"></countdown-timer>
-</div>
-</div>
-</section>
-<section id="challenge" class="slide level2">
-<h2>Challenge</h2>
-<ul>
-<li>Look at the <code>faithful</code> dataset in R (hint: <code>?faithful</code>)</li>
-<li>Create a Shiny app that displays a histogram of the <code>eruptions</code> column</li>
-<li>Change the labels accordingly</li>
-<li>What kind of distribution do you see?</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<countdown-timer class="countdown" id="timer5" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:10%;bottom:10%;"></countdown-timer>
 </div>
 </div>
 </section></section>
@@ -631,6 +618,20 @@
 <li>See if you can control the calculation with a checkbox instead of a button</li>
 <li>What is wrong with this approach?</li>
 </ul>
+</section>
+<section id="challenge" class="slide level2">
+<h2>Challenge</h2>
+<ul>
+<li>Look at the <code>faithful</code> dataset in R (hint: <code>?faithful</code>)</li>
+<li>Create a Shiny app that displays a histogram of the <code>eruptions</code> column</li>
+<li>Change the labels accordingly</li>
+<li>What kind of distribution do you see?</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer5" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:10%;bottom:10%;"></countdown-timer>
+</div>
+</div>
 </section>
 <section id="acknowledgements" class="slide level2">
 <h2>Acknowledgements</h2>
