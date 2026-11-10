@@ -3909,7 +3909,7 @@
     "href": "slides/week-11.1.html#try-it-yourself",
     "title": "Introducing Shiny Apps",
     "section": "Try It Yourself!",
-    "text": "Try It Yourself!\n\nAdd an actionButton to your app\nAdjust the text on the button to read “Calculate”\nMake sure it functions as intended\nGo to the getting started lesson on control widgets\nSee if you can control the calculation with a checkbox instead of a button\nWhat is wrong with this approach?"
+    "text": "Try It Yourself!\n\n\nAdd an actionButton to your app\nAdjust the text on the button to read “Calculate”\nMake sure it functions as intended\nGo to the getting started lesson on control widgets\nSee if you can control the calculation with a checkbox instead of a button\nWhat is wrong with this approach?"
   },
   {
     "objectID": "slides/week-11.1.html#acknowledgements",

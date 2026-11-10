@@ -433,6 +433,8 @@ shinyApp(ui, server)
 
 ## Try It Yourself! 
 
+<br>
+
 - Add an `actionButton` to your app
 - Adjust the text on the button to read "Calculate"
 - Make sure it functions as intended
