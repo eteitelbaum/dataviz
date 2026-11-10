@@ -1,5 +1,5 @@
 ---
-title: "Extending Your App"
+title: "Advanced Shiny"
 subtitle: "Exploring Reactivity"
 format: 
   html:

@@ -1,5 +1,5 @@
 ---
-title: "Scatter Plot App"
+title: "Building Basic Apps"
 date: today
 date-format: long
 footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
@@ -19,7 +19,31 @@ execute:
   freeze: auto
 ---
 
-# Overview
+# Warm-Up
+
+## Old Faithful Challenge
+
+<br>
+
+- Look at the `faithful` dataset in R (hint: `?faithful`)
+- Create a Shiny app that displays a histogram of the `eruptions` column
+- Change the labels accordingly
+- What kind of distribution do you see?
+
+```{r}
+#| label: timer-faithful
+#| eval: true
+#| echo: false
+
+library(countdown)
+
+countdown(minutes = 10,
+          id = "timer-faithful",
+          bottom = "10%",
+          right = "10%")
+```
+
+# Scatter Plot App
 
 ## Idea for the App
 
@@ -373,29 +397,8 @@ shinyApp(ui = ui, server = server)
 
 library(countdown)
 
-countdown(minutes = 10, 
-          bottom = "10%", 
-          right = "10%")
-```
-
-## Publish Your App
-
-- Install rsconnect:`install.packages("rsconnect")`
-- Create account and retrieve your API key
-- Configure RStudio:
-```{r}
-library(rsconnect)
-rsconnect::setAccountInfo(name='<account-name>', token='<account-token>', secret='<secret>')
-```
-- Click the "Publish" button in RStudio toolbar and follow prompts
-
-```{r}
-#| eval: true
-#| echo: false
-
-countdown(minutes = 10, 
-          id = "timer2", 
-          bottom = "5%", 
+countdown(minutes = 10,
+          bottom = "10%",
           right = "10%")
 ```
 

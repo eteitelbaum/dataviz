@@ -1,6 +1,6 @@
 ---
 title: "Week 13"
-subtitle: "Extending Your App"
+subtitle: "Advanced Shiny"
 format: html
 ---
 

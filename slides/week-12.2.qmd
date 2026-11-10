@@ -1,5 +1,5 @@
 ---
-title: "Modules"
+title: "Modules & Deployment"
 date: today
 date-format: long
 footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
@@ -224,7 +224,20 @@ Other options:
 
  - Put the module in a separate R script in the /R folder. **Shiny will automatically source it**.
 
-- Put the module in a separate R script in any other folder, and source it using `source(“./my_modules/random.R”)`. 
+- Put the module in a separate R script in any other folder, and source it using `source(“./my_modules/random.R”)`.
+
+# Deploying Your App 🚀
+
+## Posit Connect Cloud
+
+<br>
+
+*Placeholder: deployment walkthrough coming soon*
+
+- What Posit Connect Cloud is and why we use it
+- Creating an account and linking GitHub
+- Preparing your app for deployment (`app.R`, dependencies)
+- Publishing and sharing your app's URL
 
 # Challenge
 
@@ -248,7 +261,7 @@ Other options:
 - Build the app you designed.
 - Start with the modules.
 - Test it out.
-- Post it to shinyapps.io and share the link with the class.
+- Deploy it to Posit Connect Cloud and share the link with the class.
 
 ## Acknowledgements
 

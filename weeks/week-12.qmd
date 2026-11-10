@@ -1,6 +1,6 @@
 ---
 title: "Week 12"
-subtitle: "Building a Shiny App"
+subtitle: "Shiny Basics"
 format: html
 ---
 

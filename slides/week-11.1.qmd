@@ -442,25 +442,6 @@ shinyApp(ui, server)
 - See if you can control the calculation with a checkbox instead of a button
 - What is wrong with this approach?
 
-## Challenge
-
-<br>
-
-- Look at the `faithful` dataset in R (hint: `?faithful`)
-- Create a Shiny app that displays a histogram of the `eruptions` column
-- Change the labels accordingly
-- What kind of distribution do you see?
-
-```{r}
-#| label: timer5
-#| echo: false
-
-countdown(minutes = 10, 
-          id = "timer5", 
-          bottom = "10%",
-          right = "10%")
-```
-
 ## Acknowledgements
 
 <br>

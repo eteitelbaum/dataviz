@@ -152,9 +152,9 @@ website:
           - section: "V — Interactive Apps (Shiny)"
             contents:
               - href: modules/module-5.1.qmd
-                text: "Building a Shiny App"
+                text: "Shiny Basics"
               - href: modules/module-5.2.qmd
-                text: "Extending Your App"
+                text: "Advanced Shiny"
               - href: modules/module-6.1.qmd
                 text: "Project Studio (optional: styling & troubleshooting)"
               - href: modules/module-6.2.qmd
