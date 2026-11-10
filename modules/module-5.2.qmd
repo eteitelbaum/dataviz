@@ -186,7 +186,7 @@ server <- function(input, output) {
 
 ## Call to Shiny app
 
-Once we have our UI and server functions defined we are ready to go. But don't forget to include the call to the Shiny app or the app won't run! Once this is in place, you can click "Run App" in the RStudio IDE to view the app locally. Optionally, right now, you can try setting up an account on [shinyapps.io](https://www.shinyapps.io/) and try publishing your app on their server. 
+Once we have our UI and server functions defined we are ready to go. But don't forget to include the call to the Shiny app or the app won't run! Once this is in place, you can click "Run App" in the RStudio IDE to view the app locally. We will cover how to publish your app on [Posit Connect Cloud](https://connect.posit.cloud/) in session 12.2. 
 
 ```{r}
 #| label: call_shiny

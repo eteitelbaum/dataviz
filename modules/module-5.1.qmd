@@ -22,7 +22,7 @@ execute:
 ## Prework
 - Install Shiny (`install.packages("shiny")`)
 - Familiarize yourself with some of the materials available for developing Shiny Apps on Posit's [Shiny website](https://shiny.posit.co/)
-- Optional: sign up for a free account on [shinyapps.io](https://www.shinyapps.io/)
+- Optional: sign up for a free account on [Posit Connect Cloud](https://connect.posit.cloud/)
 - Start a new Shiny project for this lesson. Go to File, select New Directory and then Shiny App. Browse to where you want to save the app, give the directory a name and click Create Project  
 :::
 
@@ -32,7 +32,7 @@ In this module, we are going to be learning how to make a Shiny app. Shiny is a 
 
 Shiny enables you to create interactive web-based visualizations and dashboards directly from your R code. It simplifies the process of developing web applications by providing a higher-level abstraction and handling the underlying web technologies. With Shiny, you can allow your users to explore data, change parameters, and see the results of an analysis dynamically without needing extensive web development skills.
 
-To display a Shiny app you can just render it locally, but you likely want to share it with a broader audience. For this, you will need to host it on a server. There are lots of different to do this, but the easiest thing to use when you are getting started is [shinyapps.io](https://www.shinyapps.io/). In a later module we will learn to deploy our apps, but for this one it is fine to just view them locally. 
+To display a Shiny app you can just render it locally, but you likely want to share it with a broader audience. For this, you will need to host it on a server. There are lots of different ways to do this, but the easiest thing to use when you are getting started is [Posit Connect Cloud](https://connect.posit.cloud/). We will learn to deploy our apps in session 12.2, but for this module it is fine to just view them locally. 
 
 Shiny apps consist of three components:1) a *user interface* (UI); 2) a *server function*; and 3) a *call to the Shiny app*. The UI is the part of the app that defines what the user is going to see and interact with. The server function runs all of the computations and produces the visualizations and output that you want to display. And the call to the Shiny app simply tells Shiny to run the app. 
 
@@ -227,5 +227,5 @@ server <- ...
 shinyApp(ui = ui, server = server)
 ```
 
-Optionally, right now, you can try setting up an account on [shinyapps.io](https://www.shinyapps.io/). Read over the shinyapps.io [user guide](https://docs.posit.co/shinyapps.io/index.html) and see if you can get it to work. For your final project, you will need to be able to deploy your app but but right now it is fine if you only want to view it locally.
+Optionally, right now, you can try setting up an account on [Posit Connect Cloud](https://connect.posit.cloud/). We will walk through deployment in session 12.2, and you can read over the Connect Cloud [documentation](https://docs.posit.co/connect-cloud/) in the meantime. For your final project, you will need to be able to deploy your app, but right now it is fine if you only want to view it locally.
 
