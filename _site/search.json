@@ -3783,49 +3783,49 @@
     "href": "slides/week-11.1.html#shiny-app-basics",
     "title": "Introducing Shiny Apps",
     "section": "Shiny App Basics",
-    "text": "Shiny App Basics\nTwo parts of a Shiny app:\n\nUI: User Interface\nServer: Server logic\n\nThey come together in a single script: app.R\n\n\nNote: You can compose your app with the ui and server in separate scripts, but we will stick to the single app.R script for now."
+    "text": "Shiny App Basics\n\nTwo parts of a Shiny app:\n\nUI: User Interface\nServer: Server logic\n\nThey come together in a single script: app.R\n\n\nNote: You can compose your app with the ui and server in separate scripts, but we will stick to the single app.R script for now."
   },
   {
     "objectID": "slides/week-11.1.html#the-app.r-script",
     "href": "slides/week-11.1.html#the-app.r-script",
     "title": "Introducing Shiny Apps",
     "section": "The app.R Script",
-    "text": "The app.R Script\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  \"Hello, Shiny!\"\n)\n\nserver &lt;- function(input, output, session) {\n}\n\nshinyApp(ui, server)"
+    "text": "The app.R Script\n\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  \"Hello, Shiny!\"\n)\n\nserver &lt;- function(input, output, session) {\n}\n\nshinyApp(ui, server)"
   },
   {
     "objectID": "slides/week-11.1.html#the-ui",
     "href": "slides/week-11.1.html#the-ui",
     "title": "Introducing Shiny Apps",
     "section": "The UI",
-    "text": "The UI\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  \"Hello, Shiny!\"\n)\n\nserver &lt;- function(input, output, session) {\n}\n\nshinyApp(ui, server)\n\nfluidPage() creates a Bootstrap page"
+    "text": "The UI\n\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  \"Hello, Shiny!\"\n)\n\nserver &lt;- function(input, output, session) {\n}\n\nshinyApp(ui, server)\n\nfluidPage() creates a Bootstrap page"
   },
   {
     "objectID": "slides/week-11.1.html#the-ui-1",
     "href": "slides/week-11.1.html#the-ui-1",
     "title": "Introducing Shiny Apps",
     "section": "The UI",
-    "text": "The UI\n\nBootstrap is a free front-end framework used in web development\n\nIt is built on HTML, CSS and JavaScript\nThere are many version of Bootstrap, the latest being version 5, but R Shiny uses version 3 by default\n\n\n\nWith the bslib package you can use Bootstrap 4 or 5 in your R Shiny apps."
+    "text": "The UI\n\n\nBootstrap is a free front-end framework used in web development\n\nIt is built on HTML, CSS and JavaScript\nThere are many version of Bootstrap, the latest being version 5, but R Shiny uses version 3 by default\n\n\n\nWith the bslib package you can use Bootstrap 4 or 5 in your R Shiny apps."
   },
   {
     "objectID": "slides/week-11.1.html#the-ui-2",
     "href": "slides/week-11.1.html#the-ui-2",
     "title": "Introducing Shiny Apps",
     "section": "The UI",
-    "text": "The UI\nUnder the hood, every UI function is translated to HTML.\n\nas.character(titlePanel(\"Hello, Shiny!\"))\n\n[1] \"&lt;h2&gt;Hello, Shiny!&lt;/h2&gt;\"\n\n\n\nThis HTML can have styles attached to it, either by the style attribute, or by a CSS class.\n\nas.character(sidebarPanel())\n\n[1] \"&lt;div class=\\\"col-sm-4\\\"&gt;\\n  &lt;form class=\\\"well\\\" role=\\\"complementary\\\"&gt;&lt;/form&gt;\\n&lt;/div&gt;\""
+    "text": "The UI\n\nUnder the hood, every UI function is translated to HTML.\n\nas.character(titlePanel(\"Hello, Shiny!\"))\n\n[1] \"&lt;h2&gt;Hello, Shiny!&lt;/h2&gt;\"\n\n\n\nThis HTML can have styles attached to it, either by the style attribute, or by a CSS class.\n\nas.character(sidebarPanel())\n\n[1] \"&lt;div class=\\\"col-sm-4\\\"&gt;\\n  &lt;form class=\\\"well\\\" role=\\\"complementary\\\"&gt;&lt;/form&gt;\\n&lt;/div&gt;\""
   },
   {
     "objectID": "slides/week-11.1.html#the-ui-3",
     "href": "slides/week-11.1.html#the-ui-3",
     "title": "Introducing Shiny Apps",
     "section": "The UI",
-    "text": "The UI\nTo let users interact with your app, you can add input controls. A basic input control has:\n\nan inputId\na label\na value"
+    "text": "The UI\n\nTo let users interact with your app, you can add input controls. A basic input control has:\n\nan inputId\na label\na value"
   },
   {
     "objectID": "slides/week-11.1.html#the-ui-4",
     "href": "slides/week-11.1.html#the-ui-4",
     "title": "Introducing Shiny Apps",
     "section": "The UI",
-    "text": "The UI\nFor example:\nnumericInput(inputId = \"number\", \n             label = \"Enter a number\", \n             value = 0)\n\nactionButton(inputId = \"button\", \n             label = \"Click me\")"
+    "text": "The UI\n\nFor example:\nnumericInput(inputId = \"number\", \n             label = \"Enter a number\", \n             value = 0)\n\nactionButton(inputId = \"button\", \n             label = \"Click me\")"
   },
   {
     "objectID": "slides/week-11.1.html#updating-the-ui",
@@ -3846,7 +3846,7 @@
     "href": "slides/week-11.1.html#updating-the-ui-2",
     "title": "Introducing Shiny Apps",
     "section": "Updating the UI",
-    "text": "Updating the UI\nEvery output element needs a single argument: outputId. This is a simple string that needs to be unique.\n\ntextOutput(outputId = \"text\")\n\nThis textOutput tells Shiny what to display. It’s a placeholder for what is goign to be produced by the server logic."
+    "text": "Updating the UI\n\nEvery output element needs a single argument: outputId. This is a simple string that needs to be unique.\n\ntextOutput(outputId = \"text\")\n\nThis textOutput tells Shiny what to display. It’s a placeholder for what is goign to be produced by the server logic."
   },
   {
     "objectID": "slides/week-11.1.html#the-server",
@@ -3867,14 +3867,14 @@
     "href": "slides/week-11.1.html#the-server-2",
     "title": "Introducing Shiny Apps",
     "section": "The Server",
-    "text": "The Server\n\nui &lt;- fluidPage(\n  textOutput(outputId = \"text\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$text &lt;- renderText({\n  })\n}"
+    "text": "The Server\n\n\nui &lt;- fluidPage(\n  textOutput(outputId = \"text\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$text &lt;- renderText({\n  })\n}"
   },
   {
     "objectID": "slides/week-11.1.html#using-inputs",
     "href": "slides/week-11.1.html#using-inputs",
     "title": "Introducing Shiny Apps",
     "section": "Using Inputs",
-    "text": "Using Inputs\n\nThis works the same with inputs.\nThe server can access an object named input that will contain the value of all the input objects defined in the UI.\nThis object is list-like, just like the output object. Each input value has its own entry in this list, e.g. input$number."
+    "text": "Using Inputs\n\n\nThis works the same with inputs.\nThe server can access an object named input that will contain the value of all the input objects defined in the UI.\nThis object is list-like, just like the output object. Each input value has its own entry in this list, e.g. input$number."
   },
   {
     "objectID": "slides/week-11.1.html#section",
@@ -3888,7 +3888,7 @@
     "href": "slides/week-11.1.html#your-turn",
     "title": "Introducing Shiny Apps",
     "section": "Your Turn!",
-    "text": "Your Turn!\n\nCreate a Shiny app that displays the square of a number\nTry entering different numbers manually\nTry using the up and down arrows\nAdjust the server logic to display the cube of a number\nTry other calculations"
+    "text": "Your Turn!\n\n\nCreate a Shiny app that displays the square of a number\nTry entering different numbers manually\nTry using the up and down arrows\nAdjust the server logic to display the cube of a number\nTry other calculations"
   },
   {
     "objectID": "slides/week-11.1.html#eager-output",

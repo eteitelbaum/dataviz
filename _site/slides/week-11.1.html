@@ -322,6 +322,7 @@
 </section>
 <section id="shiny-app-basics" class="slide level2">
 <h2>Shiny App Basics</h2>
+<p><br></p>
 <p>Two parts of a Shiny app:</p>
 <ul>
 <li><strong>UI</strong>: User Interface</li>
@@ -334,6 +335,7 @@
 </div></aside></section>
 <section id="the-app.r-script" class="slide level2">
 <h2>The app.R Script</h2>
+<p><br></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-code-line-numbers="|1|3-5|7-8|10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">library</span>(shiny)</span>
 <span id="cb1-2"><a aria-label="2"></a></span>
@@ -354,6 +356,7 @@
 </section>
 <section id="the-ui" class="slide level2">
 <h2>The UI</h2>
+<p><br></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-code-line-numbers="3-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a><span class="fu">library</span>(shiny)</span>
 <span id="cb2-2"><a aria-label="2"></a></span>
@@ -370,6 +373,7 @@
 </section>
 <section id="the-ui-1" class="slide level2">
 <h2>The UI</h2>
+<p><br></p>
 <ul>
 <li><a href="https://getbootstrap.com/docs/5.0/getting-started/introduction/">Bootstrap</a> is a free front-end framework used in web development<br>
 </li>
@@ -382,6 +386,7 @@
 </div></aside></section>
 <section id="the-ui-2" class="slide level2">
 <h2>The UI</h2>
+<p><br></p>
 <p>Under the hood, every UI function is translated to HTML.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="fu">as.character</span>(<span class="fu">titlePanel</span>(<span class="st">"Hello, Shiny!"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -400,6 +405,7 @@
 </section>
 <section id="the-ui-3" class="slide level2">
 <h2>The UI</h2>
+<p><br></p>
 <p>To let users interact with your app, you can add <a href="https://shiny.posit.co/r/getstarted/shiny-basics/lesson3/">input controls</a>. A basic input control has:</p>
 <ul>
 <li>an <code>inputId</code></li>
@@ -409,6 +415,7 @@
 </section>
 <section id="the-ui-4" class="slide level2">
 <h2>The UI</h2>
+<p><br></p>
 <p>For example:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a><span class="fu">numericInput</span>(<span class="at">inputId =</span> <span class="st">"number"</span>, </span>
 <span id="cb7-2"><a aria-label="2"></a>             <span class="at">label =</span> <span class="st">"Enter a number"</span>, </span>
@@ -459,6 +466,7 @@
 </section>
 <section id="updating-the-ui-2" class="slide level2">
 <h2>Updating the UI</h2>
+<p><br></p>
 <p>Every output element needs a single argument: <code>outputId</code>. This is a simple string that needs to be <strong>unique</strong>.</p>
 <p><br></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a><span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"text"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -516,6 +524,7 @@
 </section>
 <section id="the-server-2" class="slide level2">
 <h2>The Server</h2>
+<p><br></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" data-code-line-numbers="2,6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb10-2"><a aria-label="2"></a>  <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"text"</span>)</span>
@@ -529,6 +538,7 @@
 </section>
 <section id="using-inputs" class="slide level2">
 <h2>Using Inputs</h2>
+<p><br></p>
 <ul>
 <li>This works the same with inputs.</li>
 <li>The server can access an object named <code>input</code> that will contain the value of all the input objects defined in the UI.</li>
@@ -537,6 +547,7 @@
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
+<p><br></p>
 <p>Combining the input and output objects, we get a simple app that displays the square of a number. 👏</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a><span class="fu">library</span>(shiny)</span>
@@ -560,6 +571,7 @@
 </section>
 <section id="your-turn" class="slide level2">
 <h2>Your Turn!</h2>
+<p><br></p>
 <ul>
 <li>Create a Shiny app that displays the square of a number</li>
 <li>Try entering different numbers manually</li>

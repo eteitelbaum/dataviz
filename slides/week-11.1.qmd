@@ -135,6 +135,8 @@ countdown(minutes = 5,
 
 ## Shiny App Basics
 
+<br>
+
 Two parts of a Shiny app:
 
 - **UI**: User Interface
@@ -147,6 +149,8 @@ They come together in a single script: `app.R`
 :::
 
 ## The app.R Script
+
+<br>
 
 ```{r} 
 #| label: app.r
@@ -169,6 +173,8 @@ shinyApp(ui, server)
 
 ## The UI
 
+<br>
+
 ```{r} 
 #| label: ui
 #| code-line-numbers: "3-5"
@@ -190,6 +196,8 @@ shinyApp(ui, server)
 
 ## The UI
 
+<br>
+
 - [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/) is a free front-end framework used in web development  
 - It is built on **HTML**, **CSS** and **JavaScript**
 - There are many version of Bootstrap, the latest being version 5, but R Shiny uses version 3 by default
@@ -199,6 +207,8 @@ With the `bslib` package you can use Bootstrap 4 or 5 in your R Shiny apps.
 :::
 
 ## The UI
+
+<br>
 
 ```{r}
 #| echo: false
@@ -222,6 +232,8 @@ as.character(sidebarPanel())
 
 ## The UI
 
+<br>
+
 To let users interact with your app, you can add [input controls](https://shiny.posit.co/r/getstarted/shiny-basics/lesson3/). A basic input control has:
 
 - an `inputId`
@@ -229,6 +241,8 @@ To let users interact with your app, you can add [input controls](https://shiny.
 - a `value`
 
 ## The UI
+
+<br>
 
 For example:
 
@@ -268,6 +282,8 @@ Each function creates a specific type of output, for example:
 
 ## Updating the UI
 
+<br>
+
 Every output element needs a single argument: `outputId`. This is a simple string that needs to be **unique**.
 
 <br>
@@ -305,6 +321,8 @@ Each entry in the output list should contain a **Render** function. You must use
 
 ## The Server
 
+<br>
+
 ```{r} 
 #| code-line-numbers: "2,6"
 
@@ -320,11 +338,15 @@ server <- function(input, output, session) {
 
 ## Using Inputs
 
+<br>
+
 - This works the same with inputs.
 - The server can access an object named `input` that will contain the value of all the input objects defined in the UI.
 - This object is **list-like**, just like the output object. Each input value has its own entry in this list, e.g. `input$number`.
 
 ## 
+
+<br>
 
 Combining the input and output objects, we get a simple app that displays the square of a number. 👏
 
@@ -350,6 +372,8 @@ shinyApp(ui, server)
 ```
 
 ## Your Turn! 
+
+<br>
 
 - Create a Shiny app that displays the square of a number
 - Try entering different numbers manually
