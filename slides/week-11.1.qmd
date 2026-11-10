@@ -346,9 +346,9 @@ server <- function(input, output, session) {
 
 ## 
 
-<br>
-
 Combining the input and output objects, we get a simple app that displays the square of a number. 👏
+
+<br>
 
 ```{r}
 #| eval: false
@@ -441,6 +441,8 @@ shinyApp(ui, server)
 - What is wrong with this approach?
 
 ## Challenge
+
+<br>
 
 - Look at the `faithful` dataset in R (hint: `?faithful`)
 - Create a Shiny app that displays a histogram of the `eruptions` column

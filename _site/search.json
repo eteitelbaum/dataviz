@@ -3776,7 +3776,7 @@
     "href": "slides/week-11.1.html#challenge",
     "title": "Introducing Shiny Apps",
     "section": "Challenge",
-    "text": "Challenge\n\nLook at the faithful dataset in R (hint: ?faithful)\nCreate a Shiny app that displays a histogram of the eruptions column\nChange the labels accordingly\nWhat kind of distribution do you see?"
+    "text": "Challenge\n\n\nLook at the faithful dataset in R (hint: ?faithful)\nCreate a Shiny app that displays a histogram of the eruptions column\nChange the labels accordingly\nWhat kind of distribution do you see?"
   },
   {
     "objectID": "slides/week-11.1.html#shiny-app-basics",
@@ -3881,7 +3881,7 @@
     "href": "slides/week-11.1.html#section",
     "title": "Introducing Shiny Apps",
     "section": "",
-    "text": "Combining the input and output objects, we get a simple app that displays the square of a number. 👏\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  numericInput(inputId = \"number\", \n               label = \"Enter a number\", \n               value = 0),\n               \n  textOutput(outputId = \"text\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$text &lt;- renderText({\n    input$number^2\n  })\n}\n\nshinyApp(ui, server)"
+    "text": "Combining the input and output objects, we get a simple app that displays the square of a number. 👏\n\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  numericInput(inputId = \"number\", \n               label = \"Enter a number\", \n               value = 0),\n               \n  textOutput(outputId = \"text\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$text &lt;- renderText({\n    input$number^2\n  })\n}\n\nshinyApp(ui, server)"
   },
   {
     "objectID": "slides/week-11.1.html#your-turn",
