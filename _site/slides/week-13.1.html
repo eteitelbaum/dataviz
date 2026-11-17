@@ -196,8 +196,8 @@
       margin-right: 0; 
     }
   </style>
-  <link href="../site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
-  <script src="../site_libs/countdown-0.4.0/countdown.js"></script>
+  <link href="../site_libs/countdown-0.6.0/countdown.css" rel="stylesheet">
+  <script src="../site_libs/countdown-0.6.0/countdown.js"></script>
 <meta property="og:title" content="Styling Your App – PSC/DATS 2102–Course Schedule">
 <meta property="og:site_name" content="PSC/DATS 2102–Course Schedule">
 <meta name="twitter:title" content="Styling Your App – PSC/DATS 2102–Course Schedule">
@@ -332,10 +332,7 @@
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer1" data-update-every="1" tabindex="0" style="right:10%;bottom:10%;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
+<countdown-timer class="countdown" id="timer1" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:10%;bottom:10%;--countdown-color-border:#fff;--countdown-color-text:#fff;--countdown-color-running-background:#42affa;--countdown-color-running-text:black;--countdown-color-finished-background:#E5D19D;--countdown-color-finished-text:#00264A;"></countdown-timer>
 </div>
 </div>
 </section></section>
@@ -349,7 +346,7 @@
 <ul>
 <li>A dashboard combines multiple visualizations into a single page</li>
 <li>It provides a high-level overview of the data</li>
-<li>Here is an <a href="https://emmanuelteitelbaum.shinyapps.io/vdem-dashboard">example</a> of a dashboard I made using the <code>shinydashboard</code> package</li>
+<li>Here is an <a href="https://eteitelbaum-vdemdashboard.share.connect.posit.cloud">example</a> of a dashboard I made using the <code>shinydashboard</code> package</li>
 </ul>
 </section>
 <section id="acknowledgements" class="slide level2">

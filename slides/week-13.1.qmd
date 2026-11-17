@@ -158,7 +158,7 @@ countdown(minutes = 10,
 
 - A dashboard combines multiple visualizations into a single page
 - It provides a high-level overview of the data
-- Here is an [example](https://emmanuelteitelbaum.shinyapps.io/vdem-dashboard) of a dashboard I made using the `shinydashboard` package
+- Here is an [example](https://eteitelbaum-vdemdashboard.share.connect.posit.cloud) of a dashboard I made using the `shinydashboard` package
 
 ## Acknowledgements
 

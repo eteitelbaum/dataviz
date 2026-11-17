@@ -135,7 +135,7 @@ shinyApp(ui, server)
 
 <br>
 
-[Democracy Around the World!](https://emmanuelteitelbaum.shinyapps.io/vdem-dashboard) App.
+[Democracy Around the World!](https://eteitelbaum-vdemdashboard.share.connect.posit.cloud) App.
 
 <br>
 
@@ -350,7 +350,7 @@ And since it's reactive, you can use it to **trigger other parts of your app** w
 
 ## Example from this Week
 
-<iframe src="https://emmanuelteitelbaum.shinyapps.io/fred_app/" width="80%" height="80%" style="border: none;" data-external="1"></iframe>
+<iframe src="https://eteitelbaum-fred-app.share.connect.posit.cloud/" width="80%" height="80%" style="border: none;" data-external="1"></iframe>
 
 ## Server with `reactive()` Functions
 
