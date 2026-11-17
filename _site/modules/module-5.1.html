@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.19">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Building a Shiny App – PSC/DATS 2102–Course Schedule</title>
+<title>Shiny Basics – PSC/DATS 2102–Course Schedule</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -109,10 +109,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<meta property="og:title" content="Building a Shiny App – PSC/DATS 2102–Course Schedule">
+<meta property="og:title" content="Shiny Basics – PSC/DATS 2102–Course Schedule">
 <meta property="og:description" content="Your First Shiny App">
 <meta property="og:site_name" content="PSC/DATS 2102–Course Schedule">
-<meta name="twitter:title" content="Building a Shiny App – PSC/DATS 2102–Course Schedule">
+<meta name="twitter:title" content="Shiny Basics – PSC/DATS 2102–Course Schedule">
 <meta name="twitter:description" content="Your First Shiny App">
 <meta name="twitter:card" content="summary">
 </head>
@@ -285,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/getting-started-1.html">Course Topics</a></li><li class="breadcrumb-item"><a href="../modules/module-5.1.html">V — Interactive Apps (Shiny)</a></li><li class="breadcrumb-item"><a href="../modules/module-5.1.html">Building a Shiny App</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/getting-started-1.html">Course Topics</a></li><li class="breadcrumb-item"><a href="../modules/module-5.1.html">V — Interactive Apps (Shiny)</a></li><li class="breadcrumb-item"><a href="../modules/module-5.1.html">Shiny Basics</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -665,13 +665,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../modules/module-5.1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Building a Shiny App</span></a>
+ <span class="menu-text">Shiny Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../modules/module-5.2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Extending Your App</span></a>
+ <span class="menu-text">Advanced Shiny</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -712,8 +712,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/dataviz/edit/main/modules/module-5.1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/dataviz/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/getting-started-1.html">Course Topics</a></li><li class="breadcrumb-item"><a href="../modules/module-5.1.html">V — Interactive Apps (Shiny)</a></li><li class="breadcrumb-item"><a href="../modules/module-5.1.html">Building a Shiny App</a></li></ol></nav><div class="quarto-title">
-<h1 class="title">Building a Shiny App</h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/getting-started-1.html">Course Topics</a></li><li class="breadcrumb-item"><a href="../modules/module-5.1.html">V — Interactive Apps (Shiny)</a></li><li class="breadcrumb-item"><a href="../modules/module-5.1.html">Shiny Basics</a></li></ol></nav><div class="quarto-title">
+<h1 class="title">Shiny Basics</h1>
 <p class="subtitle lead">Your First Shiny App</p>
 </div>
 
@@ -756,7 +756,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Install Shiny (<code>install.packages("shiny")</code>)</li>
 <li>Familiarize yourself with some of the materials available for developing Shiny Apps on Posit’s <a href="https://shiny.posit.co/">Shiny website</a>
 </li>
-<li>Optional: sign up for a free account on <a href="https://www.shinyapps.io/">shinyapps.io</a>
+<li>Optional: sign up for a free account on <a href="https://connect.posit.cloud/">Posit Connect Cloud</a>
 </li>
 <li>Start a new Shiny project for this lesson. Go to File, select New Directory and then Shiny App. Browse to where you want to save the app, give the directory a name and click Create Project<br>
 </li>
@@ -766,7 +766,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>In this module, we are going to be learning how to make a Shiny app. Shiny is a web application framework that is designed for building interactive web applications. It is available as an open-source package in R that is maintained by the team at Posit.</p>
 <p>Shiny enables you to create interactive web-based visualizations and dashboards directly from your R code. It simplifies the process of developing web applications by providing a higher-level abstraction and handling the underlying web technologies. With Shiny, you can allow your users to explore data, change parameters, and see the results of an analysis dynamically without needing extensive web development skills.</p>
-<p>To display a Shiny app you can just render it locally, but you likely want to share it with a broader audience. For this, you will need to host it on a server. There are lots of different to do this, but the easiest thing to use when you are getting started is <a href="https://www.shinyapps.io/">shinyapps.io</a>. In a later module we will learn to deploy our apps, but for this one it is fine to just view them locally.</p>
+<p>To display a Shiny app you can just render it locally, but you likely want to share it with a broader audience. For this, you will need to host it on a server. There are lots of different ways to do this, but the easiest thing to use when you are getting started is <a href="https://connect.posit.cloud/">Posit Connect Cloud</a>. We will learn to deploy our apps in session 12.2, but for this module it is fine to just view them locally.</p>
 <p>Shiny apps consist of three components:1) a <em>user interface</em> (UI); 2) a <em>server function</em>; and 3) a <em>call to the Shiny app</em>. The UI is the part of the app that defines what the user is going to see and interact with. The server function runs all of the computations and produces the visualizations and output that you want to display. And the call to the Shiny app simply tells Shiny to run the app.</p>
 <p>We are going to talk about each of these elements in turn, but first, have a look at this scatter plot app that we are going to but first take a few minutes to familiarize yourself with this scatter plot app that we are going to building in this this module:</p>
 <iframe src="https://emmanuelteitelbaum.shinyapps.io/vdem-scatter-plot/" width="780" height="500" data-external="1">
@@ -917,7 +917,7 @@ Note
 <span><span class="co"># Run the application </span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html">shinyApp</a></span><span class="op">(</span>ui <span class="op">=</span> <span class="va">ui</span>, server <span class="op">=</span> <span class="va">server</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Optionally, right now, you can try setting up an account on <a href="https://www.shinyapps.io/">shinyapps.io</a>. Read over the shinyapps.io <a href="https://docs.posit.co/shinyapps.io/index.html">user guide</a> and see if you can get it to work. For your final project, you will need to be able to deploy your app but but right now it is fine if you only want to view it locally.</p>
+<p>Optionally, right now, you can try setting up an account on <a href="https://connect.posit.cloud/">Posit Connect Cloud</a>. We will walk through deployment in session 12.2, and you can read over the Connect Cloud <a href="https://docs.posit.co/connect-cloud/">documentation</a> in the meantime. For your final project, you will need to be able to deploy your app, but right now it is fine if you only want to view it locally.</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -1343,8 +1343,8 @@ Note
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../modules/module-5.2.html" class="pagination-link" aria-label="Extending Your App">
-        <span class="nav-page-text">Extending Your App</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../modules/module-5.2.html" class="pagination-link" aria-label="Advanced Shiny">
+        <span class="nav-page-text">Advanced Shiny</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

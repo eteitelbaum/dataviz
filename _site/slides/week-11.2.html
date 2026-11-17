@@ -10,8 +10,8 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.19">
 
-  <meta name="dcterms.date" content="2026-11-03">
-  <title>PSC/DATS 2102--Course Schedule – Scatter Plot App</title>
+  <meta name="dcterms.date" content="2026-11-17">
+  <title>PSC/DATS 2102--Course Schedule – Building Basic Apps</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -196,11 +196,11 @@
       margin-right: 0; 
     }
   </style>
-  <link href="../site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
-  <script src="../site_libs/countdown-0.4.0/countdown.js"></script>
-<meta property="og:title" content="Scatter Plot App – PSC/DATS 2102–Course Schedule">
+  <link href="../site_libs/countdown-0.6.0/countdown.css" rel="stylesheet">
+  <script src="../site_libs/countdown-0.6.0/countdown.js"></script>
+<meta property="og:title" content="Building Basic Apps – PSC/DATS 2102–Course Schedule">
 <meta property="og:site_name" content="PSC/DATS 2102–Course Schedule">
-<meta name="twitter:title" content="Scatter Plot App – PSC/DATS 2102–Course Schedule">
+<meta name="twitter:title" content="Building Basic Apps – PSC/DATS 2102–Course Schedule">
 <meta name="twitter:card" content="summary">
 </head>
 <body class="quarto-dark">
@@ -208,16 +208,36 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Scatter Plot App</h1>
+  <h1 class="title">Building Basic Apps</h1>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">November 3, 2026</p>
+  <p class="date">November 17, 2026</p>
 </section>
 <section>
-<section id="overview" class="title-slide slide level1 center">
-<h1>Overview</h1>
+<section id="warm-up" class="title-slide slide level1 center">
+<h1>Warm-Up</h1>
+
+</section>
+<section id="old-faithful-challenge" class="slide level2">
+<h2>Old Faithful Challenge</h2>
+<p><br></p>
+<ul>
+<li>Look at the <code>faithful</code> dataset in R (hint: <code>?faithful</code>)</li>
+<li>Create a Shiny app that displays a histogram of the <code>eruptions</code> column</li>
+<li>Change the labels accordingly</li>
+<li>What kind of distribution do you see?</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer-faithful" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:10%;bottom:10%;"></countdown-timer>
+</div>
+</div>
+</section></section>
+<section>
+<section id="scatter-plot-app" class="title-slide slide level1 center">
+<h1>Scatter Plot App</h1>
 
 </section>
 <section id="idea-for-the-app" class="slide level2">
@@ -549,33 +569,7 @@
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_32aed169" data-update-every="1" tabindex="0" style="right:10%;bottom:10%;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
-</section>
-<section id="publish-your-app" class="slide level2">
-<h2>Publish Your App</h2>
-<ul>
-<li>Install rsconnect:<code>install.packages("rsconnect")</code></li>
-<li>Create account and retrieve your API key</li>
-<li>Configure RStudio:</li>
-</ul>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a><span class="fu">library</span>(rsconnect)</span>
-<span id="cb12-2"><a aria-label="2"></a>rsconnect<span class="sc">::</span><span class="fu">setAccountInfo</span>(<span class="at">name=</span><span class="st">'&lt;account-name&gt;'</span>, <span class="at">token=</span><span class="st">'&lt;account-token&gt;'</span>, <span class="at">secret=</span><span class="st">'&lt;secret&gt;'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<ul>
-<li>Click the “Publish” button in RStudio toolbar and follow prompts</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer2" data-update-every="1" tabindex="0" style="right:10%;bottom:5%;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
+<countdown-timer class="countdown" id="timer_0e28ac5a" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:10%;bottom:10%;"></countdown-timer>
 </div>
 </div>
 

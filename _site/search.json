@@ -1391,205 +1391,212 @@
   {
     "objectID": "slides/week-12.2.html#what-are-modules",
     "href": "slides/week-12.2.html#what-are-modules",
-    "title": "Modules",
+    "title": "Modules & Deployment",
     "section": "What are modules?",
     "text": "What are modules?\nYou could call modules special functions.\n\nUsing functions in a Shiny app is common:\n\nYou use functions in your UI (e.g. value_box())\nYou use functions in your server\n\n\nThat works well for code that is completely on the ui or server side."
   },
   {
     "objectID": "slides/week-12.2.html#what-are-modules-1",
     "href": "slides/week-12.2.html#what-are-modules-1",
-    "title": "Modules",
+    "title": "Modules & Deployment",
     "section": "What are modules?",
     "text": "What are modules?\nFor code that spans both the ui and the server, you need a new technique: modules\n\nA module consists of some UI code that works together with some server code\n\nModules are special because they create their own namespace: things like input and output ids are isolated from the rest of the app"
   },
   {
     "objectID": "slides/week-12.2.html#why-use-modules",
     "href": "slides/week-12.2.html#why-use-modules",
-    "title": "Modules",
+    "title": "Modules & Deployment",
     "section": "Why use modules?",
     "text": "Why use modules?\nThere are two main reasons to work with modules:\n\n\nBecause a module creates its own namespace, you can write and run code in isolation. You don’t need to worry about what’s going on outside the module. And remember, ids needed to be unique!\nBecause a module is basically a function, it comes with all the benefits that functions have."
   },
   {
     "objectID": "slides/week-12.2.html#what-does-a-module-look-like",
     "href": "slides/week-12.2.html#what-does-a-module-look-like",
-    "title": "Modules",
+    "title": "Modules & Deployment",
     "section": "What does a module look like?",
     "text": "What does a module look like?\nA module has two parts, and is basically a mini-app:\n\n\nThe module UI, which generates the HTML and runs code inside the ui() function\nThe module server, which runs code inside the server() function"
   },
   {
     "objectID": "slides/week-12.2.html#what-does-a-module-look-like-1",
     "href": "slides/week-12.2.html#what-does-a-module-look-like-1",
-    "title": "Modules",
+    "title": "Modules & Deployment",
     "section": "What does a module look like?",
     "text": "What does a module look like?\nlibrary(shiny)\n\nnumberModUI &lt;- function(id) {\n  ns &lt;- NS(id)\n  tagList(\n    numericInput(inputId = ns(\"number\"),\n                 label = \"Enter a number\",\n                 value = 0),\n    actionButton(inputId = ns(\"button\"),\n                 label = \"Click me\"),\n    textOutput(outputId = ns(\"text\"))\n  )\n}\n\nnumberModServer &lt;- function(id) {\n  moduleServer(id, function(input, output, session) {\n    output$text &lt;- renderText({\n      input$number^2\n    }) |&gt; bindEvent(input$button)\n  })\n}\n\nui &lt;- fluidPage(\n  numberModUI(\"numbers\")\n)\n\nserver &lt;- function(input, output, session) {\n  numberModServer(\"numbers\")\n}\n\nshinyApp(ui, server)"
   },
   {
     "objectID": "slides/week-12.2.html#what-does-a-module-look-like-2",
     "href": "slides/week-12.2.html#what-does-a-module-look-like-2",
-    "title": "Modules",
+    "title": "Modules & Deployment",
     "section": "What does a module look like?",
     "text": "What does a module look like?\nlibrary(shiny)\n\nnumberModUI &lt;- function(id) {\n  ns &lt;- NS(id)\n  tagList(\n    numericInput(inputId = ns(\"number\"),\n                 label = \"Enter a number\",\n                 value = 0),\n    actionButton(inputId = ns(\"button\"),\n                 label = \"Click me\"),\n    textOutput(outputId = ns(\"text\"))\n  )\n}\n\nnumberModServer &lt;- function(id) {\n  moduleServer(id, function(input, output, session) {\n    output$text &lt;- renderText({\n      input$number^2\n    }) |&gt; bindEvent(input$button)\n  })\n}\n\nui &lt;- fluidPage(\n  numberModUI(\"numbers\")\n)\n\nserver &lt;- function(input, output, session) {\n  numberModServer(\"numbers\")\n}\n\nshinyApp(ui, server)"
   },
   {
     "objectID": "slides/week-12.2.html#what-does-a-module-look-like-3",
     "href": "slides/week-12.2.html#what-does-a-module-look-like-3",
-    "title": "Modules",
+    "title": "Modules & Deployment",
     "section": "What does a module look like?",
     "text": "What does a module look like?\nlibrary(shiny)\n\nnumberModUI &lt;- function(id) {\n  ns &lt;- NS(id)\n  tagList(\n    numericInput(inputId = ns(\"number\"),\n                 label = \"Enter a number\",\n                 value = 0),\n    actionButton(inputId = ns(\"button\"),\n                 label = \"Click me\"),\n    textOutput(outputId = ns(\"text\"))\n  )\n}\n\nnumberModServer &lt;- function(id) {\n  moduleServer(id, function(input, output, session) {\n    output$text &lt;- renderText({\n      input$number^2\n    }) |&gt; bindEvent(input$button)\n  })\n}\n\nui &lt;- fluidPage(\n  numberModUI(\"numbers\")\n)\n\nserver &lt;- function(input, output, session) {\n  numberModServer(\"numbers\")\n}\n\nshinyApp(ui, server)"
   },
   {
     "objectID": "slides/week-12.2.html#what-does-a-module-look-like-4",
     "href": "slides/week-12.2.html#what-does-a-module-look-like-4",
-    "title": "Modules",
+    "title": "Modules & Deployment",
     "section": "What does a module look like?",
     "text": "What does a module look like?\nlibrary(shiny)\n\nnumberModUI &lt;- function(id) {\n  ns &lt;- NS(id)\n  tagList(\n    numericInput(inputId = ns(\"number\"),\n                 label = \"Enter a number\",\n                 value = 0),\n    actionButton(inputId = ns(\"button\"),\n                 label = \"Click me\"),\n    textOutput(outputId = ns(\"text\"))\n  )\n}\n\nnumberModServer &lt;- function(id) {\n  moduleServer(id, function(input, output, session) {\n    output$text &lt;- renderText({\n      input$number^2\n    }) |&gt; bindEvent(input$button)\n  })\n}\n\nui &lt;- fluidPage(\n  numberModUI(\"numbers\")\n)\n\nserver &lt;- function(input, output, session) {\n  numberModServer(\"numbers\")\n}\n\nshinyApp(ui, server)"
   },
   {
     "objectID": "slides/week-12.2.html#where-do-you-put-modules",
     "href": "slides/week-12.2.html#where-do-you-put-modules",
-    "title": "Modules",
+    "title": "Modules & Deployment",
     "section": "Where do you put modules?",
     "text": "Where do you put modules?\nYou can simply put the module functions in the app.R file (you call this inline).\n\nOther options:\n\nPut the module in a separate R script in the /R folder. Shiny will automatically source it.\nPut the module in a separate R script in any other folder, and source it using source(“./my_modules/random.R”)."
   },
   {
+    "objectID": "slides/week-12.2.html#posit-connect-cloud",
+    "href": "slides/week-12.2.html#posit-connect-cloud",
+    "title": "Modules & Deployment",
+    "section": "Posit Connect Cloud",
+    "text": "Posit Connect Cloud\n\nPlaceholder: deployment walkthrough coming soon\n\nWhat Posit Connect Cloud is and why we use it\nCreating an account and linking GitHub\nPreparing your app for deployment (app.R, dependencies)\nPublishing and sharing your app’s URL"
+  },
+  {
     "objectID": "slides/week-12.2.html#module-use-cases",
     "href": "slides/week-12.2.html#module-use-cases",
-    "title": "Modules",
+    "title": "Modules & Deployment",
     "section": "Module Use Cases",
     "text": "Module Use Cases\n\nWhen do you think modules might be useful in a Shiny app?\nWhat are some examples of modules you might create?\nHint: works well when you have to repeat the same thing multiple times, like with countries, regions, months or years.\nHere is one simple example"
   },
   {
     "objectID": "slides/week-12.2.html#design-an-app-with-modules",
     "href": "slides/week-12.2.html#design-an-app-with-modules",
-    "title": "Modules",
+    "title": "Modules & Deployment",
     "section": "Design an App with Modules",
     "text": "Design an App with Modules\n\nDesign a simple Shiny app that uses a module.\nWhat are the UI elements?\nWhat are the server elements?\nHow could you use one or more modules to make the app easier to build and maintain?\nDiscuss a possible design with your group."
   },
   {
     "objectID": "slides/week-12.2.html#build-the-app",
     "href": "slides/week-12.2.html#build-the-app",
-    "title": "Modules",
+    "title": "Modules & Deployment",
     "section": "Build the App",
-    "text": "Build the App\n\nBuild the app you designed.\nStart with the modules.\nTest it out.\nPost it to shinyapps.io and share the link with the class."
+    "text": "Build the App\n\nBuild the app you designed.\nStart with the modules.\nTest it out.\nDeploy it to Posit Connect Cloud and share the link with the class."
   },
   {
     "objectID": "slides/week-12.2.html#acknowledgements",
     "href": "slides/week-12.2.html#acknowledgements",
-    "title": "Modules",
+    "title": "Modules & Deployment",
     "section": "Acknowledgements",
     "text": "Acknowledgements\n\nParts of this presentation were adapted from Veerle van Leemput’s Shiny 101: The Modular App Blueprint"
   },
   {
+    "objectID": "slides/week-11.2.html#old-faithful-challenge",
+    "href": "slides/week-11.2.html#old-faithful-challenge",
+    "title": "Building Basic Apps",
+    "section": "Old Faithful Challenge",
+    "text": "Old Faithful Challenge\n\n\nLook at the faithful dataset in R (hint: ?faithful)\nCreate a Shiny app that displays a histogram of the eruptions column\nChange the labels accordingly\nWhat kind of distribution do you see?"
+  },
+  {
     "objectID": "slides/week-11.2.html#idea-for-the-app",
     "href": "slides/week-11.2.html#idea-for-the-app",
-    "title": "Scatter Plot App",
+    "title": "Building Basic Apps",
     "section": "Idea for the App",
     "text": "Idea for the App"
   },
   {
     "objectID": "slides/week-11.2.html#plan",
     "href": "slides/week-11.2.html#plan",
-    "title": "Scatter Plot App",
+    "title": "Building Basic Apps",
     "section": "Plan",
     "text": "Plan\n\nStep 1: Wrangle data\nStep 2: Code up a scatter plot with two variables\nStep 3: Code UI with a title panel, sidebar with two dropdowns, and a main panel with the scatter plot output\nStep 4: Code Server with reactive expressions to filter data and render the scatter plot\nStep 5: Call the Shiny App (don’t forget!)"
   },
   {
     "objectID": "slides/week-11.2.html#preliminaries",
     "href": "slides/week-11.2.html#preliminaries",
-    "title": "Scatter Plot App",
+    "title": "Building Basic Apps",
     "section": "Preliminaries",
     "text": "Preliminaries\n\nStart a new Shiny Web App\nName the app something like vdem-scatter-plot\nStart a new R script in the folder that was created\n\nName the script something like wrangle.R\n\nUse this file for the code in the next slide"
   },
   {
     "objectID": "slides/week-11.2.html#save-the-data",
     "href": "slides/week-11.2.html#save-the-data",
-    "title": "Scatter Plot App",
+    "title": "Building Basic Apps",
     "section": "Save the Data",
     "text": "Save the Data\n\nlibrary(dplyr)\nlibrary(readr)\nlibrary(vdemdata)\n\ndem_data &lt;- vdem |&gt;\n  filter(year == 2000) |&gt;\n  select(\n    country = country_name, \n    polyarchy = v2x_polyarchy,\n    clientelism = v2xnp_client,\n    corruption = v2xnp_regcorr,\n    womens_emp = v2x_gender,\n    gdp_pc = e_gdppc,\n    life_exp = e_pelifeex,\n    education = e_peaveduc,\n    region = e_regionpol_6C \n  ) |&gt;   mutate(\n    region = case_match(region, \n                        1 ~ \"Eastern Europe\", \n                        2 ~ \"Latin America\",  \n                        3 ~ \"Middle East\",   \n                        4 ~ \"Africa\", \n                        5 ~ \"The West\", \n                        6 ~ \"Asia\")\n  )\n\n# glimpse(dem_data)\n\nwrite_csv(dem_data, \"dem_data.csv\")"
   },
   {
     "objectID": "slides/week-11.2.html#make-the-setup-chunk",
     "href": "slides/week-11.2.html#make-the-setup-chunk",
-    "title": "Scatter Plot App",
+    "title": "Building Basic Apps",
     "section": "Make the Setup Chunk",
     "text": "Make the Setup Chunk\nIn the app.R file, use this code for the global section of the app…\n\n# load packages\nlibrary(shiny)\nlibrary(readr)\nlibrary(ggplot2)\n\n# load the data \ndem_data &lt;- read_csv(\"dem_data.csv\")\n\n# create list of named values for the input selection\nvars &lt;- c(\"Democracy\" = \"polyarchy\",\n          \"Clientelism\" = \"clientelism\",\n          \"Corruption\" = \"corruption\",\n          \"Women's Empowerment\" = \"womens_emp\",\n          \"Wealth\" = \"gdp_pc\",\n          \"Life Expectancy\" = \"life_exp\", \n          \"Education\" = \"education\")"
   },
   {
     "objectID": "slides/week-11.2.html#the-ui-code",
     "href": "slides/week-11.2.html#the-ui-code",
-    "title": "Scatter Plot App",
+    "title": "Building Basic Apps",
     "section": "The UI Code",
     "text": "The UI Code\nCopy and paste the UI code into the app.R file…\n\n# Define UI for application that draws a scatter plot\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"Democracy and Development\"),\n\n    # Sidebar with a two dropdown menus\n    sidebarLayout(\n      sidebarPanel(\n        selectInput(input = 'xcol', label = 'X Variable', choices = vars),\n        selectInput(input = 'ycol', label = 'Y Variable', \n                    choices = vars, selected = vars[[6]])\n      ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"scatterplot\")\n        )\n    )\n)"
   },
   {
     "objectID": "slides/week-11.2.html#the-ui-code-1",
     "href": "slides/week-11.2.html#the-ui-code-1",
-    "title": "Scatter Plot App",
+    "title": "Building Basic Apps",
     "section": "The UI Code",
     "text": "The UI Code\nAdds the the title panel…\n\n# Define UI for application that draws a scatter plot\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"Democracy and Development\"),\n\n    # Sidebar with a two dropdown menus\n    sidebarLayout(\n      sidebarPanel(\n        selectInput(input = 'xcol', label = 'X Variable', choices = vars),\n        selectInput(input = 'ycol', label = 'Y Variable', \n                    choices = vars, selected = vars[[6]])\n      ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"scatterplot\")\n        )\n    )\n)"
   },
   {
     "objectID": "slides/week-11.2.html#the-ui-code-2",
     "href": "slides/week-11.2.html#the-ui-code-2",
-    "title": "Scatter Plot App",
+    "title": "Building Basic Apps",
     "section": "The UI Code",
     "text": "The UI Code\nDefines the sidebar layout with the two dropdown panels…\n\n# Define UI for application that draws a scatter plot\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"Democracy and Development\"),\n\n    # Sidebar with a two dropdown menus\n    sidebarLayout(\n      sidebarPanel(\n        selectInput(input = 'xcol', label = 'X Variable', choices = vars),\n        selectInput(input = 'ycol', label = 'Y Variable', \n                    choices = vars, selected = vars[[6]])\n      ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"scatterplot\")\n        )\n    )\n)"
   },
   {
     "objectID": "slides/week-11.2.html#the-ui-code-3",
     "href": "slides/week-11.2.html#the-ui-code-3",
-    "title": "Scatter Plot App",
+    "title": "Building Basic Apps",
     "section": "The UI Code",
     "text": "The UI Code\nDefines the main panel for the output. Note that we are calling plotOutput() and that we are calling the output “scatterplot” (the unique outputID for our plot)…\n\n# Define UI for application that draws a scatter plot\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"Democracy and Development\"),\n\n    # Sidebar with a two dropdown menus\n    sidebarLayout(\n      sidebarPanel(\n        selectInput(input = 'xcol', label = 'X Variable', choices = vars),\n        selectInput(input = 'ycol', label = 'Y Variable', \n                    choices = vars, selected = vars[[6]])\n      ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"scatterplot\")\n        )\n    )\n)"
   },
   {
     "objectID": "slides/week-11.2.html#the-server-code",
     "href": "slides/week-11.2.html#the-server-code",
-    "title": "Scatter Plot App",
+    "title": "Building Basic Apps",
     "section": "The Server Code",
     "text": "The Server Code\nCopy and paste the server code into the app.R file…\n\n# Define server logic required to draw a scatter plot\nserver &lt;- function(input, output, session) {\n  \n  # Render the plot\n  output$scatterplot &lt;- renderPlot({\n    \n    # ggplot call\n    ggplot(dem_data, aes(x = .data[[input$xcol]], y = .data[[input$ycol]])) +\n      geom_point(aes(color = region)) +\n      geom_smooth(method = \"loess\") +\n      scale_color_viridis_d(option = \"plasma\") +\n      theme_minimal() +\n      labs(\n        x =  names(vars[which(vars == input$xcol)]), # select names in vars that\n        y =  names(vars[which(vars == input$ycol)]), # match input selections\n        caption = \"Source: V-Dem Institute\",\n        color = \"Region\"\n      )\n  })\n}"
   },
   {
     "objectID": "slides/week-11.2.html#the-server-code-1",
     "href": "slides/week-11.2.html#the-server-code-1",
-    "title": "Scatter Plot App",
+    "title": "Building Basic Apps",
     "section": "The Server Code",
     "text": "The Server Code\nNote that we are calling renderPlot(), which matches up with the plotOutput() in the UI. And we are referencing output as “scatterplot” (again, the unique outputID for our plot)…\n\n# Define server logic required to draw a scatter plot\nserver &lt;- function(input, output, session) {\n  \n  # Render the plot\n  output$scatterplot &lt;- renderPlot({\n    \n    # ggplot call\n    ggplot(dem_data, aes(x = .data[[input$xcol]], y = .data[[input$ycol]])) +\n      geom_point(aes(color = region)) +\n      geom_smooth(method = \"loess\") +\n      scale_color_viridis_d(option = \"plasma\") +\n      theme_minimal() +\n      labs(\n        x =  names(vars[which(vars == input$xcol)]), # select names in vars that\n        y =  names(vars[which(vars == input$ycol)]), # match input selections\n        caption = \"Source: V-Dem Institute\",\n        color = \"Region\"\n      )\n  })\n}"
   },
   {
     "objectID": "slides/week-11.2.html#the-server-code-2",
     "href": "slides/week-11.2.html#the-server-code-2",
-    "title": "Scatter Plot App",
+    "title": "Building Basic Apps",
     "section": "The Server Code",
     "text": "The Server Code\nWe dynamically reference the input values from the dropdown menus in the UI. We use input$xcol and input$ycol to reference the user-selected variables. As a result of tidy evaluation in ggplot2, these inputs have to be referenced in .data[[]] in order to work….\n\n# Define server logic required to draw a scatter plot\nserver &lt;- function(input, output, session) {\n  \n  # Render the plot\n  output$scatterplot &lt;- renderPlot({\n    \n    # ggplot call\n    ggplot(dem_data, aes(x = .data[[input$xcol]], y = .data[[input$ycol]])) +\n      geom_point(aes(color = region)) +\n      geom_smooth(method = \"loess\") +\n      scale_color_viridis_d(option = \"plasma\") +\n      theme_minimal() +\n      labs(\n        x =  names(vars[which(vars == input$xcol)]), # select names in vars that\n        y =  names(vars[which(vars == input$ycol)]), # match input selections\n        caption = \"Source: V-Dem Institute\",\n        color = \"Region\"\n      )\n  })\n}"
   },
   {
     "objectID": "slides/week-11.2.html#the-server-code-3",
     "href": "slides/week-11.2.html#the-server-code-3",
-    "title": "Scatter Plot App",
+    "title": "Building Basic Apps",
     "section": "The Server Code",
     "text": "The Server Code\nHere we need to select the variable from the vector vars that created with the list of variables. We use which(vars == input$xcol) to find the index of the selected variable in the vector vars. We then use names() to get the name of the variable at that index…\n\n# Define server logic required to draw a scatter plot\nserver &lt;- function(input, output, session) {\n  \n  # Render the plot\n  output$scatterplot &lt;- renderPlot({\n    \n    # ggplot call\n    ggplot(dem_data, aes(x = .data[[input$xcol]], y = .data[[input$ycol]])) +\n      geom_point(aes(color = region)) +\n      geom_smooth(method = \"loess\") +\n      scale_color_viridis_d(option = \"plasma\") +\n      theme_minimal() +\n      labs(\n        x =  names(vars[which(vars == input$xcol)]), # select names in vars that\n        y =  names(vars[which(vars == input$ycol)]), # match input selections\n        caption = \"Source: V-Dem Institute\",\n        color = \"Region\"\n      )\n  })\n}"
   },
   {
     "objectID": "slides/week-11.2.html#run-the-app",
     "href": "slides/week-11.2.html#run-the-app",
-    "title": "Scatter Plot App",
+    "title": "Building Basic Apps",
     "section": "Run the App",
     "text": "Run the App\nTo display the app, don’t forget this final line of code…\n\n\n# Run the application \nshinyApp(ui = ui, server = server)"
   },
   {
     "objectID": "slides/week-11.2.html#your-turn",
     "href": "slides/week-11.2.html#your-turn",
-    "title": "Scatter Plot App",
+    "title": "Building Basic Apps",
     "section": "Your Turn!",
-    "text": "Your Turn!\n\nRun the app and select different variables from the drop down menus.\nWhat do you notice about the relationship between democracy and development?\nHow could you potentially improve the app?\n\n\n\n\n−+\n10:00"
-  },
-  {
-    "objectID": "slides/week-11.2.html#publish-your-app",
-    "href": "slides/week-11.2.html#publish-your-app",
-    "title": "Scatter Plot App",
-    "section": "Publish Your App",
-    "text": "Publish Your App\n\nInstall rsconnect:install.packages(\"rsconnect\")\nCreate account and retrieve your API key\nConfigure RStudio:\n\n\nlibrary(rsconnect)\nrsconnect::setAccountInfo(name='&lt;account-name&gt;', token='&lt;account-token&gt;', secret='&lt;secret&gt;')\n\n\nClick the “Publish” button in RStudio toolbar and follow prompts\n\n\n\n\n−+\n10:00"
+    "text": "Your Turn!\n\nRun the app and select different variables from the drop down menus.\nWhat do you notice about the relationship between democracy and development?\nHow could you potentially improve the app?"
   },
   {
     "objectID": "slides/week-10.1.html#whats-in-a-regression-table",
@@ -1943,73 +1950,73 @@
   {
     "objectID": "modules/module-5.1.html",
     "href": "modules/module-5.1.html",
-    "title": "Building a Shiny App",
+    "title": "Shiny Basics",
     "section": "",
     "text": "NotePackages & functions in this module\n\n\n\nPackages: dplyr, shiny\nFunctions: fluidPage(), titlePanel(), sidebarLayout(), sidebarPanel(), selectInput(), mainPanel(), plotOutput(), renderPlot(), reactive(), shinyApp()",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Building a Shiny App"
+      "Shiny Basics"
     ]
   },
   {
     "objectID": "modules/module-5.1.html#overview",
     "href": "modules/module-5.1.html#overview",
-    "title": "Building a Shiny App",
+    "title": "Shiny Basics",
     "section": "Overview",
-    "text": "Overview\nIn this module, we are going to be learning how to make a Shiny app. Shiny is a web application framework that is designed for building interactive web applications. It is available as an open-source package in R that is maintained by the team at Posit.\nShiny enables you to create interactive web-based visualizations and dashboards directly from your R code. It simplifies the process of developing web applications by providing a higher-level abstraction and handling the underlying web technologies. With Shiny, you can allow your users to explore data, change parameters, and see the results of an analysis dynamically without needing extensive web development skills.\nTo display a Shiny app you can just render it locally, but you likely want to share it with a broader audience. For this, you will need to host it on a server. There are lots of different to do this, but the easiest thing to use when you are getting started is shinyapps.io. In a later module we will learn to deploy our apps, but for this one it is fine to just view them locally.\nShiny apps consist of three components:1) a user interface (UI); 2) a server function; and 3) a call to the Shiny app. The UI is the part of the app that defines what the user is going to see and interact with. The server function runs all of the computations and produces the visualizations and output that you want to display. And the call to the Shiny app simply tells Shiny to run the app.\nWe are going to talk about each of these elements in turn, but first, have a look at this scatter plot app that we are going to but first take a few minutes to familiarize yourself with this scatter plot app that we are going to building in this this module:",
+    "text": "Overview\nIn this module, we are going to be learning how to make a Shiny app. Shiny is a web application framework that is designed for building interactive web applications. It is available as an open-source package in R that is maintained by the team at Posit.\nShiny enables you to create interactive web-based visualizations and dashboards directly from your R code. It simplifies the process of developing web applications by providing a higher-level abstraction and handling the underlying web technologies. With Shiny, you can allow your users to explore data, change parameters, and see the results of an analysis dynamically without needing extensive web development skills.\nTo display a Shiny app you can just render it locally, but you likely want to share it with a broader audience. For this, you will need to host it on a server. There are lots of different ways to do this, but the easiest thing to use when you are getting started is Posit Connect Cloud. We will learn to deploy our apps in session 12.2, but for this module it is fine to just view them locally.\nShiny apps consist of three components:1) a user interface (UI); 2) a server function; and 3) a call to the Shiny app. The UI is the part of the app that defines what the user is going to see and interact with. The server function runs all of the computations and produces the visualizations and output that you want to display. And the call to the Shiny app simply tells Shiny to run the app.\nWe are going to talk about each of these elements in turn, but first, have a look at this scatter plot app that we are going to but first take a few minutes to familiarize yourself with this scatter plot app that we are going to building in this this module:",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Building a Shiny App"
+      "Shiny Basics"
     ]
   },
   {
     "objectID": "modules/module-5.1.html#setup",
     "href": "modules/module-5.1.html#setup",
-    "title": "Building a Shiny App",
+    "title": "Shiny Basics",
     "section": "Setup",
     "text": "Setup\n\nI said earlier that there are three main components of a Shiny app (UI, server and call to app). However, with most apps, there is usually a bit of setup int the code before you get to this point. So perhaps you could say there are actually four elements of a Shiny app, with the set up being the “0th” element.\nThere are going to be two components to the setup for this app. First we are going to “pre-wrangle” our data and store it in a .csv file. I will explain why in a minute. Second, we are going to build a setup code chunk that we will include in our app.R file. Let’s get started.\nWrangling and storing the data\nFor this app, we want users to be able to create scatter plots using selected variables from the V-Dem dataset. Let’s say that we want to have a nice mix of variables related to democracy and development so that users can explore how democracy relates to development and vice versa. So we will filter the data for the post-2000 period and select measures relating to democracy, governance and women’s empowerment and then four measures related to development.\nWe will also make sure to code a region variable and include region in the group_by() call so that it stays in the data frame. Then we will take the country mean of the measures for the post-2000 period so that we have one set of observations for each each country.\nFinally, let’s then save these data in a .csv file to include with the app. Alternatively, we could have our app wrangle the data each time the app is loaded. This would ensure that the data are always up to date, but it would require more resources than is available with the free version of the Shiny server due to the size of the V-Dem dataset.\n\nlibrary(vdemdata)\nlibrary(dplyr)\nlibrary(readr)\n\ndem_data &lt;- vdem |&gt;\n  filter(year &gt; 2000) |&gt;\n  select(\n    country = country_name, \n    polyarchy = v2x_polyarchy,\n    clientelism = v2xnp_client,\n    corruption = v2xnp_regcorr,\n    womens_emp = v2x_gender,\n    gdp_pc = e_gdppc,\n    inf_mort = e_peinfmor,\n    life_exp = e_pelifeex,\n    education = e_peaveduc,\n    region = e_regionpol_6C \n  ) |&gt;   mutate(\n    region = case_match(region, \n                        1 ~ \"Eastern Europe\", \n                        2 ~ \"Latin America\",  \n                        3 ~ \"Middle East\",   \n                        4 ~ \"Africa\", \n                        5 ~ \"The West\", \n                        6 ~ \"Asia\")\n  ) |&gt;\n  group_by(country, region) |&gt;\n  summarize_all(mean, na.rm = TRUE)\n\n#glimpse(dem_data)\n\nwrite_csv(dem_data, \"dem_data.csv\")\n\nSetup code chunk\nNow let’s build a setup code chunk that we can include in the app.R script. Here we will load the packages we need for the app and read in the data we just wrangled from the .csv file. Finally, let’s go ahead and create a list of variable names for our dropdown menus in the app and map these to the variables in our data frame.\n\n# load packages\nlibrary(shiny)\nlibrary(readr)\nlibrary(ggplot2)\n\n# load the data \ndem_data &lt;- read_csv(\"dem_data.csv\")\n\n# create list of named values for the input selection\nvars &lt;- c(\"Democracy\" = \"polyarchy\",\n          \"Clientelism\" = \"clientelism\",\n          \"Corruption\" = \"corruption\",\n          \"Women's Empowerment\" = \"womens_emp\",\n          \"Wealth\" = \"gdp_pc\",\n          \"Infant Mortality\" = \"inf_mort\",\n          \"Life Expectancy\" = \"life_exp\", \n          \"Education\" = \"education\")",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Building a Shiny App"
+      "Shiny Basics"
     ]
   },
   {
     "objectID": "modules/module-5.1.html#ui",
     "href": "modules/module-5.1.html#ui",
-    "title": "Building a Shiny App",
+    "title": "Shiny Basics",
     "section": "UI",
     "text": "UI\n\nThe user interface (UI) defines the layout and appearance of the web application. Here you tell Shiny what elements such as buttons, sliders, text inputs, plots, and other interactive components that you want users to be able to interact with.\nWe will start with the fluidPage() function as the outermost layer of our UI and then add additional container functions within it. First we will add a titlePanel(). You are free to call this app whatever you like but I thought a good title would be “Democracy and Development.”\nThen we can add a sidebar panel with dropdown menus to select the variables to display in the scatter plot. For this we call sidebarLayout() and then within that sidebarPanel(). This next step is really important. We are going to use the list variables called vars from our setup code chunk to populate the dropdown menus. To do this we are going to call selectInput() twice–once for the x-axis variable that the user wants to appear on the scatter plot and once for the y-axis variable.\nThe three main arguments for this function are input, label and choices. input is the input ID that we will use to access the user selection later on in the server function. label refers to the name that we want to appear above the dropdown menu. And choices refers to the list of choices to appear in the dropdown (in our case the list of variables called vars.)\nWe can also include the argument selected in our selectInput() call to determine which variable is selected by default when the app loads. We are going to specify the sixth variable in the list for the y-axis (vars[[6]]) to make sure that the same two variables do not appear on both the x and y axes.\nThe final piece of our UI is the main panel where we want our scatter plot to appear. Let’s go ahead and add mainPanel() and then within that call plotOutput(\"scatterplot\"). This is going to dynamically retrieve the updated scatter plot as the user changes the variables in the dropdown menu.\n\n# Define UI for application that draws a scatter plot\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"Democracy and Development\"),\n\n    # Sidebar with a two dropdown menus\n    sidebarLayout(\n      sidebarPanel(\n        selectInput(input = 'xcol', label = 'X Variable', choices = vars),\n        selectInput(input = 'ycol', label = 'Y Variable', \n                    choices = vars, selected = vars[[6]])\n      ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"scatterplot\")\n        )\n    )\n)",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Building a Shiny App"
+      "Shiny Basics"
     ]
   },
   {
     "objectID": "modules/module-5.1.html#server",
     "href": "modules/module-5.1.html#server",
-    "title": "Building a Shiny App",
+    "title": "Shiny Basics",
     "section": "Server",
     "text": "Server\n\nThe server function is where you are going to put the logic and computations of the application. The server function receives input from the user interface, processes it, and generates the corresponding output. It can perform calculations, query databases, apply statistical models, and produce visualizations.\nThe server function contains three arguments. Two of them (input and output) are mandatory. session is an optional parameter that controls the behavior of the app during the user session that we won’t get into here. But we will keep it in the function call for now just to remind us that it is there.\nNext we are going to define the output of the app with output$scatterplot &lt;- renderPlot({}). This bit of code is going to render a plot and then save it to the output in an object called scatterplot. Remember that in the UI, we defined our plot output as plotOutput(\"scatterplot\"). This is where that object scatterplot is going to come from. The scatter plot is going to be created in two steps. First we are going to reactively retrieve the data each time the user selects new inputs. To do this we are going to use the inputs (xcol, ycol) from the UI to subset our data frame demdata, e.g. dem_data[, c(input$xcol, input$ycol, \"region\")]. That is going to create a three-column data frame with the user’s selected x variable, y variable and the region coding and store it in an object called selectedData.\nFrom there, we take selectedData and use it to create a scatter plot with ggplot2. This is done in the usual way, except for a couple of things. First, in our aes() call we need to use .data[[]] to specify the x and y variables. aes() uses nonstandard evaluation to capture variable names, meaning that the bare column names of the data frame are read directly so that you do not have to explicitly quote the inputs. However, in this case the names of the inputs are being passed as a string from the user. The .data[[]] pronoun from rlang is the modern, recommended way to handle this — it accesses a column by name from the data frame passed to ggplot(). So our aes() call will be aes(x = .data[[input$xcol]], y = .data[[input$ycol]]).\n\n\n\n\n\n\nNote\n\n\n\nThe video for this module uses the older get() approach (e.g. aes(x = get(input$xcol), y = get(input$ycol))), which also works. The .data[[]] pronoun is now the preferred approach as it is more explicit and integrates better with tidyverse tools.\n\n\nThe other thing we need to do is to add some special code to deal with the x- and y-axis labels because these are going to change every time the user selects a different variable. Here we are going to use the names() function to return the names of the the object selected in the vars vector of variable names. To make sure we get the right name from the vector, we are going to use the which() function. which() returns the value that satisfies a given function, in this case the index number of the vars vector that matches the user input. So for example, our x label will be defined as x = names(vars[which(vars == input$xcol)]. Here the number returned by [which(vars == input$xcol)] is going to be used to subset the vars list so that x displays the name of the variable selected by the user.\n\n# Define server logic required to draw a scatter plot\nserver &lt;- function(input, output, session) {\n  \n  # Render the plot\n  output$scatterplot &lt;- renderPlot({\n    \n    # ggplot call\n    ggplot(dem_data, aes(x = .data[[input$xcol]], y = .data[[input$ycol]])) +\n      geom_point(aes(color = region)) +\n      geom_smooth(method = \"loess\") +\n      scale_color_viridis_d(option = \"plasma\") +\n      theme_minimal() +\n      labs(\n        x =  names(vars[which(vars == input$xcol)]), # select names in vars that\n        y =  names(vars[which(vars == input$ycol)]), # match input selections\n        caption = \"Source: V-Dem Institute\",\n        color = \"Region\"\n      )\n  })\n}",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Building a Shiny App"
+      "Shiny Basics"
     ]
   },
   {
     "objectID": "modules/module-5.1.html#displaying-your-app",
     "href": "modules/module-5.1.html#displaying-your-app",
-    "title": "Building a Shiny App",
+    "title": "Shiny Basics",
     "section": "Displaying your app",
-    "text": "Displaying your app\nAt this point it should be relatively simple to view your app. Just add the call to the Shiny app, e.g. shinyApp(ui = ui, server = server) and click “Run App” in RStudio.\n\n# See above for the definitions of ui and server\nui &lt;- ...\n\nserver &lt;- ...\n\n# Run the application \nshinyApp(ui = ui, server = server)\n\nOptionally, right now, you can try setting up an account on shinyapps.io. Read over the shinyapps.io user guide and see if you can get it to work. For your final project, you will need to be able to deploy your app but but right now it is fine if you only want to view it locally.",
+    "text": "Displaying your app\nAt this point it should be relatively simple to view your app. Just add the call to the Shiny app, e.g. shinyApp(ui = ui, server = server) and click “Run App” in RStudio.\n\n# See above for the definitions of ui and server\nui &lt;- ...\n\nserver &lt;- ...\n\n# Run the application \nshinyApp(ui = ui, server = server)\n\nOptionally, right now, you can try setting up an account on Posit Connect Cloud. We will walk through deployment in session 12.2, and you can read over the Connect Cloud documentation in the meantime. For your final project, you will need to be able to deploy your app, but right now it is fine if you only want to view it locally.",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Building a Shiny App"
+      "Shiny Basics"
     ]
   },
   {
@@ -2314,7 +2321,7 @@
     "href": "index.html",
     "title": "Course Schedule",
     "section": "",
-    "text": "Topic\nDate\nSkills\nReadings\nReference\nSlides\nVideos\nAssignments\n\n\n\n\nGetting Started\nAug 25\nCourse overview\n\n\n\n\n\n\n\n\nAug 27\nEnvironment setup\n📖\n\n🖥️\n\n\n\n\nQuarto and Markdown\nSep 1\nAuthoring with Quarto and Markdown\n📖\n📖\n🖥️\n🖥️🖥️\n\n\n\n\nSep 3\nR programming basics\n\n\n🖥️\n\n\n\n\nCharting With ggplot2\nSep 8\nBar charts & histograms\n📖\n📖📖\n🖥️\n🖥️🖥️\n\n\n\n\nSep 10\nMore Visualization Basics\n📖\n📖\n🖥️\n🖥️🖥️\n\n\n\nColor, Themes & Annotations\nSep 15\nColor schemes\n📖 📖\n📖\n🖥️\n🖥️\n\n\n\n\nSep 17\nThemes, annotations & interactivity\n📖\n📖\n🖥️\n🖥️🖥️🖥️\n🧪\n\n\nReading & Reshaping Data\nSep 22\nRead data into R\n\n📖\n🖥️\n🖥️\n\n\n\n\nSep 24\nReshape & clean data\n\n📖\n🖥️\n🖥️🖥️\n\n\n\nImporting & Merging Data\nSep 29\nDownload data from APIs\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 1\nMerge, group, summarize & arrange\n\n📖 📖\n🖥️\n🖥️🖥️🖥️\n🧪\n\n\nChoropleth Maps\nOct 6\nMap data with choropleth maps\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 8\nTurn your map into a function\n📖\n📖\n🖥️\n🖥️\n\n\n\n\nOct 13\nNo class, fall break\n\n🍁🍂🎃\n\n\n\n\n\nInteractive Maps\nOct 15\nMake a leaflet map (Prof T away)*\n\n\n\n🖥️🖥️\n\n\n\n\nOct 20\nCustomize your interactive map\n\n\n🖥️\n🖥️\n\n\n\n\nOct 22\nMap wrap-up\n\n\n\n\n🧪\n\n\nTables\nOct 27\nExplore tabular data\n\n\n🖥️\n\n\n\n\n\nOct 29\nMake a gt table & confidence intervals\n\n\n🖥️\n\n\n\n\nModels & Coefficient Plots\nNov 3\nRun models & display regression tables\n📖 📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nNov 5\nCoefficient plots (Prof T away)*\n\n\n\n🖥️\n🧪\n\n\nBuilding a Shiny App\nNov 10\nApp setup & building the UI\n\n\n🖥️\n🖥️🖥️\n\n\n\n\nNov 12\nBuilding the server\n\n\n🖥️\n🖥️\n\n\n\nExtending Your App\nNov 17\nAdd inputs & a time-series app\n📖\n\n🖥️\n🖥️🖥️🖥️\n\n\n\n\nNov 19\nShiny modules\n\n\n🖥️\n\n✍️\n\n\n\nNov 24\nNo class, Thanksgiving break\n\n🦃🥧🍂\n\n\n\n\n\n\nNov 26\nNo class, Thanksgiving break\n\n\n\n\n\n\n\nDeploying & Sharing / Project Studio\nDec 1\nFinal project workshop\n\n\n\n\n\n\n\n\nDec 3\nFinal project workshop\n\n\n\n\n\n\n\n\nDec 8\nLightning talks\n\n\n\n\n\n\n\n\n\n* Prof T is traveling on this day. Please follow the modules and videos and we will cover the material in class when he returns.",
+    "text": "Topic\nDate\nSkills\nReadings\nReference\nSlides\nVideos\nAssignments\n\n\n\n\nGetting Started\nAug 25\nCourse overview\n\n\n\n\n\n\n\n\nAug 27\nEnvironment setup\n📖\n\n🖥️\n\n\n\n\nQuarto and Markdown\nSep 1\nAuthoring with Quarto and Markdown\n📖\n📖\n🖥️\n🖥️🖥️\n\n\n\n\nSep 3\nR programming basics\n\n\n🖥️\n\n\n\n\nCharting With ggplot2\nSep 8\nBar charts & histograms\n📖\n📖📖\n🖥️\n🖥️🖥️\n\n\n\n\nSep 10\nMore Visualization Basics\n📖\n📖\n🖥️\n🖥️🖥️\n\n\n\nColor, Themes & Annotations\nSep 15\nColor schemes\n📖 📖\n📖\n🖥️\n🖥️\n\n\n\n\nSep 17\nThemes, annotations & interactivity\n📖\n📖\n🖥️\n🖥️🖥️🖥️\n🧪\n\n\nReading & Reshaping Data\nSep 22\nRead data into R\n\n📖\n🖥️\n🖥️\n\n\n\n\nSep 24\nReshape & clean data\n\n📖\n🖥️\n🖥️🖥️\n\n\n\nImporting & Merging Data\nSep 29\nDownload data from APIs\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 1\nMerge, group, summarize & arrange\n\n📖 📖\n🖥️\n🖥️🖥️🖥️\n🧪\n\n\nChoropleth Maps\nOct 6\nMap data with choropleth maps\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 8\nTurn your map into a function\n📖\n📖\n🖥️\n🖥️\n\n\n\n\nOct 13\nNo class, fall break\n\n🍁🍂🎃\n\n\n\n\n\nInteractive Maps\nOct 15\nMake a leaflet map (Prof T away)*\n\n\n\n🖥️🖥️\n\n\n\n\nOct 20\nCustomize your interactive map\n\n\n🖥️\n🖥️\n\n\n\n\nOct 22\nMap wrap-up\n\n\n\n\n🧪\n\n\nTables\nOct 27\nExplore tabular data\n\n\n🖥️\n\n\n\n\n\nOct 29\nMake a gt table & confidence intervals\n\n\n🖥️\n\n\n\n\nModels & Coefficient Plots\nNov 3\nRun models & display regression tables\n📖 📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nNov 5\nCoefficient plots (Prof T away)*\n\n\n\n🖥️\n🧪\n\n\nShiny Basics\nNov 10\nIntroducing Shiny apps\n\n\n🖥️\n🖥️🖥️\n\n\n\n\nNov 12\nBuilding a simple app\n\n\n🖥️\n🖥️\n\n\n\nAdvanced Shiny\nNov 17\nObservers and reactives\n📖\n\n🖥️\n🖥️🖥️🖥️\n\n\n\n\nNov 19\nModules and deployment\n\n\n🖥️\n\n✍️\n\n\n\nNov 24\nNo class, Thanksgiving break\n\n🦃🥧🍂\n\n\n\n\n\n\nNov 26\nNo class, Thanksgiving break\n\n\n\n\n\n\n\nDeploying & Sharing / Project Studio\nDec 1\nFinal project workshop\n\n\n\n\n\n\n\n\nDec 3\nFinal project workshop\n\n\n\n\n\n\n\n\nDec 8\nLightning talks\n\n\n\n\n\n\n\n\n\n* Prof T is traveling on this day. Please follow the modules and videos and we will cover the material in class when he returns.",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -3277,85 +3284,85 @@
   {
     "objectID": "modules/module-5.2.html",
     "href": "modules/module-5.2.html",
-    "title": "Extending Your App",
+    "title": "Advanced Shiny",
     "section": "",
     "text": "NotePackages & functions in this module\n\n\n\nPackages: fredr, shiny\nFunctions: fredr_set_key(), reactive(), sliderInput(), fredr(), fred_indicator()",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Extending Your App"
+      "Advanced Shiny"
     ]
   },
   {
     "objectID": "modules/module-5.2.html#overview",
     "href": "modules/module-5.2.html#overview",
-    "title": "Extending Your App",
+    "title": "Advanced Shiny",
     "section": "Overview",
     "text": "Overview\nA fundmental concept in R Shiny is reactivity. Reactivity refers to the automatic responsiveness and dynamic behavior of the application based on user input and data changes. It allows the application to update and re-render specific parts of the user interface (UI) in response to changes in input values, data updates, or other reactive triggers.\nAll Shiny apps have an element of reactivity. In a basic Shiny app like we say in the last module, reactivity occurs when user input is fed to the server function through functions like renderPlot() or renderTable(). But we might also want to add additional elements of reactivity by using reactive functions like reactive() or observe(). In this lesson, we are going to look at how to use the reactive() function to control two separate reactive inputs to a line chart: the indicator the user wishes to view and the date range that the way to view it for. Here is the app that we are going to be building:",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Extending Your App"
+      "Advanced Shiny"
     ]
   },
   {
     "objectID": "modules/module-5.2.html#setup",
     "href": "modules/module-5.2.html#setup",
-    "title": "Extending Your App",
+    "title": "Advanced Shiny",
     "section": "Setup",
     "text": "Setup\n\nIn the setup portion of our we want to start by loading the packages we will need to build the app. For this app, we are going to be using the fredr package to download data pertaining to the overall health of the economy from the St. Louis Fed’s Federal Reserve Economic Data (FRED)[https://fred.stlouisfed.org/] API. So here we will also set our FRED API key and assign the codes for the indicators that we want to download to objects.\nNext, we will use the as.Date() function to set the start date of our line series to Januar 1, 1970 and the end date as today’s date (system date). We will also create a list of variable names for our UI dropdown (vars) and relate them to the objects containing the indicator codes.\nFinally, we are going to be using a helper function to generate recession shading for our charts. Scroll down to the bottom of this page to see the code for the helper function. Take this and save it in an R file and put it in your app folder. In this chunk, we are going to call it with the source function, e.g. source(helper.R).\n\n# Load packages\nlibrary(shiny)\nlibrary(fredr)\nlibrary(dplyr)\nlibrary(ggplot2)\n\n# Set Fred API key \nfredr_set_key(\"YOUR FRED API KEY\") \n\n# Assign FRED series to objects\ncci &lt;- \"CSCICP03USM665S\" # consumer confidence\nbci &lt;- \"BSCICP03USM665S\" # business confidence\ncli &lt;- \"USALOLITONOSTSAM\" # composite lead indicator\nunemp_rate &lt;- \"UNRATE\" # unemployment rate\ngrowth &lt;- \"A191RL1Q225SBEA\" # growth rate\n\n# set start and end date\nstart_date &lt;- as.Date(\"1970-01-01\")\nend_date &lt;- as.Date(Sys.Date())\n\n# Create list of named values for the input selection\nvars &lt;- c(\"Consumer Confidence\" = cci, \n          \"Business Confidence\" = bci, \n          \"Composite Indicator\" = cli, \n          \"Unemployment Rate\" = unemp_rate,\n          \"Growth Rate\" = growth)\n\n# Load helper script\nsource(\"helper.R\") # scroll down, code pasted below",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Extending Your App"
+      "Advanced Shiny"
     ]
   },
   {
     "objectID": "modules/module-5.2.html#ui",
     "href": "modules/module-5.2.html#ui",
-    "title": "Extending Your App",
+    "title": "Advanced Shiny",
     "section": "UI",
     "text": "UI\n\nNow we can get started on developing the UI for our app. For this app, we are going to have a title panel and two main display elements. The first is a panel where the user can select the indicator that they want to chart and the second is a plot with a slider where users can select the years they want to view. So let’s divide the UI into two sections using the fluidRow() and column()\nThe fluidRow() function creates horizontal containers while the column() function is used to create vertical containers. Since we our app is going to display a single row, we will have just one fluidRow() call. Then we can divide that row into two columns using the column() function. The first argument in column()is the column width. Since column widths in Shiny are based on the Boots Bootstrap 12-wide grid system, our column widths must add up to 12. So let’s make our panel for selecting the indicator 4 units wide and the area where we will display the plot 8 units wide.\nFrom there, we can define the panel as a wellPanel() to give it an inset look and a grey background. We include selectInput() to get our dropdown where users can select an indicator from the vars list. Let’s also use the helpText() function to display some instructions regarding how to use the app.\nFor the main display section, we are going to have our plot out along with the slider input. We are going to call this input “range” and leave the label blank. Then we need to define a min value, a max value and a range for the slider. For min and max, we will use start_date and end_date, which we defined earlier in the setup and the combination of these to define the range (value). Then we set width to 100% because we want the slider to expand to fit the entire width of the plot. `\n\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"FRED Data App\"),\n    \n    fluidRow(\n      \n      # 12 columns on one row: this panel will take 1/3 of it\n      column(4, wellPanel(\n        selectInput(\"indicator\", \"Indicator:\", vars)\n        ),\n      helpText(\"Select an indicator, choose a date range and view the trend. \n               The grey bars represent economic recessions. \n               The data for this app comes from the St. Louis Fed's \n               FRED database. The consumer confidence, business confidence and \n               lead composite indicators are OECD data downloaded through FRED.\")\n      ), \n      \n      # Remaining 2/3 occupied by plot\n      column(8,\n        plotOutput(\"lineChart\"),     \n        sliderInput(\n          \"range\",\n          \"\",\n          min = start_date,\n          max = end_date, \n          value = c(start_date, end_date), \n          width = \"100%\"\n        )\n      )\n    )\n)",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Extending Your App"
+      "Advanced Shiny"
     ]
   },
   {
     "objectID": "modules/module-5.2.html#server",
     "href": "modules/module-5.2.html#server",
-    "title": "Extending Your App",
+    "title": "Advanced Shiny",
     "section": "Server",
     "text": "Server\n\nFor our server function, we are going to define two separate reactive() functions. This is how we are going to dynamically update the plot based on two different user inputs. First, we will define an input for the indicator where input$indicator takes the user input from the dropdown menu to perform a fresh API call whenever the selected indicator changes. Then, we take that input and filter it based on the input from the slider, e.g. input$range. Then we render the plot based on these updated data.\nNotice that whenever we want to use the stored data from the reactive calls we need to add parentheses after the objects, e.g. fred_indicator() in the second reactive function or fred_data() in the ggplot call. This is to ensure that the reactive expression is evaluated and its current value is used as the input data for the plot.\nFinally, we are going to use the add_rec_shade() helper function to add the recession shading to the chart. We again use the inputs from the two reactive functions to define the start date and end date of the shading as well as the y-min and y-max values of the shaded rectangles.\n\nserver &lt;- function(input, output) {\n  \n    # Download data from FRED with reactive function. \n    # Only updates when user selects new indicator\n    fred_indicator &lt;- reactive({\n      fredr(series_id = input$indicator,\n        observation_start = start_date,\n        observation_end = end_date)\n    })\n  \n    # Filter data according to chosen years \n    # Only updates when user selects new data range\n    fred_data &lt;- reactive({\n      fred_indicator() |&gt;\n      filter(between(date, input$range[1],input$range[2])) \n   })\n\n    # Render line chart\n    output$lineChart &lt;- renderPlot({\n      \n      # Build plot with ggplot2\n      ggplot(fred_data(), aes(x = date, y = value)) + \n        geom_line(color = \"navyblue\") +\n        labs(\n          x = \"\", \n          y =  names(vars[which(vars == input$indicator)])\n        ) +\n        theme_minimal() +\n        # add recession shading\n        add_rec_shade(st_date = input$range[1], \n                      ed_date = input$range[2], \n                      shade_color = \"darkgrey\",\n                      y_min = min(fred_data()$value),\n                      y_max = max(fred_data()$value))\n    })\n}",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Extending Your App"
+      "Advanced Shiny"
     ]
   },
   {
     "objectID": "modules/module-5.2.html#call-to-shiny-app",
     "href": "modules/module-5.2.html#call-to-shiny-app",
-    "title": "Extending Your App",
+    "title": "Advanced Shiny",
     "section": "Call to Shiny app",
-    "text": "Call to Shiny app\nOnce we have our UI and server functions defined we are ready to go. But don’t forget to include the call to the Shiny app or the app won’t run! Once this is in place, you can click “Run App” in the RStudio IDE to view the app locally. Optionally, right now, you can try setting up an account on shinyapps.io and try publishing your app on their server.\n\n# See above for the definitions of ui and server\nui &lt;- ...\n\nserver &lt;- ...\n\n# Run the application \nshinyApp(ui = ui, server = server)",
+    "text": "Call to Shiny app\nOnce we have our UI and server functions defined we are ready to go. But don’t forget to include the call to the Shiny app or the app won’t run! Once this is in place, you can click “Run App” in the RStudio IDE to view the app locally. We will cover how to publish your app on Posit Connect Cloud in session 12.2.\n\n# See above for the definitions of ui and server\nui &lt;- ...\n\nserver &lt;- ...\n\n# Run the application \nshinyApp(ui = ui, server = server)",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Extending Your App"
+      "Advanced Shiny"
     ]
   },
   {
     "objectID": "modules/module-5.2.html#helper-script",
     "href": "modules/module-5.2.html#helper-script",
-    "title": "Extending Your App",
+    "title": "Advanced Shiny",
     "section": "Helper script",
     "text": "Helper script\nThis is the helper script for shaded recession rectangles. Save in a file called helper.R in same folder as your app.R file. See this post for more details.\n\nlibrary(ecm) # forlagpad\n\n# define add_rec_shade function\nadd_rec_shade&lt;-function(st_date,ed_date,shade_color, y_min, y_max) {\n  \n  # download NBER recession indicators, peak through trough\n  recession&lt;- fredr(series_id = \"USRECD\",\n                    observation_start = as.Date(st_date), \n                    observation_end = as.Date(ed_date))\n  \n  #code 1 for 1st day of recession, -1 for 1st day after it ends\n  recession$diff&lt;-recession$value-lagpad(recession$value,k=1)\n  \n  #drop 1st N.A. value\n  recession&lt;-recession[!is.na(recession$diff),] \n  \n  #create vector of recession start dates\n  recession.start&lt;-recession[recession$diff==1,]$date \n  \n  #create vector of recession end dates\n  recession.end&lt;-recession[recession$diff==(-1),]$date \n  \n  # if there are more dates listed in recession.start than recession.end\n  if(length(recession.start)&gt;length(recession.end))\n  # then enter system date for last date in recession.end\n  {recession.end&lt;-c(recession.end,Sys.Date())} \n  \n  # if there are more dates listed in recession.end than recession.start\n  if(length(recession.end)&gt;length(recession.start))       \n  # then enter the earliest date in recession$date as first date in recession.start  \n  {recession.start&lt;-c(min(recession$date),recession.start)} \n  \n  # make a dataframe out of recession.start and recession.end\n  recs&lt;-as.data.frame(cbind(recession.start,recession.end))\n  \n  # convert recession.start into a date\n  recs$recession.start&lt;-as.Date(\n    as.numeric(recs$recession.start),\n    origin=as.Date(\"1970-01-01\")) \n\n  # convert recession.end into a date\n  recs$recession.end&lt;-as.Date(\n    recs$recession.end,\n    origin=as.Date(\"1970-01-01\")) \n  \n  # if the number of rows in recs &gt; 0\n  if(nrow(recs)&gt;0) \n  # draw the rectangle  \n  {rec_shade&lt;-geom_rect(data=recs, \n                         # inherit.aes=F overrides default aesthetics\n                         inherit.aes=F, \n                         aes(xmin=recession.start, \n                         xmax=recession.end, \n                         ymin=y_min, ymax=y_max), \n                         fill=shade_color, alpha=0.5)\n    return(rec_shade)\n  }\n}",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Extending Your App"
+      "Advanced Shiny"
     ]
   },
   {
@@ -3770,13 +3777,6 @@
     "title": "Introducing Shiny Apps",
     "section": "Getting Started with Shiny",
     "text": "Getting Started with Shiny\n\nOpen RStudio (or Positron)\nStart a folder for the workshop\nInstall the shiny package (if not installed already)\nCreate a new Shiny app\n\n(File &gt; New File &gt; Shiny Web App)\n\nRun the Geyser App\nTry opening it in a browser"
-  },
-  {
-    "objectID": "slides/week-11.1.html#challenge",
-    "href": "slides/week-11.1.html#challenge",
-    "title": "Introducing Shiny Apps",
-    "section": "Challenge",
-    "text": "Challenge\n\n\nLook at the faithful dataset in R (hint: ?faithful)\nCreate a Shiny app that displays a histogram of the eruptions column\nChange the labels accordingly\nWhat kind of distribution do you see?"
   },
   {
     "objectID": "slides/week-11.1.html#shiny-app-basics",
@@ -5088,11 +5088,25 @@
     "text": "Use Confidence Intervals Instead"
   },
   {
-    "objectID": "slides/week-9.2.html#use-confidence-intervals-instead-1",
-    "href": "slides/week-9.2.html#use-confidence-intervals-instead-1",
+    "objectID": "slides/week-9.2.html#download-and-wrangle-the-data",
+    "href": "slides/week-9.2.html#download-and-wrangle-the-data",
     "title": "Advanced Table Skills",
-    "section": "Use Confidence Intervals Instead",
-    "text": "Use Confidence Intervals Instead\n\n\nlibrary(ggplot2)\n\nmass_med_inc |&gt;\n  ggplot(aes(x = estimate, y = reorder(name, estimate))) +\n  geom_errorbar(aes(xmin = lower_90, xmax = upper_90)) +\n  geom_point(color = \"red\", size = 2) +\n  labs(title = \"Household income by county in Massachusetts\",\n       subtitle = \"2017-2021 American Community Survey\",\n       y = \"\",\n       x = \"Median Income\", \n       caption = \"ACS estimate (bars represent 90% confidence intervals)\") +\n  theme_minimal()"
+    "section": "Download and Wrangle the Data",
+    "text": "Download and Wrangle the Data\nget_acs() returns an estimate and a margin of error (moe) for each county\n\nlibrary(tidycensus)\nlibrary(janitor)\nlibrary(stringr)\n\nmass_med_inc &lt;- get_acs(\n  geography = \"county\",\n  variables = c(median_income = \"B06011_001\"),\n  state = \"MA\",\n  year = 2021\n  ) |&gt;\n  clean_names() |&gt;\n  mutate(name = str_replace_all(name, \" County, Massachusetts\", \"\"))"
+  },
+  {
+    "objectID": "slides/week-9.2.html#build-the-confidence-intervals",
+    "href": "slides/week-9.2.html#build-the-confidence-intervals",
+    "title": "Advanced Table Skills",
+    "section": "Build the Confidence Intervals",
+    "text": "Build the Confidence Intervals\nThe ACS reports margins of error at the 90% level, so estimate ± moe gives a 90% confidence interval\n\nmass_med_inc &lt;- mass_med_inc |&gt;\n  mutate(\n    lower_90 = estimate - moe, # lower bound of the 90% CI\n    upper_90 = estimate + moe  # upper bound of the 90% CI\n  ) |&gt;\n  select(name, estimate, lower_90, upper_90)"
+  },
+  {
+    "objectID": "slides/week-9.2.html#plot-the-confidence-intervals",
+    "href": "slides/week-9.2.html#plot-the-confidence-intervals",
+    "title": "Advanced Table Skills",
+    "section": "Plot the Confidence Intervals",
+    "text": "Plot the Confidence Intervals\n\n\nlibrary(ggplot2)\n\nmass_med_inc |&gt;\n  ggplot(aes(x = estimate, y = reorder(name, estimate))) +\n  geom_errorbar(aes(xmin = lower_90, xmax = upper_90)) +\n  geom_point(color = \"red\", size = 2) +\n  labs(title = \"Household income by county in Massachusetts\",\n       subtitle = \"2017-2021 American Community Survey\",\n       y = \"\",\n       x = \"Median Income\", \n       caption = \"ACS estimate (bars represent 90% confidence intervals)\") +\n  theme_minimal()"
   },
   {
     "objectID": "slides/week-9.2.html#your-turn-1",
@@ -5404,26 +5418,5 @@
       "Weekly Materials",
       "Week 9"
     ]
-  },
-  {
-    "objectID": "slides/week-9.2.html#download-and-wrangle-the-data",
-    "href": "slides/week-9.2.html#download-and-wrangle-the-data",
-    "title": "Advanced Table Skills",
-    "section": "Download and Wrangle the Data",
-    "text": "Download and Wrangle the Data\nget_acs() returns an estimate and a margin of error (moe) for each county\n\nlibrary(tidycensus)\nlibrary(janitor)\nlibrary(stringr)\n\nmass_med_inc &lt;- get_acs(\n  geography = \"county\",\n  variables = c(median_income = \"B06011_001\"),\n  state = \"MA\",\n  year = 2021\n  ) |&gt;\n  clean_names() |&gt;\n  mutate(name = str_replace_all(name, \" County, Massachusetts\", \"\"))"
-  },
-  {
-    "objectID": "slides/week-9.2.html#build-the-confidence-intervals",
-    "href": "slides/week-9.2.html#build-the-confidence-intervals",
-    "title": "Advanced Table Skills",
-    "section": "Build the Confidence Intervals",
-    "text": "Build the Confidence Intervals\nThe ACS reports margins of error at the 90% level, so estimate ± moe gives a 90% confidence interval\n\nmass_med_inc &lt;- mass_med_inc |&gt;\n  mutate(\n    lower_90 = estimate - moe, # lower bound of the 90% CI\n    upper_90 = estimate + moe  # upper bound of the 90% CI\n  ) |&gt;\n  select(name, estimate, lower_90, upper_90)"
-  },
-  {
-    "objectID": "slides/week-9.2.html#plot-the-confidence-intervals",
-    "href": "slides/week-9.2.html#plot-the-confidence-intervals",
-    "title": "Advanced Table Skills",
-    "section": "Plot the Confidence Intervals",
-    "text": "Plot the Confidence Intervals\n\n\nlibrary(ggplot2)\n\nmass_med_inc |&gt;\n  ggplot(aes(x = estimate, y = reorder(name, estimate))) +\n  geom_errorbar(aes(xmin = lower_90, xmax = upper_90)) +\n  geom_point(color = \"red\", size = 2) +\n  labs(title = \"Household income by county in Massachusetts\",\n       subtitle = \"2017-2021 American Community Survey\",\n       y = \"\",\n       x = \"Median Income\", \n       caption = \"ACS estimate (bars represent 90% confidence intervals)\") +\n  theme_minimal()"
   }
 ]
