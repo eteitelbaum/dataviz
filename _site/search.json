@@ -1899,7 +1899,7 @@
     "href": "project/project-assignment-1.html#overview",
     "title": "Project Proposal",
     "section": "Overview",
-    "text": "Overview\nThe purpose of the proposal is to get you to commit to an idea and think through what your final project will look like before you start building it. You will be choosing one of two tracks (see the Project Description):\n\nShiny app — an interactive tool that lets a user explore a data set and come away having learned something.\nReport — a polished written report, authored in Quarto, built around at least one well-crafted visualization.\n\nEither way, the core questions are the same: What do you want your audience to learn? What data will get them there? And what will they see? Answer each of the four steps below in a paragraph or two. Short and specific beats long and vague—this is a plan, not a finished product, and it is fine if things change once you start working with the data.\n\n\n\n\n\n\nNote\n\n\n\nIf you are working in a group (up to three students), submit one proposal with everyone’s names at the top and include a short note on how you plan to divide the work. See the Project Description for the group policy.",
+    "text": "Overview\nThe purpose of the proposal is to get you to commit to an idea and think through what your final project will look like before you start building it. You will be choosing one of two tracks (see the Project Description):\n\nShiny app — an interactive tool that lets a user explore a data set and come away having learned something.\nReport — a polished written report, authored in Quarto, built around at least one well-crafted visualization.\n\nEither way, the core questions are the same: What do you want your audience to learn? What data will get them there? And what will they see? Answer each of the four steps below in a paragraph or two. Short and specific beats long and vague—this is a plan, not a finished product, and it is fine if things change once you start working with the data.\n\n\n\n\n\n\nNote\n\n\n\nIf you are working in a group (up to three students), submit one proposal. List your group members and how you plan to divide the work in Step 1. See the Project Description for the group policy.",
     "crumbs": [
       "Project",
       "Project Proposal"
@@ -1910,7 +1910,7 @@
     "href": "project/project-assignment-1.html#step-1-your-question-and-your-track-25-pts.",
     "title": "Project Proposal",
     "section": "Step 1: Your question and your track (25 pts.)",
-    "text": "Step 1: Your question and your track (25 pts.)\nWhat question or theme do you want your audience to explore, and which track are you choosing? Tell us why that track is the right fit for your question.\nThen find a few examples that you would like your project to resemble and link to them:\n\nApp track: Browse the Shiny gallery and look back at the apps we built in Shiny Basics and Advanced Shiny. Which layouts appeal to you most, and why?\nReport track: Find one or two pieces of data journalism or policy reports (e.g., from Our World in Data, Pew Research Center, or a newspaper’s graphics desk) that do what you want to do. What do you like about how they combine writing and visuals?",
+    "text": "Step 1: Your question and your track (25 pts.)\nStart by listing who is on your team: your name if you are working alone, or the names of all group members (up to three). If you are in a group, add a sentence or two on how you plan to divide the work (e.g., data wrangling, UI, server logic, writing).\nThen tell us what question or theme you want your audience to explore and which track you are choosing. Why is that track the right fit for your question?\nThen find a few examples that you would like your project to resemble and link to them:\n\nApp track: Browse the Shiny gallery and look back at the apps we built in Shiny Basics and Advanced Shiny. Which layouts appeal to you most, and why?\nReport track: Find one or two pieces of data journalism or policy reports (e.g., from Our World in Data, Pew Research Center, or a newspaper’s graphics desk) that do what you want to do. What do you like about how they combine writing and visuals?",
     "crumbs": [
       "Project",
       "Project Proposal"
@@ -1932,7 +1932,7 @@
     "href": "project/project-assignment-1.html#step-3-the-visualization-25-pts.",
     "title": "Project Proposal",
     "section": "Step 3: The visualization (25 pts.)",
-    "text": "Step 3: The visualization (25 pts.)\nWhat type of visualization will you build? This could be a line chart, scatter plot, bar chart, map, table or some combination, and it could include text elements as well. How will your visualization help your audience learn what you want them to learn? What should they notice when they look at it? A rough sketch (a photo of a drawing is fine) is welcome but not required.",
+    "text": "Step 3: The visualization (25 pts.)\nWill your project have one visualization or more than one? For each, what type will it be? This could be a line chart, scatter plot, bar chart, map, table or some combination, and it could include text elements as well. How will your visualization help your audience learn what you want them to learn? What should they notice when they look at it? A rough sketch (a photo of a drawing is fine) is welcome but not required.",
     "crumbs": [
       "Project",
       "Project Proposal"
@@ -1943,7 +1943,7 @@
     "href": "project/project-assignment-1.html#step-4-interactivity-or-narrative-25-pts.",
     "title": "Project Proposal",
     "section": "Step 4: Interactivity or narrative (25 pts.)",
-    "text": "Step 4: Interactivity or narrative (25 pts.)\nApp track: What will the user manipulate in your app? It could be a dropdown menu, a slider, radio buttons or some other control (see the list of control widgets). When the user interacts with the control, what will change? How does that interaction help the user learn something they would not get from a static chart?\nReport track: How will your report be structured? Sketch an outline of the main sections and say where your visualization(s) will appear. What argument or story will the writing tell, and how will the visualization support it? Who is your intended audience?",
+    "text": "Step 4: Interactivity or narrative (25 pts.)\nApp track: What will the user manipulate in your app? It could be a dropdown menu, a slider, radio buttons or some other control (see the list of control widgets). When the user interacts with the control, what will change? How does that interaction help the user learn something they would not get from a static chart?\nThen think a little about the layout of your app. Where will the controls go—in a sidebar, above the chart, or next to it? If you have more than one visualization, will they appear as multiple panels on the same page or on separate tabs? Do the controls apply to every visualization or just one? A quick sketch of the layout is welcome.\nReport track: How will your report be structured? Sketch an outline of the main sections and say where your visualization(s) will appear. What argument or story will the writing tell, and how will the visualization support it? Who is your intended audience?",
     "crumbs": [
       "Project",
       "Project Proposal"
@@ -1954,7 +1954,7 @@
     "href": "project/project-assignment-1.html#submission",
     "title": "Project Proposal",
     "section": "Submission",
-    "text": "Submission\nWrite your answers in a Quarto document and submit your unrendered QMD file to Blackboard by 11:59 p.m. on Monday, November 23. Groups submit once, with all members’ names and the division-of-work note at the top.",
+    "text": "Submission\nWrite your answers in a Quarto document and submit your unrendered QMD file to Blackboard by 11:59 p.m. on Monday, November 23. Groups submit once; make sure all members’ names and the division-of-work note are in Step 1.",
     "crumbs": [
       "Project",
       "Project Proposal"
