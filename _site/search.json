@@ -1509,7 +1509,7 @@
     "href": "slides/week-12.2.html#groups",
     "title": "Getting Started on Your Final Project",
     "section": "Groups",
-    "text": "Groups\n\nWork alone or in a group of up to three\nOne proposal and one project per group; everyone shares the grade\nDivide the work clearly (data wrangling, UI, server logic, writing…)\nInclude a short division-of-work note with your proposal and your final submission"
+    "text": "Groups\n\n\nWork alone or in a group of up to three\nOne proposal and one project per group; everyone shares the grade\nDivide the work clearly (data wrangling, UI, server logic, writing…)\nInclude a short division-of-work note with your proposal and your final submission"
   },
   {
     "objectID": "slides/week-12.2.html#timeline",
@@ -1523,28 +1523,28 @@
     "href": "slides/week-12.2.html#the-proposal",
     "title": "Getting Started on Your Final Project",
     "section": "The proposal",
-    "text": "The proposal\nFour questions, a paragraph or two each:\n\nQuestion & track: What should your audience learn? App or report, and why? Link to examples you like.\nData: What sources, variables, units and years? How will you merge?\nVisualization: What will they see, and what should they notice?\nInteractivity or narrative: What will the user control (app), or how is the report structured (report)?\n\nSubmit your unrendered .qmd on Blackboard."
+    "text": "The proposal\n\nFour questions, a paragraph or two each:\n\nQuestion & track: What should your audience learn? App or report, and why? Link to examples you like.\nData: What sources, variables, units and years? How will you merge?\nVisualization: What will they see, and what should they notice?\nInteractivity or narrative: What will the user control (app), or how is the report structured (report)?\n\nSubmit your unrendered .qmd on Blackboard."
   },
   {
     "objectID": "slides/week-12.2.html#where-to-find-data",
     "href": "slides/week-12.2.html#where-to-find-data",
     "title": "Getting Started on Your Final Project",
     "section": "Where to find data",
-    "text": "Where to find data\n\nData we have used in class: V-Dem, World Bank (WDI), FRED, UCDP…\nThe Datasets page has many more\nPick something you can load into R today\nIf it needs an API key, plan to download once and save to a file"
+    "text": "Where to find data\n\n\nData we have used in class: V-Dem, World Bank (WDI), FRED, UCDP…\nThe Datasets page has many more\nPick something you can load into R today\nIf it needs an API key, plan to download once and save to a file"
   },
   {
     "objectID": "slides/week-12.2.html#scope-it-small",
     "href": "slides/week-12.2.html#scope-it-small",
     "title": "Getting Started on Your Final Project",
     "section": "Scope it small 🔬",
-    "text": "Scope it small 🔬\n\nStart with a proof of concept: one or two indicators, one chart\nGet that working before adding more data, inputs or sections\nA simple project that works beats an ambitious one that doesn’t\nYou can always add more later"
+    "text": "Scope it small 🔬\n\n\nStart with a proof of concept: one or two indicators, one chart\nGet that working before adding more data, inputs or sections\nA simple project that works beats an ambitious one that doesn’t\nYou can always add more later"
   },
   {
     "objectID": "slides/week-12.2.html#ai-and-your-project",
     "href": "slides/week-12.2.html#ai-and-your-project",
     "title": "Getting Started on Your Final Project",
     "section": "AI and your project",
-    "text": "AI and your project\n\nA full AI-assisted workflow is encouraged for the final project\nBut the design, data choices, analysis and interpretation must be yours\nYou should be able to explain and defend everything in your project\nNote how you used AI in your final submission"
+    "text": "AI and your project\n\n\nA full AI-assisted workflow is encouraged for the final project\nBut the design, data choices, analysis and interpretation must be yours\nYou should be able to explain and defend everything in your project\nNote how you used AI in your final submission"
   },
   {
     "objectID": "slides/week-12.2.html#todays-plan",
@@ -5773,5 +5773,12 @@
       "Weekly Materials",
       "Week 9"
     ]
+  },
+  {
+    "objectID": "slides/week-12.2.html#what-makes-for-a-good-project",
+    "href": "slides/week-12.2.html#what-makes-for-a-good-project",
+    "title": "Getting Started on Your Final Project",
+    "section": "What makes for a good project?",
+    "text": "What makes for a good project?\n\n\nA clear question your audience can explore\nData that is comprehensive and convenient (no time for original data collection!)\nAt least one well-crafted, labeled visualization\nApp: controls that change the output in a way that teaches something\nReport: writing that puts the visualization to work"
   }
 ]

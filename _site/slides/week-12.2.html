@@ -130,8 +130,6 @@
       margin-right: 0; 
     }
   </style>
-  <link href="../site_libs/countdown-0.6.0/countdown.css" rel="stylesheet">
-  <script src="../site_libs/countdown-0.6.0/countdown.js"></script>
 <meta property="og:title" content="Getting Started on Your Final Project – PSC/DATS 2102–Course Schedule">
 <meta property="og:site_name" content="PSC/DATS 2102–Course Schedule">
 <meta name="twitter:title" content="Getting Started on Your Final Project – PSC/DATS 2102–Course Schedule">
@@ -154,7 +152,7 @@
 <h1>The Final Project 🎯</h1>
 
 </section>
-<section id="two-tracks" class="slide level2">
+<section id="two-tracks" class="slide level2 smaller">
 <h2>Two tracks</h2>
 <p><br></p>
 <div class="columns">
@@ -176,8 +174,9 @@
 <p><br></p>
 <p>Same proposal, same studio sessions, same deadlines. See the <a href="../project/project-description.html">Project Description</a>.</p>
 </section>
-<section id="what-makes-a-good-project" class="slide level2">
-<h2>What makes a good project?</h2>
+<section id="what-makes-for-a-good-project" class="slide level2">
+<h2>What makes for a good project?</h2>
+<p><br></p>
 <ul>
 <li>A <strong>clear question</strong> your audience can explore</li>
 <li><strong>Data</strong> that is comprehensive and convenient (no time for original data collection!)</li>
@@ -188,6 +187,7 @@
 </section>
 <section id="groups" class="slide level2">
 <h2>Groups</h2>
+<p><br></p>
 <ul>
 <li>Work <strong>alone or in a group of up to three</strong></li>
 <li>One proposal and one project per group; everyone shares the grade</li>
@@ -195,7 +195,7 @@
 <li>Include a short <strong>division-of-work note</strong> with your proposal and your final submission</li>
 </ul>
 </section>
-<section id="timeline" class="slide level2">
+<section id="timeline" class="slide level2 smaller">
 <h2>Timeline</h2>
 <p><br></p>
 <table class="caption-top">
@@ -233,8 +233,9 @@
 </tbody>
 </table>
 </section>
-<section id="the-proposal" class="slide level2">
+<section id="the-proposal" class="slide level2 smaller">
 <h2>The proposal</h2>
+<p><br></p>
 <p>Four questions, a paragraph or two each:</p>
 <ol type="1">
 <li><strong>Question &amp; track:</strong> What should your audience learn? App or report, and why? Link to examples you like.</li>
@@ -246,6 +247,7 @@
 </section>
 <section id="where-to-find-data" class="slide level2">
 <h2>Where to find data</h2>
+<p><br></p>
 <ul>
 <li>Data we have used in class: <strong>V-Dem</strong>, <strong>World Bank (WDI)</strong>, <strong>FRED</strong>, <strong>UCDP</strong>…</li>
 <li>The <a href="../project/project-datasets.html">Datasets</a> page has many more</li>
@@ -255,6 +257,7 @@
 </section>
 <section id="scope-it-small" class="slide level2">
 <h2>Scope it small 🔬</h2>
+<p><br></p>
 <ul>
 <li>Start with a <strong>proof of concept</strong>: one or two indicators, one chart</li>
 <li>Get that working <em>before</em> adding more data, inputs or sections</li>
@@ -264,6 +267,7 @@
 </section>
 <section id="ai-and-your-project" class="slide level2">
 <h2>AI and your project</h2>
+<p><br></p>
 <ul>
 <li>A full AI-assisted workflow is <strong>encouraged</strong> for the final project</li>
 <li>But the design, data choices, analysis and interpretation must be <strong>yours</strong></li>
@@ -286,11 +290,6 @@
 </ol>
 <p><br></p>
 <p>I’ll come around to talk through ideas with each person or group.</p>
-<div class="cell">
-<div class="cell-output-display">
-<countdown-timer class="countdown" id="timer-kickoff" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:10%;bottom:10%;"></countdown-timer>
-</div>
-</div>
 
 
 </section></section>
@@ -512,44 +511,6 @@
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

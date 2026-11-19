@@ -19,7 +19,7 @@ execute:
 
 # The Final Project 🎯
 
-## Two tracks
+## Two tracks {.smaller}
 
 <br>
 
@@ -44,7 +44,9 @@ execute:
 
 Same proposal, same studio sessions, same deadlines. See the [Project Description](/project/project-description.qmd).
 
-## What makes a good project?
+## What makes for a good project?
+
+<br>
 
 - A **clear question** your audience can explore
 - **Data** that is comprehensive and convenient (no time for original data collection!)
@@ -54,12 +56,14 @@ Same proposal, same studio sessions, same deadlines. See the [Project Descriptio
 
 ## Groups
 
+<br>
+
 - Work **alone or in a group of up to three**
 - One proposal and one project per group; everyone shares the grade
 - Divide the work clearly (data wrangling, UI, server logic, writing...)
 - Include a short **division-of-work note** with your proposal and your final submission
 
-## Timeline
+## Timeline {.smaller}
 
 <br>
 
@@ -72,7 +76,9 @@ Same proposal, same studio sessions, same deadlines. See the [Project Descriptio
 | **Thu, Dec 3** | Shiny modules + studio |
 | **Tue, Dec 8** | ✍️ [Final project](/project/project-assignment-2.qmd) due before class + lightning talks |
 
-## The proposal
+## The proposal {.smaller}
+
+<br>
 
 Four questions, a paragraph or two each:
 
@@ -85,6 +91,8 @@ Submit your unrendered `.qmd` on Blackboard.
 
 ## Where to find data
 
+<br>
+
 - Data we have used in class: **V-Dem**, **World Bank (WDI)**, **FRED**, **UCDP**...
 - The [Datasets](/project/project-datasets.qmd) page has many more
 - Pick something you can **load into R today**
@@ -92,12 +100,16 @@ Submit your unrendered `.qmd` on Blackboard.
 
 ## Scope it small 🔬
 
+<br>
+
 - Start with a **proof of concept**: one or two indicators, one chart
 - Get that working *before* adding more data, inputs or sections
 - A simple project that works beats an ambitious one that doesn't
 - You can always add more later
 
 ## AI and your project
+
+<br>
 
 - A full AI-assisted workflow is **encouraged** for the final project
 - But the design, data choices, analysis and interpretation must be **yours**
@@ -116,14 +128,3 @@ Submit your unrendered `.qmd` on Blackboard.
 <br>
 
 I'll come around to talk through ideas with each person or group.
-
-```{r}
-#| label: timer
-#| echo: false
-#| eval: true
-library(countdown)
-countdown(minutes = 10,
-          id = "timer-kickoff",
-          bottom = "10%",
-          right = "10%")
-```
