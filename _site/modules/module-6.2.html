@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.19">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Deploying &amp; Sharing Your App – PSC/DATS 2102–Course Schedule</title>
+<title>Deploying &amp; Sharing Your Project – PSC/DATS 2102–Course Schedule</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -108,11 +108,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<meta property="og:title" content="Deploying &amp; Sharing Your App – PSC/DATS 2102–Course Schedule">
-<meta property="og:description" content="Sharing Your App">
+<meta property="og:title" content="Deploying &amp; Sharing Your Project – PSC/DATS 2102–Course Schedule">
+<meta property="og:description" content="Publishing Apps and Reports on Posit Connect Cloud">
 <meta property="og:site_name" content="PSC/DATS 2102–Course Schedule">
-<meta name="twitter:title" content="Deploying &amp; Sharing Your App – PSC/DATS 2102–Course Schedule">
-<meta name="twitter:description" content="Sharing Your App">
+<meta name="twitter:title" content="Deploying &amp; Sharing Your Project – PSC/DATS 2102–Course Schedule">
+<meta name="twitter:description" content="Publishing Apps and Reports on Posit Connect Cloud">
 <meta name="twitter:card" content="summary">
 </head>
 <body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -284,7 +284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/getting-started-1.html">Course Topics</a></li><li class="breadcrumb-item"><a href="../modules/module-5.1.html">V — Interactive Apps (Shiny)</a></li><li class="breadcrumb-item"><a href="../modules/module-6.2.html">Deploying &amp; Sharing Your App</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/getting-started-1.html">Course Topics</a></li><li class="breadcrumb-item"><a href="../modules/module-5.1.html">V — Interactive Apps (Shiny)</a></li><li class="breadcrumb-item"><a href="../modules/module-6.2.html">Deploying &amp; Sharing Your Project</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -682,7 +682,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../modules/module-6.2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Deploying &amp; Sharing Your App</span></a>
+ <span class="menu-text">Deploying &amp; Sharing Your Project</span></a>
   </div>
 </li>
       </ul>
@@ -697,16 +697,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#publishing-your-app-on-shinyapps.io" id="toc-publishing-your-app-on-shinyapps.io" class="nav-link active" data-scroll-target="#publishing-your-app-on-shinyapps.io">Publishing your app on ShinyApps.io</a></li>
-  <li><a href="#sharing-your-project-folder-via-email" id="toc-sharing-your-project-folder-via-email" class="nav-link" data-scroll-target="#sharing-your-project-folder-via-email">Sharing your project folder via email</a></li>
-  <li><a href="#sharing-your-code-on-github" id="toc-sharing-your-code-on-github" class="nav-link" data-scroll-target="#sharing-your-code-on-github">Sharing your code on GitHub</a></li>
+<li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li>
+<a href="#before-you-publish" id="toc-before-you-publish" class="nav-link" data-scroll-target="#before-you-publish">Before you publish</a>
+  <ul class="collapse">
+<li><a href="#keep-your-api-keys-out-of-your-code" id="toc-keep-your-api-keys-out-of-your-code" class="nav-link" data-scroll-target="#keep-your-api-keys-out-of-your-code">Keep your API keys out of your code</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#option-1-publish-from-your-ide" id="toc-option-1-publish-from-your-ide" class="nav-link" data-scroll-target="#option-1-publish-from-your-ide">Option 1: Publish from your IDE</a>
+  <ul class="collapse">
+<li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio">RStudio</a></li>
+  <li><a href="#positron" id="toc-positron" class="nav-link" data-scroll-target="#positron">Positron</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#option-2-publish-from-github" id="toc-option-2-publish-from-github" class="nav-link" data-scroll-target="#option-2-publish-from-github">Option 2: Publish from GitHub</a>
+  <ul class="collapse">
+<li><a href="#step-1-create-a-manifest" id="toc-step-1-create-a-manifest" class="nav-link" data-scroll-target="#step-1-create-a-manifest">Step 1: Create a manifest</a></li>
+  <li><a href="#step-2-push-your-project-to-github" id="toc-step-2-push-your-project-to-github" class="nav-link" data-scroll-target="#step-2-push-your-project-to-github">Step 2: Push your project to GitHub</a></li>
+  <li><a href="#step-3-publish-on-connect-cloud" id="toc-step-3-publish-on-connect-cloud" class="nav-link" data-scroll-target="#step-3-publish-on-connect-cloud">Step 3: Publish on Connect Cloud</a></li>
+  </ul>
+</li>
+  <li><a href="#authoring-a-report-in-quarto" id="toc-authoring-a-report-in-quarto" class="nav-link" data-scroll-target="#authoring-a-report-in-quarto">Authoring a report in Quarto</a></li>
+  <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a></li>
+  <li><a href="#sharing-your-project-folder" id="toc-sharing-your-project-folder" class="nav-link" data-scroll-target="#sharing-your-project-folder">Sharing your project folder</a></li>
   <li><a href="#using-the-renv-package-to-record-your-r-environment" id="toc-using-the-renv-package-to-record-your-r-environment" class="nav-link" data-scroll-target="#using-the-renv-package-to-record-your-r-environment">Using the <code>renv</code> package to record your R environment</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/dataviz/edit/main/modules/module-6.2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/dataviz/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/getting-started-1.html">Course Topics</a></li><li class="breadcrumb-item"><a href="../modules/module-5.1.html">V — Interactive Apps (Shiny)</a></li><li class="breadcrumb-item"><a href="../modules/module-6.2.html">Deploying &amp; Sharing Your App</a></li></ol></nav><div class="quarto-title">
-<h1 class="title">Deploying &amp; Sharing Your App</h1>
-<p class="subtitle lead">Sharing Your App</p>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/getting-started-1.html">Course Topics</a></li><li class="breadcrumb-item"><a href="../modules/module-5.1.html">V — Interactive Apps (Shiny)</a></li><li class="breadcrumb-item"><a href="../modules/module-6.2.html">Deploying &amp; Sharing Your Project</a></li></ol></nav><div class="quarto-title">
+<h1 class="title">Deploying &amp; Sharing Your Project</h1>
+<p class="subtitle lead">Publishing Apps and Reports on Posit Connect Cloud</p>
 </div>
 
 
@@ -730,7 +752,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Packages:</strong> <code>shiny</code>, <code>rsconnect</code></p>
+<p><strong>Packages:</strong> <code>shiny</code>, <code>quarto</code>, <code>rsconnect</code>, <code>renv</code></p>
+<p><strong>Functions:</strong> <code>rsconnect::writeManifest()</code>, <code><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv()</a></code>, <code><a href="https://rstudio.github.io/renv/reference/init.html">renv::init()</a></code>, <code><a href="https://rstudio.github.io/renv/reference/snapshot.html">renv::snapshot()</a></code></p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -744,15 +767,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Sign up for a free account on <a href="https://www.shinyapps.io/">ShinyApps.io</a>
-</li>
-<li>Install <a href="https://rstudio.github.io/rsconnect/">rsconnect</a> so that you can publish to shinyapps.io (<code>install.packages("rsconnect")</code>)</li>
+<li>Create a free <a href="https://github.com/">GitHub</a> account if you don’t have one</li>
+<li>Sign up for a free account on <a href="https://connect.posit.cloud/">Posit Connect Cloud</a> (you can sign in with GitHub)</li>
+<li>Install <a href="https://rstudio.github.io/rsconnect/">rsconnect</a> (<code>install.packages("rsconnect")</code>)</li>
 <li>Install <a href="https://rstudio.github.io/renv/articles/renv.html">renv</a> and familiarize yourself with its basic purpose and features (<code>install.packages("renv")</code>)</li>
+<li>Update RStudio to a recent version so that <strong>Posit Connect Cloud</strong> shows up as a publishing option</li>
 </ul>
 </div>
 </div>
-<p>Now that you have your Shiny app, how can you <a href="https://shiny.posit.co/r/getstarted/shiny-basics/lesson7/">share it</a> with others? The simplest and most logical thing to do is to publish it as a web page. After all, sharing your app on the web is sort of the point of making a web app and doing so is an essential if you want to share your apps with a broader set of users who do not know how to use R or and/or Shiny. There are many different ways to publish your app but the best way when you are getting started is <a href="https://www.shinyapps.io/">ShinyApps.io</a>.</p>
-<p>You also may want to share your app with collaborators by sending them your R script and supporting files before you make your app public or available to a broader group of users. There are many ways to share your Shiny app files but the two we are going to cover are sending the files via email or sharing them on GitHub.</p>
+<section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>Now that you have your Shiny app or your Quarto report, how can you share it with others? The simplest and most logical thing to do is to publish it as a web page. After all, sharing your work on the web is sort of the point of making a web app, and doing so is essential if you want to share your project with people who do not know how to use R. There are many ways to publish, but the easiest when you are getting started is <a href="https://connect.posit.cloud/">Posit Connect Cloud</a>, Posit’s free hosting service for Shiny apps, Quarto documents and other data science content. (You may see older tutorials that use shinyapps.io; Connect Cloud is its successor, so skip those.)</p>
+<p>The good news is that <strong>the steps are the same whether you are publishing a Shiny app or a Quarto report</strong>. The only differences are which file you tell Connect Cloud is your primary file and which content type you choose:</p>
+<table class="caption-top table">
+<thead><tr class="header">
+<th></th>
+<th>Shiny app</th>
+<th>Quarto report</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Primary file</td>
+<td><code>app.R</code></td>
+<td>
+<code>report.qmd</code> (or whatever you named it)</td>
+</tr>
+<tr class="even">
+<td>Content type</td>
+<td><strong>Shiny</strong></td>
+<td><strong>Quarto</strong></td>
+</tr>
+</tbody>
+</table>
+<p>There are two ways to publish: directly from your IDE (RStudio or Positron), or from a GitHub repository. Publishing from your IDE is the quickest way to get started. Publishing from GitHub takes a little more setup but means your project republishes automatically every time you push a change.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -763,29 +809,125 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Note that while I am covering methods of sharing your code with others, your are not required to do so for this course. The only requirement is sharing your application as a web app via ShinyApps.io and then either writing a short essay about the app or demoing the app in a short video. Then you will submit your project folder on Blackboard as you have been doing for the previous assignments.</p>
+<p>For the final project, the requirement is that your app or report is <strong>published on Posit Connect Cloud</strong> and that you submit the link along with your zipped project folder on Blackboard. See <a href="../project/project-assignment-2.html">Final Project</a> for details. Sharing your code on GitHub is optional unless you choose the GitHub route for publishing.</p>
 </div>
 </div>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/dGUgSFhvaFs" title="Building your app" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<section id="publishing-your-app-on-shinyapps.io" class="level2"><h2 class="anchored" data-anchor-id="publishing-your-app-on-shinyapps.io">Publishing your app on ShinyApps.io</h2>
-<p>Once it is ready to go, publishing your app to ShinyApps.io is super-easy. Make sure that you have the <code>rsconnect</code> package installed. Then, in RStudio, go to Tools &gt; Global Options and select Publishing. Select Connect, ShinyApps.io and follow the instructions for retrieving and entering your token.</p>
-<p>Once that is set up, open your app.R file. At the top of your Source window, you should see a little blue circle with arrows surrounding it that says “Publish the application or document” when you hover over it. Click that and, if prompted to do so, install any required updates.</p>
-<p>Next you will be prompted for which files you want to upload. Just select the essential files that you need for the app like the app.R file and any supporting files like a .csv file with the data the app needs or helper scripts. No need to upload ancillary files like your prep file or .Rprofile.</p>
-<p>Then hit Publish and that should be it! <a href="https://statsandr.com/blog/how-to-publish-shiny-app-example-with-shinyapps-io/">Here</a> is a good set of step-by-step instructions in case you happen to get stuck.</p>
-</section><section id="sharing-your-project-folder-via-email" class="level2"><h2 class="anchored" data-anchor-id="sharing-your-project-folder-via-email">Sharing your project folder via email</h2>
-<p>Now let’s say you want to share your code with people. The most basic way to share your app is to simply zip your project folder and send it to your collaborators via email. The other users can then place your project folder wherever they like and run the app by pressing the “run” icon or by using the <code><a href="https://rdrr.io/pkg/shiny/man/runApp.html">runApp()</a></code> function, e.g.&nbsp;</p>
+</section><section id="before-you-publish" class="level2"><h2 class="anchored" data-anchor-id="before-you-publish">Before you publish</h2>
+<p>A lot of deployment problems come from projects that work on your machine only because of something specific to your machine. Before you publish, check that:</p>
+<ul>
+<li>
+<strong>Everything lives in one project folder</strong>: your <code>app.R</code> or <code>.qmd</code> file plus any data files and helper scripts it needs.</li>
+<li>
+<strong>Your file paths are relative</strong>, e.g.&nbsp;<code>read_csv("data/my_data.csv")</code> rather than <code>read_csv("/Users/me/Desktop/project/data/my_data.csv")</code>.</li>
+<li>
+<strong>There is no <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code> or <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code></strong> in your code.</li>
+<li>
+<strong>Every package is loaded with <code><a href="https://rdrr.io/r/base/library.html">library()</a></code></strong> near the top of the file. This is how Connect Cloud figures out what to install.</li>
+<li>
+<strong>The project runs from a fresh R session.</strong> Restart R (Session &gt; Restart R) and run or render it one more time.</li>
+</ul>
+<section id="keep-your-api-keys-out-of-your-code" class="level3"><h3 class="anchored" data-anchor-id="keep-your-api-keys-out-of-your-code">Keep your API keys out of your code</h3>
+<p>If your project downloads data through an API that requires a key (like the FRED app in <a href="../modules/module-5.2.html">Advanced Shiny</a>), do <strong>not</strong> publish the key in your code. This is especially important if you publish from GitHub, because the free plan requires a public repository that anyone can read. You have two options:</p>
+<ol type="1">
+<li>
+<strong>Download the data once and save it to a file.</strong> Run your API calls in a separate script, save the result with <code>write_csv()</code> or <code><a href="https://rdrr.io/r/base/readRDS.html">saveRDS()</a></code>, and have your app or report read the file. This is usually the simplest approach, and it makes your project faster too.</li>
+<li>
+<strong>Store the key as a secret variable on Connect Cloud.</strong> When you publish, add a secret variable (e.g., <code>FRED_API_KEY</code>) with your key as the value. Then read it in your code with <code><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv()</a></code>:</li>
+</ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># install.packages("shiny")</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">fredr_set_key</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"FRED_API_KEY"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>To make this work on your own computer, add a line like <code>FRED_API_KEY=yourkeyhere</code> to a file called <code>.Renviron</code> in your project folder (you can open it with <code>usethis::edit_r_environ("project")</code>) and restart R. Never commit <code>.Renviron</code> to GitHub—add it to your <code>.gitignore</code>.</p>
+</section></section><section id="option-1-publish-from-your-ide" class="level2"><h2 class="anchored" data-anchor-id="option-1-publish-from-your-ide">Option 1: Publish from your IDE</h2>
+<section id="rstudio" class="level3"><h3 class="anchored" data-anchor-id="rstudio">RStudio</h3>
+<ol type="1">
+<li>Open your <code>app.R</code> file. If you are publishing a report, open your <code>.qmd</code> file and click <strong>Render</strong> first.</li>
+<li>Click the blue <strong>Publish</strong> icon (a circle with arrows) at the top of the editor and, if prompted, install any required updates.</li>
+<li>Choose <strong>Posit Connect Cloud</strong> and log in to connect your account. You only need to do this the first time.</li>
+<li>Select the files to upload. Include the essentials—your main file, data files and helper scripts—but not ancillary files like your data prep script or <code>.Rprofile</code>.</li>
+<li>Click <strong>Publish</strong>.</li>
+</ol>
+<p>When it finishes, your project will open in the browser at a URL that looks like <code>https://yourname-project.share.connect.posit.cloud</code>. To update your project later, save your changes (and re-render, for a report) and click <strong>Publish</strong> again.</p>
+</section><section id="positron" class="level3"><h3 class="anchored" data-anchor-id="positron">Positron</h3>
+<p>Positron comes with the <strong>Posit Publisher</strong> extension built in.</p>
+<ol type="1">
+<li>Click the <strong>Posit Publisher</strong> icon in the Activity Bar.</li>
+<li>Under <strong>Credentials</strong>, click <strong>+</strong>, select <strong>Posit Connect Cloud</strong> and authorize access in your browser. Check that the code in the browser matches the one in Positron.</li>
+<li>Add a deployment and select your <code>app.R</code> or <code>.qmd</code> file as the entrypoint.</li>
+<li>Confirm the <strong>Project Files</strong> to include and add any <strong>Secrets</strong> (such as API keys).</li>
+<li>Click <strong>Deploy Your Project</strong>.</li>
+</ol>
+<p>Positron needs an <code>renv.lock</code> file to know which packages your project uses, so run <code><a href="https://rstudio.github.io/renv/reference/init.html">renv::init()</a></code> in the console before you deploy (see <a href="#using-the-renv-package-to-record-your-r-environment">below</a>). Keep the <code>.posit</code> folder that Publisher creates so that later deploys update the same project rather than creating a new one.</p>
+</section></section><section id="option-2-publish-from-github" class="level2"><h2 class="anchored" data-anchor-id="option-2-publish-from-github">Option 2: Publish from GitHub</h2>
+<section id="step-1-create-a-manifest" class="level3"><h3 class="anchored" data-anchor-id="step-1-create-a-manifest">Step 1: Create a manifest</h3>
+<p>When you publish from GitHub, Connect Cloud needs a list of the packages (and package versions) your project uses. You create this with the <code>writeManifest()</code> function from <code>rsconnect</code>. From your project folder, run:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">rsconnect</span><span class="fu">::</span><span class="fu">writeManifest</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This creates a file called <code>manifest.json</code>. If you add a package to your project later, run <code>writeManifest()</code> again.</p>
+</section><section id="step-2-push-your-project-to-github" class="level3"><h3 class="anchored" data-anchor-id="step-2-push-your-project-to-github">Step 2: Push your project to GitHub</h3>
+<p>Commit your main file, <code>manifest.json</code>, and any data files and helper scripts, then push them to a <strong>public</strong> GitHub repository. To create a new repo, go to your GitHub profile, select Repositories, click New and give the repository a name. Make sure it is set to Public, click “Create repository,” and then connect your project folder to it (in RStudio, the easiest way is to create a new Version Control project from the repo’s URL and copy your files into it).</p>
+</section><section id="step-3-publish-on-connect-cloud" class="level3"><h3 class="anchored" data-anchor-id="step-3-publish-on-connect-cloud">Step 3: Publish on Connect Cloud</h3>
+<ol type="1">
+<li>Sign in to <a href="https://connect.posit.cloud/">Posit Connect Cloud</a> and click <strong>Publish</strong>.</li>
+<li>If this is your first time, install the <strong>GitHub App</strong> when prompted and give it access to your repository.</li>
+<li>Choose <strong>Shiny</strong> (for an app) or <strong>Quarto</strong> (for a report).</li>
+<li>Select your repository and branch (usually <code>main</code>).</li>
+<li>Select your <strong>primary file</strong>: <code>app.R</code> or your <code>.qmd</code> file.</li>
+<li>If your project needs an API key, open <strong>Advanced settings</strong>, click <strong>+ Add variable</strong>, and enter the name (e.g., <code>FRED_API_KEY</code>) and value.</li>
+<li>Leave <strong>Automatically publish on push</strong> on (recommended) and click <strong>Publish</strong>.</li>
+</ol>
+<p>From now on, every time you push a change to <code>main</code>, Connect Cloud will republish your project. If you turned automatic publishing off, click <strong>Republish</strong> on your project’s page instead.</p>
+</section></section><section id="authoring-a-report-in-quarto" class="level2"><h2 class="anchored" data-anchor-id="authoring-a-report-in-quarto">Authoring a report in Quarto</h2>
+<p>If you chose the report track, you will write your report as a Quarto document and publish it exactly as described above. A few tips for making it look like a finished piece:</p>
+<ul>
+<li>
+<strong>Hide your code.</strong> Set <code>echo: false</code> (along with <code>message: false</code> and <code>warning: false</code>) under <code>execute:</code> in your YAML header so readers see your figures and writing, not your code.</li>
+<li>
+<strong>Use headings to give the report structure</strong>, e.g.&nbsp;Introduction, Data, Findings and Conclusion.</li>
+<li>
+<strong>Label and caption your figures</strong> with <code>#| label: fig-...</code> and <code>#| fig-cap:</code> so you can cross-reference them in your text with <code>@fig-...</code>.</li>
+<li>
+<strong>Lead with the takeaway.</strong> Tell the reader what to notice in each figure; don’t make them guess.</li>
+</ul>
+<p>Here is a YAML header to start from:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Democracy and Development, 1990-2024"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Your Name(s)"</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> today</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">embed-resources</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>See the <a href="../modules/getting-started-2.html">Quarto and Markdown</a> module and the <a href="https://quarto.org/docs/guide/">Quarto guide</a> for more.</p>
+</section><section id="troubleshooting" class="level2"><h2 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h2>
+<ul>
+<li>
+<strong>“There is no package called …”</strong>: Make sure every package is loaded with <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> and, if you publish from GitHub, re-run <code>rsconnect::writeManifest()</code> and push again.</li>
+<li>
+<strong>“Cannot open file …”</strong>: You are using an absolute path, or you didn’t include the data file when you published.</li>
+<li>
+<strong>The project works locally but not online</strong>: Open your project’s page on Connect Cloud and check the <strong>logs</strong>. The error message there is usually the same one you would see in the R console.</li>
+<li>
+<strong>An API call fails online</strong>: Your secret variable is missing or misnamed. Check that the name in Connect Cloud matches the name in <code><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv()</a></code> exactly.</li>
+</ul>
+<p>Always open your published link in a private browser window to see what other people will see.</p>
+</section><section id="sharing-your-project-folder" class="level2"><h2 class="anchored" data-anchor-id="sharing-your-project-folder">Sharing your project folder</h2>
+<p>You may also want to share your code with collaborators. The most basic way is to zip your project folder and send it to them. They can place the folder wherever they like and run the app by pressing the “Run App” button or by using the <code><a href="https://rdrr.io/pkg/shiny/man/runApp.html">runApp()</a></code> function, e.g.:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># install.packages("shiny")</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/">shiny</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/runApp.html">runApp</a></span><span class="op">(</span><span class="st">"name-of-app"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section id="sharing-your-code-on-github" class="level2"><h2 class="anchored" data-anchor-id="sharing-your-code-on-github">Sharing your code on GitHub</h2>
-<p>Another way to share your code is on GitHub. The easiest way to do this is to use version control from the very beginning like you <a href="https://dataviz-gwu.rocks/modules/getting-started.html#github">have been doing</a> with GitHub for version control in this course.</p>
-<p>Since you submit your assignments on Blackboard rather than through a public repo, the best way to share your code for this app would be to simply create a new public GitHub repo and copy your code to a new version control project associated with that repo. Then, if you want to make changes to your app and publish it from the new project folder, simply give it a new title when you upload it to ShinyApps.io.</p>
-<p>To create a new repo in GitHub, go to your profile, go to Repositories, select New and name your new repository. You can also give it an optional description. Make sure your new repo is set to Public and hit “Create repository.” From there copy the repo’s URL and use it to create a new version control project in RStudio. Then copy your app.R and supporting files to the new version control rep.</p>
+<p>For a report, they can open the <code>.qmd</code> file and click <strong>Render</strong>. A zipped copy of your project folder is also what you will submit on Blackboard for the final project.</p>
 </section><section id="using-the-renv-package-to-record-your-r-environment" class="level2"><h2 class="anchored" data-anchor-id="using-the-renv-package-to-record-your-r-environment">Using the <code>renv</code> package to record your R environment</h2>
-<p>One problem you will frequently run into with R Shiny apps is that they can break as a result of package updates and new R installations. One way to prevent this from happening is to use the <code>renv</code> package, which records your R environment at the time you made the app.</p>
-<p>To do this, make sure <code>renv</code> is installed. Then type <code><a href="https://rstudio.github.io/renv/reference/init.html">renv::init()</a></code> in your console. Next, type <code>ren::snapshot()</code>. At this point, <code>renv</code> will give you a list of the packages and versions being used by the app. If everything looks good, type ‘y’ and <code>renv</code> will record the environment. When you come back to work on the app later, you can choose whether to update the packages, but if doing so breaks the app you the option of restoring the earlier environment by typing <code><a href="https://rstudio.github.io/renv/reference/restore.html">renv::restore()</a></code>.</p>
+<p>One problem you will frequently run into is that projects can break as a result of package updates and new R installations. One way to prevent this from happening is to use the <code>renv</code> package, which records your R environment at the time you made the project.</p>
+<p>To do this, make sure <code>renv</code> is installed. Then type <code><a href="https://rstudio.github.io/renv/reference/init.html">renv::init()</a></code> in your console. Next, type <code><a href="https://rstudio.github.io/renv/reference/snapshot.html">renv::snapshot()</a></code>. At this point, <code>renv</code> will give you a list of the packages and versions being used by the project. If everything looks good, type ‘y’ and <code>renv</code> will record the environment in a file called <code>renv.lock</code>. When you come back to work on the project later, you can choose whether to update the packages, but if doing so breaks the project, you have the option of restoring the earlier environment by typing <code><a href="https://rstudio.github.io/renv/reference/restore.html">renv::restore()</a></code>. As a bonus, Connect Cloud (and Positron’s Publisher) can read <code>renv.lock</code> to figure out which packages to install.</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

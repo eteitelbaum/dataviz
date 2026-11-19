@@ -1,9 +1,11 @@
 {
-  "hash": "b74aaf400ac4bc93f727fa6fd4850e30",
+  "hash": "9d63d912f2bf122bdd5a2b3dfbabd136",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Week 16\"\nsubtitle: \"Final presentations\"\nformat: html\n---\n\n\n\n::: {.callout-important}\n**Final project** due — present your app or report in class on Tuesday, December 8.\n:::\n\nWe wrap up the term with lightning-talk presentations of everyone's final projects, Shiny apps and reports alike.\n\n## Assignments\n",
-    "supporting": [],
+    "markdown": "---\ntitle: \"Week 16\"\nsubtitle: \"Final presentations\"\nformat: html\n---\n\n\n\n::: {.callout-important}\n**[Final project](/project/project-assignment-2.qmd)** due on Blackboard before class on Tuesday, December 8. Present your app or report in class that day.\n:::\n\nWe wrap up the term with lightning-talk presentations of everyone's final projects, Shiny apps and reports alike.\n\n## Assignments\n\n| ✍️ [Final project](/project/project-assignment-2.qmd): submit your Connect Cloud link, zipped project folder and division-of-work/AI note\n| 🎤 Lightning talk, in class\n",
+    "supporting": [
+      "week-16_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],

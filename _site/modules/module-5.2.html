@@ -683,7 +683,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../modules/module-6.2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Deploying &amp; Sharing Your App</span></a>
+ <span class="menu-text">Deploying &amp; Sharing Your Project</span></a>
   </div>
 </li>
       </ul>
@@ -760,7 +760,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>A fundmental concept in R Shiny is reactivity. Reactivity refers to the automatic responsiveness and dynamic behavior of the application based on user input and data changes. It allows the application to update and re-render specific parts of the user interface (UI) in response to changes in input values, data updates, or other reactive triggers.</p>
 <p>All Shiny apps have an element of reactivity. In a basic Shiny app like we say in the last module, reactivity occurs when user input is fed to the server function through functions like <code><a href="https://rdrr.io/pkg/shiny/man/renderPlot.html">renderPlot()</a></code> or <code><a href="https://rdrr.io/pkg/shiny/man/renderTable.html">renderTable()</a></code>. But we might also want to add additional elements of reactivity by using reactive functions like <code><a href="https://rdrr.io/pkg/shiny/man/reactive.html">reactive()</a></code> or <code><a href="https://rdrr.io/pkg/shiny/man/observe.html">observe()</a></code>. In this lesson, we are going to look at how to use the <code><a href="https://rdrr.io/pkg/shiny/man/reactive.html">reactive()</a></code> function to control two separate reactive inputs to a line chart: the indicator the user wishes to view and the date range that the way to view it for. Here is the app that we are going to be building:</p>
-<iframe src="https://emmanuelteitelbaum.shinyapps.io/fred_app/" width="780" height="560" data-external="1">
+<iframe src="https://eteitelbaum-fred-app.share.connect.posit.cloud/" width="780" height="560" data-external="1">
 </iframe>
 </section><section id="setup" class="level2"><h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/U79y3DgK2Ts" title="FRED App set up" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
@@ -882,7 +882,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="call-to-shiny-app" class="level2"><h2 class="anchored" data-anchor-id="call-to-shiny-app">Call to Shiny app</h2>
-<p>Once we have our UI and server functions defined we are ready to go. But don’t forget to include the call to the Shiny app or the app won’t run! Once this is in place, you can click “Run App” in the RStudio IDE to view the app locally. We will cover how to publish your app on <a href="https://connect.posit.cloud/">Posit Connect Cloud</a> in session 12.2.</p>
+<p>Once we have our UI and server functions defined we are ready to go. But don’t forget to include the call to the Shiny app or the app won’t run! Once this is in place, you can click “Run App” in the RStudio IDE to view the app locally. We will cover how to publish your app on <a href="https://connect.posit.cloud/">Posit Connect Cloud</a> in the <a href="../modules/module-6.2.html">Deploying &amp; Sharing</a> session after Thanksgiving.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># See above for the definitions of ui and server</span></span>
 <span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="va">...</span></span>

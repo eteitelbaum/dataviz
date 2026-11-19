@@ -3,8 +3,14 @@ title: "Project Description"
 editor: visual
 ---
 
+```{r}
+#| label: setup
+#| include: false
+source("../helper.R")
+```
+
 ::: {.callout-note}
-**Two tracks:** build a **Shiny app** or produce a polished **written report with a well-crafted visualization**. Both tracks share the same proposal and studio weeks; app-specific material (styling, deployment, troubleshooting) is optional and linked from the Project Studio week for students building an app.
+**Two tracks:** build a **Shiny app** or produce a polished **written report with a well-crafted visualization**. Both tracks share the same proposal, studio sessions and deadlines, and both are published on the web with Posit Connect Cloud. App-specific material (styling, troubleshooting, modules) is optional and linked from the [Project Studio](/modules/module-6.1.qmd) page for students building an app.
 :::
 
 ## Overview
@@ -31,8 +37,14 @@ You may complete the project **on your own or in a group of up to three students
 -   At least one well-crafted, labeled visualization that responds to user input (app track) or anchors the write-up (report track).
 -   App track: a thoughtful interface where the controls change the output in a way that teaches the user something. Report track: clear, well-supported writing that puts the visualization to work.
 
-## Deliverables
+## Deliverables and timeline
 
-More Coming Soon!
+| When | What |
+|------|------|
+| `r advdate2(thu, 12)` | **Project kickoff** --- pick a track, form groups and start your proposal in class. |
+| 11:59 p.m., `r advdate2(mon, 13)` | **Project proposal due** --- commit to a question, track, data and visualization. See [Project Proposal](/project/project-assignment-1.qmd). |
+| `r advdate2(tue, 14)` | **Deploying & sharing** --- publish your app or report to Posit Connect Cloud; authoring reports in Quarto. Then studio time. |
+| `r advdate2(thu, 14)` | **Shiny modules** --- then studio time to build, troubleshoot and get feedback. |
+| Before class, `r advdate2(tue, 15)` | **Final project due + lightning talks** --- submit your link and files, then present in class. See [Final Project](/project/project-assignment-2.qmd). |
 
 For ideas about data to work with, see the [Datasets](/project/project-datasets.qmd) page.

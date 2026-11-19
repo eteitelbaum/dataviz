@@ -1,7 +1,7 @@
 ---
-title: "Deploying & Sharing Your App"
-subtitle: "Sharing Your App"
-format: 
+title: "Deploying & Sharing Your Project"
+subtitle: "Publishing Apps and Reports on Posit Connect Cloud"
+format:
   html:
     code-link: true
 highlight-style: atom-one
@@ -13,39 +13,157 @@ execute:
 
 ::: {.callout-note}
 ## Packages in this module
-**Packages:** `shiny`, `rsconnect`
+**Packages:** `shiny`, `quarto`, `rsconnect`, `renv`
+
+**Functions:** `rsconnect::writeManifest()`, `Sys.getenv()`, `renv::init()`, `renv::snapshot()`
 :::
 
 :::{.callout-tip}
 ## Prework
-- Sign up for a free account on [ShinyApps.io](https://www.shinyapps.io/)
-- Install [rsconnect](https://rstudio.github.io/rsconnect/) so that you can publish to shinyapps.io (`install.packages("rsconnect")`)
+- Create a free [GitHub](https://github.com/) account if you don't have one
+- Sign up for a free account on [Posit Connect Cloud](https://connect.posit.cloud/) (you can sign in with GitHub)
+- Install [rsconnect](https://rstudio.github.io/rsconnect/) (`install.packages("rsconnect")`)
 - Install [renv](https://rstudio.github.io/renv/articles/renv.html) and familiarize yourself with its basic purpose and features (`install.packages("renv")`)
+- Update RStudio to a recent version so that **Posit Connect Cloud** shows up as a publishing option
 :::
 
-Now that you have your Shiny app, how can you [share it](https://shiny.posit.co/r/getstarted/shiny-basics/lesson7/) with others? The simplest and most logical thing to do is to publish it as a web page. After all, sharing your app on the web is sort of the point of making a web app and doing so is an essential if you want to share your apps with a broader set of users who do not know how to use R or and/or Shiny. There are many different ways to publish your app but the best way when you are getting started is [ShinyApps.io](https://www.shinyapps.io/). 
+## Overview
 
-You also may want to share your app with collaborators by sending them your R script and supporting files before you make your app public or available to a broader group of users. There are many ways to share your Shiny app files but the two we are going to cover are sending the files via email or sharing them on GitHub. 
+Now that you have your Shiny app or your Quarto report, how can you share it with others? The simplest and most logical thing to do is to publish it as a web page. After all, sharing your work on the web is sort of the point of making a web app, and doing so is essential if you want to share your project with people who do not know how to use R. There are many ways to publish, but the easiest when you are getting started is [Posit Connect Cloud](https://connect.posit.cloud/), Posit's free hosting service for Shiny apps, Quarto documents and other data science content. (You may see older tutorials that use shinyapps.io; Connect Cloud is its successor, so skip those.)
+
+The good news is that **the steps are the same whether you are publishing a Shiny app or a Quarto report**. The only differences are which file you tell Connect Cloud is your primary file and which content type you choose:
+
+| | Shiny app | Quarto report |
+|---|---|---|
+| Primary file | `app.R` | `report.qmd` (or whatever you named it) |
+| Content type | **Shiny** | **Quarto** |
+
+There are two ways to publish: directly from your IDE (RStudio or Positron), or from a GitHub repository. Publishing from your IDE is the quickest way to get started. Publishing from GitHub takes a little more setup but means your project republishes automatically every time you push a change.
 
 :::{.callout-important}
-Note that while I am covering methods of sharing your code with others, your are not required to do so for this course. The only requirement is sharing your application as a web app via ShinyApps.io and then either writing a short essay about the app or demoing the app in a short video. Then you will submit your project folder on Blackboard as you have been doing for the previous assignments.
+For the final project, the requirement is that your app or report is **published on Posit Connect Cloud** and that you submit the link along with your zipped project folder on Blackboard. See [Final Project](/project/project-assignment-2.qmd) for details. Sharing your code on GitHub is optional unless you choose the GitHub route for publishing.
 :::
 
-{{< video https://youtu.be/dGUgSFhvaFs title = 'Building your app'>}}
+## Before you publish
 
-## Publishing your app on ShinyApps.io
+A lot of deployment problems come from projects that work on your machine only because of something specific to your machine. Before you publish, check that:
 
-Once it is ready to go, publishing your app to ShinyApps.io is super-easy. Make sure that you have the `rsconnect` package installed. Then, in RStudio, go to Tools > Global Options and select Publishing. Select Connect, ShinyApps.io and follow the instructions for retrieving and entering your token. 
+-   **Everything lives in one project folder**: your `app.R` or `.qmd` file plus any data files and helper scripts it needs.
+-   **Your file paths are relative**, e.g. `read_csv("data/my_data.csv")` rather than `read_csv("/Users/me/Desktop/project/data/my_data.csv")`.
+-   **There is no `setwd()` or `install.packages()`** in your code.
+-   **Every package is loaded with `library()`** near the top of the file. This is how Connect Cloud figures out what to install.
+-   **The project runs from a fresh R session.** Restart R (Session \> Restart R) and run or render it one more time.
 
-Once that is set up, open your app.R file. At the top of your Source window, you should see a little blue circle with arrows surrounding it that says "Publish the application or document" when you hover over it. Click that and, if prompted to do so, install any required updates. 
+### Keep your API keys out of your code
 
-Next you will be prompted for which files you want to upload. Just select the essential files that you need for the app like the app.R file and any supporting files like a .csv file with the data the app needs or helper scripts. No need to upload ancillary files like your prep file or .Rprofile. 
+If your project downloads data through an API that requires a key (like the FRED app in [Advanced Shiny](/modules/module-5.2.qmd)), do **not** publish the key in your code. This is especially important if you publish from GitHub, because the free plan requires a public repository that anyone can read. You have two options:
 
-Then hit Publish and that should be it! [Here](https://statsandr.com/blog/how-to-publish-shiny-app-example-with-shinyapps-io/) is a good set of step-by-step instructions in case you happen to get stuck. 
+1.  **Download the data once and save it to a file.** Run your API calls in a separate script, save the result with `write_csv()` or `saveRDS()`, and have your app or report read the file. This is usually the simplest approach, and it makes your project faster too.
+2.  **Store the key as a secret variable on Connect Cloud.** When you publish, add a secret variable (e.g., `FRED_API_KEY`) with your key as the value. Then read it in your code with `Sys.getenv()`:
 
-## Sharing your project folder via email
+```{r}
+#| label: secret
+#| eval: false
+fredr_set_key(Sys.getenv("FRED_API_KEY"))
+```
 
-Now let's say you want to share your code with people. The most basic way to share your app is to simply zip your project folder and send it to your collaborators via email. The other users can then place your project folder wherever they like and run the app by pressing the "run" icon or by using the `runApp()` function, e.g. 
+To make this work on your own computer, add a line like `FRED_API_KEY=yourkeyhere` to a file called `.Renviron` in your project folder (you can open it with `usethis::edit_r_environ("project")`) and restart R. Never commit `.Renviron` to GitHub---add it to your `.gitignore`.
+
+## Option 1: Publish from your IDE
+
+### RStudio
+
+1.  Open your `app.R` file. If you are publishing a report, open your `.qmd` file and click **Render** first.
+2.  Click the blue **Publish** icon (a circle with arrows) at the top of the editor and, if prompted, install any required updates.
+3.  Choose **Posit Connect Cloud** and log in to connect your account. You only need to do this the first time.
+4.  Select the files to upload. Include the essentials---your main file, data files and helper scripts---but not ancillary files like your data prep script or `.Rprofile`.
+5.  Click **Publish**.
+
+When it finishes, your project will open in the browser at a URL that looks like `https://yourname-project.share.connect.posit.cloud`. To update your project later, save your changes (and re-render, for a report) and click **Publish** again.
+
+### Positron
+
+Positron comes with the **Posit Publisher** extension built in.
+
+1.  Click the **Posit Publisher** icon in the Activity Bar.
+2.  Under **Credentials**, click **+**, select **Posit Connect Cloud** and authorize access in your browser. Check that the code in the browser matches the one in Positron.
+3.  Add a deployment and select your `app.R` or `.qmd` file as the entrypoint.
+4.  Confirm the **Project Files** to include and add any **Secrets** (such as API keys).
+5.  Click **Deploy Your Project**.
+
+Positron needs an `renv.lock` file to know which packages your project uses, so run `renv::init()` in the console before you deploy (see [below](#using-the-renv-package-to-record-your-r-environment)). Keep the `.posit` folder that Publisher creates so that later deploys update the same project rather than creating a new one.
+
+## Option 2: Publish from GitHub
+
+### Step 1: Create a manifest
+
+When you publish from GitHub, Connect Cloud needs a list of the packages (and package versions) your project uses. You create this with the `writeManifest()` function from `rsconnect`. From your project folder, run:
+
+```{r}
+#| label: manifest
+#| eval: false
+rsconnect::writeManifest()
+```
+
+This creates a file called `manifest.json`. If you add a package to your project later, run `writeManifest()` again.
+
+### Step 2: Push your project to GitHub
+
+Commit your main file, `manifest.json`, and any data files and helper scripts, then push them to a **public** GitHub repository. To create a new repo, go to your GitHub profile, select Repositories, click New and give the repository a name. Make sure it is set to Public, click "Create repository," and then connect your project folder to it (in RStudio, the easiest way is to create a new Version Control project from the repo's URL and copy your files into it).
+
+### Step 3: Publish on Connect Cloud
+
+1.  Sign in to [Posit Connect Cloud](https://connect.posit.cloud/) and click **Publish**.
+2.  If this is your first time, install the **GitHub App** when prompted and give it access to your repository.
+3.  Choose **Shiny** (for an app) or **Quarto** (for a report).
+4.  Select your repository and branch (usually `main`).
+5.  Select your **primary file**: `app.R` or your `.qmd` file.
+6.  If your project needs an API key, open **Advanced settings**, click **+ Add variable**, and enter the name (e.g., `FRED_API_KEY`) and value.
+7.  Leave **Automatically publish on push** on (recommended) and click **Publish**.
+
+From now on, every time you push a change to `main`, Connect Cloud will republish your project. If you turned automatic publishing off, click **Republish** on your project's page instead.
+
+## Authoring a report in Quarto
+
+If you chose the report track, you will write your report as a Quarto document and publish it exactly as described above. A few tips for making it look like a finished piece:
+
+-   **Hide your code.** Set `echo: false` (along with `message: false` and `warning: false`) under `execute:` in your YAML header so readers see your figures and writing, not your code.
+-   **Use headings to give the report structure**, e.g. Introduction, Data, Findings and Conclusion.
+-   **Label and caption your figures** with `#| label: fig-...` and `#| fig-cap:` so you can cross-reference them in your text with `@fig-...`.
+-   **Lead with the takeaway.** Tell the reader what to notice in each figure; don't make them guess.
+
+Here is a YAML header to start from:
+
+```{.yaml}
+---
+title: "Democracy and Development, 1990-2024"
+author: "Your Name(s)"
+date: today
+format:
+  html:
+    toc: true
+    embed-resources: true
+execute:
+  echo: false
+  message: false
+  warning: false
+---
+```
+
+See the [Quarto and Markdown](/modules/getting-started-2.qmd) module and the [Quarto guide](https://quarto.org/docs/guide/) for more.
+
+## Troubleshooting
+
+-   **"There is no package called ..."**: Make sure every package is loaded with `library()` and, if you publish from GitHub, re-run `rsconnect::writeManifest()` and push again.
+-   **"Cannot open file ..."**: You are using an absolute path, or you didn't include the data file when you published.
+-   **The project works locally but not online**: Open your project's page on Connect Cloud and check the **logs**. The error message there is usually the same one you would see in the R console.
+-   **An API call fails online**: Your secret variable is missing or misnamed. Check that the name in Connect Cloud matches the name in `Sys.getenv()` exactly.
+
+Always open your published link in a private browser window to see what other people will see.
+
+## Sharing your project folder
+
+You may also want to share your code with collaborators. The most basic way is to zip your project folder and send it to them. They can place the folder wherever they like and run the app by pressing the "Run App" button or by using the `runApp()` function, e.g.:
 
 ```{r}
 #| eval: false
@@ -54,22 +172,10 @@ library(shiny)
 runApp("name-of-app")
 ```
 
-## Sharing your code on GitHub
-
-Another way to share your code is on GitHub. The easiest way to do this is to use version control from the very beginning like you [have been doing](https://dataviz-gwu.rocks/modules/getting-started.html#github) with GitHub for version control in this course.
-
-Since you submit your assignments on Blackboard rather than through a public repo, the best way to share your code for this app would be to simply create a new public GitHub repo and copy your code to a new version control project associated with that repo. Then, if you want to make changes to your app and publish it from the new project folder, simply give it a new title when you upload it to ShinyApps.io.
-
-To create a new repo in GitHub, go to your profile, go to Repositories, select New and name your new repository. You can also give it an optional description. Make sure your new repo is set to Public and hit "Create repository." From there copy the repo's URL and use it to create a new version control project in RStudio. Then copy your app.R and supporting files to the new version control rep. 
+For a report, they can open the `.qmd` file and click **Render**. A zipped copy of your project folder is also what you will submit on Blackboard for the final project.
 
 ## Using the `renv` package to record your R environment
 
-One problem you will frequently run into with R Shiny apps is that they can break as a result of package updates and new R installations. One way to prevent this from happening is to use the `renv` package, which records your R environment at the time you made the app. 
+One problem you will frequently run into is that projects can break as a result of package updates and new R installations. One way to prevent this from happening is to use the `renv` package, which records your R environment at the time you made the project.
 
-To do this, make sure `renv` is installed. Then type `renv::init()` in your console. Next, type `ren::snapshot()`. At this point, `renv` will give you a list of the packages and versions being used by the app. If everything looks good, type 'y' and `renv` will record the environment. When you come back to work on the app later, you can choose whether to update the packages, but if doing so breaks the app you the option of restoring the earlier environment by typing `renv::restore()`. 
-
-
-
-
-
-
+To do this, make sure `renv` is installed. Then type `renv::init()` in your console. Next, type `renv::snapshot()`. At this point, `renv` will give you a list of the packages and versions being used by the project. If everything looks good, type 'y' and `renv` will record the environment in a file called `renv.lock`. When you come back to work on the project later, you can choose whether to update the packages, but if doing so breaks the project, you have the option of restoring the earlier environment by typing `renv::restore()`. As a bonus, Connect Cloud (and Positron's Publisher) can read `renv.lock` to figure out which packages to install.

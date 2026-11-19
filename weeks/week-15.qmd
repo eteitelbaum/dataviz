@@ -1,6 +1,6 @@
 ---
 title: "Week 15"
-subtitle: "Project Studio"
+subtitle: "Deploying & Project Studio"
 format: html
 ---
 
@@ -10,16 +10,21 @@ format: html
 source("../helper.R")
 ```
 
-If you're building a Shiny app, we deploy and share it on shinyapps.io; if you're doing the report track, use this time to finalize your visualization and write-up. The rest of the week is studio time: peer feedback and dry-run presentations to get your project ready for the final session.
+On Tuesday we publish our projects to Posit Connect Cloud. The steps are the same for Shiny apps and Quarto reports, and we cover some tips for authoring reports in Quarto. On Thursday we look at Shiny modules for those building apps. Both sessions end with studio time: peer feedback and dry runs to get your project ready for the final session.
 
 ::: {.callout-note}
 Building an app? [Styling Your App](/modules/module-6.1.qmd) and [Troubleshooting Your App](/modules/module-6.1.qmd) are optional reference material for polishing and debugging.
 :::
 
+## Slides
+
+| 🖥️ [Deploying & Sharing Your Project](/slides/week-14.1.qmd)
+| 🖥️ [Shiny Modules](/slides/week-14.2.qmd)
+
 ## Readings
 
-| 📖 [Deploying & Sharing Your App](/modules/module-6.2.qmd)
+| 📖 [Deploying & Sharing Your Project](/modules/module-6.2.qmd)
 
-## Videos
+## Assignments
 
-| 🖥️ [Deploying and sharing your app](https://youtu.be/dGUgSFhvaFs)
+| ✍️ [Final project](/project/project-assignment-2.qmd), due before class on `r advdate2(tue, 15)`

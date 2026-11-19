@@ -82,8 +82,10 @@ ul.task-list li input[type="checkbox"] {
 
 
 <meta property="og:title" content="Final Project – PSC/DATS 2102–Course Schedule">
+<meta property="og:description" content="Homepage for PSC/DATS 2102, George Washington University.">
 <meta property="og:site_name" content="PSC/DATS 2102–Course Schedule">
 <meta name="twitter:title" content="Final Project – PSC/DATS 2102–Course Schedule">
+<meta name="twitter:description" content="Homepage for PSC/DATS 2102, George Washington University.">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -662,7 +664,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../modules/module-6.2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Deploying &amp; Sharing Your App</span></a>
+ <span class="menu-text">Deploying &amp; Sharing Your Project</span></a>
   </div>
 </li>
       </ul>
@@ -674,8 +676,30 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#what-your-project-should-include" id="toc-what-your-project-should-include" class="nav-link" data-scroll-target="#what-your-project-should-include">What your project should include</a>
+  <ul class="collapse">
+  <li><a href="#app-track" id="toc-app-track" class="nav-link" data-scroll-target="#app-track">App track</a></li>
+  <li><a href="#report-track" id="toc-report-track" class="nav-link" data-scroll-target="#report-track">Report track</a></li>
+  </ul></li>
+  <li><a href="#steps" id="toc-steps" class="nav-link" data-scroll-target="#steps">Steps</a>
+  <ul class="collapse">
+  <li><a href="#step-1-wrangle-your-data" id="toc-step-1-wrangle-your-data" class="nav-link" data-scroll-target="#step-1-wrangle-your-data">Step 1: Wrangle your data</a></li>
+  <li><a href="#step-2-build-your-visualization" id="toc-step-2-build-your-visualization" class="nav-link" data-scroll-target="#step-2-build-your-visualization">Step 2: Build your visualization</a></li>
+  <li><a href="#step-3-build-out-the-app-or-the-report" id="toc-step-3-build-out-the-app-or-the-report" class="nav-link" data-scroll-target="#step-3-build-out-the-app-or-the-report">Step 3: Build out the app or the report</a></li>
+  <li><a href="#step-4-debug" id="toc-step-4-debug" class="nav-link" data-scroll-target="#step-4-debug">Step 4: Debug</a></li>
+  <li><a href="#step-5-publish-to-posit-connect-cloud" id="toc-step-5-publish-to-posit-connect-cloud" class="nav-link" data-scroll-target="#step-5-publish-to-posit-connect-cloud">Step 5: Publish to Posit Connect Cloud</a></li>
+  <li><a href="#step-6-present-in-class" id="toc-step-6-present-in-class" class="nav-link" data-scroll-target="#step-6-present-in-class">Step 6: Present in class</a></li>
+  </ul></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
+  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/dataviz/edit/main/project/project-assignment-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/dataviz/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -700,11 +724,138 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div style="text-align: center; font-size: clamp(3rem, 12vw, 7rem); font-weight: 700; line-height: 1.1; margin: 5rem 0;">
-<p>Coming Soon!</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Due before class on Tuesday, December 8.</strong> Submit on Blackboard, then present your project in class that day.</p>
+</div>
+</div>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>Now that you have a clear sense of where you are going, it is time to build it. Much of this work happens during the project studio sessions in class, so lean on your classmates and on me. This is the hard part, and you will likely have to invest significant time in wrangling your data and debugging your code. Be patient! It will turn out great and you will have a nice project to show for it.</p>
+<p>Whichever track you chose, your finished project will be <strong>published on the web with <a href="https://connect.posit.cloud/">Posit Connect Cloud</a></strong> so that anyone can view it without installing R. We cover publishing in the <a href="../modules/module-6.2.html">Deploying &amp; Sharing</a> session after Thanksgiving, and the steps are the same for apps and reports.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you are working in a group (up to three students), submit <strong>one project</strong> and include a short note on who was responsible for what. See the <a href="../project/project-description.html">Project Description</a> for the group policy.</p>
+</div>
+</div>
+</section>
+<section id="what-your-project-should-include" class="level2">
+<h2 class="anchored" data-anchor-id="what-your-project-should-include">What your project should include</h2>
+<section id="app-track" class="level3">
+<h3 class="anchored" data-anchor-id="app-track">App track</h3>
+<ul>
+<li>A working Shiny app built around a clear question or theme.</li>
+<li>At least one well-crafted, labeled visualization (chart, map or table) that <strong>responds to user input</strong>.</li>
+<li>At least one input control that changes the output in a way that teaches the user something.</li>
+<li>A short block of text in the app (e.g., using <code>helpText()</code> or a <code>card()</code>) explaining what the app does, how to use it and where the data come from.</li>
+</ul>
+</section>
+<section id="report-track" class="level3">
+<h3 class="anchored" data-anchor-id="report-track">Report track</h3>
+<ul>
+<li>A report written in Quarto of roughly <strong>1,000–1,500 words</strong>, built around a clear question or argument.</li>
+<li>At least one well-crafted visualization that anchors the write-up, with a title, clear axis labels, a caption and a source note. Most reports will have two to four figures.</li>
+<li>Writing that puts the visualization to work: tell the reader what to look at and what it means.</li>
+<li>Code hidden from the reader (<code>echo: false</code>) so the report reads like a finished piece, not a notebook.</li>
+</ul>
+</section>
+</section>
+<section id="steps" class="level2">
+<h2 class="anchored" data-anchor-id="steps">Steps</h2>
+<section id="step-1-wrangle-your-data" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-wrangle-your-data">Step 1: Wrangle your data</h3>
+<p><em>Start in a separate R script or Quarto document. Load and wrangle a “working” version of your data—you do not need everything at once—and use <code>glimpse()</code> and <code>View()</code> to make sure it looks the way it should. Save the cleaned data (e.g., as a <code>.csv</code> or <code>.rds</code> file) in your project folder so your app or report can read it in quickly.</em></p>
+</section>
+<section id="step-2-build-your-visualization" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-build-your-visualization">Step 2: Build your visualization</h3>
+<p><em>Get your main visualization working with one or two indicators before you add interactivity or write around it. This is the heart of your project, so give it the polish we practiced in the course: sensible color, clear labels, a title and a source note.</em></p>
+</section>
+<section id="step-3-build-out-the-app-or-the-report" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-build-out-the-app-or-the-report">Step 3: Build out the app or the report</h3>
+<p><strong><em>App track:</em></strong> <em>Start a new Shiny app. Lay out your UI first (a <code>page_sidebar()</code> or <code>fluidPage()</code> with your inputs and outputs) and run it to see how it looks. Then write your server logic, connecting your inputs to your outputs with <code>render*()</code> functions and, where useful, <code>reactive()</code>. Scaffold as you go: get one small piece working before adding the next. See <a href="../modules/module-6.1.html">Project Studio</a> for tips on styling and troubleshooting.</em></p>
+<p><strong><em>Report track:</em></strong> <em>Start a new Quarto document. Set up your YAML header, outline your sections with headings, drop in your visualization code chunks and then write. Use figure captions and cross-references (e.g., <code>@fig-trend</code>) so your text can point the reader to specific figures. Render early and often.</em></p>
+</section>
+<section id="step-4-debug" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-debug">Step 4: Debug</h3>
+<p><em>Are you having issues with your code? See <a href="../modules/module-6.1.html">Project Studio</a>, this <a href="https://shiny.posit.co/r/articles/improve/debugging/">post on debugging Shiny apps</a>, and reach out for help on Discord. Come to the studio sessions with specific questions.</em></p>
+</section>
+<section id="step-5-publish-to-posit-connect-cloud" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-publish-to-posit-connect-cloud">Step 5: Publish to Posit Connect Cloud</h3>
+<p><em>Publish your app or report to <a href="https://connect.posit.cloud/">Posit Connect Cloud</a> following the steps in <a href="../modules/module-6.2.html">Deploying &amp; Sharing</a>. Open the published link in a private browser window to make sure it works for someone who isn’t you. <strong>Never put an API key in your code</strong>—if your project downloads data with a key (e.g., FRED), either save the data to a file first or store the key as a secret in Connect Cloud.</em></p>
+</section>
+<section id="step-6-present-in-class" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-present-in-class">Step 6: Present in class</h3>
+<p><em>On Tuesday, December 8, you will give a short lightning talk (about 3–4 minutes) with a live demo of your app or a walk-through of your report. Tell us your question, show us how your project works and—most importantly—what we learn from the visualization that we might not have seen otherwise. If you are in a group, decide in advance who will present which part.</em></p>
+</section>
+</section>
+<section id="submission" class="level2">
+<h2 class="anchored" data-anchor-id="submission">Submission</h2>
+<p><em>Submit the following on Blackboard <strong>before class on Tuesday, December 8</strong>. Groups submit once.</em></p>
+<ol type="1">
+<li><em>The <strong>link</strong> to your published app or report on Posit Connect Cloud.</em></li>
+<li><em>A compressed (zipped) copy of your <strong>project folder</strong>: your <code>app.R</code> or <code>.qmd</code> file, plus any data files and helper scripts it needs.</em></li>
+<li><em>A short <strong>note</strong> (a few sentences, in the Blackboard submission box or a text file in your folder) covering who did what if you worked in a group, and whether and how you used AI tools (see the <a href="../course-syllabus.html#policy-on-ai-tools">Policy on AI Tools</a>).</em></li>
+</ol>
+</section>
+<section id="grading" class="level2">
+<h2 class="anchored" data-anchor-id="grading">Grading</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 57%">
+<col style="width: 42%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th style="text-align: center;">Points</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Question and data: a clear question supported by appropriate, well-wrangled data</td>
+<td style="text-align: center;">20</td>
+</tr>
+<tr class="even">
+<td>Visualization: well-chosen, polished and clearly labeled</td>
+<td style="text-align: center;">30</td>
+</tr>
+<tr class="odd">
+<td>Interactivity (app) or narrative (report): controls or writing that help the audience learn something</td>
+<td style="text-align: center;">20</td>
+</tr>
+<tr class="even">
+<td>Publishing and code: project is live on Connect Cloud; code is organized and runs</td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr class="odd">
+<td>Presentation: clear, on time and focused on what we learn</td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td style="text-align: center;"><strong>100</strong></td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1145,7 +1296,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/dataviz/edit/main/project/project-assignment-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/dataviz/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/eteitelbaum/dataviz/edit/main/project/project-assignment-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/dataviz/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>. 👷🛠️</p>
 </div>

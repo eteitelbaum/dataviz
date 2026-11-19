@@ -158,7 +158,7 @@ website:
               - href: modules/module-6.1.qmd
                 text: "Project Studio (optional: styling & troubleshooting)"
               - href: modules/module-6.2.qmd
-                text: "Deploying & Sharing Your App"
+                text: "Deploying & Sharing Your Project"
 format:
   html:
     theme:

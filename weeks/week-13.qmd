@@ -14,7 +14,7 @@ source("../helper.R")
 **Project proposal** due by 11:59 p.m. on `r advdate2(mon, 13)`.
 :::
 
-We add more inputs and build a time-series app with observers and reactives, then learn to factor app code into reusable Shiny modules.
+On Tuesday we add more inputs and build a time-series app with observers and reactives. On Thursday we kick off the final project: pick a track (Shiny app or report), form groups, find your data and start your proposal. Shiny modules and deployment move to the week after Thanksgiving.
 
 ::: {.callout-note}
 [Styling Your App](/modules/module-6.1.qmd) and [Troubleshooting Your App](/modules/module-6.1.qmd) are now optional material for students building a Shiny app for their final project — work through them on your own if that's your track.
@@ -23,7 +23,7 @@ We add more inputs and build a time-series app with observers and reactives, the
 ## Slides
 
 | 🖥️ [Observers and Reactives](/slides/week-12.1.qmd)
-| 🖥️ [Modules](/slides/week-12.2.qmd)
+| 🖥️ [Getting Started on Your Final Project](/slides/week-12.2.qmd)
 
 ## Readings
 
@@ -32,3 +32,4 @@ We add more inputs and build a time-series app with observers and reactives, the
 ## Assignments
 
 | 📘 Weekly quiz, in class
+| ✍️ [Project proposal](/project/project-assignment-1.qmd), due 11:59 p.m. on `r advdate2(mon, 13)`

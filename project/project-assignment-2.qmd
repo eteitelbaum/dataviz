@@ -2,6 +2,85 @@
 title: "Final Project"
 ---
 
-::: {style="text-align: center; font-size: clamp(3rem, 12vw, 7rem); font-weight: 700; line-height: 1.1; margin: 5rem 0;"}
-Coming Soon!
+```{r}
+#| label: setup
+#| include: false
+source("../helper.R")
+```
+
+::: {.callout-important}
+**Due before class on `r advdate2(tue, 15)`.** Submit on Blackboard, then present your project in class that day.
 :::
+
+## Overview
+
+Now that you have a clear sense of where you are going, it is time to build it. Much of this work happens during the project studio sessions in class, so lean on your classmates and on me. This is the hard part, and you will likely have to invest significant time in wrangling your data and debugging your code. Be patient! It will turn out great and you will have a nice project to show for it.
+
+Whichever track you chose, your finished project will be **published on the web with [Posit Connect Cloud](https://connect.posit.cloud/)** so that anyone can view it without installing R. We cover publishing in the [Deploying & Sharing](/modules/module-6.2.qmd) session after Thanksgiving, and the steps are the same for apps and reports.
+
+::: {.callout-note}
+If you are working in a group (up to three students), submit **one project** and include a short note on who was responsible for what. See the [Project Description](/project/project-description.qmd) for the group policy.
+:::
+
+## What your project should include
+
+### App track
+
+-   A working Shiny app built around a clear question or theme.
+-   At least one well-crafted, labeled visualization (chart, map or table) that **responds to user input**.
+-   At least one input control that changes the output in a way that teaches the user something.
+-   A short block of text in the app (e.g., using `helpText()` or a `card()`) explaining what the app does, how to use it and where the data come from.
+
+### Report track
+
+-   A report written in Quarto of roughly **1,000--1,500 words**, built around a clear question or argument.
+-   At least one well-crafted visualization that anchors the write-up, with a title, clear axis labels, a caption and a source note. Most reports will have two to four figures.
+-   Writing that puts the visualization to work: tell the reader what to look at and what it means.
+-   Code hidden from the reader (`echo: false`) so the report reads like a finished piece, not a notebook.
+
+## Steps
+
+### Step 1: Wrangle your data
+
+*Start in a separate R script or Quarto document. Load and wrangle a "working" version of your data---you do not need everything at once---and use `glimpse()` and `View()` to make sure it looks the way it should. Save the cleaned data (e.g., as a `.csv` or `.rds` file) in your project folder so your app or report can read it in quickly.*
+
+### Step 2: Build your visualization
+
+*Get your main visualization working with one or two indicators before you add interactivity or write around it. This is the heart of your project, so give it the polish we practiced in the course: sensible color, clear labels, a title and a source note.*
+
+### Step 3: Build out the app or the report
+
+***App track:*** *Start a new Shiny app. Lay out your UI first (a `page_sidebar()` or `fluidPage()` with your inputs and outputs) and run it to see how it looks. Then write your server logic, connecting your inputs to your outputs with `render*()` functions and, where useful, `reactive()`. Scaffold as you go: get one small piece working before adding the next. See [Project Studio](/modules/module-6.1.qmd) for tips on styling and troubleshooting.*
+
+***Report track:*** *Start a new Quarto document. Set up your YAML header, outline your sections with headings, drop in your visualization code chunks and then write. Use figure captions and cross-references (e.g., `@fig-trend`) so your text can point the reader to specific figures. Render early and often.*
+
+### Step 4: Debug
+
+*Are you having issues with your code? See [Project Studio](/modules/module-6.1.qmd), this [post on debugging Shiny apps](https://shiny.posit.co/r/articles/improve/debugging/), and reach out for help on Discord. Come to the studio sessions with specific questions.*
+
+### Step 5: Publish to Posit Connect Cloud
+
+*Publish your app or report to [Posit Connect Cloud](https://connect.posit.cloud/) following the steps in [Deploying & Sharing](/modules/module-6.2.qmd). Open the published link in a private browser window to make sure it works for someone who isn't you. **Never put an API key in your code**---if your project downloads data with a key (e.g., FRED), either save the data to a file first or store the key as a secret in Connect Cloud.*
+
+### Step 6: Present in class
+
+*On `r advdate2(tue, 15)`, you will give a short lightning talk (about 3--4 minutes) with a live demo of your app or a walk-through of your report. Tell us your question, show us how your project works and---most importantly---what we learn from the visualization that we might not have seen otherwise. If you are in a group, decide in advance who will present which part.*
+
+## Submission
+
+*Submit the following on Blackboard **before class on `r advdate2(tue, 15)`**. Groups submit once.*
+
+1.  *The **link** to your published app or report on Posit Connect Cloud.*
+2.  *A compressed (zipped) copy of your **project folder**: your `app.R` or `.qmd` file, plus any data files and helper scripts it needs.*
+3.  *A short **note** (a few sentences, in the Blackboard submission box or a text file in your folder) covering who did what if you worked in a group, and whether and how you used AI tools (see the [Policy on AI Tools](/course-syllabus.qmd#policy-on-ai-tools)).*
+
+## Grading
+
+| Component | Points |
+|-----------|:------:|
+| Question and data: a clear question supported by appropriate, well-wrangled data | 20 |
+| Visualization: well-chosen, polished and clearly labeled | 30 |
+| Interactivity (app) or narrative (report): controls or writing that help the audience learn something | 20 |
+| Publishing and code: project is live on Connect Cloud; code is organized and runs | 15 |
+| Presentation: clear, on time and focused on what we learn | 15 |
+| **Total** | **100** |

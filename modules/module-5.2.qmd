@@ -33,7 +33,7 @@ A fundmental concept in R Shiny is reactivity. Reactivity refers to the automati
 
 All Shiny apps have an element of reactivity. In a basic Shiny app like we say in the last module, reactivity occurs when user input is fed to the server function through functions like `renderPlot()` or `renderTable()`. But we might also want to add additional elements of reactivity by using reactive functions like `reactive()` or `observe()`. In this lesson, we are going to look at how to use the `reactive()` function to control two separate reactive inputs to a line chart: the indicator the user wishes to view and the date range that the way to view it for. Here is the app that we are going to be building:
 
-<iframe src="https://emmanuelteitelbaum.shinyapps.io/fred_app/" width="780" height="560" data-external="1"></iframe>
+<iframe src="https://eteitelbaum-fred-app.share.connect.posit.cloud/" width="780" height="560" data-external="1"></iframe>
 
 ## Setup
 
@@ -186,7 +186,7 @@ server <- function(input, output) {
 
 ## Call to Shiny app
 
-Once we have our UI and server functions defined we are ready to go. But don't forget to include the call to the Shiny app or the app won't run! Once this is in place, you can click "Run App" in the RStudio IDE to view the app locally. We will cover how to publish your app on [Posit Connect Cloud](https://connect.posit.cloud/) in session 12.2. 
+Once we have our UI and server functions defined we are ready to go. But don't forget to include the call to the Shiny app or the app won't run! Once this is in place, you can click "Run App" in the RStudio IDE to view the app locally. We will cover how to publish your app on [Posit Connect Cloud](https://connect.posit.cloud/) in the [Deploying & Sharing](/modules/module-6.2.qmd) session after Thanksgiving. 
 
 ```{r}
 #| label: call_shiny

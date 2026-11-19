@@ -209,7 +209,18 @@
     "href": "weeks/week-15.html",
     "title": "Week 15",
     "section": "",
-    "text": "If you’re building a Shiny app, we deploy and share it on shinyapps.io; if you’re doing the report track, use this time to finalize your visualization and write-up. The rest of the week is studio time: peer feedback and dry-run presentations to get your project ready for the final session.",
+    "text": "On Tuesday we publish our projects to Posit Connect Cloud. The steps are the same for Shiny apps and Quarto reports, and we cover some tips for authoring reports in Quarto. On Thursday we look at Shiny modules for those building apps. Both sessions end with studio time: peer feedback and dry runs to get your project ready for the final session.",
+    "crumbs": [
+      "Weekly Materials",
+      "Week 15"
+    ]
+  },
+  {
+    "objectID": "weeks/week-15.html#slides",
+    "href": "weeks/week-15.html#slides",
+    "title": "Week 15",
+    "section": "Slides",
+    "text": "Slides\n🖥️ Deploying & Sharing Your Project\n🖥️ Shiny Modules",
     "crumbs": [
       "Weekly Materials",
       "Week 15"
@@ -220,18 +231,18 @@
     "href": "weeks/week-15.html#readings",
     "title": "Week 15",
     "section": "Readings",
-    "text": "Readings\n📖 Deploying & Sharing Your App",
+    "text": "Readings\n📖 Deploying & Sharing Your Project",
     "crumbs": [
       "Weekly Materials",
       "Week 15"
     ]
   },
   {
-    "objectID": "weeks/week-15.html#videos",
-    "href": "weeks/week-15.html#videos",
+    "objectID": "weeks/week-15.html#assignments",
+    "href": "weeks/week-15.html#assignments",
     "title": "Week 15",
-    "section": "Videos",
-    "text": "Videos\n🖥️ Deploying and sharing your app",
+    "section": "Assignments",
+    "text": "Assignments\n✍️ Final project, due before class on Tuesday, December 8",
     "crumbs": [
       "Weekly Materials",
       "Week 15"
@@ -242,7 +253,7 @@
     "href": "weeks/week-13.html",
     "title": "Week 13",
     "section": "",
-    "text": "Important\n\n\n\nProject proposal due by 11:59 p.m. on Monday, November 23.\nWe add more inputs and build a time-series app with observers and reactives, then learn to factor app code into reusable Shiny modules.",
+    "text": "Important\n\n\n\nProject proposal due by 11:59 p.m. on Monday, November 23.\nOn Tuesday we add more inputs and build a time-series app with observers and reactives. On Thursday we kick off the final project: pick a track (Shiny app or report), form groups, find your data and start your proposal. Shiny modules and deployment move to the week after Thanksgiving.",
     "crumbs": [
       "Weekly Materials",
       "Week 13"
@@ -253,7 +264,7 @@
     "href": "weeks/week-13.html#slides",
     "title": "Week 13",
     "section": "Slides",
-    "text": "Slides\n🖥️ Observers and Reactives\n🖥️ Modules",
+    "text": "Slides\n🖥️ Observers and Reactives\n🖥️ Getting Started on Your Final Project",
     "crumbs": [
       "Weekly Materials",
       "Week 13"
@@ -275,7 +286,7 @@
     "href": "weeks/week-13.html#assignments",
     "title": "Week 13",
     "section": "Assignments",
-    "text": "Assignments\n📘 Weekly quiz, in class",
+    "text": "Assignments\n📘 Weekly quiz, in class\n✍️ Project proposal, due 11:59 p.m. on Monday, November 23",
     "crumbs": [
       "Weekly Materials",
       "Week 13"
@@ -1284,6 +1295,97 @@
     "text": "Other Plots and Geometries\n\n\n\n\nBox Plot\ngeom_boxplot()\nViolin Plot\ngeom_violin()\nDensity Plot\ngeom_density()\nBar Plot (Categorical)\ngeom_bar()\nHeatmap\ngeom_tile()\n\n\n\nArea Plot\ngeom_area()\nDot Plot\ngeom_dotplot()\nPie Chart\n(usually a bar plot with coord_polar())\nRidgeline Plot\nggridges::geom_density_ridges()\nMap Plot (Choropleth)\ngeom_polygon()"
   },
   {
+    "objectID": "slides/week-14.2.html#what-are-modules",
+    "href": "slides/week-14.2.html#what-are-modules",
+    "title": "Shiny Modules",
+    "section": "What are modules?",
+    "text": "What are modules?\nYou could call modules special functions.\n\nUsing functions in a Shiny app is common:\n\nYou use functions in your UI (e.g. value_box())\nYou use functions in your server\n\n\nThat works well for code that is completely on the ui or server side."
+  },
+  {
+    "objectID": "slides/week-14.2.html#what-are-modules-1",
+    "href": "slides/week-14.2.html#what-are-modules-1",
+    "title": "Shiny Modules",
+    "section": "What are modules?",
+    "text": "What are modules?\nFor code that spans both the ui and the server, you need a new technique: modules\n\nA module consists of some UI code that works together with some server code\n\nModules are special because they create their own namespace: things like input and output ids are isolated from the rest of the app"
+  },
+  {
+    "objectID": "slides/week-14.2.html#why-use-modules",
+    "href": "slides/week-14.2.html#why-use-modules",
+    "title": "Shiny Modules",
+    "section": "Why use modules?",
+    "text": "Why use modules?\nThere are two main reasons to work with modules:\n\n\nBecause a module creates its own namespace, you can write and run code in isolation. You don’t need to worry about what’s going on outside the module. And remember, ids needed to be unique!\nBecause a module is basically a function, it comes with all the benefits that functions have."
+  },
+  {
+    "objectID": "slides/week-14.2.html#what-does-a-module-look-like",
+    "href": "slides/week-14.2.html#what-does-a-module-look-like",
+    "title": "Shiny Modules",
+    "section": "What does a module look like?",
+    "text": "What does a module look like?\nA module has two parts, and is basically a mini-app:\n\n\nThe module UI, which generates the HTML and runs code inside the ui() function\nThe module server, which runs code inside the server() function"
+  },
+  {
+    "objectID": "slides/week-14.2.html#what-does-a-module-look-like-1",
+    "href": "slides/week-14.2.html#what-does-a-module-look-like-1",
+    "title": "Shiny Modules",
+    "section": "What does a module look like?",
+    "text": "What does a module look like?\nlibrary(shiny)\n\nnumberModUI &lt;- function(id) {\n  ns &lt;- NS(id)\n  tagList(\n    numericInput(inputId = ns(\"number\"),\n                 label = \"Enter a number\",\n                 value = 0),\n    actionButton(inputId = ns(\"button\"),\n                 label = \"Click me\"),\n    textOutput(outputId = ns(\"text\"))\n  )\n}\n\nnumberModServer &lt;- function(id) {\n  moduleServer(id, function(input, output, session) {\n    output$text &lt;- renderText({\n      input$number^2\n    }) |&gt; bindEvent(input$button)\n  })\n}\n\nui &lt;- fluidPage(\n  numberModUI(\"numbers\")\n)\n\nserver &lt;- function(input, output, session) {\n  numberModServer(\"numbers\")\n}\n\nshinyApp(ui, server)"
+  },
+  {
+    "objectID": "slides/week-14.2.html#what-does-a-module-look-like-2",
+    "href": "slides/week-14.2.html#what-does-a-module-look-like-2",
+    "title": "Shiny Modules",
+    "section": "What does a module look like?",
+    "text": "What does a module look like?\nlibrary(shiny)\n\nnumberModUI &lt;- function(id) {\n  ns &lt;- NS(id)\n  tagList(\n    numericInput(inputId = ns(\"number\"),\n                 label = \"Enter a number\",\n                 value = 0),\n    actionButton(inputId = ns(\"button\"),\n                 label = \"Click me\"),\n    textOutput(outputId = ns(\"text\"))\n  )\n}\n\nnumberModServer &lt;- function(id) {\n  moduleServer(id, function(input, output, session) {\n    output$text &lt;- renderText({\n      input$number^2\n    }) |&gt; bindEvent(input$button)\n  })\n}\n\nui &lt;- fluidPage(\n  numberModUI(\"numbers\")\n)\n\nserver &lt;- function(input, output, session) {\n  numberModServer(\"numbers\")\n}\n\nshinyApp(ui, server)"
+  },
+  {
+    "objectID": "slides/week-14.2.html#what-does-a-module-look-like-3",
+    "href": "slides/week-14.2.html#what-does-a-module-look-like-3",
+    "title": "Shiny Modules",
+    "section": "What does a module look like?",
+    "text": "What does a module look like?\nlibrary(shiny)\n\nnumberModUI &lt;- function(id) {\n  ns &lt;- NS(id)\n  tagList(\n    numericInput(inputId = ns(\"number\"),\n                 label = \"Enter a number\",\n                 value = 0),\n    actionButton(inputId = ns(\"button\"),\n                 label = \"Click me\"),\n    textOutput(outputId = ns(\"text\"))\n  )\n}\n\nnumberModServer &lt;- function(id) {\n  moduleServer(id, function(input, output, session) {\n    output$text &lt;- renderText({\n      input$number^2\n    }) |&gt; bindEvent(input$button)\n  })\n}\n\nui &lt;- fluidPage(\n  numberModUI(\"numbers\")\n)\n\nserver &lt;- function(input, output, session) {\n  numberModServer(\"numbers\")\n}\n\nshinyApp(ui, server)"
+  },
+  {
+    "objectID": "slides/week-14.2.html#what-does-a-module-look-like-4",
+    "href": "slides/week-14.2.html#what-does-a-module-look-like-4",
+    "title": "Shiny Modules",
+    "section": "What does a module look like?",
+    "text": "What does a module look like?\nlibrary(shiny)\n\nnumberModUI &lt;- function(id) {\n  ns &lt;- NS(id)\n  tagList(\n    numericInput(inputId = ns(\"number\"),\n                 label = \"Enter a number\",\n                 value = 0),\n    actionButton(inputId = ns(\"button\"),\n                 label = \"Click me\"),\n    textOutput(outputId = ns(\"text\"))\n  )\n}\n\nnumberModServer &lt;- function(id) {\n  moduleServer(id, function(input, output, session) {\n    output$text &lt;- renderText({\n      input$number^2\n    }) |&gt; bindEvent(input$button)\n  })\n}\n\nui &lt;- fluidPage(\n  numberModUI(\"numbers\")\n)\n\nserver &lt;- function(input, output, session) {\n  numberModServer(\"numbers\")\n}\n\nshinyApp(ui, server)"
+  },
+  {
+    "objectID": "slides/week-14.2.html#where-do-you-put-modules",
+    "href": "slides/week-14.2.html#where-do-you-put-modules",
+    "title": "Shiny Modules",
+    "section": "Where do you put modules?",
+    "text": "Where do you put modules?\nYou can simply put the module functions in the app.R file (you call this inline).\n\nOther options:\n\nPut the module in a separate R script in the /R folder. Shiny will automatically source it.\nPut the module in a separate R script in any other folder, and source it using source(“./my_modules/random.R”)."
+  },
+  {
+    "objectID": "slides/week-14.2.html#module-use-cases",
+    "href": "slides/week-14.2.html#module-use-cases",
+    "title": "Shiny Modules",
+    "section": "Module Use Cases",
+    "text": "Module Use Cases\n\nWhen do you think modules might be useful in a Shiny app?\nWhat are some examples of modules you might create?\nHint: works well when you have to repeat the same thing multiple times, like with countries, regions, months or years.\nHere is one simple example"
+  },
+  {
+    "objectID": "slides/week-14.2.html#design-an-app-with-modules",
+    "href": "slides/week-14.2.html#design-an-app-with-modules",
+    "title": "Shiny Modules",
+    "section": "Design an App with Modules",
+    "text": "Design an App with Modules\n\nDesign a simple Shiny app that uses a module.\nWhat are the UI elements?\nWhat are the server elements?\nHow could you use one or more modules to make the app easier to build and maintain?\nDiscuss a possible design with your group."
+  },
+  {
+    "objectID": "slides/week-14.2.html#build-the-app",
+    "href": "slides/week-14.2.html#build-the-app",
+    "title": "Shiny Modules",
+    "section": "Build the App",
+    "text": "Build the App\n\nBuild the app you designed.\nStart with the modules.\nTest it out.\nDeploy it to Posit Connect Cloud (see Tuesday’s slides) and share the link with the class."
+  },
+  {
+    "objectID": "slides/week-14.2.html#acknowledgements",
+    "href": "slides/week-14.2.html#acknowledgements",
+    "title": "Shiny Modules",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\n\nParts of this presentation were adapted from Veerle van Leemput’s Shiny 101: The Modular App Blueprint"
+  },
+  {
     "objectID": "slides/week-13.2.html#the-hard-part-about-shiny",
     "href": "slides/week-13.2.html#the-hard-part-about-shiny",
     "title": "Troubleshooting Your App",
@@ -1389,102 +1491,67 @@
     "text": "Acknowledgements\n\nParts of this presentation were adapted from Veerle van Leemput’s Shiny 101: The Modular App Blueprint"
   },
   {
-    "objectID": "slides/week-12.2.html#what-are-modules",
-    "href": "slides/week-12.2.html#what-are-modules",
-    "title": "Modules & Deployment",
-    "section": "What are modules?",
-    "text": "What are modules?\nYou could call modules special functions.\n\nUsing functions in a Shiny app is common:\n\nYou use functions in your UI (e.g. value_box())\nYou use functions in your server\n\n\nThat works well for code that is completely on the ui or server side."
+    "objectID": "slides/week-12.2.html#two-tracks",
+    "href": "slides/week-12.2.html#two-tracks",
+    "title": "Getting Started on Your Final Project",
+    "section": "Two tracks",
+    "text": "Two tracks\n\n\n\nShiny app 🧭\n\nAn interactive tool that lets a user explore data\nThe controls should teach the user something\nPublished on Posit Connect Cloud\n\n\nReport 📝\n\nA polished report written in Quarto\nBuilt around at least one well-crafted visualization\nAlso published on Posit Connect Cloud\n\n\n\nSame proposal, same studio sessions, same deadlines. See the Project Description."
   },
   {
-    "objectID": "slides/week-12.2.html#what-are-modules-1",
-    "href": "slides/week-12.2.html#what-are-modules-1",
-    "title": "Modules & Deployment",
-    "section": "What are modules?",
-    "text": "What are modules?\nFor code that spans both the ui and the server, you need a new technique: modules\n\nA module consists of some UI code that works together with some server code\n\nModules are special because they create their own namespace: things like input and output ids are isolated from the rest of the app"
+    "objectID": "slides/week-12.2.html#what-makes-a-good-project",
+    "href": "slides/week-12.2.html#what-makes-a-good-project",
+    "title": "Getting Started on Your Final Project",
+    "section": "What makes a good project?",
+    "text": "What makes a good project?\n\nA clear question your audience can explore\nData that is comprehensive and convenient (no time for original data collection!)\nAt least one well-crafted, labeled visualization\nApp: controls that change the output in a way that teaches something\nReport: writing that puts the visualization to work"
   },
   {
-    "objectID": "slides/week-12.2.html#why-use-modules",
-    "href": "slides/week-12.2.html#why-use-modules",
-    "title": "Modules & Deployment",
-    "section": "Why use modules?",
-    "text": "Why use modules?\nThere are two main reasons to work with modules:\n\n\nBecause a module creates its own namespace, you can write and run code in isolation. You don’t need to worry about what’s going on outside the module. And remember, ids needed to be unique!\nBecause a module is basically a function, it comes with all the benefits that functions have."
+    "objectID": "slides/week-12.2.html#groups",
+    "href": "slides/week-12.2.html#groups",
+    "title": "Getting Started on Your Final Project",
+    "section": "Groups",
+    "text": "Groups\n\nWork alone or in a group of up to three\nOne proposal and one project per group; everyone shares the grade\nDivide the work clearly (data wrangling, UI, server logic, writing…)\nInclude a short division-of-work note with your proposal and your final submission"
   },
   {
-    "objectID": "slides/week-12.2.html#what-does-a-module-look-like",
-    "href": "slides/week-12.2.html#what-does-a-module-look-like",
-    "title": "Modules & Deployment",
-    "section": "What does a module look like?",
-    "text": "What does a module look like?\nA module has two parts, and is basically a mini-app:\n\n\nThe module UI, which generates the HTML and runs code inside the ui() function\nThe module server, which runs code inside the server() function"
+    "objectID": "slides/week-12.2.html#timeline",
+    "href": "slides/week-12.2.html#timeline",
+    "title": "Getting Started on Your Final Project",
+    "section": "Timeline",
+    "text": "Timeline\n\n\n\n\nWhen\nWhat\n\n\n\n\nToday\nKickoff: pick a track, form groups, find data\n\n\nMon, Nov 23, 11:59 p.m.\n✍️ Project proposal due\n\n\nNov 24–26\nThanksgiving break 🦃\n\n\nTue, Dec 1\nDeploying & sharing (apps and reports) + studio\n\n\nThu, Dec 3\nShiny modules + studio\n\n\nTue, Dec 8\n✍️ Final project due before class + lightning talks"
   },
   {
-    "objectID": "slides/week-12.2.html#what-does-a-module-look-like-1",
-    "href": "slides/week-12.2.html#what-does-a-module-look-like-1",
-    "title": "Modules & Deployment",
-    "section": "What does a module look like?",
-    "text": "What does a module look like?\nlibrary(shiny)\n\nnumberModUI &lt;- function(id) {\n  ns &lt;- NS(id)\n  tagList(\n    numericInput(inputId = ns(\"number\"),\n                 label = \"Enter a number\",\n                 value = 0),\n    actionButton(inputId = ns(\"button\"),\n                 label = \"Click me\"),\n    textOutput(outputId = ns(\"text\"))\n  )\n}\n\nnumberModServer &lt;- function(id) {\n  moduleServer(id, function(input, output, session) {\n    output$text &lt;- renderText({\n      input$number^2\n    }) |&gt; bindEvent(input$button)\n  })\n}\n\nui &lt;- fluidPage(\n  numberModUI(\"numbers\")\n)\n\nserver &lt;- function(input, output, session) {\n  numberModServer(\"numbers\")\n}\n\nshinyApp(ui, server)"
+    "objectID": "slides/week-12.2.html#the-proposal",
+    "href": "slides/week-12.2.html#the-proposal",
+    "title": "Getting Started on Your Final Project",
+    "section": "The proposal",
+    "text": "The proposal\nFour questions, a paragraph or two each:\n\nQuestion & track: What should your audience learn? App or report, and why? Link to examples you like.\nData: What sources, variables, units and years? How will you merge?\nVisualization: What will they see, and what should they notice?\nInteractivity or narrative: What will the user control (app), or how is the report structured (report)?\n\nSubmit your unrendered .qmd on Blackboard."
   },
   {
-    "objectID": "slides/week-12.2.html#what-does-a-module-look-like-2",
-    "href": "slides/week-12.2.html#what-does-a-module-look-like-2",
-    "title": "Modules & Deployment",
-    "section": "What does a module look like?",
-    "text": "What does a module look like?\nlibrary(shiny)\n\nnumberModUI &lt;- function(id) {\n  ns &lt;- NS(id)\n  tagList(\n    numericInput(inputId = ns(\"number\"),\n                 label = \"Enter a number\",\n                 value = 0),\n    actionButton(inputId = ns(\"button\"),\n                 label = \"Click me\"),\n    textOutput(outputId = ns(\"text\"))\n  )\n}\n\nnumberModServer &lt;- function(id) {\n  moduleServer(id, function(input, output, session) {\n    output$text &lt;- renderText({\n      input$number^2\n    }) |&gt; bindEvent(input$button)\n  })\n}\n\nui &lt;- fluidPage(\n  numberModUI(\"numbers\")\n)\n\nserver &lt;- function(input, output, session) {\n  numberModServer(\"numbers\")\n}\n\nshinyApp(ui, server)"
+    "objectID": "slides/week-12.2.html#where-to-find-data",
+    "href": "slides/week-12.2.html#where-to-find-data",
+    "title": "Getting Started on Your Final Project",
+    "section": "Where to find data",
+    "text": "Where to find data\n\nData we have used in class: V-Dem, World Bank (WDI), FRED, UCDP…\nThe Datasets page has many more\nPick something you can load into R today\nIf it needs an API key, plan to download once and save to a file"
   },
   {
-    "objectID": "slides/week-12.2.html#what-does-a-module-look-like-3",
-    "href": "slides/week-12.2.html#what-does-a-module-look-like-3",
-    "title": "Modules & Deployment",
-    "section": "What does a module look like?",
-    "text": "What does a module look like?\nlibrary(shiny)\n\nnumberModUI &lt;- function(id) {\n  ns &lt;- NS(id)\n  tagList(\n    numericInput(inputId = ns(\"number\"),\n                 label = \"Enter a number\",\n                 value = 0),\n    actionButton(inputId = ns(\"button\"),\n                 label = \"Click me\"),\n    textOutput(outputId = ns(\"text\"))\n  )\n}\n\nnumberModServer &lt;- function(id) {\n  moduleServer(id, function(input, output, session) {\n    output$text &lt;- renderText({\n      input$number^2\n    }) |&gt; bindEvent(input$button)\n  })\n}\n\nui &lt;- fluidPage(\n  numberModUI(\"numbers\")\n)\n\nserver &lt;- function(input, output, session) {\n  numberModServer(\"numbers\")\n}\n\nshinyApp(ui, server)"
+    "objectID": "slides/week-12.2.html#scope-it-small",
+    "href": "slides/week-12.2.html#scope-it-small",
+    "title": "Getting Started on Your Final Project",
+    "section": "Scope it small 🔬",
+    "text": "Scope it small 🔬\n\nStart with a proof of concept: one or two indicators, one chart\nGet that working before adding more data, inputs or sections\nA simple project that works beats an ambitious one that doesn’t\nYou can always add more later"
   },
   {
-    "objectID": "slides/week-12.2.html#what-does-a-module-look-like-4",
-    "href": "slides/week-12.2.html#what-does-a-module-look-like-4",
-    "title": "Modules & Deployment",
-    "section": "What does a module look like?",
-    "text": "What does a module look like?\nlibrary(shiny)\n\nnumberModUI &lt;- function(id) {\n  ns &lt;- NS(id)\n  tagList(\n    numericInput(inputId = ns(\"number\"),\n                 label = \"Enter a number\",\n                 value = 0),\n    actionButton(inputId = ns(\"button\"),\n                 label = \"Click me\"),\n    textOutput(outputId = ns(\"text\"))\n  )\n}\n\nnumberModServer &lt;- function(id) {\n  moduleServer(id, function(input, output, session) {\n    output$text &lt;- renderText({\n      input$number^2\n    }) |&gt; bindEvent(input$button)\n  })\n}\n\nui &lt;- fluidPage(\n  numberModUI(\"numbers\")\n)\n\nserver &lt;- function(input, output, session) {\n  numberModServer(\"numbers\")\n}\n\nshinyApp(ui, server)"
+    "objectID": "slides/week-12.2.html#ai-and-your-project",
+    "href": "slides/week-12.2.html#ai-and-your-project",
+    "title": "Getting Started on Your Final Project",
+    "section": "AI and your project",
+    "text": "AI and your project\n\nA full AI-assisted workflow is encouraged for the final project\nBut the design, data choices, analysis and interpretation must be yours\nYou should be able to explain and defend everything in your project\nNote how you used AI in your final submission"
   },
   {
-    "objectID": "slides/week-12.2.html#where-do-you-put-modules",
-    "href": "slides/week-12.2.html#where-do-you-put-modules",
-    "title": "Modules & Deployment",
-    "section": "Where do you put modules?",
-    "text": "Where do you put modules?\nYou can simply put the module functions in the app.R file (you call this inline).\n\nOther options:\n\nPut the module in a separate R script in the /R folder. Shiny will automatically source it.\nPut the module in a separate R script in any other folder, and source it using source(“./my_modules/random.R”)."
-  },
-  {
-    "objectID": "slides/week-12.2.html#posit-connect-cloud",
-    "href": "slides/week-12.2.html#posit-connect-cloud",
-    "title": "Modules & Deployment",
-    "section": "Posit Connect Cloud",
-    "text": "Posit Connect Cloud\n\nPlaceholder: deployment walkthrough coming soon\n\nWhat Posit Connect Cloud is and why we use it\nCreating an account and linking GitHub\nPreparing your app for deployment (app.R, dependencies)\nPublishing and sharing your app’s URL"
-  },
-  {
-    "objectID": "slides/week-12.2.html#module-use-cases",
-    "href": "slides/week-12.2.html#module-use-cases",
-    "title": "Modules & Deployment",
-    "section": "Module Use Cases",
-    "text": "Module Use Cases\n\nWhen do you think modules might be useful in a Shiny app?\nWhat are some examples of modules you might create?\nHint: works well when you have to repeat the same thing multiple times, like with countries, regions, months or years.\nHere is one simple example"
-  },
-  {
-    "objectID": "slides/week-12.2.html#design-an-app-with-modules",
-    "href": "slides/week-12.2.html#design-an-app-with-modules",
-    "title": "Modules & Deployment",
-    "section": "Design an App with Modules",
-    "text": "Design an App with Modules\n\nDesign a simple Shiny app that uses a module.\nWhat are the UI elements?\nWhat are the server elements?\nHow could you use one or more modules to make the app easier to build and maintain?\nDiscuss a possible design with your group."
-  },
-  {
-    "objectID": "slides/week-12.2.html#build-the-app",
-    "href": "slides/week-12.2.html#build-the-app",
-    "title": "Modules & Deployment",
-    "section": "Build the App",
-    "text": "Build the App\n\nBuild the app you designed.\nStart with the modules.\nTest it out.\nDeploy it to Posit Connect Cloud and share the link with the class."
-  },
-  {
-    "objectID": "slides/week-12.2.html#acknowledgements",
-    "href": "slides/week-12.2.html#acknowledgements",
-    "title": "Modules & Deployment",
-    "section": "Acknowledgements",
-    "text": "Acknowledgements\n\nParts of this presentation were adapted from Veerle van Leemput’s Shiny 101: The Modular App Blueprint"
+    "objectID": "slides/week-12.2.html#todays-plan",
+    "href": "slides/week-12.2.html#todays-plan",
+    "title": "Getting Started on Your Final Project",
+    "section": "Today’s plan",
+    "text": "Today’s plan\n\nPick a track and form your group (10 min)\nBrowse examples: the Shiny gallery, Our World in Data, apps from Shiny Basics and Advanced Shiny\nFind your data and load it into R—try a first glimpse() and a quick plot\nStart drafting your proposal\n\n\nI’ll come around to talk through ideas with each person or group."
   },
   {
     "objectID": "slides/week-11.2.html#old-faithful-challenge",
@@ -1821,7 +1888,73 @@
     "href": "project/project-assignment-1.html",
     "title": "Project Proposal",
     "section": "",
-    "text": "Coming Soon!",
+    "text": "Important\n\n\n\nDue by 11:59 p.m. on Monday, November 23. Submit on Blackboard.",
+    "crumbs": [
+      "Project",
+      "Project Proposal"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment-1.html#overview",
+    "href": "project/project-assignment-1.html#overview",
+    "title": "Project Proposal",
+    "section": "Overview",
+    "text": "Overview\nThe purpose of the proposal is to get you to commit to an idea and think through what your final project will look like before you start building it. You will be choosing one of two tracks (see the Project Description):\n\nShiny app — an interactive tool that lets a user explore a data set and come away having learned something.\nReport — a polished written report, authored in Quarto, built around at least one well-crafted visualization.\n\nEither way, the core questions are the same: What do you want your audience to learn? What data will get them there? And what will they see? Answer each of the four steps below in a paragraph or two. Short and specific beats long and vague—this is a plan, not a finished product, and it is fine if things change once you start working with the data.\n\n\n\n\n\n\nNote\n\n\n\nIf you are working in a group (up to three students), submit one proposal with everyone’s names at the top and include a short note on how you plan to divide the work. See the Project Description for the group policy.",
+    "crumbs": [
+      "Project",
+      "Project Proposal"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment-1.html#step-1-your-question-and-your-track-25-pts.",
+    "href": "project/project-assignment-1.html#step-1-your-question-and-your-track-25-pts.",
+    "title": "Project Proposal",
+    "section": "Step 1: Your question and your track (25 pts.)",
+    "text": "Step 1: Your question and your track (25 pts.)\nWhat question or theme do you want your audience to explore, and which track are you choosing? Tell us why that track is the right fit for your question.\nThen find a few examples that you would like your project to resemble and link to them:\n\nApp track: Browse the Shiny gallery and look back at the apps we built in Shiny Basics and Advanced Shiny. Which layouts appeal to you most, and why?\nReport track: Find one or two pieces of data journalism or policy reports (e.g., from Our World in Data, Pew Research Center, or a newspaper’s graphics desk) that do what you want to do. What do you like about how they combine writing and visuals?",
+    "crumbs": [
+      "Project",
+      "Project Proposal"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment-1.html#step-2-the-data-25-pts.",
+    "href": "project/project-assignment-1.html#step-2-the-data-25-pts.",
+    "title": "Project Proposal",
+    "section": "Step 2: The data (25 pts.)",
+    "text": "Step 2: The data (25 pts.)\nWhat data sets will you use? These could be data sets that we have used in the course or other sources (see the Datasets page for ideas), but they should be comprehensive and convenient to work with—you will not have time for original data collection. Be specific: name the source, the key variables or indicators, the units of observation (countries, states, years…) and the time span. If you plan to merge data sets, say how they will be joined.",
+    "crumbs": [
+      "Project",
+      "Project Proposal"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment-1.html#step-3-the-visualization-25-pts.",
+    "href": "project/project-assignment-1.html#step-3-the-visualization-25-pts.",
+    "title": "Project Proposal",
+    "section": "Step 3: The visualization (25 pts.)",
+    "text": "Step 3: The visualization (25 pts.)\nWhat type of visualization will you build? This could be a line chart, scatter plot, bar chart, map, table or some combination, and it could include text elements as well. How will your visualization help your audience learn what you want them to learn? What should they notice when they look at it? A rough sketch (a photo of a drawing is fine) is welcome but not required.",
+    "crumbs": [
+      "Project",
+      "Project Proposal"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment-1.html#step-4-interactivity-or-narrative-25-pts.",
+    "href": "project/project-assignment-1.html#step-4-interactivity-or-narrative-25-pts.",
+    "title": "Project Proposal",
+    "section": "Step 4: Interactivity or narrative (25 pts.)",
+    "text": "Step 4: Interactivity or narrative (25 pts.)\nApp track: What will the user manipulate in your app? It could be a dropdown menu, a slider, radio buttons or some other control (see the list of control widgets). When the user interacts with the control, what will change? How does that interaction help the user learn something they would not get from a static chart?\nReport track: How will your report be structured? Sketch an outline of the main sections and say where your visualization(s) will appear. What argument or story will the writing tell, and how will the visualization support it? Who is your intended audience?",
+    "crumbs": [
+      "Project",
+      "Project Proposal"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment-1.html#submission",
+    "href": "project/project-assignment-1.html#submission",
+    "title": "Project Proposal",
+    "section": "Submission",
+    "text": "Submission\nWrite your answers in a Quarto document and submit your unrendered QMD file to Blackboard by 11:59 p.m. on Monday, November 23. Groups submit once, with all members’ names and the division-of-work note at the top.",
     "crumbs": [
       "Project",
       "Project Proposal"
@@ -1964,7 +2097,7 @@
     "href": "modules/module-5.1.html#overview",
     "title": "Shiny Basics",
     "section": "Overview",
-    "text": "Overview\nIn this module, we are going to be learning how to make a Shiny app. Shiny is a web application framework that is designed for building interactive web applications. It is available as an open-source package in R that is maintained by the team at Posit.\nShiny enables you to create interactive web-based visualizations and dashboards directly from your R code. It simplifies the process of developing web applications by providing a higher-level abstraction and handling the underlying web technologies. With Shiny, you can allow your users to explore data, change parameters, and see the results of an analysis dynamically without needing extensive web development skills.\nTo display a Shiny app you can just render it locally, but you likely want to share it with a broader audience. For this, you will need to host it on a server. There are lots of different ways to do this, but the easiest thing to use when you are getting started is Posit Connect Cloud. We will learn to deploy our apps in session 12.2, but for this module it is fine to just view them locally.\nShiny apps consist of three components:1) a user interface (UI); 2) a server function; and 3) a call to the Shiny app. The UI is the part of the app that defines what the user is going to see and interact with. The server function runs all of the computations and produces the visualizations and output that you want to display. And the call to the Shiny app simply tells Shiny to run the app.\nWe are going to talk about each of these elements in turn, but first, have a look at this scatter plot app that we are going to but first take a few minutes to familiarize yourself with this scatter plot app that we are going to building in this this module:",
+    "text": "Overview\nIn this module, we are going to be learning how to make a Shiny app. Shiny is a web application framework that is designed for building interactive web applications. It is available as an open-source package in R that is maintained by the team at Posit.\nShiny enables you to create interactive web-based visualizations and dashboards directly from your R code. It simplifies the process of developing web applications by providing a higher-level abstraction and handling the underlying web technologies. With Shiny, you can allow your users to explore data, change parameters, and see the results of an analysis dynamically without needing extensive web development skills.\nTo display a Shiny app you can just render it locally, but you likely want to share it with a broader audience. For this, you will need to host it on a server. There are lots of different ways to do this, but the easiest thing to use when you are getting started is Posit Connect Cloud. We will learn to deploy our apps in the Deploying & Sharing session after Thanksgiving, but for this module it is fine to just view them locally.\nShiny apps consist of three components:1) a user interface (UI); 2) a server function; and 3) a call to the Shiny app. The UI is the part of the app that defines what the user is going to see and interact with. The server function runs all of the computations and produces the visualizations and output that you want to display. And the call to the Shiny app simply tells Shiny to run the app.\nWe are going to talk about each of these elements in turn, but first, have a look at this scatter plot app that we are going to but first take a few minutes to familiarize yourself with this scatter plot app that we are going to building in this this module:",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
@@ -2012,7 +2145,7 @@
     "href": "modules/module-5.1.html#displaying-your-app",
     "title": "Shiny Basics",
     "section": "Displaying your app",
-    "text": "Displaying your app\nAt this point it should be relatively simple to view your app. Just add the call to the Shiny app, e.g. shinyApp(ui = ui, server = server) and click “Run App” in RStudio.\n\n# See above for the definitions of ui and server\nui &lt;- ...\n\nserver &lt;- ...\n\n# Run the application \nshinyApp(ui = ui, server = server)\n\nOptionally, right now, you can try setting up an account on Posit Connect Cloud. We will walk through deployment in session 12.2, and you can read over the Connect Cloud documentation in the meantime. For your final project, you will need to be able to deploy your app, but right now it is fine if you only want to view it locally.",
+    "text": "Displaying your app\nAt this point it should be relatively simple to view your app. Just add the call to the Shiny app, e.g. shinyApp(ui = ui, server = server) and click “Run App” in RStudio.\n\n# See above for the definitions of ui and server\nui &lt;- ...\n\nserver &lt;- ...\n\n# Run the application \nshinyApp(ui = ui, server = server)\n\nOptionally, right now, you can try setting up an account on Posit Connect Cloud. We will walk through deployment in the session after Thanksgiving, and you can read over the Connect Cloud documentation in the meantime. For your final project, you will need to be able to deploy your app, but right now it is fine if you only want to view it locally.",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
@@ -2321,7 +2454,7 @@
     "href": "index.html",
     "title": "Course Schedule",
     "section": "",
-    "text": "Topic\nDate\nSkills\nReadings\nReference\nSlides\nVideos\nAssignments\n\n\n\n\nGetting Started\nAug 25\nCourse overview\n\n\n\n\n\n\n\n\nAug 27\nEnvironment setup\n📖\n\n🖥️\n\n\n\n\nQuarto and Markdown\nSep 1\nAuthoring with Quarto and Markdown\n📖\n📖\n🖥️\n🖥️🖥️\n\n\n\n\nSep 3\nR programming basics\n\n\n🖥️\n\n\n\n\nCharting With ggplot2\nSep 8\nBar charts & histograms\n📖\n📖📖\n🖥️\n🖥️🖥️\n\n\n\n\nSep 10\nMore Visualization Basics\n📖\n📖\n🖥️\n🖥️🖥️\n\n\n\nColor, Themes & Annotations\nSep 15\nColor schemes\n📖 📖\n📖\n🖥️\n🖥️\n\n\n\n\nSep 17\nThemes, annotations & interactivity\n📖\n📖\n🖥️\n🖥️🖥️🖥️\n🧪\n\n\nReading & Reshaping Data\nSep 22\nRead data into R\n\n📖\n🖥️\n🖥️\n\n\n\n\nSep 24\nReshape & clean data\n\n📖\n🖥️\n🖥️🖥️\n\n\n\nImporting & Merging Data\nSep 29\nDownload data from APIs\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 1\nMerge, group, summarize & arrange\n\n📖 📖\n🖥️\n🖥️🖥️🖥️\n🧪\n\n\nChoropleth Maps\nOct 6\nMap data with choropleth maps\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 8\nTurn your map into a function\n📖\n📖\n🖥️\n🖥️\n\n\n\n\nOct 13\nNo class, fall break\n\n🍁🍂🎃\n\n\n\n\n\nInteractive Maps\nOct 15\nMake a leaflet map (Prof T away)*\n\n\n\n🖥️🖥️\n\n\n\n\nOct 20\nCustomize your interactive map\n\n\n🖥️\n🖥️\n\n\n\n\nOct 22\nMap wrap-up\n\n\n\n\n🧪\n\n\nTables\nOct 27\nExplore tabular data\n\n\n🖥️\n\n\n\n\n\nOct 29\nMake a gt table & confidence intervals\n\n\n🖥️\n\n\n\n\nModels & Coefficient Plots\nNov 3\nRun models & display regression tables\n📖 📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nNov 5\nCoefficient plots (Prof T away)*\n\n\n\n🖥️\n🧪\n\n\nShiny Basics\nNov 10\nIntroducing Shiny apps\n\n\n🖥️\n🖥️🖥️\n\n\n\n\nNov 12\nBuilding a simple app\n\n\n🖥️\n🖥️\n\n\n\nAdvanced Shiny\nNov 17\nObservers and reactives\n📖\n\n🖥️\n🖥️🖥️🖥️\n\n\n\n\nNov 19\nModules and deployment\n\n\n🖥️\n\n✍️\n\n\n\nNov 24\nNo class, Thanksgiving break\n\n🦃🥧🍂\n\n\n\n\n\n\nNov 26\nNo class, Thanksgiving break\n\n\n\n\n\n\n\nDeploying & Sharing / Project Studio\nDec 1\nFinal project workshop\n\n\n\n\n\n\n\n\nDec 3\nFinal project workshop\n\n\n\n\n\n\n\n\nDec 8\nLightning talks\n\n\n\n\n\n\n\n\n\n* Prof T is traveling on this day. Please follow the modules and videos and we will cover the material in class when he returns.",
+    "text": "Topic\nDate\nSkills\nReadings\nReference\nSlides\nVideos\nAssignments\n\n\n\n\nGetting Started\nAug 25\nCourse overview\n\n\n\n\n\n\n\n\nAug 27\nEnvironment setup\n📖\n\n🖥️\n\n\n\n\nQuarto and Markdown\nSep 1\nAuthoring with Quarto and Markdown\n📖\n📖\n🖥️\n🖥️🖥️\n\n\n\n\nSep 3\nR programming basics\n\n\n🖥️\n\n\n\n\nCharting With ggplot2\nSep 8\nBar charts & histograms\n📖\n📖📖\n🖥️\n🖥️🖥️\n\n\n\n\nSep 10\nMore Visualization Basics\n📖\n📖\n🖥️\n🖥️🖥️\n\n\n\nColor, Themes & Annotations\nSep 15\nColor schemes\n📖 📖\n📖\n🖥️\n🖥️\n\n\n\n\nSep 17\nThemes, annotations & interactivity\n📖\n📖\n🖥️\n🖥️🖥️🖥️\n🧪\n\n\nReading & Reshaping Data\nSep 22\nRead data into R\n\n📖\n🖥️\n🖥️\n\n\n\n\nSep 24\nReshape & clean data\n\n📖\n🖥️\n🖥️🖥️\n\n\n\nImporting & Merging Data\nSep 29\nDownload data from APIs\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 1\nMerge, group, summarize & arrange\n\n📖 📖\n🖥️\n🖥️🖥️🖥️\n🧪\n\n\nChoropleth Maps\nOct 6\nMap data with choropleth maps\n📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nOct 8\nTurn your map into a function\n📖\n📖\n🖥️\n🖥️\n\n\n\n\nOct 13\nNo class, fall break\n\n🍁🍂🎃\n\n\n\n\n\nInteractive Maps\nOct 15\nMake a leaflet map (Prof T away)*\n\n\n\n🖥️🖥️\n\n\n\n\nOct 20\nCustomize your interactive map\n\n\n🖥️\n🖥️\n\n\n\n\nOct 22\nMap wrap-up\n\n\n\n\n🧪\n\n\nTables\nOct 27\nExplore tabular data\n\n\n🖥️\n\n\n\n\n\nOct 29\nMake a gt table & confidence intervals\n\n\n🖥️\n\n\n\n\nModels & Coefficient Plots\nNov 3\nRun models & display regression tables\n📖 📖\n\n🖥️\n🖥️🖥️\n\n\n\n\nNov 5\nCoefficient plots (Prof T away)*\n\n\n\n🖥️\n🧪\n\n\nShiny Basics\nNov 10\nIntroducing Shiny apps\n\n\n🖥️\n🖥️🖥️\n\n\n\n\nNov 12\nBuilding a simple app\n\n\n🖥️\n🖥️\n\n\n\nAdvanced Shiny\nNov 17\nObservers and reactives\n📖\n\n🖥️\n🖥️🖥️🖥️\n\n\n\nFinal Project\nNov 19\nGetting started on your project\n\n\n🖥️\n\n✍️\n\n\n\nNov 24\nNo class, Thanksgiving break\n\n🦃🥧🍂\n\n\n\n\n\n\nNov 26\nNo class, Thanksgiving break\n\n\n\n\n\n\n\nDeploying & Sharing\nDec 1\nDeploying apps & reports; authoring in Quarto + studio\n\n\n🖥️\n\n\n\n\nShiny Modules / Project Studio\nDec 3\nShiny modules + studio\n\n\n🖥️\n\n\n\n\n\nDec 8\nLightning talks\n\n\n\n\n✍️\n\n\n\n\n* Prof T is traveling on this day. Please follow the modules and videos and we will cover the material in class when he returns.",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -3346,7 +3479,7 @@
     "href": "modules/module-5.2.html#call-to-shiny-app",
     "title": "Advanced Shiny",
     "section": "Call to Shiny app",
-    "text": "Call to Shiny app\nOnce we have our UI and server functions defined we are ready to go. But don’t forget to include the call to the Shiny app or the app won’t run! Once this is in place, you can click “Run App” in the RStudio IDE to view the app locally. We will cover how to publish your app on Posit Connect Cloud in session 12.2.\n\n# See above for the definitions of ui and server\nui &lt;- ...\n\nserver &lt;- ...\n\n# Run the application \nshinyApp(ui = ui, server = server)",
+    "text": "Call to Shiny app\nOnce we have our UI and server functions defined we are ready to go. But don’t forget to include the call to the Shiny app or the app won’t run! Once this is in place, you can click “Run App” in the RStudio IDE to view the app locally. We will cover how to publish your app on Posit Connect Cloud in the Deploying & Sharing session after Thanksgiving.\n\n# See above for the definitions of ui and server\nui &lt;- ...\n\nserver &lt;- ...\n\n# Run the application \nshinyApp(ui = ui, server = server)",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
@@ -3368,61 +3501,109 @@
   {
     "objectID": "modules/module-6.2.html",
     "href": "modules/module-6.2.html",
-    "title": "Deploying & Sharing Your App",
+    "title": "Deploying & Sharing Your Project",
     "section": "",
-    "text": "NotePackages in this module\n\n\n\nPackages: shiny, rsconnect\nNow that you have your Shiny app, how can you share it with others? The simplest and most logical thing to do is to publish it as a web page. After all, sharing your app on the web is sort of the point of making a web app and doing so is an essential if you want to share your apps with a broader set of users who do not know how to use R or and/or Shiny. There are many different ways to publish your app but the best way when you are getting started is ShinyApps.io.\nYou also may want to share your app with collaborators by sending them your R script and supporting files before you make your app public or available to a broader group of users. There are many ways to share your Shiny app files but the two we are going to cover are sending the files via email or sharing them on GitHub.",
+    "text": "NotePackages in this module\n\n\n\nPackages: shiny, quarto, rsconnect, renv\nFunctions: rsconnect::writeManifest(), Sys.getenv(), renv::init(), renv::snapshot()",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Deploying & Sharing Your App"
+      "Deploying & Sharing Your Project"
     ]
   },
   {
-    "objectID": "modules/module-6.2.html#publishing-your-app-on-shinyapps.io",
-    "href": "modules/module-6.2.html#publishing-your-app-on-shinyapps.io",
-    "title": "Deploying & Sharing Your App",
-    "section": "Publishing your app on ShinyApps.io",
-    "text": "Publishing your app on ShinyApps.io\nOnce it is ready to go, publishing your app to ShinyApps.io is super-easy. Make sure that you have the rsconnect package installed. Then, in RStudio, go to Tools &gt; Global Options and select Publishing. Select Connect, ShinyApps.io and follow the instructions for retrieving and entering your token.\nOnce that is set up, open your app.R file. At the top of your Source window, you should see a little blue circle with arrows surrounding it that says “Publish the application or document” when you hover over it. Click that and, if prompted to do so, install any required updates.\nNext you will be prompted for which files you want to upload. Just select the essential files that you need for the app like the app.R file and any supporting files like a .csv file with the data the app needs or helper scripts. No need to upload ancillary files like your prep file or .Rprofile.\nThen hit Publish and that should be it! Here is a good set of step-by-step instructions in case you happen to get stuck.",
+    "objectID": "modules/module-6.2.html#overview",
+    "href": "modules/module-6.2.html#overview",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Overview",
+    "text": "Overview\nNow that you have your Shiny app or your Quarto report, how can you share it with others? The simplest and most logical thing to do is to publish it as a web page. After all, sharing your work on the web is sort of the point of making a web app, and doing so is essential if you want to share your project with people who do not know how to use R. There are many ways to publish, but the easiest when you are getting started is Posit Connect Cloud, Posit’s free hosting service for Shiny apps, Quarto documents and other data science content. (You may see older tutorials that use shinyapps.io; Connect Cloud is its successor, so skip those.)\nThe good news is that the steps are the same whether you are publishing a Shiny app or a Quarto report. The only differences are which file you tell Connect Cloud is your primary file and which content type you choose:\n\n\n\nShiny app\nQuarto report\n\n\n\nPrimary file\napp.R\n\nreport.qmd (or whatever you named it)\n\n\nContent type\nShiny\nQuarto\n\n\n\nThere are two ways to publish: directly from your IDE (RStudio or Positron), or from a GitHub repository. Publishing from your IDE is the quickest way to get started. Publishing from GitHub takes a little more setup but means your project republishes automatically every time you push a change.\n\n\n\n\n\n\nImportant\n\n\n\nFor the final project, the requirement is that your app or report is published on Posit Connect Cloud and that you submit the link along with your zipped project folder on Blackboard. See Final Project for details. Sharing your code on GitHub is optional unless you choose the GitHub route for publishing.",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Deploying & Sharing Your App"
+      "Deploying & Sharing Your Project"
     ]
   },
   {
-    "objectID": "modules/module-6.2.html#sharing-your-project-folder-via-email",
-    "href": "modules/module-6.2.html#sharing-your-project-folder-via-email",
-    "title": "Deploying & Sharing Your App",
-    "section": "Sharing your project folder via email",
-    "text": "Sharing your project folder via email\nNow let’s say you want to share your code with people. The most basic way to share your app is to simply zip your project folder and send it to your collaborators via email. The other users can then place your project folder wherever they like and run the app by pressing the “run” icon or by using the runApp() function, e.g. \n\n# install.packages(\"shiny\")\nlibrary(shiny)\nrunApp(\"name-of-app\")",
+    "objectID": "modules/module-6.2.html#before-you-publish",
+    "href": "modules/module-6.2.html#before-you-publish",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Before you publish",
+    "text": "Before you publish\nA lot of deployment problems come from projects that work on your machine only because of something specific to your machine. Before you publish, check that:\n\n\nEverything lives in one project folder: your app.R or .qmd file plus any data files and helper scripts it needs.\n\nYour file paths are relative, e.g. read_csv(\"data/my_data.csv\") rather than read_csv(\"/Users/me/Desktop/project/data/my_data.csv\").\n\nThere is no setwd() or install.packages() in your code.\n\nEvery package is loaded with library() near the top of the file. This is how Connect Cloud figures out what to install.\n\nThe project runs from a fresh R session. Restart R (Session &gt; Restart R) and run or render it one more time.\n\nKeep your API keys out of your code\nIf your project downloads data through an API that requires a key (like the FRED app in Advanced Shiny), do not publish the key in your code. This is especially important if you publish from GitHub, because the free plan requires a public repository that anyone can read. You have two options:\n\n\nDownload the data once and save it to a file. Run your API calls in a separate script, save the result with write_csv() or saveRDS(), and have your app or report read the file. This is usually the simplest approach, and it makes your project faster too.\n\nStore the key as a secret variable on Connect Cloud. When you publish, add a secret variable (e.g., FRED_API_KEY) with your key as the value. Then read it in your code with Sys.getenv():\n\n\nfredr_set_key(Sys.getenv(\"FRED_API_KEY\"))\n\nTo make this work on your own computer, add a line like FRED_API_KEY=yourkeyhere to a file called .Renviron in your project folder (you can open it with usethis::edit_r_environ(\"project\")) and restart R. Never commit .Renviron to GitHub—add it to your .gitignore.",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Deploying & Sharing Your App"
+      "Deploying & Sharing Your Project"
     ]
   },
   {
-    "objectID": "modules/module-6.2.html#sharing-your-code-on-github",
-    "href": "modules/module-6.2.html#sharing-your-code-on-github",
-    "title": "Deploying & Sharing Your App",
-    "section": "Sharing your code on GitHub",
-    "text": "Sharing your code on GitHub\nAnother way to share your code is on GitHub. The easiest way to do this is to use version control from the very beginning like you have been doing with GitHub for version control in this course.\nSince you submit your assignments on Blackboard rather than through a public repo, the best way to share your code for this app would be to simply create a new public GitHub repo and copy your code to a new version control project associated with that repo. Then, if you want to make changes to your app and publish it from the new project folder, simply give it a new title when you upload it to ShinyApps.io.\nTo create a new repo in GitHub, go to your profile, go to Repositories, select New and name your new repository. You can also give it an optional description. Make sure your new repo is set to Public and hit “Create repository.” From there copy the repo’s URL and use it to create a new version control project in RStudio. Then copy your app.R and supporting files to the new version control rep.",
+    "objectID": "modules/module-6.2.html#option-1-publish-from-your-ide",
+    "href": "modules/module-6.2.html#option-1-publish-from-your-ide",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Option 1: Publish from your IDE",
+    "text": "Option 1: Publish from your IDE\nRStudio\n\nOpen your app.R file. If you are publishing a report, open your .qmd file and click Render first.\nClick the blue Publish icon (a circle with arrows) at the top of the editor and, if prompted, install any required updates.\nChoose Posit Connect Cloud and log in to connect your account. You only need to do this the first time.\nSelect the files to upload. Include the essentials—your main file, data files and helper scripts—but not ancillary files like your data prep script or .Rprofile.\nClick Publish.\n\nWhen it finishes, your project will open in the browser at a URL that looks like https://yourname-project.share.connect.posit.cloud. To update your project later, save your changes (and re-render, for a report) and click Publish again.\nPositron\nPositron comes with the Posit Publisher extension built in.\n\nClick the Posit Publisher icon in the Activity Bar.\nUnder Credentials, click +, select Posit Connect Cloud and authorize access in your browser. Check that the code in the browser matches the one in Positron.\nAdd a deployment and select your app.R or .qmd file as the entrypoint.\nConfirm the Project Files to include and add any Secrets (such as API keys).\nClick Deploy Your Project.\n\nPositron needs an renv.lock file to know which packages your project uses, so run renv::init() in the console before you deploy (see below). Keep the .posit folder that Publisher creates so that later deploys update the same project rather than creating a new one.",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Deploying & Sharing Your App"
+      "Deploying & Sharing Your Project"
+    ]
+  },
+  {
+    "objectID": "modules/module-6.2.html#option-2-publish-from-github",
+    "href": "modules/module-6.2.html#option-2-publish-from-github",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Option 2: Publish from GitHub",
+    "text": "Option 2: Publish from GitHub\nStep 1: Create a manifest\nWhen you publish from GitHub, Connect Cloud needs a list of the packages (and package versions) your project uses. You create this with the writeManifest() function from rsconnect. From your project folder, run:\n\nrsconnect::writeManifest()\n\nThis creates a file called manifest.json. If you add a package to your project later, run writeManifest() again.\nStep 2: Push your project to GitHub\nCommit your main file, manifest.json, and any data files and helper scripts, then push them to a public GitHub repository. To create a new repo, go to your GitHub profile, select Repositories, click New and give the repository a name. Make sure it is set to Public, click “Create repository,” and then connect your project folder to it (in RStudio, the easiest way is to create a new Version Control project from the repo’s URL and copy your files into it).\nStep 3: Publish on Connect Cloud\n\nSign in to Posit Connect Cloud and click Publish.\nIf this is your first time, install the GitHub App when prompted and give it access to your repository.\nChoose Shiny (for an app) or Quarto (for a report).\nSelect your repository and branch (usually main).\nSelect your primary file: app.R or your .qmd file.\nIf your project needs an API key, open Advanced settings, click + Add variable, and enter the name (e.g., FRED_API_KEY) and value.\nLeave Automatically publish on push on (recommended) and click Publish.\n\nFrom now on, every time you push a change to main, Connect Cloud will republish your project. If you turned automatic publishing off, click Republish on your project’s page instead.",
+    "crumbs": [
+      "Course Topics",
+      "V — Interactive Apps (Shiny)",
+      "Deploying & Sharing Your Project"
+    ]
+  },
+  {
+    "objectID": "modules/module-6.2.html#authoring-a-report-in-quarto",
+    "href": "modules/module-6.2.html#authoring-a-report-in-quarto",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Authoring a report in Quarto",
+    "text": "Authoring a report in Quarto\nIf you chose the report track, you will write your report as a Quarto document and publish it exactly as described above. A few tips for making it look like a finished piece:\n\n\nHide your code. Set echo: false (along with message: false and warning: false) under execute: in your YAML header so readers see your figures and writing, not your code.\n\nUse headings to give the report structure, e.g. Introduction, Data, Findings and Conclusion.\n\nLabel and caption your figures with #| label: fig-... and #| fig-cap: so you can cross-reference them in your text with @fig-....\n\nLead with the takeaway. Tell the reader what to notice in each figure; don’t make them guess.\n\nHere is a YAML header to start from:\n---\ntitle: \"Democracy and Development, 1990-2024\"\nauthor: \"Your Name(s)\"\ndate: today\nformat:\n  html:\n    toc: true\n    embed-resources: true\nexecute:\n  echo: false\n  message: false\n  warning: false\n---\nSee the Quarto and Markdown module and the Quarto guide for more.",
+    "crumbs": [
+      "Course Topics",
+      "V — Interactive Apps (Shiny)",
+      "Deploying & Sharing Your Project"
+    ]
+  },
+  {
+    "objectID": "modules/module-6.2.html#troubleshooting",
+    "href": "modules/module-6.2.html#troubleshooting",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Troubleshooting",
+    "text": "Troubleshooting\n\n\n“There is no package called …”: Make sure every package is loaded with library() and, if you publish from GitHub, re-run rsconnect::writeManifest() and push again.\n\n“Cannot open file …”: You are using an absolute path, or you didn’t include the data file when you published.\n\nThe project works locally but not online: Open your project’s page on Connect Cloud and check the logs. The error message there is usually the same one you would see in the R console.\n\nAn API call fails online: Your secret variable is missing or misnamed. Check that the name in Connect Cloud matches the name in Sys.getenv() exactly.\n\nAlways open your published link in a private browser window to see what other people will see.",
+    "crumbs": [
+      "Course Topics",
+      "V — Interactive Apps (Shiny)",
+      "Deploying & Sharing Your Project"
+    ]
+  },
+  {
+    "objectID": "modules/module-6.2.html#sharing-your-project-folder",
+    "href": "modules/module-6.2.html#sharing-your-project-folder",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Sharing your project folder",
+    "text": "Sharing your project folder\nYou may also want to share your code with collaborators. The most basic way is to zip your project folder and send it to them. They can place the folder wherever they like and run the app by pressing the “Run App” button or by using the runApp() function, e.g.:\n\n# install.packages(\"shiny\")\nlibrary(shiny)\nrunApp(\"name-of-app\")\n\nFor a report, they can open the .qmd file and click Render. A zipped copy of your project folder is also what you will submit on Blackboard for the final project.",
+    "crumbs": [
+      "Course Topics",
+      "V — Interactive Apps (Shiny)",
+      "Deploying & Sharing Your Project"
     ]
   },
   {
     "objectID": "modules/module-6.2.html#using-the-renv-package-to-record-your-r-environment",
     "href": "modules/module-6.2.html#using-the-renv-package-to-record-your-r-environment",
-    "title": "Deploying & Sharing Your App",
+    "title": "Deploying & Sharing Your Project",
     "section": "Using the renv package to record your R environment",
-    "text": "Using the renv package to record your R environment\nOne problem you will frequently run into with R Shiny apps is that they can break as a result of package updates and new R installations. One way to prevent this from happening is to use the renv package, which records your R environment at the time you made the app.\nTo do this, make sure renv is installed. Then type renv::init() in your console. Next, type ren::snapshot(). At this point, renv will give you a list of the packages and versions being used by the app. If everything looks good, type ‘y’ and renv will record the environment. When you come back to work on the app later, you can choose whether to update the packages, but if doing so breaks the app you the option of restoring the earlier environment by typing renv::restore().",
+    "text": "Using the renv package to record your R environment\nOne problem you will frequently run into is that projects can break as a result of package updates and new R installations. One way to prevent this from happening is to use the renv package, which records your R environment at the time you made the project.\nTo do this, make sure renv is installed. Then type renv::init() in your console. Next, type renv::snapshot(). At this point, renv will give you a list of the packages and versions being used by the project. If everything looks good, type ‘y’ and renv will record the environment in a file called renv.lock. When you come back to work on the project later, you can choose whether to update the packages, but if doing so breaks the project, you have the option of restoring the earlier environment by typing renv::restore(). As a bonus, Connect Cloud (and Positron’s Publisher) can read renv.lock to figure out which packages to install.",
     "crumbs": [
       "Course Topics",
       "V — Interactive Apps (Shiny)",
-      "Deploying & Sharing Your App"
+      "Deploying & Sharing Your Project"
     ]
   },
   {
@@ -3430,7 +3611,62 @@
     "href": "project/project-assignment-2.html",
     "title": "Final Project",
     "section": "",
-    "text": "Coming Soon!",
+    "text": "Important\n\n\n\nDue before class on Tuesday, December 8. Submit on Blackboard, then present your project in class that day.",
+    "crumbs": [
+      "Project",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment-2.html#overview",
+    "href": "project/project-assignment-2.html#overview",
+    "title": "Final Project",
+    "section": "Overview",
+    "text": "Overview\nNow that you have a clear sense of where you are going, it is time to build it. Much of this work happens during the project studio sessions in class, so lean on your classmates and on me. This is the hard part, and you will likely have to invest significant time in wrangling your data and debugging your code. Be patient! It will turn out great and you will have a nice project to show for it.\nWhichever track you chose, your finished project will be published on the web with Posit Connect Cloud so that anyone can view it without installing R. We cover publishing in the Deploying & Sharing session after Thanksgiving, and the steps are the same for apps and reports.\n\n\n\n\n\n\nNote\n\n\n\nIf you are working in a group (up to three students), submit one project and include a short note on who was responsible for what. See the Project Description for the group policy.",
+    "crumbs": [
+      "Project",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment-2.html#what-your-project-should-include",
+    "href": "project/project-assignment-2.html#what-your-project-should-include",
+    "title": "Final Project",
+    "section": "What your project should include",
+    "text": "What your project should include\n\nApp track\n\nA working Shiny app built around a clear question or theme.\nAt least one well-crafted, labeled visualization (chart, map or table) that responds to user input.\nAt least one input control that changes the output in a way that teaches the user something.\nA short block of text in the app (e.g., using helpText() or a card()) explaining what the app does, how to use it and where the data come from.\n\n\n\nReport track\n\nA report written in Quarto of roughly 1,000–1,500 words, built around a clear question or argument.\nAt least one well-crafted visualization that anchors the write-up, with a title, clear axis labels, a caption and a source note. Most reports will have two to four figures.\nWriting that puts the visualization to work: tell the reader what to look at and what it means.\nCode hidden from the reader (echo: false) so the report reads like a finished piece, not a notebook.",
+    "crumbs": [
+      "Project",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment-2.html#steps",
+    "href": "project/project-assignment-2.html#steps",
+    "title": "Final Project",
+    "section": "Steps",
+    "text": "Steps\n\nStep 1: Wrangle your data\nStart in a separate R script or Quarto document. Load and wrangle a “working” version of your data—you do not need everything at once—and use glimpse() and View() to make sure it looks the way it should. Save the cleaned data (e.g., as a .csv or .rds file) in your project folder so your app or report can read it in quickly.\n\n\nStep 2: Build your visualization\nGet your main visualization working with one or two indicators before you add interactivity or write around it. This is the heart of your project, so give it the polish we practiced in the course: sensible color, clear labels, a title and a source note.\n\n\nStep 3: Build out the app or the report\nApp track: Start a new Shiny app. Lay out your UI first (a page_sidebar() or fluidPage() with your inputs and outputs) and run it to see how it looks. Then write your server logic, connecting your inputs to your outputs with render*() functions and, where useful, reactive(). Scaffold as you go: get one small piece working before adding the next. See Project Studio for tips on styling and troubleshooting.\nReport track: Start a new Quarto document. Set up your YAML header, outline your sections with headings, drop in your visualization code chunks and then write. Use figure captions and cross-references (e.g., @fig-trend) so your text can point the reader to specific figures. Render early and often.\n\n\nStep 4: Debug\nAre you having issues with your code? See Project Studio, this post on debugging Shiny apps, and reach out for help on Discord. Come to the studio sessions with specific questions.\n\n\nStep 5: Publish to Posit Connect Cloud\nPublish your app or report to Posit Connect Cloud following the steps in Deploying & Sharing. Open the published link in a private browser window to make sure it works for someone who isn’t you. Never put an API key in your code—if your project downloads data with a key (e.g., FRED), either save the data to a file first or store the key as a secret in Connect Cloud.\n\n\nStep 6: Present in class\nOn Tuesday, December 8, you will give a short lightning talk (about 3–4 minutes) with a live demo of your app or a walk-through of your report. Tell us your question, show us how your project works and—most importantly—what we learn from the visualization that we might not have seen otherwise. If you are in a group, decide in advance who will present which part.",
+    "crumbs": [
+      "Project",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment-2.html#submission",
+    "href": "project/project-assignment-2.html#submission",
+    "title": "Final Project",
+    "section": "Submission",
+    "text": "Submission\nSubmit the following on Blackboard before class on Tuesday, December 8. Groups submit once.\n\nThe link to your published app or report on Posit Connect Cloud.\nA compressed (zipped) copy of your project folder: your app.R or .qmd file, plus any data files and helper scripts it needs.\nA short note (a few sentences, in the Blackboard submission box or a text file in your folder) covering who did what if you worked in a group, and whether and how you used AI tools (see the Policy on AI Tools).",
+    "crumbs": [
+      "Project",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment-2.html#grading",
+    "href": "project/project-assignment-2.html#grading",
+    "title": "Final Project",
+    "section": "Grading",
+    "text": "Grading\n\n\n\n\n\n\n\nComponent\nPoints\n\n\n\n\nQuestion and data: a clear question supported by appropriate, well-wrangled data\n20\n\n\nVisualization: well-chosen, polished and clearly labeled\n30\n\n\nInteractivity (app) or narrative (report): controls or writing that help the audience learn something\n20\n\n\nPublishing and code: project is live on Connect Cloud; code is organized and runs\n15\n\n\nPresentation: clear, on time and focused on what we learn\n15\n\n\nTotal\n100",
     "crumbs": [
       "Project",
       "Final Project"
@@ -3441,7 +3677,7 @@
     "href": "project/project-description.html",
     "title": "Project Description",
     "section": "",
-    "text": "Note\n\n\n\nTwo tracks: build a Shiny app or produce a polished written report with a well-crafted visualization. Both tracks share the same proposal and studio weeks; app-specific material (styling, deployment, troubleshooting) is optional and linked from the Project Studio week for students building an app.",
+    "text": "Note\n\n\n\nTwo tracks: build a Shiny app or produce a polished written report with a well-crafted visualization. Both tracks share the same proposal, studio sessions and deadlines, and both are published on the web with Posit Connect Cloud. App-specific material (styling, troubleshooting, modules) is optional and linked from the Project Studio page for students building an app.",
     "crumbs": [
       "Project",
       "Description"
@@ -3481,11 +3717,11 @@
     ]
   },
   {
-    "objectID": "project/project-description.html#deliverables",
-    "href": "project/project-description.html#deliverables",
+    "objectID": "project/project-description.html#deliverables-and-timeline",
+    "href": "project/project-description.html#deliverables-and-timeline",
     "title": "Project Description",
-    "section": "Deliverables",
-    "text": "Deliverables\nMore Coming Soon!\nFor ideas about data to work with, see the Datasets page.",
+    "section": "Deliverables and timeline",
+    "text": "Deliverables and timeline\n\n\n\nWhen\nWhat\n\n\n\n\nThursday, November 19\nProject kickoff — pick a track, form groups and start your proposal in class.\n\n\n11:59 p.m., Monday, November 23\nProject proposal due — commit to a question, track, data and visualization. See Project Proposal.\n\n\nTuesday, December 1\nDeploying & sharing — publish your app or report to Posit Connect Cloud; authoring reports in Quarto. Then studio time.\n\n\nThursday, December 3\nShiny modules — then studio time to build, troubleshoot and get feedback.\n\n\nBefore class, Tuesday, December 8\nFinal project due + lightning talks — submit your link and files, then present in class. See Final Project.\n\n\n\nFor ideas about data to work with, see the Datasets page.",
     "crumbs": [
       "Project",
       "Description"
@@ -4141,6 +4377,125 @@
     "title": "Styling Your App",
     "section": "Acknowledgements",
     "text": "Acknowledgements\n\nParts of this presentation were adapted from Veerle van Leemput’s Shiny 101: The Modular App Blueprint"
+  },
+  {
+    "objectID": "slides/week-14.1.html#why-publish",
+    "href": "slides/week-14.1.html#why-publish",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Why publish?",
+    "text": "Why publish?\n\nThe point of an app (or a report) is for other people to use it\nYour audience shouldn’t need R, RStudio or your laptop\nA link is easy to share: on a résumé, in a portfolio, with a future employer\n\n\nFor your final project, both tracks publish to the web."
+  },
+  {
+    "objectID": "slides/week-14.1.html#posit-connect-cloud",
+    "href": "slides/week-14.1.html#posit-connect-cloud",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Posit Connect Cloud",
+    "text": "Posit Connect Cloud\n\nPosit Connect Cloud is Posit’s free hosting service for Shiny apps, Quarto documents and more\nIt is Posit’s successor to shinyapps.io (you may see old tutorials that use shinyapps.io; skip them)\nFree account: sign up with your GitHub account\nYour project gets a URL like https://yourname-project.share.connect.posit.cloud"
+  },
+  {
+    "objectID": "slides/week-14.1.html#same-steps-for-apps-and-reports",
+    "href": "slides/week-14.1.html#same-steps-for-apps-and-reports",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Same steps for apps and reports",
+    "text": "Same steps for apps and reports\n\n\n\n\n\nShiny app\nQuarto report\n\n\n\n\nPrimary file\napp.R\nreport.qmd\n\n\nContent type to pick\nShiny\nQuarto\n\n\nEverything else\nsame\nsame\n\n\n\n\nExample: FRED app"
+  },
+  {
+    "objectID": "slides/week-14.1.html#two-ways-to-publish",
+    "href": "slides/week-14.1.html#two-ways-to-publish",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Two ways to publish",
+    "text": "Two ways to publish\n\n\n\n1. From your IDE\n\nClick the Publish button in RStudio\nOr use Posit Publisher in Positron\nQuickest way to get started\n\n\n2. From GitHub\n\nPush your project to a public GitHub repo\nPublish from the Connect Cloud website\nUpdates automatically every time you push"
+  },
+  {
+    "objectID": "slides/week-14.1.html#get-your-project-folder-in-order",
+    "href": "slides/week-14.1.html#get-your-project-folder-in-order",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Get your project folder in order",
+    "text": "Get your project folder in order\n\nEverything the project needs lives in one folder: app.R or report.qmd, data files, helper scripts\nUse relative paths: read_csv(\"data/my_data.csv\"), not \"/Users/me/Desktop/...\"\nNo setwd() and no install.packages() in your code\nLoad every package with library() at the top so Connect Cloud knows what to install\nRun it one more time on your own machine, from a fresh R session"
+  },
+  {
+    "objectID": "slides/week-14.1.html#dont-publish-your-api-keys",
+    "href": "slides/week-14.1.html#dont-publish-your-api-keys",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Don’t publish your API keys! 🔑",
+    "text": "Don’t publish your API keys! 🔑\n\nOn the free plan, the GitHub route requires a public repo—anyone can read your code\nOption 1: download the data once, save it to a .csv or .rds, and publish the file\nOption 2: store the key as a secret variable in Connect Cloud and read it with Sys.getenv()\n\n\nfredr_set_key(Sys.getenv(\"FRED_API_KEY\"))\n\n\nLocally, put FRED_API_KEY=yourkey in an .Renviron file (and never commit it)"
+  },
+  {
+    "objectID": "slides/week-14.1.html#publishing-from-rstudio",
+    "href": "slides/week-14.1.html#publishing-from-rstudio",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Publishing from RStudio",
+    "text": "Publishing from RStudio\n\nOpen your app.R (or render your report.qmd)\nClick the blue Publish icon at the top of the editor\nChoose Posit Connect Cloud and log in to connect your account (first time only)\nSelect the files to upload: your main file plus data and helper scripts\nClick Publish\n\n\nTo update: save your changes and click Publish again."
+  },
+  {
+    "objectID": "slides/week-14.1.html#publishing-from-positron",
+    "href": "slides/week-14.1.html#publishing-from-positron",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Publishing from Positron",
+    "text": "Publishing from Positron\n\nClick the Posit Publisher icon in the Activity Bar\nUnder Credentials, click + and choose Posit Connect Cloud; authorize in the browser\nAdd a deployment and pick your app.R or report.qmd\nConfirm the project files and add any secrets (e.g., API keys)\nClick Deploy Your Project\n\n\nPositron needs an renv.lock file for R projects: run renv::init() first."
+  },
+  {
+    "objectID": "slides/week-14.1.html#create-a-manifest",
+    "href": "slides/week-14.1.html#create-a-manifest",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Create a manifest",
+    "text": "Create a manifest\nConnect Cloud needs to know which packages (and versions) your project uses. From the folder with your main file, run:\n\n# install.packages(\"rsconnect\")\nrsconnect::writeManifest()\n\n\nThis creates a manifest.json file. Re-run it whenever you add a package."
+  },
+  {
+    "objectID": "slides/week-14.1.html#push-and-publish",
+    "href": "slides/week-14.1.html#push-and-publish",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Push and publish",
+    "text": "Push and publish\n\nCommit your main file, manifest.json and any data or helper files and push to a public GitHub repo\nSign in to Connect Cloud and click Publish\nInstall the GitHub App when prompted (first time only)\nChoose Shiny or Quarto, then your repo and branch (main)\nSet the primary file (app.R or report.qmd)\nUnder Advanced settings, add any secret variables\nClick Publish"
+  },
+  {
+    "objectID": "slides/week-14.1.html#updating-your-project",
+    "href": "slides/week-14.1.html#updating-your-project",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Updating your project",
+    "text": "Updating your project\n\nWith automatic publishing on, every push to main republishes\nOtherwise, click Republish on the content page\nCheck the logs on the content page if something goes wrong"
+  },
+  {
+    "objectID": "slides/week-14.1.html#start-with-the-yaml-header",
+    "href": "slides/week-14.1.html#start-with-the-yaml-header",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Start with the YAML header",
+    "text": "Start with the YAML header\n---\ntitle: \"Democracy and Development, 1990-2024\"\nauthor: \"Your Name(s)\"\ndate: today\nformat:\n  html:\n    toc: true\n    embed-resources: true\nexecute:\n  echo: false\n  message: false\n  warning: false\n---\n\necho: false hides your code so the report reads like a finished piece\nembed-resources: true packs images and styles into a single HTML file"
+  },
+  {
+    "objectID": "slides/week-14.1.html#structure-with-headings",
+    "href": "slides/week-14.1.html#structure-with-headings",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Structure with headings",
+    "text": "Structure with headings\n## Introduction\n\nWhat question are you asking, and why does it matter?\n\n## Data\n\nWhere do the data come from? What do the key variables measure?\n\n## Findings\n\nWalk the reader through your visualizations.\n\n## Conclusion\n\nWhat did we learn? What are the limits?"
+  },
+  {
+    "objectID": "slides/week-14.1.html#label-caption-and-cross-reference-figures",
+    "href": "slides/week-14.1.html#label-caption-and-cross-reference-figures",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Label, caption and cross-reference figures",
+    "text": "Label, caption and cross-reference figures\n#| label: fig-trend\n#| fig-cap: \"Average electoral democracy score by region, 1990-2024. Source: V-Dem.\"\n\nggplot(dem_data, aes(x = year, y = polyarchy, color = region)) +\n  geom_line()\n\nThen point to it in your text:\nAs @fig-trend shows, democracy declined in most regions after 2010."
+  },
+  {
+    "objectID": "slides/week-14.1.html#writing-tips",
+    "href": "slides/week-14.1.html#writing-tips",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Writing tips",
+    "text": "Writing tips\n\nLead with the takeaway: tell the reader what to notice before (or right after) the figure\nOne idea per paragraph; one main point per figure\nUse callouts (::: {.callout-note}) for definitions or caveats\nRender early and often: problems are easier to fix one at a time\n\n\nMore: Quarto guide and our Quarto and Markdown module."
+  },
+  {
+    "objectID": "slides/week-14.1.html#common-problems",
+    "href": "slides/week-14.1.html#common-problems",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Common problems",
+    "text": "Common problems\n\n“There is no package called…”: you forgot a library() call, or need to re-run writeManifest()\n“Cannot open file…”: an absolute path, or you didn’t upload the data file\nApp works locally, fails online: check the logs on the content page\nBlank chart or error from an API: your key isn’t set on Connect Cloud\nAlways open your published link in a private browser window to see what others see"
+  },
+  {
+    "objectID": "slides/week-14.1.html#publish-something-today",
+    "href": "slides/week-14.1.html#publish-something-today",
+    "title": "Deploying & Sharing Your Project",
+    "section": "Publish something today",
+    "text": "Publish something today\n\nPublish your project, even if it’s not finished: one chart, one input, one paragraph\nShare the link in Discord\nOpen a classmate’s link and make sure it works\nThen: studio time!"
   },
   {
     "objectID": "slides/week-2.1.html#types-of-visualizations",
@@ -5204,7 +5559,7 @@
     "href": "weeks/week-16.html",
     "title": "Week 16",
     "section": "",
-    "text": "Important\n\n\n\nFinal project due — present your app or report in class on Tuesday, December 8.\nWe wrap up the term with lightning-talk presentations of everyone’s final projects, Shiny apps and reports alike.",
+    "text": "Important\n\n\n\nFinal project due on Blackboard before class on Tuesday, December 8. Present your app or report in class that day.\nWe wrap up the term with lightning-talk presentations of everyone’s final projects, Shiny apps and reports alike.",
     "crumbs": [
       "Weekly Materials",
       "Week 16"
@@ -5215,7 +5570,7 @@
     "href": "weeks/week-16.html#assignments",
     "title": "Week 16",
     "section": "Assignments",
-    "text": "Assignments",
+    "text": "Assignments\n✍️ Final project: submit your Connect Cloud link, zipped project folder and division-of-work/AI note\n🎤 Lightning talk, in class",
     "crumbs": [
       "Weekly Materials",
       "Week 16"

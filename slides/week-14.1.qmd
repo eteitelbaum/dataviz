@@ -1,0 +1,255 @@
+---
+title: "Deploying & Sharing Your Project"
+date: today
+date-format: long
+footer: "[DataViz 2102 Website](https://dataviz-gwu.rocks)"
+logo: images/dataviz-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    #multiplex: true
+    chalkboard: true
+execute:
+  echo: true
+  eval: false
+  freeze: auto
+---
+
+# Publishing on the Web 🚀
+
+## Why publish?
+
+- The point of an app (or a report) is for **other people** to use it
+- Your audience shouldn't need R, RStudio or your laptop
+- A link is easy to share: on a résumé, in a portfolio, with a future employer
+
+<br>
+
+For your final project, **both tracks** publish to the web.
+
+## Posit Connect Cloud
+
+- [Posit Connect Cloud](https://connect.posit.cloud/) is Posit's free hosting service for Shiny apps, Quarto documents and more
+- It is Posit's successor to shinyapps.io (you may see old tutorials that use shinyapps.io; skip them)
+- Free account: sign up with your **GitHub** account
+- Your project gets a URL like `https://yourname-project.share.connect.posit.cloud`
+
+## Same steps for apps and reports
+
+<br>
+
+| | Shiny app | Quarto report |
+|---|---|---|
+| Primary file | `app.R` | `report.qmd` |
+| Content type to pick | **Shiny** | **Quarto** |
+| Everything else | same | same |
+
+<br>
+
+Example: [FRED app](https://eteitelbaum-fred-app.share.connect.posit.cloud/)
+
+## Two ways to publish
+
+<br>
+
+::: {.columns}
+::: {.column width="50%"}
+**1. From your IDE**
+
+- Click the **Publish** button in RStudio
+- Or use **Posit Publisher** in Positron
+- Quickest way to get started
+:::
+::: {.column width="50%"}
+**2. From GitHub**
+
+- Push your project to a public GitHub repo
+- Publish from the Connect Cloud website
+- Updates automatically every time you push
+:::
+:::
+
+# Before You Publish ✅
+
+## Get your project folder in order
+
+- Everything the project needs lives **in one folder**: `app.R` or `report.qmd`, data files, helper scripts
+- Use **relative paths**: `read_csv("data/my_data.csv")`, not `"/Users/me/Desktop/..."`
+- No `setwd()` and no `install.packages()` in your code
+- Load every package with `library()` at the top so Connect Cloud knows what to install
+- Run it one more time on your own machine, from a fresh R session
+
+## Don't publish your API keys! 🔑
+
+- On the free plan, the GitHub route requires a **public** repo---anyone can read your code
+- **Option 1:** download the data once, save it to a `.csv` or `.rds`, and publish the file
+- **Option 2:** store the key as a **secret variable** in Connect Cloud and read it with `Sys.getenv()`
+
+```{r}
+#| label: secret
+fredr_set_key(Sys.getenv("FRED_API_KEY"))
+```
+
+- Locally, put `FRED_API_KEY=yourkey` in an `.Renviron` file (and never commit it)
+
+# Route 1: From Your IDE 🖱️
+
+## Publishing from RStudio
+
+1. Open your `app.R` (or render your `report.qmd`)
+2. Click the blue **Publish** icon at the top of the editor
+3. Choose **Posit Connect Cloud** and log in to connect your account (first time only)
+4. Select the files to upload: your main file plus data and helper scripts
+5. Click **Publish**
+
+<br>
+
+To update: save your changes and click **Publish** again.
+
+## Publishing from Positron
+
+1. Click the **Posit Publisher** icon in the Activity Bar
+2. Under **Credentials**, click **+** and choose **Posit Connect Cloud**; authorize in the browser
+3. Add a deployment and pick your `app.R` or `report.qmd`
+4. Confirm the project files and add any **secrets** (e.g., API keys)
+5. Click **Deploy Your Project**
+
+<br>
+
+Positron needs an `renv.lock` file for R projects: run `renv::init()` first.
+
+# Route 2: From GitHub 🐙
+
+## Create a manifest
+
+Connect Cloud needs to know which packages (and versions) your project uses. From the folder with your main file, run:
+
+```{r}
+#| label: manifest
+# install.packages("rsconnect")
+rsconnect::writeManifest()
+```
+
+<br>
+
+This creates a `manifest.json` file. Re-run it whenever you add a package.
+
+## Push and publish
+
+1. Commit your main file, `manifest.json` and any data or helper files and **push** to a public GitHub repo
+2. Sign in to [Connect Cloud](https://connect.posit.cloud/) and click **Publish**
+3. Install the **GitHub App** when prompted (first time only)
+4. Choose **Shiny** or **Quarto**, then your repo and branch (`main`)
+5. Set the **primary file** (`app.R` or `report.qmd`)
+6. Under **Advanced settings**, add any secret variables
+7. Click **Publish**
+
+## Updating your project
+
+- With **automatic publishing** on, every push to `main` republishes
+- Otherwise, click **Republish** on the content page
+- Check the **logs** on the content page if something goes wrong
+
+# Authoring a Report in Quarto 📝
+
+## Start with the YAML header
+
+```{.yaml}
+---
+title: "Democracy and Development, 1990-2024"
+author: "Your Name(s)"
+date: today
+format:
+  html:
+    toc: true
+    embed-resources: true
+execute:
+  echo: false
+  message: false
+  warning: false
+---
+```
+
+- `echo: false` hides your code so the report reads like a finished piece
+- `embed-resources: true` packs images and styles into a single HTML file
+
+## Structure with headings
+
+```{.markdown}
+## Introduction
+
+What question are you asking, and why does it matter?
+
+## Data
+
+Where do the data come from? What do the key variables measure?
+
+## Findings
+
+Walk the reader through your visualizations.
+
+## Conclusion
+
+What did we learn? What are the limits?
+```
+
+## Label, caption and cross-reference figures
+
+```{.r}
+#| label: fig-trend
+#| fig-cap: "Average electoral democracy score by region, 1990-2024. Source: V-Dem."
+
+ggplot(dem_data, aes(x = year, y = polyarchy, color = region)) +
+  geom_line()
+```
+
+<br>
+
+Then point to it in your text:
+
+```{.markdown}
+As @fig-trend shows, democracy declined in most regions after 2010.
+```
+
+## Writing tips
+
+- **Lead with the takeaway:** tell the reader what to notice before (or right after) the figure
+- One idea per paragraph; one main point per figure
+- Use callouts (`::: {.callout-note}`) for definitions or caveats
+- Render early and often: problems are easier to fix one at a time
+
+<br>
+
+More: [Quarto guide](https://quarto.org/docs/guide/) and our [Quarto and Markdown](/modules/getting-started-2.qmd) module.
+
+# Troubleshooting 🔧
+
+## Common problems
+
+- **"There is no package called..."**: you forgot a `library()` call, or need to re-run `writeManifest()`
+- **"Cannot open file..."**: an absolute path, or you didn't upload the data file
+- **App works locally, fails online:** check the logs on the content page
+- **Blank chart or error from an API:** your key isn't set on Connect Cloud
+- Always open your published link in a **private browser window** to see what others see
+
+# Your Turn 🛠️
+
+## Publish something today
+
+- Publish your project, even if it's not finished: one chart, one input, one paragraph
+- Share the link in Discord
+- Open a classmate's link and make sure it works
+- Then: studio time!
+
+```{r}
+#| label: timer
+#| echo: false
+#| eval: true
+library(countdown)
+countdown(minutes = 20,
+          id = "timer-deploy",
+          bottom = "10%",
+          right = "10%")
+```

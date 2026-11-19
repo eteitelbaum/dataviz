@@ -11,9 +11,12 @@ source("../helper.R")
 ```
 
 ::: {.callout-important}
-**Final project** due — present your app or report in class on `r advdate2(tue, 15)`.
+**[Final project](/project/project-assignment-2.qmd)** due on Blackboard before class on `r advdate2(tue, 15)`. Present your app or report in class that day.
 :::
 
 We wrap up the term with lightning-talk presentations of everyone's final projects, Shiny apps and reports alike.
 
 ## Assignments
+
+| ✍️ [Final project](/project/project-assignment-2.qmd): submit your Connect Cloud link, zipped project folder and division-of-work/AI note
+| 🎤 Lightning talk, in class
